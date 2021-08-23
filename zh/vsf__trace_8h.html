@@ -1,0 +1,820 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/service/trace/vsf_trace.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_bfec2c9dca3d140a71292b4bdadc3c95.html">service</a></li><li class="navelem"><a class="el" href="dir_845cf8b0036168a14be8d200a82d7024.html">trace</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#enum-members">枚举</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">vsf_trace.h 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__service__cfg_8h_source.html">service/vsf_service_cfg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__simple__stream_8h_source.html">../simple_stream/vsf_simple_stream.h</a>&quot;</code><br />
+<code>#include &lt;stdarg.h&gt;</code><br />
+</div>
+<p><a href="vsf__trace_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a2d4ff51789ad484c6a3bb465687810f0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a>&#160;&#160;&#160;&quot;\r\n&quot;</td></tr>
+<tr class="separator:a2d4ff51789ad484c6a3bb465687810f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0cee7749b98a832f6b556653e6478a3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#ad0cee7749b98a832f6b556653e6478a3">VSF_TRACE_DF_DS</a>(n)&#160;&#160;&#160;(((n) &amp; 0xFF) &lt;&lt; 0)</td></tr>
+<tr class="separator:ad0cee7749b98a832f6b556653e6478a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68f45729e9335be24a653ff67e594acd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a68f45729e9335be24a653ff67e594acd">VSF_TRACE_DF_DPL</a>(n)&#160;&#160;&#160;(((n) &amp; 0xFF) &lt;&lt; 8)</td></tr>
+<tr class="separator:a68f45729e9335be24a653ff67e594acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82a09374eaeb50d6ecac4a925995790d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a82a09374eaeb50d6ecac4a925995790d">VSF_TRACE_DF_ADDR</a>&#160;&#160;&#160;(1UL &lt;&lt; 16)</td></tr>
+<tr class="separator:a82a09374eaeb50d6ecac4a925995790d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f0fd9a36bc216c29963a23ef4757add"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a5f0fd9a36bc216c29963a23ef4757add">VSF_TRACE_DF_CHAR</a>&#160;&#160;&#160;(1UL &lt;&lt; 17)</td></tr>
+<tr class="separator:a5f0fd9a36bc216c29963a23ef4757add"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4becb84e007deb6eb67c11b354623d33"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a4becb84e007deb6eb67c11b354623d33">VSF_TRACE_DF_NEWLINE</a>&#160;&#160;&#160;(1UL &lt;&lt; 18)</td></tr>
+<tr class="separator:a4becb84e007deb6eb67c11b354623d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7a4e62f3b434a0833f2bbd639f76950"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#ad7a4e62f3b434a0833f2bbd639f76950">VSF_TRACE_DF_U8_16</a>&#160;&#160;&#160;(<a class="el" href="vsf__trace_8h.html#ad0cee7749b98a832f6b556653e6478a3">VSF_TRACE_DF_DS</a>(1) | <a class="el" href="vsf__trace_8h.html#a68f45729e9335be24a653ff67e594acd">VSF_TRACE_DF_DPL</a>(16))</td></tr>
+<tr class="separator:ad7a4e62f3b434a0833f2bbd639f76950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a6c207984db7789dcb9a5fe659b1353"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a1a6c207984db7789dcb9a5fe659b1353">VSF_TRACE_DF_U8_16_A</a>&#160;&#160;&#160;(<a class="el" href="vsf__trace_8h.html#ad7a4e62f3b434a0833f2bbd639f76950">VSF_TRACE_DF_U8_16</a> | <a class="el" href="vsf__trace_8h.html#a82a09374eaeb50d6ecac4a925995790d">VSF_TRACE_DF_ADDR</a>)</td></tr>
+<tr class="separator:a1a6c207984db7789dcb9a5fe659b1353"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39bd6d92c6ccbfb402aa7b9ec9a57964"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a39bd6d92c6ccbfb402aa7b9ec9a57964">VSF_TRACE_DF_U8_16_AC</a>&#160;&#160;&#160;(<a class="el" href="vsf__trace_8h.html#a1a6c207984db7789dcb9a5fe659b1353">VSF_TRACE_DF_U8_16_A</a> | <a class="el" href="vsf__trace_8h.html#a5f0fd9a36bc216c29963a23ef4757add">VSF_TRACE_DF_CHAR</a>)</td></tr>
+<tr class="separator:a39bd6d92c6ccbfb402aa7b9ec9a57964"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae00c4e4ffd520c9ff07471a0f1bf35cf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#ae00c4e4ffd520c9ff07471a0f1bf35cf">VSF_TRACE_DF_U8_16_ACN</a>&#160;&#160;&#160;(<a class="el" href="vsf__trace_8h.html#a39bd6d92c6ccbfb402aa7b9ec9a57964">VSF_TRACE_DF_U8_16_AC</a> | <a class="el" href="vsf__trace_8h.html#a4becb84e007deb6eb67c11b354623d33">VSF_TRACE_DF_NEWLINE</a>)</td></tr>
+<tr class="separator:ae00c4e4ffd520c9ff07471a0f1bf35cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab4299e274b15779846dd0763f88a82d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#aab4299e274b15779846dd0763f88a82d">VSF_TRACE_DF_U8_16_AN</a>&#160;&#160;&#160;(<a class="el" href="vsf__trace_8h.html#a1a6c207984db7789dcb9a5fe659b1353">VSF_TRACE_DF_U8_16_A</a> | <a class="el" href="vsf__trace_8h.html#a4becb84e007deb6eb67c11b354623d33">VSF_TRACE_DF_NEWLINE</a>)</td></tr>
+<tr class="separator:aab4299e274b15779846dd0763f88a82d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bc7924fa56ead9d0ebd2ac5c9ae52e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a6bc7924fa56ead9d0ebd2ac5c9ae52e7">VSF_TRACE_DF_U8_16_N</a>&#160;&#160;&#160;(<a class="el" href="vsf__trace_8h.html#ad7a4e62f3b434a0833f2bbd639f76950">VSF_TRACE_DF_U8_16</a> | <a class="el" href="vsf__trace_8h.html#a4becb84e007deb6eb67c11b354623d33">VSF_TRACE_DF_NEWLINE</a>)</td></tr>
+<tr class="separator:a6bc7924fa56ead9d0ebd2ac5c9ae52e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43858f1bd66851841a03802a5378d2d9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a43858f1bd66851841a03802a5378d2d9">VSF_TRACE_DF_DEFAULT</a>&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#ae00c4e4ffd520c9ff07471a0f1bf35cf">VSF_TRACE_DF_U8_16_ACN</a></td></tr>
+<tr class="separator:a43858f1bd66851841a03802a5378d2d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27c896657d00787f344c8b361429db42"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a27c896657d00787f344c8b361429db42">VSF_TRACE_POINTER_HEX</a>&#160;&#160;&#160;&quot;%p&quot;</td></tr>
+<tr class="separator:a27c896657d00787f344c8b361429db42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79d6c4c1b33dd19ad646874b21ce8f93"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a79d6c4c1b33dd19ad646874b21ce8f93">vsf_trace_print_mem</a>&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#aa1f84c84cca873999f880b4f5f536d7b">vsf_trace_buffer</a></td></tr>
+<tr class="separator:a79d6c4c1b33dd19ad646874b21ce8f93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa627d9bdcf073a78377cf0b21e040e86"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#aa627d9bdcf073a78377cf0b21e040e86">vsf_trace_init</a>(__stream)&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#af3197af9a7d3ba4c0540c6cd9158734c">__vsf_trace_init</a>((<a class="el" href="classvsf__stream__t.html">vsf_stream_t</a> *)(__stream))</td></tr>
+<tr class="separator:aa627d9bdcf073a78377cf0b21e040e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4be513b743e021cd29646fccf1f0ffb8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a4be513b743e021cd29646fccf1f0ffb8">vsf_trace_info</a>(...)&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#a80aa44883df227a9de64a6de4332f595">vsf_trace</a>(<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecaf91884ef064a432e339368cc7893435b">VSF_TRACE_INFO</a>, __VA_ARGS__)</td></tr>
+<tr class="separator:a4be513b743e021cd29646fccf1f0ffb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72370058f8470afd6003a6bf8075789f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a72370058f8470afd6003a6bf8075789f">vsf_trace_warning</a>(...)&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#a80aa44883df227a9de64a6de4332f595">vsf_trace</a>(<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecacec0b1031073f7e6b179693afc54573c">VSF_TRACE_WARNING</a>, __VA_ARGS__)</td></tr>
+<tr class="separator:a72370058f8470afd6003a6bf8075789f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fa519dca7014d511779927591f09ad2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a9fa519dca7014d511779927591f09ad2">vsf_trace_error</a>(...)&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#a80aa44883df227a9de64a6de4332f595">vsf_trace</a>(<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecade57ce3cfe185180aa66c92b6a93a1c1">VSF_TRACE_ERROR</a>, __VA_ARGS__)</td></tr>
+<tr class="separator:a9fa519dca7014d511779927591f09ad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac43ad43b38f960d12c4e1a8e5253af32"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#ac43ad43b38f960d12c4e1a8e5253af32">vsf_trace_debug</a>(...)&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#a80aa44883df227a9de64a6de4332f595">vsf_trace</a>(<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecaaf049cb1d8895fb74c0e8b6b52f6058f">VSF_TRACE_DEBUG</a>, __VA_ARGS__)</td></tr>
+<tr class="separator:ac43ad43b38f960d12c4e1a8e5253af32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28ecf46fa434516921459fd0a763f39d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a28ecf46fa434516921459fd0a763f39d">__vsf_trace_buffer3</a>(__level,  __buffer,  __len)&#160;&#160;&#160;        <a class="el" href="vsf__trace_8h.html#a09a0c8b759d297c9d67022d296d78296">__vsf_trace_buffer</a>((__level), (__buffer), (__len), <a class="el" href="vsf__trace_8h.html#a43858f1bd66851841a03802a5378d2d9">VSF_TRACE_DF_DEFAULT</a>)</td></tr>
+<tr class="separator:a28ecf46fa434516921459fd0a763f39d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab02cd9d90c06742ab4cc1aa23f9674f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#ab02cd9d90c06742ab4cc1aa23f9674f4">__vsf_trace_buffer4</a>(__level,  __buffer,  __len,  __flag)&#160;&#160;&#160;        <a class="el" href="vsf__trace_8h.html#a09a0c8b759d297c9d67022d296d78296">__vsf_trace_buffer</a>((__level), (__buffer), (__len), (__flag))</td></tr>
+<tr class="separator:ab02cd9d90c06742ab4cc1aa23f9674f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1f84c84cca873999f880b4f5f536d7b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#aa1f84c84cca873999f880b4f5f536d7b">vsf_trace_buffer</a>(__level,  __buffer,  __len, ...)</td></tr>
+<tr class="separator:aa1f84c84cca873999f880b4f5f536d7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:ae0407cd867fb36dd7d3d4fea1e0cae27"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ec">vsf_trace_level_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#ae0407cd867fb36dd7d3d4fea1e0cae27">vsf_trace_level_t</a></td></tr>
+<tr class="separator:ae0407cd867fb36dd7d3d4fea1e0cae27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+枚举</h2></td></tr>
+<tr class="memitem:a910616905801f71809ab727d6a5bf8ec"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ec">vsf_trace_level_t</a> { <br />
+&#160;&#160;<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecaf649d730e60f43cedaa4d7671210e376">VSF_TRACE_NONE</a>
+, <br />
+&#160;&#160;<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecade57ce3cfe185180aa66c92b6a93a1c1">VSF_TRACE_ERROR</a>
+, <br />
+&#160;&#160;<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecaf91884ef064a432e339368cc7893435b">VSF_TRACE_INFO</a>
+, <br />
+&#160;&#160;<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecacec0b1031073f7e6b179693afc54573c">VSF_TRACE_WARNING</a>
+, <br />
+&#160;&#160;<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecaaf049cb1d8895fb74c0e8b6b52f6058f">VSF_TRACE_DEBUG</a>
+, <br />
+&#160;&#160;<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecaefc0faa66d560971c7cc31fa24f112b9">VSF_TRACE_LEVEL_NUM</a>
+<br />
+ }</td></tr>
+<tr class="separator:a910616905801f71809ab727d6a5bf8ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:af3197af9a7d3ba4c0540c6cd9158734c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#af3197af9a7d3ba4c0540c6cd9158734c">__vsf_trace_init</a> (<a class="el" href="classvsf__stream__t.html">vsf_stream_t</a> *stream)</td></tr>
+<tr class="separator:af3197af9a7d3ba4c0540c6cd9158734c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33ae4aed0b1f5ae6a73536c6de6f9a5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a33ae4aed0b1f5ae6a73536c6de6f9a5d">vsf_trace_fini</a> (void)</td></tr>
+<tr class="separator:a33ae4aed0b1f5ae6a73536c6de6f9a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09a0c8b759d297c9d67022d296d78296"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a09a0c8b759d297c9d67022d296d78296">__vsf_trace_buffer</a> (<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ec">vsf_trace_level_t</a> level, void *buffer, <a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a> len, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> flag)</td></tr>
+<tr class="separator:a09a0c8b759d297c9d67022d296d78296"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab15318128e0672514ab7555953dbff88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#ab15318128e0672514ab7555953dbff88">vsf_trace_string</a> (<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ec">vsf_trace_level_t</a> level, const char *str)</td></tr>
+<tr class="separator:ab15318128e0672514ab7555953dbff88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f333822ad6a3c4b3a2b12d3f5a2ccbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a5f333822ad6a3c4b3a2b12d3f5a2ccbd">vsf_trace_arg</a> (<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ec">vsf_trace_level_t</a> level, const char *<a class="el" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>, va_list arg)</td></tr>
+<tr class="separator:a5f333822ad6a3c4b3a2b12d3f5a2ccbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80aa44883df227a9de64a6de4332f595"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a80aa44883df227a9de64a6de4332f595">vsf_trace</a> (<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ec">vsf_trace_level_t</a> level, const char *<a class="el" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>,...)</td></tr>
+<tr class="separator:a80aa44883df227a9de64a6de4332f595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08a827d27a887683a9a52e602f523ae9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__trace_8h.html#a08a827d27a887683a9a52e602f523ae9">__vsf_trace_output</a> (const char *<a class="el" href="vsf__memfs_8h.html#a8b212742c92a124f2eb4a244acc19f7c">buff</a>, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
+<tr class="separator:a08a827d27a887683a9a52e602f523ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a2d4ff51789ad484c6a3bb465687810f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d4ff51789ad484c6a3bb465687810f0">&#9670;&nbsp;</a></span>VSF_TRACE_CFG_LINEEND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_TRACE_CFG_LINEEND&#160;&#160;&#160;&quot;\r\n&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0cee7749b98a832f6b556653e6478a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0cee7749b98a832f6b556653e6478a3">&#9670;&nbsp;</a></span>VSF_TRACE_DF_DS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_TRACE_DF_DS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n</td><td>)</td>
+          <td>&#160;&#160;&#160;(((n) &amp; 0xFF) &lt;&lt; 0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a68f45729e9335be24a653ff67e594acd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68f45729e9335be24a653ff67e594acd">&#9670;&nbsp;</a></span>VSF_TRACE_DF_DPL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_TRACE_DF_DPL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n</td><td>)</td>
+          <td>&#160;&#160;&#160;(((n) &amp; 0xFF) &lt;&lt; 8)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a82a09374eaeb50d6ecac4a925995790d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82a09374eaeb50d6ecac4a925995790d">&#9670;&nbsp;</a></span>VSF_TRACE_DF_ADDR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_TRACE_DF_ADDR&#160;&#160;&#160;(1UL &lt;&lt; 16)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f0fd9a36bc216c29963a23ef4757add"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f0fd9a36bc216c29963a23ef4757add">&#9670;&nbsp;</a></span>VSF_TRACE_DF_CHAR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_TRACE_DF_CHAR&#160;&#160;&#160;(1UL &lt;&lt; 17)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4becb84e007deb6eb67c11b354623d33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4becb84e007deb6eb67c11b354623d33">&#9670;&nbsp;</a></span>VSF_TRACE_DF_NEWLINE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_TRACE_DF_NEWLINE&#160;&#160;&#160;(1UL &lt;&lt; 18)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad7a4e62f3b434a0833f2bbd639f76950"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7a4e62f3b434a0833f2bbd639f76950">&#9670;&nbsp;</a></span>VSF_TRACE_DF_U8_16</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_TRACE_DF_U8_16&#160;&#160;&#160;(<a class="el" href="vsf__trace_8h.html#ad0cee7749b98a832f6b556653e6478a3">VSF_TRACE_DF_DS</a>(1) | <a class="el" href="vsf__trace_8h.html#a68f45729e9335be24a653ff67e594acd">VSF_TRACE_DF_DPL</a>(16))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a6c207984db7789dcb9a5fe659b1353"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a6c207984db7789dcb9a5fe659b1353">&#9670;&nbsp;</a></span>VSF_TRACE_DF_U8_16_A</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_TRACE_DF_U8_16_A&#160;&#160;&#160;(<a class="el" href="vsf__trace_8h.html#ad7a4e62f3b434a0833f2bbd639f76950">VSF_TRACE_DF_U8_16</a> | <a class="el" href="vsf__trace_8h.html#a82a09374eaeb50d6ecac4a925995790d">VSF_TRACE_DF_ADDR</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a39bd6d92c6ccbfb402aa7b9ec9a57964"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39bd6d92c6ccbfb402aa7b9ec9a57964">&#9670;&nbsp;</a></span>VSF_TRACE_DF_U8_16_AC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_TRACE_DF_U8_16_AC&#160;&#160;&#160;(<a class="el" href="vsf__trace_8h.html#a1a6c207984db7789dcb9a5fe659b1353">VSF_TRACE_DF_U8_16_A</a> | <a class="el" href="vsf__trace_8h.html#a5f0fd9a36bc216c29963a23ef4757add">VSF_TRACE_DF_CHAR</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae00c4e4ffd520c9ff07471a0f1bf35cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae00c4e4ffd520c9ff07471a0f1bf35cf">&#9670;&nbsp;</a></span>VSF_TRACE_DF_U8_16_ACN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_TRACE_DF_U8_16_ACN&#160;&#160;&#160;(<a class="el" href="vsf__trace_8h.html#a39bd6d92c6ccbfb402aa7b9ec9a57964">VSF_TRACE_DF_U8_16_AC</a> | <a class="el" href="vsf__trace_8h.html#a4becb84e007deb6eb67c11b354623d33">VSF_TRACE_DF_NEWLINE</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aab4299e274b15779846dd0763f88a82d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab4299e274b15779846dd0763f88a82d">&#9670;&nbsp;</a></span>VSF_TRACE_DF_U8_16_AN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_TRACE_DF_U8_16_AN&#160;&#160;&#160;(<a class="el" href="vsf__trace_8h.html#a1a6c207984db7789dcb9a5fe659b1353">VSF_TRACE_DF_U8_16_A</a> | <a class="el" href="vsf__trace_8h.html#a4becb84e007deb6eb67c11b354623d33">VSF_TRACE_DF_NEWLINE</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6bc7924fa56ead9d0ebd2ac5c9ae52e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bc7924fa56ead9d0ebd2ac5c9ae52e7">&#9670;&nbsp;</a></span>VSF_TRACE_DF_U8_16_N</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_TRACE_DF_U8_16_N&#160;&#160;&#160;(<a class="el" href="vsf__trace_8h.html#ad7a4e62f3b434a0833f2bbd639f76950">VSF_TRACE_DF_U8_16</a> | <a class="el" href="vsf__trace_8h.html#a4becb84e007deb6eb67c11b354623d33">VSF_TRACE_DF_NEWLINE</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a43858f1bd66851841a03802a5378d2d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43858f1bd66851841a03802a5378d2d9">&#9670;&nbsp;</a></span>VSF_TRACE_DF_DEFAULT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_TRACE_DF_DEFAULT&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#ae00c4e4ffd520c9ff07471a0f1bf35cf">VSF_TRACE_DF_U8_16_ACN</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a27c896657d00787f344c8b361429db42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27c896657d00787f344c8b361429db42">&#9670;&nbsp;</a></span>VSF_TRACE_POINTER_HEX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_TRACE_POINTER_HEX&#160;&#160;&#160;&quot;%p&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a79d6c4c1b33dd19ad646874b21ce8f93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79d6c4c1b33dd19ad646874b21ce8f93">&#9670;&nbsp;</a></span>vsf_trace_print_mem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_trace_print_mem&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#aa1f84c84cca873999f880b4f5f536d7b">vsf_trace_buffer</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa627d9bdcf073a78377cf0b21e040e86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa627d9bdcf073a78377cf0b21e040e86">&#9670;&nbsp;</a></span>vsf_trace_init</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_trace_init</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__stream</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#af3197af9a7d3ba4c0540c6cd9158734c">__vsf_trace_init</a>((<a class="el" href="classvsf__stream__t.html">vsf_stream_t</a> *)(__stream))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4be513b743e021cd29646fccf1f0ffb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4be513b743e021cd29646fccf1f0ffb8">&#9670;&nbsp;</a></span>vsf_trace_info</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_trace_info</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#a80aa44883df227a9de64a6de4332f595">vsf_trace</a>(<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecaf91884ef064a432e339368cc7893435b">VSF_TRACE_INFO</a>, __VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a72370058f8470afd6003a6bf8075789f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72370058f8470afd6003a6bf8075789f">&#9670;&nbsp;</a></span>vsf_trace_warning</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_trace_warning</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#a80aa44883df227a9de64a6de4332f595">vsf_trace</a>(<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecacec0b1031073f7e6b179693afc54573c">VSF_TRACE_WARNING</a>, __VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9fa519dca7014d511779927591f09ad2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fa519dca7014d511779927591f09ad2">&#9670;&nbsp;</a></span>vsf_trace_error</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_trace_error</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#a80aa44883df227a9de64a6de4332f595">vsf_trace</a>(<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecade57ce3cfe185180aa66c92b6a93a1c1">VSF_TRACE_ERROR</a>, __VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac43ad43b38f960d12c4e1a8e5253af32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac43ad43b38f960d12c4e1a8e5253af32">&#9670;&nbsp;</a></span>vsf_trace_debug</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_trace_debug</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#a80aa44883df227a9de64a6de4332f595">vsf_trace</a>(<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecaaf049cb1d8895fb74c0e8b6b52f6058f">VSF_TRACE_DEBUG</a>, __VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a28ecf46fa434516921459fd0a763f39d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28ecf46fa434516921459fd0a763f39d">&#9670;&nbsp;</a></span>__vsf_trace_buffer3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __vsf_trace_buffer3</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__level, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__buffer, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__len&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;        <a class="el" href="vsf__trace_8h.html#a09a0c8b759d297c9d67022d296d78296">__vsf_trace_buffer</a>((__level), (__buffer), (__len), <a class="el" href="vsf__trace_8h.html#a43858f1bd66851841a03802a5378d2d9">VSF_TRACE_DF_DEFAULT</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab02cd9d90c06742ab4cc1aa23f9674f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab02cd9d90c06742ab4cc1aa23f9674f4">&#9670;&nbsp;</a></span>__vsf_trace_buffer4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __vsf_trace_buffer4</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__level, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__buffer, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__len, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__flag&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;        <a class="el" href="vsf__trace_8h.html#a09a0c8b759d297c9d67022d296d78296">__vsf_trace_buffer</a>((__level), (__buffer), (__len), (__flag))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa1f84c84cca873999f880b4f5f536d7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1f84c84cca873999f880b4f5f536d7b">&#9670;&nbsp;</a></span>vsf_trace_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_trace_buffer</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__level, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__buffer, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__len, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">        __PLOOC_EVAL(<a class="code" href="vsf__trace_8h.html#a09a0c8b759d297c9d67022d296d78296">__vsf_trace_buffer</a>, (__level), (__buffer), (__len), ##__VA_ARGS__)\</div>
+<div class="line">            ((__level), (__buffer), (__len), ##__VA_ARGS__)</div>
+<div class="ttc" id="avsf__trace_8h_html_a09a0c8b759d297c9d67022d296d78296"><div class="ttname"><a href="vsf__trace_8h.html#a09a0c8b759d297c9d67022d296d78296">__vsf_trace_buffer</a></div><div class="ttdeci">void __vsf_trace_buffer(vsf_trace_level_t level, void *buffer, uint_fast16_t len, uint_fast32_t flag)</div><div class="ttdef"><b>Definition:</b> vsf_trace.c:233</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">类型定义说明</h2>
+<a id="ae0407cd867fb36dd7d3d4fea1e0cae27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0407cd867fb36dd7d3d4fea1e0cae27">&#9670;&nbsp;</a></span>vsf_trace_level_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ec">vsf_trace_level_t</a> <a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ec">vsf_trace_level_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">枚举类型说明</h2>
+<a id="a910616905801f71809ab727d6a5bf8ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a910616905801f71809ab727d6a5bf8ec">&#9670;&nbsp;</a></span>vsf_trace_level_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ec">vsf_trace_level_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a910616905801f71809ab727d6a5bf8ecaf649d730e60f43cedaa4d7671210e376"></a>VSF_TRACE_NONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a910616905801f71809ab727d6a5bf8ecade57ce3cfe185180aa66c92b6a93a1c1"></a>VSF_TRACE_ERROR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a910616905801f71809ab727d6a5bf8ecaf91884ef064a432e339368cc7893435b"></a>VSF_TRACE_INFO&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a910616905801f71809ab727d6a5bf8ecacec0b1031073f7e6b179693afc54573c"></a>VSF_TRACE_WARNING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a910616905801f71809ab727d6a5bf8ecaaf049cb1d8895fb74c0e8b6b52f6058f"></a>VSF_TRACE_DEBUG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a910616905801f71809ab727d6a5bf8ecaefc0faa66d560971c7cc31fa24f112b9"></a>VSF_TRACE_LEVEL_NUM&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="af3197af9a7d3ba4c0540c6cd9158734c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3197af9a7d3ba4c0540c6cd9158734c">&#9670;&nbsp;</a></span>__vsf_trace_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void __vsf_trace_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__stream__t.html">vsf_stream_t</a> *&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a33ae4aed0b1f5ae6a73536c6de6f9a5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33ae4aed0b1f5ae6a73536c6de6f9a5d">&#9670;&nbsp;</a></span>vsf_trace_fini()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_trace_fini </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a09a0c8b759d297c9d67022d296d78296"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09a0c8b759d297c9d67022d296d78296">&#9670;&nbsp;</a></span>__vsf_trace_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void __vsf_trace_buffer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ec">vsf_trace_level_t</a>&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a>&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td>
+          <td class="paramname"><em>flag</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab15318128e0672514ab7555953dbff88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab15318128e0672514ab7555953dbff88">&#9670;&nbsp;</a></span>vsf_trace_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_trace_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ec">vsf_trace_level_t</a>&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f333822ad6a3c4b3a2b12d3f5a2ccbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f333822ad6a3c4b3a2b12d3f5a2ccbd">&#9670;&nbsp;</a></span>vsf_trace_arg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_trace_arg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ec">vsf_trace_level_t</a>&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a80aa44883df227a9de64a6de4332f595"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80aa44883df227a9de64a6de4332f595">&#9670;&nbsp;</a></span>vsf_trace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_trace </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ec">vsf_trace_level_t</a>&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a08a827d27a887683a9a52e602f523ae9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08a827d27a887683a9a52e602f523ae9">&#9670;&nbsp;</a></span>__vsf_trace_output()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> __vsf_trace_output </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>buff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/kernel/vsf_kernel_bsp.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_1645b320da2d5ed022f940b59419d15d.html">kernel</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">vsf_kernel_bsp.c 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__kernel__cfg_8h_source.html">kernel/vsf_kernel_cfg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__kernel__common_8h_source.html">./vsf_kernel_common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__eda_8h_source.html">./vsf_eda.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__evtq_8h_source.html">./vsf_evtq.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__os_8h_source.html">./vsf_os.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__utilities_8h_source.html">utilities/vsf_utilities.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ae68af52b29d55a0d7474c656fd71d931"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__kernel__bsp_8c.html#ae68af52b29d55a0d7474c656fd71d931">__VSF_EDA_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:ae68af52b29d55a0d7474c656fd71d931"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a209e0840385dd5d44be96f11121a531a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__kernel__bsp_8c.html#a209e0840385dd5d44be96f11121a531a">__VSF_OS_EVTQ_SWI_PRIO_INIT</a>(__INDEX,  __UNUSED)&#160;&#160;&#160;    VSF_ARCH_PRIO_##__INDEX,</td></tr>
+<tr class="separator:a209e0840385dd5d44be96f11121a531a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfe3f8c652245eb890399eb3156541bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__kernel__bsp_8c.html#abfe3f8c652245eb890399eb3156541bb">VSF_OS_CFG_MAIN_STACK_SIZE</a>&#160;&#160;&#160;(4096)</td></tr>
+<tr class="separator:abfe3f8c652245eb890399eb3156541bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0b51eb91e24c0d888355c72baf63c08"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__kernel__bsp_8c.html#af0b51eb91e24c0d888355c72baf63c08">VSF_SYSTIMER_RESOLUTION</a>&#160;&#160;&#160;(1000)    /*! using default 1us */</td></tr>
+<tr class="separator:af0b51eb91e24c0d888355c72baf63c08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a4fce2715dd2026aab90973c4e62ef954"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__kernel__bsp_8c.html#a4fce2715dd2026aab90973c4e62ef954">declare_vsf_thread</a> (<a class="el" href="vsf__thread_8h.html#a35fcc6f7585cc8a5f38a6ae61e8e2bc2">def_vsf_thread</a>(app_main_thread_t)</td></tr>
+<tr class="separator:a4fce2715dd2026aab90973c4e62ef954"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f316723e94d6360c9f03097f544c473"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__kernel__bsp_8c.html#a8f316723e94d6360c9f03097f544c473">vsf_arch_req___systimer_freq___from_usr</a> (void)</td></tr>
+<tr class="separator:a8f316723e94d6360c9f03097f544c473"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64f96cb861c8015c22cc8387dcb5de71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__kernel__bsp_8c.html#a64f96cb861c8015c22cc8387dcb5de71">vsf_arch_req___systimer_resolution___from_usr</a> (void)</td></tr>
+<tr class="separator:a64f96cb861c8015c22cc8387dcb5de71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b68960966a6c59e18488a0c0feb923b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__kernel__bsp_8c.html#a1b68960966a6c59e18488a0c0feb923b">vsf_kernel_err_report</a> (<a class="el" href="vsf__eda_8h.html#a3f224d5b6b7933b79f31f478ec313d96">vsf_kernel_error_t</a> err)</td></tr>
+<tr class="separator:a1b68960966a6c59e18488a0c0feb923b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf12a5236287faa5e272195c77333d39"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__kernel__bsp_8c.html#acf12a5236287faa5e272195c77333d39">implement_vsf_thread</a> (app_main_thread_t)</td></tr>
+<tr class="separator:acf12a5236287faa5e272195c77333d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad415b4753831fada6aa419f6697a293e"><td class="memItemLeft" align="right" valign="top">ROOT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__kernel__bsp_8c.html#ad415b4753831fada6aa419f6697a293e">__post_vsf_kernel_init</a> (void)</td></tr>
+<tr class="separator:ad415b4753831fada6aa419f6697a293e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71f1b9d24958957945deff0388400dfb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvsf__mem__t.html">vsf_mem_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__kernel__bsp_8c.html#a71f1b9d24958957945deff0388400dfb">vsf_service_req___heap_memory_buffer___from_usr</a> (void)</td></tr>
+<tr class="separator:a71f1b9d24958957945deff0388400dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="ae68af52b29d55a0d7474c656fd71d931"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae68af52b29d55a0d7474c656fd71d931">&#9670;&nbsp;</a></span>__VSF_EDA_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_EDA_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a209e0840385dd5d44be96f11121a531a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a209e0840385dd5d44be96f11121a531a">&#9670;&nbsp;</a></span>__VSF_OS_EVTQ_SWI_PRIO_INIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_OS_EVTQ_SWI_PRIO_INIT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__INDEX, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__UNUSED&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    VSF_ARCH_PRIO_##__INDEX,</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abfe3f8c652245eb890399eb3156541bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfe3f8c652245eb890399eb3156541bb">&#9670;&nbsp;</a></span>VSF_OS_CFG_MAIN_STACK_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_OS_CFG_MAIN_STACK_SIZE&#160;&#160;&#160;(4096)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af0b51eb91e24c0d888355c72baf63c08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0b51eb91e24c0d888355c72baf63c08">&#9670;&nbsp;</a></span>VSF_SYSTIMER_RESOLUTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_SYSTIMER_RESOLUTION&#160;&#160;&#160;(1000)    /*! using default 1us */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a4fce2715dd2026aab90973c4e62ef954"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fce2715dd2026aab90973c4e62ef954">&#9670;&nbsp;</a></span>declare_vsf_thread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">declare_vsf_thread </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vsf__thread_8h.html#a35fcc6f7585cc8a5f38a6ae61e8e2bc2">def_vsf_thread</a>(&#160;</td>
+          <td class="paramname"><em>app_main_thread_t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f316723e94d6360c9f03097f544c473"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f316723e94d6360c9f03097f544c473">&#9670;&nbsp;</a></span>vsf_arch_req___systimer_freq___from_usr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> vsf_arch_req___systimer_freq___from_usr </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a64f96cb861c8015c22cc8387dcb5de71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64f96cb861c8015c22cc8387dcb5de71">&#9670;&nbsp;</a></span>vsf_arch_req___systimer_resolution___from_usr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> vsf_arch_req___systimer_resolution___from_usr </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1b68960966a6c59e18488a0c0feb923b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b68960966a6c59e18488a0c0feb923b">&#9670;&nbsp;</a></span>vsf_kernel_err_report()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_kernel_err_report </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vsf__eda_8h.html#a3f224d5b6b7933b79f31f478ec313d96">vsf_kernel_error_t</a>&#160;</td>
+          <td class="paramname"><em>err</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section note"><dt>注解</dt><dd>This should not happen. Two possible reasons could be:<ol type="1">
+<li>Forgeting to set VSF_OS_CFG_MAIN_MODE to VSF_OS_CFG_MAIN_MODE_THREAD and using vsf kernel APIs, e.g. vsf_delay_ms, vsf_sem_pend and etc.</li>
+<li>When VSF_OS_CFG_MAIN_MODE is not VSF_OS_CFG_MAIN_MODE_THREAD, using any vsf_eda_xxxx APIs.</li>
+</ol>
+</dd>
+<dd>
+This should not happen. One possible reason is: <blockquote class="doxtable">
+<p>You start task, e.g. eda, vsf_task, vsf_pt or vsf_thread in the idle </p>
+</blockquote>
+task. Please use vsf_prio_0 when you do this in idle task.</dd></dl>
+
+</div>
+</div>
+<a id="acf12a5236287faa5e272195c77333d39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf12a5236287faa5e272195c77333d39">&#9670;&nbsp;</a></span>implement_vsf_thread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">implement_vsf_thread </td>
+          <td>(</td>
+          <td class="paramtype">app_main_thread_t&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad415b4753831fada6aa419f6697a293e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad415b4753831fada6aa419f6697a293e">&#9670;&nbsp;</a></span>__post_vsf_kernel_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void __post_vsf_kernel_init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a71f1b9d24958957945deff0388400dfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71f1b9d24958957945deff0388400dfb">&#9670;&nbsp;</a></span>vsf_service_req___heap_memory_buffer___from_usr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvsf__mem__t.html">vsf_mem_t</a> vsf_service_req___heap_memory_buffer___from_usr </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

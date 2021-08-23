@@ -1,0 +1,402 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/kernel/shell/simple/vsf_simple.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_1645b320da2d5ed022f940b59419d15d.html">kernel</a></li><li class="navelem"><a class="el" href="dir_cb5995e817244555379f15b7f8e25f0f.html">shell</a></li><li class="navelem"><a class="el" href="dir_16284e357910536e6c8d47b9e236d632.html">simple</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">vsf_simple.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="vsf__simple_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   Copyright(C)2009-2019 by VSF Team                                       *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __VSF_KERNEL_SHELL_SIMPLE_H__</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define __VSF_KERNEL_SHELL_SIMPLE_H__</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__kernel__cfg_8h.html">kernel/vsf_kernel_cfg.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#if VSF_KERNEL_USE_SIMPLE_SHELL == ENABLED</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;../../vsf_eda.h&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__simple__bmpevt_8h.html">./vsf_simple_bmpevt.h</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/*----------------------------------------------------------------------------*</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> * Common                                                                     *</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> *----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a75c2cac10d66d186a7211dc2235fcd6c">   39</a></span>&#160;<span class="preprocessor">#define static_task_instance(...)                                               \</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">        struct {                                                                \</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">            uint_fast8_t fsm_state;                                             \</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">            __VA_ARGS__                                                         \</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">        } static VSF_MACRO_SAFE_NAME(local_cb),                                 \</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">            *this_ptr = &amp;VSF_MACRO_SAFE_NAME(local_cb);                         \</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">             vsf_evt_t evt = vsf_eda_get_cur_evt();                             \</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">             UNUSED_PARAM(evt);                                                 \</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">             UNUSED_PARAM(this_ptr);</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#if __IS_COMPILER_IAR__</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#       define features_used(...)              __VA_ARGS__;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#       define mem_sharable(...)                                                \</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">            union {uint_fast8_t __zzzz_do_not_use; __VA_ARGS__;};</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#       define mem_nonsharable(...)            __VA_ARGS__;</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#ab2ca695babc5cbd390d3f7cd58d745c2">   55</a></span>&#160;<span class="preprocessor">#       define features_used(...)              __VA_ARGS__</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a2832d8352f55eb2041ab6fd09975e671">   56</a></span>&#160;<span class="preprocessor">#       define mem_sharable(...)               union {__VA_ARGS__};</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#ad9c41b944c095165c890796b1e0fa06f">   57</a></span>&#160;<span class="preprocessor">#       define mem_nonsharable(...)            __VA_ARGS__</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a0397547576951c1d624cf05992cc9c03">   60</a></span>&#160;<span class="preprocessor">#define vsf_yield()                                                             \</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">            for (   vsf_evt_t result = VSF_EVT_INVALID;                         \</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">                    result == VSF_EVT_INVALID;)                                 \</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">                if ((result =__vsf_yield(), result == VSF_EVT_YIELD))</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/*----------------------------------------------------------------------------*</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment"> * Delay                                                                      *</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment"> *----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#if VSF_KERNEL_CFG_EDA_SUPPORT_TIMER == ENABLED</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#ad9bbd941fa60a6657f369abf4470b857">   69</a></span>&#160;<span class="preprocessor">#   define vsf_delay(__tick)                                                    \</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">    if (VSF_EVT_TIMER == __vsf_delay((uint_fast32_t)__tick))</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#aac7453c3ffedecacc935710669bd1c66">   71</a></span>&#160;<span class="preprocessor">#   define vsf_delay_ms(__ms)                                                   \</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">    if (VSF_EVT_TIMER == __vsf_delay((uint_fast32_t)vsf_systimer_ms_to_tick(__ms)))</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a670876b1e46f50dd510af2e2195f525d">   73</a></span>&#160;<span class="preprocessor">#   define vsf_delay_us(__us)                                                   \</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">    if (VSF_EVT_TIMER == __vsf_delay((uint_fast32_t)vsf_systimer_us_to_tick(__us)))</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#if VSF_KERNEL_CFG_SUPPORT_SYNC == ENABLED</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/*----------------------------------------------------------------------------*</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"> * IPC Common                                                                 *</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment"> *----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a7cf508a6474ded054092750195162ad9">   83</a></span>&#160;<span class="preprocessor">#   define on_timeout()                                                         \</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">                if (VSF_SYNC_TIMEOUT == vsf_eda_get_cur_evt())</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">/*----------------------------------------------------------------------------*</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"> * Mutex                                                                      *</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"> *----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a5a33b3f45cb1ceb7c894479d3138c337">   89</a></span>&#160;<span class="preprocessor">#   define vsf_mutex_init(__mutex_addr)     vsf_eda_mutex_init(__mutex_addr)</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a173d832edffd72b5557d220acf6bc620">   90</a></span>&#160;<span class="preprocessor">#   define vsf_mutex_leave(__mutex_addr)    vsf_eda_mutex_leave(__mutex_addr)</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a899aa2f50e9ea6b880f22d5667707d74">   92</a></span>&#160;<span class="preprocessor">#   define vsf_mutex_enter(__mutex_addr)                                        \</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">                if ((reason =__vsf_mutex_enter((__mutex_addr),                  \</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">                    (-1)), reason == VSF_SYNC_GET))</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a88be5d960090c341684af6d9dcf671f2">   98</a></span>&#160;<span class="preprocessor">#   define vsf_mutex_try_enter_timeout(__mutex_addr, __timeout)                 \</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">                if ((reason =__vsf_mutex_enter((__mutex_addr),                  \</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">                    (__timeout)),                                               \</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">                    (reason == VSF_SYNC_GET || reason = VSF_SYNC_TIMEOUT)))</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#aa67f1a2dbfc9d922fe44e6426ee3f7f9">  105</a></span>&#160;<span class="preprocessor">#   define vsf_mutex_try_enter_timeout_ms(__mutex_addr, __timeout)              \</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">                if ((reason =__vsf_mutex_enter((__mutex_addr),                  \</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">                    vsf_systimer_ms_to_tick(__timeout)),                        \</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">                    (reason == VSF_SYNC_GET || reason == VSF_SYNC_TIMEOUT)))</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a283147f0141310b25a611acdd92d2997">  112</a></span>&#160;<span class="preprocessor">#   define vsf_mutex_try_enter_timeout_us(__mutex_addr, __timeout)              \</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">                if ((reason =__vsf_mutex_enter((__mutex_addr),                  \</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">                    vsf_systimer_us_to_tick(__timeout)),                        \</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">                    (reason == VSF_SYNC_GET || reason == VSF_SYNC_TIMEOUT)))</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">/*----------------------------------------------------------------------------*</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment"> * Critical Section                                                           *</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment"> *----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a689008f110acdf357c19414bda54889f">  122</a></span>&#160;<span class="preprocessor">#   define vsf_crit_init(__crit_addr)     vsf_eda_crit_init(__crit_addr)</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a1cf934f47a438513678263faa3b14402">  123</a></span>&#160;<span class="preprocessor">#   define vsf_crit_leave(__crit_addr)    vsf_eda_crit_leave(__crit_addr)</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a8441a6671886e11aa385b4fd2a4e76cd">  125</a></span>&#160;<span class="preprocessor">#   define vsf_crit_enter(__crit_addr)                                          \</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">                if ((reason =__vsf_mutex_enter((__crit_addr),                   \</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">                    (-1)), reason == VSF_SYNC_GET))</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a71622782df9c5f8adb34a0cad739ee67">  131</a></span>&#160;<span class="preprocessor">#   define vsf_crit_try_enter_timeout(__crit_addr, __timeout)                   \</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">                if ((reason =__vsf_mutex_enter((__crit_addr),                   \</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">                    (__timeout)),                                               \</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">                    (reason == VSF_SYNC_GET || reason = VSF_SYNC_TIMEOUT)))</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#aa2880b6466139505476ae58dfed42d03">  138</a></span>&#160;<span class="preprocessor">#   define vsf_crit_try_enter_timeout_ms(__crit_addr, __timeout)                \</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="preprocessor">                if ((reason =__vsf_mutex_enter((__crit_addr),                   \</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor">                    vsf_systimer_ms_to_tick(__timeout)),                        \</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor">                    (reason == VSF_SYNC_GET || reason == VSF_SYNC_TIMEOUT)))</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a7964a1e07467101a842b73bd8c814c66">  145</a></span>&#160;<span class="preprocessor">#   define vsf_crit_try_enter_timeout_us(__crit_addr, __timeout)                \</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">                if ((reason =__vsf_mutex_enter((__crit_addr),                   \</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">                    vsf_systimer_us_to_tick(__timeout)),                        \</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="preprocessor">                    (reason == VSF_SYNC_GET || reason == VSF_SYNC_TIMEOUT)))</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">/*----------------------------------------------------------------------------*</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment"> * Semaphore                                                                  *</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment"> *----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#ab191e619cf02556d128713b32272bba2">  155</a></span>&#160;<span class="preprocessor">#   define vsf_sem_init(__psem, __cnt)                                          \</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">            vsf_eda_sync_init((__psem), (__cnt), VSF_SYNC_MAX | VSF_SYNC_AUTO_RST)</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#acc51a543c7e79962415c383823bbd883">  157</a></span>&#160;<span class="preprocessor">#   define vsf_sem_post(__psem)             vsf_eda_sem_post((__psem))</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#ac7dcc44d277ca5013a5a8aea0c6d89a5">  159</a></span>&#160;<span class="preprocessor">#   define vsf_sem_pend(__psem)                                                 \</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">                if ((reason =__vsf_sem_pend((__psem),                           \</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">                    (-1)), reason == VSF_SYNC_GET))</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a433332c6a675fd121849dc53249729ce">  165</a></span>&#160;<span class="preprocessor">#   define vsf_sem_pend_timeout(__psem, __timeout)                              \</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">                if ((reason =__vsf_sem_pend((__psem),                           \</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">                    (__timeout)),                                               \</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">                    (reason == VSF_SYNC_GET || reason = VSF_SYNC_TIMEOUT)))</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#ad0b3024c250258923aebcd9998d4f661">  173</a></span>&#160;<span class="preprocessor">#   define vsf_sem_pend_timeout_ms(__psem, __timeout)                           \</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">                if ((reason =__vsf_sem_pend((__psem),                           \</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">                    vsf_systimer_ms_to_tick(__timeout)),                        \</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor">                    (reason == VSF_SYNC_GET || reason == VSF_SYNC_TIMEOUT)))</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a61d018b210a805278b3d80a88c27dd1b">  180</a></span>&#160;<span class="preprocessor">#   define vsf_sem_pend_timeout_us(__psem, __timeout)                           \</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="preprocessor">                if ((reason =__vsf_sem_pend((__psem),                           \</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="preprocessor">                    vsf_systimer_us_to_tick(__timeout)),                        \</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="preprocessor">                    (reason == VSF_SYNC_GET || reason == VSF_SYNC_TIMEOUT)))</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">/*----------------------------------------------------------------------------*</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment"> * Event                                                                      *</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment"> *----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a62bc0244a7c46436e55a2aba0b1ae2ee">  190</a></span>&#160;<span class="preprocessor">#   define vsf_trig_init(__ptrig, __set, __auto_rst)                            \</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">            vsf_eda_trig_init(__ptrig, __set, __auto_rst)</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a3c4976affc77eafc78c08aa07b13db11">  192</a></span>&#160;<span class="preprocessor">#   define vsf_trig_set(__ptrig)            vsf_eda_trig_set((__ptrig))</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#ab55ba43b1b077e8fadf94a20eb300a26">  193</a></span>&#160;<span class="preprocessor">#   define vsf_trig_reset(__ptrig)          vsf_eda_trig_reset((__ptrig))</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a4d3f4a303b060f72f09e6829f93377f7">  195</a></span>&#160;<span class="preprocessor">#   define vsf_trig_wait(__ptrig)                                               \</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor">                if ((reason =__vsf_sem_pend((__ptrig),                          \</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="preprocessor">                    (-1)), reason == VSF_SYNC_GET))</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a8c78ae32ece59ab70b73b557b07021da">  201</a></span>&#160;<span class="preprocessor">#   define vsf_trig_wait_timeout(__ptrig, __timeout)                            \</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">                if ((reason =__vsf_sem_pend((__ptrig),                          \</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="preprocessor">                    (__timeout)),                                               \</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">                    (reason == VSF_SYNC_GET || reason = VSF_SYNC_TIMEOUT)))</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#aa45e679f91b306917f18a7561a233c23">  209</a></span>&#160;<span class="preprocessor">#   define vsf_trig_wait_timeout_ms(__ptrig, __timeout)                         \</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="preprocessor">                if ((reason =__vsf_sem_pend((__ptrig),                          \</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor">                    vsf_systimer_ms_to_tick(__timeout)),                        \</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="preprocessor">                    (reason == VSF_SYNC_GET || reason == VSF_SYNC_TIMEOUT)))</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#af687ae18786045414a627d901d4987dc">  216</a></span>&#160;<span class="preprocessor">#   define vsf_trig_wait_timeout_us(__ptrig, __timeout)                         \</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="preprocessor">            for (   vsf_sync_reason_t reason = VSF_SYNC_CANCEL;                 \</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="preprocessor">                    reason == VSF_SYNC_CANCEL;)                                 \</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="preprocessor">                if ((reason =__vsf_sem_pend((__ptrig),                          \</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="preprocessor">                    vsf_systimer_us_to_tick(__timeout)),                        \</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="preprocessor">                    (reason == VSF_SYNC_GET || reason == VSF_SYNC_TIMEOUT)))</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment">/*----------------------------------------------------------------------------*</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment"> * sub call                                                                   *</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment"> *----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#ad695d07dd4738f319792f8e61f7533c2">  228</a></span>&#160;<span class="preprocessor">#   define vsf_call_eda(__entry, __param_addr)                                  \</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">            __vsf_call_eda( (vsf_fsm_entry_t)(__entry),                         \</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor">                            (__param_addr),                                     \</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="preprocessor">                            0, 0, 0)</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#ad9250e12da3bc03c0d2e7f14235e77f4">  233</a></span>&#160;<span class="preprocessor">#   define vsf_call_fsm(__entry, __param_addr, ...)                             \</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="preprocessor">            __vsf_call_fsm( (vsf_fsm_entry_t)(__entry),                         \</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="preprocessor">                            (__param_addr),                                     \</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="preprocessor">                            (0, ##__VA_ARGS__))</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a44c611060e8c1fe1b6dacd3247d12ca2">  238</a></span>&#160;<span class="preprocessor">#   define vsf_call_peda4( __peda_name,                                         \</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="preprocessor">                        __entry,                                                \</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor">                        __private_local_size,                                   \</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="preprocessor">                        __peda_param_addr,                                      \</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="preprocessor">                        __buff)                                                 \</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="preprocessor">            __vsf_call_eda((uintptr_t)__entry,                                  \</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="preprocessor">                (uintptr_t)(__peda_param_addr),                                 \</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="preprocessor">                sizeof(vsf_peda_local(__peda_name)) + (__private_local_size),   \</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="preprocessor">                sizeof(vsf_peda_arg(__peda_name)),                              \</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor">                (uintptr_t)(__buff))</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a75f14a28cf399c243470dabde905b8a8">  249</a></span>&#160;<span class="preprocessor">#   define vsf_call_peda3( __peda_name,                                         \</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="preprocessor">                        __entry,                                                \</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="preprocessor">                        __private_local_size,                                   \</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="preprocessor">                        __peda_param_addr)                                      \</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="preprocessor">            __vsf_call_eda((uintptr_t)__entry,                                  \</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="preprocessor">                (uintptr_t)(__peda_param_addr),                                 \</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="preprocessor">                sizeof(vsf_peda_local(__peda_name)) + (__private_local_size),   \</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="preprocessor">                sizeof(vsf_peda_arg(__peda_name)),                              \</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="preprocessor">                0)</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a1ba370751e2790c0f1e814d0a461a9de">  259</a></span>&#160;<span class="preprocessor">#   define vsf_call_peda2( __peda_name,                                         \</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="preprocessor">                        __peda_param_addr,                                      \</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor">                        __buff)                                                 \</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor">            __vsf_call_eda((uintptr_t)vsf_peda_func(__peda_name),               \</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor">                        (uintptr_t)(__peda_param_addr),                         \</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="preprocessor">                        sizeof(vsf_peda_local(__peda_name)),                    \</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor">                        sizeof(vsf_peda_arg(__peda_name)),                      \</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="preprocessor">                        (uintptr_t)(__buff))</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
+<div class="line"><a name="l00269"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#a275d2d81573b22599145596680395e00">  269</a></span>&#160;<span class="preprocessor">#   define vsf_call_peda1( __peda_name,                                         \</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="preprocessor">                        __peda_param_addr)                                      \</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="preprocessor">            __vsf_call_eda((uintptr_t)vsf_peda_func(__peda_name),               \</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="preprocessor">                        (uintptr_t)(__peda_param_addr),                         \</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="preprocessor">                        sizeof(vsf_peda_local(__peda_name)),                    \</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="preprocessor">                        sizeof(vsf_peda_arg(__peda_name)),                      \</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="preprocessor">                        0)</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00277"></a><span class="lineno"><a class="line" href="vsf__simple_8h.html#af2f23062a7a5453b1f095a053c399448">  277</a></span>&#160;<span class="preprocessor">#   define vsf_call_peda(__peda_name, ...)                                      \</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="preprocessor">            __PLOOC_EVAL(vsf_call_peda, __VA_ARGS__) (__peda_name, __VA_ARGS__)</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="preprocessor">#if VSF_KERNEL_CFG_EDA_SUPPORT_TIMER == ENABLED</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<a class="code" href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a>(<span class="stringliteral">&quot;.text.vsf.kernel.__vsf_delay&quot;</span>)</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;extern <a class="code" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> <a class="code" href="vsf__simple_8h.html#a640fbe2c63a47e5ee9ca17e9df47f95f">__vsf_delay</a>(<a class="code" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> ms);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="preprocessor">#if VSF_KERNEL_CFG_SUPPORT_SYNC == ENABLED</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<a class="code" href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a>(<span class="stringliteral">&quot;.text.vsf.kernel.__vsf_sem_pend&quot;</span>)</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;extern</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<a class="code" href="vsf__eda_8h.html#aeaa3152ca9e561ff10865c65a67bb939">vsf_sync_reason_t</a> <a class="code" href="vsf__simple_8h.html#ab65879344fac26a1b20fdfd93b22c4c1">__vsf_sem_pend</a>(<a class="code" href="classvsf__sync__t.html">vsf_sem_t</a> *sem_ptr, <a class="code" href="arm_2type_8h.html#ae884dda22bf64c7e974894a6d3b67929">int_fast32_t</a> time_out);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<a class="code" href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a>(&quot;.text.vsf.kernel.<a class="code" href="vsf__simple_8h.html#a899aa2f50e9ea6b880f22d5667707d74">vsf_mutex_enter</a>&quot;)</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;extern</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<a class="code" href="vsf__eda_8h.html#aeaa3152ca9e561ff10865c65a67bb939">vsf_sync_reason_t</a> <a class="code" href="vsf__simple_8h.html#a0967ce57b8b09df6d42d5d48d1817626">__vsf_mutex_enter</a>(<a class="code" href="classvsf__sync__owner__t.html">vsf_mutex_t</a> *mtx_ptr, <a class="code" href="arm_2type_8h.html#ae884dda22bf64c7e974894a6d3b67929">int_fast32_t</a> time_out);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<a class="code" href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a>(<span class="stringliteral">&quot;.text.vsf.kernel.vsf_yield&quot;</span>)</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;extern <a class="code" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> <a class="code" href="vsf__simple_8h.html#ae63bfb509153f8edc19eead2d34687f6">__vsf_yield</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="preprocessor">#if VSF_KERNEL_CFG_EDA_SUPPORT_SUB_CALL == ENABLED</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<a class="code" href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a>(<span class="stringliteral">&quot;.text.vsf.kernel.vsf_call_eda_ex&quot;</span>)</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;extern <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__simple_8h.html#ad122f4572e4a25be30edbecd1bdbd940">__vsf_call_eda</a>(<a class="code" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> evthandler,</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                                <a class="code" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> param,</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                                <span class="keywordtype">size_t</span> local_size,</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                                <span class="keywordtype">size_t</span> local_buff_size,</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                                <a class="code" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> local_buff);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<a class="code" href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a>(&quot;.text.vsf.kernel.<a class="code" href="vsf__simple_8h.html#ae4dbca87bb87173267262a9bd640a10f">__vsf_call_fsm</a>&quot;)</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;extern <a class="code" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a> <a class="code" href="vsf__simple_8h.html#ae4dbca87bb87173267262a9bd640a10f">__vsf_call_fsm</a>( <a class="code" href="vsf__eda_8h.html#a869fe5732129390c11e4c405bcb6c281">vsf_fsm_entry_t</a> <a class="code" href="vsf__thread_8h.html#a7b1bd7ace931306a646900d724bb7329">entry</a>,</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                                <a class="code" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> param,</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                                <span class="keywordtype">size_t</span> local_size);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;}</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="comment">/* EOF */</span></div>
+<div class="ttc" id="a____compiler_8h_html_a3eaf49c35e19a8e3c92ee1b1b5b0c692"><div class="ttname"><a href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a></div><div class="ttdeci">#define SECTION(__SEC)</div><div class="ttdef"><b>Definition:</b> __compiler.h:134</div></div>
+<div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition:</b> __type.h:42</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a09674b9e56fd7a93a2169aa9210deec7"><div class="ttname"><a href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a></div><div class="ttdeci">uint32_t uintptr_t</div><div class="ttdef"><b>Definition:</b> type.h:51</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a633264eb9df8f0520acccbbfb406f806"><div class="ttname"><a href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a></div><div class="ttdeci">unsigned int uint_fast32_t</div><div class="ttdef"><b>Definition:</b> type.h:39</div></div>
+<div class="ttc" id="aarm_2type_8h_html_ae884dda22bf64c7e974894a6d3b67929"><div class="ttname"><a href="arm_2type_8h.html#ae884dda22bf64c7e974894a6d3b67929">int_fast32_t</a></div><div class="ttdeci">signed int int_fast32_t</div><div class="ttdef"><b>Definition:</b> type.h:40</div></div>
+<div class="ttc" id="aclassvsf__sync__owner__t_html"><div class="ttname"><a href="classvsf__sync__owner__t.html">vsf_sync_owner_t</a></div><div class="ttdef"><b>Definition:</b> vsf_eda.h:825</div></div>
+<div class="ttc" id="aclassvsf__sync__t_html"><div class="ttname"><a href="classvsf__sync__t.html">vsf_sync_t</a></div><div class="ttdef"><b>Definition:</b> vsf_eda.h:800</div></div>
+<div class="ttc" id="avsf__eda_8h_html_a0095e13b0285f6d680edab1e0f9bd2f3"><div class="ttname"><a href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a></div><div class="ttdeci">int16_t vsf_evt_t</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:610</div></div>
+<div class="ttc" id="avsf__eda_8h_html_a869fe5732129390c11e4c405bcb6c281"><div class="ttname"><a href="vsf__eda_8h.html#a869fe5732129390c11e4c405bcb6c281">vsf_fsm_entry_t</a></div><div class="ttdeci">fsm_rt_t(* vsf_fsm_entry_t)(uintptr_t target, vsf_evt_t evt)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:614</div></div>
+<div class="ttc" id="avsf__eda_8h_html_aeaa3152ca9e561ff10865c65a67bb939"><div class="ttname"><a href="vsf__eda_8h.html#aeaa3152ca9e561ff10865c65a67bb939">vsf_sync_reason_t</a></div><div class="ttdeci">vsf_sync_reason_t</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:983</div></div>
+<div class="ttc" id="avsf__fsm_8h_html_ae61ab5e1d66a489d89fa8786e6b5f64b"><div class="ttname"><a href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a></div><div class="ttdeci">fsm_rt_t</div><div class="ttdef"><b>Definition:</b> vsf_fsm.h:315</div></div>
+<div class="ttc" id="avsf__kernel__cfg_8h_html"><div class="ttname"><a href="vsf__kernel__cfg_8h.html">vsf_kernel_cfg.h</a></div></div>
+<div class="ttc" id="avsf__simple_8h_html_a0967ce57b8b09df6d42d5d48d1817626"><div class="ttname"><a href="vsf__simple_8h.html#a0967ce57b8b09df6d42d5d48d1817626">__vsf_mutex_enter</a></div><div class="ttdeci">vsf_sync_reason_t __vsf_mutex_enter(vsf_mutex_t *mtx_ptr, int_fast32_t time_out)</div><div class="ttdef"><b>Definition:</b> vsf_simple_task.c:150</div></div>
+<div class="ttc" id="avsf__simple_8h_html_a640fbe2c63a47e5ee9ca17e9df47f95f"><div class="ttname"><a href="vsf__simple_8h.html#a640fbe2c63a47e5ee9ca17e9df47f95f">__vsf_delay</a></div><div class="ttdeci">vsf_evt_t __vsf_delay(uint_fast32_t ms)</div><div class="ttdef"><b>Definition:</b> vsf_simple_task.c:50</div></div>
+<div class="ttc" id="avsf__simple_8h_html_a899aa2f50e9ea6b880f22d5667707d74"><div class="ttname"><a href="vsf__simple_8h.html#a899aa2f50e9ea6b880f22d5667707d74">vsf_mutex_enter</a></div><div class="ttdeci">#define vsf_mutex_enter(__mutex_addr)</div><div class="ttdef"><b>Definition:</b> vsf_simple.h:92</div></div>
+<div class="ttc" id="avsf__simple_8h_html_ab65879344fac26a1b20fdfd93b22c4c1"><div class="ttname"><a href="vsf__simple_8h.html#ab65879344fac26a1b20fdfd93b22c4c1">__vsf_sem_pend</a></div><div class="ttdeci">vsf_sync_reason_t __vsf_sem_pend(vsf_sem_t *sem_ptr, int_fast32_t time_out)</div><div class="ttdef"><b>Definition:</b> vsf_simple_task.c:103</div></div>
+<div class="ttc" id="avsf__simple_8h_html_ad122f4572e4a25be30edbecd1bdbd940"><div class="ttname"><a href="vsf__simple_8h.html#ad122f4572e4a25be30edbecd1bdbd940">__vsf_call_eda</a></div><div class="ttdeci">vsf_err_t __vsf_call_eda(uintptr_t evthandler, uintptr_t param, size_t local_size, size_t local_buff_size, uintptr_t local_buff)</div><div class="ttdef"><b>Definition:</b> vsf_simple_task.c:193</div></div>
+<div class="ttc" id="avsf__simple_8h_html_ae4dbca87bb87173267262a9bd640a10f"><div class="ttname"><a href="vsf__simple_8h.html#ae4dbca87bb87173267262a9bd640a10f">__vsf_call_fsm</a></div><div class="ttdeci">fsm_rt_t __vsf_call_fsm(vsf_fsm_entry_t entry, uintptr_t param, size_t local_size)</div><div class="ttdef"><b>Definition:</b> vsf_simple_task.c:240</div></div>
+<div class="ttc" id="avsf__simple_8h_html_ae63bfb509153f8edc19eead2d34687f6"><div class="ttname"><a href="vsf__simple_8h.html#ae63bfb509153f8edc19eead2d34687f6">__vsf_yield</a></div><div class="ttdeci">vsf_evt_t __vsf_yield(void)</div><div class="ttdef"><b>Definition:</b> vsf_simple_task.c:159</div></div>
+<div class="ttc" id="avsf__simple__bmpevt_8h_html"><div class="ttname"><a href="vsf__simple__bmpevt_8h.html">vsf_simple_bmpevt.h</a></div></div>
+<div class="ttc" id="avsf__thread_8h_html_a7b1bd7ace931306a646900d724bb7329"><div class="ttname"><a href="vsf__thread_8h.html#a7b1bd7ace931306a646900d724bb7329">entry</a></div><div class="ttdeci">vsf_thread_entry_t * entry</div><div class="ttdoc">&lt; stack must be 8byte aligned</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:400</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

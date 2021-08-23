@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/linux/include/poll.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_c98904b1f88b31edbcb0e1f386351ea2.html">linux</a></li><li class="navelem"><a class="el" href="dir_c5f371835c56cee84ac86c4f8def27c0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">poll.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="poll_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __VSF_LINUX_POLL_H__</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __VSF_LINUX_POLL_H__</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__linux__cfg_8h.html">shell/sys/linux/vsf_linux_cfg.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#if VSF_LINUX_CFG_RELATIVE_PATH == ENABLED</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#   include &quot;<a class="code" href="signal_8h.html">./signal.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#   include &lt;<a class="code" href="signal_8h.html">signal.h</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#if VSF_LINUX_CFG_RELATIVE_PATH == ENABLED &amp; VSF_LINUX_USE_SIMPLE_TIME == ENABLED</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#   include &quot;<a class="code" href="simple__libc_2time_8h.html">./simple_libc/time.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#   include &lt;<a class="code" href="sys_2time_8h.html">time.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#if VSF_LINUX_CFG_WRAPPER == ENABLED</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="poll_8h.html#a736293b83912ddb07766d4adea8391ad">   22</a></span>&#160;<span class="preprocessor">#define poll            VSF_LINUX_WRAPPER(poll)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="poll_8h.html#add0099a7547c7da561919dc9a9a4f4b5">   23</a></span>&#160;<span class="preprocessor">#define ppoll           VSF_LINUX_WRAPPER(ppoll)</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="poll_8h.html#a345b1833e125b256b9aeb8056b9629db">   26</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="poll_8h.html#a345b1833e125b256b9aeb8056b9629db">nfds_t</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="poll_8h.html#a52ac479a805051f59643588b096024ff">   28</a></span>&#160;<span class="preprocessor">#define POLLIN          (1 &lt;&lt; 0)</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="poll_8h.html#a91b3c67129ac7675062f316b840a0d58">   29</a></span>&#160;<span class="preprocessor">#define POLLOUT         (1 &lt;&lt; 1)</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structpollfd.html">   31</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structpollfd.html">pollfd</a> {</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structpollfd.html#a57e1c316fb063e468d680b6246147861">   32</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structpollfd.html#a57e1c316fb063e468d680b6246147861">fd</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structpollfd.html#ac9b2f2c5b1f9a7487eb57e67cd4960ef">   33</a></span>&#160;    <span class="keywordtype">short</span> <a class="code" href="structpollfd.html#ac9b2f2c5b1f9a7487eb57e67cd4960ef">events</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structpollfd.html#aafb457d11cac415faf0e1e2b825118c2">   34</a></span>&#160;    <span class="keywordtype">short</span> <a class="code" href="structpollfd.html#aafb457d11cac415faf0e1e2b825118c2">revents</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="poll_8h.html#aa97ba0bfbedf1784e648dd753a92449d">   37</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="poll_8h.html#a736293b83912ddb07766d4adea8391ad">poll</a>(<span class="keyword">struct</span> <a class="code" href="structpollfd.html">pollfd</a> *fds, <a class="code" href="poll_8h.html#a345b1833e125b256b9aeb8056b9629db">nfds_t</a> nfds, <span class="keywordtype">int</span> <a class="code" href="select_8h.html#aff126839915cf06976792d265ce29a48">timeout</a>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="poll_8h.html#adb7bbcd498026039a59b028712b88abf">   38</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="poll_8h.html#add0099a7547c7da561919dc9a9a4f4b5">ppoll</a>(<span class="keyword">struct</span> <a class="code" href="structpollfd.html">pollfd</a> *fds, <a class="code" href="poll_8h.html#a345b1833e125b256b9aeb8056b9629db">nfds_t</a> nfds, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structtimespec.html">timespec</a> *timeout_ts, <span class="keyword">const</span> <a class="code" href="structsigset__t.html">sigset_t</a> *sigmask);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="apoll_8h_html_a345b1833e125b256b9aeb8056b9629db"><div class="ttname"><a href="poll_8h.html#a345b1833e125b256b9aeb8056b9629db">nfds_t</a></div><div class="ttdeci">int nfds_t</div><div class="ttdef"><b>Definition:</b> poll.h:26</div></div>
+<div class="ttc" id="apoll_8h_html_a736293b83912ddb07766d4adea8391ad"><div class="ttname"><a href="poll_8h.html#a736293b83912ddb07766d4adea8391ad">poll</a></div><div class="ttdeci">#define poll</div><div class="ttdef"><b>Definition:</b> poll.h:22</div></div>
+<div class="ttc" id="apoll_8h_html_add0099a7547c7da561919dc9a9a4f4b5"><div class="ttname"><a href="poll_8h.html#add0099a7547c7da561919dc9a9a4f4b5">ppoll</a></div><div class="ttdeci">#define ppoll</div><div class="ttdef"><b>Definition:</b> poll.h:23</div></div>
+<div class="ttc" id="aselect_8h_html_aff126839915cf06976792d265ce29a48"><div class="ttname"><a href="select_8h.html#aff126839915cf06976792d265ce29a48">timeout</a></div><div class="ttdeci">fd_set fd_set fd_set struct timeval * timeout</div><div class="ttdef"><b>Definition:</b> select.h:29</div></div>
+<div class="ttc" id="asignal_8h_html"><div class="ttname"><a href="signal_8h.html">signal.h</a></div></div>
+<div class="ttc" id="asimple__libc_2time_8h_html"><div class="ttname"><a href="simple__libc_2time_8h.html">time.h</a></div></div>
+<div class="ttc" id="astructpollfd_html"><div class="ttname"><a href="structpollfd.html">pollfd</a></div><div class="ttdef"><b>Definition:</b> poll.h:31</div></div>
+<div class="ttc" id="astructpollfd_html_a57e1c316fb063e468d680b6246147861"><div class="ttname"><a href="structpollfd.html#a57e1c316fb063e468d680b6246147861">pollfd::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition:</b> poll.h:32</div></div>
+<div class="ttc" id="astructpollfd_html_aafb457d11cac415faf0e1e2b825118c2"><div class="ttname"><a href="structpollfd.html#aafb457d11cac415faf0e1e2b825118c2">pollfd::revents</a></div><div class="ttdeci">short revents</div><div class="ttdef"><b>Definition:</b> poll.h:34</div></div>
+<div class="ttc" id="astructpollfd_html_ac9b2f2c5b1f9a7487eb57e67cd4960ef"><div class="ttname"><a href="structpollfd.html#ac9b2f2c5b1f9a7487eb57e67cd4960ef">pollfd::events</a></div><div class="ttdeci">short events</div><div class="ttdef"><b>Definition:</b> poll.h:33</div></div>
+<div class="ttc" id="astructsigset__t_html"><div class="ttname"><a href="structsigset__t.html">sigset_t</a></div><div class="ttdef"><b>Definition:</b> signal.h:34</div></div>
+<div class="ttc" id="astructtimespec_html"><div class="ttname"><a href="structtimespec.html">timespec</a></div><div class="ttdef"><b>Definition:</b> time.h:34</div></div>
+<div class="ttc" id="asys_2time_8h_html"><div class="ttname"><a href="sys_2time_8h.html">time.h</a></div></div>
+<div class="ttc" id="avsf__linux__cfg_8h_html"><div class="ttname"><a href="vsf__linux__cfg_8h.html">vsf_linux_cfg.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

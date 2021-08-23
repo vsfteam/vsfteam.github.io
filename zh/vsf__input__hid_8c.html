@@ -1,0 +1,829 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/component/input/driver/hid/vsf_input_hid.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a751bed093fa77e8085efb31481979de.html">component</a></li><li class="navelem"><a class="el" href="dir_2495dbe9f011fd717b643c14160856d3.html">input</a></li><li class="navelem"><a class="el" href="dir_6615777f1c4e919b67b70aba144e8d7d.html">driver</a></li><li class="navelem"><a class="el" href="dir_dbe55bbefe4049fb5041e72740296788.html">hid</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">vsf_input_hid.c 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__input__cfg_8h_source.html">../../vsf_input_cfg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__service_8h_source.html">service/vsf_service.h</a>&quot;</code><br />
+<code>#include &quot;hal/vsf_hal.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__input_8h_source.html">../../vsf_input.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__input__hid_8h_source.html">./vsf_input_hid.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvk__hid__desc__t.html">vk_hid_desc_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a5b1f1040de4f98deaef56e63b852545b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a5b1f1040de4f98deaef56e63b852545b">HID_LONG_ITEM</a>(x)&#160;&#160;&#160;((x) == 0xFE)</td></tr>
+<tr class="separator:a5b1f1040de4f98deaef56e63b852545b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06cddf51daf9ce467be47c481f04c676"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a06cddf51daf9ce467be47c481f04c676">HID_ITEM_SIZE</a>(x)&#160;&#160;&#160;((((x) &amp; 0x03) == 3) ? 4 : (x) &amp; 0x03)</td></tr>
+<tr class="separator:a06cddf51daf9ce467be47c481f04c676"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5141153075f60a3396c2c36b9ea96c46"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a5141153075f60a3396c2c36b9ea96c46">HID_ITEM_TYPE</a>(x)&#160;&#160;&#160;(((x) &gt;&gt; 2) &amp; 0x03)</td></tr>
+<tr class="separator:a5141153075f60a3396c2c36b9ea96c46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a71248c522943951b5af70ec9c14c02"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a9a71248c522943951b5af70ec9c14c02">HID_ITEM_TYPE_MAIN</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a9a71248c522943951b5af70ec9c14c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e56e8090f1af7aae473e8a8b6832fb8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a8e56e8090f1af7aae473e8a8b6832fb8">HID_ITEM_TYPE_GLOBAL</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a8e56e8090f1af7aae473e8a8b6832fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bfb0e326d9a01072c029cba788d6456"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a0bfb0e326d9a01072c029cba788d6456">HID_ITEM_TYPE_LOCAL</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a0bfb0e326d9a01072c029cba788d6456"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45e93a3ce042ef6f1a81e50f4e949071"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a45e93a3ce042ef6f1a81e50f4e949071">HID_ITEM_TAG</a>(x)&#160;&#160;&#160;((x) &amp; 0xFC)</td></tr>
+<tr class="separator:a45e93a3ce042ef6f1a81e50f4e949071"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7104634b3edf59fb05b3d78cb670885c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a7104634b3edf59fb05b3d78cb670885c">HID_ITEM_INPUT</a>&#160;&#160;&#160;0x80</td></tr>
+<tr class="separator:a7104634b3edf59fb05b3d78cb670885c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab678006044eace47b2f7f8e5ada7bc00"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#ab678006044eace47b2f7f8e5ada7bc00">HID_ITEM_OUTPUT</a>&#160;&#160;&#160;0x90</td></tr>
+<tr class="separator:ab678006044eace47b2f7f8e5ada7bc00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc443d54f8cfe04d273c8f2024cdeffe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#abc443d54f8cfe04d273c8f2024cdeffe">HID_ITEM_FEATURE</a>&#160;&#160;&#160;0xB0</td></tr>
+<tr class="separator:abc443d54f8cfe04d273c8f2024cdeffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2d8922092d95b5c8b544e6d9df86cec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#ac2d8922092d95b5c8b544e6d9df86cec">HID_ITEM_COLLECTION</a>&#160;&#160;&#160;0xA0</td></tr>
+<tr class="separator:ac2d8922092d95b5c8b544e6d9df86cec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90b93ac00c3ccf3d3bc0cb547b45b664"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a90b93ac00c3ccf3d3bc0cb547b45b664">HID_ITEM_END_COLLECTION</a>&#160;&#160;&#160;0xC0</td></tr>
+<tr class="separator:a90b93ac00c3ccf3d3bc0cb547b45b664"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8723cc2decb450c318dc112a283c73b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#af8723cc2decb450c318dc112a283c73b">HID_ITEM_USAGE_PAGE</a>&#160;&#160;&#160;0x04</td></tr>
+<tr class="separator:af8723cc2decb450c318dc112a283c73b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59afbf80fed82eacb753caeda7b4d70a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a59afbf80fed82eacb753caeda7b4d70a">HID_ITEM_LOGI_MINI</a>&#160;&#160;&#160;0x14</td></tr>
+<tr class="separator:a59afbf80fed82eacb753caeda7b4d70a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3836cc991589edf679093cb2f75aec0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#aa3836cc991589edf679093cb2f75aec0">HID_ITEM_LOGI_MAXI</a>&#160;&#160;&#160;0x24</td></tr>
+<tr class="separator:aa3836cc991589edf679093cb2f75aec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ce6d3857d2553bb36c1613da7d89703"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a9ce6d3857d2553bb36c1613da7d89703">HID_ITEM_PHY_MINI</a>&#160;&#160;&#160;0x34</td></tr>
+<tr class="separator:a9ce6d3857d2553bb36c1613da7d89703"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a9d0a60c64105cd7ecacfecc81c94fe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a8a9d0a60c64105cd7ecacfecc81c94fe">HID_ITEM_PHY_MAXI</a>&#160;&#160;&#160;0x44</td></tr>
+<tr class="separator:a8a9d0a60c64105cd7ecacfecc81c94fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e9c25d60f493af2b2ef0f6cae921b62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a8e9c25d60f493af2b2ef0f6cae921b62">HID_ITEM_UNIT_EXPT</a>&#160;&#160;&#160;0x54</td></tr>
+<tr class="separator:a8e9c25d60f493af2b2ef0f6cae921b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b774efc7221a242443459cc26a6bb25"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a2b774efc7221a242443459cc26a6bb25">HID_ITEM_UNIT</a>&#160;&#160;&#160;0x64</td></tr>
+<tr class="separator:a2b774efc7221a242443459cc26a6bb25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a629986ade24b7e5aba969ab8066f51ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a629986ade24b7e5aba969ab8066f51ad">HID_ITEM_REPORT_SIZE</a>&#160;&#160;&#160;0x74</td></tr>
+<tr class="separator:a629986ade24b7e5aba969ab8066f51ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55814d50365533b8dc60654f23a07db5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a55814d50365533b8dc60654f23a07db5">HID_ITEM_REPORT_ID</a>&#160;&#160;&#160;0x84</td></tr>
+<tr class="separator:a55814d50365533b8dc60654f23a07db5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e43dcfff8185c3186039a180a6900ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a0e43dcfff8185c3186039a180a6900ca">HID_ITEM_REPORT_COUNT</a>&#160;&#160;&#160;0x94</td></tr>
+<tr class="separator:a0e43dcfff8185c3186039a180a6900ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7263b6fec910bb1a8cc6e56e96a0d9a7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a7263b6fec910bb1a8cc6e56e96a0d9a7">HID_ITEM_PUSH</a>&#160;&#160;&#160;0xA4</td></tr>
+<tr class="separator:a7263b6fec910bb1a8cc6e56e96a0d9a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adefef9780722fa308d8cf2273a6edede"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#adefef9780722fa308d8cf2273a6edede">HID_ITEM_POP</a>&#160;&#160;&#160;0xB4</td></tr>
+<tr class="separator:adefef9780722fa308d8cf2273a6edede"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d4add58bc868f9fa88fe18ee9103ac3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a9d4add58bc868f9fa88fe18ee9103ac3">HID_ITEM_USAGE</a>&#160;&#160;&#160;0x08</td></tr>
+<tr class="separator:a9d4add58bc868f9fa88fe18ee9103ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4af9e42734a4544e64fdcde650ce7ea0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a4af9e42734a4544e64fdcde650ce7ea0">HID_ITEM_USAGE_MIN</a>&#160;&#160;&#160;0x18</td></tr>
+<tr class="separator:a4af9e42734a4544e64fdcde650ce7ea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33b4e42259f2920ead6cd70e955cda90"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a33b4e42259f2920ead6cd70e955cda90">HID_ITEM_USAGE_MAX</a>&#160;&#160;&#160;0x28</td></tr>
+<tr class="separator:a33b4e42259f2920ead6cd70e955cda90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:a63ed82854920bbf323e319f8ef6e2421"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvk__hid__desc__t.html">vk_hid_desc_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a63ed82854920bbf323e319f8ef6e2421">vk_hid_desc_t</a></td></tr>
+<tr class="separator:a63ed82854920bbf323e319f8ef6e2421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ad8b623aeecc545a95503d17f04e5ae3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#ad8b623aeecc545a95503d17f04e5ae3f">vsf_input_on_evt</a> (<a class="el" href="vsf__input_8h.html#af0514a3f61422726e0fbaf9b456ba72e">vk_input_type_t</a> <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, <a class="el" href="structvk__input__evt__t.html">vk_input_evt_t</a> *evt)</td></tr>
+<tr class="separator:ad8b623aeecc545a95503d17f04e5ae3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bfe4fbb919c41252f431fae57bb38dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a1bfe4fbb919c41252f431fae57bb38dc">vsf_input_on_new_dev</a> (<a class="el" href="vsf__input_8h.html#af0514a3f61422726e0fbaf9b456ba72e">vk_input_type_t</a> <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, void *dev)</td></tr>
+<tr class="separator:a1bfe4fbb919c41252f431fae57bb38dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67db6964f651c796849cee0a4daae607"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a67db6964f651c796849cee0a4daae607">vsf_input_on_free_dev</a> (<a class="el" href="vsf__input_8h.html#af0514a3f61422726e0fbaf9b456ba72e">vk_input_type_t</a> <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, void *dev)</td></tr>
+<tr class="separator:a67db6964f651c796849cee0a4daae607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bc63dc58093d0c5167431de7ed16700"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a0bc63dc58093d0c5167431de7ed16700">vsf_hid_on_new_dev</a> (<a class="el" href="structvk__input__hid__t.html">vk_input_hid_t</a> *dev)</td></tr>
+<tr class="separator:a0bc63dc58093d0c5167431de7ed16700"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b52aeb07d09ee85cf37ea999d74273e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a1b52aeb07d09ee85cf37ea999d74273e">vsf_hid_on_free_dev</a> (<a class="el" href="structvk__input__hid__t.html">vk_input_hid_t</a> *dev)</td></tr>
+<tr class="separator:a1b52aeb07d09ee85cf37ea999d74273e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a614bb3bbb386a9f76cf7c42247d5d2fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a614bb3bbb386a9f76cf7c42247d5d2fe">vsf_hid_on_report_input</a> (<a class="el" href="structvk__hid__evt__t.html">vk_hid_evt_t</a> *hid_evt)</td></tr>
+<tr class="separator:a614bb3bbb386a9f76cf7c42247d5d2fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a169399c9ad6ba45a911def05a60f8e14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a169399c9ad6ba45a911def05a60f8e14">vsf_hid_parse_touch_screen</a> (<a class="el" href="structvk__hid__evt__t.html">vk_hid_evt_t</a> *hid_evt)</td></tr>
+<tr class="separator:a169399c9ad6ba45a911def05a60f8e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe96bf62823ee1519b555b86dd8f2e33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#abe96bf62823ee1519b555b86dd8f2e33">vk_hid_new_dev</a> (<a class="el" href="structvk__input__hid__t.html">vk_input_hid_t</a> *dev)</td></tr>
+<tr class="separator:abe96bf62823ee1519b555b86dd8f2e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29a56f641dddf5361ac7940bfe58785a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a29a56f641dddf5361ac7940bfe58785a">vk_hid_free_dev</a> (<a class="el" href="structvk__input__hid__t.html">vk_input_hid_t</a> *dev)</td></tr>
+<tr class="separator:a29a56f641dddf5361ac7940bfe58785a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a1e8b73c157032d92bc0d7fa28c5326"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#a8a1e8b73c157032d92bc0d7fa28c5326">vk_hid_parse_desc</a> (<a class="el" href="structvk__input__hid__t.html">vk_input_hid_t</a> *dev, <a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *desc_buf, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> len)</td></tr>
+<tr class="separator:a8a1e8b73c157032d92bc0d7fa28c5326"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa580388f99aa3879f9d10a361a53c44d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__hid_8c.html#aa580388f99aa3879f9d10a361a53c44d">vk_hid_process_input</a> (<a class="el" href="structvk__input__hid__t.html">vk_input_hid_t</a> *dev, <a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *buf, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> len)</td></tr>
+<tr class="separator:aa580388f99aa3879f9d10a361a53c44d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a5b1f1040de4f98deaef56e63b852545b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b1f1040de4f98deaef56e63b852545b">&#9670;&nbsp;</a></span>HID_LONG_ITEM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_LONG_ITEM</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;((x) == 0xFE)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06cddf51daf9ce467be47c481f04c676"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06cddf51daf9ce467be47c481f04c676">&#9670;&nbsp;</a></span>HID_ITEM_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_SIZE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;((((x) &amp; 0x03) == 3) ? 4 : (x) &amp; 0x03)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5141153075f60a3396c2c36b9ea96c46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5141153075f60a3396c2c36b9ea96c46">&#9670;&nbsp;</a></span>HID_ITEM_TYPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_TYPE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;(((x) &gt;&gt; 2) &amp; 0x03)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a71248c522943951b5af70ec9c14c02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a71248c522943951b5af70ec9c14c02">&#9670;&nbsp;</a></span>HID_ITEM_TYPE_MAIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_TYPE_MAIN&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8e56e8090f1af7aae473e8a8b6832fb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e56e8090f1af7aae473e8a8b6832fb8">&#9670;&nbsp;</a></span>HID_ITEM_TYPE_GLOBAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_TYPE_GLOBAL&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0bfb0e326d9a01072c029cba788d6456"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bfb0e326d9a01072c029cba788d6456">&#9670;&nbsp;</a></span>HID_ITEM_TYPE_LOCAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_TYPE_LOCAL&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45e93a3ce042ef6f1a81e50f4e949071"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45e93a3ce042ef6f1a81e50f4e949071">&#9670;&nbsp;</a></span>HID_ITEM_TAG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_TAG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;((x) &amp; 0xFC)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7104634b3edf59fb05b3d78cb670885c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7104634b3edf59fb05b3d78cb670885c">&#9670;&nbsp;</a></span>HID_ITEM_INPUT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_INPUT&#160;&#160;&#160;0x80</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab678006044eace47b2f7f8e5ada7bc00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab678006044eace47b2f7f8e5ada7bc00">&#9670;&nbsp;</a></span>HID_ITEM_OUTPUT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_OUTPUT&#160;&#160;&#160;0x90</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abc443d54f8cfe04d273c8f2024cdeffe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc443d54f8cfe04d273c8f2024cdeffe">&#9670;&nbsp;</a></span>HID_ITEM_FEATURE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_FEATURE&#160;&#160;&#160;0xB0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac2d8922092d95b5c8b544e6d9df86cec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2d8922092d95b5c8b544e6d9df86cec">&#9670;&nbsp;</a></span>HID_ITEM_COLLECTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_COLLECTION&#160;&#160;&#160;0xA0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a90b93ac00c3ccf3d3bc0cb547b45b664"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90b93ac00c3ccf3d3bc0cb547b45b664">&#9670;&nbsp;</a></span>HID_ITEM_END_COLLECTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_END_COLLECTION&#160;&#160;&#160;0xC0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af8723cc2decb450c318dc112a283c73b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8723cc2decb450c318dc112a283c73b">&#9670;&nbsp;</a></span>HID_ITEM_USAGE_PAGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_USAGE_PAGE&#160;&#160;&#160;0x04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a59afbf80fed82eacb753caeda7b4d70a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59afbf80fed82eacb753caeda7b4d70a">&#9670;&nbsp;</a></span>HID_ITEM_LOGI_MINI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_LOGI_MINI&#160;&#160;&#160;0x14</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa3836cc991589edf679093cb2f75aec0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3836cc991589edf679093cb2f75aec0">&#9670;&nbsp;</a></span>HID_ITEM_LOGI_MAXI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_LOGI_MAXI&#160;&#160;&#160;0x24</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9ce6d3857d2553bb36c1613da7d89703"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ce6d3857d2553bb36c1613da7d89703">&#9670;&nbsp;</a></span>HID_ITEM_PHY_MINI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_PHY_MINI&#160;&#160;&#160;0x34</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8a9d0a60c64105cd7ecacfecc81c94fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a9d0a60c64105cd7ecacfecc81c94fe">&#9670;&nbsp;</a></span>HID_ITEM_PHY_MAXI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_PHY_MAXI&#160;&#160;&#160;0x44</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8e9c25d60f493af2b2ef0f6cae921b62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e9c25d60f493af2b2ef0f6cae921b62">&#9670;&nbsp;</a></span>HID_ITEM_UNIT_EXPT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_UNIT_EXPT&#160;&#160;&#160;0x54</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b774efc7221a242443459cc26a6bb25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b774efc7221a242443459cc26a6bb25">&#9670;&nbsp;</a></span>HID_ITEM_UNIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_UNIT&#160;&#160;&#160;0x64</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a629986ade24b7e5aba969ab8066f51ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a629986ade24b7e5aba969ab8066f51ad">&#9670;&nbsp;</a></span>HID_ITEM_REPORT_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_REPORT_SIZE&#160;&#160;&#160;0x74</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a55814d50365533b8dc60654f23a07db5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55814d50365533b8dc60654f23a07db5">&#9670;&nbsp;</a></span>HID_ITEM_REPORT_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_REPORT_ID&#160;&#160;&#160;0x84</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e43dcfff8185c3186039a180a6900ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e43dcfff8185c3186039a180a6900ca">&#9670;&nbsp;</a></span>HID_ITEM_REPORT_COUNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_REPORT_COUNT&#160;&#160;&#160;0x94</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7263b6fec910bb1a8cc6e56e96a0d9a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7263b6fec910bb1a8cc6e56e96a0d9a7">&#9670;&nbsp;</a></span>HID_ITEM_PUSH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_PUSH&#160;&#160;&#160;0xA4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adefef9780722fa308d8cf2273a6edede"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adefef9780722fa308d8cf2273a6edede">&#9670;&nbsp;</a></span>HID_ITEM_POP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_POP&#160;&#160;&#160;0xB4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d4add58bc868f9fa88fe18ee9103ac3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d4add58bc868f9fa88fe18ee9103ac3">&#9670;&nbsp;</a></span>HID_ITEM_USAGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_USAGE&#160;&#160;&#160;0x08</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4af9e42734a4544e64fdcde650ce7ea0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4af9e42734a4544e64fdcde650ce7ea0">&#9670;&nbsp;</a></span>HID_ITEM_USAGE_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_USAGE_MIN&#160;&#160;&#160;0x18</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a33b4e42259f2920ead6cd70e955cda90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33b4e42259f2920ead6cd70e955cda90">&#9670;&nbsp;</a></span>HID_ITEM_USAGE_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HID_ITEM_USAGE_MAX&#160;&#160;&#160;0x28</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类型定义说明</h2>
+<a id="a63ed82854920bbf323e319f8ef6e2421"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63ed82854920bbf323e319f8ef6e2421">&#9670;&nbsp;</a></span>vk_hid_desc_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvk__hid__desc__t.html">vk_hid_desc_t</a> <a class="el" href="structvk__hid__desc__t.html">vk_hid_desc_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="ad8b623aeecc545a95503d17f04e5ae3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8b623aeecc545a95503d17f04e5ae3f">&#9670;&nbsp;</a></span>vsf_input_on_evt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_input_on_evt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vsf__input_8h.html#af0514a3f61422726e0fbaf9b456ba72e">vk_input_type_t</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvk__input__evt__t.html">vk_input_evt_t</a> *&#160;</td>
+          <td class="paramname"><em>evt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1bfe4fbb919c41252f431fae57bb38dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bfe4fbb919c41252f431fae57bb38dc">&#9670;&nbsp;</a></span>vsf_input_on_new_dev()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_input_on_new_dev </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vsf__input_8h.html#af0514a3f61422726e0fbaf9b456ba72e">vk_input_type_t</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>dev</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a67db6964f651c796849cee0a4daae607"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67db6964f651c796849cee0a4daae607">&#9670;&nbsp;</a></span>vsf_input_on_free_dev()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_input_on_free_dev </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vsf__input_8h.html#af0514a3f61422726e0fbaf9b456ba72e">vk_input_type_t</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>dev</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0bc63dc58093d0c5167431de7ed16700"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bc63dc58093d0c5167431de7ed16700">&#9670;&nbsp;</a></span>vsf_hid_on_new_dev()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_hid_on_new_dev </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvk__input__hid__t.html">vk_input_hid_t</a> *&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1b52aeb07d09ee85cf37ea999d74273e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b52aeb07d09ee85cf37ea999d74273e">&#9670;&nbsp;</a></span>vsf_hid_on_free_dev()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_hid_on_free_dev </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvk__input__hid__t.html">vk_input_hid_t</a> *&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a614bb3bbb386a9f76cf7c42247d5d2fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a614bb3bbb386a9f76cf7c42247d5d2fe">&#9670;&nbsp;</a></span>vsf_hid_on_report_input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_hid_on_report_input </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvk__hid__evt__t.html">vk_hid_evt_t</a> *&#160;</td>
+          <td class="paramname"><em>hid_evt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a169399c9ad6ba45a911def05a60f8e14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a169399c9ad6ba45a911def05a60f8e14">&#9670;&nbsp;</a></span>vsf_hid_parse_touch_screen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_hid_parse_touch_screen </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvk__hid__evt__t.html">vk_hid_evt_t</a> *&#160;</td>
+          <td class="paramname"><em>hid_evt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abe96bf62823ee1519b555b86dd8f2e33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe96bf62823ee1519b555b86dd8f2e33">&#9670;&nbsp;</a></span>vk_hid_new_dev()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vk_hid_new_dev </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvk__input__hid__t.html">vk_input_hid_t</a> *&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a29a56f641dddf5361ac7940bfe58785a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29a56f641dddf5361ac7940bfe58785a">&#9670;&nbsp;</a></span>vk_hid_free_dev()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vk_hid_free_dev </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvk__input__hid__t.html">vk_input_hid_t</a> *&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8a1e8b73c157032d92bc0d7fa28c5326"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a1e8b73c157032d92bc0d7fa28c5326">&#9670;&nbsp;</a></span>vk_hid_parse_desc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> vk_hid_parse_desc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvk__input__hid__t.html">vk_input_hid_t</a> *&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *&#160;</td>
+          <td class="paramname"><em>desc_buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa580388f99aa3879f9d10a361a53c44d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa580388f99aa3879f9d10a361a53c44d">&#9670;&nbsp;</a></span>vk_hid_process_input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vk_hid_process_input </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvk__input__hid__t.html">vk_input_hid_t</a> *&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

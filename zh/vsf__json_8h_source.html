@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/service/json/vsf_json.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_bfec2c9dca3d140a71292b4bdadc3c95.html">service</a></li><li class="navelem"><a class="el" href="dir_ac8d1491bcef0e83cdfa3b47b702e6e3.html">json</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">vsf_json.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="vsf__json_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="vsf__json_8h.html#a1b88d833c3c68cb07ae6ab6358d48831">    1</a></span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   Copyright(C)2009-2019 by VSF Team                                       *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __VSF_JSON_H__</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define __VSF_JSON_H__</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__service__cfg_8h.html">service/vsf_service_cfg.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#if VSF_USE_JSON == ENABLED</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__utilities_8h.html">utilities/vsf_utilities.h</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#if     defined(__VSF_JSON_CLASS_IMPLEMENT)</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#   define __PLOOC_CLASS_IMPLEMENT__</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#   undef __VSF_JSON_CLASS_IMPLEMENT</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#elif   defined(__VSF_JSON_CLASS_INHERIT__)</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#   define __PLOOC_CLASS_INHERIT__</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#   undef __VSF_JSON_CLASS_INHERIT__</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="vsf__json_8h.html#a5d0fe49b31f32a5772053296e883cd44">   45</a></span>&#160;<span class="preprocessor">#define vsf_json_set_object(__c, __key, ...)                                    \</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">        do {                                                                    \</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">            int len = vsf_json_set_key((__c), (__key));                         \</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">            if (len &lt; 0) break;                                                 \</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">            (__c)-&gt;first = true;                                                \</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">            len = vsf_json_write_str((__c), &quot;{&quot;</span>, 1);                            \</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            if (len &lt; 0) break;                                                 \</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            __VA_ARGS__;                                                        \</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            len = vsf_json_write_str((__c), &quot;}&quot;, 1);                            \</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            if (len &lt; 0) break;                                                 \</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        } while (0)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="vsf__json_8h.html#ad4f0830a03b7621fc0f5df704a9e1883">   58</a></span>&#160;<span class="preprocessor">#define vsf_json_set_array(__c, __key, ...)                                     \</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">        do {                                                                    \</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">            int len = vsf_json_set_key((__c), (__key));                         \</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">            if (len &lt; 0) break;                                                 \</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">            (__c)-&gt;first = true;                                                \</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">            len = vsf_json_write_str((__c), &quot;[&quot;</span>, 1);                            \</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            if (len &lt; 0) break;                                                 \</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            __VA_ARGS__;                                                        \</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            len = vsf_json_write_str((__c), &quot;]&quot;, 1);                            \</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            if (len &lt; 0) break;                                                 \</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        } while (0)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52">   72</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52">vsf_json_type_t</a> {</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52aa1837b0a832889e17ce2b18b1f8982c2">   73</a></span>&#160;    <a class="code" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52aa1837b0a832889e17ce2b18b1f8982c2">VSF_JSON_TYPE_INVALID</a>,</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52acab606ed0d44cfb0c2cd88acd2b6a61c">   74</a></span>&#160;    <a class="code" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52acab606ed0d44cfb0c2cd88acd2b6a61c">VSF_JSON_TYPE_OBJECT</a>,</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52a3ecd98f4ae93de004bba051043e21434">   75</a></span>&#160;    <a class="code" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52a3ecd98f4ae93de004bba051043e21434">VSF_JSON_TYPE_ARRAY</a>,</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52a1fc97c0feb6db00ed734042e0eb76880">   76</a></span>&#160;    <a class="code" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52a1fc97c0feb6db00ed734042e0eb76880">VSF_JSON_TYPE_STRING</a>,</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52ac6fa5f3fc63033998eae6f76dacc5db3">   77</a></span>&#160;    <a class="code" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52ac6fa5f3fc63033998eae6f76dacc5db3">VSF_JSON_TYPE_NUMBER</a>,</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52a2ea372a765ebc2f7bcb10fcf14d040d8">   78</a></span>&#160;    <a class="code" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52a2ea372a765ebc2f7bcb10fcf14d040d8">VSF_JSON_TYPE_BOOLEAN</a>,</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52a5f9bcdd2fb5e9d2011a84dbb9b206b2c">   79</a></span>&#160;    <a class="code" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52a5f9bcdd2fb5e9d2011a84dbb9b206b2c">VSF_JSON_TYPE_NULL</a>,</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52">vsf_json_type_t</a> <a class="code" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52">vsf_json_type_t</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classvsf__json__enumerator__t.html">   83</a></span>&#160;<a class="code" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code" href="classvsf__json__enumerator__t.html">vsf_json_enumerator_t</a>) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    private_member(</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordtype">char</span> *ptr;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <a class="code" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52">vsf_json_type_t</a> <a class="code" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">bool</span> first;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    )</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;};</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classvsf__json__constructor__t.html">   91</a></span>&#160;<a class="code" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code" href="classvsf__json__constructor__t.html">vsf_json_constructor_t</a>) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    public_member(</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keyword">union</span> {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordtype">void</span> *param;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> len;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        };</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        int (*write_str)(<span class="keywordtype">void</span> *, <span class="keywordtype">char</span> *, int);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordtype">bool</span> first;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordtype">bool</span> result;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classvsf__json__constructor__t.html#ada5bfe148cad778918441e81095ea113">  101</a></span>&#160;    )</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;};</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">extern</span> <a class="code" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52">vsf_json_type_t</a> <a class="code" href="vsf__json_8h.html#a683dc14366c4cfd2231493563ba9bfb8">vsf_json_enumerate_start</a>(<a class="code" href="classvsf__json__enumerator__t.html">vsf_json_enumerator_t</a> *e, <span class="keyword">const</span> <span class="keywordtype">char</span> *json);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> * <a class="code" href="vsf__json_8h.html#a0a833cc45df6ea619f2b159e66ba136e">vsf_json_enumerate_next</a>(<a class="code" href="classvsf__json__enumerator__t.html">vsf_json_enumerator_t</a> *e);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> * <a class="code" href="vsf__json_8h.html#ac2b8b9955ba1fb689fde1865524f547d">vsf_json_get</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *json, <span class="keyword">const</span> <span class="keywordtype">char</span> *key);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="vsf__json_8h.html#ab42bbd17f069eb84cda1edd32db557e7">vsf_json_num_of_entry</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *json);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keyword">extern</span> <a class="code" href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52">vsf_json_type_t</a> <a class="code" href="vsf__json_8h.html#afe945b3978dd3424e5600bfffc22075d">vsf_json_get_type</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *json);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="vsf__json_8h.html#a9d085d6fdd67133668341ebf813d9157">vsf_json_get_string</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *json, <span class="keywordtype">char</span> *result, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="vsf__json_8h.html#ace4b32644086cf19bcad93a96f760fbd">vsf_json_get_number</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *json, <span class="keywordtype">double</span> *result);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="vsf__json_8h.html#aa36b3b4daecc0d50ef4085aad4ab4c27">vsf_json_get_boolean</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *json, <span class="keywordtype">bool</span> *result);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="vsf__json_8h.html#acca812bbd6fb0b007d9681c84bd0df46">vsf_json_constructor_init</a>(<a class="code" href="classvsf__json__constructor__t.html">vsf_json_constructor_t</a> *c, <span class="keywordtype">void</span> *param,</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordtype">int</span> (*write_str)(<span class="keywordtype">void</span> *, <span class="keywordtype">char</span> *, <span class="keywordtype">int</span>));</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">// param is vsf_mem_t *</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="vsf__json_8h.html#a92324b365995fe0a9001b004f763b35d">vsf_json_constructor_buffer_write_str</a>(<span class="keywordtype">void</span> *param, <span class="keywordtype">char</span> *str, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="vsf__json_8h.html#a4dca3fa595673dfb31e67796bbe4362d">vsf_json_write_str</a>(<a class="code" href="classvsf__json__constructor__t.html">vsf_json_constructor_t</a> *c, <span class="keywordtype">char</span> *buf, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="vsf__json_8h.html#ab6996e9a77bcd78a7721df047073d40a">vsf_json_set_key</a>(<a class="code" href="classvsf__json__constructor__t.html">vsf_json_constructor_t</a> *c, <span class="keywordtype">char</span> *key);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="vsf__json_8h.html#ac2fb2dfd0c3894be00f46b16490ec93b">vsf_json_set_string</a>(<a class="code" href="classvsf__json__constructor__t.html">vsf_json_constructor_t</a> *c, <span class="keywordtype">char</span> *key, <span class="keywordtype">char</span> *<a class="code" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="vsf__json_8h.html#ac090e74aca95126f6eab1f03e942d459">vsf_json_set_integer</a>(<a class="code" href="classvsf__json__constructor__t.html">vsf_json_constructor_t</a> *c, <span class="keywordtype">char</span> *key, <span class="keywordtype">int</span> <a class="code" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="vsf__json_8h.html#aa152d41736bcb0a6d6f90c55d0415f8e">vsf_json_set_double</a>(<a class="code" href="classvsf__json__constructor__t.html">vsf_json_constructor_t</a> *c, <span class="keywordtype">char</span> *key, <span class="keywordtype">double</span> <a class="code" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="vsf__json_8h.html#a5ad6558317fc3e9ebe274adadf53162f">vsf_json_set_boolean</a>(<a class="code" href="classvsf__json__constructor__t.html">vsf_json_constructor_t</a> *c, <span class="keywordtype">char</span> *key, <span class="keywordtype">bool</span> <a class="code" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="vsf__json_8h.html#a1095b23cb1f17a364ab0328038ceab72">vsf_json_set_null</a>(<a class="code" href="classvsf__json__constructor__t.html">vsf_json_constructor_t</a> *c, <span class="keywordtype">char</span> *key);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_JSON</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#endif      </span><span class="comment">// __VSF_JSON_H__</span></div>
+<div class="ttc" id="aarm_2type_8h_html_a435d1572bf3f880d55459d9805097f62"><div class="ttname"><a href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a></div><div class="ttdeci">unsigned int uint32_t</div><div class="ttdef"><b>Definition:</b> type.h:37</div></div>
+<div class="ttc" id="aclassvsf__json__constructor__t_html"><div class="ttname"><a href="classvsf__json__constructor__t.html">vsf_json_constructor_t</a></div><div class="ttdef"><b>Definition:</b> vsf_json.h:91</div></div>
+<div class="ttc" id="aclassvsf__json__enumerator__t_html"><div class="ttname"><a href="classvsf__json__enumerator__t.html">vsf_json_enumerator_t</a></div><div class="ttdef"><b>Definition:</b> vsf_json.h:83</div></div>
+<div class="ttc" id="aooc__class_8h_html"><div class="ttname"><a href="ooc__class_8h.html">ooc_class.h</a></div></div>
+<div class="ttc" id="aooc__class_8h_html_a62f3fe6fb9699483707f5352d777f2f0"><div class="ttname"><a href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a></div><div class="ttdeci">#define vsf_class(__name)</div><div class="ttdef"><b>Definition:</b> ooc_class.h:33</div></div>
+<div class="ttc" id="avsf__audio_8h_html_ad5265e9eca2f756804584a9ac3335519"><div class="ttname"><a href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a></div><div class="ttdeci">vk_av_control_value_t value</div><div class="ttdef"><b>Definition:</b> vsf_audio.h:86</div></div>
+<div class="ttc" id="avsf__audio_8h_html_ad64e18f867699b8e854388de816016af"><div class="ttname"><a href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a></div><div class="ttdeci">vk_av_control_type_t type</div><div class="ttdef"><b>Definition:</b> vsf_audio.h:85</div></div>
+<div class="ttc" id="avsf__json_8h_html_a0a833cc45df6ea619f2b159e66ba136e"><div class="ttname"><a href="vsf__json_8h.html#a0a833cc45df6ea619f2b159e66ba136e">vsf_json_enumerate_next</a></div><div class="ttdeci">char * vsf_json_enumerate_next(vsf_json_enumerator_t *e)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:88</div></div>
+<div class="ttc" id="avsf__json_8h_html_a1095b23cb1f17a364ab0328038ceab72"><div class="ttname"><a href="vsf__json_8h.html#a1095b23cb1f17a364ab0328038ceab72">vsf_json_set_null</a></div><div class="ttdeci">int vsf_json_set_null(vsf_json_constructor_t *c, char *key)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:457</div></div>
+<div class="ttc" id="avsf__json_8h_html_a4dca3fa595673dfb31e67796bbe4362d"><div class="ttname"><a href="vsf__json_8h.html#a4dca3fa595673dfb31e67796bbe4362d">vsf_json_write_str</a></div><div class="ttdeci">int vsf_json_write_str(vsf_json_constructor_t *c, char *buf, int len)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:341</div></div>
+<div class="ttc" id="avsf__json_8h_html_a5ad6558317fc3e9ebe274adadf53162f"><div class="ttname"><a href="vsf__json_8h.html#a5ad6558317fc3e9ebe274adadf53162f">vsf_json_set_boolean</a></div><div class="ttdeci">int vsf_json_set_boolean(vsf_json_constructor_t *c, char *key, bool value)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:451</div></div>
+<div class="ttc" id="avsf__json_8h_html_a683dc14366c4cfd2231493563ba9bfb8"><div class="ttname"><a href="vsf__json_8h.html#a683dc14366c4cfd2231493563ba9bfb8">vsf_json_enumerate_start</a></div><div class="ttdeci">vsf_json_type_t vsf_json_enumerate_start(vsf_json_enumerator_t *e, const char *json)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:70</div></div>
+<div class="ttc" id="avsf__json_8h_html_a92324b365995fe0a9001b004f763b35d"><div class="ttname"><a href="vsf__json_8h.html#a92324b365995fe0a9001b004f763b35d">vsf_json_constructor_buffer_write_str</a></div><div class="ttdeci">int vsf_json_constructor_buffer_write_str(void *param, char *str, int len)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:463</div></div>
+<div class="ttc" id="avsf__json_8h_html_a9d085d6fdd67133668341ebf813d9157"><div class="ttname"><a href="vsf__json_8h.html#a9d085d6fdd67133668341ebf813d9157">vsf_json_get_string</a></div><div class="ttdeci">int vsf_json_get_string(const char *json, char *result, int len)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:248</div></div>
+<div class="ttc" id="avsf__json_8h_html_aa152d41736bcb0a6d6f90c55d0415f8e"><div class="ttname"><a href="vsf__json_8h.html#aa152d41736bcb0a6d6f90c55d0415f8e">vsf_json_set_double</a></div><div class="ttdeci">int vsf_json_set_double(vsf_json_constructor_t *c, char *key, double value)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:438</div></div>
+<div class="ttc" id="avsf__json_8h_html_aa36b3b4daecc0d50ef4085aad4ab4c27"><div class="ttname"><a href="vsf__json_8h.html#aa36b3b4daecc0d50ef4085aad4ab4c27">vsf_json_get_boolean</a></div><div class="ttdeci">int vsf_json_get_boolean(const char *json, bool *result)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:311</div></div>
+<div class="ttc" id="avsf__json_8h_html_ab42bbd17f069eb84cda1edd32db557e7"><div class="ttname"><a href="vsf__json_8h.html#ab42bbd17f069eb84cda1edd32db557e7">vsf_json_num_of_entry</a></div><div class="ttdeci">int vsf_json_num_of_entry(const char *json)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:173</div></div>
+<div class="ttc" id="avsf__json_8h_html_ab6996e9a77bcd78a7721df047073d40a"><div class="ttname"><a href="vsf__json_8h.html#ab6996e9a77bcd78a7721df047073d40a">vsf_json_set_key</a></div><div class="ttdeci">int vsf_json_set_key(vsf_json_constructor_t *c, char *key)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:361</div></div>
+<div class="ttc" id="avsf__json_8h_html_ac090e74aca95126f6eab1f03e942d459"><div class="ttname"><a href="vsf__json_8h.html#ac090e74aca95126f6eab1f03e942d459">vsf_json_set_integer</a></div><div class="ttdeci">int vsf_json_set_integer(vsf_json_constructor_t *c, char *key, int value)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:425</div></div>
+<div class="ttc" id="avsf__json_8h_html_ac2b8b9955ba1fb689fde1865524f547d"><div class="ttname"><a href="vsf__json_8h.html#ac2b8b9955ba1fb689fde1865524f547d">vsf_json_get</a></div><div class="ttdeci">char * vsf_json_get(const char *json, const char *key)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:186</div></div>
+<div class="ttc" id="avsf__json_8h_html_ac2fb2dfd0c3894be00f46b16490ec93b"><div class="ttname"><a href="vsf__json_8h.html#ac2fb2dfd0c3894be00f46b16490ec93b">vsf_json_set_string</a></div><div class="ttdeci">int vsf_json_set_string(vsf_json_constructor_t *c, char *key, char *value)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:386</div></div>
+<div class="ttc" id="avsf__json_8h_html_ac44b08a561f65bfeb324c1a17aa86b52"><div class="ttname"><a href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52">vsf_json_type_t</a></div><div class="ttdeci">vsf_json_type_t</div><div class="ttdef"><b>Definition:</b> vsf_json.h:72</div></div>
+<div class="ttc" id="avsf__json_8h_html_ac44b08a561f65bfeb324c1a17aa86b52a1fc97c0feb6db00ed734042e0eb76880"><div class="ttname"><a href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52a1fc97c0feb6db00ed734042e0eb76880">VSF_JSON_TYPE_STRING</a></div><div class="ttdeci">@ VSF_JSON_TYPE_STRING</div><div class="ttdef"><b>Definition:</b> vsf_json.h:76</div></div>
+<div class="ttc" id="avsf__json_8h_html_ac44b08a561f65bfeb324c1a17aa86b52a2ea372a765ebc2f7bcb10fcf14d040d8"><div class="ttname"><a href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52a2ea372a765ebc2f7bcb10fcf14d040d8">VSF_JSON_TYPE_BOOLEAN</a></div><div class="ttdeci">@ VSF_JSON_TYPE_BOOLEAN</div><div class="ttdef"><b>Definition:</b> vsf_json.h:78</div></div>
+<div class="ttc" id="avsf__json_8h_html_ac44b08a561f65bfeb324c1a17aa86b52a3ecd98f4ae93de004bba051043e21434"><div class="ttname"><a href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52a3ecd98f4ae93de004bba051043e21434">VSF_JSON_TYPE_ARRAY</a></div><div class="ttdeci">@ VSF_JSON_TYPE_ARRAY</div><div class="ttdef"><b>Definition:</b> vsf_json.h:75</div></div>
+<div class="ttc" id="avsf__json_8h_html_ac44b08a561f65bfeb324c1a17aa86b52a5f9bcdd2fb5e9d2011a84dbb9b206b2c"><div class="ttname"><a href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52a5f9bcdd2fb5e9d2011a84dbb9b206b2c">VSF_JSON_TYPE_NULL</a></div><div class="ttdeci">@ VSF_JSON_TYPE_NULL</div><div class="ttdef"><b>Definition:</b> vsf_json.h:79</div></div>
+<div class="ttc" id="avsf__json_8h_html_ac44b08a561f65bfeb324c1a17aa86b52aa1837b0a832889e17ce2b18b1f8982c2"><div class="ttname"><a href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52aa1837b0a832889e17ce2b18b1f8982c2">VSF_JSON_TYPE_INVALID</a></div><div class="ttdeci">@ VSF_JSON_TYPE_INVALID</div><div class="ttdef"><b>Definition:</b> vsf_json.h:73</div></div>
+<div class="ttc" id="avsf__json_8h_html_ac44b08a561f65bfeb324c1a17aa86b52ac6fa5f3fc63033998eae6f76dacc5db3"><div class="ttname"><a href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52ac6fa5f3fc63033998eae6f76dacc5db3">VSF_JSON_TYPE_NUMBER</a></div><div class="ttdeci">@ VSF_JSON_TYPE_NUMBER</div><div class="ttdef"><b>Definition:</b> vsf_json.h:77</div></div>
+<div class="ttc" id="avsf__json_8h_html_ac44b08a561f65bfeb324c1a17aa86b52acab606ed0d44cfb0c2cd88acd2b6a61c"><div class="ttname"><a href="vsf__json_8h.html#ac44b08a561f65bfeb324c1a17aa86b52acab606ed0d44cfb0c2cd88acd2b6a61c">VSF_JSON_TYPE_OBJECT</a></div><div class="ttdeci">@ VSF_JSON_TYPE_OBJECT</div><div class="ttdef"><b>Definition:</b> vsf_json.h:74</div></div>
+<div class="ttc" id="avsf__json_8h_html_acca812bbd6fb0b007d9681c84bd0df46"><div class="ttname"><a href="vsf__json_8h.html#acca812bbd6fb0b007d9681c84bd0df46">vsf_json_constructor_init</a></div><div class="ttdeci">void vsf_json_constructor_init(vsf_json_constructor_t *c, void *param, int(*write_str)(void *, char *, int))</div><div class="ttdef"><b>Definition:</b> vsf_json.c:328</div></div>
+<div class="ttc" id="avsf__json_8h_html_ace4b32644086cf19bcad93a96f760fbd"><div class="ttname"><a href="vsf__json_8h.html#ace4b32644086cf19bcad93a96f760fbd">vsf_json_get_number</a></div><div class="ttdeci">int vsf_json_get_number(const char *json, double *result)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:302</div></div>
+<div class="ttc" id="avsf__json_8h_html_afe945b3978dd3424e5600bfffc22075d"><div class="ttname"><a href="vsf__json_8h.html#afe945b3978dd3424e5600bfffc22075d">vsf_json_get_type</a></div><div class="ttdeci">vsf_json_type_t vsf_json_get_type(const char *json)</div><div class="ttdef"><b>Definition:</b> vsf_json.c:41</div></div>
+<div class="ttc" id="avsf__service__cfg_8h_html"><div class="ttname"><a href="vsf__service__cfg_8h.html">vsf_service_cfg.h</a></div></div>
+<div class="ttc" id="avsf__utilities_8h_html"><div class="ttname"><a href="vsf__utilities_8h.html">vsf_utilities.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

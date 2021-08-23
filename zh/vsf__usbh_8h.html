@@ -1,0 +1,708 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/component/usb/host/vsf_usbh.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a751bed093fa77e8085efb31481979de.html">component</a></li><li class="navelem"><a class="el" href="dir_79ede6a17a83c0b3c9be93da243e9b7b.html">usb</a></li><li class="navelem"><a class="el" href="dir_186071d401fc39e1faf8df382e891469.html">host</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#enum-members">枚举</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">vsf_usbh.h 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__usb__cfg_8h_source.html">component/usb/vsf_usb_cfg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__kernel_8h_source.html">kernel/vsf_kernel.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="usb__common_8h_source.html">../common/usb_common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ooc__class_8h_source.html">utilities/ooc_class.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbh___h_u_b_8h_source.html">./class/HUB/vsf_usbh_HUB.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbh___c_d_c_8h_source.html">./class/CDC/vsf_usbh_CDC.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbh___c_d_c_e_c_m_8h_source.html">./class/CDC/vsf_usbh_CDCECM.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbh___b_t_h_c_i_8h_source.html">./class/BTHCI/vsf_usbh_BTHCI.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbh___h_i_d_8h_source.html">./class/HID/vsf_usbh_HID.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbh__ds4_8h_source.html">./class/HID/vsf_usbh_ds4.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbh__nspro_8h_source.html">./class/HID/vsf_usbh_nspro.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbh__xb360_8h_source.html">./class/HID/vsf_usbh_xb360.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbh__xb1_8h_source.html">./class/XB1/vsf_usbh_xb1.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbh__libusb_8h_source.html">./class/libusb/vsf_usbh_libusb.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbh__msc_8h_source.html">./class/MSC/vsf_usbh_msc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbh__uac_8h_source.html">./class/UAC/vsf_usbh_uac.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbh__rtl8152_8h_source.html">./class/rtl8152/vsf_usbh_rtl8152.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbh__dfu_8h_source.html">./class/DFU/vsf_usbh_dfu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbh__dl1x5_8h_source.html">./class/DL1x5/vsf_usbh_dl1x5.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__ohci_8h_source.html">../driver/hcd/ohci/vsf_ohci.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__dwcotg__hcd_8h_source.html">../driver/otg/dwcotg/vsf_dwcotg_hcd.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__musb__fdrc__hcd_8h_source.html">../driver/otg/musb/fdrc/vsf_musb_fdrc_hcd.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__libusb__hcd_8h_source.html">../driver/hcd/libusb_hcd/vsf_libusb_hcd.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__winusb__hcd_8h_source.html">../driver/hcd/winusb_hcd/vsf_winusb_hcd.h</a>&quot;</code><br />
+</div>
+<p><a href="vsf__usbh_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvk__usbh__ifs__t.html">vk_usbh_ifs_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvk__usbh__ifs__alt__parser__t.html">vk_usbh_ifs_alt_parser_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvk__usbh__ifs__parser__t.html">vk_usbh_ifs_parser_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvk__usbh__dev__parser__t.html">vk_usbh_dev_parser_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvk__usbh__dev__id__t.html">vk_usbh_dev_id_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvk__usbh__class__drv__t.html">vk_usbh_class_drv_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvk__usbh__class__t.html">vk_usbh_class_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvk__usbh__pipe__t.html">vk_usbh_pipe_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvk__usbh__hcd__drv__t.html">vk_usbh_hcd_drv_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvk__usbh__hcd__t.html">vk_usbh_hcd_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvk__usbh__hcd__iso__packet__descriptor__t.html">vk_usbh_hcd_iso_packet_descriptor_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvk__usbh__hcd__iso__packet__t.html">vk_usbh_hcd_iso_packet_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvk__usbh__hcd__dev__t.html">vk_usbh_hcd_dev_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvk__usbh__hcd__urb__t.html">vk_usbh_hcd_urb_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvk__usbh__urb__t.html">vk_usbh_urb_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvk__usbh__ep0__t.html">vk_usbh_ep0_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvk__usbh__dev__t.html">vk_usbh_dev_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvk__usbh__t.html">vk_usbh_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a1c655fbe5bd00c8e5da8138f261b3dc5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a1c655fbe5bd00c8e5da8138f261b3dc5">VSF_USBH_CFG_EDA_PRIORITY</a>&#160;&#160;&#160;vsf_prio_0</td></tr>
+<tr class="separator:a1c655fbe5bd00c8e5da8138f261b3dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15ff5212b494aaaa88d2b199fd88e021"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a15ff5212b494aaaa88d2b199fd88e021">VSF_USBH_CFG_ISO_EN</a>&#160;&#160;&#160;<a class="el" href="vsf__cfg_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td></tr>
+<tr class="separator:a15ff5212b494aaaa88d2b199fd88e021"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4a0896c9a6f74f1d4ee254bfb9281fc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#ae4a0896c9a6f74f1d4ee254bfb9281fc">VSF_USBH_CFG_ISO_PACKET_LIMIT</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ae4a0896c9a6f74f1d4ee254bfb9281fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd5ea4381620c39f20c551120a21f116"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#abd5ea4381620c39f20c551120a21f116">VSF_USBH_CFG_ENABLE_ROOT_HUB</a>&#160;&#160;&#160;<a class="el" href="vsf__cfg_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td></tr>
+<tr class="separator:abd5ea4381620c39f20c551120a21f116"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfb222cf4262318414acf8d573f0fec9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#acfb222cf4262318414acf8d573f0fec9">VSF_USBH_CFG_MAX_DEVICE</a>&#160;&#160;&#160;127</td></tr>
+<tr class="separator:acfb222cf4262318414acf8d573f0fec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a520ec28821869c1680a69d771273c122"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a520ec28821869c1680a69d771273c122">vsf_usbh_malloc</a>&#160;&#160;&#160;<a class="el" href="vsf__heap_8h.html#a85f7dab9811d95217dff06d56f6cda18">vsf_heap_malloc</a></td></tr>
+<tr class="separator:a520ec28821869c1680a69d771273c122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad0efc067c9c6f5742fa16b1c2336b6f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#aad0efc067c9c6f5742fa16b1c2336b6f">vsf_usbh_malloc_aligned</a>&#160;&#160;&#160;<a class="el" href="vsf__pool_8c.html#afdd018350f7bb472c404e1acda6162b7">vsf_heap_malloc_aligned</a></td></tr>
+<tr class="separator:aad0efc067c9c6f5742fa16b1c2336b6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5adab8a4db84ca87923085aaeebbbe52"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a5adab8a4db84ca87923085aaeebbbe52">vsf_usbh_free</a>&#160;&#160;&#160;<a class="el" href="vsf__heap_8h.html#ac59c4c88dba19eb3b1fba0165aa33868">vsf_heap_free</a></td></tr>
+<tr class="separator:a5adab8a4db84ca87923085aaeebbbe52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa61f8e1dfc71e7a203597b357eca5f53"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#aa61f8e1dfc71e7a203597b357eca5f53">VSF_USBH_MATCH_VID_PID</a>(__VID,  __PID)</td></tr>
+<tr class="separator:aa61f8e1dfc71e7a203597b357eca5f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5885d9b846b7a6d5848e42c42e891abd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a5885d9b846b7a6d5848e42c42e891abd">VSF_USBH_MATCH_DEV_CLASS</a>(__CLASS,  __SUB_CLASS,  __PROTOCOL)</td></tr>
+<tr class="separator:a5885d9b846b7a6d5848e42c42e891abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e69a7acdfe1ad871c04655b0ca0680f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a1e69a7acdfe1ad871c04655b0ca0680f">VSF_USBH_MATCH_IFS_CLASS</a>(__CLASS,  __SUB_CLASS,  __PROTOCOL)</td></tr>
+<tr class="separator:a1e69a7acdfe1ad871c04655b0ca0680f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:a9920a559b662742e1063186f39ada841"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvk__usbh__ifs__t.html">vk_usbh_ifs_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a9920a559b662742e1063186f39ada841">vk_usbh_ifs_t</a></td></tr>
+<tr class="separator:a9920a559b662742e1063186f39ada841"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9013a3d9994c478f99463bfa033470c9"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvk__usbh__ifs__alt__parser__t.html">vk_usbh_ifs_alt_parser_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a9013a3d9994c478f99463bfa033470c9">vk_usbh_ifs_alt_parser_t</a></td></tr>
+<tr class="separator:a9013a3d9994c478f99463bfa033470c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76d742cccd2bd6651e41972f635e9561"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvk__usbh__ifs__parser__t.html">vk_usbh_ifs_parser_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a76d742cccd2bd6651e41972f635e9561">vk_usbh_ifs_parser_t</a></td></tr>
+<tr class="separator:a76d742cccd2bd6651e41972f635e9561"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3698e8e50b0a6fdacca824fcdde107a"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvk__usbh__dev__parser__t.html">vk_usbh_dev_parser_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#ac3698e8e50b0a6fdacca824fcdde107a">vk_usbh_dev_parser_t</a></td></tr>
+<tr class="separator:ac3698e8e50b0a6fdacca824fcdde107a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe063aa1ce819a3bf8ef10b201ca5ec8"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvk__usbh__dev__id__t.html">vk_usbh_dev_id_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#abe063aa1ce819a3bf8ef10b201ca5ec8">vk_usbh_dev_id_t</a></td></tr>
+<tr class="separator:abe063aa1ce819a3bf8ef10b201ca5ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05da51fdf397f424e939d43641c875bd"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvk__usbh__class__t.html">vk_usbh_class_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a05da51fdf397f424e939d43641c875bd">vk_usbh_class_t</a></td></tr>
+<tr class="separator:a05da51fdf397f424e939d43641c875bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d1ff25838ff7bdda4d7c7a852a314cd"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvk__usbh__pipe__t.html">vk_usbh_pipe_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a0d1ff25838ff7bdda4d7c7a852a314cd">vk_usbh_pipe_t</a></td></tr>
+<tr class="separator:a0d1ff25838ff7bdda4d7c7a852a314cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0284f3da24db466bf9266de1597e464f"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvk__usbh__hcd__iso__packet__descriptor__t.html">vk_usbh_hcd_iso_packet_descriptor_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a0284f3da24db466bf9266de1597e464f">vk_usbh_hcd_iso_packet_descriptor_t</a></td></tr>
+<tr class="separator:a0284f3da24db466bf9266de1597e464f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08c1c0fa90cd36daed959d13fe19b301"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvk__usbh__hcd__iso__packet__t.html">vk_usbh_hcd_iso_packet_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a08c1c0fa90cd36daed959d13fe19b301">vk_usbh_hcd_iso_packet_t</a></td></tr>
+<tr class="separator:a08c1c0fa90cd36daed959d13fe19b301"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ead66c1f2939b5d035ac7b6eb8d07ee"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvk__usbh__ep0__t.html">vk_usbh_ep0_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a4ead66c1f2939b5d035ac7b6eb8d07ee">vk_usbh_ep0_t</a></td></tr>
+<tr class="separator:a4ead66c1f2939b5d035ac7b6eb8d07ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+枚举</h2></td></tr>
+<tr class="memitem:a4eeeead548222804e141df8f1b205ca8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="vsf__usbh_8h.html#a4eeeead548222804e141df8f1b205ca8a6312e3ab2fb26a2a5188ef814127a484">URB_OK</a> = VSF_ERR_NONE
+, <br />
+&#160;&#160;<a class="el" href="vsf__usbh_8h.html#a4eeeead548222804e141df8f1b205ca8ac0dd8340f8c0423f2eee57ccbbc06cd4">URB_FAIL</a> = VSF_ERR_FAIL
+, <br />
+&#160;&#160;<a class="el" href="vsf__usbh_8h.html#a4eeeead548222804e141df8f1b205ca8a8f086399440a1cbee689e416e1582e3e">URB_PENDING</a> = VSF_ERR_NOT_READY
+<br />
+ }</td></tr>
+<tr class="separator:a4eeeead548222804e141df8f1b205ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91d74b317405fff79ca4459da11f98e3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="vsf__usbh_8h.html#a91d74b317405fff79ca4459da11f98e3ab57236f448f37443da7252f8a202acb0">URB_SHORT_NOT_OK</a> = 0x01
+, <br />
+&#160;&#160;<a class="el" href="vsf__usbh_8h.html#a91d74b317405fff79ca4459da11f98e3aed69d7724c4087ddcc92981f15b4f890">URB_ISO_ASAP</a> = 0x02
+, <br />
+&#160;&#160;<a class="el" href="vsf__usbh_8h.html#a91d74b317405fff79ca4459da11f98e3a41135535b923ae3a134117bd16b17b3f">URB_ZERO_PACKET</a> = 0x04
+, <br />
+&#160;&#160;<a class="el" href="vsf__usbh_8h.html#a91d74b317405fff79ca4459da11f98e3ad7d11f9acd7a27146e0751b25e2d6f24">URB_HCD_SPECIFIED_FLAGS</a> = 0x10
+<br />
+ }</td></tr>
+<tr class="separator:a91d74b317405fff79ca4459da11f98e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a556252912b7ceb3dd66115e8deea5895"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a556252912b7ceb3dd66115e8deea5895">vsf_declare_bitmap</a> (vk_usbh_devnum_bitmap, <a class="el" href="vsf__usbh_8h.html#acfb222cf4262318414acf8d573f0fec9">VSF_USBH_CFG_MAX_DEVICE</a>+1)</td></tr>
+<tr class="separator:a556252912b7ceb3dd66115e8deea5895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a454edd5eaa3cf79a244fcb2317abaa43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a454edd5eaa3cf79a244fcb2317abaa43">vk_usbh_init</a> (<a class="el" href="classvk__usbh__t.html">vk_usbh_t</a> *usbh)</td></tr>
+<tr class="separator:a454edd5eaa3cf79a244fcb2317abaa43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83b176a872f7b32b0d1c1811e00c12f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a83b176a872f7b32b0d1c1811e00c12f0">vk_usbh_fini</a> (<a class="el" href="classvk__usbh__t.html">vk_usbh_t</a> *usbh)</td></tr>
+<tr class="separator:a83b176a872f7b32b0d1c1811e00c12f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4588ede8459ac93f71a29f2ec52813db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh_8h.html#a4588ede8459ac93f71a29f2ec52813db">vk_usbh_register_class</a> (<a class="el" href="classvk__usbh__t.html">vk_usbh_t</a> *usbh, <a class="el" href="structvk__usbh__class__t.html">vk_usbh_class_t</a> *c)</td></tr>
+<tr class="separator:a4588ede8459ac93f71a29f2ec52813db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a1c655fbe5bd00c8e5da8138f261b3dc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c655fbe5bd00c8e5da8138f261b3dc5">&#9670;&nbsp;</a></span>VSF_USBH_CFG_EDA_PRIORITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_USBH_CFG_EDA_PRIORITY&#160;&#160;&#160;vsf_prio_0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a15ff5212b494aaaa88d2b199fd88e021"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15ff5212b494aaaa88d2b199fd88e021">&#9670;&nbsp;</a></span>VSF_USBH_CFG_ISO_EN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_USBH_CFG_ISO_EN&#160;&#160;&#160;<a class="el" href="vsf__cfg_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4a0896c9a6f74f1d4ee254bfb9281fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4a0896c9a6f74f1d4ee254bfb9281fc">&#9670;&nbsp;</a></span>VSF_USBH_CFG_ISO_PACKET_LIMIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_USBH_CFG_ISO_PACKET_LIMIT&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd5ea4381620c39f20c551120a21f116"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd5ea4381620c39f20c551120a21f116">&#9670;&nbsp;</a></span>VSF_USBH_CFG_ENABLE_ROOT_HUB</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_USBH_CFG_ENABLE_ROOT_HUB&#160;&#160;&#160;<a class="el" href="vsf__cfg_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acfb222cf4262318414acf8d573f0fec9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfb222cf4262318414acf8d573f0fec9">&#9670;&nbsp;</a></span>VSF_USBH_CFG_MAX_DEVICE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_USBH_CFG_MAX_DEVICE&#160;&#160;&#160;127</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a520ec28821869c1680a69d771273c122"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a520ec28821869c1680a69d771273c122">&#9670;&nbsp;</a></span>vsf_usbh_malloc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_usbh_malloc&#160;&#160;&#160;<a class="el" href="vsf__heap_8h.html#a85f7dab9811d95217dff06d56f6cda18">vsf_heap_malloc</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aad0efc067c9c6f5742fa16b1c2336b6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad0efc067c9c6f5742fa16b1c2336b6f">&#9670;&nbsp;</a></span>vsf_usbh_malloc_aligned</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_usbh_malloc_aligned&#160;&#160;&#160;<a class="el" href="vsf__pool_8c.html#afdd018350f7bb472c404e1acda6162b7">vsf_heap_malloc_aligned</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5adab8a4db84ca87923085aaeebbbe52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5adab8a4db84ca87923085aaeebbbe52">&#9670;&nbsp;</a></span>vsf_usbh_free</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_usbh_free&#160;&#160;&#160;<a class="el" href="vsf__heap_8h.html#ac59c4c88dba19eb3b1fba0165aa33868">vsf_heap_free</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa61f8e1dfc71e7a203597b357eca5f53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa61f8e1dfc71e7a203597b357eca5f53">&#9670;&nbsp;</a></span>VSF_USBH_MATCH_VID_PID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_USBH_MATCH_VID_PID</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__VID, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__PID&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            .match_vendor       = <span class="keyword">true</span>,                                         \</div>
+<div class="line">            .match_product      = <span class="keyword">true</span>,                                         \</div>
+<div class="line">            .idVendor           = (__VID),                                      \</div>
+<div class="line">            .idProduct          = (__PID),</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5885d9b846b7a6d5848e42c42e891abd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5885d9b846b7a6d5848e42c42e891abd">&#9670;&nbsp;</a></span>VSF_USBH_MATCH_DEV_CLASS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_USBH_MATCH_DEV_CLASS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__CLASS, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__SUB_CLASS, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__PROTOCOL&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            .match_dev_class    = <span class="keyword">true</span>,                                         \</div>
+<div class="line">            .match_dev_subclass = <span class="keyword">true</span>,                                         \</div>
+<div class="line">            .match_dev_protocol = <span class="keyword">true</span>,                                         \</div>
+<div class="line">            .bDeviceClass       = (__CLASS),                                    \</div>
+<div class="line">            .bDeviceSubClass    = (__SUB_CLASS),                                \</div>
+<div class="line">            .bDeviceProtocol    = (__PROTOCOL),</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1e69a7acdfe1ad871c04655b0ca0680f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e69a7acdfe1ad871c04655b0ca0680f">&#9670;&nbsp;</a></span>VSF_USBH_MATCH_IFS_CLASS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_USBH_MATCH_IFS_CLASS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__CLASS, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__SUB_CLASS, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__PROTOCOL&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            .match_ifs_class    = <span class="keyword">true</span>,                                         \</div>
+<div class="line">            .match_ifs_subclass = <span class="keyword">true</span>,                                         \</div>
+<div class="line">            .match_ifs_protocol = <span class="keyword">true</span>,                                         \</div>
+<div class="line">            .bInterfaceClass    = (__CLASS),                                    \</div>
+<div class="line">            .bInterfaceSubClass = (__SUB_CLASS),                                \</div>
+<div class="line">            .bInterfaceProtocol = (__PROTOCOL),</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">类型定义说明</h2>
+<a id="a9920a559b662742e1063186f39ada841"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9920a559b662742e1063186f39ada841">&#9670;&nbsp;</a></span>vk_usbh_ifs_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvk__usbh__ifs__t.html">vk_usbh_ifs_t</a> <a class="el" href="structvk__usbh__ifs__t.html">vk_usbh_ifs_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9013a3d9994c478f99463bfa033470c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9013a3d9994c478f99463bfa033470c9">&#9670;&nbsp;</a></span>vk_usbh_ifs_alt_parser_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvk__usbh__ifs__alt__parser__t.html">vk_usbh_ifs_alt_parser_t</a> <a class="el" href="structvk__usbh__ifs__alt__parser__t.html">vk_usbh_ifs_alt_parser_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76d742cccd2bd6651e41972f635e9561"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76d742cccd2bd6651e41972f635e9561">&#9670;&nbsp;</a></span>vk_usbh_ifs_parser_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvk__usbh__ifs__parser__t.html">vk_usbh_ifs_parser_t</a> <a class="el" href="structvk__usbh__ifs__parser__t.html">vk_usbh_ifs_parser_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3698e8e50b0a6fdacca824fcdde107a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3698e8e50b0a6fdacca824fcdde107a">&#9670;&nbsp;</a></span>vk_usbh_dev_parser_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvk__usbh__dev__parser__t.html">vk_usbh_dev_parser_t</a> <a class="el" href="structvk__usbh__dev__parser__t.html">vk_usbh_dev_parser_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abe063aa1ce819a3bf8ef10b201ca5ec8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe063aa1ce819a3bf8ef10b201ca5ec8">&#9670;&nbsp;</a></span>vk_usbh_dev_id_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvk__usbh__dev__id__t.html">vk_usbh_dev_id_t</a> <a class="el" href="structvk__usbh__dev__id__t.html">vk_usbh_dev_id_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a05da51fdf397f424e939d43641c875bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05da51fdf397f424e939d43641c875bd">&#9670;&nbsp;</a></span>vk_usbh_class_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvk__usbh__class__t.html">vk_usbh_class_t</a> <a class="el" href="structvk__usbh__class__t.html">vk_usbh_class_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d1ff25838ff7bdda4d7c7a852a314cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d1ff25838ff7bdda4d7c7a852a314cd">&#9670;&nbsp;</a></span>vk_usbh_pipe_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvk__usbh__pipe__t.html">vk_usbh_pipe_t</a> <a class="el" href="structvk__usbh__pipe__t.html">vk_usbh_pipe_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0284f3da24db466bf9266de1597e464f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0284f3da24db466bf9266de1597e464f">&#9670;&nbsp;</a></span>vk_usbh_hcd_iso_packet_descriptor_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvk__usbh__hcd__iso__packet__descriptor__t.html">vk_usbh_hcd_iso_packet_descriptor_t</a> <a class="el" href="structvk__usbh__hcd__iso__packet__descriptor__t.html">vk_usbh_hcd_iso_packet_descriptor_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a08c1c0fa90cd36daed959d13fe19b301"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08c1c0fa90cd36daed959d13fe19b301">&#9670;&nbsp;</a></span>vk_usbh_hcd_iso_packet_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvk__usbh__hcd__iso__packet__t.html">vk_usbh_hcd_iso_packet_t</a> <a class="el" href="structvk__usbh__hcd__iso__packet__t.html">vk_usbh_hcd_iso_packet_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4ead66c1f2939b5d035ac7b6eb8d07ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ead66c1f2939b5d035ac7b6eb8d07ee">&#9670;&nbsp;</a></span>vk_usbh_ep0_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvk__usbh__ep0__t.html">vk_usbh_ep0_t</a> <a class="el" href="structvk__usbh__ep0__t.html">vk_usbh_ep0_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">枚举类型说明</h2>
+<a id="a4eeeead548222804e141df8f1b205ca8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4eeeead548222804e141df8f1b205ca8">&#9670;&nbsp;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a4eeeead548222804e141df8f1b205ca8a6312e3ab2fb26a2a5188ef814127a484"></a>URB_OK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4eeeead548222804e141df8f1b205ca8ac0dd8340f8c0423f2eee57ccbbc06cd4"></a>URB_FAIL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4eeeead548222804e141df8f1b205ca8a8f086399440a1cbee689e416e1582e3e"></a>URB_PENDING&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a91d74b317405fff79ca4459da11f98e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91d74b317405fff79ca4459da11f98e3">&#9670;&nbsp;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a91d74b317405fff79ca4459da11f98e3ab57236f448f37443da7252f8a202acb0"></a>URB_SHORT_NOT_OK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a91d74b317405fff79ca4459da11f98e3aed69d7724c4087ddcc92981f15b4f890"></a>URB_ISO_ASAP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a91d74b317405fff79ca4459da11f98e3a41135535b923ae3a134117bd16b17b3f"></a>URB_ZERO_PACKET&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a91d74b317405fff79ca4459da11f98e3ad7d11f9acd7a27146e0751b25e2d6f24"></a>URB_HCD_SPECIFIED_FLAGS&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a556252912b7ceb3dd66115e8deea5895"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a556252912b7ceb3dd66115e8deea5895">&#9670;&nbsp;</a></span>vsf_declare_bitmap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vsf_declare_bitmap </td>
+          <td>(</td>
+          <td class="paramtype">vk_usbh_devnum_bitmap&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__usbh_8h.html#acfb222cf4262318414acf8d573f0fec9">VSF_USBH_CFG_MAX_DEVICE</a>+&#160;</td>
+          <td class="paramname"><em>1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a454edd5eaa3cf79a244fcb2317abaa43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a454edd5eaa3cf79a244fcb2317abaa43">&#9670;&nbsp;</a></span>vk_usbh_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vk_usbh_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvk__usbh__t.html">vk_usbh_t</a> *&#160;</td>
+          <td class="paramname"><em>usbh</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83b176a872f7b32b0d1c1811e00c12f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83b176a872f7b32b0d1c1811e00c12f0">&#9670;&nbsp;</a></span>vk_usbh_fini()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vk_usbh_fini </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvk__usbh__t.html">vk_usbh_t</a> *&#160;</td>
+          <td class="paramname"><em>usbh</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4588ede8459ac93f71a29f2ec52813db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4588ede8459ac93f71a29f2ec52813db">&#9670;&nbsp;</a></span>vk_usbh_register_class()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vk_usbh_register_class </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvk__usbh__t.html">vk_usbh_t</a> *&#160;</td>
+          <td class="paramname"><em>usbh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvk__usbh__class__t.html">vk_usbh_class_t</a> *&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

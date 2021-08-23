@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/service/fifo/vsf_fifo.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_bfec2c9dca3d140a71292b4bdadc3c95.html">service</a></li><li class="navelem"><a class="el" href="dir_a33ed29911068c2ab94eb6ac9891a801.html">fifo</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">vsf_fifo.c 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__service__cfg_8h_source.html">service/vsf_service_cfg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__fifo_8h_source.html">vsf_fifo.h</a>&quot;</code><br />
+<code>#include &quot;hal/arch/vsf_arch.h&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a1eca7e2922e8d8708b2a9ad9654ed789"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__fifo_8c.html#a1eca7e2922e8d8708b2a9ad9654ed789">__VSF_FIFO_CLASS_IMPLEMENT</a></td></tr>
+<tr class="separator:a1eca7e2922e8d8708b2a9ad9654ed789"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0496fe0fca00dff347059c1d70673bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__fifo_8c.html#af0496fe0fca00dff347059c1d70673bd">VSF_FIFO_CFG_PROTECT_LEVEL</a>&#160;&#160;&#160;interrupt</td></tr>
+<tr class="separator:af0496fe0fca00dff347059c1d70673bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7347baf37e994a9aedae7b6439492a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__fifo_8c.html#ab7347baf37e994a9aedae7b6439492a5">__vsf_fifo_protect</a>&#160;&#160;&#160;vsf_protect(<a class="el" href="vsf__fifo_8c.html#af0496fe0fca00dff347059c1d70673bd">VSF_FIFO_CFG_PROTECT_LEVEL</a>)</td></tr>
+<tr class="separator:ab7347baf37e994a9aedae7b6439492a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34d1665e76cdf3fa4c0660f40209e82c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__fifo_8c.html#a34d1665e76cdf3fa4c0660f40209e82c">__vsf_fifo_unprotect</a>&#160;&#160;&#160;vsf_unprotect(<a class="el" href="vsf__fifo_8c.html#af0496fe0fca00dff347059c1d70673bd">VSF_FIFO_CFG_PROTECT_LEVEL</a>)</td></tr>
+<tr class="separator:a34d1665e76cdf3fa4c0660f40209e82c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:af040c59e4d2a47a7c13d7af35198ef46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__fifo_8c.html#af040c59e4d2a47a7c13d7af35198ef46">vsf_fifo_init</a> (<a class="el" href="classvsf__fifo__t.html">vsf_fifo_t</a> *<a class="el" href="vsf__msg__tree_8h.html#ace2852557ffa7f64f597d2b77aa26529">fifo</a>, <a class="el" href="vsf__fifo_8h.html#a0bc005890b684c36c8ea655a975d28e2">vsf_fifo_fast_index_t</a> fifo_depth)</td></tr>
+<tr class="separator:af040c59e4d2a47a7c13d7af35198ef46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab22f9b36ef703881b54ff52ca8c5c9ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__fifo_8c.html#ab22f9b36ef703881b54ff52ca8c5c9ab">vsf_fifo_push</a> (<a class="el" href="classvsf__fifo__t.html">vsf_fifo_t</a> *<a class="el" href="vsf__msg__tree_8h.html#ace2852557ffa7f64f597d2b77aa26529">fifo</a>, <a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> item, <a class="el" href="vsf__fifo_8h.html#ad6354a2b3197f6daa5650022c1106a98">vsf_fifo_fast_item_size_t</a> <a class="el" href="vsf__pool_8h.html#ad27d25a00990c74c7bf1cc2bca27b745">item_size</a>)</td></tr>
+<tr class="separator:ab22f9b36ef703881b54ff52ca8c5c9ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a928bb20593da3daa018e36f716d80707"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__fifo_8c.html#a928bb20593da3daa018e36f716d80707">vsf_fifo_pop</a> (<a class="el" href="classvsf__fifo__t.html">vsf_fifo_t</a> *<a class="el" href="vsf__msg__tree_8h.html#ace2852557ffa7f64f597d2b77aa26529">fifo</a>, <a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> item, <a class="el" href="vsf__fifo_8h.html#ad6354a2b3197f6daa5650022c1106a98">vsf_fifo_fast_item_size_t</a> <a class="el" href="vsf__pool_8h.html#ad27d25a00990c74c7bf1cc2bca27b745">item_size</a>)</td></tr>
+<tr class="separator:a928bb20593da3daa018e36f716d80707"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad818ee03e4704853b9ed72ca60277741"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__fifo_8c.html#ad818ee03e4704853b9ed72ca60277741">vsf_fifo_get_head</a> (<a class="el" href="classvsf__fifo__t.html">vsf_fifo_t</a> *<a class="el" href="vsf__msg__tree_8h.html#ace2852557ffa7f64f597d2b77aa26529">fifo</a>, <a class="el" href="vsf__fifo_8h.html#ad6354a2b3197f6daa5650022c1106a98">vsf_fifo_fast_item_size_t</a> <a class="el" href="vsf__pool_8h.html#ad27d25a00990c74c7bf1cc2bca27b745">item_size</a>)</td></tr>
+<tr class="separator:ad818ee03e4704853b9ed72ca60277741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d9ec27bcadf28fd7f9191fe59b43fec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__fifo_8c.html#a3d9ec27bcadf28fd7f9191fe59b43fec">vsf_fifo_get_tail</a> (<a class="el" href="classvsf__fifo__t.html">vsf_fifo_t</a> *<a class="el" href="vsf__msg__tree_8h.html#ace2852557ffa7f64f597d2b77aa26529">fifo</a>, <a class="el" href="vsf__fifo_8h.html#ad6354a2b3197f6daa5650022c1106a98">vsf_fifo_fast_item_size_t</a> <a class="el" href="vsf__pool_8h.html#ad27d25a00990c74c7bf1cc2bca27b745">item_size</a>)</td></tr>
+<tr class="separator:a3d9ec27bcadf28fd7f9191fe59b43fec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a743f2d643ffc1271c15c30685117c533"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__fifo_8h.html#a01f4bb2dc82e096ef4a49ba409fd8fda">vsf_fifo_index_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__fifo_8c.html#a743f2d643ffc1271c15c30685117c533">vsf_fifo_get_number</a> (<a class="el" href="classvsf__fifo__t.html">vsf_fifo_t</a> *<a class="el" href="vsf__msg__tree_8h.html#ace2852557ffa7f64f597d2b77aa26529">fifo</a>)</td></tr>
+<tr class="separator:a743f2d643ffc1271c15c30685117c533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a1eca7e2922e8d8708b2a9ad9654ed789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eca7e2922e8d8708b2a9ad9654ed789">&#9670;&nbsp;</a></span>__VSF_FIFO_CLASS_IMPLEMENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_FIFO_CLASS_IMPLEMENT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af0496fe0fca00dff347059c1d70673bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0496fe0fca00dff347059c1d70673bd">&#9670;&nbsp;</a></span>VSF_FIFO_CFG_PROTECT_LEVEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_FIFO_CFG_PROTECT_LEVEL&#160;&#160;&#160;interrupt</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section note"><dt>注解</dt><dd>By default, the driver tries to make all APIs interrupt-safe, ! ! in the case when you want to disable it, ! please use following macro: ! #define VSF_FIFO_CFG_PROTECT_LEVEL none ! ! in the case when you want to use scheduler-safe, ! please use following macro: ! #define VSF_FIFO_CFG_PROTECT_LEVEL scheduler ! ! NOTE: This macro should be defined in vsf_usr_cfg.h </dd></dl>
+
+</div>
+</div>
+<a id="ab7347baf37e994a9aedae7b6439492a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7347baf37e994a9aedae7b6439492a5">&#9670;&nbsp;</a></span>__vsf_fifo_protect</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __vsf_fifo_protect&#160;&#160;&#160;vsf_protect(<a class="el" href="vsf__fifo_8c.html#af0496fe0fca00dff347059c1d70673bd">VSF_FIFO_CFG_PROTECT_LEVEL</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a34d1665e76cdf3fa4c0660f40209e82c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34d1665e76cdf3fa4c0660f40209e82c">&#9670;&nbsp;</a></span>__vsf_fifo_unprotect</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __vsf_fifo_unprotect&#160;&#160;&#160;vsf_unprotect(<a class="el" href="vsf__fifo_8c.html#af0496fe0fca00dff347059c1d70673bd">VSF_FIFO_CFG_PROTECT_LEVEL</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="af040c59e4d2a47a7c13d7af35198ef46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af040c59e4d2a47a7c13d7af35198ef46">&#9670;&nbsp;</a></span>vsf_fifo_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_fifo_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__fifo__t.html">vsf_fifo_t</a> *&#160;</td>
+          <td class="paramname"><em>fifo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__fifo_8h.html#a0bc005890b684c36c8ea655a975d28e2">vsf_fifo_fast_index_t</a>&#160;</td>
+          <td class="paramname"><em>fifo_depth</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab22f9b36ef703881b54ff52ca8c5c9ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab22f9b36ef703881b54ff52ca8c5c9ab">&#9670;&nbsp;</a></span>vsf_fifo_push()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> vsf_fifo_push </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__fifo__t.html">vsf_fifo_t</a> *&#160;</td>
+          <td class="paramname"><em>fifo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>&#160;</td>
+          <td class="paramname"><em>item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__fifo_8h.html#ad6354a2b3197f6daa5650022c1106a98">vsf_fifo_fast_item_size_t</a>&#160;</td>
+          <td class="paramname"><em>item_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a928bb20593da3daa018e36f716d80707"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a928bb20593da3daa018e36f716d80707">&#9670;&nbsp;</a></span>vsf_fifo_pop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> vsf_fifo_pop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__fifo__t.html">vsf_fifo_t</a> *&#160;</td>
+          <td class="paramname"><em>fifo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>&#160;</td>
+          <td class="paramname"><em>item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__fifo_8h.html#ad6354a2b3197f6daa5650022c1106a98">vsf_fifo_fast_item_size_t</a>&#160;</td>
+          <td class="paramname"><em>item_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad818ee03e4704853b9ed72ca60277741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad818ee03e4704853b9ed72ca60277741">&#9670;&nbsp;</a></span>vsf_fifo_get_head()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> vsf_fifo_get_head </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__fifo__t.html">vsf_fifo_t</a> *&#160;</td>
+          <td class="paramname"><em>fifo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__fifo_8h.html#ad6354a2b3197f6daa5650022c1106a98">vsf_fifo_fast_item_size_t</a>&#160;</td>
+          <td class="paramname"><em>item_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3d9ec27bcadf28fd7f9191fe59b43fec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d9ec27bcadf28fd7f9191fe59b43fec">&#9670;&nbsp;</a></span>vsf_fifo_get_tail()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> vsf_fifo_get_tail </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__fifo__t.html">vsf_fifo_t</a> *&#160;</td>
+          <td class="paramname"><em>fifo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__fifo_8h.html#ad6354a2b3197f6daa5650022c1106a98">vsf_fifo_fast_item_size_t</a>&#160;</td>
+          <td class="paramname"><em>item_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a743f2d643ffc1271c15c30685117c533"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a743f2d643ffc1271c15c30685117c533">&#9670;&nbsp;</a></span>vsf_fifo_get_number()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vsf__fifo_8h.html#a01f4bb2dc82e096ef4a49ba409fd8fda">vsf_fifo_index_t</a> vsf_fifo_get_number </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__fifo__t.html">vsf_fifo_t</a> *&#160;</td>
+          <td class="paramname"><em>fifo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

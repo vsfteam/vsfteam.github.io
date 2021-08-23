@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/service/stream/vsf_stream_writer.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_bfec2c9dca3d140a71292b4bdadc3c95.html">service</a></li><li class="navelem"><a class="el" href="dir_0ce4b8e2c994382ab2f351feb740d6d6.html">stream</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">vsf_stream_writer.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="vsf__stream__writer_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   Copyright(C)2009-2019 by VSF Team                                       *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __VSF_SERVICE_STREAM_WRITER_H__</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define __VSF_SERVICE_STREAM_WRITER_H__</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__service__cfg_8h.html">service/vsf_service_cfg.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__pbuf_8h.html">./pbuf/vsf_pbuf.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__pbuf__pool_8h.html">./pbuf/vsf_pbuf_pool.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#if VSF_USE_STREAM == ENABLED</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="interface_8h.html">./interface.h</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;../pool/vsf_pool.h&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__pbuf__queue_8h.html">./pbuf_queue/vsf_pbuf_queue.h</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__stream__base_8h.html">./vsf_stream_base.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="vsf__stream__writer_8h.html#ab03dcdedfdc9861a978626b67957afb9">   37</a></span>&#160;<span class="preprocessor">#define __PLOOC_CLASS_USE_STRICT_TEMPLATE__</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;   </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#if     defined(__VSF_STREAM_WRITER_CLASS_IMPLEMENT)</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#   define __PLOOC_CLASS_IMPLEMENT__</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#   undef __VSF_STREAM_WRITER_CLASS_IMPLEMENT</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#elif   defined(__VSF_STREAM_WRITER_CLASS_INHERIT__)</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#   define __PLOOC_CLASS_INHERIT__</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#   undef __VSF_STREAM_WRITER_CLASS_INHERIT__</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif   </span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/*----------------------------------------------------------------------------*</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> * STREAM WRITER                                                              *</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> *----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="vsf__stream__writer_8h.html#a0aa87fbca544611e93309461d0bed7cb">   61</a></span>&#160;<a class="code" href="vsf__stream__writer_8h.html#a0aa87fbca544611e93309461d0bed7cb">declare_class</a>(vsf_stream_writer_t);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="vsf__stream__writer_8h.html#a493cae98b1ca44e796e12d92030f7484">   63</a></span>&#160;<a class="code" href="vsf__stream__writer_8h.html#a493cae98b1ca44e796e12d92030f7484">def_class</a>(vsf_stream_writer_t,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="vsf__tgui__control_8h.html#a5b5d6de3808ae65bdaef685a8ec16f8b">which</a>(</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        implement(vsf_stream_src_t)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    ),</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    private_member(</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        vsf_pbuf_t *current_ptr;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>    hwOffset;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <a class="code" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>    hwBufferSize;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    )</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;end_def_class(vsf_stream_writer_t)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<a class="code" href="interface_8h.html#a22ba07c5360601515304944361229934">def_interface</a>(i_stream_writer_t)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>           (*Init)     (   vsf_stream_writer_t *obj_ptr, </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="vsf__stream__writer_8h.html#a4867ae13f79e7bd89b5442224cdd20bd">   77</a></span>&#160;                                        const <a class="code" href="structvsf__stream__src__cfg__t.html">vsf_stream_src_cfg_t</a> *<a class="code" href="vsf__stream__writer_8h.html#a4867ae13f79e7bd89b5442224cdd20bd">cfg_ptr</a>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="vsf__stream__writer_8h.html#ad772a71583a015552e208e19d2523987">   78</a></span>&#160;    <a class="code" href="interface_8h.html#a9b969da23063dbeba929bd965b6e3688">vsf_stream_tx_t</a>     *(*<a class="code" href="vsf__stream__writer_8h.html#ad772a71583a015552e208e19d2523987">GetTX</a>)   (   vsf_stream_writer_t *obj_ptr);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    struct {</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="vsf__stream__writer_8h.html#a554d1000a33336918ba3f1f383d40767">   81</a></span>&#160;        vsf_pbuf_t *    (*New)      (   vsf_stream_writer_t *obj_ptr,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                        <a class="code" href="arm_2type_8h.html#ae884dda22bf64c7e974894a6d3b67929">int_fast32_t</a> <a class="code" href="vsf__pbuf_8h.html#aeba9bd476cd1ffb394fbece1ced3b334">nNoLessThan</a>,</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                        <a class="code" href="arm_2type_8h.html#ae884dda22bf64c7e974894a6d3b67929">int_fast32_t</a> <a class="code" href="vsf__pbuf_8h.html#abef06d546b0e264503ffb0fb936221bb">nBestSize</a>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="vsf__stream__writer_8h.html#a92a1d083b8092327024dad57a18b656e">   84</a></span>&#160;        <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>       (*<a class="code" href="vsf__stream__writer_8h.html#a92a1d083b8092327024dad57a18b656e">Send</a>)     (   vsf_stream_writer_t *obj_ptr,</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                        vsf_pbuf_t *ptOldBlock);</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="vsf__stream__writer_8h.html#ae0c308f2ef99522dc03eda09dbfdfdda">   86</a></span>&#160;    }<a class="code" href="vsf__stream__writer_8h.html#ae0c308f2ef99522dc03eda09dbfdfdda">Block</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="vsf__stream__writer_8h.html#a61506a3fe27a8e34bc1f9fa23a3f4d5a">   89</a></span>&#160;    <a class="code" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>                (*<a class="code" href="vsf__stream__writer_8h.html#a61506a3fe27a8e34bc1f9fa23a3f4d5a">WriteByte</a>)(   vsf_stream_writer_t *obj_ptr, </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                        <a class="code" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> chByte);</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="vsf__stream__writer_8h.html#ada401642b54808c7966282cd26338880">   91</a></span>&#160;    <a class="code" href="arm_2type_8h.html#ae884dda22bf64c7e974894a6d3b67929">int_fast32_t</a>        (*<a class="code" href="vsf__stream__writer_8h.html#ada401642b54808c7966282cd26338880">Write</a>)    (   vsf_stream_writer_t *obj_ptr,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                        <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *buffer_ptr,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                        <a class="code" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a> u16_size);</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="vsf__stream__writer_8h.html#aa1aaa4d02bdfb4dfd56a079b938222cd">   94</a></span>&#160;    <a class="code" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>            (*<a class="code" href="vsf__stream__writer_8h.html#aa1aaa4d02bdfb4dfd56a079b938222cd">Flush</a>)    (   vsf_stream_writer_t *obj_ptr);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="vsf__stream__writer_8h.html#ae36133f72825b1b5e4240c7bdffe49b6">   96</a></span>&#160;<a class="code" href="vsf__stream__writer_8h.html#ae36133f72825b1b5e4240c7bdffe49b6">end_def_interface</a>(i_stream_writer_t)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> i_stream_writer_t  <a class="code" href="vsf__stream__writer_8c.html#a348d99ee9922c2c6c768fd80cc01b683">VSF_STREAM_WRITER</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">/*----------------------------------------------------------------------------*</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment"> * STREAM WRITER                                                              *</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment"> *----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">extern</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__stream__writer_8h.html#a931c0fbca063b743df2f367a69fd869b">vsf_stream_writer_init</a>(   vsf_stream_writer_t *obj_ptr, </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                                    <span class="keyword">const</span> <a class="code" href="structvsf__stream__src__cfg__t.html">vsf_stream_src_cfg_t</a> *<a class="code" href="vsf__stream__writer_8h.html#a4867ae13f79e7bd89b5442224cdd20bd">cfg_ptr</a>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">extern</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__stream__writer_8h.html#a7b02f1d28639e4f436c5e84269e77a0d">vsf_stream_writer_send_pbuf</a> ( vsf_stream_writer_t *obj_ptr, </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                                        vsf_pbuf_t *ptOldBlock);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">extern</span> </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<a class="code" href="arm_2type_8h.html#ae884dda22bf64c7e974894a6d3b67929">int_fast32_t</a> <a class="code" href="vsf__stream__writer_8h.html#ab31e4a8894b9959525ad09909e1d04b3">vsf_stream_writer_write</a>(   vsf_stream_writer_t *obj_ptr,</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                                        <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *buffer_ptr,</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                                        <a class="code" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a> u16_size);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keyword">extern</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="vsf__stream__writer_8h.html#a8e82cf8806f25b5ddbacd56413dc1aaf">vsf_stream_writer_write_byte</a>(  vsf_stream_writer_t *obj_ptr, </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                                    <a class="code" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> chByte);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">extern</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<a class="code" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a> <a class="code" href="vsf__stream__writer_8h.html#aeca5fe8f51509037862af90c88d8f48d">vsf_stream_writer_flush</a> (vsf_stream_writer_t *obj_ptr);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">/* EOF */</span></div>
+<div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition:</b> __type.h:42</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a226d967fb6d06433caf43f20dc876aae"><div class="ttname"><a href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a></div><div class="ttdeci">unsigned int uint_fast16_t</div><div class="ttdef"><b>Definition:</b> type.h:34</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a273cf69d639a59973b6019625df33e30"><div class="ttname"><a href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a></div><div class="ttdeci">unsigned short uint16_t</div><div class="ttdef"><b>Definition:</b> type.h:32</div></div>
+<div class="ttc" id="aarm_2type_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> type.h:27</div></div>
+<div class="ttc" id="aarm_2type_8h_html_ad0906fbe05a45fbdb000c58fe8929e70"><div class="ttname"><a href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a></div><div class="ttdeci">unsigned int uint_fast8_t</div><div class="ttdef"><b>Definition:</b> type.h:29</div></div>
+<div class="ttc" id="aarm_2type_8h_html_ae884dda22bf64c7e974894a6d3b67929"><div class="ttname"><a href="arm_2type_8h.html#ae884dda22bf64c7e974894a6d3b67929">int_fast32_t</a></div><div class="ttdeci">signed int int_fast32_t</div><div class="ttdef"><b>Definition:</b> type.h:40</div></div>
+<div class="ttc" id="aarm_2type_8h_html_af6a258d8f3ee5206d682d799316314b1"><div class="ttname"><a href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a></div><div class="ttdeci">bool</div><div class="ttdef"><b>Definition:</b> type.h:57</div></div>
+<div class="ttc" id="ainterface_8h_html"><div class="ttname"><a href="interface_8h.html">interface.h</a></div></div>
+<div class="ttc" id="ainterface_8h_html_a22ba07c5360601515304944361229934"><div class="ttname"><a href="interface_8h.html#a22ba07c5360601515304944361229934">def_interface</a></div><div class="ttdeci">def_interface(i_stream_pbuf_rx_t) vsf_pbuf_t *(*Fetch)(vsf_stream_rx_t *)</div></div>
+<div class="ttc" id="ainterface_8h_html_a9b969da23063dbeba929bd965b6e3688"><div class="ttname"><a href="interface_8h.html#a9b969da23063dbeba929bd965b6e3688">vsf_stream_tx_t</a></div><div class="ttdeci">struct vsf_stream_tx_t vsf_stream_tx_t</div><div class="ttdef"><b>Definition:</b> interface.h:34</div></div>
+<div class="ttc" id="aooc__class_8h_html"><div class="ttname"><a href="ooc__class_8h.html">ooc_class.h</a></div></div>
+<div class="ttc" id="astructvsf__stream__src__cfg__t_html"><div class="ttname"><a href="structvsf__stream__src__cfg__t.html">vsf_stream_src_cfg_t</a></div><div class="ttdef"><b>Definition:</b> vsf_stream_base.h:68</div></div>
+<div class="ttc" id="avsf__fsm_8h_html_ae61ab5e1d66a489d89fa8786e6b5f64b"><div class="ttname"><a href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a></div><div class="ttdeci">fsm_rt_t</div><div class="ttdef"><b>Definition:</b> vsf_fsm.h:315</div></div>
+<div class="ttc" id="avsf__pbuf_8h_html"><div class="ttname"><a href="vsf__pbuf_8h.html">vsf_pbuf.h</a></div></div>
+<div class="ttc" id="avsf__pbuf_8h_html_abef06d546b0e264503ffb0fb936221bb"><div class="ttname"><a href="vsf__pbuf_8h.html#abef06d546b0e264503ffb0fb936221bb">nBestSize</a></div><div class="ttdeci">int_fast32_t int_fast32_t nBestSize</div><div class="ttdef"><b>Definition:</b> vsf_pbuf.h:79</div></div>
+<div class="ttc" id="avsf__pbuf_8h_html_aeba9bd476cd1ffb394fbece1ced3b334"><div class="ttname"><a href="vsf__pbuf_8h.html#aeba9bd476cd1ffb394fbece1ced3b334">nNoLessThan</a></div><div class="ttdeci">int_fast32_t nNoLessThan</div><div class="ttdef"><b>Definition:</b> vsf_pbuf.h:78</div></div>
+<div class="ttc" id="avsf__pbuf__pool_8h_html"><div class="ttname"><a href="vsf__pbuf__pool_8h.html">vsf_pbuf_pool.h</a></div></div>
+<div class="ttc" id="avsf__pbuf__queue_8h_html"><div class="ttname"><a href="vsf__pbuf__queue_8h.html">vsf_pbuf_queue.h</a></div></div>
+<div class="ttc" id="avsf__service__cfg_8h_html"><div class="ttname"><a href="vsf__service__cfg_8h.html">vsf_service_cfg.h</a></div></div>
+<div class="ttc" id="avsf__stream__base_8h_html"><div class="ttname"><a href="vsf__stream__base_8h.html">vsf_stream_base.h</a></div></div>
+<div class="ttc" id="avsf__stream__writer_8c_html_a348d99ee9922c2c6c768fd80cc01b683"><div class="ttname"><a href="vsf__stream__writer_8c.html#a348d99ee9922c2c6c768fd80cc01b683">VSF_STREAM_WRITER</a></div><div class="ttdeci">const i_stream_writer_t VSF_STREAM_WRITER</div><div class="ttdef"><b>Definition:</b> vsf_stream_writer.c:37</div></div>
+<div class="ttc" id="avsf__stream__writer_8h_html_a0aa87fbca544611e93309461d0bed7cb"><div class="ttname"><a href="vsf__stream__writer_8h.html#a0aa87fbca544611e93309461d0bed7cb">declare_class</a></div><div class="ttdeci">declare_class(vsf_stream_writer_t)</div></div>
+<div class="ttc" id="avsf__stream__writer_8h_html_a4867ae13f79e7bd89b5442224cdd20bd"><div class="ttname"><a href="vsf__stream__writer_8h.html#a4867ae13f79e7bd89b5442224cdd20bd">cfg_ptr</a></div><div class="ttdeci">const vsf_stream_src_cfg_t * cfg_ptr</div><div class="ttdef"><b>Definition:</b> vsf_stream_writer.h:77</div></div>
+<div class="ttc" id="avsf__stream__writer_8h_html_a493cae98b1ca44e796e12d92030f7484"><div class="ttname"><a href="vsf__stream__writer_8h.html#a493cae98b1ca44e796e12d92030f7484">def_class</a></div><div class="ttdeci">def_class(vsf_stream_writer_t, which(vsf_stream_src_t), private:vsf_pbuf_t *current_ptr;uint16_t hwOffset;uint16_t hwBufferSize;) end_def_class(vsf_stream_writer_t) def_interface(i_stream_writer_t) vsf_err_t(*Init)(vsf_stream_writer_t *obj_ptr</div></div>
+<div class="ttc" id="avsf__stream__writer_8h_html_a61506a3fe27a8e34bc1f9fa23a3f4d5a"><div class="ttname"><a href="vsf__stream__writer_8h.html#a61506a3fe27a8e34bc1f9fa23a3f4d5a">WriteByte</a></div><div class="ttdeci">bool(* WriteByte)(vsf_stream_writer_t *obj_ptr, uint_fast8_t chByte)</div><div class="ttdef"><b>Definition:</b> vsf_stream_writer.h:89</div></div>
+<div class="ttc" id="avsf__stream__writer_8h_html_a7b02f1d28639e4f436c5e84269e77a0d"><div class="ttname"><a href="vsf__stream__writer_8h.html#a7b02f1d28639e4f436c5e84269e77a0d">vsf_stream_writer_send_pbuf</a></div><div class="ttdeci">vsf_err_t vsf_stream_writer_send_pbuf(vsf_stream_writer_t *obj_ptr, vsf_pbuf_t *ptOldBlock)</div><div class="ttdef"><b>Definition:</b> vsf_stream_writer.c:91</div></div>
+<div class="ttc" id="avsf__stream__writer_8h_html_a8e82cf8806f25b5ddbacd56413dc1aaf"><div class="ttname"><a href="vsf__stream__writer_8h.html#a8e82cf8806f25b5ddbacd56413dc1aaf">vsf_stream_writer_write_byte</a></div><div class="ttdeci">bool vsf_stream_writer_write_byte(vsf_stream_writer_t *obj_ptr, uint_fast8_t chByte)</div><div class="ttdef"><b>Definition:</b> vsf_stream_writer.c:151</div></div>
+<div class="ttc" id="avsf__stream__writer_8h_html_a92a1d083b8092327024dad57a18b656e"><div class="ttname"><a href="vsf__stream__writer_8h.html#a92a1d083b8092327024dad57a18b656e">Send</a></div><div class="ttdeci">vsf_err_t(* Send)(vsf_stream_writer_t *obj_ptr, vsf_pbuf_t *ptOldBlock)</div><div class="ttdef"><b>Definition:</b> vsf_stream_writer.h:84</div></div>
+<div class="ttc" id="avsf__stream__writer_8h_html_a931c0fbca063b743df2f367a69fd869b"><div class="ttname"><a href="vsf__stream__writer_8h.html#a931c0fbca063b743df2f367a69fd869b">vsf_stream_writer_init</a></div><div class="ttdeci">vsf_err_t vsf_stream_writer_init(vsf_stream_writer_t *obj_ptr, const vsf_stream_src_cfg_t *cfg_ptr)</div><div class="ttdef"><b>Definition:</b> vsf_stream_writer.c:60</div></div>
+<div class="ttc" id="avsf__stream__writer_8h_html_aa1aaa4d02bdfb4dfd56a079b938222cd"><div class="ttname"><a href="vsf__stream__writer_8h.html#aa1aaa4d02bdfb4dfd56a079b938222cd">Flush</a></div><div class="ttdeci">fsm_rt_t(* Flush)(vsf_stream_writer_t *obj_ptr)</div><div class="ttdef"><b>Definition:</b> vsf_stream_writer.h:94</div></div>
+<div class="ttc" id="avsf__stream__writer_8h_html_ab31e4a8894b9959525ad09909e1d04b3"><div class="ttname"><a href="vsf__stream__writer_8h.html#ab31e4a8894b9959525ad09909e1d04b3">vsf_stream_writer_write</a></div><div class="ttdeci">int_fast32_t vsf_stream_writer_write(vsf_stream_writer_t *obj_ptr, uint8_t *buffer_ptr, uint_fast16_t u16_size)</div><div class="ttdef"><b>Definition:</b> vsf_stream_writer.c:104</div></div>
+<div class="ttc" id="avsf__stream__writer_8h_html_ad772a71583a015552e208e19d2523987"><div class="ttname"><a href="vsf__stream__writer_8h.html#ad772a71583a015552e208e19d2523987">GetTX</a></div><div class="ttdeci">vsf_stream_tx_t *(* GetTX)(vsf_stream_writer_t *obj_ptr)</div><div class="ttdef"><b>Definition:</b> vsf_stream_writer.h:78</div></div>
+<div class="ttc" id="avsf__stream__writer_8h_html_ada401642b54808c7966282cd26338880"><div class="ttname"><a href="vsf__stream__writer_8h.html#ada401642b54808c7966282cd26338880">Write</a></div><div class="ttdeci">int_fast32_t(* Write)(vsf_stream_writer_t *obj_ptr, uint8_t *buffer_ptr, uint_fast16_t u16_size)</div><div class="ttdef"><b>Definition:</b> vsf_stream_writer.h:91</div></div>
+<div class="ttc" id="avsf__stream__writer_8h_html_ae0c308f2ef99522dc03eda09dbfdfdda"><div class="ttname"><a href="vsf__stream__writer_8h.html#ae0c308f2ef99522dc03eda09dbfdfdda">Block</a></div><div class="ttdeci">struct @339 Block</div></div>
+<div class="ttc" id="avsf__stream__writer_8h_html_ae36133f72825b1b5e4240c7bdffe49b6"><div class="ttname"><a href="vsf__stream__writer_8h.html#ae36133f72825b1b5e4240c7bdffe49b6">end_def_interface</a></div><div class="ttdeci">end_def_interface(i_stream_writer_t) extern const i_stream_writer_t VSF_STREAM_WRITER</div></div>
+<div class="ttc" id="avsf__stream__writer_8h_html_aeca5fe8f51509037862af90c88d8f48d"><div class="ttname"><a href="vsf__stream__writer_8h.html#aeca5fe8f51509037862af90c88d8f48d">vsf_stream_writer_flush</a></div><div class="ttdeci">fsm_rt_t vsf_stream_writer_flush(vsf_stream_writer_t *obj_ptr)</div><div class="ttdef"><b>Definition:</b> vsf_stream_writer.c:157</div></div>
+<div class="ttc" id="avsf__tgui__control_8h_html_a5b5d6de3808ae65bdaef685a8ec16f8b"><div class="ttname"><a href="vsf__tgui__control_8h.html#a5b5d6de3808ae65bdaef685a8ec16f8b">which</a></div><div class="ttdeci">which(union { inherit(vsf_msgt_container_t) vsf_tgui_control_t };vsf_tgui_v_container_t) implement_ex(struct</div><div class="ttdef"><b>Definition:</b> vsf_tgui_control.h:540</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

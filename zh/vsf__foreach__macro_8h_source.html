@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/utilities/preprocessor/vsf_foreach_macro.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_6a3f4a93de6832ab3fcb23711763be58.html">utilities</a></li><li class="navelem"><a class="el" href="dir_0b4fd70c09904754b5eefc1d04a893db.html">preprocessor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">vsf_foreach_macro.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="vsf__foreach__macro_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   Copyright(C)2009-2019 by VSF Team                                       *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __VSF_FOREACH_H__</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define __VSF_FOREACH_H__</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__macro__calc_8h.html">vsf_macro_calc.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#a3d1c63ec87db0bb2fc03bb1e6a8c8d89">   27</a></span>&#160;<span class="preprocessor">#define __VSF_MEMPTY()</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#a6375c05e81df88387b7370f9594a6831">   28</a></span>&#160;<span class="preprocessor">#define __VSF_MDEFER(__X)                       __X __VSF_MEMPTY()</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#acb8bd4739304348210dbb30f46f0a933">   29</a></span>&#160;<span class="preprocessor">#define __VSF_MOBSTRUCT(...)                    __VA_ARGS__ __VSF_MDEFER(__VSF_MEMPTY)()</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#a7050179690e3bb79e3d118399c70ec05">   30</a></span>&#160;<span class="preprocessor">#define __VSF_MEXPAND_ONCE(...)                 __VA_ARGS__</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#a2193af2048e474151ef000f169a9ef4d">   31</a></span>&#160;<span class="preprocessor">#define __VSF_MEAT(...)</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#ad4bb17a2d2a114de70267f12495d7ab9">   33</a></span>&#160;<span class="preprocessor">#define __VSF_MEXPAND(...)                      __VSF_MEXPAND1(__VSF_MEXPAND1(__VSF_MEXPAND1(__VSF_MEXPAND1(__VA_ARGS__))))</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#a4ade6b7c27b68ae8db59411abd07446c">   34</a></span>&#160;<span class="preprocessor">#define __VSF_MEXPAND1(...)                     __VSF_MEXPAND2(__VSF_MEXPAND2(__VSF_MEXPAND2(__VSF_MEXPAND2(__VA_ARGS__))))</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#af88d71cf185135295698d8e24a2fb22e">   35</a></span>&#160;<span class="preprocessor">#define __VSF_MEXPAND2(...)                     __VSF_MEXPAND3(__VSF_MEXPAND3(__VSF_MEXPAND3(__VSF_MEXPAND3(__VA_ARGS__))))</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#a07a42571d7b556b056d82f6418707604">   36</a></span>&#160;<span class="preprocessor">#define __VSF_MEXPAND3(...)                     __VSF_MEXPAND4(__VSF_MEXPAND4(__VSF_MEXPAND4(__VSF_MEXPAND4(__VA_ARGS__))))</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#a4c35c5e689c3614aaf9d411fee5e3322">   37</a></span>&#160;<span class="preprocessor">#define __VSF_MEXPAND4(...)                     __VSF_MEXPAND5(__VSF_MEXPAND5(__VSF_MEXPAND5(__VSF_MEXPAND5(__VA_ARGS__))))</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#aecf77222faed738427896979d68afe3b">   38</a></span>&#160;<span class="preprocessor">#define __VSF_MEXPAND5(...)                     __VA_ARGS__</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#a36612941d40a3db7873f5f0520fa62a9">   41</a></span>&#160;<span class="preprocessor">#define ____VSF_IS_EMPTY(__A, __B, __SIZE, ...) __SIZE</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#a673373c9e7817903b1620870953c23a6">   42</a></span>&#160;<span class="preprocessor">#define __VSF_IS_EMPTY(...)                     ____VSF_IS_EMPTY(, ##__VA_ARGS__, 0, 1)</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#ab27fb0b3b360d79b2e91ec9d276764e9">   43</a></span>&#160;<span class="preprocessor">#define VSF_IS_EMPTY(__X, ...)                  __VSF_IS_EMPTY(__X)</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#a0b3e48fb56aa38c48fe8ce7246631685">   45</a></span>&#160;<span class="preprocessor">#define __VSF_MFOREACH(__MACRO, __MACRO_LAST, __X, ...)                          \</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">            VSF_MCAT2(__VSF_MFOREACH_, VSF_IS_EMPTY(__VA_ARGS__))(__MACRO, __MACRO_LAST, __X, __VA_ARGS__)</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#ac6039c3192b21d6bddbdbe7079b500fe">   47</a></span>&#160;<span class="preprocessor">#define __VSF_MFOREACH_0(__MACRO, __MACRO_LAST, __X, ...)                        \</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">            __MACRO(__X) __VSF_MOBSTRUCT(__VSF_MFOREACH_I)()(__MACRO, __MACRO_LAST, __VA_ARGS__)</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#a2b2a024d22a5b3256e76db24e0631340">   49</a></span>&#160;<span class="preprocessor">#define __VSF_MFOREACH_1(__MACRO, __MACRO_LAST, __X, ...)                        \</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">            __MACRO_LAST(__X)</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#acaf66048050d6abe5389dc85e4a65879">   51</a></span>&#160;<span class="preprocessor">#define __VSF_MFOREACH_I()                      __VSF_MFOREACH</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#a0fbbfb0e6d30b9d927a3e1d8ca8644c9">   52</a></span>&#160;<span class="preprocessor">#define VSF_MFOREACH_EX(__MACRO, __MACRO_LAST, ...)                             \</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">            __VSF_MEXPAND(__VSF_MFOREACH(__MACRO, __MACRO_LAST, __VA_ARGS__))</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="vsf__foreach__macro_8h.html#a2cd447435773d0154dd654f11e324f5d">   54</a></span>&#160;<span class="preprocessor">#define VSF_MFOREACH(__MACRO, ...)              VSF_MFOREACH_EX(__MACRO, __MACRO, __VA_ARGS__)</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/*   elegant but toooooo slow</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">#define ____VSF_MCHECK(__X, __SIZE, ...)        __SIZE</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">#define __VSF_MCHECK(...)                       ____VSF_MCHECK(__VA_ARGS__, 0,)</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">#define __VSF_MNOT(__X)                         __VSF_MCHECK(VSF_MCAT2_PRIMITIVE(__VSF_MNOT_, __X))</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">#define __VSF_MNOT_0                            __VSF_MDUMMY, 1,</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">#define __VSF_MCOMPL(__X)                       VSF_MCAT2_PRIMITIVE(__VSF_MCOMPL_, __X)</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">#define __VSF_MCOMPL_0                          1</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">#define __VSF_MCOMPL_1                          0</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">#define __VSF_MBOOL(__X)                        __VSF_MCOMPL(__VSF_MNOT(__X))</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">#define ____VSF_MIF(__COND)                     VSF_MCAT2_PRIMITIVE(__VSF_IF_, __COND)</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">#define __VSF_IF_0(__X, ...)                    __VA_ARGS__</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">#define __VSF_IF_1(__X, ...)                    __X</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">#define __VSF_MIF(__COND)                       ____VSF_MIF(__VSF_MBOOL(__COND))</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">#define __VSF_MWHEN(__COND)                     __VSF_MIF(__COND)(__VSF_MEXPAND_ONCE, __VSF_MEAT)</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">#define __VSF_MREPEAT(__COUNT, __MACRO, ...)                                    \</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">    __VSF_MWHEN(__COUNT) (                                                      \</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">        __VSF_MOBSTRUCT(__VSF_MREPEAT_I)() (                                    \</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">            VSF_MDEC(__COUNT), __MACRO, __VA_ARGS__                             \</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">        )                                                                       \</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">        __VSF_MOBSTRUCT(__MACRO)(VSF_MDEC(__COUNT), __VA_ARGS__)                \</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">    )</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">#define __VSF_MREPEAT_I()                       __VSF_MREPEAT</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">#define VSF_MREPEAT(__COUNT, __MACRO, ...)                                      \</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">            __VSF_MEXPAND(__VSF_MREPEAT(__COUNT, __MACRO, __VA_ARGS__))</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">#define VSF_MREPEAT_LIMIT                       VSF_MDEC_LIMIT</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="avsf__macro__calc_8h_html"><div class="ttname"><a href="vsf__macro__calc_8h.html">vsf_macro_calc.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

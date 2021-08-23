@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/component/usb/host/class/UAC/vsf_usbh_uac.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a751bed093fa77e8085efb31481979de.html">component</a></li><li class="navelem"><a class="el" href="dir_79ede6a17a83c0b3c9be93da243e9b7b.html">usb</a></li><li class="navelem"><a class="el" href="dir_186071d401fc39e1faf8df382e891469.html">host</a></li><li class="navelem"><a class="el" href="dir_44cc1633d93e7e336dea69884664cc47.html">class</a></li><li class="navelem"><a class="el" href="dir_db902a9eebae56588e6a0301bccdf8d0.html">UAC</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">vsf_usbh_uac.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="vsf__usbh__uac_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   Copyright(C)2009-2019 by VSF Team                                       *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __VSF_USBH_UAC_H__</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define __VSF_USBH_UAC_H__</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__usb__cfg_8h.html">component/usb/vsf_usb_cfg.h</a>&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#if VSF_USE_USB_HOST == ENABLED &amp;&amp; VSF_USBH_USE_UAC == ENABLED</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__usb___u_a_c_8h.html">component/usb/common/class/UAC/vsf_usb_UAC.h</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#undef PUBLIC_CONST</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#if     defined(__VSF_USBH_UAC_CLASS_IMPLEMENT)</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#   undef __VSF_USBH_UAC_CLASS_IMPLEMENT</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#   define __PLOOC_CLASS_IMPLEMENT__</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#   define PUBLIC_CONST</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="vsf__usbh__uac_8h.html#acc7f0d8dc063cf3524fdf9707913eec6">   35</a></span>&#160;<span class="preprocessor">#   define PUBLIC_CONST                         const</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">// for some hcd, one urb will take 2ms(eg. ohci), so need 2 urbs to implement 1ms interval transaction</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#ifndef VSF_USBH_UAC_CFG_URB_NUM_PER_STREAM</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="vsf__usbh__uac_8h.html#a85277fd590fda9fdacb3fdbf4471e06f">   47</a></span>&#160;<span class="preprocessor">#   define VSF_USBH_UAC_CFG_URB_NUM_PER_STREAM  1</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#if VSF_USBH_UAC_CFG_URB_NUM_PER_STREAM &gt; 8</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#   error VSF_USBH_UAC_CFG_URB_NUM_PER_STREAM MUST be &lt;= 8</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#if VSF_USE_SIMPLE_STREAM != ENABLED</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#   error VSF_USE_SIMPLE_STREAM is needed for USBH UAC driver</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classvk__usbh__uac__stream__t.html">   60</a></span>&#160;<a class="code" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code" href="classvk__usbh__uac__stream__t.html">vk_usbh_uac_stream_t</a>) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    public_member(</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="vsf__usbh__uac_8h.html#acc7f0d8dc063cf3524fdf9707913eec6">PUBLIC_CONST</a> <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> is_in          : 1;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="vsf__usbh__uac_8h.html#acc7f0d8dc063cf3524fdf9707913eec6">PUBLIC_CONST</a> <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> sample_size    : 3;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="vsf__usbh__uac_8h.html#acc7f0d8dc063cf3524fdf9707913eec6">PUBLIC_CONST</a> <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> channel_num;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="vsf__usbh__uac_8h.html#acc7f0d8dc063cf3524fdf9707913eec6">PUBLIC_CONST</a> <a class="code" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="code" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="vsf__usbh__uac_8h.html#acc7f0d8dc063cf3524fdf9707913eec6">PUBLIC_CONST</a> <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> sample_rate;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classvk__usbh__uac__stream__t.html#abb55f055c6280c93bfeb47c016c30484">   67</a></span>&#160;    )</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    private_member(</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> idx                         : 6;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> is_connected                : 1;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> is_to_disconnect            : 1;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> urb_mask;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <a class="code" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> next_frame;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="classvk__usbh__urb__t.html">vk_usbh_urb_t</a> urb[<a class="code" href="vsf__usbh__uac_8h.html#a85277fd590fda9fdacb3fdbf4471e06f">VSF_USBH_UAC_CFG_URB_NUM_PER_STREAM</a>];</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="classvsf__stream__t.html">vsf_stream_t</a> *stream;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">void</span> *param;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    )</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="classvk__usbh__class__drv__t.html">vk_usbh_class_drv_t</a> <a class="code" href="vsf__usbh__uac_8h.html#a57afec6c6278856ada01aa51872f0f81">vk_usbh_uac_drv</a>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">extern</span> <a class="code" href="classvk__usbh__uac__stream__t.html">vk_usbh_uac_stream_t</a> * <a class="code" href="vsf__usbh__uac_8h.html#aabc280384ee8d39a260fe8f00115bfa0">vsf_usbh_uac_get_stream_info</a>(<span class="keywordtype">void</span> *param, <a class="code" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> stream_idx);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">extern</span> <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__usbh__uac_8h.html#ae41313ec967ae36278d72b36cba89f95">vsf_usbh_uac_connect_stream</a>(<span class="keywordtype">void</span> *param, <a class="code" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> stream_idx, <a class="code" href="classvsf__stream__t.html">vsf_stream_t</a> *stream);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="vsf__usbh__uac_8h.html#a2c77210efd12fad4359e78f091d180c4">vsf_usbh_uac_disconnect_stream</a>(<span class="keywordtype">void</span> *param, <a class="code" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> stream_idx);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">extern</span> <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__usbh__uac_8h.html#a44631d7f3c7979d1ab352ba349dfcd3f">__vsf_usbh_uac_submit_req</a>(<span class="keywordtype">void</span> *uac_ptr, <span class="keywordtype">void</span> *data, <span class="keyword">struct</span> <a class="code" href="structusb__ctrlrequest__t.html">usb_ctrlrequest_t</a> *req);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition:</b> __type.h:42</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a273cf69d639a59973b6019625df33e30"><div class="ttname"><a href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a></div><div class="ttdeci">unsigned short uint16_t</div><div class="ttdef"><b>Definition:</b> type.h:32</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a435d1572bf3f880d55459d9805097f62"><div class="ttname"><a href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a></div><div class="ttdeci">unsigned int uint32_t</div><div class="ttdef"><b>Definition:</b> type.h:37</div></div>
+<div class="ttc" id="aarm_2type_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> type.h:27</div></div>
+<div class="ttc" id="aarm_2type_8h_html_ad0906fbe05a45fbdb000c58fe8929e70"><div class="ttname"><a href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a></div><div class="ttdeci">unsigned int uint_fast8_t</div><div class="ttdef"><b>Definition:</b> type.h:29</div></div>
+<div class="ttc" id="aclassvk__usbh__class__drv__t_html"><div class="ttname"><a href="classvk__usbh__class__drv__t.html">vk_usbh_class_drv_t</a></div><div class="ttdef"><b>Definition:</b> vsf_usbh.h:251</div></div>
+<div class="ttc" id="aclassvk__usbh__uac__stream__t_html"><div class="ttname"><a href="classvk__usbh__uac__stream__t.html">vk_usbh_uac_stream_t</a></div><div class="ttdef"><b>Definition:</b> vsf_usbh_uac.h:60</div></div>
+<div class="ttc" id="aclassvk__usbh__urb__t_html"><div class="ttname"><a href="classvk__usbh__urb__t.html">vk_usbh_urb_t</a></div><div class="ttdef"><b>Definition:</b> vsf_usbh.h:423</div></div>
+<div class="ttc" id="aclassvsf__stream__t_html"><div class="ttname"><a href="classvsf__stream__t.html">vsf_stream_t</a></div><div class="ttdef"><b>Definition:</b> vsf_simple_stream.h:203</div></div>
+<div class="ttc" id="aooc__class_8h_html"><div class="ttname"><a href="ooc__class_8h.html">ooc_class.h</a></div></div>
+<div class="ttc" id="aooc__class_8h_html_a62f3fe6fb9699483707f5352d777f2f0"><div class="ttname"><a href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a></div><div class="ttdeci">#define vsf_class(__name)</div><div class="ttdef"><b>Definition:</b> ooc_class.h:33</div></div>
+<div class="ttc" id="astructusb__ctrlrequest__t_html"><div class="ttname"><a href="structusb__ctrlrequest__t.html">usb_ctrlrequest_t</a></div><div class="ttdef"><b>Definition:</b> usb_common.h:85</div></div>
+<div class="ttc" id="avsf__sdl2__pixelformat_8c_html_a4be577502bbbb32a53837492421f2369"><div class="ttname"><a href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a></div><div class="ttdeci">SDL_PixelFormat format</div><div class="ttdef"><b>Definition:</b> vsf_sdl2_pixelformat.c:32</div></div>
+<div class="ttc" id="avsf__usb___u_a_c_8h_html"><div class="ttname"><a href="vsf__usb___u_a_c_8h.html">vsf_usb_UAC.h</a></div></div>
+<div class="ttc" id="avsf__usb__cfg_8h_html"><div class="ttname"><a href="vsf__usb__cfg_8h.html">vsf_usb_cfg.h</a></div></div>
+<div class="ttc" id="avsf__usbh__uac_8h_html_a2c77210efd12fad4359e78f091d180c4"><div class="ttname"><a href="vsf__usbh__uac_8h.html#a2c77210efd12fad4359e78f091d180c4">vsf_usbh_uac_disconnect_stream</a></div><div class="ttdeci">void vsf_usbh_uac_disconnect_stream(void *param, uint_fast8_t stream_idx)</div><div class="ttdef"><b>Definition:</b> vsf_usbh_uac.c:175</div></div>
+<div class="ttc" id="avsf__usbh__uac_8h_html_a44631d7f3c7979d1ab352ba349dfcd3f"><div class="ttname"><a href="vsf__usbh__uac_8h.html#a44631d7f3c7979d1ab352ba349dfcd3f">__vsf_usbh_uac_submit_req</a></div><div class="ttdeci">vsf_err_t __vsf_usbh_uac_submit_req(void *uac_ptr, void *data, struct usb_ctrlrequest_t *req)</div><div class="ttdef"><b>Definition:</b> vsf_usbh_uac.c:144</div></div>
+<div class="ttc" id="avsf__usbh__uac_8h_html_a57afec6c6278856ada01aa51872f0f81"><div class="ttname"><a href="vsf__usbh__uac_8h.html#a57afec6c6278856ada01aa51872f0f81">vk_usbh_uac_drv</a></div><div class="ttdeci">const vk_usbh_class_drv_t vk_usbh_uac_drv</div><div class="ttdef"><b>Definition:</b> vsf_usbh_uac.c:127</div></div>
+<div class="ttc" id="avsf__usbh__uac_8h_html_a85277fd590fda9fdacb3fdbf4471e06f"><div class="ttname"><a href="vsf__usbh__uac_8h.html#a85277fd590fda9fdacb3fdbf4471e06f">VSF_USBH_UAC_CFG_URB_NUM_PER_STREAM</a></div><div class="ttdeci">#define VSF_USBH_UAC_CFG_URB_NUM_PER_STREAM</div><div class="ttdef"><b>Definition:</b> vsf_usbh_uac.h:47</div></div>
+<div class="ttc" id="avsf__usbh__uac_8h_html_aabc280384ee8d39a260fe8f00115bfa0"><div class="ttname"><a href="vsf__usbh__uac_8h.html#aabc280384ee8d39a260fe8f00115bfa0">vsf_usbh_uac_get_stream_info</a></div><div class="ttdeci">vk_usbh_uac_stream_t * vsf_usbh_uac_get_stream_info(void *param, uint_fast8_t stream_idx)</div><div class="ttdef"><b>Definition:</b> vsf_usbh_uac.c:137</div></div>
+<div class="ttc" id="avsf__usbh__uac_8h_html_acc7f0d8dc063cf3524fdf9707913eec6"><div class="ttname"><a href="vsf__usbh__uac_8h.html#acc7f0d8dc063cf3524fdf9707913eec6">PUBLIC_CONST</a></div><div class="ttdeci">#define PUBLIC_CONST</div><div class="ttdef"><b>Definition:</b> vsf_usbh_uac.h:35</div></div>
+<div class="ttc" id="avsf__usbh__uac_8h_html_ae41313ec967ae36278d72b36cba89f95"><div class="ttname"><a href="vsf__usbh__uac_8h.html#ae41313ec967ae36278d72b36cba89f95">vsf_usbh_uac_connect_stream</a></div><div class="ttdeci">vsf_err_t vsf_usbh_uac_connect_stream(void *param, uint_fast8_t stream_idx, vsf_stream_t *stream)</div><div class="ttdef"><b>Definition:</b> vsf_usbh_uac.c:159</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

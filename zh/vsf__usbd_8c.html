@@ -1,0 +1,603 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/component/usb/device/vsf_usbd.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a751bed093fa77e8085efb31481979de.html">component</a></li><li class="navelem"><a class="el" href="dir_79ede6a17a83c0b3c9be93da243e9b7b.html">usb</a></li><li class="navelem"><a class="el" href="dir_1b073334a7eb0028d50c49b5d613c61c.html">device</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">vsf_usbd.c 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__usb__cfg_8h_source.html">component/usb/vsf_usb_cfg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__kernel_8h_source.html">kernel/vsf_kernel.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbd_8h_source.html">./vsf_usbd.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usbd__drv__ifs_8h_source.html">./vsf_usbd_drv_ifs.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ae68af52b29d55a0d7474c656fd71d931"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#ae68af52b29d55a0d7474c656fd71d931">__VSF_EDA_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:ae68af52b29d55a0d7474c656fd71d931"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3795c90d93fba4016ca41b28849556a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#a3795c90d93fba4016ca41b28849556a6">__VSF_SIMPLE_STREAM_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:a3795c90d93fba4016ca41b28849556a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af08f3b8ca47e58cfcb8cacad451d5033"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#af08f3b8ca47e58cfcb8cacad451d5033">__VSF_USBD_CLASS_IMPLEMENT</a></td></tr>
+<tr class="separator:af08f3b8ca47e58cfcb8cacad451d5033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa204ef6d8293df338c74794eaaa6f3eb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#aa204ef6d8293df338c74794eaaa6f3eb">__vsf_usbd_trace</a>(...)&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#ac43ad43b38f960d12c4e1a8e5253af32">vsf_trace_debug</a>(__VA_ARGS__)</td></tr>
+<tr class="separator:aa204ef6d8293df338c74794eaaa6f3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e1d24235201a662311e48e5c2edd230"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#a0e1d24235201a662311e48e5c2edd230">__vsf_usbd_trace_buffer</a>(__ptr,  __size)&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#aa1f84c84cca873999f880b4f5f536d7b">vsf_trace_buffer</a>(<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecaaf049cb1d8895fb74c0e8b6b52f6058f">VSF_TRACE_DEBUG</a>, (__ptr), (__size), <a class="el" href="vsf__trace_8h.html#a4becb84e007deb6eb67c11b354623d33">VSF_TRACE_DF_NEWLINE</a>)</td></tr>
+<tr class="separator:a0e1d24235201a662311e48e5c2edd230"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab98675c502d253a43dc24790c1979b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#aab98675c502d253a43dc24790c1979b1">__vsf_usbd_trace_setup</a>(__req)</td></tr>
+<tr class="separator:aab98675c502d253a43dc24790c1979b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b13129d11d50d0495f29d1a68f507c3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#a3b13129d11d50d0495f29d1a68f507c3">__vsf_usbd_trace_evt</a>(__evt,  __value)</td></tr>
+<tr class="separator:a3b13129d11d50d0495f29d1a68f507c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a2e1c989a7bad6be16a4590a2abad8ee3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#a2e1c989a7bad6be16a4590a2abad8ee3">vsf_usbd_vendor_prepare</a> (vk_usbd_dev_t *dev)</td></tr>
+<tr class="separator:a2e1c989a7bad6be16a4590a2abad8ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1353de88bdcfadfb7ce5a792cb22719d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#a1353de88bdcfadfb7ce5a792cb22719d">vsf_usbd_vendor_process</a> (vk_usbd_dev_t *dev)</td></tr>
+<tr class="separator:a1353de88bdcfadfb7ce5a792cb22719d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5eb36c0b42fb9655cfed6eb8da450af2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#a5eb36c0b42fb9655cfed6eb8da450af2">vsf_usbd_notify_user</a> (vk_usbd_dev_t *dev, usb_evt_t evt, void *param)</td></tr>
+<tr class="separator:a5eb36c0b42fb9655cfed6eb8da450af2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad83126e13d0d8485c55ee7821a70ab1b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvk__usbd__desc__t.html">vk_usbd_desc_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#ad83126e13d0d8485c55ee7821a70ab1b">vk_usbd_get_descriptor</a> (<a class="el" href="structvk__usbd__desc__t.html">vk_usbd_desc_t</a> *desc, <a class="el" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> desc_num, <a class="el" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, <a class="el" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> index, <a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a> langid)</td></tr>
+<tr class="separator:ad83126e13d0d8485c55ee7821a70ab1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac004cbeb088877ce9096857b2eb6c2d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#ac004cbeb088877ce9096857b2eb6c2d2">vk_usbd_ep_stall</a> (vk_usbd_dev_t *dev, <a class="el" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> ep)</td></tr>
+<tr class="separator:ac004cbeb088877ce9096857b2eb6c2d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49698e7c9e5418b89a87d66f71fa9944"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#a49698e7c9e5418b89a87d66f71fa9944">vk_usbd_ep_recv</a> (vk_usbd_dev_t *dev, <a class="el" href="classvk__usbd__trans__t.html">vk_usbd_trans_t</a> *trans)</td></tr>
+<tr class="separator:a49698e7c9e5418b89a87d66f71fa9944"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ec1e8d2649942d5f86fdc8857804a42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#a8ec1e8d2649942d5f86fdc8857804a42">vk_usbd_ep_send</a> (vk_usbd_dev_t *dev, <a class="el" href="classvk__usbd__trans__t.html">vk_usbd_trans_t</a> *trans)</td></tr>
+<tr class="separator:a8ec1e8d2649942d5f86fdc8857804a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1257b6a9ed50d1a1b60e7b80031f0e39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#a1257b6a9ed50d1a1b60e7b80031f0e39">vk_usbd_connect</a> (vk_usbd_dev_t *dev)</td></tr>
+<tr class="separator:a1257b6a9ed50d1a1b60e7b80031f0e39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3847d96d0900fa0b2dd5379b8ef5792d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#a3847d96d0900fa0b2dd5379b8ef5792d">vk_usbd_disconnect</a> (vk_usbd_dev_t *dev)</td></tr>
+<tr class="separator:a3847d96d0900fa0b2dd5379b8ef5792d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa74d79aa13a49ca8c994b746c35c570f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#aa74d79aa13a49ca8c994b746c35c570f">vk_usbd_wakeup</a> (vk_usbd_dev_t *dev)</td></tr>
+<tr class="separator:aa74d79aa13a49ca8c994b746c35c570f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f249de059728bbb5ab851f0c42062c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#a1f249de059728bbb5ab851f0c42062c0">vk_usbd_init</a> (vk_usbd_dev_t *dev)</td></tr>
+<tr class="separator:a1f249de059728bbb5ab851f0c42062c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b9af7ead874551dd261aa97a0057e07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#a6b9af7ead874551dd261aa97a0057e07">vk_usbd_fini</a> (vk_usbd_dev_t *dev)</td></tr>
+<tr class="separator:a6b9af7ead874551dd261aa97a0057e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebc3c2bf55b304b84d3a6dbf31a427ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#aebc3c2bf55b304b84d3a6dbf31a427ad">vk_usbd_ep_recv_stream</a> (vk_usbd_ep_stream_t *stream_ep, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
+<tr class="separator:aebc3c2bf55b304b84d3a6dbf31a427ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac8bc36c479c3eb0045f4bcfd243a196"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#aac8bc36c479c3eb0045f4bcfd243a196">vk_usbd_ep_send_stream</a> (vk_usbd_ep_stream_t *stream_ep, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
+<tr class="separator:aac8bc36c479c3eb0045f4bcfd243a196"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="ae68af52b29d55a0d7474c656fd71d931"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae68af52b29d55a0d7474c656fd71d931">&#9670;&nbsp;</a></span>__VSF_EDA_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_EDA_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3795c90d93fba4016ca41b28849556a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3795c90d93fba4016ca41b28849556a6">&#9670;&nbsp;</a></span>__VSF_SIMPLE_STREAM_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_SIMPLE_STREAM_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af08f3b8ca47e58cfcb8cacad451d5033"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af08f3b8ca47e58cfcb8cacad451d5033">&#9670;&nbsp;</a></span>__VSF_USBD_CLASS_IMPLEMENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_USBD_CLASS_IMPLEMENT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa204ef6d8293df338c74794eaaa6f3eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa204ef6d8293df338c74794eaaa6f3eb">&#9670;&nbsp;</a></span>__vsf_usbd_trace</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __vsf_usbd_trace</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#ac43ad43b38f960d12c4e1a8e5253af32">vsf_trace_debug</a>(__VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e1d24235201a662311e48e5c2edd230"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e1d24235201a662311e48e5c2edd230">&#9670;&nbsp;</a></span>__vsf_usbd_trace_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __vsf_usbd_trace_buffer</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__ptr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__size&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#aa1f84c84cca873999f880b4f5f536d7b">vsf_trace_buffer</a>(<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecaaf049cb1d8895fb74c0e8b6b52f6058f">VSF_TRACE_DEBUG</a>, (__ptr), (__size), <a class="el" href="vsf__trace_8h.html#a4becb84e007deb6eb67c11b354623d33">VSF_TRACE_DF_NEWLINE</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aab98675c502d253a43dc24790c1979b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab98675c502d253a43dc24790c1979b1">&#9670;&nbsp;</a></span>__vsf_usbd_trace_setup</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __vsf_usbd_trace_setup</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__req</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">        <span class="keywordflow">do</span> {                                                                    \</div>
+<div class="line">            __vsf_usbd_trace(<span class="stringliteral">&quot;%d: usbd_setup: &quot;</span>, <a class="code" href="vsf__eda_8h.html#a9808c81c5cd2448c83c7cef246d17973">vsf_systimer_get_ms</a>());        \</div>
+<div class="line">            __vsf_usbd_trace_buffer((__req), 8);                                \</div>
+<div class="line">        } <span class="keywordflow">while</span> (0)</div>
+<div class="ttc" id="avsf__eda_8h_html_a9808c81c5cd2448c83c7cef246d17973"><div class="ttname"><a href="vsf__eda_8h.html#a9808c81c5cd2448c83c7cef246d17973">vsf_systimer_get_ms</a></div><div class="ttdeci">#define vsf_systimer_get_ms()</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:150</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3b13129d11d50d0495f29d1a68f507c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b13129d11d50d0495f29d1a68f507c3">&#9670;&nbsp;</a></span>__vsf_usbd_trace_evt</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __vsf_usbd_trace_evt</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__evt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__value&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">        <span class="keywordflow">do</span> {                                                                    \</div>
+<div class="line">            __vsf_usbd_trace(<span class="stringliteral">&quot;%d: usbd_evt: %s %d&quot;</span> <a class="code" href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a>,       \</div>
+<div class="line">                <a class="code" href="vsf__eda_8h.html#a9808c81c5cd2448c83c7cef246d17973">vsf_systimer_get_ms</a>(), __vsf_usbd_trace_evts[(__evt)], (__value));\</div>
+<div class="line">        } <span class="keywordflow">while</span> (0)</div>
+<div class="ttc" id="avsf__trace_8h_html_a2d4ff51789ad484c6a3bb465687810f0"><div class="ttname"><a href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a></div><div class="ttdeci">#define VSF_TRACE_CFG_LINEEND</div><div class="ttdef"><b>Definition:</b> vsf_trace.h:41</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a2e1c989a7bad6be16a4590a2abad8ee3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e1c989a7bad6be16a4590a2abad8ee3">&#9670;&nbsp;</a></span>vsf_usbd_vendor_prepare()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_usbd_vendor_prepare </td>
+          <td>(</td>
+          <td class="paramtype">vk_usbd_dev_t *&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1353de88bdcfadfb7ce5a792cb22719d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1353de88bdcfadfb7ce5a792cb22719d">&#9670;&nbsp;</a></span>vsf_usbd_vendor_process()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_usbd_vendor_process </td>
+          <td>(</td>
+          <td class="paramtype">vk_usbd_dev_t *&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5eb36c0b42fb9655cfed6eb8da450af2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5eb36c0b42fb9655cfed6eb8da450af2">&#9670;&nbsp;</a></span>vsf_usbd_notify_user()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_usbd_notify_user </td>
+          <td>(</td>
+          <td class="paramtype">vk_usbd_dev_t *&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">usb_evt_t&#160;</td>
+          <td class="paramname"><em>evt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>param</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad83126e13d0d8485c55ee7821a70ab1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad83126e13d0d8485c55ee7821a70ab1b">&#9670;&nbsp;</a></span>vk_usbd_get_descriptor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvk__usbd__desc__t.html">vk_usbd_desc_t</a>* vk_usbd_get_descriptor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvk__usbd__desc__t.html">vk_usbd_desc_t</a> *&#160;</td>
+          <td class="paramname"><em>desc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a>&#160;</td>
+          <td class="paramname"><em>desc_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a>&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a>&#160;</td>
+          <td class="paramname"><em>langid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac004cbeb088877ce9096857b2eb6c2d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac004cbeb088877ce9096857b2eb6c2d2">&#9670;&nbsp;</a></span>vk_usbd_ep_stall()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vk_usbd_ep_stall </td>
+          <td>(</td>
+          <td class="paramtype">vk_usbd_dev_t *&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a>&#160;</td>
+          <td class="paramname"><em>ep</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a49698e7c9e5418b89a87d66f71fa9944"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49698e7c9e5418b89a87d66f71fa9944">&#9670;&nbsp;</a></span>vk_usbd_ep_recv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vk_usbd_ep_recv </td>
+          <td>(</td>
+          <td class="paramtype">vk_usbd_dev_t *&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classvk__usbd__trans__t.html">vk_usbd_trans_t</a> *&#160;</td>
+          <td class="paramname"><em>trans</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8ec1e8d2649942d5f86fdc8857804a42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ec1e8d2649942d5f86fdc8857804a42">&#9670;&nbsp;</a></span>vk_usbd_ep_send()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vk_usbd_ep_send </td>
+          <td>(</td>
+          <td class="paramtype">vk_usbd_dev_t *&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classvk__usbd__trans__t.html">vk_usbd_trans_t</a> *&#160;</td>
+          <td class="paramname"><em>trans</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1257b6a9ed50d1a1b60e7b80031f0e39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1257b6a9ed50d1a1b60e7b80031f0e39">&#9670;&nbsp;</a></span>vk_usbd_connect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vk_usbd_connect </td>
+          <td>(</td>
+          <td class="paramtype">vk_usbd_dev_t *&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3847d96d0900fa0b2dd5379b8ef5792d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3847d96d0900fa0b2dd5379b8ef5792d">&#9670;&nbsp;</a></span>vk_usbd_disconnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vk_usbd_disconnect </td>
+          <td>(</td>
+          <td class="paramtype">vk_usbd_dev_t *&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa74d79aa13a49ca8c994b746c35c570f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa74d79aa13a49ca8c994b746c35c570f">&#9670;&nbsp;</a></span>vk_usbd_wakeup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vk_usbd_wakeup </td>
+          <td>(</td>
+          <td class="paramtype">vk_usbd_dev_t *&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1f249de059728bbb5ab851f0c42062c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f249de059728bbb5ab851f0c42062c0">&#9670;&nbsp;</a></span>vk_usbd_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vk_usbd_init </td>
+          <td>(</td>
+          <td class="paramtype">vk_usbd_dev_t *&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6b9af7ead874551dd261aa97a0057e07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b9af7ead874551dd261aa97a0057e07">&#9670;&nbsp;</a></span>vk_usbd_fini()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vk_usbd_fini </td>
+          <td>(</td>
+          <td class="paramtype">vk_usbd_dev_t *&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aebc3c2bf55b304b84d3a6dbf31a427ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebc3c2bf55b304b84d3a6dbf31a427ad">&#9670;&nbsp;</a></span>vk_usbd_ep_recv_stream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vk_usbd_ep_recv_stream </td>
+          <td>(</td>
+          <td class="paramtype">vk_usbd_ep_stream_t *&#160;</td>
+          <td class="paramname"><em>stream_ep</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aac8bc36c479c3eb0045f4bcfd243a196"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac8bc36c479c3eb0045f4bcfd243a196">&#9670;&nbsp;</a></span>vk_usbd_ep_send_stream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vk_usbd_ep_send_stream </td>
+          <td>(</td>
+          <td class="paramtype">vk_usbd_ep_stream_t *&#160;</td>
+          <td class="paramname"><em>stream_ep</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

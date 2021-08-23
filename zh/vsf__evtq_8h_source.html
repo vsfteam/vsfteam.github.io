@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/kernel/vsf_evtq.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_1645b320da2d5ed022f940b59419d15d.html">kernel</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">vsf_evtq.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="vsf__evtq_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="vsf__evtq_8h.html#a24475e33b8159378ec4983111e156d2a">    1</a></span>&#160;<span class="comment">/****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*   Copyright (C) 2009 - 2019 by Simon Qian &lt;SimonQian@SimonQian.com&gt;       *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*                                                                           *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*                                                                           *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*                                                                           *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*  limitations under the License.                                           *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*                                                                           *</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">****************************************************************************/</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __VSF_EVTQ_H__</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define __VSF_EVTQ_H__</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__kernel__cfg_8h.html">kernel/vsf_kernel_cfg.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#if VSF_USE_KERNEL == ENABLED</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__eda_8h.html">./vsf_eda.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structvsf__evtq__ctx__t.html">   34</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structvsf__evtq__ctx__t.html">vsf_evtq_ctx_t</a> {</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structvsf__evtq__ctx__t.html#aeb5ffc92e19fbb98208eb2e772f8e427">   35</a></span>&#160;    <a class="code" href="classvsf__eda__t.html">vsf_eda_t</a> *<a class="code" href="structvsf__evtq__ctx__t.html#aeb5ffc92e19fbb98208eb2e772f8e427">eda</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structvsf__evtq__ctx__t.html#af159510039003abc38d94bea1e10eede">   36</a></span>&#160;    <a class="code" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> <a class="code" href="structvsf__evtq__ctx__t.html#af159510039003abc38d94bea1e10eede">evt</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structvsf__evtq__ctx__t.html#af9279e0723324181bdb748ec3878f05e">   37</a></span>&#160;    <a class="code" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> <a class="code" href="structvsf__evtq__ctx__t.html#af9279e0723324181bdb748ec3878f05e">msg</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="vsf__evtq_8h.html#affb0f20e3e9a6d70ce541b438b90f618">   38</a></span>&#160;} <a class="code" href="vsf__evtq_8h.html#affb0f20e3e9a6d70ce541b438b90f618">vsf_evtq_ctx_t</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#if VSF_KERNEL_CFG_ALLOW_KERNEL_BEING_PREEMPTED == ENABLED</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structvsf__evt__node__t.html">vsf_evt_node_t</a> <a class="code" href="structvsf__evt__node__t.html">vsf_evt_node_t</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structvsf__evtq__t.html">vsf_evtq_t</a> <a class="code" href="structvsf__evtq__t.html">vsf_evtq_t</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#if VSF_KERNEL_CFG_SUPPORT_DYNAMIC_PRIOTIRY == ENABLED</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structvsf__evtq__t.html">   47</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structvsf__evtq__t.html">vsf_evtq_t</a> {</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structvsf__evtq__t.html#a1e386601d054bee4cdd9dbfd081bca8f">   48</a></span>&#160;    <a class="code" href="structvsf__dlist__t.html">vsf_dlist_t</a> <a class="code" href="structvsf__evtq__t.html#a1e386601d054bee4cdd9dbfd081bca8f">rdy_list</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structvsf__evtq__t.html#aabf2f8b4374f55394d5407ad303e652c">   49</a></span>&#160;    <a class="code" href="structvsf__evtq__ctx__t.html">vsf_evtq_ctx_t</a> <a class="code" href="structvsf__evtq__t.html#aabf2f8b4374f55394d5407ad303e652c">cur</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structvsf__evt__node__t.html">   52</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structvsf__evt__node__t.html">vsf_evt_node_t</a> {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    implement(<a class="code" href="structvsf__slist__node__t.html">vsf_slist_node_t</a>)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#if VSF_KERNEL_CFG_SUPPORT_EVT_MESSAGE == ENABLED</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structvsf__evt__node__t.html#a8fccc61f2fe4d065c20d4b810a9bcb7e">   56</a></span>&#160;    <a class="code" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> <a class="code" href="structvsf__evt__node__t.html#a8fccc61f2fe4d065c20d4b810a9bcb7e">evt</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structvsf__evt__node__t.html#ab4a861c617943523655e08ae2ee89250">   57</a></span>&#160;    <span class="keywordtype">void</span> *<a class="code" href="structvsf__evt__node__t.html#ab4a861c617943523655e08ae2ee89250">msg</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">union </span>{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> <a class="code" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">void</span> *<a class="code" href="structvsf__evt__node__t.html#ab4a861c617943523655e08ae2ee89250">msg</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    } evt_union;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">struct </span><a class="code" href="structvsf__evt__node__t.html">vsf_evt_node_t</a> {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="classvsf__eda__t.html">vsf_eda_t</a> *eda;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#if VSF_KERNEL_CFG_SUPPORT_EVT_MESSAGE == ENABLED</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> <a class="code" href="structvsf__evt__node__t.html#a8fccc61f2fe4d065c20d4b810a9bcb7e">evt</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> *<a class="code" href="structvsf__evt__node__t.html#ab4a861c617943523655e08ae2ee89250">msg</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">union </span>{</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> <a class="code" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">void</span> *<a class="code" href="structvsf__evt__node__t.html#ab4a861c617943523655e08ae2ee89250">msg</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    } evt_union;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">struct </span><a class="code" href="structvsf__evtq__t.html">vsf_evtq_t</a> {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="structvsf__evt__node__t.html">vsf_evt_node_t</a> *node;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> bitsize;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// private</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="vsf__queue_8h.html#ace756213e1bd262b8d63eaf28e6249c9">tail</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="structvsf__evtq__ctx__t.html">vsf_evtq_ctx_t</a> <a class="code" href="structvsf__evtq__t.html#aabf2f8b4374f55394d5407ad303e652c">cur</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#if VSF_KERNEL_CFG_ALLOW_KERNEL_BEING_PREEMPTED == ENABLED</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">extern</span> <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__evtq_8h.html#a5ee45aacc81f57c45fd7aa3d59766742">vsf_evtq_init</a>(<a class="code" href="structvsf__evtq__t.html">vsf_evtq_t</a> *this_ptr);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#   if VSF_KERNEL_CFG_SUPPORT_EVT_MESSAGE == ENABLED</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">extern</span> <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__evtq_8h.html#aea09ee35f41ebcd7a40537f0a77dac67">vsf_evtq_post_evt_msg</a>(<a class="code" href="classvsf__eda__t.html">vsf_eda_t</a> *eda, <a class="code" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> evt, <span class="keywordtype">void</span> *msg);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#   endif</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="vsf__evtq_8h.html#a30d0dbc36448b2ac3551d0df32bd21f4">vsf_evtq_is_empty</a>(<a class="code" href="structvsf__evtq__t.html">vsf_evtq_t</a> *this_ptr);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">extern</span> <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__evtq_8h.html#a41f4e429d3e55cc678f7b971f2985c61">vsf_evtq_poll</a>(<a class="code" href="structvsf__evtq__t.html">vsf_evtq_t</a> *this_ptr);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="vsf__evtq_8h.html#aae2b42edaa7e48a85463f279f9855952">vsf_evtq_clean_evt</a>(<a class="code" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> evt);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="vsf__evtq_8h.html#a27a829f3ad01d914f011f0dfb5f7e349">vsf_evtq_on_eda_init</a>(<a class="code" href="classvsf__eda__t.html">vsf_eda_t</a> *eda);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="vsf__evtq_8h.html#a272c79cdc61e9ec69d151ae92f8761d6">vsf_evtq_on_eda_fini</a>(<a class="code" href="classvsf__eda__t.html">vsf_eda_t</a> *eda);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keyword">extern</span> <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__evtq_8h.html#a150e15525a0a2eb17f2aff037c6e8d9d">vsf_evtq_post_evt_ex</a>(<a class="code" href="classvsf__eda__t.html">vsf_eda_t</a> *eda, <a class="code" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> evt, <span class="keywordtype">bool</span> force);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">extern</span> <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__evtq_8h.html#ad4506946fbb25a59fa0d603ae3986be9">vsf_evtq_post_evt</a>(<a class="code" href="classvsf__eda__t.html">vsf_eda_t</a> *eda, <a class="code" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> evt);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">extern</span> <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__evtq_8h.html#ab139405c95b61089239969454fb886e2">vsf_evtq_post_msg</a>(<a class="code" href="classvsf__eda__t.html">vsf_eda_t</a> *eda, <span class="keywordtype">void</span> *msg);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition:</b> __type.h:42</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a09674b9e56fd7a93a2169aa9210deec7"><div class="ttname"><a href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a></div><div class="ttdeci">uint32_t uintptr_t</div><div class="ttdef"><b>Definition:</b> type.h:51</div></div>
+<div class="ttc" id="aarm_2type_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> type.h:27</div></div>
+<div class="ttc" id="aclassvsf__eda__t_html"><div class="ttname"><a href="classvsf__eda__t.html">vsf_eda_t</a></div><div class="ttdef"><b>Definition:</b> vsf_eda.h:711</div></div>
+<div class="ttc" id="astructvsf__dlist__t_html"><div class="ttname"><a href="structvsf__dlist__t.html">vsf_dlist_t</a></div><div class="ttdef"><b>Definition:</b> vsf_list.h:857</div></div>
+<div class="ttc" id="astructvsf__evt__node__t_html"><div class="ttname"><a href="structvsf__evt__node__t.html">vsf_evt_node_t</a></div><div class="ttdef"><b>Definition:</b> vsf_evtq.h:52</div></div>
+<div class="ttc" id="astructvsf__evt__node__t_html_a8fccc61f2fe4d065c20d4b810a9bcb7e"><div class="ttname"><a href="structvsf__evt__node__t.html#a8fccc61f2fe4d065c20d4b810a9bcb7e">vsf_evt_node_t::evt</a></div><div class="ttdeci">vsf_slist_node_t vsf_evt_t evt</div><div class="ttdef"><b>Definition:</b> vsf_evtq.h:56</div></div>
+<div class="ttc" id="astructvsf__evt__node__t_html_ab4a861c617943523655e08ae2ee89250"><div class="ttname"><a href="structvsf__evt__node__t.html#ab4a861c617943523655e08ae2ee89250">vsf_evt_node_t::msg</a></div><div class="ttdeci">void * msg</div><div class="ttdef"><b>Definition:</b> vsf_evtq.h:57</div></div>
+<div class="ttc" id="astructvsf__evtq__ctx__t_html"><div class="ttname"><a href="structvsf__evtq__ctx__t.html">vsf_evtq_ctx_t</a></div><div class="ttdef"><b>Definition:</b> vsf_evtq.h:34</div></div>
+<div class="ttc" id="astructvsf__evtq__ctx__t_html_aeb5ffc92e19fbb98208eb2e772f8e427"><div class="ttname"><a href="structvsf__evtq__ctx__t.html#aeb5ffc92e19fbb98208eb2e772f8e427">vsf_evtq_ctx_t::eda</a></div><div class="ttdeci">vsf_eda_t * eda</div><div class="ttdef"><b>Definition:</b> vsf_evtq.h:35</div></div>
+<div class="ttc" id="astructvsf__evtq__ctx__t_html_af159510039003abc38d94bea1e10eede"><div class="ttname"><a href="structvsf__evtq__ctx__t.html#af159510039003abc38d94bea1e10eede">vsf_evtq_ctx_t::evt</a></div><div class="ttdeci">vsf_evt_t evt</div><div class="ttdef"><b>Definition:</b> vsf_evtq.h:36</div></div>
+<div class="ttc" id="astructvsf__evtq__ctx__t_html_af9279e0723324181bdb748ec3878f05e"><div class="ttname"><a href="structvsf__evtq__ctx__t.html#af9279e0723324181bdb748ec3878f05e">vsf_evtq_ctx_t::msg</a></div><div class="ttdeci">uintptr_t msg</div><div class="ttdef"><b>Definition:</b> vsf_evtq.h:37</div></div>
+<div class="ttc" id="astructvsf__evtq__t_html"><div class="ttname"><a href="structvsf__evtq__t.html">vsf_evtq_t</a></div><div class="ttdef"><b>Definition:</b> vsf_evtq.h:47</div></div>
+<div class="ttc" id="astructvsf__evtq__t_html_a1e386601d054bee4cdd9dbfd081bca8f"><div class="ttname"><a href="structvsf__evtq__t.html#a1e386601d054bee4cdd9dbfd081bca8f">vsf_evtq_t::rdy_list</a></div><div class="ttdeci">vsf_dlist_t rdy_list</div><div class="ttdef"><b>Definition:</b> vsf_evtq.h:48</div></div>
+<div class="ttc" id="astructvsf__evtq__t_html_aabf2f8b4374f55394d5407ad303e652c"><div class="ttname"><a href="structvsf__evtq__t.html#aabf2f8b4374f55394d5407ad303e652c">vsf_evtq_t::cur</a></div><div class="ttdeci">vsf_evtq_ctx_t cur</div><div class="ttdef"><b>Definition:</b> vsf_evtq.h:49</div></div>
+<div class="ttc" id="astructvsf__slist__node__t_html"><div class="ttname"><a href="structvsf__slist__node__t.html">vsf_slist_node_t</a></div><div class="ttdef"><b>Definition:</b> vsf_list.h:850</div></div>
+<div class="ttc" id="avsf__audio_8h_html_ad5265e9eca2f756804584a9ac3335519"><div class="ttname"><a href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a></div><div class="ttdeci">vk_av_control_value_t value</div><div class="ttdef"><b>Definition:</b> vsf_audio.h:86</div></div>
+<div class="ttc" id="avsf__eda_8h_html"><div class="ttname"><a href="vsf__eda_8h.html">vsf_eda.h</a></div></div>
+<div class="ttc" id="avsf__eda_8h_html_a0095e13b0285f6d680edab1e0f9bd2f3"><div class="ttname"><a href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a></div><div class="ttdeci">int16_t vsf_evt_t</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:610</div></div>
+<div class="ttc" id="avsf__evtq_8h_html_a150e15525a0a2eb17f2aff037c6e8d9d"><div class="ttname"><a href="vsf__evtq_8h.html#a150e15525a0a2eb17f2aff037c6e8d9d">vsf_evtq_post_evt_ex</a></div><div class="ttdeci">vsf_err_t vsf_evtq_post_evt_ex(vsf_eda_t *eda, vsf_evt_t evt, bool force)</div><div class="ttdef"><b>Definition:</b> vsf_evtq_list.c:213</div></div>
+<div class="ttc" id="avsf__evtq_8h_html_a272c79cdc61e9ec69d151ae92f8761d6"><div class="ttname"><a href="vsf__evtq_8h.html#a272c79cdc61e9ec69d151ae92f8761d6">vsf_evtq_on_eda_fini</a></div><div class="ttdeci">void vsf_evtq_on_eda_fini(vsf_eda_t *eda)</div><div class="ttdef"><b>Definition:</b> vsf_evtq_list.c:111</div></div>
+<div class="ttc" id="avsf__evtq_8h_html_a27a829f3ad01d914f011f0dfb5f7e349"><div class="ttname"><a href="vsf__evtq_8h.html#a27a829f3ad01d914f011f0dfb5f7e349">vsf_evtq_on_eda_init</a></div><div class="ttdeci">void vsf_evtq_on_eda_init(vsf_eda_t *eda)</div><div class="ttdef"><b>Definition:</b> vsf_evtq_list.c:105</div></div>
+<div class="ttc" id="avsf__evtq_8h_html_a30d0dbc36448b2ac3551d0df32bd21f4"><div class="ttname"><a href="vsf__evtq_8h.html#a30d0dbc36448b2ac3551d0df32bd21f4">vsf_evtq_is_empty</a></div><div class="ttdeci">bool vsf_evtq_is_empty(vsf_evtq_t *this_ptr)</div><div class="ttdef"><b>Definition:</b> vsf_evtq_list.c:243</div></div>
+<div class="ttc" id="avsf__evtq_8h_html_a41f4e429d3e55cc678f7b971f2985c61"><div class="ttname"><a href="vsf__evtq_8h.html#a41f4e429d3e55cc678f7b971f2985c61">vsf_evtq_poll</a></div><div class="ttdeci">vsf_err_t vsf_evtq_poll(vsf_evtq_t *this_ptr)</div><div class="ttdef"><b>Definition:</b> vsf_evtq_list.c:303</div></div>
+<div class="ttc" id="avsf__evtq_8h_html_a5ee45aacc81f57c45fd7aa3d59766742"><div class="ttname"><a href="vsf__evtq_8h.html#a5ee45aacc81f57c45fd7aa3d59766742">vsf_evtq_init</a></div><div class="ttdeci">vsf_err_t vsf_evtq_init(vsf_evtq_t *this_ptr)</div><div class="ttdef"><b>Definition:</b> vsf_evtq_list.c:143</div></div>
+<div class="ttc" id="avsf__evtq_8h_html_aae2b42edaa7e48a85463f279f9855952"><div class="ttname"><a href="vsf__evtq_8h.html#aae2b42edaa7e48a85463f279f9855952">vsf_evtq_clean_evt</a></div><div class="ttdeci">void vsf_evtq_clean_evt(vsf_evt_t evt)</div><div class="ttdef"><b>Definition:</b> vsf_evtq_list.c:248</div></div>
+<div class="ttc" id="avsf__evtq_8h_html_ab139405c95b61089239969454fb886e2"><div class="ttname"><a href="vsf__evtq_8h.html#ab139405c95b61089239969454fb886e2">vsf_evtq_post_msg</a></div><div class="ttdeci">vsf_err_t vsf_evtq_post_msg(vsf_eda_t *eda, void *msg)</div><div class="ttdef"><b>Definition:</b> vsf_evtq_list.c:227</div></div>
+<div class="ttc" id="avsf__evtq_8h_html_ad4506946fbb25a59fa0d603ae3986be9"><div class="ttname"><a href="vsf__evtq_8h.html#ad4506946fbb25a59fa0d603ae3986be9">vsf_evtq_post_evt</a></div><div class="ttdeci">vsf_err_t vsf_evtq_post_evt(vsf_eda_t *eda, vsf_evt_t evt)</div><div class="ttdef"><b>Definition:</b> vsf_evtq_list.c:222</div></div>
+<div class="ttc" id="avsf__evtq_8h_html_aea09ee35f41ebcd7a40537f0a77dac67"><div class="ttname"><a href="vsf__evtq_8h.html#aea09ee35f41ebcd7a40537f0a77dac67">vsf_evtq_post_evt_msg</a></div><div class="ttdeci">vsf_err_t vsf_evtq_post_evt_msg(vsf_eda_t *eda, vsf_evt_t evt, void *msg)</div><div class="ttdef"><b>Definition:</b> vsf_evtq_list.c:237</div></div>
+<div class="ttc" id="avsf__evtq_8h_html_affb0f20e3e9a6d70ce541b438b90f618"><div class="ttname"><a href="vsf__evtq_8h.html#affb0f20e3e9a6d70ce541b438b90f618">vsf_evtq_ctx_t</a></div><div class="ttdeci">struct vsf_evtq_ctx_t vsf_evtq_ctx_t</div></div>
+<div class="ttc" id="avsf__kernel__cfg_8h_html"><div class="ttname"><a href="vsf__kernel__cfg_8h.html">vsf_kernel_cfg.h</a></div></div>
+<div class="ttc" id="avsf__queue_8h_html_ace756213e1bd262b8d63eaf28e6249c9"><div class="ttname"><a href="vsf__queue_8h.html#ace756213e1bd262b8d63eaf28e6249c9">tail</a></div><div class="ttdeci">uint16_t tail</div><div class="ttdef"><b>Definition:</b> vsf_queue.h:632</div></div>
+<div class="ttc" id="avsf__queue_8h_html_ae0411d119b6e19281b04bbe57cc854bc"><div class="ttname"><a href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a></div><div class="ttdeci">uint16_t head</div><div class="ttdef"><b>Definition:</b> vsf_queue.h:632</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

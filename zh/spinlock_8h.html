@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/xboot/include/arch/spinlock.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_6dccbc0e34964ec7abf91534716db75d.html">xboot</a></li><li class="navelem"><a class="el" href="dir_16c32f6424f932dddf3e10153d292d03.html">include</a></li><li class="navelem"><a class="el" href="dir_3943d1276bcd35074cd17ff68fd40ef4.html">arch</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a>  </div>
+  <div class="headertitle">
+<div class="title">spinlock.h 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__utilities_8h_source.html">utilities/vsf_utilities.h</a>&quot;</code><br />
+</div>
+<p><a href="spinlock_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a8b8d318fcfc6959420c3c0c92c742e5a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spinlock_8h.html#a8b8d318fcfc6959420c3c0c92c742e5a">SPIN_LOCK_INIT</a>()&#160;&#160;&#160;(0)</td></tr>
+<tr class="separator:a8b8d318fcfc6959420c3c0c92c742e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05ea71770794314af9fd1f6a9a1b602b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spinlock_8h.html#a05ea71770794314af9fd1f6a9a1b602b">spin_lock_init</a>(lock)&#160;&#160;&#160;do { *lock = 0; } while(0)</td></tr>
+<tr class="separator:a05ea71770794314af9fd1f6a9a1b602b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e61b60c62dd06a0cfa65fd154a11e70"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spinlock_8h.html#a7e61b60c62dd06a0cfa65fd154a11e70">__spin_lock</a>(lock)&#160;&#160;&#160;do { *lock = 1; } while (0)</td></tr>
+<tr class="separator:a7e61b60c62dd06a0cfa65fd154a11e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a872d10f3b8ba88b4fbf2d5463f1202ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spinlock_8h.html#a872d10f3b8ba88b4fbf2d5463f1202ef">__spin_unlock</a>(lock)&#160;&#160;&#160;do { *lock = 0; } while (0)</td></tr>
+<tr class="separator:a872d10f3b8ba88b4fbf2d5463f1202ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adda1f4412c357d6e2b23215739d5b329"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spinlock_8h.html#adda1f4412c357d6e2b23215739d5b329">spin_trylock</a>(lock)&#160;&#160;&#160;(<a class="el" href="spinlock_8h.html#a6683bb6050276e933771abcd14f03132">spin_lock</a>(lock), 1)</td></tr>
+<tr class="separator:adda1f4412c357d6e2b23215739d5b329"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6683bb6050276e933771abcd14f03132"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spinlock_8h.html#a6683bb6050276e933771abcd14f03132">spin_lock</a>(lock)&#160;&#160;&#160;do { vsf_protect_t orig = vsf_protect_int(); <a class="el" href="spinlock_8h.html#a7e61b60c62dd06a0cfa65fd154a11e70">__spin_lock</a>(lock); vsf_unprotect_int(orig); } while (0)</td></tr>
+<tr class="separator:a6683bb6050276e933771abcd14f03132"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae869161ac7df858751f131d00cf9b4c0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spinlock_8h.html#ae869161ac7df858751f131d00cf9b4c0">spin_unlock</a>(lock)&#160;&#160;&#160;do { vsf_protect_t orig = vsf_protect_int(); <a class="el" href="spinlock_8h.html#a872d10f3b8ba88b4fbf2d5463f1202ef">__spin_unlock</a>(lock); vsf_unprotect_int(orig); } while (0)</td></tr>
+<tr class="separator:ae869161ac7df858751f131d00cf9b4c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4bbfd79ee40bb6cd66f5660f379379b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spinlock_8h.html#ab4bbfd79ee40bb6cd66f5660f379379b">spin_lock_irq</a>(lock)&#160;&#160;&#160;do { vsf_disable_interrupt(); <a class="el" href="spinlock_8h.html#a7e61b60c62dd06a0cfa65fd154a11e70">__spin_lock</a>(lock); } while(0)</td></tr>
+<tr class="separator:ab4bbfd79ee40bb6cd66f5660f379379b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3be11fd55b088cf4ce31243ff7a3f29"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spinlock_8h.html#ab3be11fd55b088cf4ce31243ff7a3f29">spin_unlock_irq</a>(lock)&#160;&#160;&#160;do { <a class="el" href="spinlock_8h.html#a872d10f3b8ba88b4fbf2d5463f1202ef">__spin_unlock</a>(lock); vsf_enable_interrupt(); } while(0)</td></tr>
+<tr class="separator:ab3be11fd55b088cf4ce31243ff7a3f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd13c671b71b924b56a112bbf4ba0d8d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spinlock_8h.html#afd13c671b71b924b56a112bbf4ba0d8d">spin_lock_irqsave</a>(lock,  flags)&#160;&#160;&#160;do { flags = vsf_protect_int(); <a class="el" href="spinlock_8h.html#a7e61b60c62dd06a0cfa65fd154a11e70">__spin_lock</a>(lock); } while(0)</td></tr>
+<tr class="separator:afd13c671b71b924b56a112bbf4ba0d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3b42dadd99d57be4af424545dbb59bc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spinlock_8h.html#ac3b42dadd99d57be4af424545dbb59bc">spin_unlock_irqrestore</a>(lock,  flags)&#160;&#160;&#160;do { <a class="el" href="spinlock_8h.html#a872d10f3b8ba88b4fbf2d5463f1202ef">__spin_unlock</a>(lock); vsf_unprotect_int(flags); } while(0)</td></tr>
+<tr class="separator:ac3b42dadd99d57be4af424545dbb59bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:ae8229571968ef273d771ad747e87450b"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spinlock_8h.html#ae8229571968ef273d771ad747e87450b">spinlock_t</a></td></tr>
+<tr class="separator:ae8229571968ef273d771ad747e87450b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fc75a16b8297a5dc671668e0280910b"><td class="memItemLeft" align="right" valign="top">typedef vsf_protect_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spinlock_8h.html#a1fc75a16b8297a5dc671668e0280910b">irq_flags_t</a></td></tr>
+<tr class="separator:a1fc75a16b8297a5dc671668e0280910b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a8b8d318fcfc6959420c3c0c92c742e5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b8d318fcfc6959420c3c0c92c742e5a">&#9670;&nbsp;</a></span>SPIN_LOCK_INIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SPIN_LOCK_INIT</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;(0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a05ea71770794314af9fd1f6a9a1b602b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05ea71770794314af9fd1f6a9a1b602b">&#9670;&nbsp;</a></span>spin_lock_init</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define spin_lock_init</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">lock</td><td>)</td>
+          <td>&#160;&#160;&#160;do { *lock = 0; } while(0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7e61b60c62dd06a0cfa65fd154a11e70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e61b60c62dd06a0cfa65fd154a11e70">&#9670;&nbsp;</a></span>__spin_lock</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __spin_lock</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">lock</td><td>)</td>
+          <td>&#160;&#160;&#160;do { *lock = 1; } while (0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a872d10f3b8ba88b4fbf2d5463f1202ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a872d10f3b8ba88b4fbf2d5463f1202ef">&#9670;&nbsp;</a></span>__spin_unlock</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __spin_unlock</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">lock</td><td>)</td>
+          <td>&#160;&#160;&#160;do { *lock = 0; } while (0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adda1f4412c357d6e2b23215739d5b329"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adda1f4412c357d6e2b23215739d5b329">&#9670;&nbsp;</a></span>spin_trylock</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define spin_trylock</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">lock</td><td>)</td>
+          <td>&#160;&#160;&#160;(<a class="el" href="spinlock_8h.html#a6683bb6050276e933771abcd14f03132">spin_lock</a>(lock), 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6683bb6050276e933771abcd14f03132"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6683bb6050276e933771abcd14f03132">&#9670;&nbsp;</a></span>spin_lock</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define spin_lock</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">lock</td><td>)</td>
+          <td>&#160;&#160;&#160;do { vsf_protect_t orig = vsf_protect_int(); <a class="el" href="spinlock_8h.html#a7e61b60c62dd06a0cfa65fd154a11e70">__spin_lock</a>(lock); vsf_unprotect_int(orig); } while (0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae869161ac7df858751f131d00cf9b4c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae869161ac7df858751f131d00cf9b4c0">&#9670;&nbsp;</a></span>spin_unlock</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define spin_unlock</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">lock</td><td>)</td>
+          <td>&#160;&#160;&#160;do { vsf_protect_t orig = vsf_protect_int(); <a class="el" href="spinlock_8h.html#a872d10f3b8ba88b4fbf2d5463f1202ef">__spin_unlock</a>(lock); vsf_unprotect_int(orig); } while (0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab4bbfd79ee40bb6cd66f5660f379379b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4bbfd79ee40bb6cd66f5660f379379b">&#9670;&nbsp;</a></span>spin_lock_irq</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define spin_lock_irq</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">lock</td><td>)</td>
+          <td>&#160;&#160;&#160;do { vsf_disable_interrupt(); <a class="el" href="spinlock_8h.html#a7e61b60c62dd06a0cfa65fd154a11e70">__spin_lock</a>(lock); } while(0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3be11fd55b088cf4ce31243ff7a3f29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3be11fd55b088cf4ce31243ff7a3f29">&#9670;&nbsp;</a></span>spin_unlock_irq</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define spin_unlock_irq</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">lock</td><td>)</td>
+          <td>&#160;&#160;&#160;do { <a class="el" href="spinlock_8h.html#a872d10f3b8ba88b4fbf2d5463f1202ef">__spin_unlock</a>(lock); vsf_enable_interrupt(); } while(0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd13c671b71b924b56a112bbf4ba0d8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd13c671b71b924b56a112bbf4ba0d8d">&#9670;&nbsp;</a></span>spin_lock_irqsave</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define spin_lock_irqsave</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">lock, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">flags&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;do { flags = vsf_protect_int(); <a class="el" href="spinlock_8h.html#a7e61b60c62dd06a0cfa65fd154a11e70">__spin_lock</a>(lock); } while(0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3b42dadd99d57be4af424545dbb59bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3b42dadd99d57be4af424545dbb59bc">&#9670;&nbsp;</a></span>spin_unlock_irqrestore</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define spin_unlock_irqrestore</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">lock, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">flags&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;do { <a class="el" href="spinlock_8h.html#a872d10f3b8ba88b4fbf2d5463f1202ef">__spin_unlock</a>(lock); vsf_unprotect_int(flags); } while(0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类型定义说明</h2>
+<a id="ae8229571968ef273d771ad747e87450b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8229571968ef273d771ad747e87450b">&#9670;&nbsp;</a></span>spinlock_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="spinlock_8h.html#ae8229571968ef273d771ad747e87450b">spinlock_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1fc75a16b8297a5dc671668e0280910b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fc75a16b8297a5dc671668e0280910b">&#9670;&nbsp;</a></span>irq_flags_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef vsf_protect_t <a class="el" href="spinlock_8h.html#a1fc75a16b8297a5dc671668e0280910b">irq_flags_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

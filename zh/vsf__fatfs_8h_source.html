@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/component/fs/driver/fatfs/vsf_fatfs.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a751bed093fa77e8085efb31481979de.html">component</a></li><li class="navelem"><a class="el" href="dir_bf93797c8396acb7c2648dbf1a152c58.html">fs</a></li><li class="navelem"><a class="el" href="dir_6a4271002b0635f97021938cd383144d.html">driver</a></li><li class="navelem"><a class="el" href="dir_0ed573ae48733f9ac91b00f71a8e6c4d.html">fatfs</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">vsf_fatfs.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="vsf__fatfs_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   Copyright(C)2009-2019 by VSF Team                                       *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __VSF_FATFS_H__</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define __VSF_FATFS_H__</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;../../vsf_fs_cfg.h&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#if VSF_USE_FS == ENABLED &amp;&amp; VSF_FS_USE_FATFS == ENABLED</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;../malfs/vsf_malfs.h&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#if     defined(__VSF_FATFS_CLASS_IMPLEMENT)</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#   undef __VSF_FATFS_CLASS_IMPLEMENT</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#   define __PLOOC_CLASS_IMPLEMENT__</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#a32c26783a09eca0b3cbe77abd1d58122">   42</a></span>&#160;<span class="preprocessor">#define implement_fatfs_info(__block_size, __cache_num)                         \</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">    implement(__vk_fatfs_info_t)                                                \</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">    __implement_malfs_cache(__block_size, __cache_num)</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#a653d1de5226a64f5d5d007fa64398cfe">   46</a></span>&#160;<span class="preprocessor">#define init_fatfs_info_ex(__info, __block_size, __cache_num, __fatinfo)        \</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">    do {                                                                        \</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">        __fatinfo-&gt;block_size = __block_size;                                   \</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">        __fatinfo-&gt;cache.number = __cache_num;                                  \</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">        __fatinfo-&gt;cache.nodes = __info-&gt;__cache_nodes;                         \</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">    } while (0)</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#a4193aef976694d4615cf278d3e0bc774">   53</a></span>&#160;<span class="preprocessor">#define init_fatfs_info(__info, __block_size, __cache_num)                      \</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">    .block_size = __block_size,                                                 \</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">    .cache      = {                                                             \</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">        .number = __cache_num,                                                  \</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">        .nodes  = __info.__cache_nodes,                                         \</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">    },</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<a class="code" href="ooc__class_8h.html#a226f6a53efbee32ec33e32995b0ab6c9">vsf_dcl_class</a>(<a class="code" href="classvk__fatfs__file__t.html">vk_fatfs_file_t</a>)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<a class="code" href="ooc__class_8h.html#a226f6a53efbee32ec33e32995b0ab6c9">vsf_dcl_class</a>(<a class="code" href="class____vk__fatfs__info__t.html">__vk_fatfs_info_t</a>)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5">   66</a></span>&#160;typedef enum <a class="code" href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5">vk_fat_type_t</a> {</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5acbd87c98ae712d1befcf64846898fe1b">   67</a></span>&#160;    <a class="code" href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5acbd87c98ae712d1befcf64846898fe1b">VSF_FAT_NONE</a>,</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5a799220edeee50a5e6203d0d84bdda4f5">   68</a></span>&#160;    <a class="code" href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5a799220edeee50a5e6203d0d84bdda4f5">VSF_FAT_12</a>,</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5adf391e24a0243184b2421982f61bb59d">   69</a></span>&#160;    <a class="code" href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5adf391e24a0243184b2421982f61bb59d">VSF_FAT_16</a>,</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5a7183e90a3e8fafd4fa2ab6f0a8986397">   70</a></span>&#160;    <a class="code" href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5a7183e90a3e8fafd4fa2ab6f0a8986397">VSF_FAT_32</a>,</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5ab731c1f6ac6482b1492af9cc396df9c6">   71</a></span>&#160;    <a class="code" href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5ab731c1f6ac6482b1492af9cc396df9c6">VSF_FAT_EX</a>,</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#a3895e03f73baa09c25e018d59c090e1d">   72</a></span>&#160;} <a class="code" href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5">vk_fat_type_t</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#afba38d970e31d95540f505b1c42cfff4">   74</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code" href="vsf__fatfs_8h.html#afba38d970e31d95540f505b1c42cfff4">vk_fat_file_attr_t</a> {</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#afba38d970e31d95540f505b1c42cfff4a9938ba17b34f85e5e63d17021dd17c4e">   75</a></span>&#160;    <a class="code" href="vsf__fatfs_8h.html#afba38d970e31d95540f505b1c42cfff4a9938ba17b34f85e5e63d17021dd17c4e">VSF_FAT_FILE_ATTR_VOLUMID</a> = <a class="code" href="vsf__fs_8h.html#a1cf4e823354d8a8bcd5cd764421ec5eda82b4c6bfda4966f2fb397ba852cf5b65">VSF_FILE_ATTR_EXT</a>,</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#afba38d970e31d95540f505b1c42cfff4a02583ac599b75308dc4afa8fb9c91e8e">   76</a></span>&#160;    <a class="code" href="vsf__fatfs_8h.html#afba38d970e31d95540f505b1c42cfff4a02583ac599b75308dc4afa8fb9c91e8e">VSF_FAT_FILE_ATTR_SYSTEM</a>  = <a class="code" href="vsf__fs_8h.html#a1cf4e823354d8a8bcd5cd764421ec5eda82b4c6bfda4966f2fb397ba852cf5b65">VSF_FILE_ATTR_EXT</a> &lt;&lt; 1,</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#afba38d970e31d95540f505b1c42cfff4a524f020537f0f31520d0e28f3c2b231d">   77</a></span>&#160;    <a class="code" href="vsf__fatfs_8h.html#afba38d970e31d95540f505b1c42cfff4a524f020537f0f31520d0e28f3c2b231d">VSF_FAT_FILE_ATTR_ARCHIVE</a> = <a class="code" href="vsf__fs_8h.html#a1cf4e823354d8a8bcd5cd764421ec5eda82b4c6bfda4966f2fb397ba852cf5b65">VSF_FILE_ATTR_EXT</a> &lt;&lt; 2,</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#a7648c8cd40d9fd2ccc6eae1a27a18f12">   78</a></span>&#160;} <a class="code" href="vsf__fatfs_8h.html#afba38d970e31d95540f505b1c42cfff4">vk_fat_file_attr_t</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="structvk__fatfs__dentry__parser__t.html">   80</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structvk__fatfs__dentry__parser__t.html">vk_fatfs_dentry_parser_t</a> {</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structvk__fatfs__dentry__parser__t.html#ad518dc24daf9c9e10fc650d86ba573d3">   81</a></span>&#160;    <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *<a class="code" href="structvk__fatfs__dentry__parser__t.html#ad518dc24daf9c9e10fc650d86ba573d3">entry</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="structvk__fatfs__dentry__parser__t.html#a9fa39eeab4b428558db71d573c34b344">   82</a></span>&#160;    <a class="code" href="arm_2type_8h.html#a269259c924dce846340ddbb810db2e3c">int16_t</a> <a class="code" href="structvk__fatfs__dentry__parser__t.html#a9fa39eeab4b428558db71d573c34b344">entry_num</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="structvk__fatfs__dentry__parser__t.html#a6a63299beefff69b3b9a807c0de07c5f">   83</a></span>&#160;    <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structvk__fatfs__dentry__parser__t.html#a6a63299beefff69b3b9a807c0de07c5f">lfn</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="structvk__fatfs__dentry__parser__t.html#a6a6bbecb88dfdfb0eb27911e7a1e4d4e">   84</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structvk__fatfs__dentry__parser__t.html#a6a6bbecb88dfdfb0eb27911e7a1e4d4e">is_unicode</a>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="structvk__fatfs__dentry__parser__t.html#a1afbe8712a7ff297133d11891f65e45a">   85</a></span>&#160;    <span class="keywordtype">char</span> *<a class="code" href="structvk__fatfs__dentry__parser__t.html#a1afbe8712a7ff297133d11891f65e45a">filename</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="vsf__fatfs_8h.html#a2cdd0b3ab3c0a49e452b3eb23158a043">   86</a></span>&#160;} <a class="code" href="vsf__fatfs_8h.html#a2cdd0b3ab3c0a49e452b3eb23158a043">vk_fatfs_dentry_parser_t</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classvk__fatfs__file__t.html">   88</a></span>&#160;<a class="code" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code" href="classvk__fatfs__file__t.html">vk_fatfs_file_t</a>) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    public_member(</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        implement(<a class="code" href="class____vk__malfs__file__t.html">__vk_malfs_file_t</a>)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    )</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    private_member(</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> first_cluster;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> cluster;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> fat_entry;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        } cur;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classvk__fatfs__file__t.html#a8bce6689be0a98b238b2ee3f74b62285">   99</a></span>&#160;    )</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">// memory layout:</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">//  |-----------------------|</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">//  | __vk_fatfs_info_t:    |&lt;-|</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">//  | |-------------------| |  |</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">//  | |      ...          | |  |</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">//  | |-------------------| |  |</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">//  | ||__vk_malfs_info_t|| |  |</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">//  | ||-----------------|| |  |</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">//  | ||    total_cb     ||-|--- if __vk_fatfs_info_t is dynamicly allocated,</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">//  | ||-----------------|| | total_cb in __vk_malfs_info_t points to the __vk_fatfs_info_t.</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">//  |-----------------------| so in __vk_malfs_unmount, can free total_cb</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">//  | vk_malfs_cache_t[num] |</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">//  |-----------------------|</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">//  |   cache_buffer[num]   |</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">//  |-----------------------|</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="class____vk__fatfs__info__t.html">  117</a></span>&#160;<a class="code" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code" href="class____vk__fatfs__info__t.html">__vk_fatfs_info_t</a>) {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    private_member(</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <a class="code" href="classvk__fatfs__file__t.html">vk_fatfs_file_t</a> root;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <a class="code" href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5">vk_fat_type_t</a> <a class="code" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordtype">char</span> fat_volume_name[12];</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="comment">// fat parameters, will not change after mount</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> root_sector;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> root_size;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> fat_sector;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> fat_size;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> data_sector;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> cluster_num;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> sector_size_bits;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> cluster_size_bits;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> fat_num;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    )</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="comment">// vk_malfs_info_t must be the last in vk_fatfs_info_t</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    public_member(</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        implement(<a class="code" href="class____vk__malfs__info__t.html">__vk_malfs_info_t</a>)</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    )</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;};</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="classvk__fs__op__t.html">vk_fs_op_t</a> <a class="code" href="vsf__fatfs_8h.html#af38e25abcde7ac198fe49c0dea29c8df">vk_fatfs_op</a>;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="vsf__fatfs_8h.html#a6d3aa7da48a83ce78d91ebabca9c96d7">vk_fatfs_is_lfn</a>(<span class="keywordtype">char</span> *name);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="vsf__fatfs_8h.html#a5dba54af0e826a0200b6811d6d5513b4">vk_fatfs_parse_dentry_fat</a>(<a class="code" href="structvk__fatfs__dentry__parser__t.html">vk_fatfs_dentry_parser_t</a> *parser);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_FS &amp;&amp; VSF_FS_USE_FATFS</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="preprocessor">#endif      </span><span class="comment">// __VSF_FATFS_H__</span></div>
+<div class="ttc" id="aarm_2type_8h_html_a269259c924dce846340ddbb810db2e3c"><div class="ttname"><a href="arm_2type_8h.html#a269259c924dce846340ddbb810db2e3c">int16_t</a></div><div class="ttdeci">signed short int16_t</div><div class="ttdef"><b>Definition:</b> type.h:33</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a435d1572bf3f880d55459d9805097f62"><div class="ttname"><a href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a></div><div class="ttdeci">unsigned int uint32_t</div><div class="ttdef"><b>Definition:</b> type.h:37</div></div>
+<div class="ttc" id="aarm_2type_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> type.h:27</div></div>
+<div class="ttc" id="aclass____vk__fatfs__info__t_html"><div class="ttname"><a href="class____vk__fatfs__info__t.html">__vk_fatfs_info_t</a></div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:117</div></div>
+<div class="ttc" id="aclass____vk__malfs__file__t_html"><div class="ttname"><a href="class____vk__malfs__file__t.html">__vk_malfs_file_t</a></div><div class="ttdef"><b>Definition:</b> vsf_malfs.h:75</div></div>
+<div class="ttc" id="aclass____vk__malfs__info__t_html"><div class="ttname"><a href="class____vk__malfs__info__t.html">__vk_malfs_info_t</a></div><div class="ttdef"><b>Definition:</b> vsf_malfs.h:90</div></div>
+<div class="ttc" id="aclassvk__fatfs__file__t_html"><div class="ttname"><a href="classvk__fatfs__file__t.html">vk_fatfs_file_t</a></div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:88</div></div>
+<div class="ttc" id="aclassvk__fs__op__t_html"><div class="ttname"><a href="classvk__fs__op__t.html">vk_fs_op_t</a></div><div class="ttdef"><b>Definition:</b> vsf_fs.h:126</div></div>
+<div class="ttc" id="aooc__class_8h_html"><div class="ttname"><a href="ooc__class_8h.html">ooc_class.h</a></div></div>
+<div class="ttc" id="aooc__class_8h_html_a226f6a53efbee32ec33e32995b0ab6c9"><div class="ttname"><a href="ooc__class_8h.html#a226f6a53efbee32ec33e32995b0ab6c9">vsf_dcl_class</a></div><div class="ttdeci">#define vsf_dcl_class</div><div class="ttdef"><b>Definition:</b> ooc_class.h:31</div></div>
+<div class="ttc" id="aooc__class_8h_html_a62f3fe6fb9699483707f5352d777f2f0"><div class="ttname"><a href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a></div><div class="ttdeci">#define vsf_class(__name)</div><div class="ttdef"><b>Definition:</b> ooc_class.h:33</div></div>
+<div class="ttc" id="astructvk__fatfs__dentry__parser__t_html"><div class="ttname"><a href="structvk__fatfs__dentry__parser__t.html">vk_fatfs_dentry_parser_t</a></div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:80</div></div>
+<div class="ttc" id="astructvk__fatfs__dentry__parser__t_html_a1afbe8712a7ff297133d11891f65e45a"><div class="ttname"><a href="structvk__fatfs__dentry__parser__t.html#a1afbe8712a7ff297133d11891f65e45a">vk_fatfs_dentry_parser_t::filename</a></div><div class="ttdeci">char * filename</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:85</div></div>
+<div class="ttc" id="astructvk__fatfs__dentry__parser__t_html_a6a63299beefff69b3b9a807c0de07c5f"><div class="ttname"><a href="structvk__fatfs__dentry__parser__t.html#a6a63299beefff69b3b9a807c0de07c5f">vk_fatfs_dentry_parser_t::lfn</a></div><div class="ttdeci">uint8_t lfn</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:83</div></div>
+<div class="ttc" id="astructvk__fatfs__dentry__parser__t_html_a6a6bbecb88dfdfb0eb27911e7a1e4d4e"><div class="ttname"><a href="structvk__fatfs__dentry__parser__t.html#a6a6bbecb88dfdfb0eb27911e7a1e4d4e">vk_fatfs_dentry_parser_t::is_unicode</a></div><div class="ttdeci">bool is_unicode</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:84</div></div>
+<div class="ttc" id="astructvk__fatfs__dentry__parser__t_html_a9fa39eeab4b428558db71d573c34b344"><div class="ttname"><a href="structvk__fatfs__dentry__parser__t.html#a9fa39eeab4b428558db71d573c34b344">vk_fatfs_dentry_parser_t::entry_num</a></div><div class="ttdeci">int16_t entry_num</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:82</div></div>
+<div class="ttc" id="astructvk__fatfs__dentry__parser__t_html_ad518dc24daf9c9e10fc650d86ba573d3"><div class="ttname"><a href="structvk__fatfs__dentry__parser__t.html#ad518dc24daf9c9e10fc650d86ba573d3">vk_fatfs_dentry_parser_t::entry</a></div><div class="ttdeci">uint8_t * entry</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:81</div></div>
+<div class="ttc" id="avsf__audio_8h_html_ad64e18f867699b8e854388de816016af"><div class="ttname"><a href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a></div><div class="ttdeci">vk_av_control_type_t type</div><div class="ttdef"><b>Definition:</b> vsf_audio.h:85</div></div>
+<div class="ttc" id="avsf__fatfs_8h_html_a2cdd0b3ab3c0a49e452b3eb23158a043"><div class="ttname"><a href="vsf__fatfs_8h.html#a2cdd0b3ab3c0a49e452b3eb23158a043">vk_fatfs_dentry_parser_t</a></div><div class="ttdeci">struct vk_fatfs_dentry_parser_t vk_fatfs_dentry_parser_t</div></div>
+<div class="ttc" id="avsf__fatfs_8h_html_a5dba54af0e826a0200b6811d6d5513b4"><div class="ttname"><a href="vsf__fatfs_8h.html#a5dba54af0e826a0200b6811d6d5513b4">vk_fatfs_parse_dentry_fat</a></div><div class="ttdeci">bool vk_fatfs_parse_dentry_fat(vk_fatfs_dentry_parser_t *parser)</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.c:403</div></div>
+<div class="ttc" id="avsf__fatfs_8h_html_a6d3aa7da48a83ce78d91ebabca9c96d7"><div class="ttname"><a href="vsf__fatfs_8h.html#a6d3aa7da48a83ce78d91ebabca9c96d7">vk_fatfs_is_lfn</a></div><div class="ttdeci">bool vk_fatfs_is_lfn(char *name)</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.c:216</div></div>
+<div class="ttc" id="avsf__fatfs_8h_html_aaad59c94624b814b9a7ef30a34c099a5"><div class="ttname"><a href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5">vk_fat_type_t</a></div><div class="ttdeci">vk_fat_type_t</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:66</div></div>
+<div class="ttc" id="avsf__fatfs_8h_html_aaad59c94624b814b9a7ef30a34c099a5a7183e90a3e8fafd4fa2ab6f0a8986397"><div class="ttname"><a href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5a7183e90a3e8fafd4fa2ab6f0a8986397">VSF_FAT_32</a></div><div class="ttdeci">@ VSF_FAT_32</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:70</div></div>
+<div class="ttc" id="avsf__fatfs_8h_html_aaad59c94624b814b9a7ef30a34c099a5a799220edeee50a5e6203d0d84bdda4f5"><div class="ttname"><a href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5a799220edeee50a5e6203d0d84bdda4f5">VSF_FAT_12</a></div><div class="ttdeci">@ VSF_FAT_12</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:68</div></div>
+<div class="ttc" id="avsf__fatfs_8h_html_aaad59c94624b814b9a7ef30a34c099a5ab731c1f6ac6482b1492af9cc396df9c6"><div class="ttname"><a href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5ab731c1f6ac6482b1492af9cc396df9c6">VSF_FAT_EX</a></div><div class="ttdeci">@ VSF_FAT_EX</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:71</div></div>
+<div class="ttc" id="avsf__fatfs_8h_html_aaad59c94624b814b9a7ef30a34c099a5acbd87c98ae712d1befcf64846898fe1b"><div class="ttname"><a href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5acbd87c98ae712d1befcf64846898fe1b">VSF_FAT_NONE</a></div><div class="ttdeci">@ VSF_FAT_NONE</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:67</div></div>
+<div class="ttc" id="avsf__fatfs_8h_html_aaad59c94624b814b9a7ef30a34c099a5adf391e24a0243184b2421982f61bb59d"><div class="ttname"><a href="vsf__fatfs_8h.html#aaad59c94624b814b9a7ef30a34c099a5adf391e24a0243184b2421982f61bb59d">VSF_FAT_16</a></div><div class="ttdeci">@ VSF_FAT_16</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:69</div></div>
+<div class="ttc" id="avsf__fatfs_8h_html_af38e25abcde7ac198fe49c0dea29c8df"><div class="ttname"><a href="vsf__fatfs_8h.html#af38e25abcde7ac198fe49c0dea29c8df">vk_fatfs_op</a></div><div class="ttdeci">const vk_fs_op_t vk_fatfs_op</div></div>
+<div class="ttc" id="avsf__fatfs_8h_html_afba38d970e31d95540f505b1c42cfff4"><div class="ttname"><a href="vsf__fatfs_8h.html#afba38d970e31d95540f505b1c42cfff4">vk_fat_file_attr_t</a></div><div class="ttdeci">vk_fat_file_attr_t</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:74</div></div>
+<div class="ttc" id="avsf__fatfs_8h_html_afba38d970e31d95540f505b1c42cfff4a02583ac599b75308dc4afa8fb9c91e8e"><div class="ttname"><a href="vsf__fatfs_8h.html#afba38d970e31d95540f505b1c42cfff4a02583ac599b75308dc4afa8fb9c91e8e">VSF_FAT_FILE_ATTR_SYSTEM</a></div><div class="ttdeci">@ VSF_FAT_FILE_ATTR_SYSTEM</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:76</div></div>
+<div class="ttc" id="avsf__fatfs_8h_html_afba38d970e31d95540f505b1c42cfff4a524f020537f0f31520d0e28f3c2b231d"><div class="ttname"><a href="vsf__fatfs_8h.html#afba38d970e31d95540f505b1c42cfff4a524f020537f0f31520d0e28f3c2b231d">VSF_FAT_FILE_ATTR_ARCHIVE</a></div><div class="ttdeci">@ VSF_FAT_FILE_ATTR_ARCHIVE</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:77</div></div>
+<div class="ttc" id="avsf__fatfs_8h_html_afba38d970e31d95540f505b1c42cfff4a9938ba17b34f85e5e63d17021dd17c4e"><div class="ttname"><a href="vsf__fatfs_8h.html#afba38d970e31d95540f505b1c42cfff4a9938ba17b34f85e5e63d17021dd17c4e">VSF_FAT_FILE_ATTR_VOLUMID</a></div><div class="ttdeci">@ VSF_FAT_FILE_ATTR_VOLUMID</div><div class="ttdef"><b>Definition:</b> vsf_fatfs.h:75</div></div>
+<div class="ttc" id="avsf__fs_8h_html_a1cf4e823354d8a8bcd5cd764421ec5eda82b4c6bfda4966f2fb397ba852cf5b65"><div class="ttname"><a href="vsf__fs_8h.html#a1cf4e823354d8a8bcd5cd764421ec5eda82b4c6bfda4966f2fb397ba852cf5b65">VSF_FILE_ATTR_EXT</a></div><div class="ttdeci">@ VSF_FILE_ATTR_EXT</div><div class="ttdef"><b>Definition:</b> vsf_fs.h:93</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

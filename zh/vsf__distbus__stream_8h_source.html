@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/service/simple_stream/distbus_stream/vsf_distbus_stream.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_bfec2c9dca3d140a71292b4bdadc3c95.html">service</a></li><li class="navelem"><a class="el" href="dir_d555bb6fbf004160921aaff013253289.html">simple_stream</a></li><li class="navelem"><a class="el" href="dir_5a40c324659fc5804fdf0038321db0e5.html">distbus_stream</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">vsf_distbus_stream.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="vsf__distbus__stream_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/***************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   Copyright (C) 2009 - 2010 by Simon Qian &lt;SimonQian@SimonQian.com&gt;     *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                         *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *   This program is free software; you can redistribute it and/or modify  *</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *   it under the terms of the GNU General Public License as published by  *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *   the Free Software Foundation; either version 2 of the License, or     *</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *   (at your option) any later version.                                   *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *                                                                         *</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *   This program is distributed in the hope that it will be useful,       *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *   GNU General Public License for more details.                          *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *                                                                         *</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *   You should have received a copy of the GNU General Public License     *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *   along with this program; if not, write to the                         *</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *   Free Software Foundation, Inc.,                                       *</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> ***************************************************************************/</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifndef __VSF_DISTBUS_STREAM_H__</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define __VSF_DISTBUS_STREAM_H__</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__service__cfg_8h.html">service/vsf_service_cfg.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#if VSF_USE_SIMPLE_STREAM == ENABLED &amp;&amp; VSF_USE_DISTBUS == ENABLED</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__distbus_8h.html">service/distbus/vsf_distbus.h</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#if     defined(__VSF_DISTBUS_STREAM_CLASS_IMPLEMENT)</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#   define __PLOOC_CLASS_IMPLEMENT__</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#elif   defined(__VSF_DISTBUS_STREAM_CLASS_INHERIT__)</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#   define __PLOOC_CLASS_INHERIT__</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="vsf__distbus__stream_8h.html#a5d9127a894c5ed8ab8cbd5131cabe55b">   45</a></span>&#160;<span class="preprocessor">#define __VSF_DISTBUS_STREAM_INIT(__NAME, __DISTBUS, __MTU, __IS_TX, __BUF_SIZE, __HANDLER) \</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">            .op                 = &amp;vsf_distbus_stream_op,                       \</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">            .buf_size           = (__BUF_SIZE),                                 \</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">            .is_tx              = (__IS_TX),                                    \</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">            .distbus            = (__DISTBUS),                                  \</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">            .mtu                = (__MTU),                                      \</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">            .addr_range         = VSF_DISTBUS_STREAM_ADDR_RANGE,                \</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">            .handler            = (__HANDLER),                                  \</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">            .info               = (const vsf_distbus_service_info_t *)          \</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">                                    &amp;(__NAME).use_as__vsf_distbus_service_info_t,</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="vsf__distbus__stream_8h.html#abec7217625422bd8ee94a11de37e4e01">   55</a></span>&#160;<span class="preprocessor">#define VSF_DISTBUS_STREAM_INIT(__NAME, __DISTBUS, __MTU, __IS_TX, __BUF_SIZE, __HANDLER)\</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">            __VSF_DISTBUS_STREAM_INIT(__NAME, (__DISTBUS), (__MTU), (__IS_TX), (__BUF_SIZE), (__HANDLER))</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="vsf__distbus__stream_8h.html#ab85247cac5c665f45d5dbfa0e0145e7b">   58</a></span>&#160;<span class="preprocessor">#define __describe_distbus_stream(__name, __distbus, __mtu, __is_tx, __buf_size, __handler) \</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">            vsf_distbus_stream_t __name = {                                     \</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">                VSF_DISTBUS_STREAM_INIT(__name, (__distbus), (__mtu), (__is_tx), (__buf_size), (__handler))\</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">            };</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="vsf__distbus__stream_8h.html#a6fdaf12bb358f0ef99ccf6b6d66b17ec">   63</a></span>&#160;<span class="preprocessor">#define describe_distbus_stream_tx(__name, __distbus, __mtu, __buf_size, __handler)\</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">            __describe_distbus_stream(__name, (__distbus), (__mtu), true, (__buf_size), (__handler))</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="vsf__distbus__stream_8h.html#a94a60e37e0cf74d4f987162a95620d26">   65</a></span>&#160;<span class="preprocessor">#define describe_distbus_stream_rx(__name, __distbus, __mtu, __handler)         \</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">            __describe_distbus_stream(__name, (__distbus), (__mtu), false, 0, (__handler))</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="vsf__distbus__stream_8h.html#a91b717cdc34dd7316e4c43e9f26287c4a08c67ed76a41f3d22dfcce7e2f1cac32">   72</a></span>&#160;    <a class="code" href="vsf__distbus__stream_8h.html#a91b717cdc34dd7316e4c43e9f26287c4a08c67ed76a41f3d22dfcce7e2f1cac32">VSF_DISTBUS_STREAM_CMD_BUF_SIZE</a>,</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="vsf__distbus__stream_8h.html#a91b717cdc34dd7316e4c43e9f26287c4af04191704ff88f5487b7a447000a47c2">   73</a></span>&#160;    <a class="code" href="vsf__distbus__stream_8h.html#a91b717cdc34dd7316e4c43e9f26287c4af04191704ff88f5487b7a447000a47c2">VSF_DISTBUS_STREAM_CMD_DATA</a>,</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="vsf__distbus__stream_8h.html#a91b717cdc34dd7316e4c43e9f26287c4a6181ef435a0ae5b8127ecbaa703728e7">   74</a></span>&#160;    <a class="code" href="vsf__distbus__stream_8h.html#a91b717cdc34dd7316e4c43e9f26287c4a6181ef435a0ae5b8127ecbaa703728e7">VSF_DISTBUS_STREAM_CMD_SIZE</a>,</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="vsf__distbus__stream_8h.html#a91b717cdc34dd7316e4c43e9f26287c4ab784200cdf2909096be0c22a482d4e46">   75</a></span>&#160;    <a class="code" href="vsf__distbus__stream_8h.html#a91b717cdc34dd7316e4c43e9f26287c4ab784200cdf2909096be0c22a482d4e46">VSF_DISTBUS_STREAM_ADDR_RANGE</a>,</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classvsf__distbus__stream__t.html">   78</a></span>&#160;<a class="code" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code" href="classvsf__distbus__stream__t.html">vsf_distbus_stream_t</a>) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    public_member(</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        implement(<a class="code" href="classvsf__stream__t.html">vsf_stream_t</a>)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        implement(<a class="code" href="structvsf__distbus__service__info__t.html">vsf_distbus_service_info_t</a>)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        implement(<a class="code" href="classvsf__distbus__service__t.html">vsf_distbus_service_t</a>)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="classvsf__distbus__t.html">vsf_distbus_t</a> *distbus;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> buf_size;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="comment">// is distbus_stream tx terminal</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordtype">bool</span> is_tx;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classvsf__distbus__stream__t.html#a4212706f624e92e6ba06fcead3ba9ac3">   87</a></span>&#160;    )</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    private_member(</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> data_size;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keyword">union </span>{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <a class="code" href="classvsf__distbus__msg__t.html">vsf_distbus_msg_t</a> *msg;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            };</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <a class="code" href="structvsf__slist__queue__t.html">vsf_slist_queue_t</a> msgq;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            };</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        };</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classvsf__distbus__stream__t.html#aeb93bdaefd579017c0b9c727dd1409cd">   98</a></span>&#160;    )</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="classvsf__stream__op__t.html">vsf_stream_op_t</a> <a class="code" href="vsf__distbus__stream_8h.html#a41711c193f4347fe284f5043ccaf920e">vsf_distbus_stream_op</a>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="vsf__distbus__stream_8h.html#ad408f0bc8c35015b7e3ddc71a630223e">vsf_distbus_stream_register_service</a>(<a class="code" href="classvsf__distbus__stream__t.html">vsf_distbus_stream_t</a> *distbus_stream);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#if     defined(__VSF_DISTBUS_STREAM_CLASS_IMPLEMENT)                           \</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">    ||  defined(__VSF_DISTBUS_STREAM_CLASS_INHERIT__)</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="vsf__distbus__stream_8c.html#a3ff73747e1c51f7f5a64ed3f484412de">__vsf_distbus_stream_msghandler</a>(<a class="code" href="classvsf__distbus__t.html">vsf_distbus_t</a> *bus,</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                        <a class="code" href="classvsf__distbus__service__t.html">vsf_distbus_service_t</a> *service, <a class="code" href="classvsf__distbus__msg__t.html">vsf_distbus_msg_t</a> *msg);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#undef __VSF_DISTBUS_STREAM_CLASS_IMPLEMENT</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#undef __VSF_DISTBUS_STREAM_CLASS_INHERIT__</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_SIMPLE_STREAM &amp;&amp; VSF_USE_DISTBUS</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#endif      </span><span class="comment">// __VSF_DISTBUS_STREAM_H__</span></div>
+<div class="ttc" id="aarm_2type_8h_html_a435d1572bf3f880d55459d9805097f62"><div class="ttname"><a href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a></div><div class="ttdeci">unsigned int uint32_t</div><div class="ttdef"><b>Definition:</b> type.h:37</div></div>
+<div class="ttc" id="aclassvsf__distbus__msg__t_html"><div class="ttname"><a href="classvsf__distbus__msg__t.html">vsf_distbus_msg_t</a></div><div class="ttdef"><b>Definition:</b> vsf_distbus.h:68</div></div>
+<div class="ttc" id="aclassvsf__distbus__service__t_html"><div class="ttname"><a href="classvsf__distbus__service__t.html">vsf_distbus_service_t</a></div><div class="ttdef"><b>Definition:</b> vsf_distbus.h:86</div></div>
+<div class="ttc" id="aclassvsf__distbus__stream__t_html"><div class="ttname"><a href="classvsf__distbus__stream__t.html">vsf_distbus_stream_t</a></div><div class="ttdef"><b>Definition:</b> vsf_distbus_stream.h:78</div></div>
+<div class="ttc" id="aclassvsf__distbus__t_html"><div class="ttname"><a href="classvsf__distbus__t.html">vsf_distbus_t</a></div><div class="ttdef"><b>Definition:</b> vsf_distbus.h:118</div></div>
+<div class="ttc" id="aclassvsf__stream__op__t_html"><div class="ttname"><a href="classvsf__stream__op__t.html">vsf_stream_op_t</a></div><div class="ttdef"><b>Definition:</b> vsf_simple_stream.h:137</div></div>
+<div class="ttc" id="aclassvsf__stream__t_html"><div class="ttname"><a href="classvsf__stream__t.html">vsf_stream_t</a></div><div class="ttdef"><b>Definition:</b> vsf_simple_stream.h:203</div></div>
+<div class="ttc" id="aooc__class_8h_html"><div class="ttname"><a href="ooc__class_8h.html">ooc_class.h</a></div></div>
+<div class="ttc" id="aooc__class_8h_html_a62f3fe6fb9699483707f5352d777f2f0"><div class="ttname"><a href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a></div><div class="ttdeci">#define vsf_class(__name)</div><div class="ttdef"><b>Definition:</b> ooc_class.h:33</div></div>
+<div class="ttc" id="astructvsf__distbus__service__info__t_html"><div class="ttname"><a href="structvsf__distbus__service__info__t.html">vsf_distbus_service_info_t</a></div><div class="ttdef"><b>Definition:</b> vsf_distbus.h:78</div></div>
+<div class="ttc" id="astructvsf__slist__queue__t_html"><div class="ttname"><a href="structvsf__slist__queue__t.html">vsf_slist_queue_t</a></div><div class="ttdef"><b>Definition:</b> vsf_list.h:870</div></div>
+<div class="ttc" id="avsf__distbus_8h_html"><div class="ttname"><a href="vsf__distbus_8h.html">vsf_distbus.h</a></div></div>
+<div class="ttc" id="avsf__distbus__stream_8c_html_a3ff73747e1c51f7f5a64ed3f484412de"><div class="ttname"><a href="vsf__distbus__stream_8c.html#a3ff73747e1c51f7f5a64ed3f484412de">__vsf_distbus_stream_msghandler</a></div><div class="ttdeci">bool __vsf_distbus_stream_msghandler(vsf_distbus_t *bus, vsf_distbus_service_t *service, vsf_distbus_msg_t *msg)</div><div class="ttdef"><b>Definition:</b> vsf_distbus_stream.c:66</div></div>
+<div class="ttc" id="avsf__distbus__stream_8h_html_a41711c193f4347fe284f5043ccaf920e"><div class="ttname"><a href="vsf__distbus__stream_8h.html#a41711c193f4347fe284f5043ccaf920e">vsf_distbus_stream_op</a></div><div class="ttdeci">const vsf_stream_op_t vsf_distbus_stream_op</div><div class="ttdef"><b>Definition:</b> vsf_distbus_stream.c:52</div></div>
+<div class="ttc" id="avsf__distbus__stream_8h_html_a91b717cdc34dd7316e4c43e9f26287c4a08c67ed76a41f3d22dfcce7e2f1cac32"><div class="ttname"><a href="vsf__distbus__stream_8h.html#a91b717cdc34dd7316e4c43e9f26287c4a08c67ed76a41f3d22dfcce7e2f1cac32">VSF_DISTBUS_STREAM_CMD_BUF_SIZE</a></div><div class="ttdeci">@ VSF_DISTBUS_STREAM_CMD_BUF_SIZE</div><div class="ttdef"><b>Definition:</b> vsf_distbus_stream.h:72</div></div>
+<div class="ttc" id="avsf__distbus__stream_8h_html_a91b717cdc34dd7316e4c43e9f26287c4a6181ef435a0ae5b8127ecbaa703728e7"><div class="ttname"><a href="vsf__distbus__stream_8h.html#a91b717cdc34dd7316e4c43e9f26287c4a6181ef435a0ae5b8127ecbaa703728e7">VSF_DISTBUS_STREAM_CMD_SIZE</a></div><div class="ttdeci">@ VSF_DISTBUS_STREAM_CMD_SIZE</div><div class="ttdef"><b>Definition:</b> vsf_distbus_stream.h:74</div></div>
+<div class="ttc" id="avsf__distbus__stream_8h_html_a91b717cdc34dd7316e4c43e9f26287c4ab784200cdf2909096be0c22a482d4e46"><div class="ttname"><a href="vsf__distbus__stream_8h.html#a91b717cdc34dd7316e4c43e9f26287c4ab784200cdf2909096be0c22a482d4e46">VSF_DISTBUS_STREAM_ADDR_RANGE</a></div><div class="ttdeci">@ VSF_DISTBUS_STREAM_ADDR_RANGE</div><div class="ttdef"><b>Definition:</b> vsf_distbus_stream.h:75</div></div>
+<div class="ttc" id="avsf__distbus__stream_8h_html_a91b717cdc34dd7316e4c43e9f26287c4af04191704ff88f5487b7a447000a47c2"><div class="ttname"><a href="vsf__distbus__stream_8h.html#a91b717cdc34dd7316e4c43e9f26287c4af04191704ff88f5487b7a447000a47c2">VSF_DISTBUS_STREAM_CMD_DATA</a></div><div class="ttdeci">@ VSF_DISTBUS_STREAM_CMD_DATA</div><div class="ttdef"><b>Definition:</b> vsf_distbus_stream.h:73</div></div>
+<div class="ttc" id="avsf__distbus__stream_8h_html_ad408f0bc8c35015b7e3ddc71a630223e"><div class="ttname"><a href="vsf__distbus__stream_8h.html#ad408f0bc8c35015b7e3ddc71a630223e">vsf_distbus_stream_register_service</a></div><div class="ttdeci">void vsf_distbus_stream_register_service(vsf_distbus_stream_t *distbus_stream)</div><div class="ttdef"><b>Definition:</b> vsf_distbus_stream.c:282</div></div>
+<div class="ttc" id="avsf__service__cfg_8h_html"><div class="ttname"><a href="vsf__service__cfg_8h.html">vsf_service_cfg.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

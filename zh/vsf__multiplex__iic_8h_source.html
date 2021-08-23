@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/osa_hal/driver/customised/multiplex_hal/iic/vsf_multiplex_iic.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_5d82f12d3374cabb8172ba3d6e26687f.html">osa_hal</a></li><li class="navelem"><a class="el" href="dir_df8d567174ea53df0d1a9a09f1a8d2be.html">driver</a></li><li class="navelem"><a class="el" href="dir_5ca4cb847c58a1e82b82e26e9ce93e4b.html">customised</a></li><li class="navelem"><a class="el" href="dir_da2bd3d90ec28218d8c55d6355980b7b.html">multiplex_hal</a></li><li class="navelem"><a class="el" href="dir_43dc971d238e2b6a2aa85199c5a45c05.html">iic</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">vsf_multiplex_iic.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="vsf__multiplex__iic_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   Copyright(C)2009-2020 by VSF Team                                       *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __OSA_HAL_DRIVER_MULTIPLEX_IIC_H__</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define __OSA_HAL_DRIVER_MULTIPLEX_IIC_H__</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__osa__hal__cfg_8h.html">osa_hal/vsf_osa_hal_cfg.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#if VSF_USE_MULTIPLEX_HAL == ENABLED &amp;&amp; VSF_USE_MULTIPLEX_IIC == ENABLED</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__io__iic_8h.html">osa_hal/sw_peripheral/io_peripheral/iic/vsf_io_iic.h</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;../vsf_multiplex_hal_common.h&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#if     defined(__VSF_MULTIPLEX_IIC_CLASS_IMPLEMENT)</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#   undef __VSF_MULTIPLEX_IIC_CLASS_IMPLEMENT</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#   define __PLOOC_CLASS_IMPLEMENT__</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#elif   defined(__VSF_MULTIPLEX_IIC_CLASS_INHERIT)</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#   undef __VSF_MULTIPLEX_IIC_CLASS_INHERIT</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#   define __PLOOC_CLASS_INHERIT__</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="vsf__multiplex__iic_8h.html#abb60b047d9b17711c395ce8a5d67fc6b">   48</a></span>&#160;<span class="preprocessor">#define VSF_MULTIPLEX_IIC_RW_SIZE(__REG_ADDR_SIZE, __DATA_SIZE)                 \</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">     (3 + (__REG_ADDR_SIZE) + (__DATA_SIZE))</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="vsf__multiplex__iic_8h.html#a174083048cde78f90fd82a80051d43ae">   50</a></span>&#160;<span class="preprocessor">#define VSF_MULTIPLEX_IIC_WRITE_REG8(__REG, __DATA_SIZE, ...)                   \</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">     0x01, (__REG), ((__DATA_SIZE) &gt;&gt; 0) &amp; 0xFF, ((__DATA_SIZE) &gt;&gt; 8) &amp; 0xFF, __VA_ARGS__</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="vsf__multiplex__iic_8h.html#a5389e63f48c53ea2f6522525c4eab7ec">   52</a></span>&#160;<span class="preprocessor">#define VSF_MULTIPLEX_IIC_READ_REG8(__REG, __DATA_SIZE, ...)                    \</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">     0x11, (__REG), ((__DATA_SIZE) &gt;&gt; 0) &amp; 0xFF, ((__DATA_SIZE) &gt;&gt; 8) &amp; 0xFF, __VA_ARGS__</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classvsf__multiplex__iic__t.html">   57</a></span>&#160;<a class="code" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code" href="classvsf__multiplex__iic__t.html">vsf_multiplex_iic_t</a>) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    public_member(</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        implement(<a class="code" href="classvsf__io__iic__t.html">vsf_io_iic_t</a>)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    )</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    private_member(</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        implement(<a class="code" href="classvsf__multiplex__hal__t.html">vsf_multiplex_hal_t</a>)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="vsf__msg__tree_8h.html#a0b57aa10271a66f3dc936bba1d2f3830">state</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    )</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">extern</span> <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__multiplex__iic_8h.html#a922bfd3ae9c0fb926ed01be78da03ee9">vsf_multiplex_iic_init</a>(<a class="code" href="classvsf__multiplex__iic__t.html">vsf_multiplex_iic_t</a> *iic);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">extern</span> <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__multiplex__iic_8h.html#a9f11877e3ce7aa1e7d79a6cf1b9b2fc6">vsf_multiplex_iic_read</a>(<a class="code" href="classvsf__multiplex__iic__t.html">vsf_multiplex_iic_t</a> *iic, <a class="code" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> chip_addr, <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *buffer, <a class="code" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="code" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, <a class="code" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> flags);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">extern</span> <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__multiplex__iic_8h.html#a7b6630e9d3a9670823656d9428c64fed">vsf_multiplex_iic_write</a>(<a class="code" href="classvsf__multiplex__iic__t.html">vsf_multiplex_iic_t</a> *iic, <a class="code" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> chip_addr, <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *buffer, <a class="code" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="code" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, <a class="code" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> flags);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">extern</span> <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__multiplex__iic_8h.html#a28c93e33304c4ab03337816f1b66f4a0">vsf_multiplex_iic_read_reg</a>(<a class="code" href="classvsf__multiplex__iic__t.html">vsf_multiplex_iic_t</a> *iic, <a class="code" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> chip_addr, <a class="code" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> reg_addr, <a class="code" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> reg_addr_size, <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *buffer, <a class="code" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="code" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">extern</span> <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__multiplex__iic_8h.html#a2ff0200edcdaeba667a1bb8fe1cd32cc">vsf_multiplex_iic_write_reg</a>(<a class="code" href="classvsf__multiplex__iic__t.html">vsf_multiplex_iic_t</a> *iic, <a class="code" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> chip_addr, <a class="code" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> reg_addr, <a class="code" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> reg_addr_size, <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *buffer, <a class="code" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="code" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">extern</span> <a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__multiplex__iic_8h.html#a820a382a453fe1d004ceab760ae9c264">vsf_multiplex_iic_execute</a>(<a class="code" href="classvsf__multiplex__iic__t.html">vsf_multiplex_iic_t</a> *iic, <a class="code" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> chip_addr, <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *cmd, <a class="code" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="code" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">/* EOF */</span></div>
+<div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition:</b> __type.h:42</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a633264eb9df8f0520acccbbfb406f806"><div class="ttname"><a href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a></div><div class="ttdeci">unsigned int uint_fast32_t</div><div class="ttdef"><b>Definition:</b> type.h:39</div></div>
+<div class="ttc" id="aarm_2type_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> type.h:27</div></div>
+<div class="ttc" id="aarm_2type_8h_html_ad0906fbe05a45fbdb000c58fe8929e70"><div class="ttname"><a href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a></div><div class="ttdeci">unsigned int uint_fast8_t</div><div class="ttdef"><b>Definition:</b> type.h:29</div></div>
+<div class="ttc" id="aclassvsf__io__iic__t_html"><div class="ttname"><a href="classvsf__io__iic__t.html">vsf_io_iic_t</a></div><div class="ttdef"><b>Definition:</b> vsf_io_iic.h:54</div></div>
+<div class="ttc" id="aclassvsf__multiplex__hal__t_html"><div class="ttname"><a href="classvsf__multiplex__hal__t.html">vsf_multiplex_hal_t</a></div><div class="ttdef"><b>Definition:</b> vsf_multiplex_hal_common.h:48</div></div>
+<div class="ttc" id="aclassvsf__multiplex__iic__t_html"><div class="ttname"><a href="classvsf__multiplex__iic__t.html">vsf_multiplex_iic_t</a></div><div class="ttdef"><b>Definition:</b> vsf_multiplex_iic.h:57</div></div>
+<div class="ttc" id="aooc__class_8h_html"><div class="ttname"><a href="ooc__class_8h.html">ooc_class.h</a></div></div>
+<div class="ttc" id="aooc__class_8h_html_a62f3fe6fb9699483707f5352d777f2f0"><div class="ttname"><a href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a></div><div class="ttdeci">#define vsf_class(__name)</div><div class="ttdef"><b>Definition:</b> ooc_class.h:33</div></div>
+<div class="ttc" id="avsf__io__iic_8h_html"><div class="ttname"><a href="vsf__io__iic_8h.html">vsf_io_iic.h</a></div></div>
+<div class="ttc" id="avsf__memfs_8h_html_ab2c6b258f02add8fdf4cfc7c371dd772"><div class="ttname"><a href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a></div><div class="ttdeci">uint32_t size</div><div class="ttdef"><b>Definition:</b> vsf_memfs.h:50</div></div>
+<div class="ttc" id="avsf__msg__tree_8h_html_a0b57aa10271a66f3dc936bba1d2f3830"><div class="ttname"><a href="vsf__msg__tree_8h.html#a0b57aa10271a66f3dc936bba1d2f3830">state</a></div><div class="ttdeci">uint8_t state</div><div class="ttdef"><b>Definition:</b> vsf_msg_tree.h:247</div></div>
+<div class="ttc" id="avsf__multiplex__iic_8h_html_a28c93e33304c4ab03337816f1b66f4a0"><div class="ttname"><a href="vsf__multiplex__iic_8h.html#a28c93e33304c4ab03337816f1b66f4a0">vsf_multiplex_iic_read_reg</a></div><div class="ttdeci">vsf_err_t vsf_multiplex_iic_read_reg(vsf_multiplex_iic_t *iic, uint_fast8_t chip_addr, uint_fast32_t reg_addr, uint_fast8_t reg_addr_size, uint8_t *buffer, uint_fast32_t size)</div><div class="ttdef"><b>Definition:</b> vsf_multiplex_iic.c:178</div></div>
+<div class="ttc" id="avsf__multiplex__iic_8h_html_a2ff0200edcdaeba667a1bb8fe1cd32cc"><div class="ttname"><a href="vsf__multiplex__iic_8h.html#a2ff0200edcdaeba667a1bb8fe1cd32cc">vsf_multiplex_iic_write_reg</a></div><div class="ttdeci">vsf_err_t vsf_multiplex_iic_write_reg(vsf_multiplex_iic_t *iic, uint_fast8_t chip_addr, uint_fast32_t reg_addr, uint_fast8_t reg_addr_size, uint8_t *buffer, uint_fast32_t size)</div><div class="ttdef"><b>Definition:</b> vsf_multiplex_iic.c:193</div></div>
+<div class="ttc" id="avsf__multiplex__iic_8h_html_a7b6630e9d3a9670823656d9428c64fed"><div class="ttname"><a href="vsf__multiplex__iic_8h.html#a7b6630e9d3a9670823656d9428c64fed">vsf_multiplex_iic_write</a></div><div class="ttdeci">vsf_err_t vsf_multiplex_iic_write(vsf_multiplex_iic_t *iic, uint_fast8_t chip_addr, uint8_t *buffer, uint_fast32_t size, uint_fast8_t flags)</div><div class="ttdef"><b>Definition:</b> vsf_multiplex_iic.c:109</div></div>
+<div class="ttc" id="avsf__multiplex__iic_8h_html_a820a382a453fe1d004ceab760ae9c264"><div class="ttname"><a href="vsf__multiplex__iic_8h.html#a820a382a453fe1d004ceab760ae9c264">vsf_multiplex_iic_execute</a></div><div class="ttdeci">vsf_err_t vsf_multiplex_iic_execute(vsf_multiplex_iic_t *iic, uint_fast8_t chip_addr, uint8_t *cmd, uint_fast32_t size)</div><div class="ttdef"><b>Definition:</b> vsf_multiplex_iic.c:250</div></div>
+<div class="ttc" id="avsf__multiplex__iic_8h_html_a922bfd3ae9c0fb926ed01be78da03ee9"><div class="ttname"><a href="vsf__multiplex__iic_8h.html#a922bfd3ae9c0fb926ed01be78da03ee9">vsf_multiplex_iic_init</a></div><div class="ttdeci">vsf_err_t vsf_multiplex_iic_init(vsf_multiplex_iic_t *iic)</div><div class="ttdef"><b>Definition:</b> vsf_multiplex_iic.c:51</div></div>
+<div class="ttc" id="avsf__multiplex__iic_8h_html_a9f11877e3ce7aa1e7d79a6cf1b9b2fc6"><div class="ttname"><a href="vsf__multiplex__iic_8h.html#a9f11877e3ce7aa1e7d79a6cf1b9b2fc6">vsf_multiplex_iic_read</a></div><div class="ttdeci">vsf_err_t vsf_multiplex_iic_read(vsf_multiplex_iic_t *iic, uint_fast8_t chip_addr, uint8_t *buffer, uint_fast32_t size, uint_fast8_t flags)</div><div class="ttdef"><b>Definition:</b> vsf_multiplex_iic.c:95</div></div>
+<div class="ttc" id="avsf__osa__hal__cfg_8h_html"><div class="ttname"><a href="vsf__osa__hal__cfg_8h.html">vsf_osa_hal_cfg.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

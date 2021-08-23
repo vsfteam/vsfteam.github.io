@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/service/stream/pbuf_queue/vsf_pbuf_queue.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_bfec2c9dca3d140a71292b4bdadc3c95.html">service</a></li><li class="navelem"><a class="el" href="dir_0ce4b8e2c994382ab2f351feb740d6d6.html">stream</a></li><li class="navelem"><a class="el" href="dir_1c1d7e9fefff622e2bef34703a2106f7.html">pbuf_queue</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">vsf_pbuf_queue.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="vsf__pbuf__queue_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   Copyright(C)2009-2019 by VSF Team                                       *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *                                                                           *</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __VSF_PBUF_QUEUE_H__</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define __VSF_PBUF_QUEUE_H__</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__service__cfg_8h.html">service/vsf_service_cfg.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#if VSF_USE_STREAM == ENABLED</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;../interface.h&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;../pbuf/vsf_pbuf.h&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="vsf__pbuf__queue_8h.html#ab03dcdedfdc9861a978626b67957afb9">   34</a></span>&#160;<span class="preprocessor">#define __PLOOC_CLASS_USE_STRICT_TEMPLATE__</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;   </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#if     defined(__VSF_PBUF_QUEUE_CLASS_IMPLEMENT)</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="vsf__pbuf__queue_8h.html#a551e43a61abae2da0ddc065ee84ed12a">   37</a></span>&#160;<span class="preprocessor">#   define __PLOOC_CLASS_IMPLEMENT__</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#   undef __VSF_PBUF_QUEUE_CLASS_IMPLEMENT</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#elif   defined(__VSF_PBUF_QUEUE_CLASS_INHERIT__)</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#   define __PLOOC_CLASS_INHERIT__</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#   undef __VSF_PBUF_QUEUE_CLASS_INHERIT__</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif   </span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="vsf__pbuf__queue_8h.html#a805963bca0226bb34b2d665843e0128d">   54</a></span>&#160;<a class="code" href="vsf__pbuf__queue_8h.html#a805963bca0226bb34b2d665843e0128d">declare_class</a>(vsf_stream_fifo_t)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="vsf__pbuf__queue_8h.html#a0998aaac8488702c8589e33af8f90554">vsf_stream_fifo_cfg_t</a> {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="structvsf__stream__dat__rdy__evt__t.html">vsf_stream_dat_rdy_evt_t</a>        tDataReadyEventHandling;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="structvsf__stream__dat__drn__evt__t.html">vsf_stream_dat_drn_evt_t</a>        tDataDrainEventHandling;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>                    : 16;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>                    chDataReadyThreshold : 8;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>                    chDataDrainThreshold : 8;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    };</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#if !defined(VSF_PBUF_QUEUE_CFG_ATOM_ACCESS)</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    vsf_protect_region_t *pregion;         </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="vsf__pbuf__queue_8h.html#a0998aaac8488702c8589e33af8f90554">   67</a></span>&#160;}<a class="code" href="vsf__pbuf__queue_8h.html#a0998aaac8488702c8589e33af8f90554">vsf_stream_fifo_cfg_t</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="vsf__pbuf__queue_8h.html#aaeeb7f0fcf0ded303697c4169f1406c3">   70</a></span>&#160;<a class="code" href="vsf__pbuf__queue_8h.html#aaeeb7f0fcf0ded303697c4169f1406c3">def_class</a>(vsf_stream_fifo_t,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="vsf__tgui__control_8h.html#a5b5d6de3808ae65bdaef685a8ec16f8b">which</a>(</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="interface_8h.html#a9b969da23063dbeba929bd965b6e3688">vsf_stream_tx_t</a> <a class="code" href="interface_8h.html#a47784b36bb6835aef5d69741c90f25f7">TX</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="structvsf__stream__rx__t.html">vsf_stream_rx_t</a> RX;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    ),</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    private_member(</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        implement(<a class="code" href="structvsf__slist__queue__t.html">vsf_slist_queue_t</a>)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keyword">union</span> {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <a class="code" href="vsf__pbuf__queue_8h.html#a0998aaac8488702c8589e33af8f90554">vsf_stream_fifo_cfg_t</a> cfg;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <a class="code" href="structvsf__stream__dat__rdy__evt__t.html">vsf_stream_dat_rdy_evt_t</a>    tDataReadyEventHandling;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <a class="code" href="structvsf__stream__dat__drn__evt__t.html">vsf_stream_dat_drn_evt_t</a>    tDataDrainEventHandling;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <a class="code" href="unionvsf__stream__status__t.html">vsf_stream_status_t</a> <a class="code" href="vsf__msg__tree_8h.html#ab6585ccd43020ceabc0df2ce5858002b">Status</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">        #if !defined(VSF_PBUF_QUEUE_CFG_ATOM_ACCESS)</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                vsf_protect_region_t *pregion;     </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">        #endif</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            };</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        };</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    )</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;end_def_class(vsf_stream_fifo_t)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;extern </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__pbuf__queue_8c.html#a6aebf76a6c5af3686fc9583e13c4d26b">vsf_stream_fifo_init</a>( vsf_stream_fifo_t *obj_ptr, </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="vsf__pbuf__queue_8h.html#a80d2cb88f030af0bff124be846ad5d4c">  100</a></span>&#160;                                <a class="code" href="vsf__pbuf__queue_8h.html#a0998aaac8488702c8589e33af8f90554">vsf_stream_fifo_cfg_t</a> *<a class="code" href="vsf__pbuf__queue_8h.html#a80d2cb88f030af0bff124be846ad5d4c">cfg_ptr</a>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;extern </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__pbuf__queue_8h.html#ad8786ff689770d244cb454a4a973de44">vsf_pbuf_queue_enqueue</a>(vsf_stream_fifo_t *obj_ptr, vsf_pbuf_t *<a class="code" href="interface_8h.html#ad72932583d0c5ca35f192a79a278ea99">pblock</a>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;extern </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;vsf_pbuf_t * <a class="code" href="vsf__pbuf__queue_8h.html#aca2edf03800054e3d1be94f9117fb8b4">vsf_pbuf_queue_dequeue</a>(vsf_stream_fifo_t *obj_ptr);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<a class="code" href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a>(&quot;.text.vsf.service.stream.pbuf_queue.<a class="code" href="vsf__pbuf__queue_8h.html#a01880857a415365adc1f91607d5e16c8">vsf_pbuf_queue_peek</a>&quot;)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;extern </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;vsf_pbuf_t * <a class="code" href="vsf__pbuf__queue_8h.html#a01880857a415365adc1f91607d5e16c8">vsf_pbuf_queue_peek</a>(vsf_stream_fifo_t *obj_ptr);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;extern</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__pbuf__queue_8h.html#a2ca6901cb21af8526f98c35723e29170">vsf_pbuf_queue_data_available_event_register</a>(</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    vsf_stream_fifo_t *obj_ptr, <a class="code" href="structvsf__stream__dat__rdy__evt__t.html">vsf_stream_dat_rdy_evt_t</a> tEventHandling);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;extern </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code" href="vsf__pbuf__queue_8h.html#a7cfb9e031cfea1ebcafc95c526761614">vsf_pbuf_queue_data_drain_event_register</a>(</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    vsf_stream_fifo_t *obj_ptr, <a class="code" href="structvsf__stream__dat__drn__evt__t.html">vsf_stream_dat_drn_evt_t</a> tEventHandling);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">/* EOF */</span></div>
+<div class="ttc" id="a____compiler_8h_html_a3eaf49c35e19a8e3c92ee1b1b5b0c692"><div class="ttname"><a href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a></div><div class="ttdeci">#define SECTION(__SEC)</div><div class="ttdef"><b>Definition:</b> __compiler.h:134</div></div>
+<div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition:</b> __type.h:42</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a435d1572bf3f880d55459d9805097f62"><div class="ttname"><a href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a></div><div class="ttdeci">unsigned int uint32_t</div><div class="ttdef"><b>Definition:</b> type.h:37</div></div>
+<div class="ttc" id="ainterface_8h_html_a47784b36bb6835aef5d69741c90f25f7"><div class="ttname"><a href="interface_8h.html#a47784b36bb6835aef5d69741c90f25f7">TX</a></div><div class="ttdeci">i_stream_pbuf_tx_t TX</div><div class="ttdef"><b>Definition:</b> interface.h:99</div></div>
+<div class="ttc" id="ainterface_8h_html_a9b969da23063dbeba929bd965b6e3688"><div class="ttname"><a href="interface_8h.html#a9b969da23063dbeba929bd965b6e3688">vsf_stream_tx_t</a></div><div class="ttdeci">struct vsf_stream_tx_t vsf_stream_tx_t</div><div class="ttdef"><b>Definition:</b> interface.h:34</div></div>
+<div class="ttc" id="ainterface_8h_html_ad72932583d0c5ca35f192a79a278ea99"><div class="ttname"><a href="interface_8h.html#ad72932583d0c5ca35f192a79a278ea99">pblock</a></div><div class="ttdeci">vsf_pbuf_t * pblock</div><div class="ttdef"><b>Definition:</b> interface.h:90</div></div>
+<div class="ttc" id="aooc__class_8h_html"><div class="ttname"><a href="ooc__class_8h.html">ooc_class.h</a></div></div>
+<div class="ttc" id="astructvsf__slist__queue__t_html"><div class="ttname"><a href="structvsf__slist__queue__t.html">vsf_slist_queue_t</a></div><div class="ttdef"><b>Definition:</b> vsf_list.h:870</div></div>
+<div class="ttc" id="astructvsf__stream__dat__drn__evt__t_html"><div class="ttname"><a href="structvsf__stream__dat__drn__evt__t.html">vsf_stream_dat_drn_evt_t</a></div><div class="ttdef"><b>Definition:</b> interface.h:55</div></div>
+<div class="ttc" id="astructvsf__stream__dat__rdy__evt__t_html"><div class="ttname"><a href="structvsf__stream__dat__rdy__evt__t.html">vsf_stream_dat_rdy_evt_t</a></div><div class="ttdef"><b>Definition:</b> interface.h:44</div></div>
+<div class="ttc" id="astructvsf__stream__rx__t_html"><div class="ttname"><a href="structvsf__stream__rx__t.html">vsf_stream_rx_t</a></div><div class="ttdef"><b>Definition:</b> interface.h:108</div></div>
+<div class="ttc" id="aunionvsf__stream__status__t_html"><div class="ttname"><a href="unionvsf__stream__status__t.html">vsf_stream_status_t</a></div><div class="ttdef"><b>Definition:</b> interface.h:60</div></div>
+<div class="ttc" id="avsf__msg__tree_8h_html_ab6585ccd43020ceabc0df2ce5858002b"><div class="ttname"><a href="vsf__msg__tree_8h.html#ab6585ccd43020ceabc0df2ce5858002b">Status</a></div><div class="ttdeci">vsf_msgt_method_status_t * Status</div><div class="ttdoc">get status of target node</div><div class="ttdef"><b>Definition:</b> vsf_msg_tree.h:138</div></div>
+<div class="ttc" id="avsf__pbuf__queue_8c_html_a6aebf76a6c5af3686fc9583e13c4d26b"><div class="ttname"><a href="vsf__pbuf__queue_8c.html#a6aebf76a6c5af3686fc9583e13c4d26b">vsf_stream_fifo_init</a></div><div class="ttdeci">vsf_err_t vsf_stream_fifo_init(vsf_stream_fifo_t *obj_ptr, vsf_stream_fifo_cfg_t *cfg_ptr)</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_queue.c:109</div></div>
+<div class="ttc" id="avsf__pbuf__queue_8h_html_a01880857a415365adc1f91607d5e16c8"><div class="ttname"><a href="vsf__pbuf__queue_8h.html#a01880857a415365adc1f91607d5e16c8">vsf_pbuf_queue_peek</a></div><div class="ttdeci">vsf_pbuf_t * vsf_pbuf_queue_peek(vsf_stream_fifo_t *obj_ptr)</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_queue.c:189</div></div>
+<div class="ttc" id="avsf__pbuf__queue_8h_html_a0998aaac8488702c8589e33af8f90554"><div class="ttname"><a href="vsf__pbuf__queue_8h.html#a0998aaac8488702c8589e33af8f90554">vsf_stream_fifo_cfg_t</a></div><div class="ttdeci">vsf_stream_fifo_cfg_t</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_queue.h:67</div></div>
+<div class="ttc" id="avsf__pbuf__queue_8h_html_a2ca6901cb21af8526f98c35723e29170"><div class="ttname"><a href="vsf__pbuf__queue_8h.html#a2ca6901cb21af8526f98c35723e29170">vsf_pbuf_queue_data_available_event_register</a></div><div class="ttdeci">vsf_err_t vsf_pbuf_queue_data_available_event_register(vsf_stream_fifo_t *obj_ptr, vsf_stream_dat_rdy_evt_t tEventHandling)</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_queue.c:243</div></div>
+<div class="ttc" id="avsf__pbuf__queue_8h_html_a7cfb9e031cfea1ebcafc95c526761614"><div class="ttname"><a href="vsf__pbuf__queue_8h.html#a7cfb9e031cfea1ebcafc95c526761614">vsf_pbuf_queue_data_drain_event_register</a></div><div class="ttdeci">vsf_err_t vsf_pbuf_queue_data_drain_event_register(vsf_stream_fifo_t *obj_ptr, vsf_stream_dat_drn_evt_t tEventHandling)</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_queue.c:252</div></div>
+<div class="ttc" id="avsf__pbuf__queue_8h_html_a805963bca0226bb34b2d665843e0128d"><div class="ttname"><a href="vsf__pbuf__queue_8h.html#a805963bca0226bb34b2d665843e0128d">declare_class</a></div><div class="ttdeci">declare_class(vsf_stream_fifo_t) typedef struct vsf_stream_fifo_cfg_t</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_queue.h:54</div></div>
+<div class="ttc" id="avsf__pbuf__queue_8h_html_a80d2cb88f030af0bff124be846ad5d4c"><div class="ttname"><a href="vsf__pbuf__queue_8h.html#a80d2cb88f030af0bff124be846ad5d4c">cfg_ptr</a></div><div class="ttdeci">vsf_stream_fifo_cfg_t * cfg_ptr</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_queue.h:100</div></div>
+<div class="ttc" id="avsf__pbuf__queue_8h_html_aaeeb7f0fcf0ded303697c4169f1406c3"><div class="ttname"><a href="vsf__pbuf__queue_8h.html#aaeeb7f0fcf0ded303697c4169f1406c3">def_class</a></div><div class="ttdeci">def_class(vsf_stream_fifo_t, which(vsf_stream_tx_t TX;vsf_stream_rx_t RX;), private:vsf_slist_queue_t union { vsf_stream_fifo_cfg_t cfg;struct { vsf_stream_dat_rdy_evt_t tDataReadyEventHandling;vsf_stream_dat_drn_evt_t tDataDrainEventHandling;vsf_stream_status_t Status;#if !defined(VSF_PBUF_QUEUE_CFG_ATOM_ACCESS) vsf_protect_region_t *pregion;#endif };};) end_def_class(vsf_stream_fifo_t) extern vsf_err_t vsf_stream_fifo_init(vsf_stream_fifo_t *obj_ptr</div></div>
+<div class="ttc" id="avsf__pbuf__queue_8h_html_aca2edf03800054e3d1be94f9117fb8b4"><div class="ttname"><a href="vsf__pbuf__queue_8h.html#aca2edf03800054e3d1be94f9117fb8b4">vsf_pbuf_queue_dequeue</a></div><div class="ttdeci">vsf_pbuf_t * vsf_pbuf_queue_dequeue(vsf_stream_fifo_t *obj_ptr)</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_queue.c:203</div></div>
+<div class="ttc" id="avsf__pbuf__queue_8h_html_ad8786ff689770d244cb454a4a973de44"><div class="ttname"><a href="vsf__pbuf__queue_8h.html#ad8786ff689770d244cb454a4a973de44">vsf_pbuf_queue_enqueue</a></div><div class="ttdeci">vsf_err_t vsf_pbuf_queue_enqueue(vsf_stream_fifo_t *obj_ptr, vsf_pbuf_t *pblock)</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_queue.c:137</div></div>
+<div class="ttc" id="avsf__service__cfg_8h_html"><div class="ttname"><a href="vsf__service__cfg_8h.html">vsf_service_cfg.h</a></div></div>
+<div class="ttc" id="avsf__tgui__control_8h_html_a5b5d6de3808ae65bdaef685a8ec16f8b"><div class="ttname"><a href="vsf__tgui__control_8h.html#a5b5d6de3808ae65bdaef685a8ec16f8b">which</a></div><div class="ttdeci">which(union { inherit(vsf_msgt_container_t) vsf_tgui_control_t };vsf_tgui_v_container_t) implement_ex(struct</div><div class="ttdef"><b>Definition:</b> vsf_tgui_control.h:540</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

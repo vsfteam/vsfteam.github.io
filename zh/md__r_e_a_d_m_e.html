@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: VSF &ndash; Versaloon Software Framework</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','搜索');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">VSF &ndash; Versaloon Software Framework </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a href="https://github.com/vsfteam/vsf/blob/master/LICENSE"><img src="https://img.shields.io/github/license/vsfteam/vsf.svg" alt="GitHub" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/vsfteam/vsf/actions/workflows/vsf-actions.yml"><img src="https://github.com/vsfteam/vsf/actions/workflows/vsf-actions.yml/badge.svg" alt="Build Status" style="pointer-events: none;" class="inline"/></a></p>
+<p>中文 |</p>
+<p>Full name of VSF is "Versaloon Software Framework". VSF is a open-source software framework for embedded applications based on Apache2. VSF includes hal, a pre-emptive multi-thread kernel and many services or components. VSF is implemented by C language, and using object-oriented programming methods.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Overall Framework</h1>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Catalogue</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Name   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">document   </td><td class="markdownTableBodyNone">document    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">doxygen   </td><td class="markdownTableBodyNone">configuration of doxygen    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">example   </td><td class="markdownTableBodyNone">demo codes    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">hardware   </td><td class="markdownTableBodyNone">hardware of VSF development boards    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">patch   </td><td class="markdownTableBodyNone">some patches(for 3rd-party components, etc)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">script   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">&emsp;cmake   </td><td class="markdownTableBodyNone">cmake scripts    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">source   </td><td class="markdownTableBodyNone">source code of VSF    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">&emsp;component   </td><td class="markdownTableBodyNone">component(filesystem, stacks, UI, drivers, etc)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">&emsp;hal   </td><td class="markdownTableBodyNone">hardware abstraction layer(ARCH support, chip drivers)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">&emsp;kernel   </td><td class="markdownTableBodyNone">VSF pre-emptive/collaborative kernel    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">&emsp;osa_service   </td><td class="markdownTableBodyNone">software services based on kernel    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">&emsp;service   </td><td class="markdownTableBodyNone">software services    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">&emsp;shell   </td><td class="markdownTableBodyNone">shell to use application softwares for other systems    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">&emsp;utilities   </td><td class="markdownTableBodyNone">base software utilities(preprocessor, compiler, list, etc)   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Kernel</h1>
+<p>Pre-emptive kernel based on event-driven architecture, supporting mcs51, 8bit MCU, 32/64 bit ARM, riscv, x86, etc.</p>
+<ul>
+<li>event-driven architecture, sleep if no event occured</li>
+<li>in pre-emptive mode, task switch is implemented by hardware swi(software interrupt), priority of task is the priority of the swi.</li>
+<li>pre-emptive scheduling for different priority, collaborative scheduling for the same priority</li>
+<li>can be run in other RTOS</li>
+<li>different tasks<ul>
+<li>event handler task &ndash; minimum resources usage, 20 bytes ram usage for minimum configuration, 40 bytes ram usage for normal configuration</li>
+<li>pt task</li>
+<li>thread with dedicated stack &ndash; depending on setjmp in libc</li>
+<li>fsm task</li>
+<li>other tasks in shell, eg pthread</li>
+</ul>
+</li>
+<li>IPC like semaphore, mutex, trigger, queue, etc</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Components</h1>
+<ul>
+<li>Reasonable framework for code re-use</li>
+<li>declarative development model</li>
+<li>standard interface, standard port for 3rd-party components</li>
+<li>software components<ul>
+<li>distbus &ndash; distribute bus framework</li>
+<li>fifo</li>
+<li>heap</li>
+<li>json</li>
+<li>pool</li>
+<li>stream</li>
+<li>trace</li>
+</ul>
+</li>
+<li>Components<ul>
+<li>fs &ndash; filesystem with vfs support</li>
+<li>input &ndash; input sub-system</li>
+<li>mal &ndash; memory abstraction layer(normally known as 'block' device)</li>
+<li>scsi &ndash; SCSI device</li>
+<li>tcpip &ndash; TCPIP stack and netdrv drivers</li>
+<li>ui &ndash; UI and display drivers</li>
+<li>usb &ndash; USB host/slave stacks</li>
+<li>bt &ndash; bt stack(using btstack)</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md6"></a>
+HAL – hardware abstraction layer</h1>
+<ul>
+<li>standard hal interface and API &ndash; eg: vsf_spi_init can be used with hardware SPI, GPIO emulated SPI, SPI from external usb device, etc</li>
+<li>IP core driver &ndash; simplify porting by implement clock, reset, interrupt functions which is not provided by IP core</li>
+<li>template for different intefaces and functionalities</li>
+<li>different level of API<ul>
+<li>lv0 &ndash; for porting</li>
+<li>lv1 &ndash; for user, implement by template</li>
+<li>lv2 &ndash; for specific application, eg: arduino</li>
+</ul>
+</li>
+<li>interfaces<ul>
+<li>PM</li>
+<li>GPIO</li>
+<li>SPI</li>
+<li>I2C</li>
+<li>PWM</li>
+<li>ADC</li>
+<li>SWI</li>
+<li>USART</li>
+<li>FLASH</li>
+<li>USB</li>
+<li>ethernet</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md7"></a>
+Shell</h1>
+<p>To use applications from other system, shell can be used.</p>
+<ul>
+<li>SDL &ndash; to use application code based on SDL</li>
+<li>linux &ndash; to use application code based on linux<ul>
+<li>posix</li>
+<li>devfs</li>
+<li>socket</li>
+<li>console</li>
+<li>some libraries<ul>
+<li>libusb</li>
+<li>libgen </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>
