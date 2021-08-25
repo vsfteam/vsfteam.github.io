@@ -77,6 +77,10 @@ $(function() {
 <tr class="separator:a997009a7fbbf260a42005176e855b7b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f02d8597fe04887b624d17edcfb807c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__httpd_8c.html#a5f02d8597fe04887b624d17edcfb807c">__VSF_LINUX_HTTPD_USE_DEFAULT_URIHANDLER</a></td></tr>
 <tr class="separator:a5f02d8597fe04887b624d17edcfb807c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a265fc3e28a45a9c666022ba7a9e51fea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__httpd_8c.html#a265fc3e28a45a9c666022ba7a9e51fea">vsf_stream_write_str</a>(__stream,  __str)</td></tr>
+<tr class="separator:a265fc3e28a45a9c666022ba7a9e51fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae33d956a3ac61bee6b32e8e0ee184ee2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__httpd_8c.html#ae33d956a3ac61bee6b32e8e0ee184ee2">vsf_stream_write_int</a>(__stream,  __int)</td></tr>
+<tr class="separator:ae33d956a3ac61bee6b32e8e0ee184ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 类型定义</h2></td></tr>
@@ -191,6 +195,73 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<a id="a265fc3e28a45a9c666022ba7a9e51fea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a265fc3e28a45a9c666022ba7a9e51fea">&#9670;&nbsp;</a></span>vsf_stream_write_str</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_stream_write_str</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__stream, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__str&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            <span class="keywordflow">do</span> {                                                                \</div>
+<div class="line">                vsf_stream_write((__stream), (<a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *)(__str), <a class="code" href="string_8h.html#a008e171a518fe0e0352f31b245e03875">strlen</a>(__str));\</div>
+<div class="line">            } <span class="keywordflow">while</span> (<span class="keyword">false</span>)</div>
+<div class="ttc" id="aarm_2type_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> type.h:27</div></div>
+<div class="ttc" id="astring_8h_html_a008e171a518fe0e0352f31b245e03875"><div class="ttname"><a href="string_8h.html#a008e171a518fe0e0352f31b245e03875">strlen</a></div><div class="ttdeci">size_t strlen(const char *str)</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae33d956a3ac61bee6b32e8e0ee184ee2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae33d956a3ac61bee6b32e8e0ee184ee2">&#9670;&nbsp;</a></span>vsf_stream_write_int</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_stream_write_int</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__stream, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__int&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            <span class="keywordflow">do</span> {                                                                \</div>
+<div class="line">                char __int_buffer[16];                                          \</div>
+<div class="line">                itoa((__int), __int_buffer, 10);                                \</div>
+<div class="line">                vsf_stream_write((__stream), (<a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *)(__int_buffer),         \</div>
+<div class="line">                    <a class="code" href="string_8h.html#a008e171a518fe0e0352f31b245e03875">strlen</a>(__int_buffer));                                      \</div>
+<div class="line">            } <span class="keywordflow">while</span> (<span class="keyword">false</span>)</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">类型定义说明</h2>
