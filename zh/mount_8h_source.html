@@ -49,30 +49,33 @@ $(function() {
 <a href="mount_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __VSF_LINUX_MOUNT_H__</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __VSF_LINUX_MOUNT_H__</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#if VSF_LINUX_CFG_WRAPPER == ENABLED</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="mount_8h.html#a8d05f294dc0fe0c534b9c95a4e932c0b">    9</a></span>&#160;<span class="preprocessor">#define mount               VSF_LINUX_WRAPPER(mount)</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="mount_8h.html#aa68791176c12544c260c2fb03447ae3c">   10</a></span>&#160;<span class="preprocessor">#define umount              VSF_LINUX_WRAPPER(umount)</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// TODO: implement standard mount after device mapping is implemented</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">//int mount(const char *source, const char *target,</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//   const char *filesystemtype, unsigned long mountflags, const void *data);</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="mount_8h.html#a00f05e8fa0141e08002cbc591963c4e8">   16</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="mount_8h.html#a8d05f294dc0fe0c534b9c95a4e932c0b">mount</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *source, <span class="keyword">const</span> <span class="keywordtype">char</span> *target,</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;   <span class="keyword">const</span> <a class="code" href="classvk__fs__op__t.html">vk_fs_op_t</a> *filesystem, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> mountflags, <span class="keyword">const</span> <span class="keywordtype">void</span> *data);</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="mount_8h.html#a44634cfa8bcc732c29bcdf5822095422">   18</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="mount_8h.html#aa68791176c12544c260c2fb03447ae3c">umount</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *target);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__linux__cfg_8h.html">shell/sys/linux/vsf_linux_cfg.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#if VSF_LINUX_CFG_WRAPPER == ENABLED</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="mount_8h.html#a8d05f294dc0fe0c534b9c95a4e932c0b">   11</a></span>&#160;<span class="preprocessor">#define mount               VSF_LINUX_WRAPPER(mount)</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="mount_8h.html#aa68791176c12544c260c2fb03447ae3c">   12</a></span>&#160;<span class="preprocessor">#define umount              VSF_LINUX_WRAPPER(umount)</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// TODO: implement standard mount after device mapping is implemented</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//int mount(const char *source, const char *target,</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//   const char *filesystemtype, unsigned long mountflags, const void *data);</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">int</span> <a class="code" href="mount_8h.html#a8d05f294dc0fe0c534b9c95a4e932c0b">mount</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *source, <span class="keyword">const</span> <span class="keywordtype">char</span> *target,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;   <span class="keyword">const</span> <a class="code" href="classvk__fs__op__t.html">vk_fs_op_t</a> *filesystem, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> mountflags, <span class="keyword">const</span> <span class="keywordtype">void</span> *data);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">int</span> <a class="code" href="mount_8h.html#aa68791176c12544c260c2fb03447ae3c">umount</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *target);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassvk__fs__op__t_html"><div class="ttname"><a href="classvk__fs__op__t.html">vk_fs_op_t</a></div><div class="ttdef"><b>Definition:</b> vsf_fs.h:126</div></div>
-<div class="ttc" id="amount_8h_html_a8d05f294dc0fe0c534b9c95a4e932c0b"><div class="ttname"><a href="mount_8h.html#a8d05f294dc0fe0c534b9c95a4e932c0b">mount</a></div><div class="ttdeci">#define mount</div><div class="ttdef"><b>Definition:</b> mount.h:9</div></div>
-<div class="ttc" id="amount_8h_html_aa68791176c12544c260c2fb03447ae3c"><div class="ttname"><a href="mount_8h.html#aa68791176c12544c260c2fb03447ae3c">umount</a></div><div class="ttdeci">#define umount</div><div class="ttdef"><b>Definition:</b> mount.h:10</div></div>
+<div class="ttc" id="amount_8h_html_a8d05f294dc0fe0c534b9c95a4e932c0b"><div class="ttname"><a href="mount_8h.html#a8d05f294dc0fe0c534b9c95a4e932c0b">mount</a></div><div class="ttdeci">#define mount</div><div class="ttdef"><b>Definition:</b> mount.h:11</div></div>
+<div class="ttc" id="amount_8h_html_aa68791176c12544c260c2fb03447ae3c"><div class="ttname"><a href="mount_8h.html#aa68791176c12544c260c2fb03447ae3c">umount</a></div><div class="ttdeci">#define umount</div><div class="ttdef"><b>Definition:</b> mount.h:12</div></div>
+<div class="ttc" id="avsf__linux__cfg_8h_html"><div class="ttname"><a href="vsf__linux__cfg_8h.html">vsf_linux_cfg.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
