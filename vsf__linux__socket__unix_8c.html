@@ -45,14 +45,16 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">vsf_linux_socket_unix.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__linux__cfg_8h_source.html">shell/sys/linux/vsf_linux_cfg.h</a>&quot;</code><br />
-<code>#include &quot;../../include/unistd.h&quot;</code><br />
-<code>#include &quot;../../include/errno.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="unistd_8h_source.html">../../../include/unistd.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="errno_8h_source.html">../../../include/errno.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__linux__socket_8h_source.html">../vsf_linux_socket.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
@@ -68,6 +70,11 @@ Macros</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:aaf063df89132d0ca4ac2dd74eb5d74db"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__socket__unix__priv__t.html">vsf_linux_socket_unix_priv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__socket__unix_8c.html#aaf063df89132d0ca4ac2dd74eb5d74db">vsf_linux_socket_unix_priv_t</a></td></tr>
 <tr class="separator:aaf063df89132d0ca4ac2dd74eb5d74db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a1949ae569a5d436034bb0913562e9e17"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structvsf__linux__socket__op__t.html">vsf_linux_socket_op_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__socket__unix_8c.html#a1949ae569a5d436034bb0913562e9e17">vsf_linux_socket_unix_op</a></td></tr>
+<tr class="separator:a1949ae569a5d436034bb0913562e9e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a56bf24a74c400dfffdef33bfca636614"></a>
@@ -97,6 +104,40 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a1949ae569a5d436034bb0913562e9e17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1949ae569a5d436034bb0913562e9e17">&#9670;&nbsp;</a></span>vsf_linux_socket_unix_op</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structvsf__linux__socket__op__t.html">vsf_linux_socket_op_t</a> vsf_linux_socket_unix_op</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .fdop               = {</div>
+<div class="line">        .priv_size      = <span class="keyword">sizeof</span>(<a class="code" href="vsf__linux__socket__unix_8c.html#aaf063df89132d0ca4ac2dd74eb5d74db">vsf_linux_socket_unix_priv_t</a>),</div>
+<div class="line">        .fn_fcntl       = __vsf_linux_socket_unix_fcntl,</div>
+<div class="line">        .fn_read        = __vsf_linux_socket_unix_read,</div>
+<div class="line">        .fn_write       = __vsf_linux_socket_unix_write,</div>
+<div class="line">        .fn_close       = __vsf_linux_socket_unix_close,</div>
+<div class="line">    },</div>
+<div class="line"> </div>
+<div class="line">    .fn_init            = __vsf_linux_socket_unix_init,</div>
+<div class="line">    .fn_fini            = __vsf_linux_socket_unix_fini,</div>
+<div class="line">    .fn_connect         = __vsf_linux_socket_unix_connect,</div>
+<div class="line">    .fn_listen          = __vsf_linux_socket_unix_listen,</div>
+<div class="line">    .fn_accept          = __vsf_linux_socket_unix_accept,</div>
+<div class="line">    .fn_bind            = __vsf_linux_socket_unix_bind,</div>
+<div class="line">    .fn_getsockopt      = __vsf_linux_socket_unix_getsockopt,</div>
+<div class="line">    .fn_setsockopt      = __vsf_linux_socket_unix_setsockopt,</div>
+<div class="line">}</div>
+<div class="ttc" id="avsf__linux__socket__unix_8c_html_aaf063df89132d0ca4ac2dd74eb5d74db"><div class="ttname"><a href="vsf__linux__socket__unix_8c.html#aaf063df89132d0ca4ac2dd74eb5d74db">vsf_linux_socket_unix_priv_t</a></div><div class="ttdeci">struct vsf_linux_socket_unix_priv_t vsf_linux_socket_unix_priv_t</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
