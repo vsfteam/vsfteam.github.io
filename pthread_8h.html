@@ -182,10 +182,12 @@ Macros</h2></td></tr>
 <tr class="separator:ab3058090aa17d75249a7f7b63b85a14f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5312ca1337b540a29170a10ba3494504"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pthread_8h.html#a5312ca1337b540a29170a10ba3494504">pthread_condattr_getclock</a>&#160;&#160;&#160;<a class="el" href="vsf__linux__cfg_8h.html#a6925d1139da34a78dfcc437ed355d9fe">VSF_LINUX_WRAPPER</a>(pthread_condattr_getclock)</td></tr>
 <tr class="separator:a5312ca1337b540a29170a10ba3494504"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84e55100366a6a8338a2af3b3f279686"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pthread_8h.html#a84e55100366a6a8338a2af3b3f279686">PTHREAD_MUTEX_INITIALIZER</a>&#160;&#160;&#160;{ .use_as__vsf_mutex_t.use_as__vsf_sync_t.max_union.max_value = 1 }</td></tr>
+<tr class="memitem:a84e55100366a6a8338a2af3b3f279686"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pthread_8h.html#a84e55100366a6a8338a2af3b3f279686">PTHREAD_MUTEX_INITIALIZER</a></td></tr>
 <tr class="separator:a84e55100366a6a8338a2af3b3f279686"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7b867fe46f3660283fcb356c4fcbbf0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pthread_8h.html#aa7b867fe46f3660283fcb356c4fcbbf0">PTHREAD_COND_INITIALIZER</a>&#160;&#160;&#160;{ .use_as__vsf_mutex_t.use_as__vsf_sync_t.max_union.max_value = 1 | <a class="el" href="vsf__eda_8h.html#a444ad3ed1b04c1f4651cfdf013df744f">VSF_SYNC_AUTO_RST</a> }</td></tr>
 <tr class="separator:aa7b867fe46f3660283fcb356c4fcbbf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59e22497b65fc305ddb5cea8b4990b51"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pthread_8h.html#a59e22497b65fc305ddb5cea8b4990b51">PTHREAD_ONCE_INIT</a></td></tr>
+<tr class="separator:a59e22497b65fc305ddb5cea8b4990b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -1091,11 +1093,17 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define PTHREAD_MUTEX_INITIALIZER&#160;&#160;&#160;{ .use_as__vsf_mutex_t.use_as__vsf_sync_t.max_union.max_value = 1 }</td>
+          <td class="memname">#define PTHREAD_MUTEX_INITIALIZER</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Value:</b><div class="fragment"><div class="line">                                            {                                       \</div>
+<div class="line">                                            .use_as__vsf_mutex_t.use_as__vsf_sync_t.max_union.max_value = 1 | <a class="code" href="vsf__eda_8h.html#a444ad3ed1b04c1f4651cfdf013df744f">VSF_SYNC_AUTO_RST</a>,\</div>
+<div class="line">                                            .use_as__vsf_mutex_t.use_as__vsf_sync_t.cur_union.bits.cur = 1 | <a class="code" href="vsf__eda_8h.html#a404ae5446b0b6c865055454599857daf">VSF_SYNC_HAS_OWNER</a>,\</div>
+<div class="line">                                        }</div>
+<div class="ttc" id="avsf__eda_8h_html_a404ae5446b0b6c865055454599857daf"><div class="ttname"><a href="vsf__eda_8h.html#a404ae5446b0b6c865055454599857daf">VSF_SYNC_HAS_OWNER</a></div><div class="ttdeci">#define VSF_SYNC_HAS_OWNER</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:50</div></div>
+<div class="ttc" id="avsf__eda_8h_html_a444ad3ed1b04c1f4651cfdf013df744f"><div class="ttname"><a href="vsf__eda_8h.html#a444ad3ed1b04c1f4651cfdf013df744f">VSF_SYNC_AUTO_RST</a></div><div class="ttdeci">#define VSF_SYNC_AUTO_RST</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:48</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aa7b867fe46f3660283fcb356c4fcbbf0"></a>
@@ -1110,6 +1118,25 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<a id="a59e22497b65fc305ddb5cea8b4990b51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59e22497b65fc305ddb5cea8b4990b51">&#9670;&nbsp;</a></span>PTHREAD_ONCE_INIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PTHREAD_ONCE_INIT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">                                            {                                       \</div>
+<div class="line">                                            .mutex.max_union.max_value = 1 | <a class="code" href="vsf__eda_8h.html#a444ad3ed1b04c1f4651cfdf013df744f">VSF_SYNC_AUTO_RST</a>,\</div>
+<div class="line">                                            .mutex.cur_union.cur_value = 1 | <a class="code" href="vsf__eda_8h.html#a404ae5446b0b6c865055454599857daf">VSF_SYNC_HAS_OWNER</a>,\</div>
+<div class="line">                                            .is_inited = <span class="keyword">false</span>,                 \</div>
+<div class="line">                                        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
