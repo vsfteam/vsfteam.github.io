@@ -52,6 +52,7 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__service__cfg_8h_source.html">service/vsf_service_cfg.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__utilities_8h_source.html">utilities/vsf_utilities.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__trace_8h_source.html">service/trace/vsf_trace.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ooc__class_8h_source.html">utilities/ooc_class.h</a>&quot;</code><br />
 </div>
 <p><a href="vsf__heap_8h_source.html">Go to the source code of this file.</a></p>
@@ -65,6 +66,16 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a2548e3ff59ae1cabe141c143ae40ae01"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#a2548e3ff59ae1cabe141c143ae40ae01">VSF_HEAP_SIZE</a>&#160;&#160;&#160;(128 * 1024)</td></tr>
 <tr class="separator:a2548e3ff59ae1cabe141c143ae40ae01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5d0b5d2b76a8dc0150a7a287a01be15"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#aa5d0b5d2b76a8dc0150a7a287a01be15">vsf_heap_malloc_aligned</a>(...)</td></tr>
+<tr class="separator:aa5d0b5d2b76a8dc0150a7a287a01be15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc5c9f8b537c78379ac83450c333fea4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#afc5c9f8b537c78379ac83450c333fea4">vsf_heap_malloc</a>(...)</td></tr>
+<tr class="separator:afc5c9f8b537c78379ac83450c333fea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae94a11884b036fd798ba1ef2ffb108d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#aae94a11884b036fd798ba1ef2ffb108d">vsf_heap_realloc_aligned</a>(...)</td></tr>
+<tr class="separator:aae94a11884b036fd798ba1ef2ffb108d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa14cbc9f3bd15ed9a18eb4f3558ff5e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#aa14cbc9f3bd15ed9a18eb4f3558ff5e1">vsf_heap_realloc</a>(...)</td></tr>
+<tr class="separator:aa14cbc9f3bd15ed9a18eb4f3558ff5e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a211b2d7b0156ae996582be9ada66dfd0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#a211b2d7b0156ae996582be9ada66dfd0">vsf_heap_free</a>(__ptr)</td></tr>
+<tr class="separator:a211b2d7b0156ae996582be9ada66dfd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -82,16 +93,16 @@ Functions</h2></td></tr>
 <tr class="separator:a70c9f02120f78e0696c6edb495e152c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38303bc103ca8d7cf3229534ff7ab0f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#a38303bc103ca8d7cf3229534ff7ab0f7">vsf_heap_add_memory</a> (<a class="el" href="structvsf__mem__t.html">vsf_mem_t</a> mem)</td></tr>
 <tr class="separator:a38303bc103ca8d7cf3229534ff7ab0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37e095ed196dd3e3f6fe2c7f073d3531"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#a37e095ed196dd3e3f6fe2c7f073d3531">vsf_heap_malloc_aligned</a> (<a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> alignment)</td></tr>
-<tr class="separator:a37e095ed196dd3e3f6fe2c7f073d3531"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85f7dab9811d95217dff06d56f6cda18"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#a85f7dab9811d95217dff06d56f6cda18">vsf_heap_malloc</a> (<a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
-<tr class="separator:a85f7dab9811d95217dff06d56f6cda18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfcb8e44844feb822a188f93c24b6628"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#abfcb8e44844feb822a188f93c24b6628">vsf_heap_realloc_aligned</a> (void *buffer, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> alignment)</td></tr>
-<tr class="separator:abfcb8e44844feb822a188f93c24b6628"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1bd00550be027ce58c5ce9d645dddd2"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#ad1bd00550be027ce58c5ce9d645dddd2">vsf_heap_realloc</a> (void *buffer, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
-<tr class="separator:ad1bd00550be027ce58c5ce9d645dddd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac59c4c88dba19eb3b1fba0165aa33868"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#ac59c4c88dba19eb3b1fba0165aa33868">vsf_heap_free</a> (void *buffer)</td></tr>
-<tr class="separator:ac59c4c88dba19eb3b1fba0165aa33868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55842d79361bc509ccadd399af1779e5"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#a55842d79361bc509ccadd399af1779e5">vsf_heap_malloc_aligned_imp</a> (<a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> alignment)</td></tr>
+<tr class="separator:a55842d79361bc509ccadd399af1779e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51b77525a792fb374d3d4690bacf7518"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#a51b77525a792fb374d3d4690bacf7518">vsf_heap_malloc_imp</a> (<a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
+<tr class="separator:a51b77525a792fb374d3d4690bacf7518"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7241062c99f58cf9e2669514d7334937"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#a7241062c99f58cf9e2669514d7334937">vsf_heap_realloc_aligned_imp</a> (void *buffer, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> alignment)</td></tr>
+<tr class="separator:a7241062c99f58cf9e2669514d7334937"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f41454f833180bdfc9ebae79647d2ff"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#a3f41454f833180bdfc9ebae79647d2ff">vsf_heap_realloc_imp</a> (void *buffer, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
+<tr class="separator:a3f41454f833180bdfc9ebae79647d2ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58e01be15833a9b726c5c3c063c95851"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__heap_8h.html#a58e01be15833a9b726c5c3c063c95851">vsf_heap_free_imp</a> (void *buffer)</td></tr>
+<tr class="separator:a58e01be15833a9b726c5c3c063c95851"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -125,6 +136,125 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>\NOTE: Make sure #include "utilities/ooc_class.h" is close to the class ! definition and there is NO ANY OTHER module-interface-header file ! included in this file </p>
 
+</div>
+</div>
+<a id="aa5d0b5d2b76a8dc0150a7a287a01be15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5d0b5d2b76a8dc0150a7a287a01be15">&#9670;&nbsp;</a></span>vsf_heap_malloc_aligned</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_heap_malloc_aligned</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    ({                                                                          \</div>
+<div class="line">        void * ptr = <a class="code" href="vsf__heap_8h.html#a55842d79361bc509ccadd399af1779e5">vsf_heap_malloc_aligned_imp</a>(__VA_ARGS__);                  \</div>
+<div class="line">        vsf_trace_debug(<span class="stringliteral">&quot;%s: malloc_align 0x%p&quot;</span> <a class="code" href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a>, __FUNCTION__, ptr);\</div>
+<div class="line">        ptr;                                                                    \</div>
+<div class="line">    })</div>
+<div class="ttc" id="avsf__heap_8h_html_a55842d79361bc509ccadd399af1779e5"><div class="ttname"><a href="vsf__heap_8h.html#a55842d79361bc509ccadd399af1779e5">vsf_heap_malloc_aligned_imp</a></div><div class="ttdeci">void * vsf_heap_malloc_aligned_imp(uint_fast32_t size, uint_fast32_t alignment)</div><div class="ttdef"><b>Definition:</b> vsf_heap.c:517</div></div>
+<div class="ttc" id="avsf__trace_8h_html_a2d4ff51789ad484c6a3bb465687810f0"><div class="ttname"><a href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a></div><div class="ttdeci">#define VSF_TRACE_CFG_LINEEND</div><div class="ttdef"><b>Definition:</b> vsf_trace.h:41</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="afc5c9f8b537c78379ac83450c333fea4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc5c9f8b537c78379ac83450c333fea4">&#9670;&nbsp;</a></span>vsf_heap_malloc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_heap_malloc</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    ({                                                                          \</div>
+<div class="line">        void * ptr = <a class="code" href="vsf__heap_8h.html#a51b77525a792fb374d3d4690bacf7518">vsf_heap_malloc_imp</a>(__VA_ARGS__);                          \</div>
+<div class="line">        vsf_trace_debug(<span class="stringliteral">&quot;%s: malloc 0x%p&quot;</span> <a class="code" href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a>, __FUNCTION__, ptr);\</div>
+<div class="line">        ptr;                                                                    \</div>
+<div class="line">    })</div>
+<div class="ttc" id="avsf__heap_8h_html_a51b77525a792fb374d3d4690bacf7518"><div class="ttname"><a href="vsf__heap_8h.html#a51b77525a792fb374d3d4690bacf7518">vsf_heap_malloc_imp</a></div><div class="ttdeci">void * vsf_heap_malloc_imp(uint_fast32_t size)</div><div class="ttdef"><b>Definition:</b> vsf_heap.c:522</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aae94a11884b036fd798ba1ef2ffb108d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae94a11884b036fd798ba1ef2ffb108d">&#9670;&nbsp;</a></span>vsf_heap_realloc_aligned</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_heap_realloc_aligned</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    ({                                                                          \</div>
+<div class="line">        void * ptr = <a class="code" href="vsf__heap_8h.html#a7241062c99f58cf9e2669514d7334937">vsf_heap_realloc_aligned_imp</a>(__VA_ARGS__);                 \</div>
+<div class="line">        vsf_trace_debug(<span class="stringliteral">&quot;%s: realloc_align 0x%p&quot;</span> <a class="code" href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a>, __FUNCTION__, ptr);\</div>
+<div class="line">        ptr;                                                                    \</div>
+<div class="line">    })</div>
+<div class="ttc" id="avsf__heap_8h_html_a7241062c99f58cf9e2669514d7334937"><div class="ttname"><a href="vsf__heap_8h.html#a7241062c99f58cf9e2669514d7334937">vsf_heap_realloc_aligned_imp</a></div><div class="ttdeci">void * vsf_heap_realloc_aligned_imp(void *buffer, uint_fast32_t size, uint_fast32_t alignment)</div><div class="ttdef"><b>Definition:</b> vsf_heap.c:527</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa14cbc9f3bd15ed9a18eb4f3558ff5e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa14cbc9f3bd15ed9a18eb4f3558ff5e1">&#9670;&nbsp;</a></span>vsf_heap_realloc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_heap_realloc</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    ({                                                                          \</div>
+<div class="line">        void * ptr = <a class="code" href="vsf__heap_8h.html#a3f41454f833180bdfc9ebae79647d2ff">vsf_heap_realloc_imp</a>(__VA_ARGS__);                         \</div>
+<div class="line">        vsf_trace_debug(<span class="stringliteral">&quot;%s: realloc 0x%p&quot;</span> <a class="code" href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a>, __FUNCTION__, ptr);\</div>
+<div class="line">        ptr;                                                                    \</div>
+<div class="line">    })</div>
+<div class="ttc" id="avsf__heap_8h_html_a3f41454f833180bdfc9ebae79647d2ff"><div class="ttname"><a href="vsf__heap_8h.html#a3f41454f833180bdfc9ebae79647d2ff">vsf_heap_realloc_imp</a></div><div class="ttdeci">void * vsf_heap_realloc_imp(void *buffer, uint_fast32_t size)</div><div class="ttdef"><b>Definition:</b> vsf_heap.c:544</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a211b2d7b0156ae996582be9ada66dfd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a211b2d7b0156ae996582be9ada66dfd0">&#9670;&nbsp;</a></span>vsf_heap_free</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_heap_free</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__ptr</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    ({                                                                          \</div>
+<div class="line">        vsf_trace_debug(<span class="stringliteral">&quot;%s: free 0x%p&quot;</span> <a class="code" href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a>, __FUNCTION__, __ptr);\</div>
+<div class="line">        vsf_heap_free_imp(__ptr);                                               \</div>
+<div class="line">    })</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
@@ -329,14 +459,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a37e095ed196dd3e3f6fe2c7f073d3531"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37e095ed196dd3e3f6fe2c7f073d3531">&#9670;&nbsp;</a></span>vsf_heap_malloc_aligned()</h2>
+<a id="a55842d79361bc509ccadd399af1779e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55842d79361bc509ccadd399af1779e5">&#9670;&nbsp;</a></span>vsf_heap_malloc_aligned_imp()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* vsf_heap_malloc_aligned </td>
+          <td class="memname">void* vsf_heap_malloc_aligned_imp </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td>
           <td class="paramname"><em>size</em>, </td>
@@ -354,20 +484,17 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section note"><dt>Note</dt><dd>if vsf_heap is enabled in your project, this function will be replaced by the function with the same name in vsf_heap. Otherwise the posix_memalign will be used by default. You can also implement this function by yourself</dd>
-<dd>
-if vsf_heap is enabled in your project, this function will be replaced by the function with the same name in vsf_heap. Otherwise the posix_memalign will be used by default. You can also implement this function by yourself</dd></dl>
 
 </div>
 </div>
-<a id="a85f7dab9811d95217dff06d56f6cda18"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85f7dab9811d95217dff06d56f6cda18">&#9670;&nbsp;</a></span>vsf_heap_malloc()</h2>
+<a id="a51b77525a792fb374d3d4690bacf7518"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51b77525a792fb374d3d4690bacf7518">&#9670;&nbsp;</a></span>vsf_heap_malloc_imp()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* vsf_heap_malloc </td>
+          <td class="memname">void* vsf_heap_malloc_imp </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td>
           <td class="paramname"><em>size</em></td><td>)</td>
@@ -378,14 +505,14 @@ if vsf_heap is enabled in your project, this function will be replaced by the fu
 
 </div>
 </div>
-<a id="abfcb8e44844feb822a188f93c24b6628"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfcb8e44844feb822a188f93c24b6628">&#9670;&nbsp;</a></span>vsf_heap_realloc_aligned()</h2>
+<a id="a7241062c99f58cf9e2669514d7334937"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7241062c99f58cf9e2669514d7334937">&#9670;&nbsp;</a></span>vsf_heap_realloc_aligned_imp()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* vsf_heap_realloc_aligned </td>
+          <td class="memname">void* vsf_heap_realloc_aligned_imp </td>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
@@ -412,14 +539,14 @@ if vsf_heap is enabled in your project, this function will be replaced by the fu
 
 </div>
 </div>
-<a id="ad1bd00550be027ce58c5ce9d645dddd2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1bd00550be027ce58c5ce9d645dddd2">&#9670;&nbsp;</a></span>vsf_heap_realloc()</h2>
+<a id="a3f41454f833180bdfc9ebae79647d2ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f41454f833180bdfc9ebae79647d2ff">&#9670;&nbsp;</a></span>vsf_heap_realloc_imp()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* vsf_heap_realloc </td>
+          <td class="memname">void* vsf_heap_realloc_imp </td>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
@@ -440,14 +567,14 @@ if vsf_heap is enabled in your project, this function will be replaced by the fu
 
 </div>
 </div>
-<a id="ac59c4c88dba19eb3b1fba0165aa33868"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac59c4c88dba19eb3b1fba0165aa33868">&#9670;&nbsp;</a></span>vsf_heap_free()</h2>
+<a id="a58e01be15833a9b726c5c3c063c95851"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58e01be15833a9b726c5c3c063c95851">&#9670;&nbsp;</a></span>vsf_heap_free_imp()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vsf_heap_free </td>
+          <td class="memname">void vsf_heap_free_imp </td>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>buffer</em></td><td>)</td>
