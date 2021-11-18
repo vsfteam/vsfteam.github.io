@@ -209,7 +209,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">typedef</span> <span class="keyword">struct </span>VSF_MCONNECT(__, <a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, _hw_t) {                            \</div>
-<div class="line">        implement(<a class="code" href="structvsf__led__scan__hw__t.html">vsf_led_scan_hw_t</a>)                                            \</div>
+<div class="line">        const vsf_io_mapper_t *io_mapper;                                       \</div>
+<div class="line">        uint8_t led_num;                                                        \</div>
 <div class="line">        vsf_led_scan_pin_t __pins[(__led_num)];                                 \</div>
 <div class="line">    } VSF_MCONNECT(__, <a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, _hw_t);                                          \</div>
 <div class="line">    const VSF_MCONNECT(__, <a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, _hw_t) VSF_MCONNECT(__, <a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, _hw) = {     \</div>
@@ -219,7 +220,6 @@ Functions</h2></td></tr>
 <div class="line">            __VA_ARGS__                                                         \</div>
 <div class="line">        },                                                                      \</div>
 <div class="line">    };</div>
-<div class="ttc" id="astructvsf__led__scan__hw__t_html"><div class="ttname"><a href="structvsf__led__scan__hw__t.html">vsf_led_scan_hw_t</a></div><div class="ttdef"><b>Definition:</b> vsf_led_scan.h:79</div></div>
 <div class="ttc" id="avsf__os_8c_html_a7f565b52ec477e9c0c235e88b9355558"><div class="ttname"><a href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a></div><div class="ttdeci">#define __name</div><div class="ttdef"><b>Definition:</b> vsf_os.c:150</div></div>
 </div><!-- fragment -->
 </div>
@@ -303,9 +303,10 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <a class="code" href="vsf__led__scan_8h.html#a9dad4d42e0aa088272845de80389ef4f">describe_led_scan_hw</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, (__io_mapper), (__led_num), __VA_ARGS__)       \</div>
 <div class="line">    vsf_led_scan_t <a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> = {                                                   \</div>
-<div class="line">        .hw             = &amp;VSF_MCONNECT(__, <a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, _hw).use_as__vsf_led_scan_hw_t,\</div>
+<div class="line">        .hw             = (<span class="keyword">const</span> <a class="code" href="structvsf__led__scan__hw__t.html">vsf_led_scan_hw_t</a> *)&amp;VSF_MCONNECT(__, <a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, _hw),\</div>
 <div class="line">    };</div>
-<div class="ttc" id="avsf__led__scan_8h_html_a9dad4d42e0aa088272845de80389ef4f"><div class="ttname"><a href="vsf__led__scan_8h.html#a9dad4d42e0aa088272845de80389ef4f">describe_led_scan_hw</a></div><div class="ttdeci">#define describe_led_scan_hw(__name, __io_mapper, __led_num,...)</div><div class="ttdef"><b>Definition:</b> vsf_led_scan.h:61</div></div>
+<div class="ttc" id="astructvsf__led__scan__hw__t_html"><div class="ttname"><a href="structvsf__led__scan__hw__t.html">vsf_led_scan_hw_t</a></div><div class="ttdef"><b>Definition:</b> vsf_led_scan.h:80</div></div>
+<div class="ttc" id="avsf__led__scan_8h_html_a9dad4d42e0aa088272845de80389ef4f"><div class="ttname"><a href="vsf__led__scan_8h.html#a9dad4d42e0aa088272845de80389ef4f">describe_led_scan_hw</a></div><div class="ttdeci">#define describe_led_scan_hw(__name, __io_mapper, __led_num,...)</div><div class="ttdef"><b>Definition:</b> vsf_led_scan.h:62</div></div>
 </div><!-- fragment -->
 </div>
 </div>
