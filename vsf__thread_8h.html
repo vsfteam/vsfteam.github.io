@@ -51,6 +51,7 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__kernel__cfg_8h_source.html">kernel/vsf_kernel_cfg.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__eda_8h_source.html">../vsf_eda.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__task_8h_source.html">./vsf_task.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ooc__class_8h_source.html">utilities/ooc_class.h</a>&quot;</code><br />
 </div>
 <p><a href="vsf__thread_8h_source.html">Go to the source code of this file.</a></p>
@@ -141,9 +142,7 @@ Macros</h2></td></tr>
 <tr class="separator:a3252edde1b20a1069241cb83b840ae04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8f51c1d9226f8082fc8ac33861a7dba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__thread_8h.html#ae8f51c1d9226f8082fc8ac33861a7dba">vsf_thread_call_pt</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __target, ...)</td></tr>
 <tr class="separator:ae8f51c1d9226f8082fc8ac33861a7dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acca5e5c589f309f558881ab0d535ea75"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__thread_8h.html#acca5e5c589f309f558881ab0d535ea75">vsf_thread_call_fsm</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __target, ...)</td></tr>
-<tr class="separator:acca5e5c589f309f558881ab0d535ea75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaed78a4d646166d849b6888e13c1e122"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__thread_8h.html#aaed78a4d646166d849b6888e13c1e122">vsf_thread_call_task</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __target, ...)&#160;&#160;&#160;                <a class="el" href="vsf__thread_8h.html#acca5e5c589f309f558881ab0d535ea75">vsf_thread_call_fsm</a>(<a class="el" href="vsf__task_8h.html#a09a582161189ce16e5a630aaa02979df">vsf_task_func</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>), __target, (0, ##__VA_ARGS__))</td></tr>
+<tr class="memitem:aaed78a4d646166d849b6888e13c1e122"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__thread_8h.html#aaed78a4d646166d849b6888e13c1e122">vsf_thread_call_task</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __target, ...)&#160;&#160;&#160;                <a class="el" href="vsf__thread_8c.html#a0cda9c059f75b1d125034cc249916e29">vk_thread_call_task</a>(<a class="el" href="vsf__task_8h.html#a09a582161189ce16e5a630aaa02979df">vsf_task_func</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>), __target, (0, ##__VA_ARGS__))</td></tr>
 <tr class="separator:aaed78a4d646166d849b6888e13c1e122"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a987c7a75897ff5232f8e3c2e73b54b9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__thread_8h.html#a987c7a75897ff5232f8e3c2e73b54b9e">vsf_thread_delay_ms</a>(__ms)&#160;&#160;&#160;<a class="el" href="vsf__thread_8c.html#a419e6bb8e990595930244cf449268774">vsf_thread_delay</a>(vsf_systimer_ms_to_tick(__ms))</td></tr>
 <tr class="separator:a987c7a75897ff5232f8e3c2e73b54b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -255,8 +254,8 @@ Variables</h2></td></tr>
 <div class="line">                    /   <a class="code" href="vsf__thread_8h.html#a4dd4178ecb5ab531f3f2f7206580302d">VSF_KERNEL_CFG_THREAD_STACK_PAGE_SIZE</a>)                  \</div>
 <div class="line">                * <a class="code" href="vsf__thread_8h.html#a4dd4178ecb5ab531f3f2f7206580302d">VSF_KERNEL_CFG_THREAD_STACK_PAGE_SIZE</a>)                        \</div>
 <div class="line">            + <a class="code" href="vsf__thread_8h.html#a801927b7db76a6beb30cccbcf4f07d79">VSF_KERNEL_CFG_THREAD_STACK_GUARDIAN_SIZE</a>)</div>
-<div class="ttc" id="avsf__thread_8h_html_a4dd4178ecb5ab531f3f2f7206580302d"><div class="ttname"><a href="vsf__thread_8h.html#a4dd4178ecb5ab531f3f2f7206580302d">VSF_KERNEL_CFG_THREAD_STACK_PAGE_SIZE</a></div><div class="ttdeci">#define VSF_KERNEL_CFG_THREAD_STACK_PAGE_SIZE</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:51</div></div>
-<div class="ttc" id="avsf__thread_8h_html_a801927b7db76a6beb30cccbcf4f07d79"><div class="ttname"><a href="vsf__thread_8h.html#a801927b7db76a6beb30cccbcf4f07d79">VSF_KERNEL_CFG_THREAD_STACK_GUARDIAN_SIZE</a></div><div class="ttdeci">#define VSF_KERNEL_CFG_THREAD_STACK_GUARDIAN_SIZE</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:54</div></div>
+<div class="ttc" id="avsf__thread_8h_html_a4dd4178ecb5ab531f3f2f7206580302d"><div class="ttname"><a href="vsf__thread_8h.html#a4dd4178ecb5ab531f3f2f7206580302d">VSF_KERNEL_CFG_THREAD_STACK_PAGE_SIZE</a></div><div class="ttdeci">#define VSF_KERNEL_CFG_THREAD_STACK_PAGE_SIZE</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:55</div></div>
+<div class="ttc" id="avsf__thread_8h_html_a801927b7db76a6beb30cccbcf4f07d79"><div class="ttname"><a href="vsf__thread_8h.html#a801927b7db76a6beb30cccbcf4f07d79">VSF_KERNEL_CFG_THREAD_STACK_GUARDIAN_SIZE</a></div><div class="ttdeci">#define VSF_KERNEL_CFG_THREAD_STACK_GUARDIAN_SIZE</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:58</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -401,8 +400,8 @@ Variables</h2></td></tr>
 <div class="line">                            <span class="keyword">struct</span> thread_cb_##<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_t *vsf_pthis);</div>
 <div class="ttc" id="a____compiler_8h_html_a772cdb796bf75855c6a30626131d5e45"><div class="ttname"><a href="____compiler_8h.html#a772cdb796bf75855c6a30626131d5e45">ALIGN</a></div><div class="ttdeci">#define ALIGN(__N)</div><div class="ttdef"><b>Definition:</b> __compiler.h:133</div></div>
 <div class="ttc" id="avsf__kernel__common_8h_html_ad388b0c213cac0eadd2a95f215e8ffc3"><div class="ttname"><a href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a></div><div class="ttdeci">vsf_prio_t</div><div class="ttdef"><b>Definition:</b> vsf_kernel_common.h:37</div></div>
-<div class="ttc" id="avsf__thread_8h_html_aebdcae7c7445b0797f6aebef4cae7df5"><div class="ttname"><a href="vsf__thread_8h.html#aebdcae7c7445b0797f6aebef4cae7df5">__VSF_THREAD_STACK_SAFE_SIZE</a></div><div class="ttdeci">#define __VSF_THREAD_STACK_SAFE_SIZE(__stack)</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:65</div></div>
-<div class="ttc" id="avsf__thread_8h_html_af80011eef27286ad09b02e163f72b261"><div class="ttname"><a href="vsf__thread_8h.html#af80011eef27286ad09b02e163f72b261">VSF_KERNEL_CFG_THREAD_STACK_ALIGN_BIT</a></div><div class="ttdeci">#define VSF_KERNEL_CFG_THREAD_STACK_ALIGN_BIT</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:61</div></div>
+<div class="ttc" id="avsf__thread_8h_html_aebdcae7c7445b0797f6aebef4cae7df5"><div class="ttname"><a href="vsf__thread_8h.html#aebdcae7c7445b0797f6aebef4cae7df5">__VSF_THREAD_STACK_SAFE_SIZE</a></div><div class="ttdeci">#define __VSF_THREAD_STACK_SAFE_SIZE(__stack)</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:69</div></div>
+<div class="ttc" id="avsf__thread_8h_html_af80011eef27286ad09b02e163f72b261"><div class="ttname"><a href="vsf__thread_8h.html#af80011eef27286ad09b02e163f72b261">VSF_KERNEL_CFG_THREAD_STACK_ALIGN_BIT</a></div><div class="ttdeci">#define VSF_KERNEL_CFG_THREAD_STACK_ALIGN_BIT</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:65</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -480,7 +479,7 @@ Variables</h2></td></tr>
 <div class="line">                vk_eda_call_thread_prepare(&amp;(__vsf_pthis-&gt;use_as__vsf_thread_cb_t),\</div>
 <div class="line">                                              (vsf_thread_prepare_cfg_t *)&amp;cfg);\</div>
 <div class="line">            } <span class="keywordflow">while</span>(0)</div>
-<div class="ttc" id="avsf__thread_8h_html_a761030e55da522d31cb4ac9181dc2de4"><div class="ttname"><a href="vsf__thread_8h.html#a761030e55da522d31cb4ac9181dc2de4">stack</a></div><div class="ttdeci">uint64_t * stack</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:400</div></div>
+<div class="ttc" id="avsf__thread_8h_html_a761030e55da522d31cb4ac9181dc2de4"><div class="ttname"><a href="vsf__thread_8h.html#a761030e55da522d31cb4ac9181dc2de4">stack</a></div><div class="ttdeci">uint64_t * stack</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:399</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -704,7 +703,7 @@ Variables</h2></td></tr>
 <div class="line">                                                    (__thread_cb),              \</div>
 <div class="line">                                                    (__stack),                  \</div>
 <div class="line">                                                    (__size))</div>
-<div class="ttc" id="avsf__thread_8h_html_ad4ec3e02a1a9e1c3b1956fb479ec07f0"><div class="ttname"><a href="vsf__thread_8h.html#ad4ec3e02a1a9e1c3b1956fb479ec07f0">__vsf_eda_call_thread_prepare_ex__</a></div><div class="ttdeci">#define __vsf_eda_call_thread_prepare_ex__( __name, __thread_cb, __stack, __size)</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:180</div></div>
+<div class="ttc" id="avsf__thread_8h_html_ad4ec3e02a1a9e1c3b1956fb479ec07f0"><div class="ttname"><a href="vsf__thread_8h.html#ad4ec3e02a1a9e1c3b1956fb479ec07f0">__vsf_eda_call_thread_prepare_ex__</a></div><div class="ttdeci">#define __vsf_eda_call_thread_prepare_ex__( __name, __thread_cb, __stack, __size)</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:184</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1304,45 +1303,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">            (__target)-&gt;fsm_state = 0;                                          \</div>
 <div class="line">            vsf_thread_call_sub(<a class="code" href="vsf__pt_8h.html#aa4e30ad2b76f846b706a616c5f7fd99a">vsf_pt_func</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>), (__target), (0, ##__VA_ARGS__))</div>
-<div class="ttc" id="avsf__pt_8h_html_aa4e30ad2b76f846b706a616c5f7fd99a"><div class="ttname"><a href="vsf__pt_8h.html#aa4e30ad2b76f846b706a616c5f7fd99a">vsf_pt_func</a></div><div class="ttdeci">#define vsf_pt_func(__name)</div><div class="ttdef"><b>Definition:</b> vsf_pt.h:183</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="acca5e5c589f309f558881ab0d535ea75"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acca5e5c589f309f558881ab0d535ea75">&#9670;&nbsp;</a></span>vsf_thread_call_fsm</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define vsf_thread_call_fsm</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">__target, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">                <a class="code" href="vsf__thread_8c.html#a5cab9147c81762ae9bd775fcc049c5b3">vk_thread_call_fsm</a>(  (<a class="code" href="vsf__eda_8h.html#a869fe5732129390c11e4c405bcb6c281">vsf_fsm_entry_t</a>)(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>),                 \</div>
-<div class="line">                                        (<a class="code" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>)(__target), (0, ##__VA_ARGS__))</div>
-<div class="ttc" id="avsf__eda_8h_html_a869fe5732129390c11e4c405bcb6c281"><div class="ttname"><a href="vsf__eda_8h.html#a869fe5732129390c11e4c405bcb6c281">vsf_fsm_entry_t</a></div><div class="ttdeci">fsm_rt_t(* vsf_fsm_entry_t)(uintptr_t target, vsf_evt_t evt)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:641</div></div>
-<div class="ttc" id="avsf__thread_8c_html_a5cab9147c81762ae9bd775fcc049c5b3"><div class="ttname"><a href="vsf__thread_8c.html#a5cab9147c81762ae9bd775fcc049c5b3">vk_thread_call_fsm</a></div><div class="ttdeci">fsm_rt_t vk_thread_call_fsm(vsf_fsm_entry_t eda_handler, uintptr_t param, size_t local_size)</div><div class="ttdef"><b>Definition:</b> vsf_thread.c:596</div></div>
+<div class="ttc" id="avsf__pt_8h_html_aa4e30ad2b76f846b706a616c5f7fd99a"><div class="ttname"><a href="vsf__pt_8h.html#aa4e30ad2b76f846b706a616c5f7fd99a">vsf_pt_func</a></div><div class="ttdeci">#define vsf_pt_func(__name)</div><div class="ttdef"><b>Definition:</b> vsf_pt.h:180</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1373,7 +1334,7 @@ Variables</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;                <a class="el" href="vsf__thread_8h.html#acca5e5c589f309f558881ab0d535ea75">vsf_thread_call_fsm</a>(<a class="el" href="vsf__task_8h.html#a09a582161189ce16e5a630aaa02979df">vsf_task_func</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>), __target, (0, ##__VA_ARGS__))</td>
+          <td></td><td>&#160;&#160;&#160;                <a class="el" href="vsf__thread_8c.html#a0cda9c059f75b1d125034cc249916e29">vk_thread_call_task</a>(<a class="el" href="vsf__task_8h.html#a09a582161189ce16e5a630aaa02979df">vsf_task_func</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>), __target, (0, ##__VA_ARGS__))</td>
         </tr>
       </table>
 </div><div class="memdoc">

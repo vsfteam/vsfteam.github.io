@@ -56,6 +56,7 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__kernel__cfg_8h_source.html">kernel/vsf_kernel_cfg.h</a>&quot;</code><br />
 <code>#include &quot;hal/arch/vsf_arch.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__service_8h_source.html">service/vsf_service.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__kernel__common_8h_source.html">./vsf_kernel_common.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ooc__class_8h_source.html">utilities/ooc_class.h</a>&quot;</code><br />
 </div>
 <p><a href="vsf__eda_8h_source.html">Go to the source code of this file.</a></p>
@@ -113,6 +114,8 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a2060ac2d51195041a345676811e0a45b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a2060ac2d51195041a345676811e0a45b">__VSF_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:a2060ac2d51195041a345676811e0a45b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a444ad3ed1b04c1f4651cfdf013df744f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a444ad3ed1b04c1f4651cfdf013df744f">VSF_SYNC_AUTO_RST</a>&#160;&#160;&#160;0x0000</td></tr>
 <tr class="separator:a444ad3ed1b04c1f4651cfdf013df744f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbda586b9a5ac13021a61122f01e1e77"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#abbda586b9a5ac13021a61122f01e1e77">VSF_SYNC_MANUAL_RST</a>&#160;&#160;&#160;0x8000</td></tr>
@@ -189,13 +192,13 @@ Macros</h2></td></tr>
 <tr class="separator:a9c853c7c0a2a5095a3cac600ffda6932"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a643b64e692cf30e74b955ed731066fce"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a643b64e692cf30e74b955ed731066fce">__vsf_eda_crit_npb_leave</a>(__pcrit)&#160;&#160;&#160;            <a class="el" href="vsf__eda_8h.html#a2bc0093d16ad7a3c0b7b435a9753c572">vsf_eda_sync_increase</a>((__pcrit))</td></tr>
 <tr class="separator:a643b64e692cf30e74b955ed731066fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a972824a24c0e92b4e403df6f35840026"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a972824a24c0e92b4e403df6f35840026">__vsf_eda_init2</a>(__eda,  __priority,  __feature)&#160;&#160;&#160;            <a class="el" href="vsf__eda_8c.html#abeea6172243bec8074a2d7f4c5605884">__vsf_eda_init</a>((__eda), (__priority), (__feature))</td></tr>
+<tr class="memitem:a972824a24c0e92b4e403df6f35840026"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a972824a24c0e92b4e403df6f35840026">__vsf_eda_init2</a>(__eda,  __priority,  __feature)&#160;&#160;&#160;            <a class="el" href="vsf__eda_8h.html#a46485bc554f468032ab53fe60e5097c5">__vsf_eda_init</a>((__eda), (__priority), (__feature))</td></tr>
 <tr class="separator:a972824a24c0e92b4e403df6f35840026"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a243a4622afeaf2b7e2b6fcd668dae1cc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a243a4622afeaf2b7e2b6fcd668dae1cc">__vsf_eda_init1</a>(__eda,  __priority)&#160;&#160;&#160;            <a class="el" href="vsf__eda_8h.html#a972824a24c0e92b4e403df6f35840026">__vsf_eda_init2</a>((__eda), (__priority), (<a class="el" href="unionvsf__eda__feature__t.html">vsf_eda_feature_t</a>){.<a class="el" href="vsf__msg__tree_8h.html#a638e4503e0ae6ce655b7ad2e17e8f0ad">value</a> = 0})</td></tr>
 <tr class="separator:a243a4622afeaf2b7e2b6fcd668dae1cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa707a27903a06251cb44ff84670400f0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#aa707a27903a06251cb44ff84670400f0">__vsf_eda_init0</a>(__eda)&#160;&#160;&#160;            <a class="el" href="vsf__eda_8h.html#a243a4622afeaf2b7e2b6fcd668dae1cc">__vsf_eda_init1</a>((__eda), <a class="el" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3aa36d1474bd7f42000e94d3ff79adc94a">vsf_prio_inherit</a>)</td></tr>
 <tr class="separator:aa707a27903a06251cb44ff84670400f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad94ad002f41b3c3a4cd5f318d63c76ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#ad94ad002f41b3c3a4cd5f318d63c76ff">vsf_eda_init</a>(__eda, ...)&#160;&#160;&#160;            __PLOOC_EVAL(<a class="el" href="vsf__eda_8c.html#abeea6172243bec8074a2d7f4c5605884">__vsf_eda_init</a>, __VA_ARGS__)((__eda), ##__VA_ARGS__)</td></tr>
+<tr class="memitem:ad94ad002f41b3c3a4cd5f318d63c76ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#ad94ad002f41b3c3a4cd5f318d63c76ff">vsf_eda_init</a>(__eda, ...)&#160;&#160;&#160;            __PLOOC_EVAL(<a class="el" href="vsf__eda_8h.html#a46485bc554f468032ab53fe60e5097c5">__vsf_eda_init</a>, __VA_ARGS__)((__eda), ##__VA_ARGS__)</td></tr>
 <tr class="separator:ad94ad002f41b3c3a4cd5f318d63c76ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace0a4243442deb90b35a8e37859e6baf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#ace0a4243442deb90b35a8e37859e6baf">vsf_teda_init</a>(__teda, ...)&#160;&#160;&#160;<a class="el" href="vsf__eda_8h.html#ad94ad002f41b3c3a4cd5f318d63c76ff">vsf_eda_init</a>(&amp;(__teda)-&gt;use_as__vsf_eda_t, ##__VA_ARGS__)</td></tr>
 <tr class="separator:ace0a4243442deb90b35a8e37859e6baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -362,8 +365,6 @@ Typedefs</h2></td></tr>
 <tr class="separator:a43a14c27fa7cd929d1633f29bd58515b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d964d97d81f3504edfaef993003319e"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a1d964d97d81f3504edfaef993003319e">vsf_eda_on_terminate_t</a>) (<a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *eda)</td></tr>
 <tr class="separator:a1d964d97d81f3504edfaef993003319e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a869fe5732129390c11e4c405bcb6c281"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a869fe5732129390c11e4c405bcb6c281">vsf_fsm_entry_t</a>) (<a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> target, <a class="el" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> evt)</td></tr>
-<tr class="separator:a869fe5732129390c11e4c405bcb6c281"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae54a29673245a143f8833329d8114806"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#ae54a29673245a143f8833329d8114806">vsf_param_eda_evthandler_t</a>) (<a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> target, <a class="el" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> evt)</td></tr>
 <tr class="separator:ae54a29673245a143f8833329d8114806"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41627c090b6df1f207cd64342ddea527"><td class="memItemLeft" align="right" valign="top">typedef union <a class="el" href="unionvsf__eda__feature__t.html">vsf_eda_feature_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a41627c090b6df1f207cd64342ddea527">vsf_eda_feature_t</a></td></tr>
@@ -487,14 +488,22 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a09f70bde9be7027b4f8697e5c3f7fb0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a09f70bde9be7027b4f8697e5c3f7fb0e">vsf_systimer_on_tick</a> (void)</td></tr>
-<tr class="separator:a09f70bde9be7027b4f8697e5c3f7fb0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fdfbcabd30059926fd9a100fa1db82e"><td class="memItemLeft" align="right" valign="top">vsf_systimer_tick_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a5fdfbcabd30059926fd9a100fa1db82e">vsf_systimer_get_tick</a> (void)</td></tr>
 <tr class="separator:a5fdfbcabd30059926fd9a100fa1db82e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c3b23b31b7ca57ae52073928cb4a340"><td class="memItemLeft" align="right" valign="top">vsf_systimer_tick_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a9c3b23b31b7ca57ae52073928cb4a340">vsf_systimer_get_duration</a> (vsf_systimer_tick_t from_time, vsf_systimer_tick_t to_time)</td></tr>
 <tr class="separator:a9c3b23b31b7ca57ae52073928cb4a340"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d1a24dc478afcc7a99f8907fbb77fbe"><td class="memItemLeft" align="right" valign="top">vsf_systimer_tick_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a5d1a24dc478afcc7a99f8907fbb77fbe">vsf_systimer_get_elapsed</a> (vsf_systimer_tick_t from_time)</td></tr>
 <tr class="separator:a5d1a24dc478afcc7a99f8907fbb77fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46485bc554f468032ab53fe60e5097c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a46485bc554f468032ab53fe60e5097c5">__vsf_eda_init</a> (<a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *pthis, <a class="el" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a> priotiry, <a class="el" href="unionvsf__eda__feature__t.html">vsf_eda_feature_t</a> feature)</td></tr>
+<tr class="separator:a46485bc554f468032ab53fe60e5097c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06622e4209fda5d3e3bbc14b56686a6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a06622e4209fda5d3e3bbc14b56686a6b">vsf_eda_set_evthandler</a> (<a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *pthis, <a class="el" href="vsf__eda_8h.html#a43a14c27fa7cd929d1633f29bd58515b">vsf_eda_evthandler_t</a> evthandler)</td></tr>
+<tr class="separator:a06622e4209fda5d3e3bbc14b56686a6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad902cd9f85e5abf1c8138268d711c9b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#ad902cd9f85e5abf1c8138268d711c9b2">vsf_kernel_init</a> (const <a class="el" href="structvsf__kernel__cfg__t.html">vsf_kernel_cfg_t</a> *<a class="el" href="vsf__stream__writer_8h.html#a4867ae13f79e7bd89b5442224cdd20bd">cfg_ptr</a>)</td></tr>
+<tr class="separator:ad902cd9f85e5abf1c8138268d711c9b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf88c9a58a4977ad7257d3308e541a18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#adf88c9a58a4977ad7257d3308e541a18">vsf_eda_polling_state_get</a> (<a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *pthis)</td></tr>
+<tr class="separator:adf88c9a58a4977ad7257d3308e541a18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f7e64303cbd08ac062b6d9e10d4660e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a9f7e64303cbd08ac062b6d9e10d4660e">vsf_eda_polling_state_set</a> (<a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *pthis, <a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> <a class="el" href="vsf__msg__tree_8h.html#a0b57aa10271a66f3dc936bba1d2f3830">state</a>)</td></tr>
+<tr class="separator:a9f7e64303cbd08ac062b6d9e10d4660e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41c975eb4e4a2e9e9d9764c67fb58526"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a41c975eb4e4a2e9e9d9764c67fb58526">vsf_eda_go_to</a> (<a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> evthandler)</td></tr>
 <tr class="separator:a41c975eb4e4a2e9e9d9764c67fb58526"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6197b45983a08982ce93e85f33d2838c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a6197b45983a08982ce93e85f33d2838c">vsf_eda_start</a> (<a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *pthis, <a class="el" href="structvsf__eda__cfg__t.html">vsf_eda_cfg_t</a> *cfg)</td></tr>
@@ -517,6 +526,16 @@ Functions</h2></td></tr>
 <tr class="separator:a3c4f05ad4fdae14b1aa63298dec36657"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53e2e1499e93187401d7ce9714b79742"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a53e2e1499e93187401d7ce9714b79742">vsf_eda_cpu_usage_stop</a> (<a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *pthis)</td></tr>
 <tr class="separator:a53e2e1499e93187401d7ce9714b79742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe3f743fdc6f404485d96373f4be8b39"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#afe3f743fdc6f404485d96373f4be8b39">vsf_eda_fini</a> (<a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *pthis)</td></tr>
+<tr class="separator:afe3f743fdc6f404485d96373f4be8b39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a940ce2e24fe1a271f6abdc82009c8555"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a940ce2e24fe1a271f6abdc82009c8555">__vsf_dispatch_evt</a> (<a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *pthis, <a class="el" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> evt)</td></tr>
+<tr class="separator:a940ce2e24fe1a271f6abdc82009c8555"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a347a913eb6411de6a361a8fb349f5d13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a347a913eb6411de6a361a8fb349f5d13">__vsf_eda_on_terminate</a> (<a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *pthis)</td></tr>
+<tr class="separator:a347a913eb6411de6a361a8fb349f5d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b55264a53a2229a1f890d2b07ed2cb6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a8b55264a53a2229a1f890d2b07ed2cb6">__vsf_eda_get_cur_priority</a> (<a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *pthis)</td></tr>
+<tr class="separator:a8b55264a53a2229a1f890d2b07ed2cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7049dea118060c3b5fec85987dbe5539"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a7049dea118060c3b5fec85987dbe5539">__vsf_eda_set_priority</a> (<a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *pthis, <a class="el" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a> prio)</td></tr>
+<tr class="separator:a7049dea118060c3b5fec85987dbe5539"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b6dd3d7138f2c8f917986ef7774c1de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a7b6dd3d7138f2c8f917986ef7774c1de">vsf_eda_set_user_value</a> (<a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="el" href="vsf__msg__tree_8h.html#a638e4503e0ae6ce655b7ad2e17e8f0ad">value</a>)</td></tr>
 <tr class="separator:a7b6dd3d7138f2c8f917986ef7774c1de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20b94a950e7d46831e87a160a1ed58f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a20b94a950e7d46831e87a160a1ed58f6">vsf_eda_get_user_value</a> (void)</td></tr>
@@ -537,8 +556,6 @@ Functions</h2></td></tr>
 <tr class="separator:aa36d655140985f1637eaadd81457d919"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c2c52073d9d8f63b80f5b295f3e515a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a5c2c52073d9d8f63b80f5b295f3e515a">vsf_eda_target_get</a> (void)</td></tr>
 <tr class="separator:a5c2c52073d9d8f63b80f5b295f3e515a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d43c223342139ca7521a3285e2c7dd2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a6d43c223342139ca7521a3285e2c7dd2">__vsf_eda_call_fsm</a> (<a class="el" href="vsf__eda_8h.html#a869fe5732129390c11e4c405bcb6c281">vsf_fsm_entry_t</a> <a class="el" href="vsf__thread_8h.html#a7b1bd7ace931306a646900d724bb7329">entry</a>, <a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> param, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> local_size)</td></tr>
-<tr class="separator:a6d43c223342139ca7521a3285e2c7dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78d37b47214056cf02dd04f250f5999d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a78d37b47214056cf02dd04f250f5999d">vsf_teda_start</a> (<a class="el" href="classvsf__teda__t.html">vsf_teda_t</a> *pthis, <a class="el" href="structvsf__eda__cfg__t.html">vsf_eda_cfg_t</a> *cfg)</td></tr>
 <tr class="separator:a78d37b47214056cf02dd04f250f5999d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21ea6cc58dc79b22a242b7310cfed85d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__eda_8h.html#a21ea6cc58dc79b22a242b7310cfed85d">vsf_teda_set_timer</a> (vsf_systimer_tick_t tick)</td></tr>
@@ -630,6 +647,21 @@ Variables</h2></td></tr>
 <tr class="separator:a4a10ba6f93d9a792f8cac99ce655a4a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a2060ac2d51195041a345676811e0a45b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2060ac2d51195041a345676811e0a45b">&#9670;&nbsp;</a></span>__VSF_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>\NOTE: Make sure #include "utilities/ooc_class.h" is close to the class ! definition and there is NO ANY OTHER module-interface-header file ! included in this file </p>
+
+</div>
+</div>
 <a id="a444ad3ed1b04c1f4651cfdf013df744f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a444ad3ed1b04c1f4651cfdf013df744f">&#9670;&nbsp;</a></span>VSF_SYNC_AUTO_RST</h2>
 
@@ -641,7 +673,6 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>\NOTE: Make sure #include "utilities/ooc_class.h" is close to the class ! definition and there is NO ANY OTHER module-interface-header file ! included in this file </p>
 
 </div>
 </div>
@@ -938,8 +969,8 @@ Variables</h2></td></tr>
 <div class="line">                                1 | <a class="code" href="vsf__eda_8h.html#a404ae5446b0b6c865055454599857daf">VSF_SYNC_HAS_OWNER</a>,                         \</div>
 <div class="line">                                1 | <a class="code" href="vsf__eda_8h.html#a444ad3ed1b04c1f4651cfdf013df744f">VSF_SYNC_AUTO_RST</a>)</div>
 <div class="ttc" id="avsf__eda_8h_html_a06319ed5d9ba166365983f57bf1bc376"><div class="ttname"><a href="vsf__eda_8h.html#a06319ed5d9ba166365983f57bf1bc376">vsf_eda_sync_init</a></div><div class="ttdeci">vsf_err_t vsf_eda_sync_init(vsf_sync_t *pthis, uint_fast16_t cur_value, uint_fast16_t max_value)</div></div>
-<div class="ttc" id="avsf__eda_8h_html_a404ae5446b0b6c865055454599857daf"><div class="ttname"><a href="vsf__eda_8h.html#a404ae5446b0b6c865055454599857daf">VSF_SYNC_HAS_OWNER</a></div><div class="ttdeci">#define VSF_SYNC_HAS_OWNER</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:50</div></div>
-<div class="ttc" id="avsf__eda_8h_html_a444ad3ed1b04c1f4651cfdf013df744f"><div class="ttname"><a href="vsf__eda_8h.html#a444ad3ed1b04c1f4651cfdf013df744f">VSF_SYNC_AUTO_RST</a></div><div class="ttdeci">#define VSF_SYNC_AUTO_RST</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:48</div></div>
+<div class="ttc" id="avsf__eda_8h_html_a404ae5446b0b6c865055454599857daf"><div class="ttname"><a href="vsf__eda_8h.html#a404ae5446b0b6c865055454599857daf">VSF_SYNC_HAS_OWNER</a></div><div class="ttdeci">#define VSF_SYNC_HAS_OWNER</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:53</div></div>
+<div class="ttc" id="avsf__eda_8h_html_a444ad3ed1b04c1f4651cfdf013df744f"><div class="ttname"><a href="vsf__eda_8h.html#a444ad3ed1b04c1f4651cfdf013df744f">VSF_SYNC_AUTO_RST</a></div><div class="ttdeci">#define VSF_SYNC_AUTO_RST</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:51</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1178,7 +1209,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">            <a class="code" href="vsf__eda_8h.html#a06319ed5d9ba166365983f57bf1bc376">vsf_eda_sync_init</a>((__pevt), (__set),                                \</div>
 <div class="line">                    1 | ((__auto_rst) ? <a class="code" href="vsf__eda_8h.html#a444ad3ed1b04c1f4651cfdf013df744f">VSF_SYNC_AUTO_RST</a> : <a class="code" href="vsf__eda_8h.html#abbda586b9a5ac13021a61122f01e1e77">VSF_SYNC_MANUAL_RST</a>))</div>
-<div class="ttc" id="avsf__eda_8h_html_abbda586b9a5ac13021a61122f01e1e77"><div class="ttname"><a href="vsf__eda_8h.html#abbda586b9a5ac13021a61122f01e1e77">VSF_SYNC_MANUAL_RST</a></div><div class="ttdeci">#define VSF_SYNC_MANUAL_RST</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:49</div></div>
+<div class="ttc" id="avsf__eda_8h_html_abbda586b9a5ac13021a61122f01e1e77"><div class="ttname"><a href="vsf__eda_8h.html#abbda586b9a5ac13021a61122f01e1e77">VSF_SYNC_MANUAL_RST</a></div><div class="ttdeci">#define VSF_SYNC_MANUAL_RST</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:52</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1503,7 +1534,7 @@ Variables</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;            <a class="el" href="vsf__eda_8c.html#abeea6172243bec8074a2d7f4c5605884">__vsf_eda_init</a>((__eda), (__priority), (__feature))</td>
+          <td></td><td>&#160;&#160;&#160;            <a class="el" href="vsf__eda_8h.html#a46485bc554f468032ab53fe60e5097c5">__vsf_eda_init</a>((__eda), (__priority), (__feature))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1577,7 +1608,7 @@ Variables</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;            __PLOOC_EVAL(<a class="el" href="vsf__eda_8c.html#abeea6172243bec8074a2d7f4c5605884">__vsf_eda_init</a>, __VA_ARGS__)((__eda), ##__VA_ARGS__)</td>
+          <td></td><td>&#160;&#160;&#160;            __PLOOC_EVAL(<a class="el" href="vsf__eda_8h.html#a46485bc554f468032ab53fe60e5097c5">__vsf_eda_init</a>, __VA_ARGS__)((__eda), ##__VA_ARGS__)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1911,9 +1942,9 @@ Variables</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">            <span class="keyword">typedef</span> <span class="keyword">struct </span>vsf_peda_param(__name)   <a class="code" href="vsf__eda_8h.html#a25ab2a66ec82e98e04df167405e30530">vsf_peda_param</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>);     \</div>
 <div class="line">            typedef <span class="keyword">struct </span>vsf_peda_arg(__name)     <a class="code" href="vsf__eda_8h.html#a7cf725ab8706059a445fdc092cc5eabc">vsf_peda_arg</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>);       \</div>
 <div class="line">            typedef <span class="keyword">struct </span>vsf_peda_local(__name)   <a class="code" href="vsf__eda_8h.html#ad24b62f38ac023518696af543a87f836">vsf_peda_local</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>);</div>
-<div class="ttc" id="avsf__eda_8h_html_a25ab2a66ec82e98e04df167405e30530"><div class="ttname"><a href="vsf__eda_8h.html#a25ab2a66ec82e98e04df167405e30530">vsf_peda_param</a></div><div class="ttdeci">#define vsf_peda_param(__name)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:190</div></div>
-<div class="ttc" id="avsf__eda_8h_html_a7cf725ab8706059a445fdc092cc5eabc"><div class="ttname"><a href="vsf__eda_8h.html#a7cf725ab8706059a445fdc092cc5eabc">vsf_peda_arg</a></div><div class="ttdeci">#define vsf_peda_arg(__name)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:183</div></div>
-<div class="ttc" id="avsf__eda_8h_html_ad24b62f38ac023518696af543a87f836"><div class="ttname"><a href="vsf__eda_8h.html#ad24b62f38ac023518696af543a87f836">vsf_peda_local</a></div><div class="ttdeci">#define vsf_peda_local(__name)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:180</div></div>
+<div class="ttc" id="avsf__eda_8h_html_a25ab2a66ec82e98e04df167405e30530"><div class="ttname"><a href="vsf__eda_8h.html#a25ab2a66ec82e98e04df167405e30530">vsf_peda_param</a></div><div class="ttdeci">#define vsf_peda_param(__name)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:193</div></div>
+<div class="ttc" id="avsf__eda_8h_html_a7cf725ab8706059a445fdc092cc5eabc"><div class="ttname"><a href="vsf__eda_8h.html#a7cf725ab8706059a445fdc092cc5eabc">vsf_peda_arg</a></div><div class="ttdeci">#define vsf_peda_arg(__name)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:186</div></div>
+<div class="ttc" id="avsf__eda_8h_html_ad24b62f38ac023518696af543a87f836"><div class="ttname"><a href="vsf__eda_8h.html#ad24b62f38ac023518696af543a87f836">vsf_peda_local</a></div><div class="ttdeci">#define vsf_peda_local(__name)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:183</div></div>
 <div class="ttc" id="avsf__os_8c_html_a7f565b52ec477e9c0c235e88b9355558"><div class="ttname"><a href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a></div><div class="ttdeci">#define __name</div><div class="ttdef"><b>Definition:</b> vsf_os.c:153</div></div>
 </div><!-- fragment -->
 </div>
@@ -2040,8 +2071,8 @@ Variables</h2></td></tr>
 <div class="line">                    void <a class="code" href="vsf__eda_8h.html#ae75a8b49ebc01b721de362ce53c8c5b3">vsf_peda_func</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)(                                 \</div>
 <div class="line">                                        struct <a class="code" href="vsf__eda_8h.html#ad24b62f38ac023518696af543a87f836">vsf_peda_local</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>) *vsf_pthis,\</div>
 <div class="line">                                        vsf_evt_t evt);</div>
-<div class="ttc" id="avsf__eda_8h_html_adbbaa6157ae22c11ad42496a0270a776"><div class="ttname"><a href="vsf__eda_8h.html#adbbaa6157ae22c11ad42496a0270a776">declare_vsf_peda_ctx</a></div><div class="ttdeci">#define declare_vsf_peda_ctx(__name)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:197</div></div>
-<div class="ttc" id="avsf__eda_8h_html_ae75a8b49ebc01b721de362ce53c8c5b3"><div class="ttname"><a href="vsf__eda_8h.html#ae75a8b49ebc01b721de362ce53c8c5b3">vsf_peda_func</a></div><div class="ttdeci">#define vsf_peda_func(__name)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:186</div></div>
+<div class="ttc" id="avsf__eda_8h_html_adbbaa6157ae22c11ad42496a0270a776"><div class="ttname"><a href="vsf__eda_8h.html#adbbaa6157ae22c11ad42496a0270a776">declare_vsf_peda_ctx</a></div><div class="ttdeci">#define declare_vsf_peda_ctx(__name)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:200</div></div>
+<div class="ttc" id="avsf__eda_8h_html_ae75a8b49ebc01b721de362ce53c8c5b3"><div class="ttname"><a href="vsf__eda_8h.html#ae75a8b49ebc01b721de362ce53c8c5b3">vsf_peda_func</a></div><div class="ttdeci">#define vsf_peda_func(__name)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:189</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2084,7 +2115,7 @@ Variables</h2></td></tr>
 <div class="line">            __decoration                                                        \</div>
 <div class="line">                   void __func1(        <span class="keyword">struct</span> <a class="code" href="vsf__eda_8h.html#ad24b62f38ac023518696af543a87f836">vsf_peda_local</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>) *vsf_pthis,\</div>
 <div class="line">                                        <a class="code" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> evt);</div>
-<div class="ttc" id="avsf__eda_8h_html_a0095e13b0285f6d680edab1e0f9bd2f3"><div class="ttname"><a href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a></div><div class="ttdeci">int16_t vsf_evt_t</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:637</div></div>
+<div class="ttc" id="avsf__eda_8h_html_a0095e13b0285f6d680edab1e0f9bd2f3"><div class="ttname"><a href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a></div><div class="ttdeci">int16_t vsf_evt_t</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:640</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2550,7 +2581,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">            __PLOOC_EVAL(<a class="code" href="vsf__eda_8h.html#ab10083b2b09cb04a073471d805d7853d">declare_vsf_peda_methods</a>, __VA_ARGS__)                 \</div>
 <div class="line">                (__decoration, __VA_ARGS__)</div>
-<div class="ttc" id="avsf__eda_8h_html_ab10083b2b09cb04a073471d805d7853d"><div class="ttname"><a href="vsf__eda_8h.html#ab10083b2b09cb04a073471d805d7853d">declare_vsf_peda_methods</a></div><div class="ttdeci">#define declare_vsf_peda_methods(__decoration,...)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:356</div></div>
+<div class="ttc" id="avsf__eda_8h_html_ab10083b2b09cb04a073471d805d7853d"><div class="ttname"><a href="vsf__eda_8h.html#ab10083b2b09cb04a073471d805d7853d">declare_vsf_peda_methods</a></div><div class="ttdeci">#define declare_vsf_peda_methods(__decoration,...)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:359</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2674,8 +2705,8 @@ Variables</h2></td></tr>
 <div class="line">            implement(<a class="code" href="classvsf__teda__t.html">vsf_peda_t</a>)                                               \</div>
 <div class="line">            implement_ex(<a class="code" href="vsf__eda_8h.html#a25ab2a66ec82e98e04df167405e30530">vsf_peda_param</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>), param)                         \</div>
 <div class="line">        };</div>
-<div class="ttc" id="aclassvsf__teda__t_html"><div class="ttname"><a href="classvsf__teda__t.html">vsf_teda_t</a></div><div class="ttdef"><b>Definition:</b> vsf_eda.h:803</div></div>
-<div class="ttc" id="avsf__eda_8h_html_a68cc3449859f3a246abd6e2419b7cd4c"><div class="ttname"><a href="vsf__eda_8h.html#a68cc3449859f3a246abd6e2419b7cd4c">__def_vsf_peda_ctx4</a></div><div class="ttdeci">#define __def_vsf_peda_ctx4(__name, __param, __arg, __local)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:378</div></div>
+<div class="ttc" id="aclassvsf__teda__t_html"><div class="ttname"><a href="classvsf__teda__t.html">vsf_teda_t</a></div><div class="ttdef"><b>Definition:</b> vsf_eda.h:804</div></div>
+<div class="ttc" id="avsf__eda_8h_html_a68cc3449859f3a246abd6e2419b7cd4c"><div class="ttname"><a href="vsf__eda_8h.html#a68cc3449859f3a246abd6e2419b7cd4c">__def_vsf_peda_ctx4</a></div><div class="ttdeci">#define __def_vsf_peda_ctx4(__name, __param, __arg, __local)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:381</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2758,7 +2789,7 @@ Variables</h2></td></tr>
 <div class="line">            implement(<a class="code" href="classvsf__teda__t.html">vsf_peda_t</a>)                                               \</div>
 <div class="line">            implement_ex(<a class="code" href="vsf__eda_8h.html#a25ab2a66ec82e98e04df167405e30530">vsf_peda_param</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>), param)                         \</div>
 <div class="line">        };</div>
-<div class="ttc" id="avsf__eda_8h_html_a87025008ee122585183b49e005c8633b"><div class="ttname"><a href="vsf__eda_8h.html#a87025008ee122585183b49e005c8633b">__def_vsf_peda_ctx3</a></div><div class="ttdeci">#define __def_vsf_peda_ctx3(__name, __param, __arg)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:412</div></div>
+<div class="ttc" id="avsf__eda_8h_html_a87025008ee122585183b49e005c8633b"><div class="ttname"><a href="vsf__eda_8h.html#a87025008ee122585183b49e005c8633b">__def_vsf_peda_ctx3</a></div><div class="ttdeci">#define __def_vsf_peda_ctx3(__name, __param, __arg)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:415</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2846,7 +2877,7 @@ Variables</h2></td></tr>
 <div class="line">            implement(<a class="code" href="classvsf__teda__t.html">vsf_peda_t</a>)                                               \</div>
 <div class="line">            implement_ex(<a class="code" href="vsf__eda_8h.html#a25ab2a66ec82e98e04df167405e30530">vsf_peda_param</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>), param)                         \</div>
 <div class="line">        };</div>
-<div class="ttc" id="avsf__eda_8h_html_a81fdc4199c051b73575a520589645f35"><div class="ttname"><a href="vsf__eda_8h.html#a81fdc4199c051b73575a520589645f35">__def_vsf_peda_ctx2</a></div><div class="ttdeci">#define __def_vsf_peda_ctx2(__name, __param)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:445</div></div>
+<div class="ttc" id="avsf__eda_8h_html_a81fdc4199c051b73575a520589645f35"><div class="ttname"><a href="vsf__eda_8h.html#a81fdc4199c051b73575a520589645f35">__def_vsf_peda_ctx2</a></div><div class="ttdeci">#define __def_vsf_peda_ctx2(__name, __param)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:448</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2870,7 +2901,7 @@ Variables</h2></td></tr>
 <div class="line">            implement(<a class="code" href="classvsf__teda__t.html">vsf_peda_t</a>)                                               \</div>
 <div class="line">            implement_ex(<a class="code" href="vsf__eda_8h.html#a25ab2a66ec82e98e04df167405e30530">vsf_peda_param</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>), param)                         \</div>
 <div class="line">        };</div>
-<div class="ttc" id="avsf__eda_8h_html_a88c27357ce55eec12059ff6c46d5decc"><div class="ttname"><a href="vsf__eda_8h.html#a88c27357ce55eec12059ff6c46d5decc">__def_vsf_peda_ctx1</a></div><div class="ttdeci">#define __def_vsf_peda_ctx1(__name)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:456</div></div>
+<div class="ttc" id="avsf__eda_8h_html_a88c27357ce55eec12059ff6c46d5decc"><div class="ttname"><a href="vsf__eda_8h.html#a88c27357ce55eec12059ff6c46d5decc">__def_vsf_peda_ctx1</a></div><div class="ttdeci">#define __def_vsf_peda_ctx1(__name)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:459</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3271,7 +3302,7 @@ Variables</h2></td></tr>
 <div class="line">            vsf_peda_start((<a class="code" href="classvsf__teda__t.html">vsf_peda_t</a> *)(__param_eda),                         \</div>
 <div class="line">                &amp;<a class="code" href="vsf__preprocessor_8h.html#a5fd32e93159a228f586c0e21900043ce">VSF_MACRO_SAFE_NAME</a>(cfg));                                     \</div>
 <div class="line">        } <span class="keywordflow">while</span>(0)</div>
-<div class="ttc" id="avsf__eda_8h_html_ae54a29673245a143f8833329d8114806"><div class="ttname"><a href="vsf__eda_8h.html#ae54a29673245a143f8833329d8114806">vsf_param_eda_evthandler_t</a></div><div class="ttdeci">void(* vsf_param_eda_evthandler_t)(uintptr_t target, vsf_evt_t evt)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:642</div></div>
+<div class="ttc" id="avsf__eda_8h_html_ae54a29673245a143f8833329d8114806"><div class="ttname"><a href="vsf__eda_8h.html#ae54a29673245a143f8833329d8114806">vsf_param_eda_evthandler_t</a></div><div class="ttdeci">void(* vsf_param_eda_evthandler_t)(uintptr_t target, vsf_evt_t evt)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:644</div></div>
 <div class="ttc" id="avsf__preprocessor_8h_html_a5fd32e93159a228f586c0e21900043ce"><div class="ttname"><a href="vsf__preprocessor_8h.html#a5fd32e93159a228f586c0e21900043ce">VSF_MACRO_SAFE_NAME</a></div><div class="ttdeci">#define VSF_MACRO_SAFE_NAME(__NAME)</div><div class="ttdef"><b>Definition:</b> vsf_preprocessor.h:32</div></div>
 </div><!-- fragment -->
 </div>
@@ -3475,7 +3506,7 @@ Variables</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">                <a class="code" href="vsf__eda_8h.html#aa4c11f0adf01bb694e906806ec924261">vsf_eda_call_param_eda</a>( <a class="code" href="vsf__eda_8h.html#ae75a8b49ebc01b721de362ce53c8c5b3">vsf_peda_func</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>),                  \</div>
 <div class="line">                                        (__param),                              \</div>
 <div class="line">                                        <span class="keyword">sizeof</span>(<a class="code" href="vsf__eda_8h.html#ad24b62f38ac023518696af543a87f836">vsf_peda_local</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)))</div>
-<div class="ttc" id="avsf__eda_8h_html_aa4c11f0adf01bb694e906806ec924261"><div class="ttname"><a href="vsf__eda_8h.html#aa4c11f0adf01bb694e906806ec924261">vsf_eda_call_param_eda</a></div><div class="ttdeci">#define vsf_eda_call_param_eda(__param_evthandler, __param,...)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:171</div></div>
+<div class="ttc" id="avsf__eda_8h_html_aa4c11f0adf01bb694e906806ec924261"><div class="ttname"><a href="vsf__eda_8h.html#aa4c11f0adf01bb694e906806ec924261">vsf_eda_call_param_eda</a></div><div class="ttdeci">#define vsf_eda_call_param_eda(__param_evthandler, __param,...)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:174</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3670,20 +3701,6 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef void(* vsf_eda_on_terminate_t) (<a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *eda)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a869fe5732129390c11e4c405bcb6c281"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a869fe5732129390c11e4c405bcb6c281">&#9670;&nbsp;</a></span>vsf_fsm_entry_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>(* vsf_fsm_entry_t) (<a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> target, <a class="el" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> evt)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -4100,24 +4117,6 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a09f70bde9be7027b4f8697e5c3f7fb0e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09f70bde9be7027b4f8697e5c3f7fb0e">&#9670;&nbsp;</a></span>vsf_systimer_on_tick()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vsf_systimer_on_tick </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a5fdfbcabd30059926fd9a100fa1db82e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5fdfbcabd30059926fd9a100fa1db82e">&#9670;&nbsp;</a></span>vsf_systimer_get_tick()</h2>
 
@@ -4176,6 +4175,132 @@ Variables</h2></td></tr>
           <td class="paramtype">vsf_systimer_tick_t&#160;</td>
           <td class="paramname"><em>from_time</em></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a46485bc554f468032ab53fe60e5097c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46485bc554f468032ab53fe60e5097c5">&#9670;&nbsp;</a></span>__vsf_eda_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> __vsf_eda_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *&#160;</td>
+          <td class="paramname"><em>pthis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a>&#160;</td>
+          <td class="paramname"><em>priotiry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="unionvsf__eda__feature__t.html">vsf_eda_feature_t</a>&#160;</td>
+          <td class="paramname"><em>feature</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06622e4209fda5d3e3bbc14b56686a6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06622e4209fda5d3e3bbc14b56686a6b">&#9670;&nbsp;</a></span>vsf_eda_set_evthandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_eda_set_evthandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *&#160;</td>
+          <td class="paramname"><em>pthis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__eda_8h.html#a43a14c27fa7cd929d1633f29bd58515b">vsf_eda_evthandler_t</a>&#160;</td>
+          <td class="paramname"><em>evthandler</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad902cd9f85e5abf1c8138268d711c9b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad902cd9f85e5abf1c8138268d711c9b2">&#9670;&nbsp;</a></span>vsf_kernel_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_kernel_init </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structvsf__kernel__cfg__t.html">vsf_kernel_cfg_t</a> *&#160;</td>
+          <td class="paramname"><em>cfg_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf88c9a58a4977ad7257d3308e541a18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf88c9a58a4977ad7257d3308e541a18">&#9670;&nbsp;</a></span>vsf_eda_polling_state_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> vsf_eda_polling_state_get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *&#160;</td>
+          <td class="paramname"><em>pthis</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f7e64303cbd08ac062b6d9e10d4660e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f7e64303cbd08ac062b6d9e10d4660e">&#9670;&nbsp;</a></span>vsf_eda_polling_state_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_eda_polling_state_set </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *&#160;</td>
+          <td class="paramname"><em>pthis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td>
+          <td class="paramname"><em>state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -4398,6 +4523,119 @@ Variables</h2></td></tr>
           <td class="paramtype"><a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *&#160;</td>
           <td class="paramname"><em>pthis</em></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afe3f743fdc6f404485d96373f4be8b39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe3f743fdc6f404485d96373f4be8b39">&#9670;&nbsp;</a></span>vsf_eda_fini()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_eda_fini </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *&#160;</td>
+          <td class="paramname"><em>pthis</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a940ce2e24fe1a271f6abdc82009c8555"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a940ce2e24fe1a271f6abdc82009c8555">&#9670;&nbsp;</a></span>__vsf_dispatch_evt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void __vsf_dispatch_evt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *&#160;</td>
+          <td class="paramname"><em>pthis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a>&#160;</td>
+          <td class="paramname"><em>evt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>&lt; no param</p>
+<p>&lt; no local</p>
+<p>&lt; this is a pure eda</p>
+
+</div>
+</div>
+<a id="a347a913eb6411de6a361a8fb349f5d13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a347a913eb6411de6a361a8fb349f5d13">&#9670;&nbsp;</a></span>__vsf_eda_on_terminate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void __vsf_eda_on_terminate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *&#160;</td>
+          <td class="paramname"><em>pthis</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b55264a53a2229a1f890d2b07ed2cb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b55264a53a2229a1f890d2b07ed2cb6">&#9670;&nbsp;</a></span>__vsf_eda_get_cur_priority()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a> __vsf_eda_get_cur_priority </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *&#160;</td>
+          <td class="paramname"><em>pthis</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7049dea118060c3b5fec85987dbe5539"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7049dea118060c3b5fec85987dbe5539">&#9670;&nbsp;</a></span>__vsf_eda_set_priority()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> __vsf_eda_set_priority </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *&#160;</td>
+          <td class="paramname"><em>pthis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a>&#160;</td>
+          <td class="paramname"><em>prio</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -4669,46 +4907,6 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6d43c223342139ca7521a3285e2c7dd2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d43c223342139ca7521a3285e2c7dd2">&#9670;&nbsp;</a></span>__vsf_eda_call_fsm()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a> __vsf_eda_call_fsm </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="vsf__eda_8h.html#a869fe5732129390c11e4c405bcb6c281">vsf_fsm_entry_t</a>&#160;</td>
-          <td class="paramname"><em>entry</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>&#160;</td>
-          <td class="paramname"><em>param</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
-          <td class="paramname"><em>local_size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section note"><dt>Note</dt><dd><ul>
-<li>if VSF_ERR_NOT_ENOUGH_RESOURCES is detected, yield and try it again (automatically). For tasks sharing the same frame pool, if the pool is too small, only task performance will be affected, and all sub-task call will work when frame is allocated.</li>
-<li>if the frame is allocated and pushed to the stack, we should yield to let the sub-task run.</li>
-</ul>
-</dd></dl>
-<p>Since in either way, we will yield, no need to handle the return value of vsf_eda_call().</p>
 
 </div>
 </div>

@@ -44,7 +44,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#define-members">宏定义</a> &#124;
-<a href="#typedef-members">类型定义</a>  </div>
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
   <div class="headertitle">
 <div class="title">vsf_task.h 文件参考</div>  </div>
 </div><!--header-->
@@ -53,7 +54,6 @@ $(function() {
 <code>#include &quot;<a class="el" href="vsf__service_8h_source.html">service/vsf_service.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__eda_8h_source.html">../vsf_eda.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__pt_8h_source.html">./vsf_pt.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="vsf__thread_8h_source.html">./vsf_thread.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__fsm_8h_source.html">./vsf_fsm.h</a>&quot;</code><br />
 </div>
 <p><a href="vsf__task_8h_source.html">浏览源代码.</a></p>
@@ -106,8 +106,6 @@ $(function() {
 <tr class="separator:afecc6f48824d01f448ffd210d82b0be3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acdc6da176d824777856f9d2991623117"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__task_8h.html#acdc6da176d824777856f9d2991623117">init_vsf_task</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __task,  __pri, ...)&#160;&#160;&#160;            <a class="el" href="vsf__task_8h.html#afecc6f48824d01f448ffd210d82b0be3">__init_vsf_task</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, (__task), (__pri), __VA_ARGS__)</td></tr>
 <tr class="separator:acdc6da176d824777856f9d2991623117"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6e08ffc5dadf6f982d6404d814b106e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__task_8h.html#af6e08ffc5dadf6f982d6404d814b106e">vsf_task_call_fsm</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __target, ...)</td></tr>
-<tr class="separator:af6e08ffc5dadf6f982d6404d814b106e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9794a2572e3b6c580fa38ffb8634aeae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__task_8h.html#a9794a2572e3b6c580fa38ffb8634aeae">vsf_task_call_task</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __target, ...)</td></tr>
 <tr class="separator:a9794a2572e3b6c580fa38ffb8634aeae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03ae545975df67c17f8f6a04434f51d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__task_8h.html#a03ae545975df67c17f8f6a04434f51d1">vsf_task_call_sub</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __target, ...)</td></tr>
@@ -116,9 +114,9 @@ $(function() {
 <tr class="separator:aa75c1230861f6702e1143d6a57154ae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a773815cffcfb93bb977aedc664d1853e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__task_8h.html#a773815cffcfb93bb977aedc664d1853e">vsf_task_call_pt</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __target)&#160;&#160;&#160;            <a class="el" href="vsf__task_8h.html#a03ae545975df67c17f8f6a04434f51d1">vsf_task_call_sub</a>(<a class="el" href="vsf__pt_8h.html#aa4e30ad2b76f846b706a616c5f7fd99a">vsf_pt_func</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>), __target)</td></tr>
 <tr class="separator:a773815cffcfb93bb977aedc664d1853e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b0e611a4d10c044509c6101e9d214a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__task_8h.html#a2b0e611a4d10c044509c6101e9d214a1">on_vsf_task_init</a>()&#160;&#160;&#160;        if (<a class="el" href="vsf__eda_8h.html#a191c33aa19f004f13bed2b7be33756caa90611dab05b7e85186d73c9a4870a04a">VSF_EVT_INIT</a> == evt)</td></tr>
+<tr class="memitem:a2b0e611a4d10c044509c6101e9d214a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__task_8h.html#a2b0e611a4d10c044509c6101e9d214a1">on_vsf_task_init</a>()&#160;&#160;&#160;        if (<a class="el" href="vsf__eda_8h.html#a3f4a95405348aa63ef907e692901011fa90611dab05b7e85186d73c9a4870a04a">VSF_EVT_INIT</a> == evt)</td></tr>
 <tr class="separator:a2b0e611a4d10c044509c6101e9d214a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af13f54e07bc381add28e089d04ec60d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__task_8h.html#af13f54e07bc381add28e089d04ec60d0">on_vsf_task_fini</a>()&#160;&#160;&#160;        if (<a class="el" href="vsf__eda_8h.html#a191c33aa19f004f13bed2b7be33756caaa70242804d5be3e752edbcc5ae203f54">VSF_EVT_FINI</a> == evt)</td></tr>
+<tr class="memitem:af13f54e07bc381add28e089d04ec60d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__task_8h.html#af13f54e07bc381add28e089d04ec60d0">on_vsf_task_fini</a>()&#160;&#160;&#160;        if (<a class="el" href="vsf__eda_8h.html#a3f4a95405348aa63ef907e692901011faa70242804d5be3e752edbcc5ae203f54">VSF_EVT_FINI</a> == evt)</td></tr>
 <tr class="separator:af13f54e07bc381add28e089d04ec60d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30bd8a03b4f595d9ce5ab6a7d0a7c489"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__task_8h.html#a30bd8a03b4f595d9ce5ab6a7d0a7c489">on_vsf_task_evt</a>(__evt)&#160;&#160;&#160;        if ((__evt) == evt)</td></tr>
 <tr class="separator:a30bd8a03b4f595d9ce5ab6a7d0a7c489"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,8 +127,13 @@ $(function() {
 类型定义</h2></td></tr>
 <tr class="memitem:aa86356005c98ac9c317ae64ab7c6f7a2"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classvsf__teda__t.html">vsf_teda_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__task_8h.html#aa86356005c98ac9c317ae64ab7c6f7a2">vsf_task_t</a></td></tr>
 <tr class="separator:aa86356005c98ac9c317ae64ab7c6f7a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c00e9c037dded3b1a322913d7cf9995"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="vsf__eda_8h.html#a869fe5732129390c11e4c405bcb6c281">vsf_fsm_entry_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__task_8h.html#a1c00e9c037dded3b1a322913d7cf9995">vsf_task_entry_t</a></td></tr>
-<tr class="separator:a1c00e9c037dded3b1a322913d7cf9995"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26cffe5c3e2648f0a41e1cc712b9ca4f"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__task_8h.html#a26cffe5c3e2648f0a41e1cc712b9ca4f">vsf_task_entry_t</a>) (<a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> target, <a class="el" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> evt)</td></tr>
+<tr class="separator:a26cffe5c3e2648f0a41e1cc712b9ca4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ac06b538398b22814d49f5ac92f2d9456"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__task_8h.html#ac06b538398b22814d49f5ac92f2d9456">__vsf_eda_call_task</a> (<a class="el" href="vsf__task_8h.html#a26cffe5c3e2648f0a41e1cc712b9ca4f">vsf_task_entry_t</a> <a class="el" href="vsf__thread_8h.html#a7b1bd7ace931306a646900d724bb7329">entry</a>, <a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> param, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> local_size)</td></tr>
+<tr class="separator:ac06b538398b22814d49f5ac92f2d9456"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">宏定义说明</h2>
 <a id="a7a5bbb008b52063abdb32195ba7a67be"></a>
@@ -229,8 +232,8 @@ $(function() {
 <div class="ttc" id="aarm_2type_8h_html_a09674b9e56fd7a93a2169aa9210deec7"><div class="ttname"><a href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a></div><div class="ttdeci">uint32_t uintptr_t</div><div class="ttdef"><b>Definition:</b> type.h:51</div></div>
 <div class="ttc" id="avsf__fsm_8h_html_ae61ab5e1d66a489d89fa8786e6b5f64b"><div class="ttname"><a href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a></div><div class="ttdeci">fsm_rt_t</div><div class="ttdef"><b>Definition:</b> vsf_fsm.h:315</div></div>
 <div class="ttc" id="avsf__os_8c_html_a7f565b52ec477e9c0c235e88b9355558"><div class="ttname"><a href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a></div><div class="ttdeci">#define __name</div><div class="ttdef"><b>Definition:</b> vsf_os.c:153</div></div>
-<div class="ttc" id="avsf__task_8h_html_a09a582161189ce16e5a630aaa02979df"><div class="ttname"><a href="vsf__task_8h.html#a09a582161189ce16e5a630aaa02979df">vsf_task_func</a></div><div class="ttdeci">#define vsf_task_func(__name)</div><div class="ttdef"><b>Definition:</b> vsf_task.h:50</div></div>
-<div class="ttc" id="avsf__task_8h_html_a9b40883403fafe023b10939a9b08a3ff"><div class="ttname"><a href="vsf__task_8h.html#a9b40883403fafe023b10939a9b08a3ff">vsf_task</a></div><div class="ttdeci">#define vsf_task(__name)</div><div class="ttdef"><b>Definition:</b> vsf_task.h:53</div></div>
+<div class="ttc" id="avsf__task_8h_html_a09a582161189ce16e5a630aaa02979df"><div class="ttname"><a href="vsf__task_8h.html#a09a582161189ce16e5a630aaa02979df">vsf_task_func</a></div><div class="ttdeci">#define vsf_task_func(__name)</div><div class="ttdef"><b>Definition:</b> vsf_task.h:51</div></div>
+<div class="ttc" id="avsf__task_8h_html_a9b40883403fafe023b10939a9b08a3ff"><div class="ttname"><a href="vsf__task_8h.html#a9b40883403fafe023b10939a9b08a3ff">vsf_task</a></div><div class="ttdeci">#define vsf_task(__name)</div><div class="ttdef"><b>Definition:</b> vsf_task.h:54</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -367,8 +370,8 @@ $(function() {
 <div class="line">        };                                                                      \</div>
 <div class="line">        extern <a class="code" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a> vsf_task_func_##<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>( <a class="code" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> local,                \</div>
 <div class="line">                                                <a class="code" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> evt);</div>
-<div class="ttc" id="aclassvsf__teda__t_html"><div class="ttname"><a href="classvsf__teda__t.html">vsf_teda_t</a></div><div class="ttdef"><b>Definition:</b> vsf_eda.h:803</div></div>
-<div class="ttc" id="avsf__eda_8h_html_a0095e13b0285f6d680edab1e0f9bd2f3"><div class="ttname"><a href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a></div><div class="ttdeci">int16_t vsf_evt_t</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:637</div></div>
+<div class="ttc" id="aclassvsf__teda__t_html"><div class="ttname"><a href="classvsf__teda__t.html">vsf_teda_t</a></div><div class="ttdef"><b>Definition:</b> vsf_eda.h:804</div></div>
+<div class="ttc" id="avsf__eda_8h_html_a0095e13b0285f6d680edab1e0f9bd2f3"><div class="ttname"><a href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a></div><div class="ttdeci">int16_t vsf_evt_t</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:640</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -615,7 +618,7 @@ $(function() {
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line">        <span class="keywordflow">do</span> {                                                                    \</div>
 <div class="line">            vsf_eda_cfg_t <a class="code" href="vsf__preprocessor_8h.html#a5fd32e93159a228f586c0e21900043ce">VSF_MACRO_SAFE_NAME</a>(cfg) = {                          \</div>
-<div class="line">                .fn.fsm_entry = (<a class="code" href="vsf__task_8h.html#a1c00e9c037dded3b1a322913d7cf9995">vsf_task_entry_t</a>)<a class="code" href="vsf__task_8h.html#a09a582161189ce16e5a630aaa02979df">vsf_task_func</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>),        \</div>
+<div class="line">                .fn.func = (<a class="code" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>)<a class="code" href="vsf__task_8h.html#a09a582161189ce16e5a630aaa02979df">vsf_task_func</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>),                    \</div>
 <div class="line">                .priority = (__pri),                                            \</div>
 <div class="line">                .target = (<a class="code" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>)&amp;((__task)-&gt;param),                        \</div>
 <div class="line">                .feature.is_subcall_has_return_value = <span class="keyword">true</span>,                    \</div>
@@ -626,7 +629,6 @@ $(function() {
 <div class="line">                &amp;<a class="code" href="vsf__preprocessor_8h.html#a5fd32e93159a228f586c0e21900043ce">VSF_MACRO_SAFE_NAME</a>(cfg));                                     \</div>
 <div class="line">        } <span class="keywordflow">while</span>(0)</div>
 <div class="ttc" id="avsf__preprocessor_8h_html_a5fd32e93159a228f586c0e21900043ce"><div class="ttname"><a href="vsf__preprocessor_8h.html#a5fd32e93159a228f586c0e21900043ce">VSF_MACRO_SAFE_NAME</a></div><div class="ttdeci">#define VSF_MACRO_SAFE_NAME(__NAME)</div><div class="ttdef"><b>Definition:</b> vsf_preprocessor.h:32</div></div>
-<div class="ttc" id="avsf__task_8h_html_a1c00e9c037dded3b1a322913d7cf9995"><div class="ttname"><a href="vsf__task_8h.html#a1c00e9c037dded3b1a322913d7cf9995">vsf_task_entry_t</a></div><div class="ttdeci">vsf_fsm_entry_t vsf_task_entry_t</div><div class="ttdef"><b>Definition:</b> vsf_task.h:255</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -670,43 +672,6 @@ $(function() {
 
 </div>
 </div>
-<a id="af6e08ffc5dadf6f982d6404d814b106e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6e08ffc5dadf6f982d6404d814b106e">&#9670;&nbsp;</a></span>vsf_task_call_fsm</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define vsf_task_call_fsm</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">__target, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">            <a class="code" href="vsf__eda_8c.html#a6d43c223342139ca7521a3285e2c7dd2">__vsf_eda_call_fsm</a>( (<a class="code" href="vsf__task_8h.html#a1c00e9c037dded3b1a322913d7cf9995">vsf_task_entry_t</a>)(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>),                     \</div>
-<div class="line">                                (<a class="code" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>)(__target), (0, ##__VA_ARGS__))</div>
-<div class="ttc" id="avsf__eda_8c_html_a6d43c223342139ca7521a3285e2c7dd2"><div class="ttname"><a href="vsf__eda_8c.html#a6d43c223342139ca7521a3285e2c7dd2">__vsf_eda_call_fsm</a></div><div class="ttdeci">fsm_rt_t __vsf_eda_call_fsm(vsf_fsm_entry_t entry, uintptr_t param, size_t local_size)</div><div class="ttdef"><b>Definition:</b> vsf_eda.c:738</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a9794a2572e3b6c580fa38ffb8634aeae"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9794a2572e3b6c580fa38ffb8634aeae">&#9670;&nbsp;</a></span>vsf_task_call_task</h2>
 
@@ -738,8 +703,10 @@ $(function() {
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">            <a class="code" href="vsf__eda_8c.html#a6d43c223342139ca7521a3285e2c7dd2">__vsf_eda_call_fsm</a>( (<a class="code" href="vsf__task_8h.html#a1c00e9c037dded3b1a322913d7cf9995">vsf_task_entry_t</a>)<a class="code" href="vsf__task_8h.html#a09a582161189ce16e5a630aaa02979df">vsf_task_func</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>),        \</div>
+<b>值:</b><div class="fragment"><div class="line">            <a class="code" href="vsf__task_8h.html#ac06b538398b22814d49f5ac92f2d9456">__vsf_eda_call_task</a>((<a class="code" href="vsf__task_8h.html#a26cffe5c3e2648f0a41e1cc712b9ca4f">vsf_task_entry_t</a>)<a class="code" href="vsf__task_8h.html#a09a582161189ce16e5a630aaa02979df">vsf_task_func</a>(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>),        \</div>
 <div class="line">                                (<a class="code" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>)(__target), (0, ##__VA_ARGS__))</div>
+<div class="ttc" id="avsf__task_8h_html_a26cffe5c3e2648f0a41e1cc712b9ca4f"><div class="ttname"><a href="vsf__task_8h.html#a26cffe5c3e2648f0a41e1cc712b9ca4f">vsf_task_entry_t</a></div><div class="ttdeci">fsm_rt_t(* vsf_task_entry_t)(uintptr_t target, vsf_evt_t evt)</div><div class="ttdef"><b>Definition:</b> vsf_task.h:252</div></div>
+<div class="ttc" id="avsf__task_8h_html_ac06b538398b22814d49f5ac92f2d9456"><div class="ttname"><a href="vsf__task_8h.html#ac06b538398b22814d49f5ac92f2d9456">__vsf_eda_call_task</a></div><div class="ttdeci">fsm_rt_t __vsf_eda_call_task(vsf_task_entry_t entry, uintptr_t param, size_t local_size)</div><div class="ttdef"><b>Definition:</b> vsf_task.c:37</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -775,7 +742,7 @@ $(function() {
       </table>
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line">            <span class="keywordflow">if</span> (<a class="code" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a> != <a class="code" href="vsf__eda_8c.html#ac7984f15b901f62124c13d5074af6cb6">__vsf_eda_call_eda</a>(                             \</div>
-<div class="line">                    (<a class="code" href="vsf__task_8h.html#a1c00e9c037dded3b1a322913d7cf9995">vsf_task_entry_t</a>)(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>),                                 \</div>
+<div class="line">                    (<a class="code" href="vsf__task_8h.html#a26cffe5c3e2648f0a41e1cc712b9ca4f">vsf_task_entry_t</a>)(<a class="code" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>),                                 \</div>
 <div class="line">                    (__target),                                                 \</div>
 <div class="line">                    (0, ##__VA_ARGS))) {                                        \</div>
 <div class="line">                return <a class="code" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64baab382e0a010b65ca433edb2e8e6f2aee">fsm_rt_on_going</a>;                                         \</div>
@@ -838,7 +805,7 @@ $(function() {
           <td class="memname">#define on_vsf_task_init</td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td>&#160;&#160;&#160;        if (<a class="el" href="vsf__eda_8h.html#a191c33aa19f004f13bed2b7be33756caa90611dab05b7e85186d73c9a4870a04a">VSF_EVT_INIT</a> == evt)</td>
+          <td>&#160;&#160;&#160;        if (<a class="el" href="vsf__eda_8h.html#a3f4a95405348aa63ef907e692901011fa90611dab05b7e85186d73c9a4870a04a">VSF_EVT_INIT</a> == evt)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -855,7 +822,7 @@ $(function() {
           <td class="memname">#define on_vsf_task_fini</td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td>&#160;&#160;&#160;        if (<a class="el" href="vsf__eda_8h.html#a191c33aa19f004f13bed2b7be33756caaa70242804d5be3e752edbcc5ae203f54">VSF_EVT_FINI</a> == evt)</td>
+          <td>&#160;&#160;&#160;        if (<a class="el" href="vsf__eda_8h.html#a3f4a95405348aa63ef907e692901011faa70242804d5be3e752edbcc5ae203f54">VSF_EVT_FINI</a> == evt)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -925,17 +892,58 @@ $(function() {
 
 </div>
 </div>
-<a id="a1c00e9c037dded3b1a322913d7cf9995"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c00e9c037dded3b1a322913d7cf9995">&#9670;&nbsp;</a></span>vsf_task_entry_t</h2>
+<a id="a26cffe5c3e2648f0a41e1cc712b9ca4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26cffe5c3e2648f0a41e1cc712b9ca4f">&#9670;&nbsp;</a></span>vsf_task_entry_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="vsf__eda_8h.html#a869fe5732129390c11e4c405bcb6c281">vsf_fsm_entry_t</a> <a class="el" href="vsf__task_8h.html#a1c00e9c037dded3b1a322913d7cf9995">vsf_task_entry_t</a></td>
+          <td class="memname">typedef <a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>(* vsf_task_entry_t) (<a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> target, <a class="el" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> evt)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="ac06b538398b22814d49f5ac92f2d9456"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac06b538398b22814d49f5ac92f2d9456">&#9670;&nbsp;</a></span>__vsf_eda_call_task()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a> __vsf_eda_call_task </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vsf__task_8h.html#a26cffe5c3e2648f0a41e1cc712b9ca4f">vsf_task_entry_t</a>&#160;</td>
+          <td class="paramname"><em>entry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
+          <td class="paramname"><em>local_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section note"><dt>注解</dt><dd><ul>
+<li>if VSF_ERR_NOT_ENOUGH_RESOURCES is detected, yield and try it again (automatically). For tasks sharing the same frame pool, if the pool is too small, only task performance will be affected, and all sub-task call will work when frame is allocated.</li>
+<li>if the frame is allocated and pushed to the stack, we should yield to let the sub-task run.</li>
+</ul>
+</dd></dl>
+<p>Since in either way, we will yield, no need to handle the return value of vsf_eda_call().</p>
 
 </div>
 </div>
