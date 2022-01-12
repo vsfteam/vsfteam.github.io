@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>VSF Documented: source/component/ui/disp/driver/mipi_lcd/vsf_disp_mipi_lcd.h 源文件</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -26,15 +26,16 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.1 -->
+<!-- 制作者 Doxygen 1.9.2 -->
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',false,false,'search.php','搜索');
 });
-/* @license-end */</script>
+/* @license-end */
+</script>
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
@@ -42,383 +43,382 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle">
-<div class="title">vsf_disp_mipi_lcd.h</div>  </div>
+  <div class="headertitle"><div class="title">vsf_disp_mipi_lcd.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="vsf__disp__mipi__lcd_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   Copyright(C)2009-2022 by VSF Team                                       *</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *  limitations under the License.                                           *</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> ****************************************************************************/</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifndef __VSF_DISP_MIPI_LCD_H__</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define __VSF_DISP_MIPI_LCD_H__</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/*============================ INCLUDES ======================================*/</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__ui__cfg_8h.html">component/ui/vsf_ui_cfg.h</a>&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#if VSF_USE_UI == ENABLED &amp;&amp; VSF_DISP_USE_MIPI_LCD == ENABLED</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__kernel_8h.html">kernel/vsf_kernel.h</a>&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;hal/vsf_hal.h&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#if defined(__VSF_DISP_MIPI_LCD_CLASS_IMPLEMENT)</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#   define __VSF_CLASS_IMPLEMENT__</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#adb34c7e97ccedcf0fa8dd33b60ec1207">   41</a></span>&#160;<span class="preprocessor">#define VSF_DISP_MIPI_LCD_WRITE(__CMD, __PARAM_LEN, ...)                       \</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">            (__CMD), (__PARAM_LEN),  ##__VA_ARGS__</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/*============================ MACROS ========================================*/</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#if VSF_HAL_USE_SPI != ENABLED</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#   error &quot;need VSF_HAL_USE_SPI&quot;</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_USE_SPI_INTERFACE</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a001ddde64f199dbfbd876b0bf86363f7">   51</a></span>&#160;<span class="preprocessor">#   define VSF_DISP_MIPI_LCD_USE_SPI_INTERFACE  ENABLED</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_CFG_WIDTH</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ab0c042c499a896b5f1f52ecf461fd5c8">   55</a></span>&#160;<span class="preprocessor">#   define VSF_DISP_MIPI_LCD_CFG_WIDTH          240</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_CFG_HEIGTH</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af74f5988525a9def57a4aa5ea3bdb11e">   59</a></span>&#160;<span class="preprocessor">#   define VSF_DISP_MIPI_LCD_CFG_HEIGTH         320</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a40beaaf05a531e61a2c660d805c050e4">   62</a></span>&#160;<span class="preprocessor">#define VSF_DISP_MIPI_LCD_SPI_8BITS_MODE        0</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a2f6c6f2327c5effae2491adc707fbae7">   63</a></span>&#160;<span class="preprocessor">#define VSF_DISP_MIPI_LCD_SPI_9BITS_MODE        1</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_SPI_MODE</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a32772fb387cdc61c5b78f1c4e6efb709">   66</a></span>&#160;<span class="preprocessor">#   define  VSF_DISP_MIPI_LCD_SPI_MODE          VSF_DISP_MIPI_LCD_SPI_8BITS_MODE</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#if (VSF_DISP_MIPI_LCD_SPI_MODE != VSF_DISP_MIPI_LCD_SPI_8BITS_MODE) &amp;&amp; \</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">    (VSF_DISP_MIPI_LCD_SPI_MODE != VSF_DISP_MIPI_LCD_SPI_9BITS_MODE)</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#   error &quot;vsf_disp_mipi_lcd: error spi mode&quot;</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#if VSF_DISP_MIPI_LCD_SPI_MODE ==  VSF_DISP_MIPI_LCD_SPI_9BITS_MODE</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#   error &quot;TODO: support 9bit spi mode&quot;</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ac835e984698a5860c5b061fca519e830">   78</a></span>&#160;<span class="preprocessor">#define VSF_DISP_MIPI_LCD_REFRESH_SEQ_LEN       \</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">    (1 + 1 + 4) + (1 + 1 + 4) + (1 + 1 + 4 + 4)</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">// MIPI Display Command Set</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#adcaf06472d3e281e425bd2d71c5beaed">   82</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_NOP                     0x00</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ab8c88ef2d316b783d5222a85d0e118ea">   83</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SOFT_RESET              0x01</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a6d88c902f9d07c1fff0d1e92fe966fad">   84</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_COMPRESSION_MODE    0x03</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a94cb2e4ce1ae29871de780301d4d59d0">   85</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_DISPLAY_ID          0x04</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a4319facbd151c50eba9c6ed8cb5db10b">   86</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_ERROR_COUNT_ON_DSI  0x05</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a5007b2e6e6e7750d13cb8421ff06d8e7">   87</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_RED_CHANNEL         0x06</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aa40f1c03dca04961a28dd19754212f06">   88</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_GREEN_CHANNEL       0x07</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af1091bc7718eb7aa3a2c72c5c025ab4d">   89</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_BLUE_CHANNEL        0x08</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aca8b503fdca34456ca68ced074873424">   90</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_DISPLAY_STATUS      0x09</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a48669397e8ea5a7c6e0cb09ea9d4fd5c">   91</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_POWER_MODE          0x0A</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a9da041d715731d8d67caad967e5d6002">   92</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_ADDRESS_MODE        0x0B</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ae7088fe2f1351d534262d111692a1bfa">   93</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_PIXEL_FORMAT        0x0C</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af752f812f791e805fbfed0d3ab9b89de">   94</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_DISPLAY_MODE        0x0D</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aa80bc31f551b39eff6625e80c211f16a">   95</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_SIGNAL_MODE         0x0E</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a8ec1590be25764411567933943b77869">   96</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_DIAGNOSTIC_RESULT   0x0F</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a06f9b8e87b6f1f6f41a139db370f236b">   97</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_ENTER_SLEEP_MODE        0x10</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a276231424603f027583ffd2a1bdd6089">   98</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_EXIT_SLEEP_MODE         0x11</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a219bb0ba9e91812f4ab372adaa9afd07">   99</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_ENTER_PARTIAL_MODE      0x12</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aedb3b5fa815593d3fa1ae247383d8a8e">  100</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_ENTER_NORMAL_MODE       0x13</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a83909908f008865f5b6178742574e242">  101</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_IMAGE_CHECKSUM_RGB  0x14</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aca678b16cc2b841afdae01bdc4d58274">  102</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_IMAGE_CHECKSUM_CT   0x15</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a41a4fd226d8f86ba2efa34403b4033f8">  103</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_EXIT_INVERT_MODE        0x20</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ad1041d71940752f1c1121cf392a3b2d3">  104</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_ENTER_INVERT_MODE       0x21</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a14771de93ba08dffabafffcedc85b54e">  105</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_GAMMA_CURVE         0x26</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af50a5539c89552512ffcd04ece5b7fe0">  106</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_DISPLAY_OFF         0x28</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#abdbee428ef6d48009a5795e384665c8f">  107</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_DISPLAY_ON          0x29</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a2d08791d990c2e4d9c6c9800ad2d8c1b">  108</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_COLUMN_ADDRESS      0x2A</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a63334f8e1458151197a35c7d5cf781a5">  109</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_PAGE_ADDRESS        0x2B</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a9a31b4772025e2046816057b74d2e7cd">  110</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_WRITE_MEMORY_START      0x2C</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a6f94b4db07db5a287cd50ed87197a9c2">  111</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_WRITE_LUT               0x2D</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a860180f5477caadae3857b4c93f04281">  112</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_READ_MEMORY_START       0x2E</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a18fe9e1cf30da71c18bebce1960095c3">  113</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_PARTIAL_ROWS        0x30</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a359a43a0bb277b8f09fa1120bb2c3b09">  114</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_PARTIAL_COLUMNS     0x31</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a36aa83afeed02df37cb2bb295915c92d">  115</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_SCROLL_AREA         0x33</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#adcd4fd3ea6ccbb63ebecb290c00c660f">  116</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_TEAR_OFF            0x34</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ad85387743db362579b788fd28ecd2fbf">  117</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_TEAR_ON             0x35</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a1d7e5a77666d13f4a8a435db202f4323">  118</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_ADDRESS_MODE        0x36</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aee29e37b0cb4b10920211048e0d95756">  119</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_SCROLL_START        0x37</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af0a1f7ede08492751141cf52235808b3">  120</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_EXIT_IDLE_MODE          0x38</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a7f1dfc0645ab456b38ac2caae783b709">  121</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_ENTER_IDLE_MODE         0x39</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a1165d0835844eb0bd86fa6d30db7a84d">  122</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_PIXEL_FORMAT        0x3A</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a532122daccbd1370332fd9c26569c11f">  123</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_WRITE_MEMORY_CONTINUE   0x3C</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af9210d3033c2b09a7da608e9aeb88ad1">  124</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_3D_CONTROL          0x3D</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a6d3fcf5c050b45d8afe3af4ec98adadc">  125</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_READ_MEMORY_CONTINUE    0x3E</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aace0882d961807760db2ed7693ab760a">  126</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_3D_CONTROL          0x3F</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a9597f72175b99376f7119b95cf425c1c">  127</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_VSYNC_TIMING        0x40</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aaac44d1367419dc395332712b0427458">  128</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_TEAR_SCANLINE       0x44</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a7933493853f9ef2dd28b31ea2fbb492f">  129</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_SCANLINE            0x45</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ac8dec8303a247b56a513628645d67f2b">  130</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_DISPLAY_BRIGHTNESS  0x51</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a4df917017e27912a343731b350e8d02e">  131</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_DISPLAY_BRIGHTNESS  0x52</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ad47f873520b505e3463ad1f85d617787">  132</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_WRITE_CONTROL_DISPLAY   0x53</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a9f83f0b2412084ab2ac3edd36b41fc11">  133</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_CONTROL_DISPLAY     0x54</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a2655d637a53b1b5e805ab3d69bc9fe9e">  134</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_WRITE_POWER_SAVE        0x55</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a518ba3d308b6c453850e5168b26d1024">  135</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_POWER_SAVE          0x56</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ab0d27051994aa70c8baf12a103080e80">  136</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_SET_CABC_MIN_BRIGHTNESS 0x5E</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a2d56066851a38acf38323cd2327820c4">  137</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_GET_CABC_MIN_BRIGHTNESS 0x5F</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a6cccd95a6bc9c007bb648b70d664c34d">  138</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_READ_DDB_START          0xA1</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a96d0e35c94dd7a1a717ffbeeae711df7">  139</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_READ_PPS_START          0xA2</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a26b4f0111aee93b8ad01448d7b4af368">  140</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_READ_DDB_CONTINUE       0xA8</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af3108caea8bfd70283ddd8253c543275">  141</a></span>&#160;<span class="preprocessor">#define MIPI_DCS_READ_PPS_CONTINUE       0xA9</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">// reg: PIXEL_FORAMT high 4 bits</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a19e5c0e911846cdcaa1fadab0491748e">  144</a></span>&#160;<span class="preprocessor">#define MIPI_PIXEL_FORMAT_DPI_3BITS      (1 &lt;&lt; 4)</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af9df36fe32b619f74594d6b54af3cc0e">  145</a></span>&#160;<span class="preprocessor">#define MIPI_PIXEL_FORMAT_DPI_8BITS      (2 &lt;&lt; 4)</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a00dfa097babc1b86e5216649609c9e40">  146</a></span>&#160;<span class="preprocessor">#define MIPI_PIXEL_FORMAT_DPI_12BITS     (3 &lt;&lt; 4)</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#abbfa4973a68a36f1930bb47c87618dac">  147</a></span>&#160;<span class="preprocessor">#define MIPI_PIXEL_FORMAT_DPI_16BITS     (5 &lt;&lt; 4)</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a3c08fdcd7bf87715b6e4bd12ec1e8f52">  148</a></span>&#160;<span class="preprocessor">#define MIPI_PIXEL_FORMAT_DPI_18BITS     (6 &lt;&lt; 4)</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a85af8d1d03578626be1ea45880fb75cf">  149</a></span>&#160;<span class="preprocessor">#define MIPI_PIXEL_FORMAT_DPI_24BITS     (7 &lt;&lt; 4)</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">// reg: PIXEL_FORAMT low 4 bits</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#acd8aa3195b7e9c70642993102d1d684b">  151</a></span>&#160;<span class="preprocessor">#define MIPI_PIXEL_FORMAT_DBI_3BITS      (1)</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ac7d9e6a54726c070f948bb18637bfb96">  152</a></span>&#160;<span class="preprocessor">#define MIPI_PIXEL_FORMAT_DBI_8BITS      (2)</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a3989e4ab2205630a18309aa902b7ad53">  153</a></span>&#160;<span class="preprocessor">#define MIPI_PIXEL_FORMAT_DBI_12BITS     (3)</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a01965142e02c857ee0161e1b98e694c6">  154</a></span>&#160;<span class="preprocessor">#define MIPI_PIXEL_FORMAT_DBI_16BITS     (5)</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ad092e6821fe303a8fe5fd7f9b0dc3d1f">  155</a></span>&#160;<span class="preprocessor">#define MIPI_PIXEL_FORMAT_DBI_18BITS     (6)</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ade573821af93c82db078464883352836">  156</a></span>&#160;<span class="preprocessor">#define MIPI_PIXEL_FORMAT_DBI_24BITS     (7)</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor">#ifndef MIPI_LCD_PIXEL_FORMAT_VALUE</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a6fd7cf4b334db37c9ff35ca1cad21687">  159</a></span>&#160;<span class="preprocessor">#   define MIPI_LCD_PIXEL_FORMAT_VALUE  (MIPI_PIXEL_FORMAT_DPI_16BITS | MIPI_PIXEL_FORMAT_DBI_16BITS)</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">// These 3 bits control the direction from the MPU to memory write/read.</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a7752fe565852230d54d065aaa3ad9470">  163</a></span>&#160;<span class="preprocessor">#define GRAM_WRITE_TOP_TO_BOTTOM        (0 &lt;&lt; 7)</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aabce58ba833170818c16e3f3c6f3cc4c">  164</a></span>&#160;<span class="preprocessor">#define GRAM_WRITE_BOTTOM_TO_TOP        (1 &lt;&lt; 7)</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a22e31d4838f23b2416845e918736508f">  165</a></span>&#160;<span class="preprocessor">#define GRAM_WRITE_LEFT_TO_RIGHT        (0 &lt;&lt; 6)</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aa85ece278b87810445891497fbf52b43">  166</a></span>&#160;<span class="preprocessor">#define GRAM_WRITE_RIGHT_TO_LEFT        (1 &lt;&lt; 6)</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a7ba9f242d12089c611d676bc06f72371">  167</a></span>&#160;<span class="preprocessor">#define GRAM_WRITE_NORMAL_MODE          (0 &lt;&lt; 5)</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ac563a701a785b5b43435b08a9171edd2">  168</a></span>&#160;<span class="preprocessor">#define GRAM_WRITE_ROW_COLUMN_EXCHANGE  (1 &lt;&lt; 5)</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">// LCD vertical refresh direction control.</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#afa759284ab123d791e4634793bb319d1">  171</a></span>&#160;<span class="preprocessor">#define LCD_REFRESH_TOP_TO_BOTTOM       (0 &lt;&lt; 4)</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ada953f49d9159e54eee138a19905f757">  172</a></span>&#160;<span class="preprocessor">#define LCD_REFRESH_BOTTOM_TO_TOP       (1 &lt;&lt; 4)</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a618a5f7a7b95e1faec18442bb5bf8870">  173</a></span>&#160;<span class="preprocessor">#define LCD_REFRESH_RGB_ORDER           (0 &lt;&lt; 3)</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a7a00c7fe4f4bfe48272a0a68c878dd84">  174</a></span>&#160;<span class="preprocessor">#define LCD_REFRESH_BGR_ORDER           (1 &lt;&lt; 3)</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a085481f29a4cdbc080f1b716d0e8f071">  175</a></span>&#160;<span class="preprocessor">#define LCD_REFRESH_LEFT_TO_RIGHT       (0 &lt;&lt; 2)</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a74f55746e7b7b0780f08468b12e84717">  176</a></span>&#160;<span class="preprocessor">#define LCD_REFRESH_RIGHT_TO_LEFT       (1 &lt;&lt; 2)</span></div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#ifndef MIPI_LCD_ADDRESS_MODE_VALUE</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#abf638c6fae822d4c985dda3d88dcd6ad">  178</a></span>&#160;<span class="preprocessor">#   define MIPI_LCD_ADDRESS_MODE_VALUE  (GRAM_WRITE_TOP_TO_BOTTOM | GRAM_WRITE_LEFT_TO_RIGHT | GRAM_WRITE_NORMAL_MODE)</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a68d213d85eed4c1d101a0caa1cce929f">  181</a></span>&#160;<span class="preprocessor">#define TEAR_OUTPUT_V_BLANKING_ONLY             0</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#abcf432a45e1b99c367c8e04298da2b0d">  182</a></span>&#160;<span class="preprocessor">#define TEAR_OUTPUT_V_BLANKING_AND_H_BLANKING   1</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="preprocessor">#ifndef MIPI_LCD_TEAR_VALUE</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ad389e6130a23ba6ce3b8de6b23dca27b">  184</a></span>&#160;<span class="preprocessor">#   define MIPI_LCD_TEAR_VALUE                  (TEAR_OUTPUT_V_BLANKING_ONLY)</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_DEFAUT_INIT</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ab78dd8b3eff258dee402e96f0c4b951b">  188</a></span>&#160;<span class="preprocessor">#   define VSF_DISP_MIPI_LCD_DEFAUT_INIT \</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(MIPI_DCS_SET_ADDRESS_MODE,  1, MIPI_LCD_ADDRESS_MODE_VALUE </span><span class="comment">/*0x40*/</span><span class="preprocessor">), \</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(MIPI_DCS_SET_PIXEL_FORMAT,  1, MIPI_LCD_PIXEL_FORMAT_VALUE </span><span class="comment">/*0x55*/</span><span class="preprocessor">), \</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(MIPI_DCS_SET_DISPLAY_ON,    0), \</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(MIPI_DCS_SET_TEAR_ON,       1, 0x00), </span><span class="comment">/* Tearing Effect Line ON, for V-Blanking information only */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_S6D05A1_BASE</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a5d2cf78aba3b8ab5d8ad69f2a940e9c3">  196</a></span>&#160;<span class="preprocessor">#   define VSF_DISP_MIPI_LCD_S6D05A1_BASE \</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF0,  2, 0x5A, 0x5A), </span><span class="comment">/*PASSWD1*/</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF1,  2, 0x5A, 0x5A), </span><span class="comment">/*PASSWD2*/</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF2, 19, 0x3B, 0x40, 0x03, 0x04, 0x02, 0x08, 0x08, 0x00, 0x08, 0x08, 0x00, 0x00, 0x00, 0x00, 0x40, 0x08, 0x08, 0x08, 0x08), </span><span class="comment">/*DISCTL*/</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF4, 14, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x6d, 0x03, 0x00, 0x70, 0x03), </span><span class="comment">/*PWRCTL*/</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF5, 12, 0x00, 0x54, 0x73, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x00, 0x53, 0x71), </span><span class="comment">/*VCMCTL*/</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF6,  8, 0x04, 0x00, 0x08, 0x03, 0x01, 0x00, 0x01, 0x00), </span><span class="comment">/*SRCCTL*/</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF7,  5, 0x48, 0x80, 0x10, 0x02, 0x00), </span><span class="comment">/*IFCTL*/</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF8,  2, 0x11, 0x00), </span><span class="comment">/*PANELCTL*/</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF9,  1, 0x27), </span><span class="comment">/*GAMMASEL*/</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xFA, 20, 0x0B, 0x0B, 0x0F, 0x26, 0x2A, 0x30, 0x33, 0x12, 0x1F, 0x25, 0x31, 0x30, 0x24, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x3F), </span><span class="comment">/*PGAMMACTL*/</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_S6D05A1_EXTEND</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a8aad8556b4002664acea07849d01a044">  210</a></span>&#160;<span class="preprocessor">#   define VSF_DISP_MIPI_LCD_S6D05A1_EXTEND</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
-<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a0cfa7a5c74ff9859eea23ed77307b78e">  213</a></span>&#160;<span class="preprocessor">#define VSF_DISP_MIPI_LCD_S6D05A1  { VSF_DISP_MIPI_LCD_S6D05A1_BASE VSF_DISP_MIPI_LCD_DEFAUT_INIT VSF_DISP_MIPI_LCD_S6D05A1_EXTEND }</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ILI9488_BASE</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a1e57f00526d3f44af5bfca5044e6fd7e">  216</a></span>&#160;<span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ILI9488_BASE \</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE0, 15, 0x00, 0x07, 0x0f, 0x0D, 0x1B, 0x0A, 0x3c, 0x78, 0x4A, 0x07, 0x0E, 0x09, 0x1B, 0x1e, 0x0f), </span><span class="comment">/* Positive Gamma Control */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE1, 15, 0x00, 0x22, 0x24, 0x06, 0x12, 0x07, 0x36, 0x47, 0x47, 0x06, 0x0a, 0x07, 0x30, 0x37, 0x0f), </span><span class="comment">/* Negative Gamma Control */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC0, 2,  0x10, 0x10),                </span><span class="comment">/* Power Control 1 */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC1, 1,  0x41),                      </span><span class="comment">/* Power Control 2 */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC5, 3,  0x00, 0x22, 0x80),          </span><span class="comment">/* VCOM Control */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB0, 1,  0x00),                      </span><span class="comment">/* Interface Mode Contro */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB1, 2,  0x60, 0x11),                </span><span class="comment">/* frame rate control */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB4, 1,  0x02),                      </span><span class="comment">/* Display Inversion Control */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB6, 2,  0x02, 0x02),                </span><span class="comment">/* Display Function Control */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB7, 1,  0x06),                      </span><span class="comment">/* Entry Mode Set */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE9, 1,  0x00),                      </span><span class="comment">/* Set Image Function: 24bit data bus */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0XF7, 4,  0xA9, 0x51, 0x2C, 0x82),    </span><span class="comment">/* Adjust Control 3 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ILI9488_EXTEND</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a69332ef980d815aff194b8c16cca66fc">  232</a></span>&#160;<span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ILI9488_EXTEND</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
-<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a279127c3f0f9429130e47e50f9801a85">  235</a></span>&#160;<span class="preprocessor">#define VSF_DISP_MIPI_LCD_ILI9488  { VSF_DISP_MIPI_LCD_ILI9488_BASE VSF_DISP_MIPI_LCD_DEFAUT_INIT VSF_DISP_MIPI_LCD_ILI9488_EXTEND }</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ILI9341_BASE</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a5d1a2f8c2182c1348872b7daf40cb78c">  238</a></span>&#160;<span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ILI9341_BASE \</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xCF,  3, 0x00, 0xC1, 0X30), \</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xED,  4, 0x64, 0x03, 0X12, 0X81), \</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE8,  3, 0x85, 0x10, 0x7A), \</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xCB,  5, 0x39, 0x2C, 0x00, 0x34, 0x02), \</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF7,  1, 0x20), \</span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xEA,  2, 0x00, 0x00), \</span></div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC0,  1, 0x1B),                    </span><span class="comment">/* Power Control 1 */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC1,  1, 0x01),                    </span><span class="comment">/* Power Control 2 */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC5,  2, 0x30, 0x30),              </span><span class="comment">/* VCOM Control */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC7,  1, 0XB7),                    </span><span class="comment">/* VCOM Control 2 */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB1,  2, 0x01, 0x1B),              </span><span class="comment">/* frame rate control */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB6,  2, 0x02, 0x82),              </span><span class="comment">/* Display Function Control */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB5,  4, 0x5F, 0x5F, 0x3F, 0x3F),  </span><span class="comment">/* Blanking Porch Control, VFP/VBP/0x00/HBP */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF2,  1, 0x00), \</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(MIPI_DCS_SET_GAMMA_CURVE,  1, 0x01),    </span><span class="comment">/* Gamma Set */</span><span class="preprocessor">  \</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE0, 15, 0x0F, 0x2A, 0x28, 0x08, 0x0E, 0x08, 0x54, 0XA9, 0x43, 0x0A, 0x0F, 0x00, 0x00, 0x00, 0x00), </span><span class="comment">/* Positive Gamma Control */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0XE1, 15, 0x00, 0x15, 0x17, 0x07, 0x11, 0x06, 0x2B, 0x56, 0x3C, 0x05, 0x10, 0x0F, 0x3F, 0x3F, 0x0F), </span><span class="comment">/* Negative Gamma Control */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ILI9341_EXTEND</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a8d1ef59c165c90de26a58231b96d8f71">  259</a></span>&#160;<span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ILI9341_EXTEND</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
-<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a7769e98262b16c3796653a55a44fdd49">  262</a></span>&#160;<span class="preprocessor">#define VSF_DISP_MIPI_LCD_ILI9341  { VSF_DISP_MIPI_LCD_ILI9341_BASE VSF_DISP_MIPI_LCD_DEFAUT_INIT VSF_DISP_MIPI_LCD_ILI9341_EXTEND }</span></div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ST7789V_BASE</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a32a34b3fbf5cd126ce042783b6f75ed1">  265</a></span>&#160;<span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ST7789V_BASE \</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB1,  3, 0x40, 0x7F, 0x14), </span><span class="comment">/* RGB Interface Control */</span><span class="preprocessor">\</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB2,  5, 0x0C, 0x0C, 0x00, 0x33, 0x33), </span><span class="comment">/* Porch Setting */</span><span class="preprocessor">\</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB7,  1, 0x35), </span><span class="comment">/* Gate Control */</span><span class="preprocessor">\</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xBB,  1, 0x20), </span><span class="comment">/* VCOM Setting */</span><span class="preprocessor">\</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC0,  1, 0x2C), </span><span class="comment">/* LCM Control  */</span><span class="preprocessor">\</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC2,  1, 0x01), </span><span class="comment">/* VDV and VRH Command Enable */</span><span class="preprocessor">\</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC3,  1, 0x0B), </span><span class="comment">/* VRH Set */</span><span class="preprocessor">\</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC4,  1, 0x20), </span><span class="comment">/* VDV Set */</span><span class="preprocessor">\</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC6,  1, 0x1F), </span><span class="comment">/* Frame Rate Control in Normal Mode, 1F: 39 */</span><span class="preprocessor">\</span></div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xD0,  2, 0xA4, 0xA1), </span><span class="comment">/* Power Control 1 */</span><span class="preprocessor">\</span></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE0, 14, 0xD0, 0x03, 0x09, 0x0E, 0x11, 0x3D, 0x47, 0x55, 0x53, 0x1A, 0x16, 0x14, 0x1F, 0x22), </span><span class="comment">/* Positive Voltage Gamma Control */</span><span class="preprocessor">\</span></div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE1, 14, 0xD0, 0x02, 0x08, 0x0D, 0x12, 0x2C, 0x43, 0x55, 0x53, 0x1E, 0x1B, 0x19, 0x20, 0x22), </span><span class="comment">/* Negative Voltage Gamma Control */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ST7789V_EXTEND</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ab18e345dfd267a17be02f1760bfda120">  281</a></span>&#160;<span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ST7789V_EXTEND</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
-<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a2a253d4f65ded45b2c39c0e334fedf4f">  284</a></span>&#160;<span class="preprocessor">#define VSF_DISP_MIPI_LCD_ST7789V  { VSF_DISP_MIPI_LCD_ST7789V_BASE VSF_DISP_MIPI_LCD_DEFAUT_INIT VSF_DISP_MIPI_LCD_ST7789V_EXTEND }</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ST7796S_BASE</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ab245d63f912489b6e72bc5e1b668c2ee">  288</a></span>&#160;<span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ST7796S_BASE \</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF0,  1, 0xC3), </span><span class="comment">/* Command Set Control, C3h enable command 2 part I */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF0,  1, 0x96), </span><span class="comment">/* Command Set Control, 96h enable command 2 part II */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE8,  8, 0x40, 0x82, 0x07, 0x18, 0x27, 0x0A, 0xB6, 0x33), </span><span class="comment">/* Display Output Ctrl Adjust */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC5,  1, 0x27), </span><span class="comment">/* VCOM Control */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC2,  1, 0xA7), </span><span class="comment">/* Power Control 3 */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE0, 14, 0xF0, 0x01, 0x06, 0x0F, 0x12, 0x1D, 0x36, 0x54, 0x44, 0x0C, 0x18, 0x16, 0x13, 0x15), </span><span class="comment">/* Positive Gamma Control */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE1, 14, 0xF0, 0x01, 0x05, 0x0A, 0x0B, 0x07, 0x32, 0x44, 0x44, 0x0C, 0x18, 0x17, 0x13, 0x16), </span><span class="comment">/* Negative Gamma Control */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB5,  4, 0xFF, 0xFF, 0x00, 0x04), </span><span class="comment">/* Blanking Porch Control, VFP/VBP/0x00/HBP */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB1,  2, 0x00, 0x10), </span><span class="comment">/* Blanking Porch Control, VFP/VBP/0x00/HBP */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF0,  1, 0x3C), </span><span class="comment">/* Command Set Control, 3Ch disable command 2 part I */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF0,  1, 0x69), </span><span class="comment">/* Command Set Control, 69h disable command 2 part II */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ST7796S_EXTEND</span></div>
-<div class="line"><a name="l00303"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ab9ac3a3031b6a9b3135589e70a5e402e">  303</a></span>&#160;<span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ST7796S_EXTEND</span></div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
-<div class="line"><a name="l00306"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#adbdc48b2b31ef8599f9c5a7940185ca2">  306</a></span>&#160;<span class="preprocessor">#define VSF_DISP_MIPI_LCD_ST7796S  { VSF_DISP_MIPI_LCD_ST7796S_BASE VSF_DISP_MIPI_LCD_DEFAUT_INIT VSF_DISP_MIPI_LCD_ST7796S_EXTEND }</span></div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00314"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7aecb12c2fa7fc2088816b937e74571b8b">  314</a></span>&#160;    <a class="code" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7aecb12c2fa7fc2088816b937e74571b8b">MIPI_LCD_STATE_INIT</a> = 0,</div>
-<div class="line"><a name="l00315"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7a36a73543092e8139d05ed7e0fcf712c7">  315</a></span>&#160;    <a class="code" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7a36a73543092e8139d05ed7e0fcf712c7">MIPI_LCD_STATE_HW_RESET_WAIT_CPL</a>,</div>
-<div class="line"><a name="l00316"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7a02cc4b9db4b1c0cdd18b48e31636b50c">  316</a></span>&#160;    <a class="code" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7a02cc4b9db4b1c0cdd18b48e31636b50c">MIPI_LCD_STATE_INIT_SEQ_EXIT_SLEEP</a>,</div>
-<div class="line"><a name="l00317"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7aa9a23cfbb0352da37e005605dc588967">  317</a></span>&#160;    <a class="code" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7aa9a23cfbb0352da37e005605dc588967">MIPI_LCD_STATE_INIT_CPL</a>,</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;};</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="classvk__disp__mipi__lcd__t.html">  320</a></span>&#160;<a class="code" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code" href="classvk__disp__mipi__lcd__t.html">vk_disp_mipi_lcd_t</a>) {</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    public_member(</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        implement(<a class="code" href="classvk__disp__t.html">vk_disp_t</a>)</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;#<span class="keywordflow">if</span> <a class="code" href="vsf__disp__mipi__lcd_8h.html#a001ddde64f199dbfbd876b0bf86363f7">VSF_DISP_MIPI_LCD_USE_SPI_INTERFACE</a> == <a class="code" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="keyword">const</span> i_spi_t   *spi;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        vsf_spi_t       *spi;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <span class="keyword">const</span> <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   *init_seq;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <span class="keyword">const</span> <a class="code" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>  init_seq_len;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    )</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    private_member(</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <a class="code" href="classvsf__teda__t.html">vsf_teda_t</a>           teda;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <a class="code" href="vsf__eda_8h.html#a43a14c27fa7cd929d1633f29bd58515b">vsf_eda_evthandler_t</a> evthandler;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <a class="code" href="structvk__disp__area__t.html">vk_disp_area_t</a>      area;</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>             *cur_buffer;</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>             refresh_seq[<a class="code" href="vsf__disp__mipi__lcd_8h.html#ac835e984698a5860c5b061fca519e830">VSF_DISP_MIPI_LCD_REFRESH_SEQ_LEN</a>];</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="preprocessor">#ifdef VK_DISP_MIPI_LCD_SUPPORT_HARDWARE_RESET</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>             reset_state : 1;</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            <span class="keyword">const</span> <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   *buf;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            <a class="code" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>        max_cnt;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            <a class="code" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>        cur_cnt;</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        } seq;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>         cmd;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>        param_size;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            <span class="keywordtype">void</span>            *param_buffer;</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        } cmd;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    )</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;};</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="classvk__disp__drv__t.html">vk_disp_drv_t</a> <a class="code" href="vsf__disp__mipi__lcd_8h.html#ac5b73c39753ac8b86c2f4a9415ee713b">vk_disp_drv_mipi_lcd</a>;</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="vsf__disp__mipi__lcd_8h.html#ac55cbfe51dc7d5e0c99701ff45c4aa5e">vk_disp_mipi_tearing_effect_line_ready</a>(<a class="code" href="classvk__disp__mipi__lcd__t.html">vk_disp_mipi_lcd_t</a> *disp_mipi_lcd);</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="preprocessor">#if VSF_DISP_MIPI_LCD_SPI_MODE == VSF_DISP_MIPI_LCD_SPI_8BITS_MODE</span></div>
-<div class="line"><a name="l00365"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a6271929eec8c5ebd1fdba596583a898b">  365</a></span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="vsf__disp__mipi__lcd_8h.html#a6271929eec8c5ebd1fdba596583a898b">vk_disp_mipi_lcd_dcx_set</a>(<a class="code" href="classvk__disp__mipi__lcd__t.html">vk_disp_mipi_lcd_t</a> *disp_mipi_lcd, <span class="keywordtype">bool</span> <a class="code" href="vsf__msg__tree_8h.html#a0b57aa10271a66f3dc936bba1d2f3830">state</a>);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;}</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// VSF_USE_UI</span></div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// __VSF_DISP_MIPI_SPI_LCD_H__</span></div>
+<a href="vsf__disp__mipi__lcd_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2022 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#ifndef __VSF_DISP_MIPI_LCD_H__</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#define __VSF_DISP_MIPI_LCD_H__</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__ui__cfg_8h.html">component/ui/vsf_ui_cfg.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#if VSF_USE_UI == ENABLED &amp;&amp; VSF_DISP_USE_MIPI_LCD == ENABLED</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__kernel_8h.html">kernel/vsf_kernel.h</a>&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;hal/vsf_hal.h&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#if defined(__VSF_DISP_MIPI_LCD_CLASS_IMPLEMENT)</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#   define __VSF_CLASS_IMPLEMENT__</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#adb34c7e97ccedcf0fa8dd33b60ec1207">   41</a></span><span class="preprocessor">#define VSF_DISP_MIPI_LCD_WRITE(__CMD, __PARAM_LEN, ...)                       \</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">            (__CMD), (__PARAM_LEN),  ##__VA_ARGS__</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#if VSF_HAL_USE_SPI != ENABLED</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#   error &quot;need VSF_HAL_USE_SPI&quot;</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_USE_SPI_INTERFACE</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a001ddde64f199dbfbd876b0bf86363f7">   51</a></span><span class="preprocessor">#   define VSF_DISP_MIPI_LCD_USE_SPI_INTERFACE  ENABLED</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_CFG_WIDTH</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ab0c042c499a896b5f1f52ecf461fd5c8">   55</a></span><span class="preprocessor">#   define VSF_DISP_MIPI_LCD_CFG_WIDTH          240</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_CFG_HEIGTH</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af74f5988525a9def57a4aa5ea3bdb11e">   59</a></span><span class="preprocessor">#   define VSF_DISP_MIPI_LCD_CFG_HEIGTH         320</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a40beaaf05a531e61a2c660d805c050e4">   62</a></span><span class="preprocessor">#define VSF_DISP_MIPI_LCD_SPI_8BITS_MODE        0</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a2f6c6f2327c5effae2491adc707fbae7">   63</a></span><span class="preprocessor">#define VSF_DISP_MIPI_LCD_SPI_9BITS_MODE        1</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_SPI_MODE</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a32772fb387cdc61c5b78f1c4e6efb709">   66</a></span><span class="preprocessor">#   define  VSF_DISP_MIPI_LCD_SPI_MODE          VSF_DISP_MIPI_LCD_SPI_8BITS_MODE</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#if (VSF_DISP_MIPI_LCD_SPI_MODE != VSF_DISP_MIPI_LCD_SPI_8BITS_MODE) &amp;&amp; \</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">    (VSF_DISP_MIPI_LCD_SPI_MODE != VSF_DISP_MIPI_LCD_SPI_9BITS_MODE)</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#   error &quot;vsf_disp_mipi_lcd: error spi mode&quot;</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">#if VSF_DISP_MIPI_LCD_SPI_MODE ==  VSF_DISP_MIPI_LCD_SPI_9BITS_MODE</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#   error &quot;TODO: support 9bit spi mode&quot;</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ac835e984698a5860c5b061fca519e830">   78</a></span><span class="preprocessor">#define VSF_DISP_MIPI_LCD_REFRESH_SEQ_LEN       \</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">    (1 + 1 + 4) + (1 + 1 + 4) + (1 + 1 + 4 + 4)</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">// MIPI Display Command Set</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#adcaf06472d3e281e425bd2d71c5beaed">   82</a></span><span class="preprocessor">#define MIPI_DCS_NOP                     0x00</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ab8c88ef2d316b783d5222a85d0e118ea">   83</a></span><span class="preprocessor">#define MIPI_DCS_SOFT_RESET              0x01</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a6d88c902f9d07c1fff0d1e92fe966fad">   84</a></span><span class="preprocessor">#define MIPI_DCS_GET_COMPRESSION_MODE    0x03</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a94cb2e4ce1ae29871de780301d4d59d0">   85</a></span><span class="preprocessor">#define MIPI_DCS_GET_DISPLAY_ID          0x04</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a4319facbd151c50eba9c6ed8cb5db10b">   86</a></span><span class="preprocessor">#define MIPI_DCS_GET_ERROR_COUNT_ON_DSI  0x05</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a5007b2e6e6e7750d13cb8421ff06d8e7">   87</a></span><span class="preprocessor">#define MIPI_DCS_GET_RED_CHANNEL         0x06</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aa40f1c03dca04961a28dd19754212f06">   88</a></span><span class="preprocessor">#define MIPI_DCS_GET_GREEN_CHANNEL       0x07</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af1091bc7718eb7aa3a2c72c5c025ab4d">   89</a></span><span class="preprocessor">#define MIPI_DCS_GET_BLUE_CHANNEL        0x08</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aca8b503fdca34456ca68ced074873424">   90</a></span><span class="preprocessor">#define MIPI_DCS_GET_DISPLAY_STATUS      0x09</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a48669397e8ea5a7c6e0cb09ea9d4fd5c">   91</a></span><span class="preprocessor">#define MIPI_DCS_GET_POWER_MODE          0x0A</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a9da041d715731d8d67caad967e5d6002">   92</a></span><span class="preprocessor">#define MIPI_DCS_GET_ADDRESS_MODE        0x0B</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ae7088fe2f1351d534262d111692a1bfa">   93</a></span><span class="preprocessor">#define MIPI_DCS_GET_PIXEL_FORMAT        0x0C</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af752f812f791e805fbfed0d3ab9b89de">   94</a></span><span class="preprocessor">#define MIPI_DCS_GET_DISPLAY_MODE        0x0D</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aa80bc31f551b39eff6625e80c211f16a">   95</a></span><span class="preprocessor">#define MIPI_DCS_GET_SIGNAL_MODE         0x0E</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a8ec1590be25764411567933943b77869">   96</a></span><span class="preprocessor">#define MIPI_DCS_GET_DIAGNOSTIC_RESULT   0x0F</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a06f9b8e87b6f1f6f41a139db370f236b">   97</a></span><span class="preprocessor">#define MIPI_DCS_ENTER_SLEEP_MODE        0x10</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a276231424603f027583ffd2a1bdd6089">   98</a></span><span class="preprocessor">#define MIPI_DCS_EXIT_SLEEP_MODE         0x11</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a219bb0ba9e91812f4ab372adaa9afd07">   99</a></span><span class="preprocessor">#define MIPI_DCS_ENTER_PARTIAL_MODE      0x12</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aedb3b5fa815593d3fa1ae247383d8a8e">  100</a></span><span class="preprocessor">#define MIPI_DCS_ENTER_NORMAL_MODE       0x13</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a83909908f008865f5b6178742574e242">  101</a></span><span class="preprocessor">#define MIPI_DCS_GET_IMAGE_CHECKSUM_RGB  0x14</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aca678b16cc2b841afdae01bdc4d58274">  102</a></span><span class="preprocessor">#define MIPI_DCS_GET_IMAGE_CHECKSUM_CT   0x15</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a41a4fd226d8f86ba2efa34403b4033f8">  103</a></span><span class="preprocessor">#define MIPI_DCS_EXIT_INVERT_MODE        0x20</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ad1041d71940752f1c1121cf392a3b2d3">  104</a></span><span class="preprocessor">#define MIPI_DCS_ENTER_INVERT_MODE       0x21</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a14771de93ba08dffabafffcedc85b54e">  105</a></span><span class="preprocessor">#define MIPI_DCS_SET_GAMMA_CURVE         0x26</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af50a5539c89552512ffcd04ece5b7fe0">  106</a></span><span class="preprocessor">#define MIPI_DCS_SET_DISPLAY_OFF         0x28</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#abdbee428ef6d48009a5795e384665c8f">  107</a></span><span class="preprocessor">#define MIPI_DCS_SET_DISPLAY_ON          0x29</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a2d08791d990c2e4d9c6c9800ad2d8c1b">  108</a></span><span class="preprocessor">#define MIPI_DCS_SET_COLUMN_ADDRESS      0x2A</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a63334f8e1458151197a35c7d5cf781a5">  109</a></span><span class="preprocessor">#define MIPI_DCS_SET_PAGE_ADDRESS        0x2B</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a9a31b4772025e2046816057b74d2e7cd">  110</a></span><span class="preprocessor">#define MIPI_DCS_WRITE_MEMORY_START      0x2C</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a6f94b4db07db5a287cd50ed87197a9c2">  111</a></span><span class="preprocessor">#define MIPI_DCS_WRITE_LUT               0x2D</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a860180f5477caadae3857b4c93f04281">  112</a></span><span class="preprocessor">#define MIPI_DCS_READ_MEMORY_START       0x2E</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a18fe9e1cf30da71c18bebce1960095c3">  113</a></span><span class="preprocessor">#define MIPI_DCS_SET_PARTIAL_ROWS        0x30</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a359a43a0bb277b8f09fa1120bb2c3b09">  114</a></span><span class="preprocessor">#define MIPI_DCS_SET_PARTIAL_COLUMNS     0x31</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a36aa83afeed02df37cb2bb295915c92d">  115</a></span><span class="preprocessor">#define MIPI_DCS_SET_SCROLL_AREA         0x33</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#adcd4fd3ea6ccbb63ebecb290c00c660f">  116</a></span><span class="preprocessor">#define MIPI_DCS_SET_TEAR_OFF            0x34</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ad85387743db362579b788fd28ecd2fbf">  117</a></span><span class="preprocessor">#define MIPI_DCS_SET_TEAR_ON             0x35</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a1d7e5a77666d13f4a8a435db202f4323">  118</a></span><span class="preprocessor">#define MIPI_DCS_SET_ADDRESS_MODE        0x36</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aee29e37b0cb4b10920211048e0d95756">  119</a></span><span class="preprocessor">#define MIPI_DCS_SET_SCROLL_START        0x37</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af0a1f7ede08492751141cf52235808b3">  120</a></span><span class="preprocessor">#define MIPI_DCS_EXIT_IDLE_MODE          0x38</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a7f1dfc0645ab456b38ac2caae783b709">  121</a></span><span class="preprocessor">#define MIPI_DCS_ENTER_IDLE_MODE         0x39</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a1165d0835844eb0bd86fa6d30db7a84d">  122</a></span><span class="preprocessor">#define MIPI_DCS_SET_PIXEL_FORMAT        0x3A</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a532122daccbd1370332fd9c26569c11f">  123</a></span><span class="preprocessor">#define MIPI_DCS_WRITE_MEMORY_CONTINUE   0x3C</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af9210d3033c2b09a7da608e9aeb88ad1">  124</a></span><span class="preprocessor">#define MIPI_DCS_SET_3D_CONTROL          0x3D</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a6d3fcf5c050b45d8afe3af4ec98adadc">  125</a></span><span class="preprocessor">#define MIPI_DCS_READ_MEMORY_CONTINUE    0x3E</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aace0882d961807760db2ed7693ab760a">  126</a></span><span class="preprocessor">#define MIPI_DCS_GET_3D_CONTROL          0x3F</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a9597f72175b99376f7119b95cf425c1c">  127</a></span><span class="preprocessor">#define MIPI_DCS_SET_VSYNC_TIMING        0x40</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aaac44d1367419dc395332712b0427458">  128</a></span><span class="preprocessor">#define MIPI_DCS_SET_TEAR_SCANLINE       0x44</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a7933493853f9ef2dd28b31ea2fbb492f">  129</a></span><span class="preprocessor">#define MIPI_DCS_GET_SCANLINE            0x45</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ac8dec8303a247b56a513628645d67f2b">  130</a></span><span class="preprocessor">#define MIPI_DCS_SET_DISPLAY_BRIGHTNESS  0x51</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a4df917017e27912a343731b350e8d02e">  131</a></span><span class="preprocessor">#define MIPI_DCS_GET_DISPLAY_BRIGHTNESS  0x52</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ad47f873520b505e3463ad1f85d617787">  132</a></span><span class="preprocessor">#define MIPI_DCS_WRITE_CONTROL_DISPLAY   0x53</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a9f83f0b2412084ab2ac3edd36b41fc11">  133</a></span><span class="preprocessor">#define MIPI_DCS_GET_CONTROL_DISPLAY     0x54</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a2655d637a53b1b5e805ab3d69bc9fe9e">  134</a></span><span class="preprocessor">#define MIPI_DCS_WRITE_POWER_SAVE        0x55</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a518ba3d308b6c453850e5168b26d1024">  135</a></span><span class="preprocessor">#define MIPI_DCS_GET_POWER_SAVE          0x56</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ab0d27051994aa70c8baf12a103080e80">  136</a></span><span class="preprocessor">#define MIPI_DCS_SET_CABC_MIN_BRIGHTNESS 0x5E</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a2d56066851a38acf38323cd2327820c4">  137</a></span><span class="preprocessor">#define MIPI_DCS_GET_CABC_MIN_BRIGHTNESS 0x5F</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a6cccd95a6bc9c007bb648b70d664c34d">  138</a></span><span class="preprocessor">#define MIPI_DCS_READ_DDB_START          0xA1</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a96d0e35c94dd7a1a717ffbeeae711df7">  139</a></span><span class="preprocessor">#define MIPI_DCS_READ_PPS_START          0xA2</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a26b4f0111aee93b8ad01448d7b4af368">  140</a></span><span class="preprocessor">#define MIPI_DCS_READ_DDB_CONTINUE       0xA8</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af3108caea8bfd70283ddd8253c543275">  141</a></span><span class="preprocessor">#define MIPI_DCS_READ_PPS_CONTINUE       0xA9</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment">// reg: PIXEL_FORAMT high 4 bits</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a19e5c0e911846cdcaa1fadab0491748e">  144</a></span><span class="preprocessor">#define MIPI_PIXEL_FORMAT_DPI_3BITS      (1 &lt;&lt; 4)</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#af9df36fe32b619f74594d6b54af3cc0e">  145</a></span><span class="preprocessor">#define MIPI_PIXEL_FORMAT_DPI_8BITS      (2 &lt;&lt; 4)</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a00dfa097babc1b86e5216649609c9e40">  146</a></span><span class="preprocessor">#define MIPI_PIXEL_FORMAT_DPI_12BITS     (3 &lt;&lt; 4)</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#abbfa4973a68a36f1930bb47c87618dac">  147</a></span><span class="preprocessor">#define MIPI_PIXEL_FORMAT_DPI_16BITS     (5 &lt;&lt; 4)</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a3c08fdcd7bf87715b6e4bd12ec1e8f52">  148</a></span><span class="preprocessor">#define MIPI_PIXEL_FORMAT_DPI_18BITS     (6 &lt;&lt; 4)</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a85af8d1d03578626be1ea45880fb75cf">  149</a></span><span class="preprocessor">#define MIPI_PIXEL_FORMAT_DPI_24BITS     (7 &lt;&lt; 4)</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="comment">// reg: PIXEL_FORAMT low 4 bits</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#acd8aa3195b7e9c70642993102d1d684b">  151</a></span><span class="preprocessor">#define MIPI_PIXEL_FORMAT_DBI_3BITS      (1)</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ac7d9e6a54726c070f948bb18637bfb96">  152</a></span><span class="preprocessor">#define MIPI_PIXEL_FORMAT_DBI_8BITS      (2)</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a3989e4ab2205630a18309aa902b7ad53">  153</a></span><span class="preprocessor">#define MIPI_PIXEL_FORMAT_DBI_12BITS     (3)</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a01965142e02c857ee0161e1b98e694c6">  154</a></span><span class="preprocessor">#define MIPI_PIXEL_FORMAT_DBI_16BITS     (5)</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ad092e6821fe303a8fe5fd7f9b0dc3d1f">  155</a></span><span class="preprocessor">#define MIPI_PIXEL_FORMAT_DBI_18BITS     (6)</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ade573821af93c82db078464883352836">  156</a></span><span class="preprocessor">#define MIPI_PIXEL_FORMAT_DBI_24BITS     (7)</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="preprocessor">#ifndef MIPI_LCD_PIXEL_FORMAT_VALUE</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a6fd7cf4b334db37c9ff35ca1cad21687">  159</a></span><span class="preprocessor">#   define MIPI_LCD_PIXEL_FORMAT_VALUE  (MIPI_PIXEL_FORMAT_DPI_16BITS | MIPI_PIXEL_FORMAT_DBI_16BITS)</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment">// These 3 bits control the direction from the MPU to memory write/read.</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a7752fe565852230d54d065aaa3ad9470">  163</a></span><span class="preprocessor">#define GRAM_WRITE_TOP_TO_BOTTOM        (0 &lt;&lt; 7)</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aabce58ba833170818c16e3f3c6f3cc4c">  164</a></span><span class="preprocessor">#define GRAM_WRITE_BOTTOM_TO_TOP        (1 &lt;&lt; 7)</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a22e31d4838f23b2416845e918736508f">  165</a></span><span class="preprocessor">#define GRAM_WRITE_LEFT_TO_RIGHT        (0 &lt;&lt; 6)</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#aa85ece278b87810445891497fbf52b43">  166</a></span><span class="preprocessor">#define GRAM_WRITE_RIGHT_TO_LEFT        (1 &lt;&lt; 6)</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a7ba9f242d12089c611d676bc06f72371">  167</a></span><span class="preprocessor">#define GRAM_WRITE_NORMAL_MODE          (0 &lt;&lt; 5)</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ac563a701a785b5b43435b08a9171edd2">  168</a></span><span class="preprocessor">#define GRAM_WRITE_ROW_COLUMN_EXCHANGE  (1 &lt;&lt; 5)</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">// LCD vertical refresh direction control.</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#afa759284ab123d791e4634793bb319d1">  171</a></span><span class="preprocessor">#define LCD_REFRESH_TOP_TO_BOTTOM       (0 &lt;&lt; 4)</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ada953f49d9159e54eee138a19905f757">  172</a></span><span class="preprocessor">#define LCD_REFRESH_BOTTOM_TO_TOP       (1 &lt;&lt; 4)</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a618a5f7a7b95e1faec18442bb5bf8870">  173</a></span><span class="preprocessor">#define LCD_REFRESH_RGB_ORDER           (0 &lt;&lt; 3)</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a7a00c7fe4f4bfe48272a0a68c878dd84">  174</a></span><span class="preprocessor">#define LCD_REFRESH_BGR_ORDER           (1 &lt;&lt; 3)</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a085481f29a4cdbc080f1b716d0e8f071">  175</a></span><span class="preprocessor">#define LCD_REFRESH_LEFT_TO_RIGHT       (0 &lt;&lt; 2)</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a74f55746e7b7b0780f08468b12e84717">  176</a></span><span class="preprocessor">#define LCD_REFRESH_RIGHT_TO_LEFT       (1 &lt;&lt; 2)</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="preprocessor">#ifndef MIPI_LCD_ADDRESS_MODE_VALUE</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#abf638c6fae822d4c985dda3d88dcd6ad">  178</a></span><span class="preprocessor">#   define MIPI_LCD_ADDRESS_MODE_VALUE  (GRAM_WRITE_TOP_TO_BOTTOM | GRAM_WRITE_LEFT_TO_RIGHT | GRAM_WRITE_NORMAL_MODE)</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a68d213d85eed4c1d101a0caa1cce929f">  181</a></span><span class="preprocessor">#define TEAR_OUTPUT_V_BLANKING_ONLY             0</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#abcf432a45e1b99c367c8e04298da2b0d">  182</a></span><span class="preprocessor">#define TEAR_OUTPUT_V_BLANKING_AND_H_BLANKING   1</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="preprocessor">#ifndef MIPI_LCD_TEAR_VALUE</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ad389e6130a23ba6ce3b8de6b23dca27b">  184</a></span><span class="preprocessor">#   define MIPI_LCD_TEAR_VALUE                  (TEAR_OUTPUT_V_BLANKING_ONLY)</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_DEFAUT_INIT</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ab78dd8b3eff258dee402e96f0c4b951b">  188</a></span><span class="preprocessor">#   define VSF_DISP_MIPI_LCD_DEFAUT_INIT \</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(MIPI_DCS_SET_ADDRESS_MODE,  1, MIPI_LCD_ADDRESS_MODE_VALUE </span><span class="comment">/*0x40*/</span><span class="preprocessor">), \</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(MIPI_DCS_SET_PIXEL_FORMAT,  1, MIPI_LCD_PIXEL_FORMAT_VALUE </span><span class="comment">/*0x55*/</span><span class="preprocessor">), \</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(MIPI_DCS_SET_DISPLAY_ON,    0), \</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(MIPI_DCS_SET_TEAR_ON,       1, 0x00), </span><span class="comment">/* Tearing Effect Line ON, for V-Blanking information only */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_S6D05A1_BASE</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a5d2cf78aba3b8ab5d8ad69f2a940e9c3">  196</a></span><span class="preprocessor">#   define VSF_DISP_MIPI_LCD_S6D05A1_BASE \</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF0,  2, 0x5A, 0x5A), </span><span class="comment">/*PASSWD1*/</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF1,  2, 0x5A, 0x5A), </span><span class="comment">/*PASSWD2*/</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF2, 19, 0x3B, 0x40, 0x03, 0x04, 0x02, 0x08, 0x08, 0x00, 0x08, 0x08, 0x00, 0x00, 0x00, 0x00, 0x40, 0x08, 0x08, 0x08, 0x08), </span><span class="comment">/*DISCTL*/</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF4, 14, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x6d, 0x03, 0x00, 0x70, 0x03), </span><span class="comment">/*PWRCTL*/</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF5, 12, 0x00, 0x54, 0x73, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x00, 0x53, 0x71), </span><span class="comment">/*VCMCTL*/</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF6,  8, 0x04, 0x00, 0x08, 0x03, 0x01, 0x00, 0x01, 0x00), </span><span class="comment">/*SRCCTL*/</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF7,  5, 0x48, 0x80, 0x10, 0x02, 0x00), </span><span class="comment">/*IFCTL*/</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF8,  2, 0x11, 0x00), </span><span class="comment">/*PANELCTL*/</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF9,  1, 0x27), </span><span class="comment">/*GAMMASEL*/</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xFA, 20, 0x0B, 0x0B, 0x0F, 0x26, 0x2A, 0x30, 0x33, 0x12, 0x1F, 0x25, 0x31, 0x30, 0x24, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x3F), </span><span class="comment">/*PGAMMACTL*/</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_S6D05A1_EXTEND</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a8aad8556b4002664acea07849d01a044">  210</a></span><span class="preprocessor">#   define VSF_DISP_MIPI_LCD_S6D05A1_EXTEND</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a0cfa7a5c74ff9859eea23ed77307b78e">  213</a></span><span class="preprocessor">#define VSF_DISP_MIPI_LCD_S6D05A1  { VSF_DISP_MIPI_LCD_S6D05A1_BASE VSF_DISP_MIPI_LCD_DEFAUT_INIT VSF_DISP_MIPI_LCD_S6D05A1_EXTEND }</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ILI9488_BASE</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a1e57f00526d3f44af5bfca5044e6fd7e">  216</a></span><span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ILI9488_BASE \</span></div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE0, 15, 0x00, 0x07, 0x0f, 0x0D, 0x1B, 0x0A, 0x3c, 0x78, 0x4A, 0x07, 0x0E, 0x09, 0x1B, 0x1e, 0x0f), </span><span class="comment">/* Positive Gamma Control */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE1, 15, 0x00, 0x22, 0x24, 0x06, 0x12, 0x07, 0x36, 0x47, 0x47, 0x06, 0x0a, 0x07, 0x30, 0x37, 0x0f), </span><span class="comment">/* Negative Gamma Control */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC0, 2,  0x10, 0x10),                </span><span class="comment">/* Power Control 1 */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC1, 1,  0x41),                      </span><span class="comment">/* Power Control 2 */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC5, 3,  0x00, 0x22, 0x80),          </span><span class="comment">/* VCOM Control */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB0, 1,  0x00),                      </span><span class="comment">/* Interface Mode Contro */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB1, 2,  0x60, 0x11),                </span><span class="comment">/* frame rate control */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB4, 1,  0x02),                      </span><span class="comment">/* Display Inversion Control */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB6, 2,  0x02, 0x02),                </span><span class="comment">/* Display Function Control */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB7, 1,  0x06),                      </span><span class="comment">/* Entry Mode Set */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE9, 1,  0x00),                      </span><span class="comment">/* Set Image Function: 24bit data bus */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0XF7, 4,  0xA9, 0x51, 0x2C, 0x82),    </span><span class="comment">/* Adjust Control 3 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ILI9488_EXTEND</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a69332ef980d815aff194b8c16cca66fc">  232</a></span><span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ILI9488_EXTEND</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a279127c3f0f9429130e47e50f9801a85">  235</a></span><span class="preprocessor">#define VSF_DISP_MIPI_LCD_ILI9488  { VSF_DISP_MIPI_LCD_ILI9488_BASE VSF_DISP_MIPI_LCD_DEFAUT_INIT VSF_DISP_MIPI_LCD_ILI9488_EXTEND }</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ILI9341_BASE</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a5d1a2f8c2182c1348872b7daf40cb78c">  238</a></span><span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ILI9341_BASE \</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xCF,  3, 0x00, 0xC1, 0X30), \</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xED,  4, 0x64, 0x03, 0X12, 0X81), \</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE8,  3, 0x85, 0x10, 0x7A), \</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xCB,  5, 0x39, 0x2C, 0x00, 0x34, 0x02), \</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF7,  1, 0x20), \</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xEA,  2, 0x00, 0x00), \</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC0,  1, 0x1B),                    </span><span class="comment">/* Power Control 1 */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC1,  1, 0x01),                    </span><span class="comment">/* Power Control 2 */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC5,  2, 0x30, 0x30),              </span><span class="comment">/* VCOM Control */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC7,  1, 0XB7),                    </span><span class="comment">/* VCOM Control 2 */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB1,  2, 0x01, 0x1B),              </span><span class="comment">/* frame rate control */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB6,  2, 0x02, 0x82),              </span><span class="comment">/* Display Function Control */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB5,  4, 0x5F, 0x5F, 0x3F, 0x3F),  </span><span class="comment">/* Blanking Porch Control, VFP/VBP/0x00/HBP */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF2,  1, 0x00), \</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(MIPI_DCS_SET_GAMMA_CURVE,  1, 0x01),    </span><span class="comment">/* Gamma Set */</span><span class="preprocessor">  \</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE0, 15, 0x0F, 0x2A, 0x28, 0x08, 0x0E, 0x08, 0x54, 0XA9, 0x43, 0x0A, 0x0F, 0x00, 0x00, 0x00, 0x00), </span><span class="comment">/* Positive Gamma Control */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0XE1, 15, 0x00, 0x15, 0x17, 0x07, 0x11, 0x06, 0x2B, 0x56, 0x3C, 0x05, 0x10, 0x0F, 0x3F, 0x3F, 0x0F), </span><span class="comment">/* Negative Gamma Control */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ILI9341_EXTEND</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a8d1ef59c165c90de26a58231b96d8f71">  259</a></span><span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ILI9341_EXTEND</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a7769e98262b16c3796653a55a44fdd49">  262</a></span><span class="preprocessor">#define VSF_DISP_MIPI_LCD_ILI9341  { VSF_DISP_MIPI_LCD_ILI9341_BASE VSF_DISP_MIPI_LCD_DEFAUT_INIT VSF_DISP_MIPI_LCD_ILI9341_EXTEND }</span></div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ST7789V_BASE</span></div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a32a34b3fbf5cd126ce042783b6f75ed1">  265</a></span><span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ST7789V_BASE \</span></div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB1,  3, 0x40, 0x7F, 0x14), </span><span class="comment">/* RGB Interface Control */</span><span class="preprocessor">\</span></div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB2,  5, 0x0C, 0x0C, 0x00, 0x33, 0x33), </span><span class="comment">/* Porch Setting */</span><span class="preprocessor">\</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB7,  1, 0x35), </span><span class="comment">/* Gate Control */</span><span class="preprocessor">\</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xBB,  1, 0x20), </span><span class="comment">/* VCOM Setting */</span><span class="preprocessor">\</span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC0,  1, 0x2C), </span><span class="comment">/* LCM Control  */</span><span class="preprocessor">\</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC2,  1, 0x01), </span><span class="comment">/* VDV and VRH Command Enable */</span><span class="preprocessor">\</span></div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC3,  1, 0x0B), </span><span class="comment">/* VRH Set */</span><span class="preprocessor">\</span></div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC4,  1, 0x20), </span><span class="comment">/* VDV Set */</span><span class="preprocessor">\</span></div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC6,  1, 0x1F), </span><span class="comment">/* Frame Rate Control in Normal Mode, 1F: 39 */</span><span class="preprocessor">\</span></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xD0,  2, 0xA4, 0xA1), </span><span class="comment">/* Power Control 1 */</span><span class="preprocessor">\</span></div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE0, 14, 0xD0, 0x03, 0x09, 0x0E, 0x11, 0x3D, 0x47, 0x55, 0x53, 0x1A, 0x16, 0x14, 0x1F, 0x22), </span><span class="comment">/* Positive Voltage Gamma Control */</span><span class="preprocessor">\</span></div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE1, 14, 0xD0, 0x02, 0x08, 0x0D, 0x12, 0x2C, 0x43, 0x55, 0x53, 0x1E, 0x1B, 0x19, 0x20, 0x22), </span><span class="comment">/* Negative Voltage Gamma Control */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span><span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ST7789V_EXTEND</span></div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ab18e345dfd267a17be02f1760bfda120">  281</a></span><span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ST7789V_EXTEND</span></div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a2a253d4f65ded45b2c39c0e334fedf4f">  284</a></span><span class="preprocessor">#define VSF_DISP_MIPI_LCD_ST7789V  { VSF_DISP_MIPI_LCD_ST7789V_BASE VSF_DISP_MIPI_LCD_DEFAUT_INIT VSF_DISP_MIPI_LCD_ST7789V_EXTEND }</span></div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ST7796S_BASE</span></div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ab245d63f912489b6e72bc5e1b668c2ee">  288</a></span><span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ST7796S_BASE \</span></div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF0,  1, 0xC3), </span><span class="comment">/* Command Set Control, C3h enable command 2 part I */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF0,  1, 0x96), </span><span class="comment">/* Command Set Control, 96h enable command 2 part II */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE8,  8, 0x40, 0x82, 0x07, 0x18, 0x27, 0x0A, 0xB6, 0x33), </span><span class="comment">/* Display Output Ctrl Adjust */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC5,  1, 0x27), </span><span class="comment">/* VCOM Control */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xC2,  1, 0xA7), </span><span class="comment">/* Power Control 3 */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE0, 14, 0xF0, 0x01, 0x06, 0x0F, 0x12, 0x1D, 0x36, 0x54, 0x44, 0x0C, 0x18, 0x16, 0x13, 0x15), </span><span class="comment">/* Positive Gamma Control */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xE1, 14, 0xF0, 0x01, 0x05, 0x0A, 0x0B, 0x07, 0x32, 0x44, 0x44, 0x0C, 0x18, 0x17, 0x13, 0x16), </span><span class="comment">/* Negative Gamma Control */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB5,  4, 0xFF, 0xFF, 0x00, 0x04), </span><span class="comment">/* Blanking Porch Control, VFP/VBP/0x00/HBP */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xB1,  2, 0x00, 0x10), </span><span class="comment">/* Blanking Porch Control, VFP/VBP/0x00/HBP */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF0,  1, 0x3C), </span><span class="comment">/* Command Set Control, 3Ch disable command 2 part I */</span><span class="preprocessor"> \</span></div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="preprocessor">        VSF_DISP_MIPI_LCD_WRITE(0xF0,  1, 0x69), </span><span class="comment">/* Command Set Control, 69h disable command 2 part II */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="preprocessor">#ifndef VSF_DISP_MIPI_LCD_ST7796S_EXTEND</span></div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#ab9ac3a3031b6a9b3135589e70a5e402e">  303</a></span><span class="preprocessor">#   define VSF_DISP_MIPI_LCD_ST7796S_EXTEND</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span> </div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#adbdc48b2b31ef8599f9c5a7940185ca2">  306</a></span><span class="preprocessor">#define VSF_DISP_MIPI_LCD_ST7796S  { VSF_DISP_MIPI_LCD_ST7796S_BASE VSF_DISP_MIPI_LCD_DEFAUT_INIT VSF_DISP_MIPI_LCD_ST7796S_EXTEND }</span></div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span> </div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span> </div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span><span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7aecb12c2fa7fc2088816b937e74571b8b">  314</a></span>    <a class="code hl_enumvalue" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7aecb12c2fa7fc2088816b937e74571b8b">MIPI_LCD_STATE_INIT</a> = 0,</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7a36a73543092e8139d05ed7e0fcf712c7">  315</a></span>    <a class="code hl_enumvalue" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7a36a73543092e8139d05ed7e0fcf712c7">MIPI_LCD_STATE_HW_RESET_WAIT_CPL</a>,</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7a02cc4b9db4b1c0cdd18b48e31636b50c">  316</a></span>    <a class="code hl_enumvalue" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7a02cc4b9db4b1c0cdd18b48e31636b50c">MIPI_LCD_STATE_INIT_SEQ_EXIT_SLEEP</a>,</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7aa9a23cfbb0352da37e005605dc588967">  317</a></span>    <a class="code hl_enumvalue" href="vsf__disp__mipi__lcd_8h.html#a1b70d876770ccff427513794d6b0b2a7aa9a23cfbb0352da37e005605dc588967">MIPI_LCD_STATE_INIT_CPL</a>,</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>};</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span> </div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno"><a class="line" href="classvk__disp__mipi__lcd__t.html">  320</a></span><a class="code hl_define" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code hl_class" href="classvk__disp__mipi__lcd__t.html">vk_disp_mipi_lcd_t</a>) {</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    public_member(</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>        implement(<a class="code hl_class" href="classvk__disp__t.html">vk_disp_t</a>)</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>#<span class="keywordflow">if</span> <a class="code hl_define" href="vsf__disp__mipi__lcd_8h.html#a001ddde64f199dbfbd876b0bf86363f7">VSF_DISP_MIPI_LCD_USE_SPI_INTERFACE</a> == <a class="code hl_define" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>        <span class="keyword">const</span> i_spi_t   *spi;</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>        vsf_spi_t       *spi;</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   *init_seq;</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>  init_seq_len;</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>    )</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    private_member(</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        <a class="code hl_class" href="classvsf__teda__t.html">vsf_teda_t</a>           teda;</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>        <a class="code hl_typedef" href="vsf__eda_8h.html#a43a14c27fa7cd929d1633f29bd58515b">vsf_eda_evthandler_t</a> evthandler;</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span> </div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>        <a class="code hl_struct" href="structvk__disp__area__t.html">vk_disp_area_t</a>      area;</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>        <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>             *cur_buffer;</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>        <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>             refresh_seq[<a class="code hl_define" href="vsf__disp__mipi__lcd_8h.html#ac835e984698a5860c5b061fca519e830">VSF_DISP_MIPI_LCD_REFRESH_SEQ_LEN</a>];</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span><span class="preprocessor">#ifdef VK_DISP_MIPI_LCD_SUPPORT_HARDWARE_RESET</span></div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>        <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>             reset_state : 1;</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span> </div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>        <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>   *buf;</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>            <a class="code hl_typedef" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>        max_cnt;</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>            <a class="code hl_typedef" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>        cur_cnt;</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>        } seq;</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>        <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>            <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>         cmd;</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>            <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>        param_size;</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>            <span class="keywordtype">void</span>            *param_buffer;</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>        } cmd;</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    )</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>};</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span> </div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_class" href="classvk__disp__drv__t.html">vk_disp_drv_t</a> <a class="code hl_variable" href="vsf__disp__mipi__lcd_8h.html#ac5b73c39753ac8b86c2f4a9415ee713b">vk_disp_drv_mipi_lcd</a>;</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span> </div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="vsf__disp__mipi__lcd_8h.html#ac55cbfe51dc7d5e0c99701ff45c4aa5e">vk_disp_mipi_tearing_effect_line_ready</a>(<a class="code hl_class" href="classvk__disp__mipi__lcd__t.html">vk_disp_mipi_lcd_t</a> *disp_mipi_lcd);</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span> </div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span><span class="preprocessor">#if VSF_DISP_MIPI_LCD_SPI_MODE == VSF_DISP_MIPI_LCD_SPI_8BITS_MODE</span></div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno"><a class="line" href="vsf__disp__mipi__lcd_8h.html#a6271929eec8c5ebd1fdba596583a898b">  365</a></span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="vsf__disp__mipi__lcd_8h.html#a6271929eec8c5ebd1fdba596583a898b">vk_disp_mipi_lcd_dcx_set</a>(<a class="code hl_class" href="classvk__disp__mipi__lcd__t.html">vk_disp_mipi_lcd_t</a> *disp_mipi_lcd, <span class="keywordtype">bool</span> <a class="code hl_variable" href="vsf__msg__tree_8h.html#a0b57aa10271a66f3dc936bba1d2f3830">state</a>);</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span> </div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>}</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span> </div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span><span class="preprocessor">#endif  </span><span class="comment">// VSF_USE_UI</span></div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span><span class="preprocessor">#endif  </span><span class="comment">// __VSF_DISP_MIPI_SPI_LCD_H__</span></div>
 <div class="ttc" id="a____type_8h_html_a73c228f87e038e8295ee8ea8eceaa5ac"><div class="ttname"><a href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></div><div class="ttdeci">#define ENABLED</div><div class="ttdef"><b>Definition:</b> __type.h:28</div></div>
 <div class="ttc" id="aarm_2type_8h_html_a273cf69d639a59973b6019625df33e30"><div class="ttname"><a href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a></div><div class="ttdeci">unsigned short uint16_t</div><div class="ttdef"><b>Definition:</b> type.h:32</div></div>
 <div class="ttc" id="aarm_2type_8h_html_a435d1572bf3f880d55459d9805097f62"><div class="ttname"><a href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a></div><div class="ttdeci">unsigned int uint32_t</div><div class="ttdef"><b>Definition:</b> type.h:37</div></div>
@@ -446,7 +446,7 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
 </small></address>
 </body>
 </html>

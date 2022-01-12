@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>VSF Documented: source/utilities/compiler/rv/RISCV/drivers/riscv_bits.h 源文件</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -26,15 +26,16 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.1 -->
+<!-- 制作者 Doxygen 1.9.2 -->
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',false,false,'search.php','搜索');
 });
-/* @license-end */</script>
+/* @license-end */
+</script>
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
@@ -42,58 +43,57 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle">
-<div class="title">riscv_bits.h</div>  </div>
+  <div class="headertitle"><div class="title">riscv_bits.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="riscv__bits_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// See LICENSE for license details.</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef _RISCV_BITS_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define _RISCV_BITS_H</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a217a0bd562b98ae8c2ffce44935351e1">    9</a></span>&#160;<span class="preprocessor">#define likely(x) __builtin_expect((x), 1)</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#ac6c45889010c1bd68631771b64f18101">   10</a></span>&#160;<span class="preprocessor">#define unlikely(x) __builtin_expect((x), 0)</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a957b6b29a882c412b43b8dbcfd69d987">   12</a></span>&#160;<span class="preprocessor">#define ROUNDUP(a, b) ((((a)-1)/(b)+1)*(b))</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a9f1063ef374539862889532b59bd67ab">   13</a></span>&#160;<span class="preprocessor">#define ROUNDDOWN(a, b) ((a)/(b)*(b))</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#afa99ec4acc4ecb2dc3c2d05da15d0e3f">   15</a></span>&#160;<span class="preprocessor">#define MAX(a, b) ((a) &gt; (b) ? (a) : (b))</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a3acffbd305ee72dcd4593c0d8af64a4f">   16</a></span>&#160;<span class="preprocessor">#define MIN(a, b) ((a) &lt; (b) ? (a) : (b))</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a47271c3e2c1441dd7dbbc26e631655db">   17</a></span>&#160;<span class="preprocessor">#define CLAMP(a, lo, hi) MIN(MAX(a, lo), hi)</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#ad5f13632ea827e91dfe3e631df6f7479">   19</a></span>&#160;<span class="preprocessor">#define EXTRACT_FIELD(val, which) (((val) &amp; (which)) / ((which) &amp; ~((which)-1)))</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a3c9ccd5ef4dec9e513f488c6e2c26cc2">   20</a></span>&#160;<span class="preprocessor">#define INSERT_FIELD(val, which, fieldval) (((val) &amp; ~(which)) | ((fieldval) * ((which) &amp; ~((which)-1))))</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a18d295a837ac71add5578860b55e5502">   22</a></span>&#160;<span class="preprocessor">#define STR(x) XSTR(x)</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#abe87b341f562fd1cf40b7672e4d759da">   23</a></span>&#160;<span class="preprocessor">#define XSTR(x) #x</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#if __riscv_xlen == 64</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"># define SLL32    sllw</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"># define STORE    sd</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"># define LOAD     ld</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"># define LWU      lwu</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"># define LOG_REGBYTES 3</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a556725b82918b8d147c4f8682470ce52">   32</a></span>&#160;<span class="preprocessor"># define SLL32    sll</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#ac677e3bf428ab129e0cc9153ad7f23c7">   33</a></span>&#160;<span class="preprocessor"># define STORE    sw</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a0b674752cca6d434a1a69f40877eb2be">   34</a></span>&#160;<span class="preprocessor"># define LOAD     lw</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#aefc8153bedbd7d3f60cdbddad43756fe">   35</a></span>&#160;<span class="preprocessor"># define LWU      lw</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#aa62dd562816b5fc787f69696032b8818">   36</a></span>&#160;<span class="preprocessor"># define LOG_REGBYTES 2</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a4cbedf4d32de8a7fbc7474c72274d966">   38</a></span>&#160;<span class="preprocessor">#define REGBYTES (1 &lt;&lt; LOG_REGBYTES)</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif</span></div>
+<a href="riscv__bits_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// See LICENSE for license details.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef _RISCV_BITS_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define _RISCV_BITS_H</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a217a0bd562b98ae8c2ffce44935351e1">    9</a></span><span class="preprocessor">#define likely(x) __builtin_expect((x), 1)</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#ac6c45889010c1bd68631771b64f18101">   10</a></span><span class="preprocessor">#define unlikely(x) __builtin_expect((x), 0)</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a957b6b29a882c412b43b8dbcfd69d987">   12</a></span><span class="preprocessor">#define ROUNDUP(a, b) ((((a)-1)/(b)+1)*(b))</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a9f1063ef374539862889532b59bd67ab">   13</a></span><span class="preprocessor">#define ROUNDDOWN(a, b) ((a)/(b)*(b))</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#afa99ec4acc4ecb2dc3c2d05da15d0e3f">   15</a></span><span class="preprocessor">#define MAX(a, b) ((a) &gt; (b) ? (a) : (b))</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a3acffbd305ee72dcd4593c0d8af64a4f">   16</a></span><span class="preprocessor">#define MIN(a, b) ((a) &lt; (b) ? (a) : (b))</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a47271c3e2c1441dd7dbbc26e631655db">   17</a></span><span class="preprocessor">#define CLAMP(a, lo, hi) MIN(MAX(a, lo), hi)</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#ad5f13632ea827e91dfe3e631df6f7479">   19</a></span><span class="preprocessor">#define EXTRACT_FIELD(val, which) (((val) &amp; (which)) / ((which) &amp; ~((which)-1)))</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a3c9ccd5ef4dec9e513f488c6e2c26cc2">   20</a></span><span class="preprocessor">#define INSERT_FIELD(val, which, fieldval) (((val) &amp; ~(which)) | ((fieldval) * ((which) &amp; ~((which)-1))))</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a18d295a837ac71add5578860b55e5502">   22</a></span><span class="preprocessor">#define STR(x) XSTR(x)</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#abe87b341f562fd1cf40b7672e4d759da">   23</a></span><span class="preprocessor">#define XSTR(x) #x</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#if __riscv_xlen == 64</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor"># define SLL32    sllw</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor"># define STORE    sd</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor"># define LOAD     ld</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor"># define LWU      lwu</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor"># define LOG_REGBYTES 3</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a556725b82918b8d147c4f8682470ce52">   32</a></span><span class="preprocessor"># define SLL32    sll</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#ac677e3bf428ab129e0cc9153ad7f23c7">   33</a></span><span class="preprocessor"># define STORE    sw</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a0b674752cca6d434a1a69f40877eb2be">   34</a></span><span class="preprocessor"># define LOAD     lw</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#aefc8153bedbd7d3f60cdbddad43756fe">   35</a></span><span class="preprocessor"># define LWU      lw</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#aa62dd562816b5fc787f69696032b8818">   36</a></span><span class="preprocessor"># define LOG_REGBYTES 2</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="riscv__bits_8h.html#a4cbedf4d32de8a7fbc7474c72274d966">   38</a></span><span class="preprocessor">#define REGBYTES (1 &lt;&lt; LOG_REGBYTES)</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
 </small></address>
 </body>
 </html>

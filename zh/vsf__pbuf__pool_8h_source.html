@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>VSF Documented: source/service/pbuf/vsf_pbuf_pool.h 源文件</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -26,15 +26,16 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.1 -->
+<!-- 制作者 Doxygen 1.9.2 -->
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',false,false,'search.php','搜索');
 });
-/* @license-end */</script>
+/* @license-end */
+</script>
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
@@ -42,202 +43,201 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle">
-<div class="title">vsf_pbuf_pool.h</div>  </div>
+  <div class="headertitle"><div class="title">vsf_pbuf_pool.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="vsf__pbuf__pool_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#afc21bddb65ee3ab3e968a3a63837f065">    1</a></span>&#160;<span class="comment">/*****************************************************************************</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   Copyright(C)2009-2022 by VSF Team                                       *</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *  limitations under the License.                                           *</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> ****************************************************************************/</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __VSF_PBUF_POOL_H__</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define __VSF_PBUF_POOL_H__</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*============================ INCLUDES ======================================*/</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__service__cfg_8h.html">service/vsf_service_cfg.h</a>&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#if VSF_USE_PBUF == ENABLED</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__pbuf_8h.html">./vsf_pbuf.h</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__pool_8h.html">service/pool/vsf_pool.h</a>&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/*============================ MACROS ========================================*/</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a7ab7da9dd3aac417a7f161435e0d88bd">   33</a></span>&#160;<span class="preprocessor">#define __declare_pbuf_pool(__NAME)                                             \</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">        typedef struct __NAME##_pool_item_t __NAME##_pool_item_t;               \</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">        typedef struct __NAME##_pool_t      __NAME##_pool_t;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#ab96c5143b729200ad722966d42515d32">   37</a></span>&#160;<span class="preprocessor">#define __def_pbuf_pool(__NAME, __SIZE, ...)                                    \</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">        struct __NAME##_pool_item_t {                                           \</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">            implement(vsf_pbuf_t);                                              \</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">            uint8_t u8_buffer[__SIZE];                                          \</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">        };                                                                      \</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">        struct __NAME##_pool_t {                                                \</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">            implement(vsf_pbuf_pool_t)                                          \</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">            __VA_ARGS__                                                         \</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">        };</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#aff9742926285fe6a6f4e8bfd7f074c0a">   47</a></span>&#160;<span class="preprocessor">#define __vsf_pbuf_pool_req_pbuf_evt(__NAME, __POOL)                            \</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">            (req_pbuf_evt_t)                                                    \</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">            { .handler_fn = __NAME##_req_pbuf_evt_handler,                      \</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">              .target_ptr = (__POOL),                                           \</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">            }</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#if VSF_STREAM_CFG_SUPPORT_RESOURCE_LIMITATION == ENABLED</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a533fcb77091a9e26cef2ee0c99ce5411">   54</a></span>&#160;<span class="preprocessor">#define __implement_pbuf_pool(__NAME)                                           \</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">      vsf_pbuf_t *__NAME##_req_pbuf_evt_handler(void *target_ptr,               \</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">                                                int_fast32_t nNoLessThan,       \</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">                                                int_fast32_t nBestSize,         \</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">                                                uint_fast16_t hwReserve)        \</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">{                                                                               \</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">    vsf_pool(__NAME) *this_ptr = (vsf_pool(__NAME) *)target_ptr;                \</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">    VSF_SERVICE_ASSERT(NULL != this_ptr);                                       \</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">    if (vsf_pbuf_get_pool_item_count(                                           \</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">            &amp;(this_ptr-&gt;use_as__vsf_pbuf_pool_t)) &lt;= hwReserve) {               \</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">        return NULL;                                                            \</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">    }                                                                           \</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">    return vsf_pbuf_pool_alloc(&amp;(this_ptr-&gt;use_as__vsf_pbuf_pool_t));           \</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">}</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define __implement_pbuf_pool(__NAME)                                           \</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">      vsf_pbuf_t *__NAME##_req_pbuf_evt_handler(void *target_ptr,               \</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">                                                int_fast32_t nNoLessThan,       \</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">                                                int_fast32_t nBestSize,         \</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">                                                uint_fast16_t hwReserve)        \</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">{                                                                               \</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">    vsf_pool(__NAME) *this_ptr = (vsf_pool(__NAME) *)target_ptr;                \</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">    VSF_SERVICE_ASSERT(NULL != this_ptr);                                       \</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">    return vsf_pbuf_pool_alloc(&amp;(this_ptr-&gt;use_as__vsf_pbuf_pool_t));           \</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">}</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a9b72bce2ebd9beed39f8be20d44d775f">   81</a></span>&#160;<span class="preprocessor">#define __init_pbuf_pool(__NAME, __POOL, __ID, __COUNT, ...)                    \</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">        do {                                                                    \</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">            NO_INIT static vsf_pool_item(__NAME)                                \</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">                    __##__NAME##_data_buffer[__COUNT];                          \</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">            const vsf_pbuf_adapter_t *adapter_ptr =                             \</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">                    vsf_pbuf_adapter_get(__ID);                                 \</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">            vsf_pool_cfg_t cfg = {                                              \</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">                .target_ptr = (uintptr_t)adapter_ptr,                           \</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">                .pool_name_ptr = #__NAME,                                       \</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">                __VA_ARGS__                                                     \</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">            };                                                                  \</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">                                                                                \</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">            vsf_pbuf_pool_init( &amp;((__POOL)-&gt;use_as__vsf_pbuf_pool_t),           \</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">                                sizeof(vsf_pool_item(__NAME)),                  \</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">                                __alignof__(vsf_pool_item(__NAME)),             \</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">                                &amp;cfg);                                          \</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">            vsf_pbuf_pool_add_buffer(   &amp;((__POOL)-&gt;use_as__vsf_pbuf_pool_t),   \</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">                                        __##__NAME##_data_buffer,               \</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">                                        sizeof(__##__NAME##_data_buffer),       \</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">                                        sizeof(vsf_pool_item(__NAME)));         \</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">        } while(0)</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a690bc60ca9a7f75880bd0702f8f6e56b">  103</a></span>&#160;<span class="preprocessor">#define init_pbuf_pool(__NAME, __POOL, __ID, __COUNT, ...)                      \</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">        __init_pbuf_pool(__NAME, (__POOL), (__ID), (__COUNT), __VA_ARGS__)</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#ad9763e5adb9a6c4bb03ad63e9a5202c9">  106</a></span>&#160;<span class="preprocessor">#define __prepare_pbuf_pool(__NAME, __POOL, __ID, ...)                          \</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">        do {                                                                    \</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">            const vsf_pbuf_adapter_t *adapter_ptr =                             \</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">                    vsf_pbuf_adapter_get(__ID);                                 \</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">            vsf_pool_cfg_t cfg = {                                              \</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">                .target_ptr = (uintptr_t)adapter_ptr,                           \</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">                .pool_name_ptr = #__NAME,                                       \</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">                .item_init_fn = &amp;vsf_pbuf_pool_item_init_event_handler,         \</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">                __VA_ARGS__                                                     \</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">            };                                                                  \</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">                                                                                \</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">            vsf_pbuf_pool_init( &amp;((__POOL)-&gt;use_as__vsf_pbuf_pool_t),           \</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">                                sizeof(vsf_pool_item(__NAME)),                  \</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">                                __alignof__(vsf_pool_item(__NAME)),             \</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">                                &amp;cfg);                                          \</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">        } while(0)</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#affa786487d7676df5c47e8adf628d353">  123</a></span>&#160;<span class="preprocessor">#define prepare_pbuf_pool(__NAME, __POOL, __ID, ...)                            \</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">        __prepare_pbuf_pool(__NAME, (__POOL), (__ID), __VA_ARGS__)</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a8e17be8328922179b17838c1963dc096">  127</a></span>&#160;<span class="preprocessor">#define def_pbuf_pool(__NAME, __SIZE, ...)                                      \</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">        __def_pbuf_pool(__NAME, (__SIZE), __VA_ARGS__)</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a4582958042e96be3135e5e71a8657d29">  130</a></span>&#160;<span class="preprocessor">#define declare_pbuf_pool(__NAME)       __declare_pbuf_pool(__NAME)</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a501551998fd8925f748d35e894859be7">  132</a></span>&#160;<span class="preprocessor">#define vsf_pbuf_pool_req_pbuf_evt(__NAME, __POOL)                              \</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">            __vsf_pbuf_pool_req_pbuf_evt(__NAME, (__POOL))</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a0beab2dfcd3c0ae4ff1b01b91e678907">  135</a></span>&#160;<span class="preprocessor">#define implement_pbuf_pool(...)        __implement_pbuf_pool(__VA_ARGS__)</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a4011e7094a0f3e247b8bcef846083e59">  137</a></span>&#160;<span class="preprocessor">#define vsf_pbuf_pool_adapter(__ID, __POOL)                                     \</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">        {                                                                       \</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">            .target_ptr = (__POOL),                                             \</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor">            .ID = (__ID),                                                       \</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="preprocessor">            .methods_ptr = &amp;VSF_PBUF_ADAPTER_METHODS_STREAM_SRC,                \</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor">        }</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keyword">typedef</span> <span class="keyword">union </span><a class="code" href="unionvsf__pbuf__pool__item__t.html">vsf_pbuf_pool_item_t</a> <a class="code" href="unionvsf__pbuf__pool__item__t.html">vsf_pbuf_pool_item_t</a>;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> <a class="code" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a>;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
-<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="unionvsf__pbuf__pool__item__t.html">  148</a></span>&#160;<span class="keyword">union </span><a class="code" href="unionvsf__pbuf__pool__item__t.html">vsf_pbuf_pool_item_t</a> {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    implement(<a class="code" href="structvsf__slist__t.html">vsf_slist_t</a>)</div>
-<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="unionvsf__pbuf__pool__item__t.html#aed043a893343aa46dda1f25afc20ee98">  150</a></span>&#160;    vsf_pbuf_t                  <a class="code" href="unionvsf__pbuf__pool__item__t.html#aed043a893343aa46dda1f25afc20ee98">tMem</a>;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;};</div>
-<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="structvsf__pbuf__pool__t.html">  152</a></span>&#160;struct <a class="code" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    implement(vsf_pool_t)</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;};</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> i_pbuf_methods_t <a class="code" href="vsf__pbuf__pool_8h.html#a5e9c19f0f02d57e59783d78bcdad8705">VSF_PBUF_ADAPTER_METHODS_STREAM_SRC</a>;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword">extern</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keywordtype">void</span> <a class="code" href="vsf__pbuf__pool_8h.html#a010681ee50a1cc4aad9e49522f0ae0c8">vsf_pbuf_pool_init</a>(<a class="code" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> *this_ptr,</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                        <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> u32_item_size,</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                        <a class="code" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a> u16_align,</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                        <a class="code" href="vsf__pool_8h.html#abc12eca64e8c7d9b3028c3fa40dd2ad2">vsf_pool_cfg_t</a> *pcfg);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keyword">extern</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="vsf__pbuf__pool_8h.html#ac191577ea386d880229ea12431d1445c">vsf_pbuf_pool_add_buffer</a>(  <a class="code" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> *this_ptr,</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                <span class="keywordtype">void</span> *buffer_ptr,</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                                <a class="code" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> u32_size,</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                <a class="code" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a> u16_item_size) ;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="keyword">extern</span> vsf_pbuf_t *<a class="code" href="vsf__pbuf__pool_8h.html#ad064e30166aeca633173012f334a7025">vsf_pbuf_pool_alloc</a>(<a class="code" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> *);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="vsf__pbuf__pool_8h.html#a5361a031dec217553c619944f6f04ee5">vsf_pbuf_pool_free</a>(<a class="code" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> *, vsf_pbuf_t *);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<a class="code" href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a>(<span class="stringliteral">&quot;.text.&quot;</span> <span class="stringliteral">&quot;vsf_pbuf&quot;</span> <span class="stringliteral">&quot;_get_pool_item_count&quot;</span>)</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;extern <a class="code" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="code" href="vsf__pbuf__pool_8h.html#a7c38224d043f93eaa1962270b5c7f8fa">vsf_pbuf_get_pool_item_count</a>(<a class="code" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> *);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<a class="code" href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a>(&quot;.text.&quot; &quot;vsf_pbuf&quot; &quot;_pool_get_region&quot;)</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;extern vsf_protect_region_t *<a class="code" href="vsf__pbuf__pool_8h.html#a1378835f61c46ab7fd78ca3ac430375b">vsf_pbuf_pool_get_region</a>(<a class="code" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> *);</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<a class="code" href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a>(&quot;.text.&quot; &quot;vsf_pbuf&quot; &quot;_pool_get_target&quot;)</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;extern <a class="code" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> <a class="code" href="vsf__pbuf__pool_8h.html#a2469db322cd4aa312534cf4553b7efe0">vsf_pbuf_pool_get_target</a>(<a class="code" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> *);</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;}</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">/* EOF */</span></div>
+<a href="vsf__pbuf__pool_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2022 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifndef __VSF_PBUF_POOL_H__</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define __VSF_PBUF_POOL_H__</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__service__cfg_8h.html">service/vsf_service_cfg.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#if VSF_USE_PBUF == ENABLED</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__pbuf_8h.html">./vsf_pbuf.h</a>&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__pool_8h.html">service/pool/vsf_pool.h</a>&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a7ab7da9dd3aac417a7f161435e0d88bd">   33</a></span><span class="preprocessor">#define __declare_pbuf_pool(__NAME)                                             \</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">        typedef struct __NAME##_pool_item_t __NAME##_pool_item_t;               \</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">        typedef struct __NAME##_pool_t      __NAME##_pool_t;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#ab96c5143b729200ad722966d42515d32">   37</a></span><span class="preprocessor">#define __def_pbuf_pool(__NAME, __SIZE, ...)                                    \</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">        struct __NAME##_pool_item_t {                                           \</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">            implement(vsf_pbuf_t);                                              \</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">            uint8_t u8_buffer[__SIZE];                                          \</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">        };                                                                      \</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">        struct __NAME##_pool_t {                                                \</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">            implement(vsf_pbuf_pool_t)                                          \</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">            __VA_ARGS__                                                         \</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">        };</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#aff9742926285fe6a6f4e8bfd7f074c0a">   47</a></span><span class="preprocessor">#define __vsf_pbuf_pool_req_pbuf_evt(__NAME, __POOL)                            \</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">            (req_pbuf_evt_t)                                                    \</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">            { .handler_fn = __NAME##_req_pbuf_evt_handler,                      \</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">              .target_ptr = (__POOL),                                           \</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">            }</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#if VSF_STREAM_CFG_SUPPORT_RESOURCE_LIMITATION == ENABLED</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a533fcb77091a9e26cef2ee0c99ce5411">   54</a></span><span class="preprocessor">#define __implement_pbuf_pool(__NAME)                                           \</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">      vsf_pbuf_t *__NAME##_req_pbuf_evt_handler(void *target_ptr,               \</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">                                                int_fast32_t nNoLessThan,       \</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">                                                int_fast32_t nBestSize,         \</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">                                                uint_fast16_t hwReserve)        \</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">{                                                                               \</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">    vsf_pool(__NAME) *this_ptr = (vsf_pool(__NAME) *)target_ptr;                \</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">    VSF_SERVICE_ASSERT(NULL != this_ptr);                                       \</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">    if (vsf_pbuf_get_pool_item_count(                                           \</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">            &amp;(this_ptr-&gt;use_as__vsf_pbuf_pool_t)) &lt;= hwReserve) {               \</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">        return NULL;                                                            \</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">    }                                                                           \</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">    return vsf_pbuf_pool_alloc(&amp;(this_ptr-&gt;use_as__vsf_pbuf_pool_t));           \</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">}</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#define __implement_pbuf_pool(__NAME)                                           \</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">      vsf_pbuf_t *__NAME##_req_pbuf_evt_handler(void *target_ptr,               \</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">                                                int_fast32_t nNoLessThan,       \</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">                                                int_fast32_t nBestSize,         \</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">                                                uint_fast16_t hwReserve)        \</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">{                                                                               \</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">    vsf_pool(__NAME) *this_ptr = (vsf_pool(__NAME) *)target_ptr;                \</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">    VSF_SERVICE_ASSERT(NULL != this_ptr);                                       \</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">    return vsf_pbuf_pool_alloc(&amp;(this_ptr-&gt;use_as__vsf_pbuf_pool_t));           \</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">}</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a9b72bce2ebd9beed39f8be20d44d775f">   81</a></span><span class="preprocessor">#define __init_pbuf_pool(__NAME, __POOL, __ID, __COUNT, ...)                    \</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">        do {                                                                    \</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">            NO_INIT static vsf_pool_item(__NAME)                                \</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">                    __##__NAME##_data_buffer[__COUNT];                          \</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">            const vsf_pbuf_adapter_t *adapter_ptr =                             \</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">                    vsf_pbuf_adapter_get(__ID);                                 \</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">            vsf_pool_cfg_t cfg = {                                              \</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">                .target_ptr = (uintptr_t)adapter_ptr,                           \</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">                .pool_name_ptr = #__NAME,                                       \</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">                __VA_ARGS__                                                     \</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">            };                                                                  \</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">                                                                                \</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">            vsf_pbuf_pool_init( &amp;((__POOL)-&gt;use_as__vsf_pbuf_pool_t),           \</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">                                sizeof(vsf_pool_item(__NAME)),                  \</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">                                __alignof__(vsf_pool_item(__NAME)),             \</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">                                &amp;cfg);                                          \</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">            vsf_pbuf_pool_add_buffer(   &amp;((__POOL)-&gt;use_as__vsf_pbuf_pool_t),   \</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">                                        __##__NAME##_data_buffer,               \</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">                                        sizeof(__##__NAME##_data_buffer),       \</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">                                        sizeof(vsf_pool_item(__NAME)));         \</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">        } while(0)</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a690bc60ca9a7f75880bd0702f8f6e56b">  103</a></span><span class="preprocessor">#define init_pbuf_pool(__NAME, __POOL, __ID, __COUNT, ...)                      \</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">        __init_pbuf_pool(__NAME, (__POOL), (__ID), (__COUNT), __VA_ARGS__)</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#ad9763e5adb9a6c4bb03ad63e9a5202c9">  106</a></span><span class="preprocessor">#define __prepare_pbuf_pool(__NAME, __POOL, __ID, ...)                          \</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor">        do {                                                                    \</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="preprocessor">            const vsf_pbuf_adapter_t *adapter_ptr =                             \</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">                    vsf_pbuf_adapter_get(__ID);                                 \</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">            vsf_pool_cfg_t cfg = {                                              \</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="preprocessor">                .target_ptr = (uintptr_t)adapter_ptr,                           \</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">                .pool_name_ptr = #__NAME,                                       \</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">                .item_init_fn = &amp;vsf_pbuf_pool_item_init_event_handler,         \</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="preprocessor">                __VA_ARGS__                                                     \</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">            };                                                                  \</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="preprocessor">                                                                                \</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">            vsf_pbuf_pool_init( &amp;((__POOL)-&gt;use_as__vsf_pbuf_pool_t),           \</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="preprocessor">                                sizeof(vsf_pool_item(__NAME)),                  \</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="preprocessor">                                __alignof__(vsf_pool_item(__NAME)),             \</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="preprocessor">                                &amp;cfg);                                          \</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="preprocessor">        } while(0)</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#affa786487d7676df5c47e8adf628d353">  123</a></span><span class="preprocessor">#define prepare_pbuf_pool(__NAME, __POOL, __ID, ...)                            \</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="preprocessor">        __prepare_pbuf_pool(__NAME, (__POOL), (__ID), __VA_ARGS__)</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a8e17be8328922179b17838c1963dc096">  127</a></span><span class="preprocessor">#define def_pbuf_pool(__NAME, __SIZE, ...)                                      \</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="preprocessor">        __def_pbuf_pool(__NAME, (__SIZE), __VA_ARGS__)</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a4582958042e96be3135e5e71a8657d29">  130</a></span><span class="preprocessor">#define declare_pbuf_pool(__NAME)       __declare_pbuf_pool(__NAME)</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a501551998fd8925f748d35e894859be7">  132</a></span><span class="preprocessor">#define vsf_pbuf_pool_req_pbuf_evt(__NAME, __POOL)                              \</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="preprocessor">            __vsf_pbuf_pool_req_pbuf_evt(__NAME, (__POOL))</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a0beab2dfcd3c0ae4ff1b01b91e678907">  135</a></span><span class="preprocessor">#define implement_pbuf_pool(...)        __implement_pbuf_pool(__VA_ARGS__)</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a4011e7094a0f3e247b8bcef846083e59">  137</a></span><span class="preprocessor">#define vsf_pbuf_pool_adapter(__ID, __POOL)                                     \</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="preprocessor">        {                                                                       \</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="preprocessor">            .target_ptr = (__POOL),                                             \</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="preprocessor">            .ID = (__ID),                                                       \</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="preprocessor">            .methods_ptr = &amp;VSF_PBUF_ADAPTER_METHODS_STREAM_SRC,                \</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="preprocessor">        }</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#afc21bddb65ee3ab3e968a3a63837f065">  145</a></span><span class="keyword">typedef</span> <span class="keyword">union </span><a class="code hl_union" href="unionvsf__pbuf__pool__item__t.html">vsf_pbuf_pool_item_t</a> <a class="code hl_union" href="unionvsf__pbuf__pool__item__t.html">vsf_pbuf_pool_item_t</a>;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="vsf__pbuf__pool_8h.html#a5b5f79976269fc075932f8b34abcb013">  146</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> <a class="code hl_struct" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a>;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="unionvsf__pbuf__pool__item__t.html">  148</a></span><span class="keyword">union </span><a class="code hl_union" href="unionvsf__pbuf__pool__item__t.html">vsf_pbuf_pool_item_t</a> {</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    implement(<a class="code hl_struct" href="structvsf__slist__t.html">vsf_slist_t</a>)</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="unionvsf__pbuf__pool__item__t.html#aed043a893343aa46dda1f25afc20ee98">  150</a></span>    vsf_pbuf_t                  <a class="code hl_variable" href="unionvsf__pbuf__pool__item__t.html#aed043a893343aa46dda1f25afc20ee98">tMem</a>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>};</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="structvsf__pbuf__pool__t.html">  152</a></span>struct <a class="code hl_struct" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> {</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    implement(vsf_pool_t)</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>};</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="keyword">extern</span> <span class="keyword">const</span> i_pbuf_methods_t <a class="code hl_variable" href="vsf__pbuf__pool_8h.html#a5e9c19f0f02d57e59783d78bcdad8705">VSF_PBUF_ADAPTER_METHODS_STREAM_SRC</a>;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="keyword">extern</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="keywordtype">void</span> <a class="code hl_function" href="vsf__pbuf__pool_8h.html#a010681ee50a1cc4aad9e49522f0ae0c8">vsf_pbuf_pool_init</a>(<a class="code hl_struct" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> *this_ptr,</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                        <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> u32_item_size,</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                        <a class="code hl_typedef" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a> u16_align,</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                        <a class="code hl_variable" href="vsf__pool_8h.html#abc12eca64e8c7d9b3028c3fa40dd2ad2">vsf_pool_cfg_t</a> *pcfg);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="keyword">extern</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="keywordtype">bool</span> <a class="code hl_function" href="vsf__pbuf__pool_8h.html#ac191577ea386d880229ea12431d1445c">vsf_pbuf_pool_add_buffer</a>(  <a class="code hl_struct" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> *this_ptr,</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                                <span class="keywordtype">void</span> *buffer_ptr,</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                                <a class="code hl_typedef" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> u32_size,</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                                <a class="code hl_typedef" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a> u16_item_size) ;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="keyword">extern</span> vsf_pbuf_t *<a class="code hl_function" href="vsf__pbuf__pool_8h.html#ab14f94443a7a1d4f9fb68de5a3b824cc">vsf_pbuf_pool_alloc</a>(<a class="code hl_struct" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> *);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="vsf__pbuf__pool_8h.html#a5361a031dec217553c619944f6f04ee5">vsf_pbuf_pool_free</a>(<a class="code hl_struct" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> *, vsf_pbuf_t *);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><a class="code hl_define" href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a>(<span class="stringliteral">&quot;.text.&quot;</span> <span class="stringliteral">&quot;vsf_pbuf&quot;</span> <span class="stringliteral">&quot;_get_pool_item_count&quot;</span>)</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>extern <a class="code hl_typedef" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="code hl_function" href="vsf__pbuf__pool_8h.html#a7c38224d043f93eaa1962270b5c7f8fa">vsf_pbuf_get_pool_item_count</a>(<a class="code hl_struct" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> *);</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><a class="code hl_define" href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a>(&quot;.text.&quot; &quot;vsf_pbuf&quot; &quot;_pool_get_region&quot;)</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>extern vsf_protect_region_t *<a class="code hl_function" href="vsf__pbuf__pool_8h.html#a09c6f5ab4ceb94b6b2ebd1b51c18283f">vsf_pbuf_pool_get_region</a>(<a class="code hl_struct" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> *);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><a class="code hl_define" href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a>(&quot;.text.&quot; &quot;vsf_pbuf&quot; &quot;_pool_get_target&quot;)</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>extern <a class="code hl_typedef" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> <a class="code hl_function" href="vsf__pbuf__pool_8h.html#a2469db322cd4aa312534cf4553b7efe0">vsf_pbuf_pool_get_target</a>(<a class="code hl_struct" href="structvsf__pbuf__pool__t.html">vsf_pbuf_pool_t</a> *);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>}</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="comment">/* EOF */</span></div>
 <div class="ttc" id="a____compiler_8h_html_a3eaf49c35e19a8e3c92ee1b1b5b0c692"><div class="ttname"><a href="____compiler_8h.html#a3eaf49c35e19a8e3c92ee1b1b5b0c692">SECTION</a></div><div class="ttdeci">#define SECTION(__SEC)</div><div class="ttdef"><b>Definition:</b> __compiler.h:134</div></div>
 <div class="ttc" id="aarm_2type_8h_html_a09674b9e56fd7a93a2169aa9210deec7"><div class="ttname"><a href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a></div><div class="ttdeci">uint32_t uintptr_t</div><div class="ttdef"><b>Definition:</b> type.h:51</div></div>
 <div class="ttc" id="aarm_2type_8h_html_a226d967fb6d06433caf43f20dc876aae"><div class="ttname"><a href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a></div><div class="ttdeci">unsigned int uint_fast16_t</div><div class="ttdef"><b>Definition:</b> type.h:34</div></div>
@@ -249,20 +249,20 @@ $(function() {
 <div class="ttc" id="aunionvsf__pbuf__pool__item__t_html_aed043a893343aa46dda1f25afc20ee98"><div class="ttname"><a href="unionvsf__pbuf__pool__item__t.html#aed043a893343aa46dda1f25afc20ee98">vsf_pbuf_pool_item_t::tMem</a></div><div class="ttdeci">vsf_slist_t vsf_pbuf_t tMem</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_pool.h:150</div></div>
 <div class="ttc" id="avsf__pbuf_8h_html"><div class="ttname"><a href="vsf__pbuf_8h.html">vsf_pbuf.h</a></div></div>
 <div class="ttc" id="avsf__pbuf__pool_8h_html_a010681ee50a1cc4aad9e49522f0ae0c8"><div class="ttname"><a href="vsf__pbuf__pool_8h.html#a010681ee50a1cc4aad9e49522f0ae0c8">vsf_pbuf_pool_init</a></div><div class="ttdeci">void vsf_pbuf_pool_init(vsf_pbuf_pool_t *this_ptr, uint32_t u32_item_size, uint_fast16_t u16_align, vsf_pool_cfg_t *pcfg)</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_pool.c:44</div></div>
-<div class="ttc" id="avsf__pbuf__pool_8h_html_a1378835f61c46ab7fd78ca3ac430375b"><div class="ttname"><a href="vsf__pbuf__pool_8h.html#a1378835f61c46ab7fd78ca3ac430375b">vsf_pbuf_pool_get_region</a></div><div class="ttdeci">vsf_protect_region_t * vsf_pbuf_pool_get_region(vsf_pbuf_pool_t *)</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_pool.c:92</div></div>
+<div class="ttc" id="avsf__pbuf__pool_8h_html_a09c6f5ab4ceb94b6b2ebd1b51c18283f"><div class="ttname"><a href="vsf__pbuf__pool_8h.html#a09c6f5ab4ceb94b6b2ebd1b51c18283f">vsf_pbuf_pool_get_region</a></div><div class="ttdeci">vsf_protect_region_t * vsf_pbuf_pool_get_region(vsf_pbuf_pool_t *)</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_pool.c:92</div></div>
 <div class="ttc" id="avsf__pbuf__pool_8h_html_a2469db322cd4aa312534cf4553b7efe0"><div class="ttname"><a href="vsf__pbuf__pool_8h.html#a2469db322cd4aa312534cf4553b7efe0">vsf_pbuf_pool_get_target</a></div><div class="ttdeci">uintptr_t vsf_pbuf_pool_get_target(vsf_pbuf_pool_t *)</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_pool.c:98</div></div>
 <div class="ttc" id="avsf__pbuf__pool_8h_html_a5361a031dec217553c619944f6f04ee5"><div class="ttname"><a href="vsf__pbuf__pool_8h.html#a5361a031dec217553c619944f6f04ee5">vsf_pbuf_pool_free</a></div><div class="ttdeci">void vsf_pbuf_pool_free(vsf_pbuf_pool_t *, vsf_pbuf_t *)</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_pool.c:79</div></div>
 <div class="ttc" id="avsf__pbuf__pool_8h_html_a5e9c19f0f02d57e59783d78bcdad8705"><div class="ttname"><a href="vsf__pbuf__pool_8h.html#a5e9c19f0f02d57e59783d78bcdad8705">VSF_PBUF_ADAPTER_METHODS_STREAM_SRC</a></div><div class="ttdeci">const i_pbuf_methods_t VSF_PBUF_ADAPTER_METHODS_STREAM_SRC</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_pool.c:31</div></div>
 <div class="ttc" id="avsf__pbuf__pool_8h_html_a7c38224d043f93eaa1962270b5c7f8fa"><div class="ttname"><a href="vsf__pbuf__pool_8h.html#a7c38224d043f93eaa1962270b5c7f8fa">vsf_pbuf_get_pool_item_count</a></div><div class="ttdeci">uint_fast32_t vsf_pbuf_get_pool_item_count(vsf_pbuf_pool_t *)</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_pool.c:85</div></div>
+<div class="ttc" id="avsf__pbuf__pool_8h_html_ab14f94443a7a1d4f9fb68de5a3b824cc"><div class="ttname"><a href="vsf__pbuf__pool_8h.html#ab14f94443a7a1d4f9fb68de5a3b824cc">vsf_pbuf_pool_alloc</a></div><div class="ttdeci">vsf_pbuf_t * vsf_pbuf_pool_alloc(vsf_pbuf_pool_t *)</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_pool.c:70</div></div>
 <div class="ttc" id="avsf__pbuf__pool_8h_html_ac191577ea386d880229ea12431d1445c"><div class="ttname"><a href="vsf__pbuf__pool_8h.html#ac191577ea386d880229ea12431d1445c">vsf_pbuf_pool_add_buffer</a></div><div class="ttdeci">bool vsf_pbuf_pool_add_buffer(vsf_pbuf_pool_t *this_ptr, void *buffer_ptr, uint_fast32_t u32_size, uint_fast16_t u16_item_size)</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_pool.c:52</div></div>
-<div class="ttc" id="avsf__pbuf__pool_8h_html_ad064e30166aeca633173012f334a7025"><div class="ttname"><a href="vsf__pbuf__pool_8h.html#ad064e30166aeca633173012f334a7025">vsf_pbuf_pool_alloc</a></div><div class="ttdeci">vsf_pbuf_t * vsf_pbuf_pool_alloc(vsf_pbuf_pool_t *)</div><div class="ttdef"><b>Definition:</b> vsf_pbuf_pool.c:70</div></div>
 <div class="ttc" id="avsf__pool_8h_html"><div class="ttname"><a href="vsf__pool_8h.html">vsf_pool.h</a></div></div>
 <div class="ttc" id="avsf__pool_8h_html_abc12eca64e8c7d9b3028c3fa40dd2ad2"><div class="ttname"><a href="vsf__pool_8h.html#abc12eca64e8c7d9b3028c3fa40dd2ad2">vsf_pool_cfg_t</a></div><div class="ttdeci">vsf_pool_cfg_t</div><div class="ttdef"><b>Definition:</b> vsf_pool.h:539</div></div>
 <div class="ttc" id="avsf__service__cfg_8h_html"><div class="ttname"><a href="vsf__service__cfg_8h.html">vsf_service_cfg.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
 </small></address>
 </body>
 </html>

@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>VSF Documented: source/shell/sys/linux/include/sys/select.h 源文件</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -26,15 +26,16 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.1 -->
+<!-- 制作者 Doxygen 1.9.2 -->
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',false,false,'search.php','搜索');
 });
-/* @license-end */</script>
+/* @license-end */
+</script>
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
@@ -42,47 +43,46 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle">
-<div class="title">select.h</div>  </div>
+  <div class="headertitle"><div class="title">select.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="select_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __VSF_LINUX_SELECT_H__</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __VSF_LINUX_SELECT_H__</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__linux__cfg_8h.html">shell/sys/linux/vsf_linux_cfg.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#if VSF_LINUX_CFG_RELATIVE_PATH == ENABLED</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#   include &quot;../sys/time.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#   include &lt;<a class="code" href="sys_2time_8h.html">sys/time.h</a>&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// for bitmap</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__utilities_8h.html">utilities/vsf_utilities.h</a>&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#if VSF_LINUX_CFG_WRAPPER == ENABLED</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="select_8h.html#a2b406456012f9f74aeb33de6f3df053c">   19</a></span>&#160;<span class="preprocessor">#   define select               VSF_LINUX_WRAPPER(select)</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef FD_SETSIZE</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="select_8h.html#a86c5dbf5a99358e288f573d6a1e0873f">   23</a></span>&#160;<span class="preprocessor">#   define FD_SETSIZE           1024</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="select_8h.html#a13ea72abe5159156453a8a957d8880cb">   25</a></span>&#160;<span class="preprocessor">#define FD_ZERO(set)            vsf_bitmap_reset(*(set), FD_SETSIZE)</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="select_8h.html#ac9a6234e30e3cb64542eca6dab921a93">   26</a></span>&#160;<span class="preprocessor">#define FD_SET(fd, set)         vsf_bitmap_set(*(set), (fd))</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="select_8h.html#ad914a2f676490d92b1f509bb6e93b459">   27</a></span>&#160;<span class="preprocessor">#define FD_CLR(fd, set)         vsf_bitmap_clear(*(set), (fd))</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="select_8h.html#a0d02a891286ee61c9e7ecd291c96567f">   28</a></span>&#160;<span class="preprocessor">#define FD_ISSET(fd, set)       vsf_bitmap_get(*(set), (fd))</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="select_8h.html#ac03422be43e6d58d6c47f8c6a530e3b9">   30</a></span>&#160;<a class="code" href="select_8h.html#ac03422be43e6d58d6c47f8c6a530e3b9">__vsf_declare_bitmap_ex</a>(fd_set, <a class="code" href="select_8h.html#a86c5dbf5a99358e288f573d6a1e0873f">FD_SETSIZE</a>)</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="select_8h.html#a3b65260d275d1bb8b1770645835f1e6d">   31</a></span>&#160;int <a class="code" href="select_8h.html#a2b406456012f9f74aeb33de6f3df053c">select</a>(<span class="keywordtype">int</span> nfds, fd_set *<a class="code" href="select_8h.html#a2bad6ada1543b95679f3e5b1491b3395">readfds</a>, fd_set *<a class="code" href="select_8h.html#ad9ee127943b82f2771ede31dcddb022f">writefds</a>, fd_set *<a class="code" href="select_8h.html#a3b65260d275d1bb8b1770645835f1e6d">execeptfds</a>, struct <a class="code" href="structtimeval.html">timeval</a> *<a class="code" href="select_8h.html#aff126839915cf06976792d265ce29a48">timeout</a>);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div>
+<a href="select_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef __VSF_LINUX_SELECT_H__</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __VSF_LINUX_SELECT_H__</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__linux__cfg_8h.html">shell/sys/linux/vsf_linux_cfg.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#if VSF_LINUX_CFG_RELATIVE_PATH == ENABLED</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#   include &quot;../sys/time.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#   include &lt;<a class="code" href="sys_2time_8h.html">sys/time.h</a>&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">// for bitmap</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__utilities_8h.html">utilities/vsf_utilities.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#if VSF_LINUX_CFG_WRAPPER == ENABLED</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="select_8h.html#a2b406456012f9f74aeb33de6f3df053c">   19</a></span><span class="preprocessor">#   define select               VSF_LINUX_WRAPPER(select)</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#ifndef FD_SETSIZE</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="select_8h.html#a86c5dbf5a99358e288f573d6a1e0873f">   23</a></span><span class="preprocessor">#   define FD_SETSIZE           1024</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="select_8h.html#a13ea72abe5159156453a8a957d8880cb">   25</a></span><span class="preprocessor">#define FD_ZERO(set)            vsf_bitmap_reset(*(set), FD_SETSIZE)</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="select_8h.html#ac9a6234e30e3cb64542eca6dab921a93">   26</a></span><span class="preprocessor">#define FD_SET(fd, set)         vsf_bitmap_set(*(set), (fd))</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="select_8h.html#ad914a2f676490d92b1f509bb6e93b459">   27</a></span><span class="preprocessor">#define FD_CLR(fd, set)         vsf_bitmap_clear(*(set), (fd))</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="select_8h.html#a0d02a891286ee61c9e7ecd291c96567f">   28</a></span><span class="preprocessor">#define FD_ISSET(fd, set)       vsf_bitmap_get(*(set), (fd))</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="select_8h.html#ac03422be43e6d58d6c47f8c6a530e3b9">   30</a></span><a class="code hl_function" href="select_8h.html#ac03422be43e6d58d6c47f8c6a530e3b9">__vsf_declare_bitmap_ex</a>(fd_set, <a class="code hl_define" href="select_8h.html#a86c5dbf5a99358e288f573d6a1e0873f">FD_SETSIZE</a>)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="select_8h.html#a3b65260d275d1bb8b1770645835f1e6d">   31</a></span>int <a class="code hl_define" href="select_8h.html#a2b406456012f9f74aeb33de6f3df053c">select</a>(<span class="keywordtype">int</span> nfds, fd_set *<a class="code hl_variable" href="select_8h.html#a2bad6ada1543b95679f3e5b1491b3395">readfds</a>, fd_set *<a class="code hl_variable" href="select_8h.html#ad9ee127943b82f2771ede31dcddb022f">writefds</a>, fd_set *<a class="code hl_variable" href="select_8h.html#a3b65260d275d1bb8b1770645835f1e6d">execeptfds</a>, struct <a class="code hl_struct" href="structtimeval.html">timeval</a> *<a class="code hl_variable" href="select_8h.html#aff126839915cf06976792d265ce29a48">timeout</a>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aselect_8h_html_a2b406456012f9f74aeb33de6f3df053c"><div class="ttname"><a href="select_8h.html#a2b406456012f9f74aeb33de6f3df053c">select</a></div><div class="ttdeci">#define select</div><div class="ttdef"><b>Definition:</b> select.h:19</div></div>
 <div class="ttc" id="aselect_8h_html_a2bad6ada1543b95679f3e5b1491b3395"><div class="ttname"><a href="select_8h.html#a2bad6ada1543b95679f3e5b1491b3395">readfds</a></div><div class="ttdeci">fd_set * readfds</div><div class="ttdef"><b>Definition:</b> select.h:31</div></div>
 <div class="ttc" id="aselect_8h_html_a3b65260d275d1bb8b1770645835f1e6d"><div class="ttname"><a href="select_8h.html#a3b65260d275d1bb8b1770645835f1e6d">execeptfds</a></div><div class="ttdeci">fd_set fd_set fd_set * execeptfds</div><div class="ttdef"><b>Definition:</b> select.h:31</div></div>
@@ -97,7 +97,7 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
 </small></address>
 </body>
 </html>

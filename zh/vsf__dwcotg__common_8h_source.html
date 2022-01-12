@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>VSF Documented: source/component/usb/driver/otg/dwcotg/vsf_dwcotg_common.h 源文件</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -26,15 +26,16 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.1 -->
+<!-- 制作者 Doxygen 1.9.2 -->
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',false,false,'search.php','搜索');
 });
-/* @license-end */</script>
+/* @license-end */
+</script>
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
@@ -42,117 +43,116 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle">
-<div class="title">vsf_dwcotg_common.h</div>  </div>
+  <div class="headertitle"><div class="title">vsf_dwcotg_common.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="vsf__dwcotg__common_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   Copyright(C)2009-2022 by VSF Team                                       *</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *  limitations under the License.                                           *</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> ****************************************************************************/</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __VSF_DWCOTG_COMMON_H__</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define __VSF_DWCOTG_COMMON_H__</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*============================ INCLUDES ======================================*/</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__usb__cfg_8h.html">component/usb/vsf_usb_cfg.h</a>&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#if     (VSF_USE_USB_DEVICE == ENABLED &amp;&amp; VSF_USBD_USE_DCD_DWCOTG == ENABLED)\</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">    ||  (VSF_USE_USB_HOST == ENABLED &amp;&amp; VSF_USBH_USE_HCD_DWCOTG == ENABLED)</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;hal/vsf_hal.h&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__dwcotg__hw_8h.html">./vsf_dwcotg_hw.h</a>&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/*============================ MACROS ========================================*/</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#ifndef VSF_DWCOTG_DCD_CFG_EP_NUM</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#   ifdef USB_DWCOTG_MAX_EP_NUM</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#       define VSF_DWCOTG_DCD_CFG_EP_NUM        USB_DWCOTG_MAX_EP_NUM</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#   else</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="vsf__dwcotg__common_8h.html#a4f14686f54b26cff6eda46d0df15db4f">   42</a></span>&#160;<span class="preprocessor">#       define VSF_DWCOTG_DCD_CFG_EP_NUM        16</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#   endif</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structvk__dwcotg__param__t.html">   49</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structvk__dwcotg__param__t.html">vk_dwcotg_param_t</a> {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">union </span>{</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structvk__dwcotg__param__t.html#a9768603103a6007f60416f35347e3f01">   52</a></span>&#160;            <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structvk__dwcotg__param__t.html#a9768603103a6007f60416f35347e3f01">speed</a> : 4;</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structvk__dwcotg__param__t.html#a5afbf7b2dc262a3c55b0b91b4ec32243">   53</a></span>&#160;            <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structvk__dwcotg__param__t.html#a5afbf7b2dc262a3c55b0b91b4ec32243">ulpi_en</a> : 1;</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structvk__dwcotg__param__t.html#af6f5e3e876d7365bf8948ea20cdf69d3">   54</a></span>&#160;            <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structvk__dwcotg__param__t.html#af6f5e3e876d7365bf8948ea20cdf69d3">utmi_en</a> : 1;</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structvk__dwcotg__param__t.html#aba64c1459bb27dbdbe8c844c825a27c6">   55</a></span>&#160;            <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structvk__dwcotg__param__t.html#aba64c1459bb27dbdbe8c844c825a27c6">vbus_en</a> : 1;</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structvk__dwcotg__param__t.html#a125451f94fd6ef1adc377bf2ba927579">   56</a></span>&#160;            <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structvk__dwcotg__param__t.html#a125451f94fd6ef1adc377bf2ba927579">dma_en</a>  : 1;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        };</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structvk__dwcotg__param__t.html#a356d1a6238c63e7cecb85a6ac0e4bb08">   58</a></span>&#160;        <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structvk__dwcotg__param__t.html#a356d1a6238c63e7cecb85a6ac0e4bb08">feature</a>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    };</div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="vsf__dwcotg__common_8h.html#a7a4bd9690cb566225fc0c188d4bbe5b8">   60</a></span>&#160;} <a class="code" href="vsf__dwcotg__common_8h.html#a7a4bd9690cb566225fc0c188d4bbe5b8">vk_dwcotg_param_t</a>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html">   62</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structvk__dwcotg__reg__t.html">vk_dwcotg_reg_t</a> {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// Core Global registers starting at offset 000h</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a79674084ec7702999aba78d72066f9fd">   64</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structdwcotg__core__global__regs__t.html">dwcotg_core_global_regs_t</a> *<a class="code" href="structvk__dwcotg__reg__t.html#a79674084ec7702999aba78d72066f9fd">global_regs</a>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">union </span>{</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="comment">// Host Global Registers starting at offset 400h.</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a1546af73a758aa37fb34dbfa7c3eb909">   68</a></span>&#160;            <span class="keyword">struct </span><a class="code" href="structdwcotg__host__global__regs__t.html">dwcotg_host_global_regs_t</a> *<a class="code" href="structvk__dwcotg__reg__t.html#a1546af73a758aa37fb34dbfa7c3eb909">global_regs</a>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="comment">// Host Port 0 Control and Status Register at offset 440h.</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a535e6e8e3d1fdffe633466ef334791b9">   70</a></span>&#160;            <span class="keyword">volatile</span> <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> *<a class="code" href="structvk__dwcotg__reg__t.html#a535e6e8e3d1fdffe633466ef334791b9">hprt0</a>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="comment">// Host Channel Specific Registers at offsets 500h-5FCh.</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#ab0506d40e6cf1e4a456afc1c4bdd4293">   72</a></span>&#160;            <span class="keyword">struct </span><a class="code" href="structdwcotg__hc__regs__t.html">dwcotg_hc_regs_t</a> *<a class="code" href="structvk__dwcotg__reg__t.html#ab0506d40e6cf1e4a456afc1c4bdd4293">hc_regs</a>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a03739366e514ae57a4f476e4fdb83ddc">   73</a></span>&#160;        } <a class="code" href="structvk__dwcotg__reg__t.html#a03739366e514ae57a4f476e4fdb83ddc">host</a>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="comment">// Device Global Registers starting at offset 800h</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a43e69d75f04e1ca1f03b232ee770c7c4">   76</a></span>&#160;            <span class="keyword">struct </span><a class="code" href="structdwcotg__dev__global__regs__t.html">dwcotg_dev_global_regs_t</a> *<a class="code" href="structvk__dwcotg__reg__t.html#a43e69d75f04e1ca1f03b232ee770c7c4">global_regs</a>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="comment">// Device Logical IN Endpoint-Specific Registers 900h-AFCh</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a0002ad1774e7d968e6ac96c32b500b5d">   79</a></span>&#160;                <span class="keyword">struct </span><a class="code" href="structdwcotg__dev__in__ep__regs__t.html">dwcotg_dev_in_ep_regs_t</a> *<a class="code" href="structvk__dwcotg__reg__t.html#a0002ad1774e7d968e6ac96c32b500b5d">in_regs</a>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="comment">// Device Logical OUT Endpoint-Specific Registers B00h-CFCh</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#ab67e02f2bd49e995ad73c9e199f5b0b5">   81</a></span>&#160;                <span class="keyword">struct </span><a class="code" href="structdwcotg__dev__out__ep__regs__t.html">dwcotg_dev_out_ep_regs_t</a> *<a class="code" href="structvk__dwcotg__reg__t.html#ab67e02f2bd49e995ad73c9e199f5b0b5">out_regs</a>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#afd9cbe5ab8798e40d9868b86476845f4">   82</a></span>&#160;            } <a class="code" href="structvk__dwcotg__reg__t.html#afd9cbe5ab8798e40d9868b86476845f4">ep</a>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a0fb9dd6a5afd97584345192c06247cfb">   83</a></span>&#160;        } <a class="code" href="structvk__dwcotg__reg__t.html#a0fb9dd6a5afd97584345192c06247cfb">dev</a>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    };</div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a20d022fdf99f883d848839bdc8cadb8b">   85</a></span>&#160;    <span class="keyword">volatile</span> <a class="code" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> * <a class="code" href="structvk__dwcotg__reg__t.html#a20d022fdf99f883d848839bdc8cadb8b">dfifo</a>[<a class="code" href="vsf__dwcotg__common_8h.html#a4f14686f54b26cff6eda46d0df15db4f">VSF_DWCOTG_DCD_CFG_EP_NUM</a>];</div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="vsf__dwcotg__common_8h.html#a933fb3665eb6c994cfaeef8fddf34b9f">   86</a></span>&#160;} <a class="code" href="vsf__dwcotg__common_8h.html#a933fb3665eb6c994cfaeef8fddf34b9f">vk_dwcotg_reg_t</a>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structvk__dwcotg__t.html">   88</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structvk__dwcotg__t.html">vk_dwcotg_t</a> {</div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="structvk__dwcotg__t.html#a0ee0ab5af28f2eec077599d33acae1b8">   89</a></span>&#160;    <a class="code" href="structvk__dwcotg__reg__t.html">vk_dwcotg_reg_t</a> <a class="code" href="structvk__dwcotg__t.html#a0ee0ab5af28f2eec077599d33acae1b8">reg</a>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="structvk__dwcotg__t.html#abc93daa4f88095b8a38d39f645fe1cf6">   90</a></span>&#160;    <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structvk__dwcotg__t.html#abc93daa4f88095b8a38d39f645fe1cf6">ep_num</a>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="vsf__dwcotg__common_8h.html#a23849701d39983499efe383d20d0e6c7">   91</a></span>&#160;} <a class="code" href="vsf__dwcotg__common_8h.html#a23849701d39983499efe383d20d0e6c7">vk_dwcotg_t</a>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/*============================ INCLUDES ======================================*/</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keywordtype">void</span> <a class="code" href="vsf__dwcotg__common_8h.html#a3c2f9faef4917c4bef49a6309456b5af">vk_dwcotg_phy_init</a>(<a class="code" href="structvk__dwcotg__t.html">vk_dwcotg_t</a> *dwcotg,</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                        <span class="keyword">const</span> <a class="code" href="structvk__dwcotg__param__t.html">vk_dwcotg_param_t</a> *param,</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                        <a class="code" href="structvk__dwcotg__hw__info__t.html">vk_dwcotg_hw_info_t</a> *hw_info);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">/* EOF */</span></div>
+<a href="vsf__dwcotg__common_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2022 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifndef __VSF_DWCOTG_COMMON_H__</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define __VSF_DWCOTG_COMMON_H__</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__usb__cfg_8h.html">component/usb/vsf_usb_cfg.h</a>&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#if     (VSF_USE_USB_DEVICE == ENABLED &amp;&amp; VSF_USBD_USE_DCD_DWCOTG == ENABLED)\</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">    ||  (VSF_USE_USB_HOST == ENABLED &amp;&amp; VSF_USBH_USE_HCD_DWCOTG == ENABLED)</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;hal/vsf_hal.h&quot;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__dwcotg__hw_8h.html">./vsf_dwcotg_hw.h</a>&quot;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#ifndef VSF_DWCOTG_DCD_CFG_EP_NUM</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#   ifdef USB_DWCOTG_MAX_EP_NUM</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#       define VSF_DWCOTG_DCD_CFG_EP_NUM        USB_DWCOTG_MAX_EP_NUM</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#   else</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="vsf__dwcotg__common_8h.html#a4f14686f54b26cff6eda46d0df15db4f">   42</a></span><span class="preprocessor">#       define VSF_DWCOTG_DCD_CFG_EP_NUM        16</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="structvk__dwcotg__param__t.html">   49</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvk__dwcotg__param__t.html">vk_dwcotg_param_t</a> {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">union </span>{</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structvk__dwcotg__param__t.html#a9768603103a6007f60416f35347e3f01">   52</a></span>            <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code hl_variable" href="structvk__dwcotg__param__t.html#a9768603103a6007f60416f35347e3f01">speed</a> : 4;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="structvk__dwcotg__param__t.html#a5afbf7b2dc262a3c55b0b91b4ec32243">   53</a></span>            <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code hl_variable" href="structvk__dwcotg__param__t.html#a5afbf7b2dc262a3c55b0b91b4ec32243">ulpi_en</a> : 1;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structvk__dwcotg__param__t.html#af6f5e3e876d7365bf8948ea20cdf69d3">   54</a></span>            <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code hl_variable" href="structvk__dwcotg__param__t.html#af6f5e3e876d7365bf8948ea20cdf69d3">utmi_en</a> : 1;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="structvk__dwcotg__param__t.html#aba64c1459bb27dbdbe8c844c825a27c6">   55</a></span>            <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code hl_variable" href="structvk__dwcotg__param__t.html#aba64c1459bb27dbdbe8c844c825a27c6">vbus_en</a> : 1;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structvk__dwcotg__param__t.html#a125451f94fd6ef1adc377bf2ba927579">   56</a></span>            <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code hl_variable" href="structvk__dwcotg__param__t.html#a125451f94fd6ef1adc377bf2ba927579">dma_en</a>  : 1;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        };</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="structvk__dwcotg__param__t.html#a356d1a6238c63e7cecb85a6ac0e4bb08">   58</a></span>        <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code hl_variable" href="structvk__dwcotg__param__t.html#a356d1a6238c63e7cecb85a6ac0e4bb08">feature</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    };</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="vsf__dwcotg__common_8h.html#a7a4bd9690cb566225fc0c188d4bbe5b8">   60</a></span>} <a class="code hl_typedef" href="vsf__dwcotg__common_8h.html#a7a4bd9690cb566225fc0c188d4bbe5b8">vk_dwcotg_param_t</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html">   62</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvk__dwcotg__reg__t.html">vk_dwcotg_reg_t</a> {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// Core Global registers starting at offset 000h</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a79674084ec7702999aba78d72066f9fd">   64</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structdwcotg__core__global__regs__t.html">dwcotg_core_global_regs_t</a> *<a class="code hl_variable" href="structvk__dwcotg__reg__t.html#a79674084ec7702999aba78d72066f9fd">global_regs</a>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keyword">union </span>{</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <span class="comment">// Host Global Registers starting at offset 400h.</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a1546af73a758aa37fb34dbfa7c3eb909">   68</a></span>            <span class="keyword">struct </span><a class="code hl_struct" href="structdwcotg__host__global__regs__t.html">dwcotg_host_global_regs_t</a> *<a class="code hl_variable" href="structvk__dwcotg__reg__t.html#a1546af73a758aa37fb34dbfa7c3eb909">global_regs</a>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="comment">// Host Port 0 Control and Status Register at offset 440h.</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a535e6e8e3d1fdffe633466ef334791b9">   70</a></span>            <span class="keyword">volatile</span> <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> *<a class="code hl_variable" href="structvk__dwcotg__reg__t.html#a535e6e8e3d1fdffe633466ef334791b9">hprt0</a>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="comment">// Host Channel Specific Registers at offsets 500h-5FCh.</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#ab0506d40e6cf1e4a456afc1c4bdd4293">   72</a></span>            <span class="keyword">struct </span><a class="code hl_struct" href="structdwcotg__hc__regs__t.html">dwcotg_hc_regs_t</a> *<a class="code hl_variable" href="structvk__dwcotg__reg__t.html#ab0506d40e6cf1e4a456afc1c4bdd4293">hc_regs</a>;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a03739366e514ae57a4f476e4fdb83ddc">   73</a></span>        } <a class="code hl_variable" href="structvk__dwcotg__reg__t.html#a03739366e514ae57a4f476e4fdb83ddc">host</a>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="comment">// Device Global Registers starting at offset 800h</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a43e69d75f04e1ca1f03b232ee770c7c4">   76</a></span>            <span class="keyword">struct </span><a class="code hl_struct" href="structdwcotg__dev__global__regs__t.html">dwcotg_dev_global_regs_t</a> *<a class="code hl_variable" href="structvk__dwcotg__reg__t.html#a43e69d75f04e1ca1f03b232ee770c7c4">global_regs</a>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                <span class="comment">// Device Logical IN Endpoint-Specific Registers 900h-AFCh</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a0002ad1774e7d968e6ac96c32b500b5d">   79</a></span>                <span class="keyword">struct </span><a class="code hl_struct" href="structdwcotg__dev__in__ep__regs__t.html">dwcotg_dev_in_ep_regs_t</a> *<a class="code hl_variable" href="structvk__dwcotg__reg__t.html#a0002ad1774e7d968e6ac96c32b500b5d">in_regs</a>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                <span class="comment">// Device Logical OUT Endpoint-Specific Registers B00h-CFCh</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#ab67e02f2bd49e995ad73c9e199f5b0b5">   81</a></span>                <span class="keyword">struct </span><a class="code hl_struct" href="structdwcotg__dev__out__ep__regs__t.html">dwcotg_dev_out_ep_regs_t</a> *<a class="code hl_variable" href="structvk__dwcotg__reg__t.html#ab67e02f2bd49e995ad73c9e199f5b0b5">out_regs</a>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#afd9cbe5ab8798e40d9868b86476845f4">   82</a></span>            } <a class="code hl_variable" href="structvk__dwcotg__reg__t.html#afd9cbe5ab8798e40d9868b86476845f4">ep</a>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a0fb9dd6a5afd97584345192c06247cfb">   83</a></span>        } <a class="code hl_variable" href="structvk__dwcotg__reg__t.html#a0fb9dd6a5afd97584345192c06247cfb">dev</a>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    };</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="structvk__dwcotg__reg__t.html#a20d022fdf99f883d848839bdc8cadb8b">   85</a></span>    <span class="keyword">volatile</span> <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> * <a class="code hl_variable" href="structvk__dwcotg__reg__t.html#a20d022fdf99f883d848839bdc8cadb8b">dfifo</a>[<a class="code hl_define" href="vsf__dwcotg__common_8h.html#a4f14686f54b26cff6eda46d0df15db4f">VSF_DWCOTG_DCD_CFG_EP_NUM</a>];</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="vsf__dwcotg__common_8h.html#a933fb3665eb6c994cfaeef8fddf34b9f">   86</a></span>} <a class="code hl_typedef" href="vsf__dwcotg__common_8h.html#a933fb3665eb6c994cfaeef8fddf34b9f">vk_dwcotg_reg_t</a>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="structvk__dwcotg__t.html">   88</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvk__dwcotg__t.html">vk_dwcotg_t</a> {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="structvk__dwcotg__t.html#a0ee0ab5af28f2eec077599d33acae1b8">   89</a></span>    <a class="code hl_struct" href="structvk__dwcotg__reg__t.html">vk_dwcotg_reg_t</a> <a class="code hl_variable" href="structvk__dwcotg__t.html#a0ee0ab5af28f2eec077599d33acae1b8">reg</a>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="structvk__dwcotg__t.html#abc93daa4f88095b8a38d39f645fe1cf6">   90</a></span>    <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code hl_variable" href="structvk__dwcotg__t.html#abc93daa4f88095b8a38d39f645fe1cf6">ep_num</a>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="vsf__dwcotg__common_8h.html#a23849701d39983499efe383d20d0e6c7">   91</a></span>} <a class="code hl_typedef" href="vsf__dwcotg__common_8h.html#a23849701d39983499efe383d20d0e6c7">vk_dwcotg_t</a>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keywordtype">void</span> <a class="code hl_function" href="vsf__dwcotg__common_8h.html#a3c2f9faef4917c4bef49a6309456b5af">vk_dwcotg_phy_init</a>(<a class="code hl_struct" href="structvk__dwcotg__t.html">vk_dwcotg_t</a> *dwcotg,</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                        <span class="keyword">const</span> <a class="code hl_struct" href="structvk__dwcotg__param__t.html">vk_dwcotg_param_t</a> *param,</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                        <a class="code hl_struct" href="structvk__dwcotg__hw__info__t.html">vk_dwcotg_hw_info_t</a> *hw_info);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>}</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">/* EOF */</span></div>
 <div class="ttc" id="aarm_2type_8h_html_a435d1572bf3f880d55459d9805097f62"><div class="ttname"><a href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a></div><div class="ttdeci">unsigned int uint32_t</div><div class="ttdef"><b>Definition:</b> type.h:37</div></div>
 <div class="ttc" id="aarm_2type_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> type.h:27</div></div>
 <div class="ttc" id="astructdwcotg__core__global__regs__t_html"><div class="ttname"><a href="structdwcotg__core__global__regs__t.html">dwcotg_core_global_regs_t</a></div><div class="ttdef"><b>Definition:</b> dwcotg_regs.h:43</div></div>
@@ -194,7 +194,7 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
 </small></address>
 </body>
 </html>

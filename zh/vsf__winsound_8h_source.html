@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>VSF Documented: source/component/av/audio/driver/winsound/vsf_winsound.h 源文件</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -26,15 +26,16 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.1 -->
+<!-- 制作者 Doxygen 1.9.2 -->
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',false,false,'search.php','搜索');
 });
-/* @license-end */</script>
+/* @license-end */
+</script>
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
@@ -42,124 +43,123 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle">
-<div class="title">vsf_winsound.h</div>  </div>
+  <div class="headertitle"><div class="title">vsf_winsound.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="vsf__winsound_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   Copyright(C)2009-2022 by VSF Team                                       *</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *  limitations under the License.                                           *</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *                                                                           *</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> ****************************************************************************/</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __VSF_WINSOUND_H__</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define __VSF_WINSOUND_H__</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*============================ INCLUDES ======================================*/</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;../../../vsf_av_cfg.h&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#if VSF_USE_AUDIO == ENABLED &amp;&amp; VSF_USE_WINSOUND == ENABLED</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__av_8h.html">component/av/vsf_av.h</a>&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#if     defined(__VSF_WINSOUND_CLASS_IMPLEMENT)</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#   undef __VSF_WINSOUND_CLASS_IMPLEMENT</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#   define __VSF_CLASS_IMPLEMENT__</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/*============================ MACROS ========================================*/</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#if VSF_AUDIO_USE_PLAYBACK == ENABLED</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">// avoid to use windows.h, fix if any conflicts</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="vsf__winsound_8h.html#aab93f6df11ff3b85a2000cf625a09a16">   47</a></span>&#160;<span class="preprocessor">#define HWAVEOUT                        HANDLE</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/* wave data block header */</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html">   49</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct____wavehdr__tag.html">__wavehdr_tag</a> {</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#ad6491ce15f7a31a89acde81e3fe778ac">   50</a></span>&#160;    LPSTR       <a class="code" href="struct____wavehdr__tag.html#ad6491ce15f7a31a89acde81e3fe778ac">lpData</a>;                 <span class="comment">/* pointer to locked data buffer */</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#a1407bc3f15564a8b7ee39324c82ba36a">   51</a></span>&#160;    DWORD       <a class="code" href="struct____wavehdr__tag.html#a1407bc3f15564a8b7ee39324c82ba36a">dwBufferLength</a>;         <span class="comment">/* length of data buffer */</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#a955a7ed53c2994e947d51f7109754642">   52</a></span>&#160;    DWORD       <a class="code" href="struct____wavehdr__tag.html#a955a7ed53c2994e947d51f7109754642">dwBytesRecorded</a>;        <span class="comment">/* used for input only */</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#a9f4673af266b0192a3d6856f7ba62809">   53</a></span>&#160;    DWORD_PTR   <a class="code" href="struct____wavehdr__tag.html#a9f4673af266b0192a3d6856f7ba62809">dwUser</a>;                 <span class="comment">/* for client&#39;s use */</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#a2f8a9cafc9fbbcceb87751cb3d7954b6">   54</a></span>&#160;    DWORD       <a class="code" href="struct____wavehdr__tag.html#a2f8a9cafc9fbbcceb87751cb3d7954b6">dwFlags</a>;                <span class="comment">/* assorted flags (see defines) */</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#a22bd890eb242023110e3f6848e58dbcc">   55</a></span>&#160;    DWORD       <a class="code" href="struct____wavehdr__tag.html#a22bd890eb242023110e3f6848e58dbcc">dwLoops</a>;                <span class="comment">/* loop control counter */</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#a9fc167ade65fba83847966caa6fd578f">   56</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="struct____wavehdr__tag.html">__wavehdr_tag</a> FAR *<a class="code" href="struct____wavehdr__tag.html#a9fc167ade65fba83847966caa6fd578f">lpNext</a>;   <span class="comment">/* reserved for driver */</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#ae835617e44acf33121aa005239d23bec">   57</a></span>&#160;    DWORD_PTR   <a class="code" href="struct____wavehdr__tag.html#ae835617e44acf33121aa005239d23bec">reserved</a>;               <span class="comment">/* reserved for driver */</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="vsf__winsound_8h.html#a3e045dee07c9fe100ff436e1a63c94cb">   58</a></span>&#160;} <a class="code" href="vsf__winsound_8h.html#a3e045dee07c9fe100ff436e1a63c94cb">__WAVEHDR</a>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__buffer__t.html">   60</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structvk__winsound__playback__buffer__t.html">vk_winsound_playback_buffer_t</a> {</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__buffer__t.html#ae33730a94be5ee23248b2de8ebfa7674">   61</a></span>&#160;    <a class="code" href="struct____wavehdr__tag.html">__WAVEHDR</a> <a class="code" href="structvk__winsound__playback__buffer__t.html#ae33730a94be5ee23248b2de8ebfa7674">header</a>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__buffer__t.html#a785cbcd284ad9c351d82c22aeb2eebb8">   62</a></span>&#160;    <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *<a class="code" href="structvk__winsound__playback__buffer__t.html#a785cbcd284ad9c351d82c22aeb2eebb8">buffer</a>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="vsf__winsound_8h.html#a7cf2504d24d654ca8054935252add169">   63</a></span>&#160;} <a class="code" href="vsf__winsound_8h.html#a7cf2504d24d654ca8054935252add169">vk_winsound_playback_buffer_t</a>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html">   65</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structvk__winsound__playback__ctx__t.html">vk_winsound_playback_ctx_t</a> {</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a034b4cad440b034e17a1339dbcfc4892">   66</a></span>&#160;    vsf_arch_irq_thread_t <a class="code" href="structvk__winsound__playback__ctx__t.html#a034b4cad440b034e17a1339dbcfc4892">irq_thread</a>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a6e19bfae138dbb1ebcf27d5f131bd1f0">   67</a></span>&#160;    <a class="code" href="structvk__audio__stream__t.html">vk_audio_stream_t</a> *<a class="code" href="structvk__winsound__playback__ctx__t.html#a6e19bfae138dbb1ebcf27d5f131bd1f0">audio_stream</a>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a2551a72ec8bc6208851056313ba21ac4">   69</a></span>&#160;    <a class="code" href="vsf__winsound_8h.html#aab93f6df11ff3b85a2000cf625a09a16">HWAVEOUT</a> <a class="code" href="structvk__winsound__playback__ctx__t.html#a2551a72ec8bc6208851056313ba21ac4">hwo</a>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a771fc6dbae347b552c0ca1d388ebd1f9">   70</a></span>&#160;    HANDLE <a class="code" href="structvk__winsound__playback__ctx__t.html#a771fc6dbae347b552c0ca1d388ebd1f9">hEvent</a>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a47b2230b5bce3351af2d557457d5cd89">   72</a></span>&#160;    <a class="code" href="structvk__winsound__playback__buffer__t.html">vk_winsound_playback_buffer_t</a> <a class="code" href="structvk__winsound__playback__ctx__t.html#a47b2230b5bce3351af2d557457d5cd89">buffer</a>[2];</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a2c403a537982b0888719b41604c6cb21">   74</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structvk__winsound__playback__ctx__t.html#a2c403a537982b0888719b41604c6cb21">is_playing</a>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a28e6ae57b7db4072bd7623cf1db1d17c">   75</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structvk__winsound__playback__ctx__t.html#a28e6ae57b7db4072bd7623cf1db1d17c">fill_ticktock</a>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a43608aae7eb11ae9ee3b95e88a15f50d">   76</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structvk__winsound__playback__ctx__t.html#a43608aae7eb11ae9ee3b95e88a15f50d">play_ticktock</a>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a533fa2bb4fac20d4fe0fc44d109b6a87">   77</a></span>&#160;    <a class="code" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code" href="structvk__winsound__playback__ctx__t.html#a533fa2bb4fac20d4fe0fc44d109b6a87">buffer_taken</a>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="vsf__winsound_8h.html#a04a3f8ca251666975392d3f2c7399ace">   78</a></span>&#160;} <a class="code" href="vsf__winsound_8h.html#a04a3f8ca251666975392d3f2c7399ace">vk_winsound_playback_ctx_t</a>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#undef HWAVEOUT</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classvk__winsound__dev__t.html">   83</a></span>&#160;<a class="code" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code" href="classvk__winsound__dev__t.html">vk_winsound_dev_t</a>) {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    private_member(</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordtype">bool</span> is_inited;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#if VSF_AUDIO_USE_PLAYBACK == ENABLED</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="structvk__winsound__playback__ctx__t.html">vk_winsound_playback_ctx_t</a> playback_ctx;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    )</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    public_member(</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        implement(<a class="code" href="classvk__audio__dev__t.html">vk_audio_dev_t</a>)</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="structvk__audio__stream__t.html">vk_audio_stream_t</a> __stream[</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;#<span class="keywordflow">if</span> VSF_AUDIO_USE_PLAYBACK == <a class="code" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a> &amp;&amp; VSF_AUDIO_USE_CAPTURE == <a class="code" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            2</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;#<span class="keywordflow">else</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            1</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;#endif</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        ];</div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classvk__winsound__dev__t.html#af0a96305c01ba9e1f9089a7e0cb4cf17">  100</a></span>&#160;    )</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;};</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="classvk__audio__drv__t.html">vk_audio_drv_t</a> <a class="code" href="vsf__winsound_8h.html#a9e97f92ce91b74e101412a20a00f4010">vk_winsound_drv</a>;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_AUDIO &amp;&amp; VSF_USE_WINSOUND</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif      </span><span class="comment">// __VSF_WINSOUND_H__</span></div>
+<a href="vsf__winsound_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2022 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifndef __VSF_WINSOUND_H__</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define __VSF_WINSOUND_H__</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;../../../vsf_av_cfg.h&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#if VSF_USE_AUDIO == ENABLED &amp;&amp; VSF_USE_WINSOUND == ENABLED</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__av_8h.html">component/av/vsf_av.h</a>&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#if     defined(__VSF_WINSOUND_CLASS_IMPLEMENT)</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#   undef __VSF_WINSOUND_CLASS_IMPLEMENT</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#   define __VSF_CLASS_IMPLEMENT__</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#if VSF_AUDIO_USE_PLAYBACK == ENABLED</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">// avoid to use windows.h, fix if any conflicts</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="vsf__winsound_8h.html#aab93f6df11ff3b85a2000cf625a09a16">   47</a></span><span class="preprocessor">#define HWAVEOUT                        HANDLE</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">/* wave data block header */</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html">   49</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct____wavehdr__tag.html">__wavehdr_tag</a> {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#ad6491ce15f7a31a89acde81e3fe778ac">   50</a></span>    LPSTR       <a class="code hl_variable" href="struct____wavehdr__tag.html#ad6491ce15f7a31a89acde81e3fe778ac">lpData</a>;                 <span class="comment">/* pointer to locked data buffer */</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#a1407bc3f15564a8b7ee39324c82ba36a">   51</a></span>    DWORD       <a class="code hl_variable" href="struct____wavehdr__tag.html#a1407bc3f15564a8b7ee39324c82ba36a">dwBufferLength</a>;         <span class="comment">/* length of data buffer */</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#a955a7ed53c2994e947d51f7109754642">   52</a></span>    DWORD       <a class="code hl_variable" href="struct____wavehdr__tag.html#a955a7ed53c2994e947d51f7109754642">dwBytesRecorded</a>;        <span class="comment">/* used for input only */</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#a9f4673af266b0192a3d6856f7ba62809">   53</a></span>    DWORD_PTR   <a class="code hl_variable" href="struct____wavehdr__tag.html#a9f4673af266b0192a3d6856f7ba62809">dwUser</a>;                 <span class="comment">/* for client&#39;s use */</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#a2f8a9cafc9fbbcceb87751cb3d7954b6">   54</a></span>    DWORD       <a class="code hl_variable" href="struct____wavehdr__tag.html#a2f8a9cafc9fbbcceb87751cb3d7954b6">dwFlags</a>;                <span class="comment">/* assorted flags (see defines) */</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#a22bd890eb242023110e3f6848e58dbcc">   55</a></span>    DWORD       <a class="code hl_variable" href="struct____wavehdr__tag.html#a22bd890eb242023110e3f6848e58dbcc">dwLoops</a>;                <span class="comment">/* loop control counter */</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#a9fc167ade65fba83847966caa6fd578f">   56</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="struct____wavehdr__tag.html">__wavehdr_tag</a> FAR *<a class="code hl_variable" href="struct____wavehdr__tag.html#a9fc167ade65fba83847966caa6fd578f">lpNext</a>;   <span class="comment">/* reserved for driver */</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="struct____wavehdr__tag.html#ae835617e44acf33121aa005239d23bec">   57</a></span>    DWORD_PTR   <a class="code hl_variable" href="struct____wavehdr__tag.html#ae835617e44acf33121aa005239d23bec">reserved</a>;               <span class="comment">/* reserved for driver */</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="vsf__winsound_8h.html#a3e045dee07c9fe100ff436e1a63c94cb">   58</a></span>} <a class="code hl_typedef" href="vsf__winsound_8h.html#a3e045dee07c9fe100ff436e1a63c94cb">__WAVEHDR</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__buffer__t.html">   60</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvk__winsound__playback__buffer__t.html">vk_winsound_playback_buffer_t</a> {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__buffer__t.html#ae33730a94be5ee23248b2de8ebfa7674">   61</a></span>    <a class="code hl_struct" href="struct____wavehdr__tag.html">__WAVEHDR</a> <a class="code hl_variable" href="structvk__winsound__playback__buffer__t.html#ae33730a94be5ee23248b2de8ebfa7674">header</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__buffer__t.html#a785cbcd284ad9c351d82c22aeb2eebb8">   62</a></span>    <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *<a class="code hl_variable" href="structvk__winsound__playback__buffer__t.html#a785cbcd284ad9c351d82c22aeb2eebb8">buffer</a>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="vsf__winsound_8h.html#a7cf2504d24d654ca8054935252add169">   63</a></span>} <a class="code hl_typedef" href="vsf__winsound_8h.html#a7cf2504d24d654ca8054935252add169">vk_winsound_playback_buffer_t</a>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html">   65</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvk__winsound__playback__ctx__t.html">vk_winsound_playback_ctx_t</a> {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a034b4cad440b034e17a1339dbcfc4892">   66</a></span>    vsf_arch_irq_thread_t <a class="code hl_variable" href="structvk__winsound__playback__ctx__t.html#a034b4cad440b034e17a1339dbcfc4892">irq_thread</a>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a6e19bfae138dbb1ebcf27d5f131bd1f0">   67</a></span>    <a class="code hl_struct" href="structvk__audio__stream__t.html">vk_audio_stream_t</a> *<a class="code hl_variable" href="structvk__winsound__playback__ctx__t.html#a6e19bfae138dbb1ebcf27d5f131bd1f0">audio_stream</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a2551a72ec8bc6208851056313ba21ac4">   69</a></span>    <a class="code hl_define" href="vsf__winsound_8h.html#aab93f6df11ff3b85a2000cf625a09a16">HWAVEOUT</a> <a class="code hl_variable" href="structvk__winsound__playback__ctx__t.html#a2551a72ec8bc6208851056313ba21ac4">hwo</a>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a771fc6dbae347b552c0ca1d388ebd1f9">   70</a></span>    HANDLE <a class="code hl_variable" href="structvk__winsound__playback__ctx__t.html#a771fc6dbae347b552c0ca1d388ebd1f9">hEvent</a>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a47b2230b5bce3351af2d557457d5cd89">   72</a></span>    <a class="code hl_struct" href="structvk__winsound__playback__buffer__t.html">vk_winsound_playback_buffer_t</a> <a class="code hl_variable" href="structvk__winsound__playback__ctx__t.html#a47b2230b5bce3351af2d557457d5cd89">buffer</a>[2];</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a2c403a537982b0888719b41604c6cb21">   74</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structvk__winsound__playback__ctx__t.html#a2c403a537982b0888719b41604c6cb21">is_playing</a>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a28e6ae57b7db4072bd7623cf1db1d17c">   75</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structvk__winsound__playback__ctx__t.html#a28e6ae57b7db4072bd7623cf1db1d17c">fill_ticktock</a>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a43608aae7eb11ae9ee3b95e88a15f50d">   76</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structvk__winsound__playback__ctx__t.html#a43608aae7eb11ae9ee3b95e88a15f50d">play_ticktock</a>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="structvk__winsound__playback__ctx__t.html#a533fa2bb4fac20d4fe0fc44d109b6a87">   77</a></span>    <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code hl_variable" href="structvk__winsound__playback__ctx__t.html#a533fa2bb4fac20d4fe0fc44d109b6a87">buffer_taken</a>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="vsf__winsound_8h.html#a04a3f8ca251666975392d3f2c7399ace">   78</a></span>} <a class="code hl_typedef" href="vsf__winsound_8h.html#a04a3f8ca251666975392d3f2c7399ace">vk_winsound_playback_ctx_t</a>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">#undef HWAVEOUT</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classvk__winsound__dev__t.html">   83</a></span><a class="code hl_define" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code hl_class" href="classvk__winsound__dev__t.html">vk_winsound_dev_t</a>) {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    private_member(</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordtype">bool</span> is_inited;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#if VSF_AUDIO_USE_PLAYBACK == ENABLED</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <a class="code hl_struct" href="structvk__winsound__playback__ctx__t.html">vk_winsound_playback_ctx_t</a> playback_ctx;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    )</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    public_member(</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        implement(<a class="code hl_class" href="classvk__audio__dev__t.html">vk_audio_dev_t</a>)</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <a class="code hl_struct" href="structvk__audio__stream__t.html">vk_audio_stream_t</a> __stream[</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>#<span class="keywordflow">if</span> VSF_AUDIO_USE_PLAYBACK == <a class="code hl_define" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a> &amp;&amp; VSF_AUDIO_USE_CAPTURE == <a class="code hl_define" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            2</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>#<span class="keywordflow">else</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            1</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>#endif</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        ];</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classvk__winsound__dev__t.html#af0a96305c01ba9e1f9089a7e0cb4cf17">  100</a></span>    )</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>};</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_class" href="classvk__audio__drv__t.html">vk_audio_drv_t</a> <a class="code hl_variable" href="vsf__winsound_8h.html#a9e97f92ce91b74e101412a20a00f4010">vk_winsound_drv</a>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_AUDIO &amp;&amp; VSF_USE_WINSOUND</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_WINSOUND_H__</span></div>
 <div class="ttc" id="a____type_8h_html_a73c228f87e038e8295ee8ea8eceaa5ac"><div class="ttname"><a href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></div><div class="ttdeci">#define ENABLED</div><div class="ttdef"><b>Definition:</b> __type.h:28</div></div>
 <div class="ttc" id="aarm_2type_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> type.h:27</div></div>
 <div class="ttc" id="aclassvk__audio__dev__t_html"><div class="ttname"><a href="classvk__audio__dev__t.html">vk_audio_dev_t</a></div><div class="ttdef"><b>Definition:</b> vsf_audio.h:73</div></div>
@@ -199,7 +199,7 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
 </small></address>
 </body>
 </html>

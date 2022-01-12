@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>VSF Documented: source/shell/sys/xboot/include/arch/spinlock.h 源文件</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -26,15 +26,16 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.1 -->
+<!-- 制作者 Doxygen 1.9.2 -->
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',false,false,'search.php','搜索');
 });
-/* @license-end */</script>
+/* @license-end */
+</script>
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
@@ -42,38 +43,37 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle">
-<div class="title">spinlock.h</div>  </div>
+  <div class="headertitle"><div class="title">spinlock.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="spinlock_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __SPINLOCK_H__</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __SPINLOCK_H__</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__utilities_8h.html">utilities/vsf_utilities.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="spinlock_8h.html#ae8229571968ef273d771ad747e87450b">    6</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">int</span>                                 <a class="code" href="spinlock_8h.html#ae8229571968ef273d771ad747e87450b">spinlock_t</a>;</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="spinlock_8h.html#a1fc75a16b8297a5dc671668e0280910b">    7</a></span>&#160;<span class="keyword">typedef</span> vsf_protect_t                       <a class="code" href="spinlock_8h.html#a1fc75a16b8297a5dc671668e0280910b">irq_flags_t</a>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="spinlock_8h.html#a8b8d318fcfc6959420c3c0c92c742e5a">    9</a></span>&#160;<span class="preprocessor">#define SPIN_LOCK_INIT()                    (0)</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="spinlock_8h.html#a05ea71770794314af9fd1f6a9a1b602b">   10</a></span>&#160;<span class="preprocessor">#define spin_lock_init(lock)                do { *lock = 0; } while(0)</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="spinlock_8h.html#a7e61b60c62dd06a0cfa65fd154a11e70">   11</a></span>&#160;<span class="preprocessor">#define __spin_lock(lock)                   do { *lock = 1; } while (0)</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="spinlock_8h.html#a872d10f3b8ba88b4fbf2d5463f1202ef">   12</a></span>&#160;<span class="preprocessor">#define __spin_unlock(lock)                 do { *lock = 0; } while (0)</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="spinlock_8h.html#adda1f4412c357d6e2b23215739d5b329">   13</a></span>&#160;<span class="preprocessor">#define spin_trylock(lock)                  (spin_lock(lock), 1)</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="spinlock_8h.html#a6683bb6050276e933771abcd14f03132">   14</a></span>&#160;<span class="preprocessor">#define spin_lock(lock)                     do { vsf_protect_t orig = vsf_protect_int(); __spin_lock(lock); vsf_unprotect_int(orig); } while (0)</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="spinlock_8h.html#ae869161ac7df858751f131d00cf9b4c0">   15</a></span>&#160;<span class="preprocessor">#define spin_unlock(lock)                   do { vsf_protect_t orig = vsf_protect_int(); __spin_unlock(lock); vsf_unprotect_int(orig); } while (0)</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="spinlock_8h.html#ab4bbfd79ee40bb6cd66f5660f379379b">   16</a></span>&#160;<span class="preprocessor">#define spin_lock_irq(lock)                 do { vsf_disable_interrupt(); __spin_lock(lock); } while(0)</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="spinlock_8h.html#ab3be11fd55b088cf4ce31243ff7a3f29">   17</a></span>&#160;<span class="preprocessor">#define spin_unlock_irq(lock)               do { __spin_unlock(lock); vsf_enable_interrupt(); } while(0)</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="spinlock_8h.html#afd13c671b71b924b56a112bbf4ba0d8d">   18</a></span>&#160;<span class="preprocessor">#define spin_lock_irqsave(lock, flags)      do { flags = vsf_protect_int(); __spin_lock(lock); } while(0)</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="spinlock_8h.html#ac3b42dadd99d57be4af424545dbb59bc">   19</a></span>&#160;<span class="preprocessor">#define spin_unlock_irqrestore(lock, flags) do { __spin_unlock(lock); vsf_unprotect_int(flags); } while(0)</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif      </span><span class="comment">// __SPINLOCK_H__</span></div>
+<a href="spinlock_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef __SPINLOCK_H__</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __SPINLOCK_H__</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__utilities_8h.html">utilities/vsf_utilities.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="spinlock_8h.html#ae8229571968ef273d771ad747e87450b">    6</a></span><span class="keyword">typedef</span> <span class="keywordtype">int</span>                                 <a class="code hl_typedef" href="spinlock_8h.html#ae8229571968ef273d771ad747e87450b">spinlock_t</a>;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="spinlock_8h.html#a1fc75a16b8297a5dc671668e0280910b">    7</a></span><span class="keyword">typedef</span> vsf_protect_t                       <a class="code hl_typedef" href="spinlock_8h.html#a1fc75a16b8297a5dc671668e0280910b">irq_flags_t</a>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="spinlock_8h.html#a8b8d318fcfc6959420c3c0c92c742e5a">    9</a></span><span class="preprocessor">#define SPIN_LOCK_INIT()                    (0)</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="spinlock_8h.html#a05ea71770794314af9fd1f6a9a1b602b">   10</a></span><span class="preprocessor">#define spin_lock_init(lock)                do { *lock = 0; } while(0)</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="spinlock_8h.html#a7e61b60c62dd06a0cfa65fd154a11e70">   11</a></span><span class="preprocessor">#define __spin_lock(lock)                   do { *lock = 1; } while (0)</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="spinlock_8h.html#a872d10f3b8ba88b4fbf2d5463f1202ef">   12</a></span><span class="preprocessor">#define __spin_unlock(lock)                 do { *lock = 0; } while (0)</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="spinlock_8h.html#adda1f4412c357d6e2b23215739d5b329">   13</a></span><span class="preprocessor">#define spin_trylock(lock)                  (spin_lock(lock), 1)</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="spinlock_8h.html#a6683bb6050276e933771abcd14f03132">   14</a></span><span class="preprocessor">#define spin_lock(lock)                     do { vsf_protect_t orig = vsf_protect_int(); __spin_lock(lock); vsf_unprotect_int(orig); } while (0)</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="spinlock_8h.html#ae869161ac7df858751f131d00cf9b4c0">   15</a></span><span class="preprocessor">#define spin_unlock(lock)                   do { vsf_protect_t orig = vsf_protect_int(); __spin_unlock(lock); vsf_unprotect_int(orig); } while (0)</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="spinlock_8h.html#ab4bbfd79ee40bb6cd66f5660f379379b">   16</a></span><span class="preprocessor">#define spin_lock_irq(lock)                 do { vsf_disable_interrupt(); __spin_lock(lock); } while(0)</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="spinlock_8h.html#ab3be11fd55b088cf4ce31243ff7a3f29">   17</a></span><span class="preprocessor">#define spin_unlock_irq(lock)               do { __spin_unlock(lock); vsf_enable_interrupt(); } while(0)</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="spinlock_8h.html#afd13c671b71b924b56a112bbf4ba0d8d">   18</a></span><span class="preprocessor">#define spin_lock_irqsave(lock, flags)      do { flags = vsf_protect_int(); __spin_lock(lock); } while(0)</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="spinlock_8h.html#ac3b42dadd99d57be4af424545dbb59bc">   19</a></span><span class="preprocessor">#define spin_unlock_irqrestore(lock, flags) do { __spin_unlock(lock); vsf_unprotect_int(flags); } while(0)</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#endif      </span><span class="comment">// __SPINLOCK_H__</span></div>
 <div class="ttc" id="aspinlock_8h_html_a1fc75a16b8297a5dc671668e0280910b"><div class="ttname"><a href="spinlock_8h.html#a1fc75a16b8297a5dc671668e0280910b">irq_flags_t</a></div><div class="ttdeci">vsf_protect_t irq_flags_t</div><div class="ttdef"><b>Definition:</b> spinlock.h:7</div></div>
 <div class="ttc" id="aspinlock_8h_html_ae8229571968ef273d771ad747e87450b"><div class="ttname"><a href="spinlock_8h.html#ae8229571968ef273d771ad747e87450b">spinlock_t</a></div><div class="ttdeci">int spinlock_t</div><div class="ttdef"><b>Definition:</b> spinlock.h:6</div></div>
 <div class="ttc" id="avsf__utilities_8h_html"><div class="ttname"><a href="vsf__utilities_8h.html">vsf_utilities.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
 </small></address>
 </body>
 </html>

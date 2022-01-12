@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>VSF Documented: source/shell/sys/linux/include/getopt.h 源文件</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -26,15 +26,16 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.1 -->
+<!-- 制作者 Doxygen 1.9.2 -->
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',false,false,'search.php','搜索');
 });
-/* @license-end */</script>
+/* @license-end */
+</script>
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
@@ -42,99 +43,98 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle">
-<div class="title">getopt.h</div>  </div>
+  <div class="headertitle"><div class="title">getopt.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="getopt_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*  $OpenBSD: getopt.h,v 1.3 2013/11/22 21:32:49 millert Exp $  */</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">/*  $NetBSD: getopt.h,v 1.4 2000/07/07 10:43:54 ad Exp $    */</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">/*-</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Copyright (c) 2000 The NetBSD Foundation, Inc.</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * All rights reserved.</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * This code is derived from software contributed to The NetBSD Foundation</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * by Dieter Baron and Thomas Klausner.</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * Redistribution and use in source and binary forms, with or without</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * modification, are permitted provided that the following conditions</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * are met:</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * 1. Redistributions of source code must retain the above copyright</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *    notice, this list of conditions and the following disclaimer.</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * 2. Redistributions in binary form must reproduce the above copyright</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *    notice, this list of conditions and the following disclaimer in the</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> *    documentation and/or other materials provided with the distribution.</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * ``AS IS&#39;&#39; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * POSSIBILITY OF SUCH DAMAGE.</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#ifndef _GETOPT_H_</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#define _GETOPT_H_</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">//#include &lt;sys/cdefs.h&gt;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#   define __BEGIN_DECLS    extern &quot;C&quot;</span> {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#   define __END_DECLS      }</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="getopt_8h.html#a568e6bde99652b7fd271ad206cfe38f5">   41</a></span>&#160;<span class="preprocessor">#   define __BEGIN_DECLS</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="getopt_8h.html#a115472f6d0d1035f1885658ce0821537">   42</a></span>&#160;<span class="preprocessor">#   define __END_DECLS</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> * GNU-like getopt_long()</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="getopt_8h.html#a3bc1d5f667b5b4ca4b4abb685dc874ce">   48</a></span>&#160;<span class="preprocessor">#define no_argument        0</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="getopt_8h.html#a6ece8d8dfa8378778f7290fdaba5b8bc">   49</a></span>&#160;<span class="preprocessor">#define required_argument  1</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="getopt_8h.html#acca06c0a947656bd8b395bf1084ffb72">   50</a></span>&#160;<span class="preprocessor">#define optional_argument  2</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structoption.html">   52</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structoption.html">option</a> {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">/* name of long option */</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structoption.html#adc503659d37af8017fb4b86d61c99086">   54</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structoption.html#adc503659d37af8017fb4b86d61c99086">name</a>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">/*</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">     * one of no_argument, required_argument, and optional_argument:</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">     * whether option takes an argument</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structoption.html#a90d7ee9a51eea5c002682dbd0af149e4">   59</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structoption.html#a90d7ee9a51eea5c002682dbd0af149e4">has_arg</a>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">/* if not NULL, set *flag to val when option found */</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structoption.html#ab366eea5fe7be25c1928328ba715e353">   61</a></span>&#160;    <span class="keywordtype">int</span> *<a class="code" href="structoption.html#ab366eea5fe7be25c1928328ba715e353">flag</a>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">/* if flag not NULL, value to set *flag to; else return value */</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structoption.html#a13bd155ec3b405d29c41ab8d0793be11">   63</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structoption.html#a13bd155ec3b405d29c41ab8d0793be11">val</a>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<a class="code" href="getopt_8h.html#a568e6bde99652b7fd271ad206cfe38f5">__BEGIN_DECLS</a></div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="getopt_8h.html#aa5f532afd67ea51314d8730a3843996f">   67</a></span>&#160;<span class="keywordtype">int</span>  <a class="code" href="getopt_8h.html#aa5f532afd67ea51314d8730a3843996f">getopt_long</a>(<span class="keywordtype">int</span>, <span class="keywordtype">char</span> * <span class="keyword">const</span> *, <span class="keyword">const</span> <span class="keywordtype">char</span> *,</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structoption.html">option</a> *, <span class="keywordtype">int</span> *);</div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="getopt_8h.html#a32498762f3b096900bdb5f14daccccdf">   69</a></span>&#160;<span class="keywordtype">int</span>  <a class="code" href="getopt_8h.html#a32498762f3b096900bdb5f14daccccdf">getopt_long_only</a>(<span class="keywordtype">int</span>, <span class="keywordtype">char</span> * <span class="keyword">const</span> *, <span class="keyword">const</span> <span class="keywordtype">char</span> *,</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structoption.html">option</a> *, <span class="keywordtype">int</span> *);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#ifndef _GETOPT_DEFINED_</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="getopt_8h.html#a5d18c1e1b4cc2a13b2ddff09a9bb64b2">   72</a></span>&#160;<span class="preprocessor">#define _GETOPT_DEFINED_</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="getopt_8h.html#a09d633c0a8afac8b4a910a5dfce67d60">   73</a></span>&#160;<span class="keywordtype">int</span>  <a class="code" href="getopt_8h.html#a09d633c0a8afac8b4a910a5dfce67d60">getopt</a>(<span class="keywordtype">int</span>, <span class="keywordtype">char</span> * <span class="keyword">const</span> *, <span class="keyword">const</span> <span class="keywordtype">char</span> *);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">// for vsf linux, put these variable in process context and implement them as macro</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vsf__linux_8h.html">shell/sys/linux/vsf_linux.h</a>&quot;</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="getopt_8h.html#a3d0369446ac39ee644edc472d24cfa5f">   76</a></span>&#160;<span class="preprocessor">#define opterr          vsf_linux_get_cur_process()-&gt;__opterr</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="getopt_8h.html#afa9437ffe2a670485f18f082213533f8">   77</a></span>&#160;<span class="preprocessor">#define optind          vsf_linux_get_cur_process()-&gt;__optind</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="getopt_8h.html#a9b3c9beb2078394a97f009c54e93ce05">   78</a></span>&#160;<span class="preprocessor">#define optopt          vsf_linux_get_cur_process()-&gt;__optopt</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="getopt_8h.html#a9227b18da5777b0578ef7376ad78b649">   79</a></span>&#160;<span class="preprocessor">#define optarg          vsf_linux_get_cur_process()-&gt;__optarg</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="getopt_8h.html#ab95d1b25e0c8b7aa1c5c1b427d3c1c0a">   80</a></span>&#160;<span class="preprocessor">#define optreset        vsf_linux_get_cur_process()-&gt;__optreset</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">//extern   char *optarg;                  /* getopt(3) external variables */</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">//extern   int opterr;</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">//extern   int optind;</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">//extern   int optopt;</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">//extern   int optreset;</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<a class="code" href="getopt_8h.html#a115472f6d0d1035f1885658ce0821537">__END_DECLS</a></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !_GETOPT_H_ */</span><span class="preprocessor"></span></div>
+<a href="getopt_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*  $OpenBSD: getopt.h,v 1.3 2013/11/22 21:32:49 millert Exp $  */</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">/*  $NetBSD: getopt.h,v 1.4 2000/07/07 10:43:54 ad Exp $    */</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">/*-</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * Copyright (c) 2000 The NetBSD Foundation, Inc.</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * All rights reserved.</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * This code is derived from software contributed to The NetBSD Foundation</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * by Dieter Baron and Thomas Klausner.</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * are met:</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * 1. Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *    notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * 2. Redistributions in binary form must reproduce the above copyright</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> *    notice, this list of conditions and the following disclaimer in the</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> *    documentation and/or other materials provided with the distribution.</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * ``AS IS&#39;&#39; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"> * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"> * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"> * POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#ifndef _GETOPT_H_</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#define _GETOPT_H_</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">//#include &lt;sys/cdefs.h&gt;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#   define __BEGIN_DECLS    extern &quot;C&quot;</span> {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#   define __END_DECLS      }</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="getopt_8h.html#a568e6bde99652b7fd271ad206cfe38f5">   41</a></span><span class="preprocessor">#   define __BEGIN_DECLS</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="getopt_8h.html#a115472f6d0d1035f1885658ce0821537">   42</a></span><span class="preprocessor">#   define __END_DECLS</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> * GNU-like getopt_long()</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="getopt_8h.html#a3bc1d5f667b5b4ca4b4abb685dc874ce">   48</a></span><span class="preprocessor">#define no_argument        0</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="getopt_8h.html#a6ece8d8dfa8378778f7290fdaba5b8bc">   49</a></span><span class="preprocessor">#define required_argument  1</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="getopt_8h.html#acca06c0a947656bd8b395bf1084ffb72">   50</a></span><span class="preprocessor">#define optional_argument  2</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structoption.html">   52</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structoption.html">option</a> {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">/* name of long option */</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structoption.html#adc503659d37af8017fb4b86d61c99086">   54</a></span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="structoption.html#adc503659d37af8017fb4b86d61c99086">name</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">     * one of no_argument, required_argument, and optional_argument:</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">     * whether option takes an argument</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="structoption.html#a90d7ee9a51eea5c002682dbd0af149e4">   59</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structoption.html#a90d7ee9a51eea5c002682dbd0af149e4">has_arg</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">/* if not NULL, set *flag to val when option found */</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="structoption.html#ab366eea5fe7be25c1928328ba715e353">   61</a></span>    <span class="keywordtype">int</span> *<a class="code hl_variable" href="structoption.html#ab366eea5fe7be25c1928328ba715e353">flag</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">/* if flag not NULL, value to set *flag to; else return value */</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="structoption.html#a13bd155ec3b405d29c41ab8d0793be11">   63</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structoption.html#a13bd155ec3b405d29c41ab8d0793be11">val</a>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>};</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><a class="code hl_define" href="getopt_8h.html#a568e6bde99652b7fd271ad206cfe38f5">__BEGIN_DECLS</a></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="getopt_8h.html#aa5f532afd67ea51314d8730a3843996f">   67</a></span><span class="keywordtype">int</span>  <a class="code hl_function" href="getopt_8h.html#aa5f532afd67ea51314d8730a3843996f">getopt_long</a>(<span class="keywordtype">int</span>, <span class="keywordtype">char</span> * <span class="keyword">const</span> *, <span class="keyword">const</span> <span class="keywordtype">char</span> *,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structoption.html">option</a> *, <span class="keywordtype">int</span> *);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="getopt_8h.html#a32498762f3b096900bdb5f14daccccdf">   69</a></span><span class="keywordtype">int</span>  <a class="code hl_function" href="getopt_8h.html#a32498762f3b096900bdb5f14daccccdf">getopt_long_only</a>(<span class="keywordtype">int</span>, <span class="keywordtype">char</span> * <span class="keyword">const</span> *, <span class="keyword">const</span> <span class="keywordtype">char</span> *,</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structoption.html">option</a> *, <span class="keywordtype">int</span> *);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#ifndef _GETOPT_DEFINED_</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="getopt_8h.html#a5d18c1e1b4cc2a13b2ddff09a9bb64b2">   72</a></span><span class="preprocessor">#define _GETOPT_DEFINED_</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="getopt_8h.html#a09d633c0a8afac8b4a910a5dfce67d60">   73</a></span><span class="keywordtype">int</span>  <a class="code hl_function" href="getopt_8h.html#a09d633c0a8afac8b4a910a5dfce67d60">getopt</a>(<span class="keywordtype">int</span>, <span class="keywordtype">char</span> * <span class="keyword">const</span> *, <span class="keyword">const</span> <span class="keywordtype">char</span> *);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">// for vsf linux, put these variable in process context and implement them as macro</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__linux_8h.html">shell/sys/linux/vsf_linux.h</a>&quot;</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="getopt_8h.html#a3d0369446ac39ee644edc472d24cfa5f">   76</a></span><span class="preprocessor">#define opterr          vsf_linux_get_cur_process()-&gt;__opterr</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="getopt_8h.html#afa9437ffe2a670485f18f082213533f8">   77</a></span><span class="preprocessor">#define optind          vsf_linux_get_cur_process()-&gt;__optind</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="getopt_8h.html#a9b3c9beb2078394a97f009c54e93ce05">   78</a></span><span class="preprocessor">#define optopt          vsf_linux_get_cur_process()-&gt;__optopt</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="getopt_8h.html#a9227b18da5777b0578ef7376ad78b649">   79</a></span><span class="preprocessor">#define optarg          vsf_linux_get_cur_process()-&gt;__optarg</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="getopt_8h.html#ab95d1b25e0c8b7aa1c5c1b427d3c1c0a">   80</a></span><span class="preprocessor">#define optreset        vsf_linux_get_cur_process()-&gt;__optreset</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">//extern   char *optarg;                  /* getopt(3) external variables */</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">//extern   int opterr;</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">//extern   int optind;</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">//extern   int optopt;</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">//extern   int optreset;</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><a class="code hl_define" href="getopt_8h.html#a115472f6d0d1035f1885658ce0821537">__END_DECLS</a></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#endif </span><span class="comment">/* !_GETOPT_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="agetopt_8h_html_a09d633c0a8afac8b4a910a5dfce67d60"><div class="ttname"><a href="getopt_8h.html#a09d633c0a8afac8b4a910a5dfce67d60">getopt</a></div><div class="ttdeci">int getopt(int, char *const *, const char *)</div></div>
 <div class="ttc" id="agetopt_8h_html_a115472f6d0d1035f1885658ce0821537"><div class="ttname"><a href="getopt_8h.html#a115472f6d0d1035f1885658ce0821537">__END_DECLS</a></div><div class="ttdeci">#define __END_DECLS</div><div class="ttdef"><b>Definition:</b> getopt.h:42</div></div>
 <div class="ttc" id="agetopt_8h_html_a32498762f3b096900bdb5f14daccccdf"><div class="ttname"><a href="getopt_8h.html#a32498762f3b096900bdb5f14daccccdf">getopt_long_only</a></div><div class="ttdeci">int getopt_long_only(int, char *const *, const char *, const struct option *, int *)</div></div>
@@ -149,7 +149,7 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
 </small></address>
 </body>
 </html>

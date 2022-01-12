@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>VSF Documented: source/shell/sys/xboot/include/xboot.h 源文件</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -26,15 +26,16 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.1 -->
+<!-- 制作者 Doxygen 1.9.2 -->
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',false,false,'search.php','搜索');
 });
-/* @license-end */</script>
+/* @license-end */
+</script>
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
@@ -42,85 +43,84 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle">
-<div class="title">xboot.h</div>  </div>
+  <div class="headertitle"><div class="title">xboot.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="xboot_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __XBOOT_H__</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __XBOOT_H__</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="unistd_8h.html">unistd.h</a>&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="xboot_2include_2types_8h.html">types.h</a>&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// from stddef.h</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="xboot_8h.html#a796047b418dea3d1cab0692daeb9c5f5">    9</a></span>&#160;<span class="preprocessor">#define clamp(v, a, b)          min(max(a, v), b)</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="xboot_8h.html#a1be991509df34528238678a3917f8d9e">   10</a></span>&#160;<span class="preprocessor">#define idiv255(x)              ((((int)(x) + 1) * 257) &gt;&gt; 16)</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// from math.h</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="xboot_8h.html#a9bf5d952c5c93c70f9e66c9794d406c9">   13</a></span>&#160;<span class="preprocessor">#define M_E                     2.7182818284590452354   </span><span class="comment">/* e */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="xboot_8h.html#ac5c747ee5bcbe892875672a0b9d8171c">   14</a></span>&#160;<span class="preprocessor">#define M_LOG2E                 1.4426950408889634074   </span><span class="comment">/* log_2 e */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="xboot_8h.html#a9ed2b5582226f3896424ff6d2a3ebb14">   15</a></span>&#160;<span class="preprocessor">#define M_LOG10E                0.43429448190325182765  </span><span class="comment">/* log_10 e */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="xboot_8h.html#a92428112a5d24721208748774a4f23e6">   16</a></span>&#160;<span class="preprocessor">#define M_LN2                   0.69314718055994530942  </span><span class="comment">/* log_e 2 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="xboot_8h.html#a0a53871497a155afe91424c28a8ec3c4">   17</a></span>&#160;<span class="preprocessor">#define M_LN10                  2.30258509299404568402  </span><span class="comment">/* log_e 10 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="xboot_8h.html#ae71449b1cc6e6250b91f539153a7a0d3">   18</a></span>&#160;<span class="preprocessor">#define M_PI                    3.14159265358979323846  </span><span class="comment">/* pi */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="xboot_8h.html#a958e4508ed28ee5cc04249144312c15f">   19</a></span>&#160;<span class="preprocessor">#define M_PI_2                  1.57079632679489661923  </span><span class="comment">/* pi/2 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="xboot_8h.html#aeb24420b096a677f3a2dc5a72b36bf22">   20</a></span>&#160;<span class="preprocessor">#define M_PI_4                  0.78539816339744830962  </span><span class="comment">/* pi/4 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="xboot_8h.html#a08dfac3cca9601a02fc88356cc078e1d">   21</a></span>&#160;<span class="preprocessor">#define M_1_PI                  0.31830988618379067154  </span><span class="comment">/* 1/pi */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="xboot_8h.html#a97f6d6514d3d3dd50c3a2a6d622673db">   22</a></span>&#160;<span class="preprocessor">#define M_2_PI                  0.63661977236758134308  </span><span class="comment">/* 2/pi */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="xboot_8h.html#a631ff334c4a1a6db2e8a7ff4acbe48a5">   23</a></span>&#160;<span class="preprocessor">#define M_2_SQRTPI              1.12837916709551257390  </span><span class="comment">/* 2/sqrt(pi) */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="xboot_8h.html#a66b3ab30f1332874326ed93969e496e0">   24</a></span>&#160;<span class="preprocessor">#define M_SQRT2                 1.41421356237309504880  </span><span class="comment">/* sqrt(2) */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="xboot_8h.html#acdbb2c2f9429f08916f03c8786d2d2d7">   25</a></span>&#160;<span class="preprocessor">#define M_SQRT1_2               0.70710678118654752440  </span><span class="comment">/* 1/sqrt(2) */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// string</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="xboot_8h.html#acee9691164f481ba669f8656b1a47e49">strlcpy</a>(<span class="keywordtype">char</span> *dest, <span class="keyword">const</span> <span class="keywordtype">char</span> *src, <span class="keywordtype">size_t</span> <a class="code" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>);</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="xboot_8h.html#a93c766c6e86f4f79e7507c21f1794e15">   29</a></span>&#160;<span class="keywordtype">char</span> *<a class="code" href="xboot_8h.html#a93c766c6e86f4f79e7507c21f1794e15">strsep</a>(<span class="keywordtype">char</span> **stringp, <span class="keyword">const</span> <span class="keywordtype">char</span> *delim);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// task</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structscheduler__t.html">   32</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structscheduler__t.html">scheduler_t</a> {</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structscheduler__t.html#ad598ba53be21073719b66efc21a5e2b2">   33</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structscheduler__t.html#ad598ba53be21073719b66efc21a5e2b2">dummy</a>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structtask__t.html">   35</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtask__t.html">task_t</a> {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    implement(vsf_linux_thread_t)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="xboot_8h.html#a4f3cbeb9dfbdf5df8dbe7e522683ba4c">   38</a></span>&#160;<span class="keyword">typedef</span> void (*<a class="code" href="xboot_8h.html#a4f3cbeb9dfbdf5df8dbe7e522683ba4c">task_func_t</a>)(<span class="keyword">struct </span><a class="code" href="structtask__t.html">task_t</a> * task, <span class="keywordtype">void</span> * data);</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="xboot_8h.html#a98ad9c4c9b6fc3ab72297068aab368ea">   39</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtask__t.html">task_t</a> * <a class="code" href="xboot_8h.html#a98ad9c4c9b6fc3ab72297068aab368ea">task_create</a>(<span class="keyword">struct</span> <a class="code" href="structscheduler__t.html">scheduler_t</a> * sched, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <a class="code" href="xboot_8h.html#a4f3cbeb9dfbdf5df8dbe7e522683ba4c">task_func_t</a> func, <span class="keywordtype">void</span> * data, <span class="keywordtype">size_t</span> stksz, <span class="keywordtype">int</span> nice);</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="xboot_8h.html#afb380cfe3e7e94a855590b680a13106c">   40</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="xboot_8h.html#afb380cfe3e7e94a855590b680a13106c">task_destroy</a>(<span class="keyword">struct</span> <a class="code" href="structtask__t.html">task_t</a> * task);</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="xboot_8h.html#ad2ca1323fa0d4504376c26fece640f30">   41</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="xboot_8h.html#ad2ca1323fa0d4504376c26fece640f30">task_suspend</a>(<span class="keyword">struct</span> <a class="code" href="structtask__t.html">task_t</a> * task);</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="xboot_8h.html#aa793bd1021bffd14bd7e522dd36f912c">   42</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="xboot_8h.html#aa793bd1021bffd14bd7e522dd36f912c">task_resume</a>(<span class="keyword">struct</span> <a class="code" href="structtask__t.html">task_t</a> * task);</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="xboot_8h.html#ae92fe09f7ab93ec88821515714fb0926">   43</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="xboot_8h.html#ae92fe09f7ab93ec88821515714fb0926">task_yield</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">// vfs</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="xboot_8h.html#af8b9148745669cd0b3fa092dedc9545f">   46</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="xboot_8h.html#af8b9148745669cd0b3fa092dedc9545f">vfs_open</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <span class="keywordtype">int</span> flags, ...);</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="xboot_8h.html#ac734703b5dd4785768fd6af394f97925">   47</a></span>&#160;<a class="code" href="linux_2include_2sys_2types_8h.html#af83497edef361523a95b06deda0b4c2d">off_t</a> <a class="code" href="xboot_8h.html#ac734703b5dd4785768fd6af394f97925">vfs_lseek</a>(<span class="keywordtype">int</span> fd, <a class="code" href="linux_2include_2sys_2types_8h.html#af83497edef361523a95b06deda0b4c2d">off_t</a> <a class="code" href="vsf__memfs_8h.html#a612bb2807d848cca89ea1437cceea886">offset</a>, <span class="keywordtype">int</span> whence);</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="xboot_8h.html#a122998c7fb01085eefed5a58090c9a47">   48</a></span>&#160;<a class="code" href="linux_2include_2sys_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a> <a class="code" href="xboot_8h.html#a122998c7fb01085eefed5a58090c9a47">vfs_read</a>(<span class="keywordtype">int</span> fd, <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> count);</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="xboot_8h.html#a47e9ccd870f6da3eb77478eebce4b984">   49</a></span>&#160;<a class="code" href="linux_2include_2sys_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a> <a class="code" href="xboot_8h.html#a47e9ccd870f6da3eb77478eebce4b984">vfs_write</a>(<span class="keywordtype">int</span> fd, <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> count);</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="xboot_8h.html#a60d1dba40888b0dadfbb4f0a30e1cb89">   50</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="xboot_8h.html#a60d1dba40888b0dadfbb4f0a30e1cb89">vfs_close</a>(<span class="keywordtype">int</span> fd);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="xboot_8h.html#a11139f65fc5facee4ea4cef21128ff2b">   52</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="xboot_8h.html#a11139f65fc5facee4ea4cef21128ff2b">vsf_xboot_bind</a>(<a class="code" href="classvk__disp__t.html">vk_disp_t</a> *disp);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="spinlock_8h.html">spinlock.h</a>&gt;</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#include &lt;shash.h&gt;</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="xfs_8h.html">xfs/xfs.h</a>&gt;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#include &lt;xboot/ktime.h&gt;</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="xboot_8h.html#afa07468a720b815b0f781972c4188912">   59</a></span>&#160;ktime_t <a class="code" href="xboot_8h.html#afa07468a720b815b0f781972c4188912">ktime_get</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#include &lt;xui/xui.h&gt;</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#include &lt;xui/window.h&gt;</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#include &lt;xui/popup.h&gt;</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#include &lt;xui/panel.h&gt;</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#include &lt;xui/button.h&gt;</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#include &lt;xui/checkbox.h&gt;</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#include &lt;xui/radio.h&gt;</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#include &lt;xui/toggle.h&gt;</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#include &lt;xui/badge.h&gt;</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#include &lt;xui/progress.h&gt;</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#include &lt;xui/split.h&gt;</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#include &lt;xui/label.h&gt;</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#include &lt;xui/text.h&gt;</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif      </span><span class="comment">// __XBOOT_H__</span></div>
+<a href="xboot_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef __XBOOT_H__</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __XBOOT_H__</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="unistd_8h.html">unistd.h</a>&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;<a class="code" href="xboot_2include_2types_8h.html">types.h</a>&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">// from stddef.h</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="xboot_8h.html#a796047b418dea3d1cab0692daeb9c5f5">    9</a></span><span class="preprocessor">#define clamp(v, a, b)          min(max(a, v), b)</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="xboot_8h.html#a1be991509df34528238678a3917f8d9e">   10</a></span><span class="preprocessor">#define idiv255(x)              ((((int)(x) + 1) * 257) &gt;&gt; 16)</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// from math.h</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="xboot_8h.html#a9bf5d952c5c93c70f9e66c9794d406c9">   13</a></span><span class="preprocessor">#define M_E                     2.7182818284590452354   </span><span class="comment">/* e */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="xboot_8h.html#ac5c747ee5bcbe892875672a0b9d8171c">   14</a></span><span class="preprocessor">#define M_LOG2E                 1.4426950408889634074   </span><span class="comment">/* log_2 e */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="xboot_8h.html#a9ed2b5582226f3896424ff6d2a3ebb14">   15</a></span><span class="preprocessor">#define M_LOG10E                0.43429448190325182765  </span><span class="comment">/* log_10 e */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="xboot_8h.html#a92428112a5d24721208748774a4f23e6">   16</a></span><span class="preprocessor">#define M_LN2                   0.69314718055994530942  </span><span class="comment">/* log_e 2 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="xboot_8h.html#a0a53871497a155afe91424c28a8ec3c4">   17</a></span><span class="preprocessor">#define M_LN10                  2.30258509299404568402  </span><span class="comment">/* log_e 10 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="xboot_8h.html#ae71449b1cc6e6250b91f539153a7a0d3">   18</a></span><span class="preprocessor">#define M_PI                    3.14159265358979323846  </span><span class="comment">/* pi */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="xboot_8h.html#a958e4508ed28ee5cc04249144312c15f">   19</a></span><span class="preprocessor">#define M_PI_2                  1.57079632679489661923  </span><span class="comment">/* pi/2 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="xboot_8h.html#aeb24420b096a677f3a2dc5a72b36bf22">   20</a></span><span class="preprocessor">#define M_PI_4                  0.78539816339744830962  </span><span class="comment">/* pi/4 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="xboot_8h.html#a08dfac3cca9601a02fc88356cc078e1d">   21</a></span><span class="preprocessor">#define M_1_PI                  0.31830988618379067154  </span><span class="comment">/* 1/pi */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="xboot_8h.html#a97f6d6514d3d3dd50c3a2a6d622673db">   22</a></span><span class="preprocessor">#define M_2_PI                  0.63661977236758134308  </span><span class="comment">/* 2/pi */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="xboot_8h.html#a631ff334c4a1a6db2e8a7ff4acbe48a5">   23</a></span><span class="preprocessor">#define M_2_SQRTPI              1.12837916709551257390  </span><span class="comment">/* 2/sqrt(pi) */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="xboot_8h.html#a66b3ab30f1332874326ed93969e496e0">   24</a></span><span class="preprocessor">#define M_SQRT2                 1.41421356237309504880  </span><span class="comment">/* sqrt(2) */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="xboot_8h.html#acdbb2c2f9429f08916f03c8786d2d2d7">   25</a></span><span class="preprocessor">#define M_SQRT1_2               0.70710678118654752440  </span><span class="comment">/* 1/sqrt(2) */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">// string</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="xboot_8h.html#acee9691164f481ba669f8656b1a47e49">strlcpy</a>(<span class="keywordtype">char</span> *dest, <span class="keyword">const</span> <span class="keywordtype">char</span> *src, <span class="keywordtype">size_t</span> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="xboot_8h.html#a098b232e1cfa2b0ce1d94b7ad0440cbb">   29</a></span><span class="keywordtype">char</span> *<a class="code hl_function" href="xboot_8h.html#a098b232e1cfa2b0ce1d94b7ad0440cbb">strsep</a>(<span class="keywordtype">char</span> **stringp, <span class="keyword">const</span> <span class="keywordtype">char</span> *delim);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">// task</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structscheduler__t.html">   32</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structscheduler__t.html">scheduler_t</a> {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structscheduler__t.html#ad598ba53be21073719b66efc21a5e2b2">   33</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structscheduler__t.html#ad598ba53be21073719b66efc21a5e2b2">dummy</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>};</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structtask__t.html">   35</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structtask__t.html">task_t</a> {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    implement(vsf_linux_thread_t)</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>};</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="xboot_8h.html#a4f3cbeb9dfbdf5df8dbe7e522683ba4c">   38</a></span><span class="keyword">typedef</span> void (*<a class="code hl_typedef" href="xboot_8h.html#a4f3cbeb9dfbdf5df8dbe7e522683ba4c">task_func_t</a>)(<span class="keyword">struct </span><a class="code hl_struct" href="structtask__t.html">task_t</a> * task, <span class="keywordtype">void</span> * data);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="xboot_8h.html#ad810c68e876c387a65efd09a6023719e">   39</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structtask__t.html">task_t</a> * <a class="code hl_function" href="xboot_8h.html#ad810c68e876c387a65efd09a6023719e">task_create</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structscheduler__t.html">scheduler_t</a> * sched, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <a class="code hl_typedef" href="xboot_8h.html#a4f3cbeb9dfbdf5df8dbe7e522683ba4c">task_func_t</a> func, <span class="keywordtype">void</span> * data, <span class="keywordtype">size_t</span> stksz, <span class="keywordtype">int</span> nice);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="xboot_8h.html#afb380cfe3e7e94a855590b680a13106c">   40</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="xboot_8h.html#afb380cfe3e7e94a855590b680a13106c">task_destroy</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structtask__t.html">task_t</a> * task);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="xboot_8h.html#ad2ca1323fa0d4504376c26fece640f30">   41</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="xboot_8h.html#ad2ca1323fa0d4504376c26fece640f30">task_suspend</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structtask__t.html">task_t</a> * task);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="xboot_8h.html#aa793bd1021bffd14bd7e522dd36f912c">   42</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="xboot_8h.html#aa793bd1021bffd14bd7e522dd36f912c">task_resume</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structtask__t.html">task_t</a> * task);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="xboot_8h.html#ae92fe09f7ab93ec88821515714fb0926">   43</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="xboot_8h.html#ae92fe09f7ab93ec88821515714fb0926">task_yield</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// vfs</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="xboot_8h.html#af8b9148745669cd0b3fa092dedc9545f">   46</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="xboot_8h.html#af8b9148745669cd0b3fa092dedc9545f">vfs_open</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <span class="keywordtype">int</span> flags, ...);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="xboot_8h.html#ac734703b5dd4785768fd6af394f97925">   47</a></span><a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#af83497edef361523a95b06deda0b4c2d">off_t</a> <a class="code hl_function" href="xboot_8h.html#ac734703b5dd4785768fd6af394f97925">vfs_lseek</a>(<span class="keywordtype">int</span> fd, <a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#af83497edef361523a95b06deda0b4c2d">off_t</a> <a class="code hl_variable" href="vsf__memfs_8h.html#a612bb2807d848cca89ea1437cceea886">offset</a>, <span class="keywordtype">int</span> whence);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="xboot_8h.html#a122998c7fb01085eefed5a58090c9a47">   48</a></span><a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a> <a class="code hl_function" href="xboot_8h.html#a122998c7fb01085eefed5a58090c9a47">vfs_read</a>(<span class="keywordtype">int</span> fd, <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> count);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="xboot_8h.html#a47e9ccd870f6da3eb77478eebce4b984">   49</a></span><a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a> <a class="code hl_function" href="xboot_8h.html#a47e9ccd870f6da3eb77478eebce4b984">vfs_write</a>(<span class="keywordtype">int</span> fd, <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> count);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="xboot_8h.html#a60d1dba40888b0dadfbb4f0a30e1cb89">   50</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="xboot_8h.html#a60d1dba40888b0dadfbb4f0a30e1cb89">vfs_close</a>(<span class="keywordtype">int</span> fd);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="xboot_8h.html#a11139f65fc5facee4ea4cef21128ff2b">   52</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="xboot_8h.html#a11139f65fc5facee4ea4cef21128ff2b">vsf_xboot_bind</a>(<a class="code hl_class" href="classvk__disp__t.html">vk_disp_t</a> *disp);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#include &lt;<a class="code" href="spinlock_8h.html">spinlock.h</a>&gt;</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#include &lt;shash.h&gt;</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#include &lt;<a class="code" href="xfs_8h.html">xfs/xfs.h</a>&gt;</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#include &lt;xboot/ktime.h&gt;</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="xboot_8h.html#afa07468a720b815b0f781972c4188912">   59</a></span>ktime_t <a class="code hl_function" href="xboot_8h.html#afa07468a720b815b0f781972c4188912">ktime_get</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#include &lt;xui/xui.h&gt;</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#include &lt;xui/window.h&gt;</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#include &lt;xui/popup.h&gt;</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#include &lt;xui/panel.h&gt;</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#include &lt;xui/button.h&gt;</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#include &lt;xui/checkbox.h&gt;</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#include &lt;xui/radio.h&gt;</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#include &lt;xui/toggle.h&gt;</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#include &lt;xui/badge.h&gt;</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#include &lt;xui/progress.h&gt;</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#include &lt;xui/split.h&gt;</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#include &lt;xui/label.h&gt;</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#include &lt;xui/text.h&gt;</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#endif      </span><span class="comment">// __XBOOT_H__</span></div>
 <div class="ttc" id="aclassvk__disp__t_html"><div class="ttname"><a href="classvk__disp__t.html">vk_disp_t</a></div><div class="ttdef"><b>Definition:</b> vsf_disp.h:174</div></div>
 <div class="ttc" id="alinux_2include_2sys_2types_8h_html_af629ed855824cf5955b54529adf78ad6"><div class="ttname"><a href="linux_2include_2sys_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a></div><div class="ttdeci">int ssize_t</div><div class="ttdef"><b>Definition:</b> types.h:25</div></div>
 <div class="ttc" id="alinux_2include_2sys_2types_8h_html_af83497edef361523a95b06deda0b4c2d"><div class="ttname"><a href="linux_2include_2sys_2types_8h.html#af83497edef361523a95b06deda0b4c2d">off_t</a></div><div class="ttdeci">long off_t</div><div class="ttdef"><b>Definition:</b> types.h:37</div></div>
@@ -132,17 +132,17 @@ $(function() {
 <div class="ttc" id="avsf__memfs_8h_html_a612bb2807d848cca89ea1437cceea886"><div class="ttname"><a href="vsf__memfs_8h.html#a612bb2807d848cca89ea1437cceea886">offset</a></div><div class="ttdeci">uint64_t offset</div><div class="ttdef"><b>Definition:</b> vsf_memfs.h:49</div></div>
 <div class="ttc" id="avsf__memfs_8h_html_ab2c6b258f02add8fdf4cfc7c371dd772"><div class="ttname"><a href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a></div><div class="ttdeci">uint32_t size</div><div class="ttdef"><b>Definition:</b> vsf_memfs.h:50</div></div>
 <div class="ttc" id="axboot_2include_2types_8h_html"><div class="ttname"><a href="xboot_2include_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="axboot_8h_html_a098b232e1cfa2b0ce1d94b7ad0440cbb"><div class="ttname"><a href="xboot_8h.html#a098b232e1cfa2b0ce1d94b7ad0440cbb">strsep</a></div><div class="ttdeci">char * strsep(char **stringp, const char *delim)</div></div>
 <div class="ttc" id="axboot_8h_html_a11139f65fc5facee4ea4cef21128ff2b"><div class="ttname"><a href="xboot_8h.html#a11139f65fc5facee4ea4cef21128ff2b">vsf_xboot_bind</a></div><div class="ttdeci">void vsf_xboot_bind(vk_disp_t *disp)</div></div>
 <div class="ttc" id="axboot_8h_html_a122998c7fb01085eefed5a58090c9a47"><div class="ttname"><a href="xboot_8h.html#a122998c7fb01085eefed5a58090c9a47">vfs_read</a></div><div class="ttdeci">ssize_t vfs_read(int fd, void *buf, size_t count)</div></div>
 <div class="ttc" id="axboot_8h_html_a47e9ccd870f6da3eb77478eebce4b984"><div class="ttname"><a href="xboot_8h.html#a47e9ccd870f6da3eb77478eebce4b984">vfs_write</a></div><div class="ttdeci">ssize_t vfs_write(int fd, void *buf, size_t count)</div></div>
 <div class="ttc" id="axboot_8h_html_a4f3cbeb9dfbdf5df8dbe7e522683ba4c"><div class="ttname"><a href="xboot_8h.html#a4f3cbeb9dfbdf5df8dbe7e522683ba4c">task_func_t</a></div><div class="ttdeci">void(* task_func_t)(struct task_t *task, void *data)</div><div class="ttdef"><b>Definition:</b> xboot.h:38</div></div>
 <div class="ttc" id="axboot_8h_html_a60d1dba40888b0dadfbb4f0a30e1cb89"><div class="ttname"><a href="xboot_8h.html#a60d1dba40888b0dadfbb4f0a30e1cb89">vfs_close</a></div><div class="ttdeci">int vfs_close(int fd)</div></div>
-<div class="ttc" id="axboot_8h_html_a93c766c6e86f4f79e7507c21f1794e15"><div class="ttname"><a href="xboot_8h.html#a93c766c6e86f4f79e7507c21f1794e15">strsep</a></div><div class="ttdeci">char * strsep(char **stringp, const char *delim)</div></div>
-<div class="ttc" id="axboot_8h_html_a98ad9c4c9b6fc3ab72297068aab368ea"><div class="ttname"><a href="xboot_8h.html#a98ad9c4c9b6fc3ab72297068aab368ea">task_create</a></div><div class="ttdeci">struct task_t * task_create(struct scheduler_t *sched, const char *name, task_func_t func, void *data, size_t stksz, int nice)</div></div>
 <div class="ttc" id="axboot_8h_html_aa793bd1021bffd14bd7e522dd36f912c"><div class="ttname"><a href="xboot_8h.html#aa793bd1021bffd14bd7e522dd36f912c">task_resume</a></div><div class="ttdeci">void task_resume(struct task_t *task)</div></div>
 <div class="ttc" id="axboot_8h_html_ac734703b5dd4785768fd6af394f97925"><div class="ttname"><a href="xboot_8h.html#ac734703b5dd4785768fd6af394f97925">vfs_lseek</a></div><div class="ttdeci">off_t vfs_lseek(int fd, off_t offset, int whence)</div></div>
 <div class="ttc" id="axboot_8h_html_acee9691164f481ba669f8656b1a47e49"><div class="ttname"><a href="xboot_8h.html#acee9691164f481ba669f8656b1a47e49">strlcpy</a></div><div class="ttdeci">size_t strlcpy(char *dest, const char *src, size_t size)</div><div class="ttdef"><b>Definition:</b> x86_compiler.c:31</div></div>
 <div class="ttc" id="axboot_8h_html_ad2ca1323fa0d4504376c26fece640f30"><div class="ttname"><a href="xboot_8h.html#ad2ca1323fa0d4504376c26fece640f30">task_suspend</a></div><div class="ttdeci">void task_suspend(struct task_t *task)</div></div>
+<div class="ttc" id="axboot_8h_html_ad810c68e876c387a65efd09a6023719e"><div class="ttname"><a href="xboot_8h.html#ad810c68e876c387a65efd09a6023719e">task_create</a></div><div class="ttdeci">struct task_t * task_create(struct scheduler_t *sched, const char *name, task_func_t func, void *data, size_t stksz, int nice)</div></div>
 <div class="ttc" id="axboot_8h_html_ae92fe09f7ab93ec88821515714fb0926"><div class="ttname"><a href="xboot_8h.html#ae92fe09f7ab93ec88821515714fb0926">task_yield</a></div><div class="ttdeci">void task_yield(void)</div></div>
 <div class="ttc" id="axboot_8h_html_af8b9148745669cd0b3fa092dedc9545f"><div class="ttname"><a href="xboot_8h.html#af8b9148745669cd0b3fa092dedc9545f">vfs_open</a></div><div class="ttdeci">int vfs_open(const char *pathname, int flags,...)</div></div>
 <div class="ttc" id="axboot_8h_html_afa07468a720b815b0f781972c4188912"><div class="ttname"><a href="xboot_8h.html#afa07468a720b815b0f781972c4188912">ktime_get</a></div><div class="ttdeci">ktime_t ktime_get(void)</div></div>
@@ -151,7 +151,7 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
 </small></address>
 </body>
 </html>
