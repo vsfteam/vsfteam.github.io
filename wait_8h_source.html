@@ -65,16 +65,23 @@ $(function() {
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="wait_8h.html#a0ff9ced808887c13e8b64c783f4b9f56">   17</a></span><span class="preprocessor">#define waitpid                 VSF_LINUX_WRAPPER(waitpid)</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="wait_8h.html#a5168e28b8ef46372cf99e61d71f8c7b8">   20</a></span><span class="preprocessor">#define WIFEXITED(__STATUS)     !((__STATUS) &amp; 0xFF)</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="wait_8h.html#a873b66af13b12c5c5390a5ef21643b7e">   21</a></span><span class="preprocessor">#define WEXITSTATUS(__STATUS)   ((__STATUS) &gt;&gt; 8)</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="wait_8h.html#a77de8005691d1f125540d66032a3cc62">   23</a></span><a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a> <a class="code hl_define" href="wait_8h.html#a0ff9ced808887c13e8b64c783f4b9f56">waitpid</a>(<a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a> pid, <span class="keywordtype">int</span> *<a class="code hl_variable" href="vsf__tgui_8h.html#ade818037fd6c985038ff29656089758d">status</a>, <span class="keywordtype">int</span> options);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">// options of waitpid</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="wait_8h.html#afa288d86b242c3005425a9c0f1682544">   21</a></span><span class="preprocessor">#define WNOHANG                 1</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="wait_8h.html#aecac6945e3b08baa2602557c684d6bfe">   22</a></span><span class="preprocessor">#define WUNTRACED               2</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="wait_8h.html#a5168e28b8ef46372cf99e61d71f8c7b8">   24</a></span><span class="preprocessor">#define WIFEXITED(__STATUS)     !((__STATUS) &amp; 0xFF)</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="wait_8h.html#a873b66af13b12c5c5390a5ef21643b7e">   25</a></span><span class="preprocessor">#define WEXITSTATUS(__STATUS)   ((__STATUS) &gt;&gt; 8)</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">// TODO: implement WIFSIGNALED</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="wait_8h.html#afd518fb52f91af4568db8f7ae4cc0af2">   27</a></span><span class="preprocessor">#define WIFSIGNALED(__STATUS)   0</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="wait_8h.html#a170152370f47b218eb74aae37642e839">   28</a></span><span class="preprocessor">#define WTERMSIG(__STATUS)      ((__STATUS) &amp; 0x7F)</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="wait_8h.html#a77de8005691d1f125540d66032a3cc62">   30</a></span><a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a> <a class="code hl_define" href="wait_8h.html#a0ff9ced808887c13e8b64c783f4b9f56">waitpid</a>(<a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a> pid, <span class="keywordtype">int</span> *<a class="code hl_variable" href="vsf__tgui_8h.html#ade818037fd6c985038ff29656089758d">status</a>, <span class="keywordtype">int</span> options);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="alinux_2include_2sys_2types_8h_html"><div class="ttname"><a href="linux_2include_2sys_2types_8h.html">types.h</a></div></div>
 <div class="ttc" id="alinux_2include_2sys_2types_8h_html_a288e13e815d43b06e75819f8939524df"><div class="ttname"><a href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a></div><div class="ttdeci">int pid_t</div><div class="ttdef"><b>Definition:</b> types.h:33</div></div>
 <div class="ttc" id="avsf__linux__cfg_8h_html"><div class="ttname"><a href="vsf__linux__cfg_8h.html">vsf_linux_cfg.h</a></div></div>
