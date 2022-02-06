@@ -111,6 +111,10 @@ $(function() {
 <tr class="separator:ad779a7040ad68eb342800929bfc64f55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9af7ee70285e037bab4070d554160fd1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libusb_8h.html#a9af7ee70285e037bab4070d554160fd1">libusb_open</a>&#160;&#160;&#160;<a class="el" href="libusb_8h.html#a6725f8b9bfaf311a8952519d3ae84269">VSF_LINUX_LIBUSB_WRAPPER</a>(libusb_open)</td></tr>
 <tr class="separator:a9af7ee70285e037bab4070d554160fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cccdc4c5766708c12fe41aea742b171"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libusb_8h.html#a6cccdc4c5766708c12fe41aea742b171">libusb_open_device_with_vid_pid</a>&#160;&#160;&#160;<a class="el" href="libusb_8h.html#a6725f8b9bfaf311a8952519d3ae84269">VSF_LINUX_LIBUSB_WRAPPER</a>(libusb_open_device_with_vid_pid)</td></tr>
+<tr class="separator:a6cccdc4c5766708c12fe41aea742b171"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a671c6dab1743cf74113fd6d79d0c872a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libusb_8h.html#a671c6dab1743cf74113fd6d79d0c872a">libusb_get_device</a>&#160;&#160;&#160;<a class="el" href="libusb_8h.html#a6725f8b9bfaf311a8952519d3ae84269">VSF_LINUX_LIBUSB_WRAPPER</a>(libusb_get_device)</td></tr>
+<tr class="separator:a671c6dab1743cf74113fd6d79d0c872a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3f057e4efad3b9bdac5b102b918c1ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libusb_8h.html#af3f057e4efad3b9bdac5b102b918c1ad">libusb_close</a>&#160;&#160;&#160;<a class="el" href="libusb_8h.html#a6725f8b9bfaf311a8952519d3ae84269">VSF_LINUX_LIBUSB_WRAPPER</a>(libusb_close)</td></tr>
 <tr class="separator:af3f057e4efad3b9bdac5b102b918c1ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1edc0fac14a7b9b87ba695b84654d0a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libusb_8h.html#ad1edc0fac14a7b9b87ba695b84654d0a">libusb_get_device_descriptor</a>&#160;&#160;&#160;<a class="el" href="libusb_8h.html#a6725f8b9bfaf311a8952519d3ae84269">VSF_LINUX_LIBUSB_WRAPPER</a>(libusb_get_device_descriptor)</td></tr>
@@ -362,6 +366,8 @@ $(function() {
 &#160;&#160;<a class="el" href="libusb_8h.html#a86c880af878493aa8f805c2aba654b8ba3829979c66e5344367f32f4a31d43613">LIBUSB_ENDPOINT_IN</a> = USB_DIR_IN
 , <br />
 &#160;&#160;<a class="el" href="libusb_8h.html#a86c880af878493aa8f805c2aba654b8ba940484c16d44bdfc6eccc2de7a9ffcb2">LIBUSB_ENDPOINT_OUT</a> = USB_DIR_OUT
+, <br />
+&#160;&#160;<a class="el" href="libusb_8h.html#a86c880af878493aa8f805c2aba654b8ba091b9f885b3aa355c3ebcba24e7871bb">LIBUSB_ENDPOINT_DIR_MASK</a> = USB_DIR_MASK
 <br />
  }</td></tr>
 <tr class="separator:a86c880af878493aa8f805c2aba654b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -493,13 +499,15 @@ $(function() {
  }</td></tr>
 <tr class="separator:a9fcb2aa23d342060ebda1d0cf7478856"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb52027036a07de6ecc6c2bf07d07c71"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libusb_8h.html#acb52027036a07de6ecc6c2bf07d07c71">libusb_transfer_type</a> { <br />
-&#160;&#160;<a class="el" href="libusb_8h.html#acb52027036a07de6ecc6c2bf07d07c71a4c89624658c783ef9b2a2f08091bc7d7">LIBUSB_TRANSFER_TYPE_CONTROL</a> = 0
+&#160;&#160;<a class="el" href="libusb_8h.html#acb52027036a07de6ecc6c2bf07d07c71a4c89624658c783ef9b2a2f08091bc7d7">LIBUSB_TRANSFER_TYPE_CONTROL</a> = USB_ENDPOINT_XFER_CONTROL
 , <br />
-&#160;&#160;<a class="el" href="libusb_8h.html#acb52027036a07de6ecc6c2bf07d07c71a40de9889554fc1785d784b3c31333300">LIBUSB_TRANSFER_TYPE_ISOCHRONOUS</a> = 1
+&#160;&#160;<a class="el" href="libusb_8h.html#acb52027036a07de6ecc6c2bf07d07c71a40de9889554fc1785d784b3c31333300">LIBUSB_TRANSFER_TYPE_ISOCHRONOUS</a> = USB_ENDPOINT_XFER_ISOC
 , <br />
-&#160;&#160;<a class="el" href="libusb_8h.html#acb52027036a07de6ecc6c2bf07d07c71a7bdfa2fc5dadbaaa0e9262e1b4a228e2">LIBUSB_TRANSFER_TYPE_BULK</a> = 2
+&#160;&#160;<a class="el" href="libusb_8h.html#acb52027036a07de6ecc6c2bf07d07c71a7bdfa2fc5dadbaaa0e9262e1b4a228e2">LIBUSB_TRANSFER_TYPE_BULK</a> = USB_ENDPOINT_XFER_BULK
 , <br />
-&#160;&#160;<a class="el" href="libusb_8h.html#acb52027036a07de6ecc6c2bf07d07c71aefb0e07862c0eed894ec9c2f957a7e3c">LIBUSB_TRANSFER_TYPE_INTERRUPT</a> = 3
+&#160;&#160;<a class="el" href="libusb_8h.html#acb52027036a07de6ecc6c2bf07d07c71aefb0e07862c0eed894ec9c2f957a7e3c">LIBUSB_TRANSFER_TYPE_INTERRUPT</a> = USB_ENDPOINT_XFER_INT
+, <br />
+&#160;&#160;<a class="el" href="libusb_8h.html#acb52027036a07de6ecc6c2bf07d07c71a649a73bc529734f2c7b2922def7036ee">LIBUSB_TRANSFER_TYPE_MASK</a> = USB_ENDPOINT_XFERTYPE_MASK
 <br />
  }</td></tr>
 <tr class="separator:acb52027036a07de6ecc6c2bf07d07c71"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -533,6 +541,10 @@ $(function() {
 <tr class="separator:a5e9ab08d490a7704cf3a9b0439f16f00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f184a8be4488a767b2e0ae07e76d1b0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libusb_8h.html#a3f184a8be4488a767b2e0ae07e76d1b0">libusb_open</a> (<a class="el" href="vsf__libusb__hcd_8c.html#a6a41e56fed0168fbd7abd9359c805bf1">libusb_device</a> *dev, <a class="el" href="vsf__libusb__hcd_8c.html#a3bb9d38b33d823281e2ad70e42ac3da0">libusb_device_handle</a> **dev_handle)</td></tr>
 <tr class="separator:a3f184a8be4488a767b2e0ae07e76d1b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bd5e8ba42e7ea1031e29d21211446d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__libusb__hcd_8c.html#a6a41e56fed0168fbd7abd9359c805bf1">libusb_device</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libusb_8h.html#a3bd5e8ba42e7ea1031e29d21211446d7">libusb_get_device</a> (<a class="el" href="vsf__libusb__hcd_8c.html#a3bb9d38b33d823281e2ad70e42ac3da0">libusb_device_handle</a> *dev_handle)</td></tr>
+<tr class="separator:a3bd5e8ba42e7ea1031e29d21211446d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10d67e6f1e32d17c33d93ae04617392e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__libusb__hcd_8c.html#a3bb9d38b33d823281e2ad70e42ac3da0">libusb_device_handle</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libusb_8h.html#a10d67e6f1e32d17c33d93ae04617392e">libusb_open_device_with_vid_pid</a> (<a class="el" href="structlibusb__context.html">libusb_context</a> *ctx, <a class="el" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> vendor_id, <a class="el" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> product_id)</td></tr>
+<tr class="separator:a10d67e6f1e32d17c33d93ae04617392e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a779bc4f1316bdb0ac383bddbd538620e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libusb_8h.html#a779bc4f1316bdb0ac383bddbd538620e">libusb_close</a> (<a class="el" href="vsf__libusb__hcd_8c.html#a3bb9d38b33d823281e2ad70e42ac3da0">libusb_device_handle</a> *dev_handle)</td></tr>
 <tr class="separator:a779bc4f1316bdb0ac383bddbd538620e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6d4e39ac483ebaeb108f2954715305d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libusb_8h.html#ab6d4e39ac483ebaeb108f2954715305d">libusb_get_device_address</a> (<a class="el" href="vsf__libusb__hcd_8c.html#a6a41e56fed0168fbd7abd9359c805bf1">libusb_device</a> *dev)</td></tr>
@@ -768,6 +780,34 @@ $(function() {
       <table class="memname">
         <tr>
           <td class="memname">#define libusb_open&#160;&#160;&#160;<a class="el" href="libusb_8h.html#a6725f8b9bfaf311a8952519d3ae84269">VSF_LINUX_LIBUSB_WRAPPER</a>(libusb_open)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6cccdc4c5766708c12fe41aea742b171" name="a6cccdc4c5766708c12fe41aea742b171"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cccdc4c5766708c12fe41aea742b171">&#9670;&nbsp;</a></span>libusb_open_device_with_vid_pid</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define libusb_open_device_with_vid_pid&#160;&#160;&#160;<a class="el" href="libusb_8h.html#a6725f8b9bfaf311a8952519d3ae84269">VSF_LINUX_LIBUSB_WRAPPER</a>(libusb_open_device_with_vid_pid)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a671c6dab1743cf74113fd6d79d0c872a" name="a671c6dab1743cf74113fd6d79d0c872a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a671c6dab1743cf74113fd6d79d0c872a">&#9670;&nbsp;</a></span>libusb_get_device</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define libusb_get_device&#160;&#160;&#160;<a class="el" href="libusb_8h.html#a6725f8b9bfaf311a8952519d3ae84269">VSF_LINUX_LIBUSB_WRAPPER</a>(libusb_get_device)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1920,6 +1960,7 @@ $(function() {
 <table class="fieldtable">
 <tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a86c880af878493aa8f805c2aba654b8ba3829979c66e5344367f32f4a31d43613" name="a86c880af878493aa8f805c2aba654b8ba3829979c66e5344367f32f4a31d43613"></a>LIBUSB_ENDPOINT_IN&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a86c880af878493aa8f805c2aba654b8ba940484c16d44bdfc6eccc2de7a9ffcb2" name="a86c880af878493aa8f805c2aba654b8ba940484c16d44bdfc6eccc2de7a9ffcb2"></a>LIBUSB_ENDPOINT_OUT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a86c880af878493aa8f805c2aba654b8ba091b9f885b3aa355c3ebcba24e7871bb" name="a86c880af878493aa8f805c2aba654b8ba091b9f885b3aa355c3ebcba24e7871bb"></a>LIBUSB_ENDPOINT_DIR_MASK&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -2134,6 +2175,7 @@ $(function() {
 <tr><td class="fieldname"><a id="acb52027036a07de6ecc6c2bf07d07c71a40de9889554fc1785d784b3c31333300" name="acb52027036a07de6ecc6c2bf07d07c71a40de9889554fc1785d784b3c31333300"></a>LIBUSB_TRANSFER_TYPE_ISOCHRONOUS&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="acb52027036a07de6ecc6c2bf07d07c71a7bdfa2fc5dadbaaa0e9262e1b4a228e2" name="acb52027036a07de6ecc6c2bf07d07c71a7bdfa2fc5dadbaaa0e9262e1b4a228e2"></a>LIBUSB_TRANSFER_TYPE_BULK&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="acb52027036a07de6ecc6c2bf07d07c71aefb0e07862c0eed894ec9c2f957a7e3c" name="acb52027036a07de6ecc6c2bf07d07c71aefb0e07862c0eed894ec9c2f957a7e3c"></a>LIBUSB_TRANSFER_TYPE_INTERRUPT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acb52027036a07de6ecc6c2bf07d07c71a649a73bc529734f2c7b2922def7036ee" name="acb52027036a07de6ecc6c2bf07d07c71a649a73bc529734f2c7b2922def7036ee"></a>LIBUSB_TRANSFER_TYPE_MASK&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -2342,6 +2384,58 @@ $(function() {
           <td></td>
           <td class="paramtype"><a class="el" href="vsf__libusb__hcd_8c.html#a3bb9d38b33d823281e2ad70e42ac3da0">libusb_device_handle</a> **&#160;</td>
           <td class="paramname"><em>dev_handle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3bd5e8ba42e7ea1031e29d21211446d7" name="a3bd5e8ba42e7ea1031e29d21211446d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bd5e8ba42e7ea1031e29d21211446d7">&#9670;&nbsp;</a></span>libusb_get_device()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vsf__libusb__hcd_8c.html#a6a41e56fed0168fbd7abd9359c805bf1">libusb_device</a> * libusb_get_device </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vsf__libusb__hcd_8c.html#a3bb9d38b33d823281e2ad70e42ac3da0">libusb_device_handle</a> *&#160;</td>
+          <td class="paramname"><em>dev_handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a10d67e6f1e32d17c33d93ae04617392e" name="a10d67e6f1e32d17c33d93ae04617392e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10d67e6f1e32d17c33d93ae04617392e">&#9670;&nbsp;</a></span>libusb_open_device_with_vid_pid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vsf__libusb__hcd_8c.html#a3bb9d38b33d823281e2ad70e42ac3da0">libusb_device_handle</a> * libusb_open_device_with_vid_pid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlibusb__context.html">libusb_context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>&#160;</td>
+          <td class="paramname"><em>vendor_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>&#160;</td>
+          <td class="paramname"><em>product_id</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
