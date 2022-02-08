@@ -172,10 +172,6 @@ $(function() {
 <tr class="memitem:a7b1bd7ace931306a646900d724bb7329"><td class="memItemLeft" align="right" valign="top">vsf_thread_entry_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__thread_8h.html#a7b1bd7ace931306a646900d724bb7329">entry</a></td></tr>
 <tr class="memdesc:a7b1bd7ace931306a646900d724bb7329"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt; stack must be 8byte aligned  <a href="vsf__thread_8h.html#a7b1bd7ace931306a646900d724bb7329">更多...</a><br /></td></tr>
 <tr class="separator:a7b1bd7ace931306a646900d724bb7329"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3422a71bd11b1a1ff48721495c7d9c8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__thread_8h.html#a3422a71bd11b1a1ff48721495c7d9c8f">stack_size</a></td></tr>
-<tr class="separator:a3422a71bd11b1a1ff48721495c7d9c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a761030e55da522d31cb4ac9181dc2de4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#aaa5d1cd013383c889537491c3cfd9aad">uint64_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__thread_8h.html#a761030e55da522d31cb4ac9181dc2de4">stack</a></td></tr>
-<tr class="separator:a761030e55da522d31cb4ac9181dc2de4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">宏定义说明</h2>
 <a id="ab03dcdedfdc9861a978626b67957afb9" name="ab03dcdedfdc9861a978626b67957afb9"></a>
@@ -473,13 +469,12 @@ $(function() {
 <div class="line">                const vsf_thread_prepare_cfg_t cfg = {                          \</div>
 <div class="line">                    .entry = (vsf_thread_entry_t *)                             \</div>
 <div class="line">                                    &amp;vsf_thread_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_entry,               \</div>
-<div class="line">                    .<a class="code hl_variable" href="vsf__thread_8h.html#a761030e55da522d31cb4ac9181dc2de4">stack</a> = (__thread_cb)-&gt;stack_arr,                          \</div>
+<div class="line">                    .stack = (__thread_cb)-&gt;stack_arr,                          \</div>
 <div class="line">                    .stack_size = <span class="keyword">sizeof</span>((__thread_cb)-&gt;stack_arr),             \</div>
 <div class="line">                };                                                              \</div>
 <div class="line">                vk_eda_call_thread_prepare(&amp;(__vsf_pthis-&gt;use_as__vsf_thread_cb_t),\</div>
 <div class="line">                                              (vsf_thread_prepare_cfg_t *)&amp;cfg);\</div>
 <div class="line">            } <span class="keywordflow">while</span>(0)</div>
-<div class="ttc" id="avsf__thread_8h_html_a761030e55da522d31cb4ac9181dc2de4"><div class="ttname"><a href="vsf__thread_8h.html#a761030e55da522d31cb4ac9181dc2de4">stack</a></div><div class="ttdeci">uint64_t * stack</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:399</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -564,7 +559,7 @@ $(function() {
 <div class="line">            };                                                                  \</div>
 <div class="line">            extern <span class="keywordtype">void</span> vsf_thread_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_start( <span class="keyword">struct</span> <a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> *task,       \</div>
 <div class="line">                                                <a class="code hl_enumeration" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a> priority,            \</div>
-<div class="line">                                                <span class="keywordtype">void</span> *<a class="code hl_variable" href="vsf__thread_8h.html#a761030e55da522d31cb4ac9181dc2de4">stack</a>,                    \</div>
+<div class="line">                                                <span class="keywordtype">void</span> *stack,                    \</div>
 <div class="line">                                                <a class="code hl_typedef" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>);            \</div>
 <div class="line">            extern <span class="keywordtype">void</span> vsf_thread_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_entry(                            \</div>
 <div class="line">                            <span class="keyword">struct</span> thread_cb_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_t *vsf_pthis);</div>
@@ -592,14 +587,14 @@ $(function() {
 <div class="line">                        <span class="keyword">struct</span> thread_cb_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_t *vsf_pthis);              \</div>
 <div class="line">            void vsf_thread_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_start(   <span class="keyword">struct</span> <a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> *task,            \</div>
 <div class="line">                                                <a class="code hl_enumeration" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a> priority,            \</div>
-<div class="line">                                                <span class="keywordtype">void</span> *<a class="code hl_variable" href="vsf__thread_8h.html#a761030e55da522d31cb4ac9181dc2de4">stack</a>,                    \</div>
+<div class="line">                                                <span class="keywordtype">void</span> *stack,                    \</div>
 <div class="line">                                                <a class="code hl_typedef" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)             \</div>
 <div class="line">            {                                                                   \</div>
-<div class="line">                VSF_KERNEL_ASSERT(<a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a> != task &amp;&amp; 0 != <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a> &amp;&amp; <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a> != <a class="code hl_variable" href="vsf__thread_8h.html#a761030e55da522d31cb4ac9181dc2de4">stack</a>);  \</div>
+<div class="line">                VSF_KERNEL_ASSERT(<a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a> != task &amp;&amp; 0 != <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a> &amp;&amp; <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a> != stack);  \</div>
 <div class="line">                thread_cb_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_t *vsf_pthis =  &amp;(task-&gt;param);            \</div>
 <div class="line">                vsf_pthis-&gt;use_as__vsf_thread_cb_t.entry = (vsf_thread_entry_t *)\</div>
 <div class="line">                                    &amp;vsf_thread_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_entry;               \</div>
-<div class="line">                vsf_pthis-&gt;use_as__vsf_thread_cb_t.stack = <a class="code hl_variable" href="vsf__thread_8h.html#a761030e55da522d31cb4ac9181dc2de4">stack</a>;               \</div>
+<div class="line">                vsf_pthis-&gt;use_as__vsf_thread_cb_t.stack = stack;               \</div>
 <div class="line">                vsf_pthis-&gt;use_as__vsf_thread_cb_t.stack_size = <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>;           \</div>
 <div class="line">                vsf_thread_start(   &amp;(task-&gt;use_as__vsf_thread_t),              \</div>
 <div class="line">                                    &amp;(task-&gt;param.use_as__vsf_thread_cb_t),     \</div>
@@ -653,7 +648,7 @@ $(function() {
 <div class="line">                const vsf_thread_prepare_cfg_t cfg = {                          \</div>
 <div class="line">                    .entry = (vsf_thread_entry_t *)                             \</div>
 <div class="line">                                    &amp;vsf_thread_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_entry,               \</div>
-<div class="line">                    .<a class="code hl_variable" href="vsf__thread_8h.html#a761030e55da522d31cb4ac9181dc2de4">stack</a> = (__stack),                                         \</div>
+<div class="line">                    .stack = (__stack),                                         \</div>
 <div class="line">                    .stack_size = (__size),                                     \</div>
 <div class="line">                };                                                              \</div>
 <div class="line">                vk_eda_call_thread_prepare(&amp;(__vsf_pthis-&gt;use_as__vsf_thread_cb_t),\</div>
@@ -1558,34 +1553,6 @@ $(function() {
 </div><div class="memdoc">
 
 <p>&lt; stack must be 8byte aligned </p>
-
-</div>
-</div>
-<a id="a3422a71bd11b1a1ff48721495c7d9c8f" name="a3422a71bd11b1a1ff48721495c7d9c8f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3422a71bd11b1a1ff48721495c7d9c8f">&#9670;&nbsp;</a></span>stack_size</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> stack_size</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a761030e55da522d31cb4ac9181dc2de4" name="a761030e55da522d31cb4ac9181dc2de4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a761030e55da522d31cb4ac9181dc2de4">&#9670;&nbsp;</a></span>stack</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="arm_2type_8h.html#aaa5d1cd013383c889537491c3cfd9aad">uint64_t</a>* stack</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
