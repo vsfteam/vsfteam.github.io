@@ -81,50 +81,51 @@ $(function() {
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;hal/driver/common/template/vsf_template_rtc.h&quot;</span></div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#if     defined(__VSF_LINUX_NTP_CLASS_IMPLEMENT)</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#   define __VSF_CLASS_IMPLEMENT__</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classvsf__linux__ntp__rtc__t.html">   49</a></span><a class="code hl_define" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code hl_class" href="classvsf__linux__ntp__rtc__t.html">vsf_linux_ntp_rtc_t</a>) {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    public_member(</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>#<span class="keywordflow">if</span> VSF_SPI_CFG_MULTI_CLASS == <a class="code hl_define" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        vsf_rtc_t vsf_rtc;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keyword">struct </span><a class="code hl_struct" href="structsockaddr__in.html">sockaddr_in</a> host_addr;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <a class="code hl_typedef" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> timeout_ms;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    )</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    private_member(</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordtype">int</span> sock;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    )</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>};</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="vsf__linux__ntp_8h.html#a40adac86415c1c5219605b59f12827a2">   66</a></span><span class="keyword">extern</span> <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code hl_function" href="vsf__linux__ntp_8h.html#a40adac86415c1c5219605b59f12827a2">vsf_linux_ntp_rtc_init</a>(vsf_rtc_t *rtc_ptr, rtc_cfg_t *cfg_ptr);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="vsf__linux__ntp_8h.html#a12a3d5ba69d9a1f2cf8a71b26a9ced26">   67</a></span><span class="keyword">extern</span> <a class="code hl_enumeration" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a> <a class="code hl_function" href="vsf__linux__ntp_8h.html#a12a3d5ba69d9a1f2cf8a71b26a9ced26">vsf_linux_ntp_rtc_enable</a>(vsf_rtc_t *rtc_ptr);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="vsf__linux__ntp_8h.html#aaa08772f881c9a3d73a54f906339cea2">   68</a></span><span class="keyword">extern</span> <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code hl_function" href="vsf__linux__ntp_8h.html#aaa08772f881c9a3d73a54f906339cea2">vsf_linux_ntp_rtc_get</a>(vsf_rtc_t *rtc_ptr, vsf_rtc_tm_t *rtc_tm);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">/* EOF */</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#   undef __VSF_LINUX_NTP_CLASS_IMPLEMENT</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#   define __VSF_CLASS_IMPLEMENT__</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classvsf__linux__ntp__rtc__t.html">   50</a></span><a class="code hl_define" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code hl_class" href="classvsf__linux__ntp__rtc__t.html">vsf_linux_ntp_rtc_t</a>) {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    public_member(</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>#<span class="keywordflow">if</span> VSF_SPI_CFG_MULTI_CLASS == <a class="code hl_define" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        vsf_rtc_t vsf_rtc;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keyword">struct </span><a class="code hl_struct" href="structsockaddr__in.html">sockaddr_in</a> host_addr;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <a class="code hl_typedef" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> timeout_ms;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    )</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    private_member(</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordtype">int</span> sock;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    )</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>};</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="vsf__linux__ntp_8h.html#a40adac86415c1c5219605b59f12827a2">   67</a></span><span class="keyword">extern</span> <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code hl_function" href="vsf__linux__ntp_8h.html#a40adac86415c1c5219605b59f12827a2">vsf_linux_ntp_rtc_init</a>(vsf_rtc_t *rtc_ptr, rtc_cfg_t *cfg_ptr);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="vsf__linux__ntp_8h.html#a12a3d5ba69d9a1f2cf8a71b26a9ced26">   68</a></span><span class="keyword">extern</span> <a class="code hl_enumeration" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a> <a class="code hl_function" href="vsf__linux__ntp_8h.html#a12a3d5ba69d9a1f2cf8a71b26a9ced26">vsf_linux_ntp_rtc_enable</a>(vsf_rtc_t *rtc_ptr);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="vsf__linux__ntp_8h.html#aaa08772f881c9a3d73a54f906339cea2">   69</a></span><span class="keyword">extern</span> <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code hl_function" href="vsf__linux__ntp_8h.html#aaa08772f881c9a3d73a54f906339cea2">vsf_linux_ntp_rtc_get</a>(vsf_rtc_t *rtc_ptr, vsf_rtc_tm_t *rtc_tm);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">/* EOF */</span></div>
 <div class="ttc" id="a____type_8h_html_a73c228f87e038e8295ee8ea8eceaa5ac"><div class="ttname"><a href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></div><div class="ttdeci">#define ENABLED</div><div class="ttdef"><b>Definition:</b> __type.h:28</div></div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition:</b> __type.h:42</div></div>
 <div class="ttc" id="aarm_2type_8h_html_a273cf69d639a59973b6019625df33e30"><div class="ttname"><a href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a></div><div class="ttdeci">unsigned short uint16_t</div><div class="ttdef"><b>Definition:</b> type.h:32</div></div>
-<div class="ttc" id="aclassvsf__linux__ntp__rtc__t_html"><div class="ttname"><a href="classvsf__linux__ntp__rtc__t.html">vsf_linux_ntp_rtc_t</a></div><div class="ttdef"><b>Definition:</b> vsf_linux_ntp.h:49</div></div>
+<div class="ttc" id="aclassvsf__linux__ntp__rtc__t_html"><div class="ttname"><a href="classvsf__linux__ntp__rtc__t.html">vsf_linux_ntp_rtc_t</a></div><div class="ttdef"><b>Definition:</b> vsf_linux_ntp.h:50</div></div>
 <div class="ttc" id="ain_8h_html"><div class="ttname"><a href="in_8h.html">in.h</a></div></div>
 <div class="ttc" id="aooc__class_8h_html"><div class="ttname"><a href="ooc__class_8h.html">ooc_class.h</a></div></div>
 <div class="ttc" id="aooc__class_8h_html_a62f3fe6fb9699483707f5352d777f2f0"><div class="ttname"><a href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a></div><div class="ttdeci">#define vsf_class(__name)</div><div class="ttdef"><b>Definition:</b> ooc_class.h:44</div></div>
