@@ -372,7 +372,7 @@ Variables</h2></td></tr>
 <div class="line">            struct <a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> {                                                     \</div>
 <div class="line">                implement(vsf_thread_t)                                         \</div>
 <div class="line">                implement_ex(thread_cb_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_t, param)                     \</div>
-<div class="line">            }<a class="code hl_define" href="____compiler_8h.html#a772cdb796bf75855c6a30626131d5e45">ALIGN</a>(8);                                                          \</div>
+<div class="line">            } <a class="code hl_define" href="____compiler_8h.html#a772cdb796bf75855c6a30626131d5e45">ALIGN</a>(8);                                                         \</div>
 <div class="line">            extern <span class="keywordtype">void</span> vsf_thread_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_start(<span class="keyword">struct</span> <a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> *task,        \</div>
 <div class="line">                                                    <a class="code hl_enumeration" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a> priority);       \</div>
 <div class="line">            extern <span class="keywordtype">void</span> vsf_thread_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_entry(                            \</div>
@@ -405,11 +405,11 @@ Variables</h2></td></tr>
 <div class="line">                                                <a class="code hl_enumeration" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a> priority)            \</div>
 <div class="line">            {                                                                   \</div>
 <div class="line">                VSF_KERNEL_ASSERT(<a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a> != task);                                \</div>
-<div class="line">                thread_cb_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_t *vsf_pthis =  &amp;(task-&gt;param);            \</div>
+<div class="line">                thread_cb_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_t *vsf_pthis = &amp;(task-&gt;param);             \</div>
 <div class="line">                vsf_pthis-&gt;use_as__vsf_thread_cb_t.entry = (vsf_thread_entry_t *)\</div>
 <div class="line">                                    &amp;vsf_thread_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_entry;               \</div>
 <div class="line">                vsf_pthis-&gt;use_as__vsf_thread_cb_t.stack = task-&gt;param.stack_arr;\</div>
-<div class="line">                vsf_pthis-&gt;use_as__vsf_thread_cb_t.stack_size =                  \</div>
+<div class="line">                vsf_pthis-&gt;use_as__vsf_thread_cb_t.stack_size =                 \</div>
 <div class="line">                    sizeof(task-&gt;param.stack_arr);                              \</div>
 <div class="line">                vsf_pthis-&gt;canary = 0xDEADBEEF;                                 \</div>
 <div class="line">                vsf_thread_start(   &amp;(task-&gt;use_as__vsf_thread_t),              \</div>
@@ -574,7 +574,7 @@ Variables</h2></td></tr>
 <div class="line">                                                <a class="code hl_typedef" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)             \</div>
 <div class="line">            {                                                                   \</div>
 <div class="line">                VSF_KERNEL_ASSERT(<a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a> != task &amp;&amp; 0 != <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a> &amp;&amp; <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a> != stack);  \</div>
-<div class="line">                thread_cb_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_t *vsf_pthis =  &amp;(task-&gt;param);            \</div>
+<div class="line">                thread_cb_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_t *vsf_pthis = &amp;(task-&gt;param);             \</div>
 <div class="line">                vsf_pthis-&gt;use_as__vsf_thread_cb_t.entry = (vsf_thread_entry_t *)\</div>
 <div class="line">                                    &amp;vsf_thread_##<a class="code hl_define" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_entry;               \</div>
 <div class="line">                vsf_pthis-&gt;use_as__vsf_thread_cb_t.stack = stack;               \</div>
@@ -1210,7 +1210,7 @@ Variables</h2></td></tr>
 <div class="line">                                0,                                              \</div>
 <div class="line">                                0)</div>
 <div class="ttc" id="aarm_2type_8h_html_a09674b9e56fd7a93a2169aa9210deec7"><div class="ttname"><a href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a></div><div class="ttdeci">uint32_t uintptr_t</div><div class="ttdef"><b>Definition:</b> type.h:51</div></div>
-<div class="ttc" id="avsf__thread_8c_html_abc793559227b611bf0bddd32e611e1c2"><div class="ttname"><a href="vsf__thread_8c.html#abc793559227b611bf0bddd32e611e1c2">vk_thread_call_eda</a></div><div class="ttdeci">vsf_err_t vk_thread_call_eda(uintptr_t eda_handler, uintptr_t param, size_t local_size, size_t local_buff_size, uintptr_t local_buff)</div><div class="ttdef"><b>Definition:</b> vsf_thread.c:546</div></div>
+<div class="ttc" id="avsf__thread_8c_html_abc793559227b611bf0bddd32e611e1c2"><div class="ttname"><a href="vsf__thread_8c.html#abc793559227b611bf0bddd32e611e1c2">vk_thread_call_eda</a></div><div class="ttdeci">vsf_err_t vk_thread_call_eda(uintptr_t eda_handler, uintptr_t param, size_t local_size, size_t local_buff_size, uintptr_t local_buff)</div><div class="ttdef"><b>Definition:</b> vsf_thread.c:595</div></div>
 </div><!-- fragment -->
 </div>
 </div>
