@@ -65,6 +65,7 @@ $(function() {
 <code>#include &quot;<a class="el" href="_s_d_l__keyboard_8h_source.html">SDL_keyboard.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_s_d_l__mouse_8h_source.html">SDL_mouse.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_s_d_l__surface_8h_source.html">SDL_surface.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_s_d_l__thread_8h_source.html">SDL_thread.h</a>&quot;</code><br />
 </div>
 <p><a href="_s_d_l_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -73,6 +74,8 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="union_s_d_l___color.html">SDL_Color</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_d_l___rect.html">SDL_Rect</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_d_l___point.html">SDL_Point</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_d_l___palette.html">SDL_Palette</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,6 +144,8 @@ Macros</h2></td></tr>
 <tr class="separator:a309c73e9264a99c8e690a82ded4505ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16ef7c672c3911e51f919b9284fd337c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#a16ef7c672c3911e51f919b9284fd337c">SDL_MaximizeWindow</a>&#160;&#160;&#160;<a class="el" href="vsf__sdl2__cfg_8h.html#a320a73e45f2af7d46b0471f6f1535e28">VSF_SDL_WRAPPER</a>(SDL_MaximizeWindow)</td></tr>
 <tr class="separator:a16ef7c672c3911e51f919b9284fd337c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8cb1da199cc2f02893d34f41279435b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#ad8cb1da199cc2f02893d34f41279435b">SDL_MinimizeWindow</a>&#160;&#160;&#160;<a class="el" href="vsf__sdl2__cfg_8h.html#a320a73e45f2af7d46b0471f6f1535e28">VSF_SDL_WRAPPER</a>(SDL_MinimizeWindow)</td></tr>
+<tr class="separator:ad8cb1da199cc2f02893d34f41279435b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36fed8ae84bfa68d73ed3bcd3e9e9ff8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#a36fed8ae84bfa68d73ed3bcd3e9e9ff8">SDL_GetWindowFlags</a>&#160;&#160;&#160;<a class="el" href="vsf__sdl2__cfg_8h.html#a320a73e45f2af7d46b0471f6f1535e28">VSF_SDL_WRAPPER</a>(SDL_GetWindowFlags)</td></tr>
 <tr class="separator:a36fed8ae84bfa68d73ed3bcd3e9e9ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd3925fe21c8e115727958c06f61eadc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#acd3925fe21c8e115727958c06f61eadc">SDL_GetDesktopDisplayMode</a>&#160;&#160;&#160;<a class="el" href="vsf__sdl2__cfg_8h.html#a320a73e45f2af7d46b0471f6f1535e28">VSF_SDL_WRAPPER</a>(SDL_GetDesktopDisplayMode)</td></tr>
@@ -273,6 +278,8 @@ Macros</h2></td></tr>
 <tr class="separator:a3c9bac226f193c284f26643166a66e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4fb2ecf0ba9e44e73b61931d408eede"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#ae4fb2ecf0ba9e44e73b61931d408eede">SDL_GetGlobalMouseState</a>&#160;&#160;&#160;<a class="el" href="vsf__sdl2__cfg_8h.html#a320a73e45f2af7d46b0471f6f1535e28">VSF_SDL_WRAPPER</a>(SDL_GetGlobalMouseState)</td></tr>
 <tr class="separator:ae4fb2ecf0ba9e44e73b61931d408eede"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1204791b841535c0226d15e18a5d0bbd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#a1204791b841535c0226d15e18a5d0bbd">SDL_SetWindowHitTest</a>&#160;&#160;&#160;<a class="el" href="vsf__sdl2__cfg_8h.html#a320a73e45f2af7d46b0471f6f1535e28">VSF_SDL_WRAPPER</a>(SDL_SetWindowHitTest)</td></tr>
+<tr class="separator:a1204791b841535c0226d15e18a5d0bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73446158a572a490d1fd22fb5e35ee47"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#a73446158a572a490d1fd22fb5e35ee47">SDL_CreateYUVOverlay</a>&#160;&#160;&#160;<a class="el" href="vsf__sdl2__cfg_8h.html#a320a73e45f2af7d46b0471f6f1535e28">VSF_SDL_WRAPPER</a>(SDL_CreateYUVOverlay)</td></tr>
 <tr class="separator:a73446158a572a490d1fd22fb5e35ee47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3b470f784ba8d9a97f292b760fcdc94"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#ab3b470f784ba8d9a97f292b760fcdc94">SDL_FreeYUVOverlay</a>&#160;&#160;&#160;<a class="el" href="vsf__sdl2__cfg_8h.html#a320a73e45f2af7d46b0471f6f1535e28">VSF_SDL_WRAPPER</a>(SDL_FreeYUVOverlay)</td></tr>
@@ -342,6 +349,8 @@ Typedefs</h2></td></tr>
 <tr class="separator:a3b692dba3e7570ec216d967285029216"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e17b356ca55e6b653f4fe33c5357ed5"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct_s_d_l___rect.html">SDL_Rect</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#a9e17b356ca55e6b653f4fe33c5357ed5">SDL_Rect</a></td></tr>
 <tr class="separator:a9e17b356ca55e6b653f4fe33c5357ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8e5504e162ce2079402a96ab24464b0"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct_s_d_l___point.html">SDL_Point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#aa8e5504e162ce2079402a96ab24464b0">SDL_Point</a></td></tr>
+<tr class="separator:aa8e5504e162ce2079402a96ab24464b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5f97ba027e77bd3407b7628e988e9b4"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="_s_d_l_8h.html#ab10f4fd6a082ef06fcae96860c95fb18">SDL_WindowFlags</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#ae5f97ba027e77bd3407b7628e988e9b4">SDL_WindowFlags</a></td></tr>
 <tr class="separator:ae5f97ba027e77bd3407b7628e988e9b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55a196c7d3b8497538632c79ae1e6392"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct_s_d_l___window.html">SDL_Window</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a></td></tr>
@@ -374,6 +383,8 @@ Typedefs</h2></td></tr>
 <tr class="separator:a747ca1a3f47cbdb35d718e7917d797aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae95b698a5abe9ae3b36f0ab4617e9e14"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct_s_d_l___audio_spec.html">SDL_AudioSpec</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#ae95b698a5abe9ae3b36f0ab4617e9e14">SDL_AudioSpec</a></td></tr>
 <tr class="separator:ae95b698a5abe9ae3b36f0ab4617e9e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a247c7fd43bb60b20630945a5bd9e4957"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="_s_d_l_8h.html#a0415a108581752b68c6aca800ff3bad5">SDL_HitTestResult</a>(<a class="el" href="_s_d_l_8h.html#a81faf4ba0455dc75f2e0507eddb79401">SDLCALL</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#a247c7fd43bb60b20630945a5bd9e4957">SDL_HitTest</a>) (<a class="el" href="struct_s_d_l___window.html">SDL_Window</a> *win, const <a class="el" href="struct_s_d_l___point.html">SDL_Point</a> *area, void *data)</td></tr>
+<tr class="separator:a247c7fd43bb60b20630945a5bd9e4957"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -593,6 +604,29 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a22e08f45c2e219637ff7ae26af0678e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0415a108581752b68c6aca800ff3bad5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#a0415a108581752b68c6aca800ff3bad5">SDL_HitTestResult</a> { <br />
+&#160;&#160;<a class="el" href="_s_d_l_8h.html#a0415a108581752b68c6aca800ff3bad5a3eb7be45c88e40366315d453f3bf721e">SDL_HITTEST_NORMAL</a>
+, <br />
+&#160;&#160;<a class="el" href="_s_d_l_8h.html#a0415a108581752b68c6aca800ff3bad5a078a028af8c26848cf3576bd0c4d8fc9">SDL_HITTEST_DRAGGABLE</a>
+, <br />
+&#160;&#160;<a class="el" href="_s_d_l_8h.html#a0415a108581752b68c6aca800ff3bad5acbfbe2bde22d4fdce5b19f327fd26798">SDL_HITTEST_RESIZE_TOPLEFT</a>
+, <br />
+&#160;&#160;<a class="el" href="_s_d_l_8h.html#a0415a108581752b68c6aca800ff3bad5a19edd2ad7c4f276d13a21aaf61672fcd">SDL_HITTEST_RESIZE_TOP</a>
+, <br />
+&#160;&#160;<a class="el" href="_s_d_l_8h.html#a0415a108581752b68c6aca800ff3bad5a2119a0469719b69f16a1f35ab810aff3">SDL_HITTEST_RESIZE_TOPRIGHT</a>
+, <br />
+&#160;&#160;<a class="el" href="_s_d_l_8h.html#a0415a108581752b68c6aca800ff3bad5ac8c0e2ed653a7b69243e317867d8ac42">SDL_HITTEST_RESIZE_RIGHT</a>
+, <br />
+&#160;&#160;<a class="el" href="_s_d_l_8h.html#a0415a108581752b68c6aca800ff3bad5a7be4783a68f0c51166dbd289d9a42c51">SDL_HITTEST_RESIZE_BOTTOMRIGHT</a>
+, <br />
+&#160;&#160;<a class="el" href="_s_d_l_8h.html#a0415a108581752b68c6aca800ff3bad5a689ac09305aee5ee819aa39625f848db">SDL_HITTEST_RESIZE_BOTTOM</a>
+, <br />
+&#160;&#160;<a class="el" href="_s_d_l_8h.html#a0415a108581752b68c6aca800ff3bad5a94f9165ed48fb13d6996eae2a83154bf">SDL_HITTEST_RESIZE_BOTTOMLEFT</a>
+, <br />
+&#160;&#160;<a class="el" href="_s_d_l_8h.html#a0415a108581752b68c6aca800ff3bad5a09656621305e2f938a864fc425fe0869">SDL_HITTEST_RESIZE_LEFT</a>
+<br />
+ }</td></tr>
+<tr class="separator:a0415a108581752b68c6aca800ff3bad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -634,6 +668,8 @@ Functions</h2></td></tr>
 <tr class="separator:a5d466a385cd86979572598997e206c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3f36c32a3b4936cedccb5d3841c651a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#ac3f36c32a3b4936cedccb5d3841c651a">SDL_MaximizeWindow</a> (<a class="el" href="struct_s_d_l___window.html">SDL_Window</a> *window)</td></tr>
 <tr class="separator:ac3f36c32a3b4936cedccb5d3841c651a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6514ed0c925048acd65e5be07933820"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#ac6514ed0c925048acd65e5be07933820">SDL_MinimizeWindow</a> (<a class="el" href="struct_s_d_l___window.html">SDL_Window</a> *window)</td></tr>
+<tr class="separator:ac6514ed0c925048acd65e5be07933820"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accb90e906b2dc5bda233d071d2d88cf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#accb90e906b2dc5bda233d071d2d88cf0">SDL_GetWindowFlags</a> (<a class="el" href="struct_s_d_l___window.html">SDL_Window</a> *window)</td></tr>
 <tr class="separator:accb90e906b2dc5bda233d071d2d88cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6bfa3b056b782a4575e8be4589fb817"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#aa6bfa3b056b782a4575e8be4589fb817">SDL_GetDesktopDisplayMode</a> (int display_index, <a class="el" href="struct_s_d_l___display_mode.html">SDL_DisplayMode</a> *mode)</td></tr>
@@ -744,6 +780,8 @@ Functions</h2></td></tr>
 <tr class="separator:aae1fb6b209fee8b27117d9b496f6d64a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef1c913bd71e982c42387dc967d91d07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#aef1c913bd71e982c42387dc967d91d07">SDL_GetGlobalMouseState</a> (int *x, int *y)</td></tr>
 <tr class="separator:aef1c913bd71e982c42387dc967d91d07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac274b2aaabb52a5fe0a6821654bee822"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#ac274b2aaabb52a5fe0a6821654bee822">SDL_SetWindowHitTest</a> (<a class="el" href="struct_s_d_l___window.html">SDL_Window</a> *window, <a class="el" href="_s_d_l_8h.html#a247c7fd43bb60b20630945a5bd9e4957">SDL_HitTest</a> callback, void *callback_data)</td></tr>
+<tr class="separator:ac274b2aaabb52a5fe0a6821654bee822"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76274aa5e0809e893ec9fa443541fd99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_s_d_l___overlay.html">SDL_Overlay</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#a76274aa5e0809e893ec9fa443541fd99">SDL_CreateYUVOverlay</a> (int width, int height, <a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> <a class="el" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>, <a class="el" href="struct_s_d_l___surface.html">SDL_Surface</a> *display)</td></tr>
 <tr class="separator:a76274aa5e0809e893ec9fa443541fd99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a328b74588ecb02c2ab12978947e94cab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_d_l_8h.html#a328b74588ecb02c2ab12978947e94cab">SDL_FreeYUVOverlay</a> (<a class="el" href="struct_s_d_l___overlay.html">SDL_Overlay</a> *overlay)</td></tr>
@@ -1110,6 +1148,20 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define SDL_MaximizeWindow&#160;&#160;&#160;<a class="el" href="vsf__sdl2__cfg_8h.html#a320a73e45f2af7d46b0471f6f1535e28">VSF_SDL_WRAPPER</a>(SDL_MaximizeWindow)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad8cb1da199cc2f02893d34f41279435b" name="ad8cb1da199cc2f02893d34f41279435b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8cb1da199cc2f02893d34f41279435b">&#9670;&nbsp;</a></span>SDL_MinimizeWindow</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SDL_MinimizeWindow&#160;&#160;&#160;<a class="el" href="vsf__sdl2__cfg_8h.html#a320a73e45f2af7d46b0471f6f1535e28">VSF_SDL_WRAPPER</a>(SDL_MinimizeWindow)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2044,6 +2096,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a1204791b841535c0226d15e18a5d0bbd" name="a1204791b841535c0226d15e18a5d0bbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1204791b841535c0226d15e18a5d0bbd">&#9670;&nbsp;</a></span>SDL_SetWindowHitTest</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SDL_SetWindowHitTest&#160;&#160;&#160;<a class="el" href="vsf__sdl2__cfg_8h.html#a320a73e45f2af7d46b0471f6f1535e28">VSF_SDL_WRAPPER</a>(SDL_SetWindowHitTest)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a73446158a572a490d1fd22fb5e35ee47" name="a73446158a572a490d1fd22fb5e35ee47"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a73446158a572a490d1fd22fb5e35ee47">&#9670;&nbsp;</a></span>SDL_CreateYUVOverlay</h2>
 
@@ -2571,6 +2637,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aa8e5504e162ce2079402a96ab24464b0" name="aa8e5504e162ce2079402a96ab24464b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8e5504e162ce2079402a96ab24464b0">&#9670;&nbsp;</a></span>SDL_Point</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct_s_d_l___point.html">SDL_Point</a> <a class="el" href="struct_s_d_l___point.html">SDL_Point</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae5f97ba027e77bd3407b7628e988e9b4" name="ae5f97ba027e77bd3407b7628e988e9b4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae5f97ba027e77bd3407b7628e988e9b4">&#9670;&nbsp;</a></span>SDL_WindowFlags</h2>
 
@@ -2789,6 +2869,20 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef struct <a class="el" href="struct_s_d_l___audio_spec.html">SDL_AudioSpec</a> <a class="el" href="struct_s_d_l___audio_spec.html">SDL_AudioSpec</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a247c7fd43bb60b20630945a5bd9e4957" name="a247c7fd43bb60b20630945a5bd9e4957"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a247c7fd43bb60b20630945a5bd9e4957">&#9670;&nbsp;</a></span>SDL_HitTest</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="_s_d_l_8h.html#a0415a108581752b68c6aca800ff3bad5">SDL_HitTestResult</a>(<a class="el" href="_s_d_l_8h.html#a81faf4ba0455dc75f2e0507eddb79401">SDLCALL</a> * SDL_HitTest) (<a class="el" href="struct_s_d_l___window.html">SDL_Window</a> *win, const <a class="el" href="struct_s_d_l___point.html">SDL_Point</a> *area, void *data)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -3045,6 +3139,32 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a22e08f45c2e219637ff7ae26af0678e9ac3092e00c1a2579964877e873fa016f6" name="a22e08f45c2e219637ff7ae26af0678e9ac3092e00c1a2579964877e873fa016f6"></a>AUDIO_S16SYS&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a22e08f45c2e219637ff7ae26af0678e9a4ac080eee5ddf2532df1adfe0f938ff0" name="a22e08f45c2e219637ff7ae26af0678e9a4ac080eee5ddf2532df1adfe0f938ff0"></a>AUDIO_S32SYS&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a22e08f45c2e219637ff7ae26af0678e9a2f92b81baa2cdd98e33b328e72bc33f1" name="a22e08f45c2e219637ff7ae26af0678e9a2f92b81baa2cdd98e33b328e72bc33f1"></a>AUDIO_F32SYS&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a0415a108581752b68c6aca800ff3bad5" name="a0415a108581752b68c6aca800ff3bad5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0415a108581752b68c6aca800ff3bad5">&#9670;&nbsp;</a></span>SDL_HitTestResult</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_s_d_l_8h.html#a0415a108581752b68c6aca800ff3bad5">SDL_HitTestResult</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0415a108581752b68c6aca800ff3bad5a3eb7be45c88e40366315d453f3bf721e" name="a0415a108581752b68c6aca800ff3bad5a3eb7be45c88e40366315d453f3bf721e"></a>SDL_HITTEST_NORMAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0415a108581752b68c6aca800ff3bad5a078a028af8c26848cf3576bd0c4d8fc9" name="a0415a108581752b68c6aca800ff3bad5a078a028af8c26848cf3576bd0c4d8fc9"></a>SDL_HITTEST_DRAGGABLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0415a108581752b68c6aca800ff3bad5acbfbe2bde22d4fdce5b19f327fd26798" name="a0415a108581752b68c6aca800ff3bad5acbfbe2bde22d4fdce5b19f327fd26798"></a>SDL_HITTEST_RESIZE_TOPLEFT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0415a108581752b68c6aca800ff3bad5a19edd2ad7c4f276d13a21aaf61672fcd" name="a0415a108581752b68c6aca800ff3bad5a19edd2ad7c4f276d13a21aaf61672fcd"></a>SDL_HITTEST_RESIZE_TOP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0415a108581752b68c6aca800ff3bad5a2119a0469719b69f16a1f35ab810aff3" name="a0415a108581752b68c6aca800ff3bad5a2119a0469719b69f16a1f35ab810aff3"></a>SDL_HITTEST_RESIZE_TOPRIGHT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0415a108581752b68c6aca800ff3bad5ac8c0e2ed653a7b69243e317867d8ac42" name="a0415a108581752b68c6aca800ff3bad5ac8c0e2ed653a7b69243e317867d8ac42"></a>SDL_HITTEST_RESIZE_RIGHT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0415a108581752b68c6aca800ff3bad5a7be4783a68f0c51166dbd289d9a42c51" name="a0415a108581752b68c6aca800ff3bad5a7be4783a68f0c51166dbd289d9a42c51"></a>SDL_HITTEST_RESIZE_BOTTOMRIGHT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0415a108581752b68c6aca800ff3bad5a689ac09305aee5ee819aa39625f848db" name="a0415a108581752b68c6aca800ff3bad5a689ac09305aee5ee819aa39625f848db"></a>SDL_HITTEST_RESIZE_BOTTOM&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0415a108581752b68c6aca800ff3bad5a94f9165ed48fb13d6996eae2a83154bf" name="a0415a108581752b68c6aca800ff3bad5a94f9165ed48fb13d6996eae2a83154bf"></a>SDL_HITTEST_RESIZE_BOTTOMLEFT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0415a108581752b68c6aca800ff3bad5a09656621305e2f938a864fc425fe0869" name="a0415a108581752b68c6aca800ff3bad5a09656621305e2f938a864fc425fe0869"></a>SDL_HITTEST_RESIZE_LEFT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -3520,6 +3640,24 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">void SDL_MaximizeWindow </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_s_d_l___window.html">SDL_Window</a> *&#160;</td>
+          <td class="paramname"><em>window</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac6514ed0c925048acd65e5be07933820" name="ac6514ed0c925048acd65e5be07933820"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6514ed0c925048acd65e5be07933820">&#9670;&nbsp;</a></span>SDL_MinimizeWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SDL_MinimizeWindow </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_s_d_l___window.html">SDL_Window</a> *&#160;</td>
           <td class="paramname"><em>window</em></td><td>)</td>
@@ -5085,6 +5223,40 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac274b2aaabb52a5fe0a6821654bee822" name="ac274b2aaabb52a5fe0a6821654bee822"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac274b2aaabb52a5fe0a6821654bee822">&#9670;&nbsp;</a></span>SDL_SetWindowHitTest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SDL_SetWindowHitTest </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_s_d_l___window.html">SDL_Window</a> *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_s_d_l_8h.html#a247c7fd43bb60b20630945a5bd9e4957">SDL_HitTest</a>&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>callback_data</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
