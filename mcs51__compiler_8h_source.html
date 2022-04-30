@@ -122,28 +122,28 @@ $(function() {
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#if __IS_COMPILER_IAR__</span></div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">#   define LOW_LEVEL_INIT_RET_T char</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#   define ROM_FLASH            _Pragma(__STR(location=&quot;.rom.flash&quot;</span>)) const</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#   define ROM_EEPROM           _Pragma(__STR(location=&quot;.rom.eeprom&quot;</span>)) const</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#   define ROM_FLASH            _Pragma(__VSF_STR(location=&quot;.rom.flash&quot;</span>)) const</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#   define ROM_EEPROM           _Pragma(__VSF_STR(location=&quot;.rom.eeprom&quot;</span>)) const</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#   define NO_INIT              __no_init</span></div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#   define ROOT                 __root</span></div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#   define INLINE               inline</span></div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#   define NO_INLINE            _Pragma(&quot;optimisze=no_inline&quot;</span>)</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#   define ALWAYS_INLINE        _Pragma(&quot;inline=forced&quot;</span>)</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">#   define WEAK(...)            _Pragma(__STR(weak __VA_ARGS__))</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">#   define WEAK(...)            _Pragma(__VSF_STR(weak __VA_ARGS__))</span></div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">#   define RAMFUNC              __ramfunc</span></div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">#   define __asm__              __asm</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">#   define __ALIGN(__N)         </span><span class="comment">//_Pragma(&quot;data_alignment=&quot; __STR(__N))         //!&lt; 8051 does not have any alignment restrictions</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">#   define __ALIGN(__N)         </span><span class="comment">//_Pragma(&quot;data_alignment=&quot; __VSF_STR(__N))         //!&lt; 8051 does not have any alignment restrictions</span></div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#   define __AT_ADDR(__ADDR)    @ __ADDR</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#   define __SECTION(__SEC)     _Pragma(__STR(section=__SEC))</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#   define __SECTION(__SEC)     _Pragma(__VSF_STR(section=__SEC))</span></div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#   define __WEAK_ALIAS(__ORIGIN, __ALIAS) \</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">                                _Pragma(__STR(weak __ORIGIN=__ALIAS))</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">                                _Pragma(__VSF_STR(weak __ORIGIN=__ALIAS))</span></div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">#   define PACKED               </span></div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#   define UNALIGNED            </span></div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#   define TRANSPARENT_UNION    </span></div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#   define __ALIGN_OF(...)      __ALIGNOF__(__VA_ARGS__)</span></div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="preprocessor">#define __ISR(__VEC)                                                            \</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">        _Pragma(__STR(vector=__VEC))                                            \</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">        _Pragma(__VSF_STR(vector=__VEC))                                            \</span></div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="preprocessor">        __interrupt void vect_##__VEC##_handler(void)  </span></div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="preprocessor">#   define __stackless</span></div>
