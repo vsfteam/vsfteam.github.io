@@ -97,33 +97,39 @@ $(function() {
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="linux_2include_2simple__libc_2stddef_8h.html#a8a4dba3eaaa8e7d90abb2eff93092042">   50</a></span><span class="preprocessor">#define offsetof(__type, __member)  (uintptr_t)(&amp;(((__type *)0)-&gt;__member))</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#ifndef __WIN__</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#   if defined(__IS_COMPILER_ARM_COMPILER_6__) &amp;&amp; defined(__PTRDIFF_TYPE__)</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">typedef</span> __PTRDIFF_TYPE__            <a class="code hl_typedef" href="linux_2include_2simple__libc_2stddef_8h.html#a23cb93d05cba169da99f4d11a2a62ff2">ptrdiff_t</a>;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#   else</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="linux_2include_2simple__libc_2stddef_8h.html#a23cb93d05cba169da99f4d11a2a62ff2">   57</a></span><span class="keyword">typedef</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>                    <a class="code hl_typedef" href="linux_2include_2simple__libc_2stddef_8h.html#a23cb93d05cba169da99f4d11a2a62ff2">ptrdiff_t</a>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#   ifdef __WIN__</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">namespace </span>std {</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keyword">typedef</span> <span class="keyword">decltype</span>(__nullptr)     nullptr_t;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>using ::std::nullptr_t;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structmax__align__t.html">   52</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="structmax__align__t.html#a7f7548cc5bc6b28b69444bc8ef492bb1">   53</a></span>    <a class="code hl_typedef" href="arm_2type_8h.html#ac8e3d6f27cb089386219c1a817170c3d">uintalu_t</a> __max_align_uintalu[2];</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>} <a class="code hl_struct" href="structmax__align__t.html">max_align_t</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#ifndef __WIN__</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#   if defined(__IS_COMPILER_ARM_COMPILER_6__) &amp;&amp; defined(__PTRDIFF_TYPE__)</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">typedef</span> __PTRDIFF_TYPE__            <a class="code hl_typedef" href="linux_2include_2simple__libc_2stddef_8h.html#a23cb93d05cba169da99f4d11a2a62ff2">ptrdiff_t</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#   else</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="linux_2include_2simple__libc_2stddef_8h.html#a23cb93d05cba169da99f4d11a2a62ff2">   61</a></span><span class="keyword">typedef</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>                    <a class="code hl_typedef" href="linux_2include_2simple__libc_2stddef_8h.html#a23cb93d05cba169da99f4d11a2a62ff2">ptrdiff_t</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#   ifdef __WIN__</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keyword">namespace </span>std {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keyword">typedef</span> <span class="keyword">decltype</span>(__nullptr)     nullptr_t;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="alinux_2include_2simple__libc_2stddef_8h_html_a23cb93d05cba169da99f4d11a2a62ff2"><div class="ttname"><a href="linux_2include_2simple__libc_2stddef_8h.html#a23cb93d05cba169da99f4d11a2a62ff2">ptrdiff_t</a></div><div class="ttdeci">long int ptrdiff_t</div><div class="ttdef"><b>Definition:</b> stddef.h:57</div></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>using ::std::nullptr_t;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aarm_2type_8h_html_ac8e3d6f27cb089386219c1a817170c3d"><div class="ttname"><a href="arm_2type_8h.html#ac8e3d6f27cb089386219c1a817170c3d">uintalu_t</a></div><div class="ttdeci">uint_fast8_t uintalu_t</div><div class="ttdef"><b>Definition:</b> type.h:88</div></div>
+<div class="ttc" id="alinux_2include_2simple__libc_2stddef_8h_html_a23cb93d05cba169da99f4d11a2a62ff2"><div class="ttname"><a href="linux_2include_2simple__libc_2stddef_8h.html#a23cb93d05cba169da99f4d11a2a62ff2">ptrdiff_t</a></div><div class="ttdeci">long int ptrdiff_t</div><div class="ttdef"><b>Definition:</b> stddef.h:61</div></div>
 <div class="ttc" id="alinux_2include_2simple__libc_2stddef_8h_html_a9026fbe0621f8d881c7bc984a03c8b06"><div class="ttname"><a href="linux_2include_2simple__libc_2stddef_8h.html#a9026fbe0621f8d881c7bc984a03c8b06">wchar_t</a></div><div class="ttdeci">unsigned short wchar_t</div><div class="ttdef"><b>Definition:</b> stddef.h:23</div></div>
 <div class="ttc" id="alinux_2include_2simple__libc_2stddef_8h_html_a9479c62e8e0a40d680e5f7aba88d62fa"><div class="ttname"><a href="linux_2include_2simple__libc_2stddef_8h.html#a9479c62e8e0a40d680e5f7aba88d62fa">wint_t</a></div><div class="ttdeci">unsigned short wint_t</div><div class="ttdef"><b>Definition:</b> stddef.h:25</div></div>
 <div class="ttc" id="alinux_2include_2sys_2types_8h_html"><div class="ttname"><a href="linux_2include_2sys_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="astructmax__align__t_html"><div class="ttname"><a href="structmax__align__t.html">max_align_t</a></div><div class="ttdef"><b>Definition:</b> stddef.h:52</div></div>
 <div class="ttc" id="avsf__linux__cfg_8h_html"><div class="ttname"><a href="vsf__linux__cfg_8h.html">vsf_linux_cfg.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
