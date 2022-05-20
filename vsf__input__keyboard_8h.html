@@ -70,7 +70,7 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a0a82915e52b6764a14e62608c0126ef6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__keyboard_8h.html#a0a82915e52b6764a14e62608c0126ef6">vsf_input_keyboard_set</a>(__event,  __keycode,  __is_down,  __keymod)</td></tr>
 <tr class="separator:a0a82915e52b6764a14e62608c0126ef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3469dffa8682789c4465277ec910c15f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__keyboard_8h.html#a3469dffa8682789c4465277ec910c15f">vsf_input_keyboard_get_keymod</a>(__event)&#160;&#160;&#160;            ((<a class="el" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>)(((__event)-&gt;id &gt;&gt; 11) &amp; 0xFF))</td></tr>
+<tr class="memitem:a3469dffa8682789c4465277ec910c15f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__keyboard_8h.html#a3469dffa8682789c4465277ec910c15f">vsf_input_keyboard_get_keymod</a>(__event)&#160;&#160;&#160;            ((<a class="el" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>)(((__event)-&gt;id &gt;&gt; 11) &amp; 0xFFF))</td></tr>
 <tr class="separator:a3469dffa8682789c4465277ec910c15f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6dbfa4ec9a8d51543ab1d1e6c35e48ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input__keyboard_8h.html#a6dbfa4ec9a8d51543ab1d1e6c35e48ab">vsf_input_keyboard_get_keycode</a>(__event)&#160;&#160;&#160;            ((<a class="el" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>)(((__event)-&gt;id &gt;&gt; 0) &amp; 0x3FF))</td></tr>
 <tr class="separator:a6dbfa4ec9a8d51543ab1d1e6c35e48ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -477,6 +477,14 @@ Enumerations</h2></td></tr>
 , <br />
 &#160;&#160;<a class="el" href="vsf__input__keyboard_8h.html#afccd240f973cf154952fb917c9209719afc7f7fca589a46a7239bf0dc59980626">VSF_KM_RIGHT_GUI</a> = 0x80
 , <br />
+&#160;&#160;<a class="el" href="vsf__input__keyboard_8h.html#afccd240f973cf154952fb917c9209719a11a72e93db4188fa6a30014ca38accca">VSF_KM_NUMLOCK</a> = 0x100
+, <br />
+&#160;&#160;<a class="el" href="vsf__input__keyboard_8h.html#afccd240f973cf154952fb917c9209719a75715fb41b32ba52656e7d77dfd3600b">VSF_KM_CAPSLOCK</a> = 0x200
+, <br />
+&#160;&#160;<a class="el" href="vsf__input__keyboard_8h.html#afccd240f973cf154952fb917c9209719a791dde41956b82ab233efa41b2aa34ca">VSF_KM_SCROLLLOCK</a> = 0x400
+, <br />
+&#160;&#160;<a class="el" href="vsf__input__keyboard_8h.html#afccd240f973cf154952fb917c9209719adc9168fe65bfaa17eeee90c193c6280f">VSF_KM_FN</a> = 0x800
+, <br />
 &#160;&#160;<a class="el" href="vsf__input__keyboard_8h.html#afccd240f973cf154952fb917c9209719acf75145dabd7616cf7a9e23927f5e525">VSF_KM_SHIFT</a> = VSF_KM_LEFT_SHIFT | VSF_KM_RIGHT_SHIFT
 , <br />
 &#160;&#160;<a class="el" href="vsf__input__keyboard_8h.html#afccd240f973cf154952fb917c9209719a4ddc429056ac6b920290499dd46cbdd8">VSF_KM_CTRL</a> = VSF_KM_LEFT_CTRL | VSF_KM_RIGHT_CTRL
@@ -543,7 +551,7 @@ Enumerations</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">__event</td><td>)</td>
-          <td>&#160;&#160;&#160;            ((<a class="el" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>)(((__event)-&gt;id &gt;&gt; 11) &amp; 0xFF))</td>
+          <td>&#160;&#160;&#160;            ((<a class="el" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>)(((__event)-&gt;id &gt;&gt; 11) &amp; 0xFFF))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -840,6 +848,10 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="afccd240f973cf154952fb917c9209719ac306a9de4b91a1c7a8f29370efb9461b" name="afccd240f973cf154952fb917c9209719ac306a9de4b91a1c7a8f29370efb9461b"></a>VSF_KM_RIGHT_CTRL&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="afccd240f973cf154952fb917c9209719a2bce75ed99d61a57e1cebba27fc35620" name="afccd240f973cf154952fb917c9209719a2bce75ed99d61a57e1cebba27fc35620"></a>VSF_KM_RIGHT_ALT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="afccd240f973cf154952fb917c9209719afc7f7fca589a46a7239bf0dc59980626" name="afccd240f973cf154952fb917c9209719afc7f7fca589a46a7239bf0dc59980626"></a>VSF_KM_RIGHT_GUI&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afccd240f973cf154952fb917c9209719a11a72e93db4188fa6a30014ca38accca" name="afccd240f973cf154952fb917c9209719a11a72e93db4188fa6a30014ca38accca"></a>VSF_KM_NUMLOCK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afccd240f973cf154952fb917c9209719a75715fb41b32ba52656e7d77dfd3600b" name="afccd240f973cf154952fb917c9209719a75715fb41b32ba52656e7d77dfd3600b"></a>VSF_KM_CAPSLOCK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afccd240f973cf154952fb917c9209719a791dde41956b82ab233efa41b2aa34ca" name="afccd240f973cf154952fb917c9209719a791dde41956b82ab233efa41b2aa34ca"></a>VSF_KM_SCROLLLOCK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afccd240f973cf154952fb917c9209719adc9168fe65bfaa17eeee90c193c6280f" name="afccd240f973cf154952fb917c9209719adc9168fe65bfaa17eeee90c193c6280f"></a>VSF_KM_FN&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="afccd240f973cf154952fb917c9209719acf75145dabd7616cf7a9e23927f5e525" name="afccd240f973cf154952fb917c9209719acf75145dabd7616cf7a9e23927f5e525"></a>VSF_KM_SHIFT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="afccd240f973cf154952fb917c9209719a4ddc429056ac6b920290499dd46cbdd8" name="afccd240f973cf154952fb917c9209719a4ddc429056ac6b920290499dd46cbdd8"></a>VSF_KM_CTRL&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="afccd240f973cf154952fb917c9209719adb6762967c8712702a9d0632e45ea4aa" name="afccd240f973cf154952fb917c9209719adb6762967c8712702a9d0632e45ea4aa"></a>VSF_KM_ALT&#160;</td><td class="fielddoc"></td></tr>
