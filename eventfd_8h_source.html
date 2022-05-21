@@ -63,29 +63,41 @@
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#   include &lt;<a class="code" href="linux_2include_2sys_2types_8h.html">sys/types.h</a>&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#   include &lt;<a class="code" href="fcntl_8h.html">fcntl.h</a>&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#if VSF_LINUX_CFG_WRAPPER == ENABLED</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="eventfd_8h.html#abd67bb43475639155be5cef81a2df842">   19</a></span><span class="preprocessor">#define eventfd                 VSF_LINUX_WRAPPER(eventfd)</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="eventfd_8h.html#aa1cf1f9ea4d84916ad5fdf7105d4ee1f">   22</a></span><span class="preprocessor">#define EFD_SEMAPHORE           (1 &lt;&lt; 0)</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="eventfd_8h.html#af47517595fa3460ad8dbc84b9373c05c">   23</a></span><span class="preprocessor">#define EFD_CLOEXEC             O_CLOEXEC</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="eventfd_8h.html#a04677f5ad8d61c569b9c32ec35b05e7a">   24</a></span><span class="preprocessor">#define EFD_NONBLOCK            O_NONBLOCK</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">int</span> <a class="code hl_define" href="eventfd_8h.html#abd67bb43475639155be5cef81a2df842">eventfd</a>(<span class="keywordtype">int</span> count, <span class="keywordtype">int</span> flags);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_LINUX_EVENTFD_H__</span></div>
-<div class="ttc" id="aeventfd_8h_html_abd67bb43475639155be5cef81a2df842"><div class="ttname"><a href="eventfd_8h.html#abd67bb43475639155be5cef81a2df842">eventfd</a></div><div class="ttdeci">#define eventfd</div><div class="ttdef"><b>Definition:</b> eventfd.h:19</div></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#if VSF_LINUX_CFG_WRAPPER == ENABLED</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="eventfd_8h.html#abd67bb43475639155be5cef81a2df842">   20</a></span><span class="preprocessor">#define eventfd                 VSF_LINUX_WRAPPER(eventfd)</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="eventfd_8h.html#ad6b772bdded89a07a253e590800d75fa">   21</a></span><span class="preprocessor">#define eventfd_read            VSF_LINUX_WRAPPER(eventfd_read)</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="eventfd_8h.html#a8487dae7fbfa99dade6dd41e6930d5f8">   22</a></span><span class="preprocessor">#define eventfd_write           VSF_LINUX_WRAPPER(eventfd_write)</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="eventfd_8h.html#aa1cf1f9ea4d84916ad5fdf7105d4ee1f">   25</a></span><span class="preprocessor">#define EFD_SEMAPHORE           (1 &lt;&lt; 0)</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="eventfd_8h.html#af47517595fa3460ad8dbc84b9373c05c">   26</a></span><span class="preprocessor">#define EFD_CLOEXEC             O_CLOEXEC</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="eventfd_8h.html#a04677f5ad8d61c569b9c32ec35b05e7a">   27</a></span><span class="preprocessor">#define EFD_NONBLOCK            O_NONBLOCK</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="eventfd_8h.html#ad6a5579f52209e68c4196c5473677db5">   29</a></span><span class="keyword">typedef</span> <a class="code hl_typedef" href="arm_2type_8h.html#aaa5d1cd013383c889537491c3cfd9aad">uint64_t</a>                <a class="code hl_typedef" href="eventfd_8h.html#ad6a5579f52209e68c4196c5473677db5">eventfd_t</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">int</span> <a class="code hl_define" href="eventfd_8h.html#abd67bb43475639155be5cef81a2df842">eventfd</a>(<span class="keywordtype">int</span> count, <span class="keywordtype">int</span> flags);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keywordtype">int</span> <a class="code hl_define" href="eventfd_8h.html#ad6b772bdded89a07a253e590800d75fa">eventfd_read</a>(<span class="keywordtype">int</span> fd, <a class="code hl_typedef" href="eventfd_8h.html#ad6a5579f52209e68c4196c5473677db5">eventfd_t</a> *<a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keywordtype">int</span> <a class="code hl_define" href="eventfd_8h.html#a8487dae7fbfa99dade6dd41e6930d5f8">eventfd_write</a>(<span class="keywordtype">int</span> fd, <a class="code hl_typedef" href="eventfd_8h.html#ad6a5579f52209e68c4196c5473677db5">eventfd_t</a> <a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_LINUX_EVENTFD_H__</span></div>
+<div class="ttc" id="aarm_2type_8h_html_aaa5d1cd013383c889537491c3cfd9aad"><div class="ttname"><a href="arm_2type_8h.html#aaa5d1cd013383c889537491c3cfd9aad">uint64_t</a></div><div class="ttdeci">unsigned long long uint64_t</div><div class="ttdef"><b>Definition:</b> type.h:40</div></div>
+<div class="ttc" id="aeventfd_8h_html_a8487dae7fbfa99dade6dd41e6930d5f8"><div class="ttname"><a href="eventfd_8h.html#a8487dae7fbfa99dade6dd41e6930d5f8">eventfd_write</a></div><div class="ttdeci">#define eventfd_write</div><div class="ttdef"><b>Definition:</b> eventfd.h:22</div></div>
+<div class="ttc" id="aeventfd_8h_html_abd67bb43475639155be5cef81a2df842"><div class="ttname"><a href="eventfd_8h.html#abd67bb43475639155be5cef81a2df842">eventfd</a></div><div class="ttdeci">#define eventfd</div><div class="ttdef"><b>Definition:</b> eventfd.h:20</div></div>
+<div class="ttc" id="aeventfd_8h_html_ad6a5579f52209e68c4196c5473677db5"><div class="ttname"><a href="eventfd_8h.html#ad6a5579f52209e68c4196c5473677db5">eventfd_t</a></div><div class="ttdeci">uint64_t eventfd_t</div><div class="ttdef"><b>Definition:</b> eventfd.h:29</div></div>
+<div class="ttc" id="aeventfd_8h_html_ad6b772bdded89a07a253e590800d75fa"><div class="ttname"><a href="eventfd_8h.html#ad6b772bdded89a07a253e590800d75fa">eventfd_read</a></div><div class="ttdeci">#define eventfd_read</div><div class="ttdef"><b>Definition:</b> eventfd.h:21</div></div>
 <div class="ttc" id="afcntl_8h_html"><div class="ttname"><a href="fcntl_8h.html">fcntl.h</a></div></div>
 <div class="ttc" id="alinux_2include_2sys_2types_8h_html"><div class="ttname"><a href="linux_2include_2sys_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="avsf__audio_8h_html_ad5265e9eca2f756804584a9ac3335519"><div class="ttname"><a href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a></div><div class="ttdeci">vk_av_control_value_t value</div><div class="ttdef"><b>Definition:</b> vsf_audio.h:90</div></div>
 <div class="ttc" id="avsf__linux__cfg_8h_html"><div class="ttname"><a href="vsf__linux__cfg_8h.html">vsf_linux_cfg.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
