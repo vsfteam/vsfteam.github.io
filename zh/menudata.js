@@ -26,6 +26,11 @@ var menudata={children:[
 {text:"首页",url:"index.html"},
 {text:"相关页面",url:"pages.html"},
 {text:"模块",url:"modules.html"},
+{text:"命名空间",url:"namespaces.html",children:[
+{text:"命名空间列表",url:"namespaces.html"},
+{text:"命名空间成员",url:"namespacemembers.html",children:[
+{text:"全部",url:"namespacemembers.html"},
+{text:"函数",url:"namespacemembers_func.html"}]}]},
 {text:"结构体",url:"annotated.html",children:[
 {text:"结构体",url:"annotated.html"},
 {text:"结构体索引",url:"classes.html"},
