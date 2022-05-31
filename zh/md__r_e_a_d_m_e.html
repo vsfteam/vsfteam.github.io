@@ -44,7 +44,7 @@
 <div class="contents">
 <div class="textblock"><p ><a href="https://github.com/vsfteam/vsf/blob/master/LICENSE"><img src="https://img.shields.io/github/license/vsfteam/vsf.svg" alt="GitHub" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/vsfteam/vsf/actions/workflows/windows-build.yml"><img src="https://github.com/vsfteam/vsf/actions/workflows/windows-build.yml/badge.svg" alt="windows-build" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/vsfteam/vsf/actions/workflows/cmake-native-build.yml"><img src="https://github.com/vsfteam/vsf/actions/workflows/cmake-native-build.yml/badge.svg" alt="cmake-native-build" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/vsfteam/vsf/actions/workflows/cmake-arm-cross-build.yml"><img src="https://github.com/vsfteam/vsf/actions/workflows/cmake-arm-cross-build.yml/badge.svg" alt="cmake-arm-cross-build" style="pointer-events: none;" class="inline"/></a></p>
 <p >中文 |</p>
-<p >Full name of VSF is "Versaloon Software Framework". VSF is an open-source software framework for embedded applications based on Apache2 license. VSF includes hal, a pre-emptive multi-thread kernel, many services and components. VSF is implemented by C language, and using object-oriented programming methods.</p>
+<p >Full name of VSF is "Versaloon Software Framework". VSF is an open-source software framework for embedded applications based on Apache2 license. VSF includes hal, a pre-emptive multi-thread kernel, services and components. VSF is implemented by C language with object-oriented programming methods(PLOOC).</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Overall Framework</h1>
 <h1><a class="anchor" id="autotoc_md3"></a>
@@ -87,10 +87,10 @@ Catalogue</h1>
 Kernel</h1>
 <p >Pre-emptive kernel based on event-driven architecture, supporting mcs51, 8bit MCU, 32/64 bit ARM, riscv, x86, etc.</p>
 <ul>
-<li>event-driven architecture, sleep if no event occured</li>
+<li>event-driven architecture, sleep if no event occured, lower-power naturally</li>
 <li>in pre-emptive mode, task switch is implemented by hardware swi(software interrupt), priority of task is the priority of the swi.</li>
-<li>pre-emptive scheduling for different priority, collaborative scheduling for the same priority</li>
-<li>can be run in other RTOS</li>
+<li>pre-emptive scheduling for tasks with different priority, collaborative scheduling for tasks with the same priority</li>
+<li>can run in other RTOS as a task, or as swi ISR</li>
 <li>different tasks<ul>
 <li>event handler task &ndash; minimum resources usage, 20 bytes ram usage for minimum configuration, 40 bytes ram usage for normal configuration</li>
 <li>pt task</li>
@@ -99,7 +99,7 @@ Kernel</h1>
 <li>other tasks in shell, eg pthread</li>
 </ul>
 </li>
-<li>IPC like semaphore, mutex, trigger, queue, etc</li>
+<li>IPC: semaphore, mutex, trigger, queue, etc</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md5"></a>
 Components</h1>
@@ -108,7 +108,7 @@ Components</h1>
 <li>declarative development model</li>
 <li>standard interface, standard port for 3rd-party components</li>
 <li>software components<ul>
-<li>distbus &ndash; distribute bus framework</li>
+<li>distbus &ndash; distributed bus framework</li>
 <li>fifo</li>
 <li>heap</li>
 <li>json</li>
@@ -160,15 +160,18 @@ HAL – hardware abstraction layer</h1>
 Shell</h1>
 <p >To use applications from other system, shell can be used.</p>
 <ul>
-<li>SDL &ndash; to use application code based on SDL</li>
-<li>linux &ndash; to use application code based on linux<ul>
+<li>SDL &ndash; use applications based on SDL directly</li>
+<li>linux &ndash; use applications based on linux directly<ul>
 <li>posix</li>
 <li>devfs</li>
 <li>socket</li>
 <li>console</li>
-<li>some libraries<ul>
+<li>libraries<ul>
 <li>libusb</li>
 <li>libgen</li>
+<li>libsdl2</li>
+<li>libcurl</li>
+<li>etc</li>
 </ul>
 </li>
 </ul>
