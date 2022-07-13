@@ -62,6 +62,7 @@
 <code>#include &quot;<a class="el" href="unistd_8h_source.html">../../include/unistd.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="stat_8h_source.html">../../include/sys/stat.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="mount_8h_source.html">../../include/sys/mount.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="epoll_8h_source.html">../../include/sys/epoll.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="poll_8h_source.html">../../include/poll.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="fcntl_8h_source.html">../../include/fcntl.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="errno_8h_source.html">../../include/errno.h</a>&quot;</code><br />
@@ -76,6 +77,10 @@
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__eventfd__priv__t.html">vsf_linux_eventfd_priv_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__epoll__node__t.html">vsf_linux_epoll_node_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__epollfd__priv__t.html">vsf_linux_epollfd_priv_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -93,6 +98,10 @@ Macros</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:a47886013b5db52b36aab042ab51f35eb"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__eventfd__priv__t.html">vsf_linux_eventfd_priv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#a47886013b5db52b36aab042ab51f35eb">vsf_linux_eventfd_priv_t</a></td></tr>
 <tr class="separator:a47886013b5db52b36aab042ab51f35eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32e92620ec949d060e5162caf2709aed"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__epoll__node__t.html">vsf_linux_epoll_node_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#a32e92620ec949d060e5162caf2709aed">vsf_linux_epoll_node_t</a></td></tr>
+<tr class="separator:a32e92620ec949d060e5162caf2709aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73af51e533b765b7e40b6df056eb67e1"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__epollfd__priv__t.html">vsf_linux_epollfd_priv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#a73af51e533b765b7e40b6df056eb67e1">vsf_linux_epollfd_priv_t</a></td></tr>
+<tr class="separator:a73af51e533b765b7e40b6df056eb67e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -106,6 +115,20 @@ Functions</h2></td></tr>
 <tr class="separator:a32e55549cb7aea88db8a14be9ed5d092"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c7aafe8ee787e3ba362fb6aab3e5542"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#a9c7aafe8ee787e3ba362fb6aab3e5542">eventfd_write</a> (int fd, <a class="el" href="eventfd_8h.html#ad6a5579f52209e68c4196c5473677db5">eventfd_t</a> <a class="el" href="vsf__msg__tree_8h.html#a638e4503e0ae6ce655b7ad2e17e8f0ad">value</a>)</td></tr>
 <tr class="separator:a9c7aafe8ee787e3ba362fb6aab3e5542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8c4cc31696b232ec1b5c89d2b0a16df"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#ad8c4cc31696b232ec1b5c89d2b0a16df">__vsf_linux_epoll_tick</a> (<a class="el" href="structvsf__linux__epollfd__priv__t.html">vsf_linux_epollfd_priv_t</a> *epoll_priv, struct <a class="el" href="structepoll__event.html">epoll_event</a> *events, int maxevents, <a class="el" href="vsf__eda_8h.html#a680d3037efb9ab5d71ad711931d38b02">vsf_timeout_tick_t</a> <a class="el" href="select_8h.html#aff126839915cf06976792d265ce29a48">timeout</a>)</td></tr>
+<tr class="separator:ad8c4cc31696b232ec1b5c89d2b0a16df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af296de4aef27fe144a33fc38431f86b6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#af296de4aef27fe144a33fc38431f86b6">epoll_create1</a> (int flags)</td></tr>
+<tr class="separator:af296de4aef27fe144a33fc38431f86b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8acfd23a345aff63c7bcb3da4bd2465a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#a8acfd23a345aff63c7bcb3da4bd2465a">epoll_create</a> (int <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
+<tr class="separator:a8acfd23a345aff63c7bcb3da4bd2465a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a192b9bf39dddbe56b3a79ab2316a968d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#a192b9bf39dddbe56b3a79ab2316a968d">epoll_ctl</a> (int epfd, int op, int fd, struct <a class="el" href="structepoll__event.html">epoll_event</a> *event)</td></tr>
+<tr class="separator:a192b9bf39dddbe56b3a79ab2316a968d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa43d07f8e2b7057990a422a06f55c115"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#aa43d07f8e2b7057990a422a06f55c115">epoll_wait</a> (int epfd, struct <a class="el" href="structepoll__event.html">epoll_event</a> *events, int maxevents, int <a class="el" href="select_8h.html#aff126839915cf06976792d265ce29a48">timeout</a>)</td></tr>
+<tr class="separator:aa43d07f8e2b7057990a422a06f55c115"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad76114c1ebbfa69669a18ae79692b666"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#ad76114c1ebbfa69669a18ae79692b666">epoll_pwait</a> (int epfd, struct <a class="el" href="structepoll__event.html">epoll_event</a> *events, int maxevents, int <a class="el" href="select_8h.html#aff126839915cf06976792d265ce29a48">timeout</a>, const <a class="el" href="structsigset__t.html">sigset_t</a> *sigmask)</td></tr>
+<tr class="separator:ad76114c1ebbfa69669a18ae79692b666"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2392b221a2905b5087097a828d38ae6a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#a2392b221a2905b5087097a828d38ae6a">epoll_pwait2</a> (int epfd, struct <a class="el" href="structepoll__event.html">epoll_event</a> *events, int maxevents, const struct <a class="el" href="structtimespec.html">timespec</a> *timeout_ts, const <a class="el" href="structsigset__t.html">sigset_t</a> *sigmask)</td></tr>
+<tr class="separator:a2392b221a2905b5087097a828d38ae6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a3963ac98518f6a0eb1ee15e82dd5fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvsf__linux__fd__t.html">vsf_linux_fd_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#a9a3963ac98518f6a0eb1ee15e82dd5fc">__vsf_linux_fd_get_ex</a> (vsf_linux_process_t *process, int fd)</td></tr>
 <tr class="separator:a9a3963ac98518f6a0eb1ee15e82dd5fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76e12abc1fd2c0df318cb3ec1aeb6ff4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvsf__linux__fd__t.html">vsf_linux_fd_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#a76e12abc1fd2c0df318cb3ec1aeb6ff4">vsf_linux_fd_get</a> (int fd)</td></tr>
@@ -146,6 +169,8 @@ Functions</h2></td></tr>
 <tr class="separator:a50447557f0fb7f7af7a127ab7388c692"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5298bd5f5269639e0f14b0dff58596aa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#a5298bd5f5269639e0f14b0dff58596aa">select</a> (int nfds, fd_set *<a class="el" href="select_8h.html#a2bad6ada1543b95679f3e5b1491b3395">readfds</a>, fd_set *<a class="el" href="select_8h.html#ad9ee127943b82f2771ede31dcddb022f">writefds</a>, fd_set *<a class="el" href="select_8h.html#a3b65260d275d1bb8b1770645835f1e6d">execeptfds</a>, struct <a class="el" href="structtimeval.html">timeval</a> *<a class="el" href="select_8h.html#aff126839915cf06976792d265ce29a48">timeout</a>)</td></tr>
 <tr class="separator:a5298bd5f5269639e0f14b0dff58596aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec9c72b618d45dcd5202cf502d993495"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#aec9c72b618d45dcd5202cf502d993495">pselect</a> (int nfds, fd_set *<a class="el" href="select_8h.html#a2bad6ada1543b95679f3e5b1491b3395">readfds</a>, fd_set *<a class="el" href="select_8h.html#ad9ee127943b82f2771ede31dcddb022f">writefds</a>, fd_set *exceptfds, const struct <a class="el" href="structtimespec.html">timespec</a> *timeout_ts, const <a class="el" href="structsigset__t.html">sigset_t</a> *sigmask)</td></tr>
+<tr class="separator:aec9c72b618d45dcd5202cf502d993495"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa97ba0bfbedf1784e648dd753a92449d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#aa97ba0bfbedf1784e648dd753a92449d">poll</a> (struct <a class="el" href="structpollfd.html">pollfd</a> *fds, <a class="el" href="poll_8h.html#a345b1833e125b256b9aeb8056b9629db">nfds_t</a> nfds, int <a class="el" href="select_8h.html#aff126839915cf06976792d265ce29a48">timeout</a>)</td></tr>
 <tr class="separator:aa97ba0bfbedf1784e648dd753a92449d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb7bbcd498026039a59b028712b88abf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#adb7bbcd498026039a59b028712b88abf">ppoll</a> (struct <a class="el" href="structpollfd.html">pollfd</a> *fds, <a class="el" href="poll_8h.html#a345b1833e125b256b9aeb8056b9629db">nfds_t</a> nfds, const struct <a class="el" href="structtimespec.html">timespec</a> *timeout_ts, const <a class="el" href="structsigset__t.html">sigset_t</a> *sigmask)</td></tr>
@@ -305,6 +330,8 @@ Variables</h2></td></tr>
 <tr class="separator:ae4c3fff0c70479db3a3a5206e15962a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace67c93c94ee78d7cc91281e9e3c6cb9"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structvsf__linux__fd__op__t.html">vsf_linux_fd_op_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#ace67c93c94ee78d7cc91281e9e3c6cb9">__vsf_linux_eventfd_fdop</a></td></tr>
 <tr class="separator:ace67c93c94ee78d7cc91281e9e3c6cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab84eb862ae1a5c91808ae22a5fc37657"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structvsf__linux__fd__op__t.html">vsf_linux_fd_op_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#ab84eb862ae1a5c91808ae22a5fc37657">__vsf_linux_epollfd_fdop</a></td></tr>
+<tr class="separator:ab84eb862ae1a5c91808ae22a5fc37657"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d212f8de3e999368b0d516812308166"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structvsf__linux__fd__op__t.html">vsf_linux_fd_op_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#a4d212f8de3e999368b0d516812308166">__vsf_linux_stream_fdop</a></td></tr>
 <tr class="separator:a4d212f8de3e999368b0d516812308166"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a176173b0649eebb5bfbcac474ed41edb"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structvsf__linux__fd__op__t.html">vsf_linux_fd_op_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#a176173b0649eebb5bfbcac474ed41edb">vsf_linux_pipe_rx_fdop</a></td></tr>
@@ -380,6 +407,34 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef struct <a class="el" href="structvsf__linux__eventfd__priv__t.html">vsf_linux_eventfd_priv_t</a> <a class="el" href="structvsf__linux__eventfd__priv__t.html">vsf_linux_eventfd_priv_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a32e92620ec949d060e5162caf2709aed" name="a32e92620ec949d060e5162caf2709aed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32e92620ec949d060e5162caf2709aed">&#9670;&nbsp;</a></span>vsf_linux_epoll_node_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__linux__epoll__node__t.html">vsf_linux_epoll_node_t</a> <a class="el" href="structvsf__linux__epoll__node__t.html">vsf_linux_epoll_node_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a73af51e533b765b7e40b6df056eb67e1" name="a73af51e533b765b7e40b6df056eb67e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73af51e533b765b7e40b6df056eb67e1">&#9670;&nbsp;</a></span>vsf_linux_epollfd_priv_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__linux__epollfd__priv__t.html">vsf_linux_epollfd_priv_t</a> <a class="el" href="structvsf__linux__epollfd__priv__t.html">vsf_linux_epollfd_priv_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -528,6 +583,254 @@ Variables</h2></td></tr>
           <td></td>
           <td class="paramtype"><a class="el" href="eventfd_8h.html#ad6a5579f52209e68c4196c5473677db5">eventfd_t</a>&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad8c4cc31696b232ec1b5c89d2b0a16df" name="ad8c4cc31696b232ec1b5c89d2b0a16df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8c4cc31696b232ec1b5c89d2b0a16df">&#9670;&nbsp;</a></span>__vsf_linux_epoll_tick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int __vsf_linux_epoll_tick </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__linux__epollfd__priv__t.html">vsf_linux_epollfd_priv_t</a> *&#160;</td>
+          <td class="paramname"><em>epoll_priv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structepoll__event.html">epoll_event</a> *&#160;</td>
+          <td class="paramname"><em>events</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maxevents</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__eda_8h.html#a680d3037efb9ab5d71ad711931d38b02">vsf_timeout_tick_t</a>&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af296de4aef27fe144a33fc38431f86b6" name="af296de4aef27fe144a33fc38431f86b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af296de4aef27fe144a33fc38431f86b6">&#9670;&nbsp;</a></span>epoll_create1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int epoll_create1 </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>flags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8acfd23a345aff63c7bcb3da4bd2465a" name="a8acfd23a345aff63c7bcb3da4bd2465a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8acfd23a345aff63c7bcb3da4bd2465a">&#9670;&nbsp;</a></span>epoll_create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int epoll_create </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a192b9bf39dddbe56b3a79ab2316a968d" name="a192b9bf39dddbe56b3a79ab2316a968d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a192b9bf39dddbe56b3a79ab2316a968d">&#9670;&nbsp;</a></span>epoll_ctl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int epoll_ctl </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>epfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>op</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structepoll__event.html">epoll_event</a> *&#160;</td>
+          <td class="paramname"><em>event</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa43d07f8e2b7057990a422a06f55c115" name="aa43d07f8e2b7057990a422a06f55c115"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa43d07f8e2b7057990a422a06f55c115">&#9670;&nbsp;</a></span>epoll_wait()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int epoll_wait </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>epfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structepoll__event.html">epoll_event</a> *&#160;</td>
+          <td class="paramname"><em>events</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maxevents</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad76114c1ebbfa69669a18ae79692b666" name="ad76114c1ebbfa69669a18ae79692b666"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad76114c1ebbfa69669a18ae79692b666">&#9670;&nbsp;</a></span>epoll_pwait()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int epoll_pwait </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>epfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structepoll__event.html">epoll_event</a> *&#160;</td>
+          <td class="paramname"><em>events</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maxevents</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structsigset__t.html">sigset_t</a> *&#160;</td>
+          <td class="paramname"><em>sigmask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2392b221a2905b5087097a828d38ae6a" name="a2392b221a2905b5087097a828d38ae6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2392b221a2905b5087097a828d38ae6a">&#9670;&nbsp;</a></span>epoll_pwait2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int epoll_pwait2 </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>epfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structepoll__event.html">epoll_event</a> *&#160;</td>
+          <td class="paramname"><em>events</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maxevents</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const struct <a class="el" href="structtimespec.html">timespec</a> *&#160;</td>
+          <td class="paramname"><em>timeout_ts</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structsigset__t.html">sigset_t</a> *&#160;</td>
+          <td class="paramname"><em>sigmask</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1120,6 +1423,58 @@ Variables</h2></td></tr>
           <td></td>
           <td class="paramtype">struct <a class="el" href="structtimeval.html">timeval</a> *&#160;</td>
           <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aec9c72b618d45dcd5202cf502d993495" name="aec9c72b618d45dcd5202cf502d993495"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec9c72b618d45dcd5202cf502d993495">&#9670;&nbsp;</a></span>pselect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pselect </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nfds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">fd_set *&#160;</td>
+          <td class="paramname"><em>readfds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">fd_set *&#160;</td>
+          <td class="paramname"><em>writefds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">fd_set *&#160;</td>
+          <td class="paramname"><em>exceptfds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const struct <a class="el" href="structtimespec.html">timespec</a> *&#160;</td>
+          <td class="paramname"><em>timeout_ts</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structsigset__t.html">sigset_t</a> *&#160;</td>
+          <td class="paramname"><em>sigmask</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -3345,6 +3700,25 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="ab84eb862ae1a5c91808ae22a5fc37657" name="ab84eb862ae1a5c91808ae22a5fc37657"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab84eb862ae1a5c91808ae22a5fc37657">&#9670;&nbsp;</a></span>__vsf_linux_epollfd_fdop</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structvsf__linux__fd__op__t.html">vsf_linux_fd_op_t</a> __vsf_linux_epollfd_fdop</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .priv_size          = <span class="keyword">sizeof</span>(<a class="code hl_typedef" href="vsf__linux__fs_8c.html#a73af51e533b765b7e40b6df056eb67e1">vsf_linux_epollfd_priv_t</a>),</div>
+<div class="line">    .fn_close           = __vsf_linux_epollfd_close,</div>
+<div class="line">}</div>
+<div class="ttc" id="avsf__linux__fs_8c_html_a73af51e533b765b7e40b6df056eb67e1"><div class="ttname"><a href="vsf__linux__fs_8c.html#a73af51e533b765b7e40b6df056eb67e1">vsf_linux_epollfd_priv_t</a></div><div class="ttdeci">struct vsf_linux_epollfd_priv_t vsf_linux_epollfd_priv_t</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a4d212f8de3e999368b0d516812308166" name="a4d212f8de3e999368b0d516812308166"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4d212f8de3e999368b0d516812308166">&#9670;&nbsp;</a></span>__vsf_linux_stream_fdop</h2>
 
@@ -3363,8 +3737,8 @@ Variables</h2></td></tr>
 <div class="line">    .fn_write           = <a class="code hl_function" href="vsf__linux__fs_8c.html#ac6904caaf0a6baac24281b561379337c">__vsf_linux_stream_write</a>,</div>
 <div class="line">    .fn_close           = __vsf_linux_stream_close,</div>
 <div class="line">}</div>
-<div class="ttc" id="avsf__linux__fs_8c_html_a1f764e06ceb542e991686056eea9aedd"><div class="ttname"><a href="vsf__linux__fs_8c.html#a1f764e06ceb542e991686056eea9aedd">__vsf_linux_stream_read</a></div><div class="ttdeci">ssize_t __vsf_linux_stream_read(vsf_linux_fd_t *sfd, void *buf, size_t count)</div><div class="ttdef"><b>Definition:</b> vsf_linux_fs.c:1882</div></div>
-<div class="ttc" id="avsf__linux__fs_8c_html_ac6904caaf0a6baac24281b561379337c"><div class="ttname"><a href="vsf__linux__fs_8c.html#ac6904caaf0a6baac24281b561379337c">__vsf_linux_stream_write</a></div><div class="ttdeci">ssize_t __vsf_linux_stream_write(vsf_linux_fd_t *sfd, const void *buf, size_t count)</div><div class="ttdef"><b>Definition:</b> vsf_linux_fs.c:1969</div></div>
+<div class="ttc" id="avsf__linux__fs_8c_html_a1f764e06ceb542e991686056eea9aedd"><div class="ttname"><a href="vsf__linux__fs_8c.html#a1f764e06ceb542e991686056eea9aedd">__vsf_linux_stream_read</a></div><div class="ttdeci">ssize_t __vsf_linux_stream_read(vsf_linux_fd_t *sfd, void *buf, size_t count)</div><div class="ttdef"><b>Definition:</b> vsf_linux_fs.c:2119</div></div>
+<div class="ttc" id="avsf__linux__fs_8c_html_ac6904caaf0a6baac24281b561379337c"><div class="ttname"><a href="vsf__linux__fs_8c.html#ac6904caaf0a6baac24281b561379337c">__vsf_linux_stream_write</a></div><div class="ttdeci">ssize_t __vsf_linux_stream_write(vsf_linux_fd_t *sfd, const void *buf, size_t count)</div><div class="ttdef"><b>Definition:</b> vsf_linux_fs.c:2206</div></div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/linux/include/sys/epoll.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.4 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_c98904b1f88b31edbcb0e1f386351ea2.html">linux</a></li><li class="navelem"><a class="el" href="dir_c5f371835c56cee84ac86c4f8def27c0.html">include</a></li><li class="navelem"><a class="el" href="dir_ef72455f6ed0d49b039d4289daecbc46.html">sys</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">epoll.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="epoll_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef __VSF_LINUX_EPOLL_H__</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __VSF_LINUX_EPOLL_H__</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__linux__cfg_8h.html">shell/sys/linux/vsf_linux_cfg.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#if VSF_LINUX_CFG_RELATIVE_PATH == ENABLED</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#   include &quot;../sys/types.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#   include &quot;../fcntl.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#   include &quot;../poll.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#   include &lt;<a class="code" href="linux_2include_2sys_2types_8h.html">sys/types.h</a>&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#   include &lt;<a class="code" href="fcntl_8h.html">fcntl.h</a>&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#   include &lt;<a class="code" href="poll_8h.html">poll.h</a>&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="epoll_8h.html#ad263a064744c12ea5fd1b4a386dee658">   21</a></span><span class="preprocessor">#define EPOLL_CLOEXEC       O_CLOEXEC</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="epoll_8h.html#a2d36c1c8457d15bf764d4a94b4077b38">   23</a></span><span class="preprocessor">#define EPOLL_CTL_ADD       0</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="epoll_8h.html#a8818bbe0441220b091976d944a2b1620">   24</a></span><span class="preprocessor">#define EPOLL_CTL_MOD       1</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="epoll_8h.html#af8de2279a945391e86525bcb904bc092">   25</a></span><span class="preprocessor">#define EPOLL_CTL_DEL       2</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="epoll_8h.html#a9473bb25876648bb51926e6723802982">   27</a></span><span class="preprocessor">#define EPOLLIN             POLLIN</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="epoll_8h.html#a737460cee0c76ac8d04e9726ec200d6f">   28</a></span><span class="preprocessor">#define EPOLLOUT            POLLOUT</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="epoll_8h.html#ae6832a9da6c1bc16f40c4a5b15dde53a">   29</a></span><span class="preprocessor">#define EPOLLHUP            POLLHUP</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="epoll_8h.html#a2b69cc87f3556dc5d41b9b1122a4413e">   30</a></span><span class="preprocessor">#define EPOLLERR            POLLERR</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="epoll_8h.html#af76a4ccb6d42cfdf3ff7d5ac5a971834">   31</a></span><span class="preprocessor">#define EPOLLPRI            POLLPRI</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="epoll_8h.html#ada664c5f9d581e10b4f72d1bb444dbb4">   33</a></span><span class="preprocessor">#define EPOLLET             (1 &lt;&lt; 16)</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="epoll_8h.html#a12f33e7f9d329aeaf78678b56fa38d1c">   34</a></span><span class="preprocessor">#define EPOLLONESHOT        (1 &lt;&lt; 17)</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="epoll_8h.html#af84b6a6f3ca2fecb9608dcfb17961df1">   35</a></span><span class="preprocessor">#define EPOLLWAKEUP         (1 &lt;&lt; 18)</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="epoll_8h.html#a01d0e5ffa077246fcc15159ac2247dfa">   36</a></span><span class="preprocessor">#define EPOLLEXCLUSIVE      (1 &lt;&lt; 19)</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="unionepoll__data.html">   38</a></span><span class="keyword">typedef</span> <span class="keyword">union </span><a class="code hl_union" href="unionepoll__data.html">epoll_data</a> {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="unionepoll__data.html#a9f8d926f9b65dc170be11dfe31e03702">   39</a></span>    <span class="keywordtype">void</span>        *<a class="code hl_variable" href="unionepoll__data.html#a9f8d926f9b65dc170be11dfe31e03702">ptr</a>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="unionepoll__data.html#ad7a60a999a7b99a566a34db348beec5f">   40</a></span>    <span class="keywordtype">int</span>          <a class="code hl_variable" href="unionepoll__data.html#ad7a60a999a7b99a566a34db348beec5f">fd</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="unionepoll__data.html#a7511dd40b5e0bb321c447e53c53158d9">   41</a></span>    <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>     <a class="code hl_variable" href="unionepoll__data.html#a7511dd40b5e0bb321c447e53c53158d9">u32</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="unionepoll__data.html#a3f16ce318934a69c3e74a5a1cd25d88d">   42</a></span>    <a class="code hl_typedef" href="arm_2type_8h.html#aaa5d1cd013383c889537491c3cfd9aad">uint64_t</a>     <a class="code hl_variable" href="unionepoll__data.html#a3f16ce318934a69c3e74a5a1cd25d88d">u64</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="epoll_8h.html#ae448b6f1679acd3309458397357ffa2d">   43</a></span>} <a class="code hl_typedef" href="epoll_8h.html#ae448b6f1679acd3309458397357ffa2d">epoll_data_t</a>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structepoll__event.html">   45</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structepoll__event.html">epoll_event</a> {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structepoll__event.html#a4eb5ccec6b1c1e58d8ccd9aaa3aed6ed">   46</a></span>    <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>     <a class="code hl_variable" href="structepoll__event.html#a4eb5ccec6b1c1e58d8ccd9aaa3aed6ed">events</a>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structepoll__event.html#ad60e865f20faa39ca0129d7d22b9a79c">   47</a></span>    <a class="code hl_union" href="unionepoll__data.html">epoll_data_t</a> <a class="code hl_variable" href="structepoll__event.html#ad60e865f20faa39ca0129d7d22b9a79c">data</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>};</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#if VSF_LINUX_CFG_WRAPPER == ENABLED</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="epoll_8h.html#ac0c79a8ac1a81f08562f665fdf8aa5ea">   51</a></span><span class="preprocessor">#define epoll_create        VSF_LINUX_WRAPPER(epoll_create)</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="epoll_8h.html#a337ca9fc62821e8b7592b0c0894caee5">   52</a></span><span class="preprocessor">#define epoll_create1       VSF_LINUX_WRAPPER(epoll_create1)</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="epoll_8h.html#a1a23f4b62c0d8546fcaf4fc497fb4e87">   53</a></span><span class="preprocessor">#define epoll_ctl           VSF_LINUX_WRAPPER(epoll_ctl)</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="epoll_8h.html#ae1a6e2877d9e068194799d2bbff5fa6b">   54</a></span><span class="preprocessor">#define epoll_wait          VSF_LINUX_WRAPPER(epoll_wait)</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="epoll_8h.html#aa7c4609e6cddfbae6f4aeee7e39c4d95">   55</a></span><span class="preprocessor">#define epoll_pwait         VSF_LINUX_WRAPPER(epoll_pwait)</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="epoll_8h.html#a39d25a873d1867c8e601a4193376150d">   56</a></span><span class="preprocessor">#define epoll_pwait2        VSF_LINUX_WRAPPER(epoll_pwait2)</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keywordtype">int</span> <a class="code hl_define" href="epoll_8h.html#ac0c79a8ac1a81f08562f665fdf8aa5ea">epoll_create</a>(<span class="keywordtype">int</span> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keywordtype">int</span> <a class="code hl_define" href="epoll_8h.html#a337ca9fc62821e8b7592b0c0894caee5">epoll_create1</a>(<span class="keywordtype">int</span> flags);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keywordtype">int</span> <a class="code hl_define" href="epoll_8h.html#a1a23f4b62c0d8546fcaf4fc497fb4e87">epoll_ctl</a>(<span class="keywordtype">int</span> epfd, <span class="keywordtype">int</span> op, <span class="keywordtype">int</span> fd, <span class="keyword">struct</span> <a class="code hl_struct" href="structepoll__event.html">epoll_event</a> *event);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keywordtype">int</span> <a class="code hl_define" href="epoll_8h.html#ae1a6e2877d9e068194799d2bbff5fa6b">epoll_wait</a>(<span class="keywordtype">int</span> epfd, <span class="keyword">struct</span> <a class="code hl_struct" href="structepoll__event.html">epoll_event</a> *events,</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                      <span class="keywordtype">int</span> maxevents, <span class="keywordtype">int</span> <a class="code hl_variable" href="select_8h.html#aff126839915cf06976792d265ce29a48">timeout</a>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keywordtype">int</span> <a class="code hl_define" href="epoll_8h.html#aa7c4609e6cddfbae6f4aeee7e39c4d95">epoll_pwait</a>(<span class="keywordtype">int</span> epfd, <span class="keyword">struct</span> <a class="code hl_struct" href="structepoll__event.html">epoll_event</a> *events,</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                      <span class="keywordtype">int</span> maxevents, <span class="keywordtype">int</span> <a class="code hl_variable" href="select_8h.html#aff126839915cf06976792d265ce29a48">timeout</a>,</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                      <span class="keyword">const</span> <a class="code hl_struct" href="structsigset__t.html">sigset_t</a> *sigmask);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keywordtype">int</span> <a class="code hl_define" href="epoll_8h.html#a39d25a873d1867c8e601a4193376150d">epoll_pwait2</a>(<span class="keywordtype">int</span> epfd, <span class="keyword">struct</span> <a class="code hl_struct" href="structepoll__event.html">epoll_event</a> *events,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                      <span class="keywordtype">int</span> maxevents, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structtimespec.html">timespec</a> *<a class="code hl_variable" href="select_8h.html#aff126839915cf06976792d265ce29a48">timeout</a>,</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                      <span class="keyword">const</span> <a class="code hl_struct" href="structsigset__t.html">sigset_t</a> *sigmask);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aarm_2type_8h_html_a435d1572bf3f880d55459d9805097f62"><div class="ttname"><a href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a></div><div class="ttdeci">unsigned int uint32_t</div><div class="ttdef"><b>Definition:</b> type.h:35</div></div>
+<div class="ttc" id="aarm_2type_8h_html_aaa5d1cd013383c889537491c3cfd9aad"><div class="ttname"><a href="arm_2type_8h.html#aaa5d1cd013383c889537491c3cfd9aad">uint64_t</a></div><div class="ttdeci">unsigned long long uint64_t</div><div class="ttdef"><b>Definition:</b> type.h:40</div></div>
+<div class="ttc" id="aepoll_8h_html_a1a23f4b62c0d8546fcaf4fc497fb4e87"><div class="ttname"><a href="epoll_8h.html#a1a23f4b62c0d8546fcaf4fc497fb4e87">epoll_ctl</a></div><div class="ttdeci">#define epoll_ctl</div><div class="ttdef"><b>Definition:</b> epoll.h:53</div></div>
+<div class="ttc" id="aepoll_8h_html_a337ca9fc62821e8b7592b0c0894caee5"><div class="ttname"><a href="epoll_8h.html#a337ca9fc62821e8b7592b0c0894caee5">epoll_create1</a></div><div class="ttdeci">#define epoll_create1</div><div class="ttdef"><b>Definition:</b> epoll.h:52</div></div>
+<div class="ttc" id="aepoll_8h_html_a39d25a873d1867c8e601a4193376150d"><div class="ttname"><a href="epoll_8h.html#a39d25a873d1867c8e601a4193376150d">epoll_pwait2</a></div><div class="ttdeci">#define epoll_pwait2</div><div class="ttdef"><b>Definition:</b> epoll.h:56</div></div>
+<div class="ttc" id="aepoll_8h_html_aa7c4609e6cddfbae6f4aeee7e39c4d95"><div class="ttname"><a href="epoll_8h.html#aa7c4609e6cddfbae6f4aeee7e39c4d95">epoll_pwait</a></div><div class="ttdeci">#define epoll_pwait</div><div class="ttdef"><b>Definition:</b> epoll.h:55</div></div>
+<div class="ttc" id="aepoll_8h_html_ac0c79a8ac1a81f08562f665fdf8aa5ea"><div class="ttname"><a href="epoll_8h.html#ac0c79a8ac1a81f08562f665fdf8aa5ea">epoll_create</a></div><div class="ttdeci">#define epoll_create</div><div class="ttdef"><b>Definition:</b> epoll.h:51</div></div>
+<div class="ttc" id="aepoll_8h_html_ae1a6e2877d9e068194799d2bbff5fa6b"><div class="ttname"><a href="epoll_8h.html#ae1a6e2877d9e068194799d2bbff5fa6b">epoll_wait</a></div><div class="ttdeci">#define epoll_wait</div><div class="ttdef"><b>Definition:</b> epoll.h:54</div></div>
+<div class="ttc" id="aepoll_8h_html_ae448b6f1679acd3309458397357ffa2d"><div class="ttname"><a href="epoll_8h.html#ae448b6f1679acd3309458397357ffa2d">epoll_data_t</a></div><div class="ttdeci">union epoll_data epoll_data_t</div></div>
+<div class="ttc" id="afcntl_8h_html"><div class="ttname"><a href="fcntl_8h.html">fcntl.h</a></div></div>
+<div class="ttc" id="alinux_2include_2sys_2types_8h_html"><div class="ttname"><a href="linux_2include_2sys_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="apoll_8h_html"><div class="ttname"><a href="poll_8h.html">poll.h</a></div></div>
+<div class="ttc" id="aselect_8h_html_aff126839915cf06976792d265ce29a48"><div class="ttname"><a href="select_8h.html#aff126839915cf06976792d265ce29a48">timeout</a></div><div class="ttdeci">fd_set fd_set fd_set struct timeval * timeout</div><div class="ttdef"><b>Definition:</b> select.h:36</div></div>
+<div class="ttc" id="astructepoll__event_html"><div class="ttname"><a href="structepoll__event.html">epoll_event</a></div><div class="ttdef"><b>Definition:</b> epoll.h:45</div></div>
+<div class="ttc" id="astructepoll__event_html_a4eb5ccec6b1c1e58d8ccd9aaa3aed6ed"><div class="ttname"><a href="structepoll__event.html#a4eb5ccec6b1c1e58d8ccd9aaa3aed6ed">epoll_event::events</a></div><div class="ttdeci">uint32_t events</div><div class="ttdef"><b>Definition:</b> epoll.h:46</div></div>
+<div class="ttc" id="astructepoll__event_html_ad60e865f20faa39ca0129d7d22b9a79c"><div class="ttname"><a href="structepoll__event.html#ad60e865f20faa39ca0129d7d22b9a79c">epoll_event::data</a></div><div class="ttdeci">epoll_data_t data</div><div class="ttdef"><b>Definition:</b> epoll.h:47</div></div>
+<div class="ttc" id="astructsigset__t_html"><div class="ttname"><a href="structsigset__t.html">sigset_t</a></div><div class="ttdef"><b>Definition:</b> signal.h:43</div></div>
+<div class="ttc" id="astructtimespec_html"><div class="ttname"><a href="structtimespec.html">timespec</a></div><div class="ttdef"><b>Definition:</b> time.h:35</div></div>
+<div class="ttc" id="aunionepoll__data_html"><div class="ttname"><a href="unionepoll__data.html">epoll_data</a></div><div class="ttdef"><b>Definition:</b> epoll.h:38</div></div>
+<div class="ttc" id="aunionepoll__data_html_a3f16ce318934a69c3e74a5a1cd25d88d"><div class="ttname"><a href="unionepoll__data.html#a3f16ce318934a69c3e74a5a1cd25d88d">epoll_data::u64</a></div><div class="ttdeci">uint64_t u64</div><div class="ttdef"><b>Definition:</b> epoll.h:42</div></div>
+<div class="ttc" id="aunionepoll__data_html_a7511dd40b5e0bb321c447e53c53158d9"><div class="ttname"><a href="unionepoll__data.html#a7511dd40b5e0bb321c447e53c53158d9">epoll_data::u32</a></div><div class="ttdeci">uint32_t u32</div><div class="ttdef"><b>Definition:</b> epoll.h:41</div></div>
+<div class="ttc" id="aunionepoll__data_html_a9f8d926f9b65dc170be11dfe31e03702"><div class="ttname"><a href="unionepoll__data.html#a9f8d926f9b65dc170be11dfe31e03702">epoll_data::ptr</a></div><div class="ttdeci">void * ptr</div><div class="ttdef"><b>Definition:</b> epoll.h:39</div></div>
+<div class="ttc" id="aunionepoll__data_html_ad7a60a999a7b99a566a34db348beec5f"><div class="ttname"><a href="unionepoll__data.html#ad7a60a999a7b99a566a34db348beec5f">epoll_data::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition:</b> epoll.h:40</div></div>
+<div class="ttc" id="avsf__linux__cfg_8h_html"><div class="ttname"><a href="vsf__linux__cfg_8h.html">vsf_linux_cfg.h</a></div></div>
+<div class="ttc" id="avsf__memfs_8h_html_ab2c6b258f02add8fdf4cfc7c371dd772"><div class="ttname"><a href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a></div><div class="ttdeci">uint32_t size</div><div class="ttdef"><b>Definition:</b> vsf_memfs.h:50</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>
