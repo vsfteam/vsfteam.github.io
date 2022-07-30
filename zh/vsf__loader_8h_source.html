@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/service/loader/vsf_loader.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.4 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_bfec2c9dca3d140a71292b4bdadc3c95.html">service</a></li><li class="navelem"><a class="el" href="dir_5526db88d42495e8d966bb89de65c9d1.html">loader</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">vsf_loader.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="vsf__loader_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2022 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#ifndef __VSF_LOADER_H__</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#define __VSF_LOADER_H__</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__service__cfg_8h.html">service/vsf_service_cfg.h</a>&quot;</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__utilities_8h.html">utilities/vsf_utilities.h</a>&quot;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#if VSF_USE_LOADER == ENABLED</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#if     defined(__VSF_LOADER_CLASS_IMPLEMENT)</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#   define __VSF_CLASS_IMPLEMENT__</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#elif   defined(__VSF_LOADER_CLASS_INHERIT__)</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#   define __VSF_CLASS_INHERIT__</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><a class="code hl_define" href="ooc__class_8h.html#a226f6a53efbee32ec33e32995b0ab6c9">vsf_dcl_class</a>(<a class="code hl_class" href="classvsf__loader__t.html">vsf_loader_t</a>)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="group__vsf__loader.html#ga38364931fae7492b034d22c7941966ef">   68</a></span>enum <a class="code hl_enumeration" href="group__vsf__loader.html#ga38364931fae7492b034d22c7941966ef">vsf_loader_mem_attr_t</a> {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efadd5901f82c07c1724796c8b392721241">   69</a></span>    <a class="code hl_enumvalue" href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efadd5901f82c07c1724796c8b392721241">VSF_LOADER_MEM_R</a>    = 1 &lt;&lt; 0,</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efa9e9e35a623fe7d91014d1f0b7bf9253f">   70</a></span>    <a class="code hl_enumvalue" href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efa9e9e35a623fe7d91014d1f0b7bf9253f">VSF_LOADER_MEM_W</a>    = 1 &lt;&lt; 1,</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efa6942ed1d6acb15ed8a149eaf30a26b80">   71</a></span>    <a class="code hl_enumvalue" href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efa6942ed1d6acb15ed8a149eaf30a26b80">VSF_LOADER_MEM_X</a>    = 1 &lt;&lt; 2,</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efad7f68c046fda0d32fa91ba7b89cdaa4a">   72</a></span>    <a class="code hl_enumvalue" href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efad7f68c046fda0d32fa91ba7b89cdaa4a">VSF_LOADER_MEM_RW</a>   = <a class="code hl_enumvalue" href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efadd5901f82c07c1724796c8b392721241">VSF_LOADER_MEM_R</a> | <a class="code hl_enumvalue" href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efa9e9e35a623fe7d91014d1f0b7bf9253f">VSF_LOADER_MEM_W</a>,</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="group__vsf__loader.html#ga533c70b5c30735da5e429d4bb3c586e4">   73</a></span>} <a class="code hl_enumeration" href="group__vsf__loader.html#ga38364931fae7492b034d22c7941966ef">vsf_loader_mem_attr_t</a>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="structvsf__loader__heap__op__t.html">   82</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvsf__loader__heap__op__t.html">vsf_loader_heap_op_t</a> {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="structvsf__loader__heap__op__t.html#a9b70fdf9faca9f1f0e3beed9754a1add">   98</a></span>    <span class="keywordtype">void</span> * (*fn_malloc)(<a class="code hl_class" href="classvsf__loader__t.html">vsf_loader_t</a> *loader, <a class="code hl_enumeration" href="group__vsf__loader.html#ga38364931fae7492b034d22c7941966ef">vsf_loader_mem_attr_t</a> attr, <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> alignment);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="structvsf__loader__heap__op__t.html#a74a6c5b639b0ef6e442d1137d375734b">  113</a></span>    void (*<a class="code hl_variable" href="structvsf__loader__heap__op__t.html#a74a6c5b639b0ef6e442d1137d375734b">fn_free</a>)(<a class="code hl_class" href="classvsf__loader__t.html">vsf_loader_t</a> *loader, <a class="code hl_enumeration" href="group__vsf__loader.html#ga38364931fae7492b034d22c7941966ef">vsf_loader_mem_attr_t</a> attr, <span class="keywordtype">void</span> *buffer, <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> alignment);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="group__vsf__loader.html#ga01a2556e1b9d8031d7f6db7658af3d41">  114</a></span>} <a class="code hl_typedef" href="group__vsf__loader.html#ga01a2556e1b9d8031d7f6db7658af3d41">vsf_loader_heap_op_t</a>;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="structvsf__loader__target__t.html">  116</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvsf__loader__target__t.html">vsf_loader_target_t</a> {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="structvsf__loader__target__t.html#a468069a3eb20f6aa55b0bdd21da84b1d">  122</a></span>    <a class="code hl_typedef" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> <a class="code hl_variable" href="structvsf__loader__target__t.html#a468069a3eb20f6aa55b0bdd21da84b1d">taget</a>;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="structvsf__loader__target__t.html#a3b9153ab989b5aa3d0b9a3ff04e81589">  129</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structvsf__loader__target__t.html#a3b9153ab989b5aa3d0b9a3ff04e81589">is_xip</a>;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="structvsf__loader__target__t.html#a813a6dbd5914fa17de8ce05be5a1a1a6">  146</a></span>    <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> (*<a class="code hl_variable" href="structvsf__loader__target__t.html#a813a6dbd5914fa17de8ce05be5a1a1a6">fn_read</a>)(<a class="code hl_class" href="classvsf__loader__t.html">vsf_loader_t</a> *loader, <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> <a class="code hl_variable" href="vsf__memfs_8h.html#a612bb2807d848cca89ea1437cceea886">offset</a>, <span class="keywordtype">void</span> *buffer, <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="group__vsf__loader.html#ga83b8fd095ad7adad39a09ae2618000fa">  147</a></span>} <a class="code hl_typedef" href="group__vsf__loader.html#ga83b8fd095ad7adad39a09ae2618000fa">vsf_loader_target_t</a>;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="classvsf__loader__t.html">  149</a></span><a class="code hl_define" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code hl_class" href="classvsf__loader__t.html">vsf_loader_t</a>) {</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    public_member(</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structvsf__loader__heap__op__t.html">vsf_loader_heap_op_t</a> *heap_op;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <a class="code hl_struct" href="structvsf__loader__target__t.html">vsf_loader_target_t</a> *target;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="classvsf__loader__t.html#a2d6ae4b7bd1e17df41995e43bf3cfc0b">  153</a></span>    )</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    protected_member(</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keywordtype">void</span> * text;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="keywordtype">void</span> * bss;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordtype">void</span> * data;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="keywordtype">void</span> * rodata;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="classvsf__loader__t.html#a9177101e7baf7d0279ae10204df8844c">  160</a></span>    )</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>};</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="preprocessor">#if defined(__VSF_LOADER_CLASS_IMPLEMENT) || defined(__VSF_LOADER_CLASS_INHERIT__)</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="vsf__loader_8c.html#a0c2ed56cfbd50bc94d9b22df0ed230f1">vsf_loader_cleanup</a>(<a class="code hl_class" href="classvsf__loader__t.html">vsf_loader_t</a> *loader);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>}</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="preprocessor">#undef __VSF_LOADER_CLASS_IMPLEMENT</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="preprocessor">#undef __VSF_LOADER_CLASS_INHERIT__</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="preprocessor">#if VSF_LOADER_USE_ELF == ENABLED</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="preprocessor">#   include &quot;<a class="code" href="vsf__elfloader_8h.html">./elf/vsf_elfloader.h</a>&quot;</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>   <span class="comment">// vsf_loader   // vsf_service</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_LOADER</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_LOADER_H__</span></div>
+<div class="ttc" id="aarm_2type_8h_html_a09674b9e56fd7a93a2169aa9210deec7"><div class="ttname"><a href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a></div><div class="ttdeci">uint32_t uintptr_t</div><div class="ttdef"><b>Definition:</b> type.h:49</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a435d1572bf3f880d55459d9805097f62"><div class="ttname"><a href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a></div><div class="ttdeci">unsigned int uint32_t</div><div class="ttdef"><b>Definition:</b> type.h:35</div></div>
+<div class="ttc" id="aclassvsf__loader__t_html"><div class="ttname"><a href="classvsf__loader__t.html">vsf_loader_t</a></div><div class="ttdef"><b>Definition:</b> vsf_loader.h:149</div></div>
+<div class="ttc" id="agroup__vsf__loader_html_ga01a2556e1b9d8031d7f6db7658af3d41"><div class="ttname"><a href="group__vsf__loader.html#ga01a2556e1b9d8031d7f6db7658af3d41">vsf_loader_heap_op_t</a></div><div class="ttdeci">struct vsf_loader_heap_op_t vsf_loader_heap_op_t</div></div>
+<div class="ttc" id="agroup__vsf__loader_html_ga38364931fae7492b034d22c7941966ef"><div class="ttname"><a href="group__vsf__loader.html#ga38364931fae7492b034d22c7941966ef">vsf_loader_mem_attr_t</a></div><div class="ttdeci">vsf_loader_mem_attr_t</div><div class="ttdef"><b>Definition:</b> vsf_loader.h:68</div></div>
+<div class="ttc" id="agroup__vsf__loader_html_ga83b8fd095ad7adad39a09ae2618000fa"><div class="ttname"><a href="group__vsf__loader.html#ga83b8fd095ad7adad39a09ae2618000fa">vsf_loader_target_t</a></div><div class="ttdeci">struct vsf_loader_target_t vsf_loader_target_t</div></div>
+<div class="ttc" id="agroup__vsf__loader_html_gga38364931fae7492b034d22c7941966efa6942ed1d6acb15ed8a149eaf30a26b80"><div class="ttname"><a href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efa6942ed1d6acb15ed8a149eaf30a26b80">VSF_LOADER_MEM_X</a></div><div class="ttdeci">@ VSF_LOADER_MEM_X</div><div class="ttdef"><b>Definition:</b> vsf_loader.h:71</div></div>
+<div class="ttc" id="agroup__vsf__loader_html_gga38364931fae7492b034d22c7941966efa9e9e35a623fe7d91014d1f0b7bf9253f"><div class="ttname"><a href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efa9e9e35a623fe7d91014d1f0b7bf9253f">VSF_LOADER_MEM_W</a></div><div class="ttdeci">@ VSF_LOADER_MEM_W</div><div class="ttdef"><b>Definition:</b> vsf_loader.h:70</div></div>
+<div class="ttc" id="agroup__vsf__loader_html_gga38364931fae7492b034d22c7941966efad7f68c046fda0d32fa91ba7b89cdaa4a"><div class="ttname"><a href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efad7f68c046fda0d32fa91ba7b89cdaa4a">VSF_LOADER_MEM_RW</a></div><div class="ttdeci">@ VSF_LOADER_MEM_RW</div><div class="ttdef"><b>Definition:</b> vsf_loader.h:72</div></div>
+<div class="ttc" id="agroup__vsf__loader_html_gga38364931fae7492b034d22c7941966efadd5901f82c07c1724796c8b392721241"><div class="ttname"><a href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efadd5901f82c07c1724796c8b392721241">VSF_LOADER_MEM_R</a></div><div class="ttdeci">@ VSF_LOADER_MEM_R</div><div class="ttdef"><b>Definition:</b> vsf_loader.h:69</div></div>
+<div class="ttc" id="aooc__class_8h_html"><div class="ttname"><a href="ooc__class_8h.html">ooc_class.h</a></div></div>
+<div class="ttc" id="aooc__class_8h_html_a226f6a53efbee32ec33e32995b0ab6c9"><div class="ttname"><a href="ooc__class_8h.html#a226f6a53efbee32ec33e32995b0ab6c9">vsf_dcl_class</a></div><div class="ttdeci">#define vsf_dcl_class</div><div class="ttdef"><b>Definition:</b> ooc_class.h:42</div></div>
+<div class="ttc" id="aooc__class_8h_html_a62f3fe6fb9699483707f5352d777f2f0"><div class="ttname"><a href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a></div><div class="ttdeci">#define vsf_class(__name)</div><div class="ttdef"><b>Definition:</b> ooc_class.h:44</div></div>
+<div class="ttc" id="astructvsf__loader__heap__op__t_html"><div class="ttname"><a href="structvsf__loader__heap__op__t.html">vsf_loader_heap_op_t</a></div><div class="ttdef"><b>Definition:</b> vsf_loader.h:82</div></div>
+<div class="ttc" id="astructvsf__loader__heap__op__t_html_a74a6c5b639b0ef6e442d1137d375734b"><div class="ttname"><a href="structvsf__loader__heap__op__t.html#a74a6c5b639b0ef6e442d1137d375734b">vsf_loader_heap_op_t::fn_free</a></div><div class="ttdeci">void(* fn_free)(vsf_loader_t *loader, vsf_loader_mem_attr_t attr, void *buffer, uint32_t alignment)</div><div class="ttdef"><b>Definition:</b> vsf_loader.h:113</div></div>
+<div class="ttc" id="astructvsf__loader__target__t_html"><div class="ttname"><a href="structvsf__loader__target__t.html">vsf_loader_target_t</a></div><div class="ttdef"><b>Definition:</b> vsf_loader.h:116</div></div>
+<div class="ttc" id="astructvsf__loader__target__t_html_a3b9153ab989b5aa3d0b9a3ff04e81589"><div class="ttname"><a href="structvsf__loader__target__t.html#a3b9153ab989b5aa3d0b9a3ff04e81589">vsf_loader_target_t::is_xip</a></div><div class="ttdeci">bool is_xip</div><div class="ttdef"><b>Definition:</b> vsf_loader.h:129</div></div>
+<div class="ttc" id="astructvsf__loader__target__t_html_a468069a3eb20f6aa55b0bdd21da84b1d"><div class="ttname"><a href="structvsf__loader__target__t.html#a468069a3eb20f6aa55b0bdd21da84b1d">vsf_loader_target_t::taget</a></div><div class="ttdeci">uintptr_t taget</div><div class="ttdef"><b>Definition:</b> vsf_loader.h:122</div></div>
+<div class="ttc" id="astructvsf__loader__target__t_html_a813a6dbd5914fa17de8ce05be5a1a1a6"><div class="ttname"><a href="structvsf__loader__target__t.html#a813a6dbd5914fa17de8ce05be5a1a1a6">vsf_loader_target_t::fn_read</a></div><div class="ttdeci">uint32_t(* fn_read)(vsf_loader_t *loader, uint32_t offset, void *buffer, uint32_t size)</div><div class="ttdef"><b>Definition:</b> vsf_loader.h:146</div></div>
+<div class="ttc" id="avsf__elfloader_8h_html"><div class="ttname"><a href="vsf__elfloader_8h.html">vsf_elfloader.h</a></div><div class="ttdoc">vsf elf loader</div></div>
+<div class="ttc" id="avsf__loader_8c_html_a0c2ed56cfbd50bc94d9b22df0ed230f1"><div class="ttname"><a href="vsf__loader_8c.html#a0c2ed56cfbd50bc94d9b22df0ed230f1">vsf_loader_cleanup</a></div><div class="ttdeci">void vsf_loader_cleanup(vsf_loader_t *loader)</div><div class="ttdef"><b>Definition:</b> vsf_loader.c:34</div></div>
+<div class="ttc" id="avsf__memfs_8h_html_a612bb2807d848cca89ea1437cceea886"><div class="ttname"><a href="vsf__memfs_8h.html#a612bb2807d848cca89ea1437cceea886">offset</a></div><div class="ttdeci">uint64_t offset</div><div class="ttdef"><b>Definition:</b> vsf_memfs.h:49</div></div>
+<div class="ttc" id="avsf__memfs_8h_html_ab2c6b258f02add8fdf4cfc7c371dd772"><div class="ttname"><a href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a></div><div class="ttdeci">uint32_t size</div><div class="ttdef"><b>Definition:</b> vsf_memfs.h:50</div></div>
+<div class="ttc" id="avsf__service__cfg_8h_html"><div class="ttname"><a href="vsf__service__cfg_8h.html">vsf_service_cfg.h</a></div></div>
+<div class="ttc" id="avsf__utilities_8h_html"><div class="ttname"><a href="vsf__utilities_8h.html">vsf_utilities.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>
