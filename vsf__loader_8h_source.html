@@ -98,9 +98,9 @@
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">        (__target)-&gt;fn_read((__target), (__offset), (__ptr), (__size))</span></div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="group__vsf__loader.html#gaf600e9c1e6d17ae673ec7dc8c6fde2a6">   61</a></span><span class="preprocessor">#define vsf_loader_malloc(__loader, __attr, __size, __align)                    \</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">        (__loader)-&gt;heap_op-&gt;fn_malloc((__loader), (__attr), (__size), (__align))</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">        (__loader)-&gt;heap_op-&gt;fn_malloc((vsf_loader_t *)(__loader), (__attr), (__size), (__align))</span></div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="group__vsf__loader.html#gaf3d3a144f8eccf71b412fc5608d1dfc3">   63</a></span><span class="preprocessor">#define vsf_loader_free(__loader, __attr, __ptr)                                \</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">        (__loader)-&gt;heap_op-&gt;fn_free((__loader), (__attr), (__ptr))</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">        (__loader)-&gt;heap_op-&gt;fn_free((vsf_loader_t *)(__loader), (__attr), (__ptr))</span></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
@@ -145,33 +145,42 @@
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>};</div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="preprocessor">#if defined(__VSF_LOADER_CLASS_IMPLEMENT) || defined(__VSF_LOADER_CLASS_INHERIT__)</span></div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="keyword">extern</span> <span class="keywordtype">void</span> * <a class="code hl_function" href="vsf__loader_8c.html#a875aa637341e64a837c6602536a1383a">vsf_loader_link</a>(<a class="code hl_class" href="classvsf__loader__t.html">vsf_loader_t</a> *loader, <span class="keyword">const</span> <span class="keywordtype">char</span> *name);</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>}</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="preprocessor">#undef __VSF_LOADER_CLASS_IMPLEMENT</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="preprocessor">#undef __VSF_LOADER_CLASS_INHERIT__</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="preprocessor">#if VSF_LOADER_USE_ELF == ENABLED</span></div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="preprocessor">#   include &quot;<a class="code" href="vsf__elfloader_8h.html">./elf/vsf_elfloader.h</a>&quot;</span></div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>   <span class="comment">// vsf_loader   // vsf_service</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_LOADER</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_LOADER_H__</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="preprocessor">#if VSF_USE_HEAP == ENABLED</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_struct" href="structvsf__loader__heap__op__t.html">vsf_loader_heap_op_t</a> <a class="code hl_variable" href="group__vsf__loader.html#ga0007aaa6c4841e40b13533a331b8188e">vsf_loader_default_heap_op</a>;</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="keyword">extern</span> <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> <a class="code hl_function" href="group__vsf__loader.html#ga5e059b3f710daf70307e733e8593c62e">vsf_loader_xip_read</a>(<a class="code hl_struct" href="structvsf__loader__target__t.html">vsf_loader_target_t</a> *target, <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> <a class="code hl_variable" href="vsf__memfs_8h.html#a612bb2807d848cca89ea1437cceea886">offset</a>, <span class="keywordtype">void</span> *buffer, <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="preprocessor">#if defined(__VSF_LOADER_CLASS_IMPLEMENT) || defined(__VSF_LOADER_CLASS_INHERIT__)</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="keyword">extern</span> <span class="keywordtype">void</span> * <a class="code hl_function" href="vsf__loader_8c.html#a875aa637341e64a837c6602536a1383a">vsf_loader_link</a>(<a class="code hl_class" href="classvsf__loader__t.html">vsf_loader_t</a> *loader, <span class="keyword">const</span> <span class="keywordtype">char</span> *name);</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>}</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="preprocessor">#undef __VSF_LOADER_CLASS_IMPLEMENT</span></div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="preprocessor">#undef __VSF_LOADER_CLASS_INHERIT__</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="preprocessor">#if VSF_LOADER_USE_ELF == ENABLED</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="preprocessor">#   include &quot;<a class="code" href="vsf__elfloader_8h.html">./elf/vsf_elfloader.h</a>&quot;</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>   <span class="comment">// vsf_loader   // vsf_service</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_LOADER</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_LOADER_H__</span></div>
 <div class="ttc" id="aarm_2type_8h_html_a09674b9e56fd7a93a2169aa9210deec7"><div class="ttname"><a href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a></div><div class="ttdeci">uint32_t uintptr_t</div><div class="ttdef"><b>Definition:</b> type.h:49</div></div>
 <div class="ttc" id="aarm_2type_8h_html_a435d1572bf3f880d55459d9805097f62"><div class="ttname"><a href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a></div><div class="ttdeci">unsigned int uint32_t</div><div class="ttdef"><b>Definition:</b> type.h:35</div></div>
 <div class="ttc" id="aclassvsf__loader__t_html"><div class="ttname"><a href="classvsf__loader__t.html">vsf_loader_t</a></div><div class="ttdef"><b>Definition:</b> vsf_loader.h:164</div></div>
+<div class="ttc" id="agroup__vsf__loader_html_ga0007aaa6c4841e40b13533a331b8188e"><div class="ttname"><a href="group__vsf__loader.html#ga0007aaa6c4841e40b13533a331b8188e">vsf_loader_default_heap_op</a></div><div class="ttdeci">const vsf_loader_heap_op_t vsf_loader_default_heap_op</div><div class="ttdef"><b>Definition:</b> vsf_loader.c:42</div></div>
 <div class="ttc" id="agroup__vsf__loader_html_ga01a2556e1b9d8031d7f6db7658af3d41"><div class="ttname"><a href="group__vsf__loader.html#ga01a2556e1b9d8031d7f6db7658af3d41">vsf_loader_heap_op_t</a></div><div class="ttdeci">struct vsf_loader_heap_op_t vsf_loader_heap_op_t</div></div>
 <div class="ttc" id="agroup__vsf__loader_html_ga38364931fae7492b034d22c7941966ef"><div class="ttname"><a href="group__vsf__loader.html#ga38364931fae7492b034d22c7941966ef">vsf_loader_mem_attr_t</a></div><div class="ttdeci">vsf_loader_mem_attr_t</div><div class="ttdef"><b>Definition:</b> vsf_loader.h:77</div></div>
+<div class="ttc" id="agroup__vsf__loader_html_ga5e059b3f710daf70307e733e8593c62e"><div class="ttname"><a href="group__vsf__loader.html#ga5e059b3f710daf70307e733e8593c62e">vsf_loader_xip_read</a></div><div class="ttdeci">uint32_t vsf_loader_xip_read(vsf_loader_target_t *target, uint32_t offset, void *buffer, uint32_t size)</div><div class="ttdef"><b>Definition:</b> vsf_loader.c:62</div></div>
 <div class="ttc" id="agroup__vsf__loader_html_gaac56a3fa213cc4fd662f5ba9e4834117"><div class="ttname"><a href="group__vsf__loader.html#gaac56a3fa213cc4fd662f5ba9e4834117">vsf_loader_lnktbl_t</a></div><div class="ttdeci">struct vsf_loader_lnktbl_t vsf_loader_lnktbl_t</div></div>
 <div class="ttc" id="agroup__vsf__loader_html_gga38364931fae7492b034d22c7941966efa6942ed1d6acb15ed8a149eaf30a26b80"><div class="ttname"><a href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efa6942ed1d6acb15ed8a149eaf30a26b80">VSF_LOADER_MEM_X</a></div><div class="ttdeci">@ VSF_LOADER_MEM_X</div><div class="ttdef"><b>Definition:</b> vsf_loader.h:80</div></div>
 <div class="ttc" id="agroup__vsf__loader_html_gga38364931fae7492b034d22c7941966efa9e9e35a623fe7d91014d1f0b7bf9253f"><div class="ttname"><a href="group__vsf__loader.html#gga38364931fae7492b034d22c7941966efa9e9e35a623fe7d91014d1f0b7bf9253f">VSF_LOADER_MEM_W</a></div><div class="ttdeci">@ VSF_LOADER_MEM_W</div><div class="ttdef"><b>Definition:</b> vsf_loader.h:79</div></div>
@@ -190,7 +199,7 @@
 <div class="ttc" id="astructvsf__loader__target__t_html_a8b506a6bb057307014c4e0299e65ca24"><div class="ttname"><a href="structvsf__loader__target__t.html#a8b506a6bb057307014c4e0299e65ca24">vsf_loader_target_t::object</a></div><div class="ttdeci">uintptr_t object</div><div class="ttdef"><b>Definition:</b> vsf_loader.h:132</div></div>
 <div class="ttc" id="astructvsf__loader__target__t_html_ad57fa62e081ab526566a8808cf09ae48"><div class="ttname"><a href="structvsf__loader__target__t.html#ad57fa62e081ab526566a8808cf09ae48">vsf_loader_target_t::fn_read</a></div><div class="ttdeci">uint32_t(* fn_read)(vsf_loader_target_t *target, uint32_t offset, void *buffer, uint32_t size)</div><div class="ttdef"><b>Definition:</b> vsf_loader.h:156</div></div>
 <div class="ttc" id="avsf__elfloader_8h_html"><div class="ttname"><a href="vsf__elfloader_8h.html">vsf_elfloader.h</a></div><div class="ttdoc">vsf elf loader</div></div>
-<div class="ttc" id="avsf__loader_8c_html_a875aa637341e64a837c6602536a1383a"><div class="ttname"><a href="vsf__loader_8c.html#a875aa637341e64a837c6602536a1383a">vsf_loader_link</a></div><div class="ttdeci">void * vsf_loader_link(vsf_loader_t *loader, const char *name)</div><div class="ttdef"><b>Definition:</b> vsf_loader.c:34</div></div>
+<div class="ttc" id="avsf__loader_8c_html_a875aa637341e64a837c6602536a1383a"><div class="ttname"><a href="vsf__loader_8c.html#a875aa637341e64a837c6602536a1383a">vsf_loader_link</a></div><div class="ttdeci">void * vsf_loader_link(vsf_loader_t *loader, const char *name)</div><div class="ttdef"><b>Definition:</b> vsf_loader.c:68</div></div>
 <div class="ttc" id="avsf__memfs_8h_html_a612bb2807d848cca89ea1437cceea886"><div class="ttname"><a href="vsf__memfs_8h.html#a612bb2807d848cca89ea1437cceea886">offset</a></div><div class="ttdeci">uint64_t offset</div><div class="ttdef"><b>Definition:</b> vsf_memfs.h:49</div></div>
 <div class="ttc" id="avsf__memfs_8h_html_ab2c6b258f02add8fdf4cfc7c371dd772"><div class="ttname"><a href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a></div><div class="ttdeci">uint32_t size</div><div class="ttdef"><b>Definition:</b> vsf_memfs.h:50</div></div>
 <div class="ttc" id="avsf__service__cfg_8h_html"><div class="ttname"><a href="vsf__service__cfg_8h.html">vsf_service_cfg.h</a></div></div>
