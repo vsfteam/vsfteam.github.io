@@ -103,15 +103,42 @@
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="ifaddrs_8h.html#a1c3e14184da65395494aa79f34e0a30d">   49</a></span><span class="preprocessor">#define freeifaddrs         VSF_LINUX_WRAPPER(freeifaddrs)</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keywordtype">int</span> <a class="code hl_define" href="ifaddrs_8h.html#af85ec136316d6417383c84ac9c2f6690">getifaddrs</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structifaddrs.html">ifaddrs</a> **ifa);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keywordtype">void</span> <a class="code hl_define" href="ifaddrs_8h.html#a1c3e14184da65395494aa79f34e0a30d">freeifaddrs</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structifaddrs.html">ifaddrs</a> *ifa);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#if VSF_LINUX_APPLET_USE_IFADDRS == ENABLED</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="structvsf__linux__ifaddrs__vplt__t.html">   53</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvsf__linux__ifaddrs__vplt__t.html">vsf_linux_ifaddrs_vplt_t</a> {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structvsf__linux__ifaddrs__vplt__t.html#ac4fc66787897163fd47046c6b1e604fa">   54</a></span>    <a class="code hl_struct" href="structvsf__vplt__info__t.html">vsf_vplt_info_t</a> <a class="code hl_variable" href="structvsf__linux__ifaddrs__vplt__t.html#ac4fc66787897163fd47046c6b1e604fa">info</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="ifaddrs_8h.html#adf029a935b0600c9facdb0d050e136af">   55</a></span>} <a class="code hl_typedef" href="ifaddrs_8h.html#adf029a935b0600c9facdb0d050e136af">vsf_linux_ifaddrs_vplt_t</a>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#   ifndef __VSF_APPLET__</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">extern</span> <a class="code hl_define" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="code hl_struct" href="structvsf__linux__ifaddrs__vplt__t.html">vsf_linux_ifaddrs_vplt_t</a> <a class="code hl_variable" href="ifaddrs_8h.html#aaaa9898608d2bb636567cfc18a2135c0">vsf_linux_ifaddrs_vplt</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#   endif</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#if defined(__VSF_APPLET__) &amp;&amp; VSF_LINUX_APPLET_USE_IFADDRS == ENABLED</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#ifndef VSF_LINUX_APPLET_IFADDRS_VPLT</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#   if VSF_LINUX_USE_APPLET == ENABLED</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#       define VSF_LINUX_APPLET_IFADDRS_VPLT                                    \</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">            ((vsf_linux_ifaddrs_vplt_t *)(VSF_LINUX_APPLET_VPLT-&gt;ifaddrs))</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#   else</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#       define VSF_LINUX_APPLET_IFADDRS_VPLT                                    \</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">            ((vsf_linux_ifaddrs_vplt_t *)vsf_vplt((void *)0))</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#else       </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_IFADDRS</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keywordtype">int</span> <a class="code hl_define" href="ifaddrs_8h.html#af85ec136316d6417383c84ac9c2f6690">getifaddrs</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structifaddrs.html">ifaddrs</a> **ifa);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keywordtype">void</span> <a class="code hl_define" href="ifaddrs_8h.html#a1c3e14184da65395494aa79f34e0a30d">freeifaddrs</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structifaddrs.html">ifaddrs</a> *ifa);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_IFADDRS</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aifaddrs_8h_html_a1c3e14184da65395494aa79f34e0a30d"><div class="ttname"><a href="ifaddrs_8h.html#a1c3e14184da65395494aa79f34e0a30d">freeifaddrs</a></div><div class="ttdeci">#define freeifaddrs</div><div class="ttdef"><b>Definition:</b> ifaddrs.h:49</div></div>
+<div class="ttc" id="aifaddrs_8h_html_aaaa9898608d2bb636567cfc18a2135c0"><div class="ttname"><a href="ifaddrs_8h.html#aaaa9898608d2bb636567cfc18a2135c0">vsf_linux_ifaddrs_vplt</a></div><div class="ttdeci">__VSF_VPLT_DECORATOR__ vsf_linux_ifaddrs_vplt_t vsf_linux_ifaddrs_vplt</div></div>
+<div class="ttc" id="aifaddrs_8h_html_adf029a935b0600c9facdb0d050e136af"><div class="ttname"><a href="ifaddrs_8h.html#adf029a935b0600c9facdb0d050e136af">vsf_linux_ifaddrs_vplt_t</a></div><div class="ttdeci">struct vsf_linux_ifaddrs_vplt_t vsf_linux_ifaddrs_vplt_t</div></div>
 <div class="ttc" id="aifaddrs_8h_html_aeab959b74e8c662fea462a97f9114179"><div class="ttname"><a href="ifaddrs_8h.html#aeab959b74e8c662fea462a97f9114179">net_device_flags</a></div><div class="ttdeci">net_device_flags</div><div class="ttdef"><b>Definition:</b> ifaddrs.h:18</div></div>
 <div class="ttc" id="aifaddrs_8h_html_aeab959b74e8c662fea462a97f9114179a32c65830294f314ad16ac22e0d140527"><div class="ttname"><a href="ifaddrs_8h.html#aeab959b74e8c662fea462a97f9114179a32c65830294f314ad16ac22e0d140527">IFF_UP</a></div><div class="ttdeci">@ IFF_UP</div><div class="ttdef"><b>Definition:</b> ifaddrs.h:19</div></div>
 <div class="ttc" id="aifaddrs_8h_html_aeab959b74e8c662fea462a97f9114179a56a8e881fee795f55584477dcd821e95"><div class="ttname"><a href="ifaddrs_8h.html#aeab959b74e8c662fea462a97f9114179a56a8e881fee795f55584477dcd821e95">IFF_DEBUG</a></div><div class="ttdeci">@ IFF_DEBUG</div><div class="ttdef"><b>Definition:</b> ifaddrs.h:21</div></div>
@@ -132,6 +159,10 @@
 <div class="ttc" id="astructifaddrs_html_acac3a8d7d40841c497bb55b9e42c41d5"><div class="ttname"><a href="structifaddrs.html#acac3a8d7d40841c497bb55b9e42c41d5">ifaddrs::ifa_netmask</a></div><div class="ttdeci">struct sockaddr * ifa_netmask</div><div class="ttdef"><b>Definition:</b> ifaddrs.h:32</div></div>
 <div class="ttc" id="astructifaddrs_html_add59b160fa5ec481f1f650158cc746ab"><div class="ttname"><a href="structifaddrs.html#add59b160fa5ec481f1f650158cc746ab">ifaddrs::ifu_broadaddr</a></div><div class="ttdeci">struct sockaddr * ifu_broadaddr</div><div class="ttdef"><b>Definition:</b> ifaddrs.h:34</div></div>
 <div class="ttc" id="astructsockaddr_html"><div class="ttname"><a href="structsockaddr.html">sockaddr</a></div><div class="ttdef"><b>Definition:</b> socket.h:54</div></div>
+<div class="ttc" id="astructvsf__linux__ifaddrs__vplt__t_html"><div class="ttname"><a href="structvsf__linux__ifaddrs__vplt__t.html">vsf_linux_ifaddrs_vplt_t</a></div><div class="ttdef"><b>Definition:</b> ifaddrs.h:53</div></div>
+<div class="ttc" id="astructvsf__linux__ifaddrs__vplt__t_html_ac4fc66787897163fd47046c6b1e604fa"><div class="ttname"><a href="structvsf__linux__ifaddrs__vplt__t.html#ac4fc66787897163fd47046c6b1e604fa">vsf_linux_ifaddrs_vplt_t::info</a></div><div class="ttdeci">vsf_vplt_info_t info</div><div class="ttdef"><b>Definition:</b> ifaddrs.h:54</div></div>
+<div class="ttc" id="astructvsf__vplt__info__t_html"><div class="ttname"><a href="structvsf__vplt__info__t.html">vsf_vplt_info_t</a></div><div class="ttdef"><b>Definition:</b> vsf_cfg.h:95</div></div>
+<div class="ttc" id="avsf__cfg_8h_html_aacdf4fc28d5a0268a4eec91b2f551293"><div class="ttname"><a href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a></div><div class="ttdeci">#define __VSF_VPLT_DECORATOR__</div><div class="ttdef"><b>Definition:</b> vsf_cfg.h:93</div></div>
 <div class="ttc" id="avsf__linux__cfg_8h_html"><div class="ttname"><a href="vsf__linux__cfg_8h.html">vsf_linux_cfg.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

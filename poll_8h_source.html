@@ -96,18 +96,44 @@
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structpollfd.html#a880bfaabc1b4bd1345126319550f9284">   42</a></span>    <span class="keywordtype">void</span> *<a class="code hl_variable" href="structpollfd.html#a880bfaabc1b4bd1345126319550f9284">trig</a>;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>};</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keywordtype">int</span> <a class="code hl_define" href="poll_8h.html#a736293b83912ddb07766d4adea8391ad">poll</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structpollfd.html">pollfd</a> *fds, <a class="code hl_typedef" href="poll_8h.html#a345b1833e125b256b9aeb8056b9629db">nfds_t</a> nfds, <span class="keywordtype">int</span> <a class="code hl_variable" href="select_8h.html#aff126839915cf06976792d265ce29a48">timeout</a>);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">int</span> <a class="code hl_define" href="poll_8h.html#add0099a7547c7da561919dc9a9a4f4b5">ppoll</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structpollfd.html">pollfd</a> *fds, <a class="code hl_typedef" href="poll_8h.html#a345b1833e125b256b9aeb8056b9629db">nfds_t</a> nfds, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structtimespec.html">timespec</a> *timeout_ts, <span class="keyword">const</span> <a class="code hl_struct" href="structsigset__t.html">sigset_t</a> *sigmask);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#if VSF_LINUX_APPLET_USE_POLL == ENABLED</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structvsf__linux__poll__vplt__t.html">   46</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvsf__linux__poll__vplt__t.html">vsf_linux_poll_vplt_t</a> {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structvsf__linux__poll__vplt__t.html#a413f2b14d688029380c69d6b68b6cb88">   47</a></span>    <a class="code hl_struct" href="structvsf__vplt__info__t.html">vsf_vplt_info_t</a> <a class="code hl_variable" href="structvsf__linux__poll__vplt__t.html#a413f2b14d688029380c69d6b68b6cb88">info</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="poll_8h.html#a9c5f17398d6279902439ccc40574d131">   48</a></span>} <a class="code hl_typedef" href="poll_8h.html#a9c5f17398d6279902439ccc40574d131">vsf_linux_poll_vplt_t</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#   ifndef __VSF_APPLET__</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">extern</span> <a class="code hl_define" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="code hl_struct" href="structvsf__linux__poll__vplt__t.html">vsf_linux_poll_vplt_t</a> <a class="code hl_variable" href="poll_8h.html#aacdc23f7499691fe99cebf3648910058">vsf_linux_poll_vplt</a>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#   endif</span></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#if defined(__VSF_APPLET__) &amp;&amp; VSF_LINUX_APPLET_USE_POLL == ENABLED</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#ifndef VSF_LINUX_APPLET_POLL_VPLT</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#   if VSF_LINUX_USE_APPLET == ENABLED</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#       define VSF_LINUX_APPLET_POLL_VPLT                                       \</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">            ((vsf_linux_poll_vplt_t *)(VSF_LINUX_APPLET_VPLT-&gt;poll))</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#   else</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#       define VSF_LINUX_APPLET_POLL_VPLT                                       \</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">            ((vsf_linux_poll_vplt_t *)vsf_vplt((void *)0))</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#else       </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_POLL</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keywordtype">int</span> <a class="code hl_define" href="poll_8h.html#a736293b83912ddb07766d4adea8391ad">poll</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structpollfd.html">pollfd</a> *fds, <a class="code hl_typedef" href="poll_8h.html#a345b1833e125b256b9aeb8056b9629db">nfds_t</a> nfds, <span class="keywordtype">int</span> timeout);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keywordtype">int</span> <a class="code hl_define" href="poll_8h.html#add0099a7547c7da561919dc9a9a4f4b5">ppoll</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structpollfd.html">pollfd</a> *fds, <a class="code hl_typedef" href="poll_8h.html#a345b1833e125b256b9aeb8056b9629db">nfds_t</a> nfds, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structtimespec.html">timespec</a> *timeout_ts, <span class="keyword">const</span> <a class="code hl_struct" href="structsigset__t.html">sigset_t</a> *sigmask);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_POLL</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="apoll_8h_html_a345b1833e125b256b9aeb8056b9629db"><div class="ttname"><a href="poll_8h.html#a345b1833e125b256b9aeb8056b9629db">nfds_t</a></div><div class="ttdeci">int nfds_t</div><div class="ttdef"><b>Definition:</b> poll.h:26</div></div>
 <div class="ttc" id="apoll_8h_html_a736293b83912ddb07766d4adea8391ad"><div class="ttname"><a href="poll_8h.html#a736293b83912ddb07766d4adea8391ad">poll</a></div><div class="ttdeci">#define poll</div><div class="ttdef"><b>Definition:</b> poll.h:22</div></div>
+<div class="ttc" id="apoll_8h_html_a9c5f17398d6279902439ccc40574d131"><div class="ttname"><a href="poll_8h.html#a9c5f17398d6279902439ccc40574d131">vsf_linux_poll_vplt_t</a></div><div class="ttdeci">struct vsf_linux_poll_vplt_t vsf_linux_poll_vplt_t</div></div>
+<div class="ttc" id="apoll_8h_html_aacdc23f7499691fe99cebf3648910058"><div class="ttname"><a href="poll_8h.html#aacdc23f7499691fe99cebf3648910058">vsf_linux_poll_vplt</a></div><div class="ttdeci">__VSF_VPLT_DECORATOR__ vsf_linux_poll_vplt_t vsf_linux_poll_vplt</div></div>
 <div class="ttc" id="apoll_8h_html_add0099a7547c7da561919dc9a9a4f4b5"><div class="ttname"><a href="poll_8h.html#add0099a7547c7da561919dc9a9a4f4b5">ppoll</a></div><div class="ttdeci">#define ppoll</div><div class="ttdef"><b>Definition:</b> poll.h:23</div></div>
-<div class="ttc" id="aselect_8h_html_aff126839915cf06976792d265ce29a48"><div class="ttname"><a href="select_8h.html#aff126839915cf06976792d265ce29a48">timeout</a></div><div class="ttdeci">fd_set fd_set fd_set struct timeval * timeout</div><div class="ttdef"><b>Definition:</b> select.h:36</div></div>
 <div class="ttc" id="asignal_8h_html"><div class="ttname"><a href="signal_8h.html">signal.h</a></div></div>
 <div class="ttc" id="asimple__libc_2time_8h_html"><div class="ttname"><a href="simple__libc_2time_8h.html">time.h</a></div></div>
 <div class="ttc" id="astructpollfd_html"><div class="ttname"><a href="structpollfd.html">pollfd</a></div><div class="ttdef"><b>Definition:</b> poll.h:35</div></div>
@@ -118,7 +144,11 @@
 <div class="ttc" id="astructpollfd_html_ac9b2f2c5b1f9a7487eb57e67cd4960ef"><div class="ttname"><a href="structpollfd.html#ac9b2f2c5b1f9a7487eb57e67cd4960ef">pollfd::events</a></div><div class="ttdeci">short events</div><div class="ttdef"><b>Definition:</b> poll.h:37</div></div>
 <div class="ttc" id="astructsigset__t_html"><div class="ttname"><a href="structsigset__t.html">sigset_t</a></div><div class="ttdef"><b>Definition:</b> signal.h:43</div></div>
 <div class="ttc" id="astructtimespec_html"><div class="ttname"><a href="structtimespec.html">timespec</a></div><div class="ttdef"><b>Definition:</b> time.h:35</div></div>
+<div class="ttc" id="astructvsf__linux__poll__vplt__t_html"><div class="ttname"><a href="structvsf__linux__poll__vplt__t.html">vsf_linux_poll_vplt_t</a></div><div class="ttdef"><b>Definition:</b> poll.h:46</div></div>
+<div class="ttc" id="astructvsf__linux__poll__vplt__t_html_a413f2b14d688029380c69d6b68b6cb88"><div class="ttname"><a href="structvsf__linux__poll__vplt__t.html#a413f2b14d688029380c69d6b68b6cb88">vsf_linux_poll_vplt_t::info</a></div><div class="ttdeci">vsf_vplt_info_t info</div><div class="ttdef"><b>Definition:</b> poll.h:47</div></div>
+<div class="ttc" id="astructvsf__vplt__info__t_html"><div class="ttname"><a href="structvsf__vplt__info__t.html">vsf_vplt_info_t</a></div><div class="ttdef"><b>Definition:</b> vsf_cfg.h:95</div></div>
 <div class="ttc" id="asys_2time_8h_html"><div class="ttname"><a href="sys_2time_8h.html">time.h</a></div></div>
+<div class="ttc" id="avsf__cfg_8h_html_aacdf4fc28d5a0268a4eec91b2f551293"><div class="ttname"><a href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a></div><div class="ttdeci">#define __VSF_VPLT_DECORATOR__</div><div class="ttdef"><b>Definition:</b> vsf_cfg.h:93</div></div>
 <div class="ttc" id="avsf__linux__cfg_8h_html"><div class="ttname"><a href="vsf__linux__cfg_8h.html">vsf_linux_cfg.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
