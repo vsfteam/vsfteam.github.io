@@ -312,157 +312,163 @@
 <div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    )</div>
 <div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    private_member(</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        <span class="keywordtype">char</span> *working_dir;</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        <a class="code hl_struct" href="structvsf__dlist__node__t.html">vsf_dlist_node_t</a> process_node;</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <a class="code hl_struct" href="structvsf__dlist__t.html">vsf_dlist_t</a> thread_list;</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        <a class="code hl_struct" href="structvsf__dlist__t.html">vsf_dlist_t</a> fd_list;</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        vsf_linux_thread_t *thread_pending;</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        <a class="code hl_define" href="vsf__bitmap_8h.html#adb9dfcc2a4edc4cdf1dc76e34021e7cd">vsf_bitmap</a>(vsf_linux_fd_bitmap) fd_bitmap;</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>            <a class="code hl_struct" href="structsigset__t.html">sigset_t</a> pending;</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>            <a class="code hl_struct" href="structsigset__t.html">sigset_t</a> mask;</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="preprocessor">#if VSF_LINUX_CFG_SUPPORT_SIG == ENABLED</span></div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>            <a class="code hl_struct" href="structvsf__dlist__t.html">vsf_dlist_t</a> handler_list;</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>            vsf_linux_thread_t *sighandler_thread;</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            <a class="code hl_struct" href="structvsf__dlist__t.html">vsf_dlist_t</a> trigger_list;</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        } sig;</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        <a class="code hl_enumeration" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a> prio;</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        vsf_linux_thread_t *thread_pending_exit;</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        vsf_linux_process_t *parent_process;</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        <a class="code hl_struct" href="structvsf__dlist__t.html">vsf_dlist_t</a> child_list;</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        <a class="code hl_struct" href="structvsf__dlist__node__t.html">vsf_dlist_node_t</a> child_node;</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span><span class="preprocessor">#if VSF_LINUX_CFG_PLS_NUM &gt; 0</span></div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        vsf_linux_localstorage_t pls[<a class="code hl_define" href="vsf__linux__cfg_8h.html#a5cc1596761754943697d4bbd12f731dc">VSF_LINUX_CFG_PLS_NUM</a>];</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="preprocessor">#if VSF_LINUX_CFG_TLS_NUM &gt; 0</span></div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>            <a class="code hl_define" href="vsf__bitmap_8h.html#adb9dfcc2a4edc4cdf1dc76e34021e7cd">vsf_bitmap</a>(vsf_linux_tls_bitmap) bitmap;</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        } tls;</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    )</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>};</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span> </div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="comment">// IMPORTANT: priority of stdio_stream MUST be within scheduler priorities</span></div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="keyword">extern</span> <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_linux_init(vsf_linux_stdio_stream_t *stdio_stream);</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>#<span class="keywordflow">if</span> VSF_ARCH_USE_THREAD_REG == <a class="code hl_define" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        <a class="code hl_typedef" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> reg;</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="keywordtype">char</span> *working_dir;</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        <a class="code hl_struct" href="structvsf__dlist__node__t.html">vsf_dlist_node_t</a> process_node;</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        <a class="code hl_struct" href="structvsf__dlist__t.html">vsf_dlist_t</a> thread_list;</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        <a class="code hl_struct" href="structvsf__dlist__t.html">vsf_dlist_t</a> fd_list;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        vsf_linux_thread_t *thread_pending;</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        <a class="code hl_define" href="vsf__bitmap_8h.html#adb9dfcc2a4edc4cdf1dc76e34021e7cd">vsf_bitmap</a>(vsf_linux_fd_bitmap) fd_bitmap;</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>            <a class="code hl_struct" href="structsigset__t.html">sigset_t</a> pending;</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>            <a class="code hl_struct" href="structsigset__t.html">sigset_t</a> mask;</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="preprocessor">#if VSF_LINUX_CFG_SUPPORT_SIG == ENABLED</span></div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>            <a class="code hl_struct" href="structvsf__dlist__t.html">vsf_dlist_t</a> handler_list;</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>            vsf_linux_thread_t *sighandler_thread;</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>            <a class="code hl_struct" href="structvsf__dlist__t.html">vsf_dlist_t</a> trigger_list;</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        } sig;</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        <a class="code hl_enumeration" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a> prio;</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        vsf_linux_thread_t *thread_pending_exit;</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        vsf_linux_process_t *parent_process;</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        <a class="code hl_struct" href="structvsf__dlist__t.html">vsf_dlist_t</a> child_list;</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        <a class="code hl_struct" href="structvsf__dlist__node__t.html">vsf_dlist_node_t</a> child_node;</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span><span class="preprocessor">#if VSF_LINUX_CFG_PLS_NUM &gt; 0</span></div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        vsf_linux_localstorage_t pls[<a class="code hl_define" href="vsf__linux__cfg_8h.html#a5cc1596761754943697d4bbd12f731dc">VSF_LINUX_CFG_PLS_NUM</a>];</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span><span class="preprocessor">#if VSF_LINUX_CFG_TLS_NUM &gt; 0</span></div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>            <a class="code hl_define" href="vsf__bitmap_8h.html#adb9dfcc2a4edc4cdf1dc76e34021e7cd">vsf_bitmap</a>(vsf_linux_tls_bitmap) bitmap;</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        } tls;</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    )</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>};</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
 <div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="keyword">extern</span> vsf_systimer_tick_t vsf_linux_sleep(vsf_systimer_tick_t ticks);</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span> </div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="comment">// used for dynamic libraries, allocate/free memory from resources_process</span></div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><span class="keyword">extern</span> vsf_linux_process_t * vsf_linux_resources_process(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span><span class="preprocessor">#if VSF_LINUX_SIMPLE_STDLIB_CFG_HEAP_MONITOR == ENABLED</span></div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="comment">// can not put in clib headers because of dependency, so put them here</span></div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span><span class="keyword">extern</span> <span class="keywordtype">void</span> * __malloc_ex(vsf_linux_process_t *process, <span class="keywordtype">int</span> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, ...);</div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span><span class="keyword">extern</span> <span class="keywordtype">void</span> * __calloc_ex(vsf_linux_process_t *process, <span class="keywordtype">size_t</span> n, <span class="keywordtype">size_t</span> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, ...);</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span><span class="keyword">extern</span> <span class="keywordtype">void</span> __free_ex(vsf_linux_process_t *process, <span class="keywordtype">void</span> *ptr, ...);</div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="keyword">extern</span> <span class="keywordtype">void</span> * __realloc_ex(vsf_linux_process_t *process, <span class="keywordtype">void</span> *p, <span class="keywordtype">size_t</span> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, ...);</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span><span class="keyword">extern</span> <span class="keywordtype">char</span> * __strdup_ex(vsf_linux_process_t *process, <span class="keyword">const</span> <span class="keywordtype">char</span> *str);</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span><span class="preprocessor">#   define __malloc_ex(__process, __size, ...)          malloc(__size)</span></div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><span class="preprocessor">#   define __calloc_ex(__process, __n, __size, ...)     calloc((__n), (__size))</span></div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span><span class="preprocessor">#   define __free_ex(__process, __ptr, ...)             free(__ptr)</span></div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span><span class="preprocessor">#   define __realloc_ex(__process, __ptr, __size, ...)  realloc((__ptr), (__size))</span></div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span><span class="preprocessor">#   define __strdup_ex(__process, __str)                strdup(__str)</span></div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_generate_path(<span class="keywordtype">char</span> *path_out, <span class="keywordtype">int</span> path_out_lenlen, <span class="keywordtype">char</span> *dir, <span class="keywordtype">char</span> *path_in);</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span><span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code hl_function" href="vsf__linux__fs_8c.html#ae39072bc36800e7ba88a680211fec533">vsf_linux_chdir</a>(vsf_linux_process_t *process, <span class="keywordtype">char</span> *working_dir);</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="comment">// IMPORTANT: priority of stdio_stream MUST be within scheduler priorities</span></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span><span class="keyword">extern</span> <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_linux_init(vsf_linux_stdio_stream_t *stdio_stream);</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><span class="keyword">extern</span> vsf_systimer_tick_t vsf_linux_sleep(vsf_systimer_tick_t ticks);</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="comment">// used for dynamic libraries, allocate/free memory from resources_process</span></div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span><span class="keyword">extern</span> vsf_linux_process_t * vsf_linux_resources_process(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span><span class="preprocessor">#if VSF_LINUX_SIMPLE_STDLIB_CFG_HEAP_MONITOR == ENABLED</span></div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span><span class="comment">// can not put in clib headers because of dependency, so put them here</span></div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="keyword">extern</span> <span class="keywordtype">void</span> * __malloc_ex(vsf_linux_process_t *process, <span class="keywordtype">int</span> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, ...);</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span><span class="keyword">extern</span> <span class="keywordtype">void</span> * __calloc_ex(vsf_linux_process_t *process, <span class="keywordtype">size_t</span> n, <span class="keywordtype">size_t</span> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, ...);</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span><span class="keyword">extern</span> <span class="keywordtype">void</span> __free_ex(vsf_linux_process_t *process, <span class="keywordtype">void</span> *ptr, ...);</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span><span class="keyword">extern</span> <span class="keywordtype">void</span> * __realloc_ex(vsf_linux_process_t *process, <span class="keywordtype">void</span> *p, <span class="keywordtype">size_t</span> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, ...);</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><span class="keyword">extern</span> <span class="keywordtype">char</span> * __strdup_ex(vsf_linux_process_t *process, <span class="keyword">const</span> <span class="keywordtype">char</span> *str);</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span><span class="preprocessor">#   define __malloc_ex(__process, __size, ...)          malloc(__size)</span></div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span><span class="preprocessor">#   define __calloc_ex(__process, __n, __size, ...)     calloc((__n), (__size))</span></div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="preprocessor">#   define __free_ex(__process, __ptr, ...)             free(__ptr)</span></div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span><span class="preprocessor">#   define __realloc_ex(__process, __ptr, __size, ...)  realloc((__ptr), (__size))</span></div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span><span class="preprocessor">#   define __strdup_ex(__process, __str)                strdup(__str)</span></div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_fd_bind_executable(<span class="keywordtype">int</span> fd, vsf_linux_main_entry_t <a class="code hl_variable" href="vsf__thread_8h.html#a7b1bd7ace931306a646900d724bb7329">entry</a>);</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_expandenv(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keywordtype">char</span> *output, <span class="keywordtype">size_t</span> bufflen);</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span><span class="preprocessor">#if VSF_LINUX_CFG_PLS_NUM &gt; 0</span></div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span><span class="keyword">extern</span> <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_linux_library_init(<span class="keywordtype">int</span> *lib_idx, <span class="keywordtype">void</span> *lib_ctx, <span class="keywordtype">void</span> (*destructor)(<span class="keywordtype">void</span> *));</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span><span class="keyword">extern</span> <span class="keywordtype">void</span> * vsf_linux_library_ctx(<span class="keywordtype">int</span> lib_idx);</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span><span class="keyword">extern</span> <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_linux_dynlib_init(<span class="keywordtype">int</span> *lib_idx, <span class="keywordtype">int</span> module_num, <span class="keywordtype">int</span> bss_size);</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span><span class="keyword">extern</span> <span class="keywordtype">void</span> * vsf_linux_dynlib_ctx(<span class="keyword">const</span> vsf_linux_dynlib_mod_t *mod);</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span><span class="preprocessor">#if defined(__VSF_LINUX_CLASS_IMPLEMENT) || defined(__VSF_LINUX_CLASS_INHERIT__)</span></div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span><span class="preprocessor">#   if VSF_LINUX_CFG_PLS_NUM &gt; 0</span></div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_pls_alloc(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_pls_free(<span class="keywordtype">int</span> idx);</div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span><span class="keyword">extern</span> vsf_linux_localstorage_t * vsf_linux_pls_get(<span class="keywordtype">int</span> idx);</div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span><span class="preprocessor">#   if VSF_LINUX_CFG_TLS_NUM &gt; 0</span></div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_tls_alloc(<span class="keywordtype">void</span> (*destructor)(<span class="keywordtype">void</span> *));</div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_tls_free(<span class="keywordtype">int</span> idx);</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span><span class="keyword">extern</span> vsf_linux_localstorage_t * vsf_linux_tls_get(<span class="keywordtype">int</span> idx);</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span> </div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span><span class="keyword">extern</span> <span class="keywordtype">bool</span> vsf_linux_is_inited(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span> </div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span><span class="keyword">extern</span> vsf_linux_main_entry_t * vsf_linux_fd_get_executable(<span class="keywordtype">int</span> fd);</div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_fs_get_executable(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, vsf_linux_main_entry_t *<a class="code hl_variable" href="vsf__thread_8h.html#a7b1bd7ace931306a646900d724bb7329">entry</a>);</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_generate_path(<span class="keywordtype">char</span> *path_out, <span class="keywordtype">int</span> path_out_lenlen, <span class="keywordtype">char</span> *dir, <span class="keywordtype">char</span> *path_in);</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span><span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code hl_function" href="vsf__linux__fs_8c.html#ae39072bc36800e7ba88a680211fec533">vsf_linux_chdir</a>(vsf_linux_process_t *process, <span class="keywordtype">char</span> *working_dir);</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span> </div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_fd_bind_executable(<span class="keywordtype">int</span> fd, vsf_linux_main_entry_t <a class="code hl_variable" href="vsf__thread_8h.html#a7b1bd7ace931306a646900d724bb7329">entry</a>);</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_expandenv(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keywordtype">char</span> *output, <span class="keywordtype">size_t</span> bufflen);</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span> </div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span><span class="preprocessor">#if VSF_LINUX_CFG_PLS_NUM &gt; 0</span></div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span><span class="keyword">extern</span> <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_linux_library_init(<span class="keywordtype">int</span> *lib_idx, <span class="keywordtype">void</span> *lib_ctx, <span class="keywordtype">void</span> (*destructor)(<span class="keywordtype">void</span> *));</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span><span class="keyword">extern</span> <span class="keywordtype">void</span> * vsf_linux_library_ctx(<span class="keywordtype">int</span> lib_idx);</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span> </div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span><span class="keyword">extern</span> <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_linux_dynlib_init(<span class="keywordtype">int</span> *lib_idx, <span class="keywordtype">int</span> module_num, <span class="keywordtype">int</span> bss_size);</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span><span class="keyword">extern</span> <span class="keywordtype">void</span> * vsf_linux_dynlib_ctx(<span class="keyword">const</span> vsf_linux_dynlib_mod_t *mod);</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span> </div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="preprocessor">#if defined(__VSF_LINUX_CLASS_IMPLEMENT) || defined(__VSF_LINUX_CLASS_INHERIT__)</span></div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span><span class="preprocessor">#   if VSF_LINUX_CFG_PLS_NUM &gt; 0</span></div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_pls_alloc(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_pls_free(<span class="keywordtype">int</span> idx);</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span><span class="keyword">extern</span> vsf_linux_localstorage_t * vsf_linux_pls_get(<span class="keywordtype">int</span> idx);</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span> </div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span><span class="preprocessor">#   if VSF_LINUX_CFG_TLS_NUM &gt; 0</span></div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_tls_alloc(<span class="keywordtype">void</span> (*destructor)(<span class="keywordtype">void</span> *));</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_tls_free(<span class="keywordtype">int</span> idx);</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span><span class="keyword">extern</span> vsf_linux_localstorage_t * vsf_linux_tls_get(<span class="keywordtype">int</span> idx);</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span> </div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span><span class="keyword">extern</span> <span class="keywordtype">bool</span> vsf_linux_is_inited(<span class="keywordtype">void</span>);</div>
 <div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span> </div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span><span class="keyword">extern</span> vsf_linux_process_t * vsf_linux_create_process(<span class="keywordtype">int</span> stack_size);</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span><span class="comment">// delete unstarted/existed process</span></div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span><span class="keywordtype">void</span> vsf_linux_delete_process(vsf_linux_process_t *process);</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_start_process(vsf_linux_process_t *process);</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_exit_process(<span class="keywordtype">int</span> <a class="code hl_variable" href="vsf__tgui_8h.html#ade818037fd6c985038ff29656089758d">status</a>);</div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span> </div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_cleanup_process(vsf_linux_process_t *process);</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_detach_process(vsf_linux_process_t *process);</div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_detach_thread(vsf_linux_thread_t *thread);</div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_wait_thread(<span class="keywordtype">int</span> tid, <span class="keywordtype">int</span> *retval);</div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span> </div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span><span class="keyword">extern</span> vsf_linux_thread_t * vsf_linux_create_thread(vsf_linux_process_t *process,</div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>            <span class="keyword">const</span> vsf_linux_thread_op_t *op,</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>            <span class="keywordtype">int</span> stack_size, <span class="keywordtype">void</span> *stack);</div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_start_thread(vsf_linux_thread_t *thread, <a class="code hl_enumeration" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a> priority);</div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span> </div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_thread_on_terminate(vsf_linux_thread_t *thread);</div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span><span class="keyword">extern</span> vsf_linux_thread_t * vsf_linux_get_thread(<span class="keywordtype">int</span> tid);</div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span><span class="keyword">extern</span> vsf_linux_process_t * vsf_linux_get_process(<a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a> pid);</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span><span class="keyword">extern</span> vsf_linux_main_entry_t * vsf_linux_fd_get_executable(<span class="keywordtype">int</span> fd);</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_fs_get_executable(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, vsf_linux_main_entry_t *<a class="code hl_variable" href="vsf__thread_8h.html#a7b1bd7ace931306a646900d724bb7329">entry</a>);</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span> </div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span><span class="keyword">extern</span> vsf_linux_process_t * vsf_linux_create_process(<span class="keywordtype">int</span> stack_size);</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span><span class="comment">// delete unstarted/existed process</span></div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_delete_process(vsf_linux_process_t *process);</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_start_process(vsf_linux_process_t *process);</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_exit_process(<span class="keywordtype">int</span> <a class="code hl_variable" href="vsf__tgui_8h.html#ade818037fd6c985038ff29656089758d">status</a>);</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_set_process_reg(<a class="code hl_typedef" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> reg);</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span> </div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_cleanup_process(vsf_linux_process_t *process);</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_detach_process(vsf_linux_process_t *process);</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_detach_thread(vsf_linux_thread_t *thread);</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_wait_thread(<span class="keywordtype">int</span> tid, <span class="keywordtype">int</span> *retval);</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span> </div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span><span class="keyword">extern</span> vsf_linux_thread_t * vsf_linux_create_thread(vsf_linux_process_t *process,</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>            <span class="keyword">const</span> vsf_linux_thread_op_t *op,</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>            <span class="keywordtype">int</span> stack_size, <span class="keywordtype">void</span> *stack);</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_start_thread(vsf_linux_thread_t *thread, <a class="code hl_enumeration" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a> priority);</div>
 <div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span> </div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span><span class="keyword">extern</span> <span class="keywordtype">void</span> __vsf_linux_process_free_arg(vsf_linux_process_t *process);</div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span><span class="keyword">extern</span> <span class="keywordtype">int</span> __vsf_linux_process_parse_arg(vsf_linux_process_t *process, <span class="keywordtype">char</span> * <span class="keyword">const</span> * argv);</div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span> </div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_merge_env(vsf_linux_process_t *process, <span class="keywordtype">char</span> **env);</div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_free_env(vsf_linux_process_t *process);</div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_trigger_init(vsf_linux_trigger_t *trig);</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span><span class="comment">// return value:</span></div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span><span class="comment">//  &lt; 0 : triggered by signals, returns the minus signal</span></div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span><span class="comment">//  0   : triggered normaly</span></div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span><span class="comment">//  &gt; 0 : triggered because of timeout</span></div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_trigger_pend(vsf_linux_trigger_t *trig, <a class="code hl_typedef" href="vsf__eda_8h.html#a680d3037efb9ab5d71ad711931d38b02">vsf_timeout_tick_t</a> timeout);</div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_trigger_signal(vsf_linux_trigger_t *trig, <span class="keywordtype">int</span> sig);</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span> </div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span><span class="comment">// open vsf_linux_get_cur_thread for thread-related variables like errno, etc</span></div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span><span class="keyword">extern</span> vsf_linux_thread_t * vsf_linux_get_cur_thread(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span> </div>
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span><span class="comment">// open vsf_linux_get_cur_process for process-related variables like optarg, etc</span></div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span><span class="keyword">extern</span> vsf_linux_process_t * vsf_linux_get_cur_process(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span> </div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_get_errno(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_set_errno(<span class="keywordtype">int</span> err);</div>
-<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span> </div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>}</div>
-<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_thread_on_terminate(vsf_linux_thread_t *thread);</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span><span class="keyword">extern</span> vsf_linux_thread_t * vsf_linux_get_thread(<span class="keywordtype">int</span> tid);</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span><span class="keyword">extern</span> vsf_linux_process_t * vsf_linux_get_process(<a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a> pid);</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span> </div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span><span class="keyword">extern</span> <span class="keywordtype">void</span> __vsf_linux_process_free_arg(vsf_linux_process_t *process);</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span><span class="keyword">extern</span> <span class="keywordtype">int</span> __vsf_linux_process_parse_arg(vsf_linux_process_t *process, <span class="keywordtype">char</span> * <span class="keyword">const</span> * argv);</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span> </div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_merge_env(vsf_linux_process_t *process, <span class="keywordtype">char</span> **env);</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_free_env(vsf_linux_process_t *process);</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span> </div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_trigger_init(vsf_linux_trigger_t *trig);</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span><span class="comment">// return value:</span></div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span><span class="comment">//  &lt; 0 : triggered by signals, returns the minus signal</span></div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span><span class="comment">//  0   : triggered normaly</span></div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span><span class="comment">//  &gt; 0 : triggered because of timeout</span></div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_trigger_pend(vsf_linux_trigger_t *trig, <a class="code hl_typedef" href="vsf__eda_8h.html#a680d3037efb9ab5d71ad711931d38b02">vsf_timeout_tick_t</a> timeout);</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_trigger_signal(vsf_linux_trigger_t *trig, <span class="keywordtype">int</span> sig);</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span> </div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span><span class="comment">// open vsf_linux_get_cur_thread for thread-related variables like errno, etc</span></div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span><span class="keyword">extern</span> vsf_linux_thread_t * vsf_linux_get_cur_thread(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span> </div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span><span class="comment">// open vsf_linux_get_cur_process for process-related variables like optarg, etc</span></div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span><span class="keyword">extern</span> vsf_linux_process_t * vsf_linux_get_cur_process(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span> </div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span><span class="keyword">extern</span> <span class="keywordtype">int</span> vsf_linux_get_errno(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span><span class="keyword">extern</span> <span class="keywordtype">void</span> vsf_linux_set_errno(<span class="keywordtype">int</span> err);</div>
 <div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span> </div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span><span class="preprocessor">#undef __VSF_LINUX_CLASS_IMPLEMENT</span></div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span><span class="preprocessor">#undef __VSF_LINUX_CLASS_INHERIT__</span></div>
-<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span> </div>
-<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_LINUX</span></div>
-<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_LINUX_INTERNAL_H__</span></div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span><span class="comment">/* EOF */</span></div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>}</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span> </div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span><span class="preprocessor">#undef __VSF_LINUX_CLASS_IMPLEMENT</span></div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span><span class="preprocessor">#undef __VSF_LINUX_CLASS_INHERIT__</span></div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span> </div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_LINUX</span></div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_LINUX_INTERNAL_H__</span></div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span><span class="comment">/* EOF */</span></div>
+<div class="ttc" id="a____type_8h_html_a73c228f87e038e8295ee8ea8eceaa5ac"><div class="ttname"><a href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></div><div class="ttdeci">#define ENABLED</div><div class="ttdef"><b>Definition:</b> __type.h:28</div></div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition:</b> __type.h:42</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a09674b9e56fd7a93a2169aa9210deec7"><div class="ttname"><a href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a></div><div class="ttdeci">uint32_t uintptr_t</div><div class="ttdef"><b>Definition:</b> type.h:49</div></div>
 <div class="ttc" id="aarm_2type_8h_html_a273cf69d639a59973b6019625df33e30"><div class="ttname"><a href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a></div><div class="ttdeci">unsigned short uint16_t</div><div class="ttdef"><b>Definition:</b> type.h:30</div></div>
 <div class="ttc" id="aarm_2type_8h_html_a435d1572bf3f880d55459d9805097f62"><div class="ttname"><a href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a></div><div class="ttdeci">unsigned int uint32_t</div><div class="ttdef"><b>Definition:</b> type.h:35</div></div>
 <div class="ttc" id="aarm_2type_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> type.h:25</div></div>
