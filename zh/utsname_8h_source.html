@@ -89,35 +89,41 @@
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#if VSF_LINUX_APPLET_USE_SYS_UTSNAME == ENABLED</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structvsf__linux__sys__utsname__vplt__t.html">   36</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvsf__linux__sys__utsname__vplt__t.html">vsf_linux_sys_utsname_vplt_t</a> {</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structvsf__linux__sys__utsname__vplt__t.html#a9e7562b66facfe09145929a21c29ec6a">   37</a></span>    <a class="code hl_struct" href="structvsf__vplt__info__t.html">vsf_vplt_info_t</a> <a class="code hl_variable" href="structvsf__linux__sys__utsname__vplt__t.html#a9e7562b66facfe09145929a21c29ec6a">info</a>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="utsname_8h.html#a94bc6f2790809021435e8c1ef894a08b">   38</a></span>} <a class="code hl_typedef" href="utsname_8h.html#a94bc6f2790809021435e8c1ef894a08b">vsf_linux_sys_utsname_vplt_t</a>;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#   ifndef __VSF_APPLET__</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">extern</span> <a class="code hl_define" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="code hl_struct" href="structvsf__linux__sys__utsname__vplt__t.html">vsf_linux_sys_utsname_vplt_t</a> <a class="code hl_variable" href="utsname_8h.html#a6912c9a7df28241a3ced1695e82c0b8b">vsf_linux_sys_utsname_vplt</a>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#if defined(__VSF_APPLET__) &amp;&amp; VSF_LINUX_APPLET_USE_SYS_UTSNAME == ENABLED</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structvsf__linux__sys__utsname__vplt__t.html#a2f0d66d79f3085dd5413c22e081d56fa">   39</a></span>    int (*<a class="code hl_variable" href="structvsf__linux__sys__utsname__vplt__t.html#a2f0d66d79f3085dd5413c22e081d56fa">uname</a>)(<span class="keyword">struct </span><a class="code hl_struct" href="structutsname.html">utsname</a> *name);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="utsname_8h.html#a94bc6f2790809021435e8c1ef894a08b">   40</a></span>} <a class="code hl_typedef" href="utsname_8h.html#a94bc6f2790809021435e8c1ef894a08b">vsf_linux_sys_utsname_vplt_t</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#   ifndef __VSF_APPLET__</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">extern</span> <a class="code hl_define" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="code hl_struct" href="structvsf__linux__sys__utsname__vplt__t.html">vsf_linux_sys_utsname_vplt_t</a> <a class="code hl_variable" href="utsname_8h.html#a6912c9a7df28241a3ced1695e82c0b8b">vsf_linux_sys_utsname_vplt</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#ifndef VSF_LINUX_APPLET_SYS_UTSNAME_VPLT</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#   if VSF_LINUX_USE_APPLET == ENABLED</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#       define VSF_LINUX_APPLET_SYS_UTSNAME_VPLT                                \</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">            ((vsf_linux_sys_utsname_vplt_t *)(VSF_LINUX_APPLET_VPLT-&gt;sys_utsname))</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#   else</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#       define VSF_LINUX_APPLET_SYS_UTSNAME_VPLT                                \</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">            ((vsf_linux_sys_utsname_vplt_t *)vsf_vplt((void *)0))</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#else       </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_SYS_UTSNAME</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#if defined(__VSF_APPLET__) &amp;&amp; VSF_LINUX_APPLET_USE_SYS_UTSNAME == ENABLED</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#ifndef VSF_LINUX_APPLET_SYS_UTSNAME_VPLT</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#   if VSF_LINUX_USE_APPLET == ENABLED</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#       define VSF_LINUX_APPLET_SYS_UTSNAME_VPLT                                \</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">            ((vsf_linux_sys_utsname_vplt_t *)(VSF_LINUX_APPLET_VPLT-&gt;sys_utsname))</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#   else</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#       define VSF_LINUX_APPLET_SYS_UTSNAME_VPLT                                \</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">            ((vsf_linux_sys_utsname_vplt_t *)vsf_vplt((void *)0))</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="utsname_8h.html#a1ad7a68f28b58669758da1b12061a81f">   58</a></span><span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code hl_define" href="utsname_8h.html#adaa18afddec5b7cd12a84dc54a4a257b">uname</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structutsname.html">utsname</a> *name);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_SYS_UTSNAME</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code hl_define" href="utsname_8h.html#adaa18afddec5b7cd12a84dc54a4a257b">uname</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structutsname.html">utsname</a> *name) {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">return</span> VSF_LINUX_APPLET_SYS_UTSNAME_VPLT-&gt;uname(name);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#else       </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_SYS_UTSNAME</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="utsname_8h.html#a1ad7a68f28b58669758da1b12061a81f">   64</a></span><span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code hl_define" href="utsname_8h.html#adaa18afddec5b7cd12a84dc54a4a257b">uname</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structutsname.html">utsname</a> *name);</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_SYS_UTSNAME</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>}</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="astructutsname_html"><div class="ttname"><a href="structutsname.html">utsname</a></div><div class="ttdef"><b>Definition:</b> utsname.h:27</div></div>
 <div class="ttc" id="astructutsname_html_a24b6a4a2a21e0dd1a1efe3d144586ded"><div class="ttname"><a href="structutsname.html#a24b6a4a2a21e0dd1a1efe3d144586ded">utsname::version</a></div><div class="ttdeci">char version[sizeof(VSF_LINUX_VERSION)]</div><div class="ttdef"><b>Definition:</b> utsname.h:31</div></div>
 <div class="ttc" id="astructutsname_html_a467829183d8762e582c7bd418176e02f"><div class="ttname"><a href="structutsname.html#a467829183d8762e582c7bd418176e02f">utsname::nodename</a></div><div class="ttdeci">char nodename[sizeof(VSF_LINUX_NODENAME)]</div><div class="ttdef"><b>Definition:</b> utsname.h:29</div></div>
@@ -125,6 +131,7 @@
 <div class="ttc" id="astructutsname_html_abb031a77c66579d6853d019da9cf649b"><div class="ttname"><a href="structutsname.html#abb031a77c66579d6853d019da9cf649b">utsname::release</a></div><div class="ttdeci">char release[sizeof(VSF_LINUX_RELEASE)]</div><div class="ttdef"><b>Definition:</b> utsname.h:30</div></div>
 <div class="ttc" id="astructutsname_html_ae78d22e638079870e4e4c6dc86f61f87"><div class="ttname"><a href="structutsname.html#ae78d22e638079870e4e4c6dc86f61f87">utsname::sysname</a></div><div class="ttdeci">char sysname[sizeof(VSF_LINUX_SYSNAME)]</div><div class="ttdef"><b>Definition:</b> utsname.h:28</div></div>
 <div class="ttc" id="astructvsf__linux__sys__utsname__vplt__t_html"><div class="ttname"><a href="structvsf__linux__sys__utsname__vplt__t.html">vsf_linux_sys_utsname_vplt_t</a></div><div class="ttdef"><b>Definition:</b> utsname.h:36</div></div>
+<div class="ttc" id="astructvsf__linux__sys__utsname__vplt__t_html_a2f0d66d79f3085dd5413c22e081d56fa"><div class="ttname"><a href="structvsf__linux__sys__utsname__vplt__t.html#a2f0d66d79f3085dd5413c22e081d56fa">vsf_linux_sys_utsname_vplt_t::uname</a></div><div class="ttdeci">int(* uname)(struct utsname *name)</div><div class="ttdef"><b>Definition:</b> utsname.h:39</div></div>
 <div class="ttc" id="astructvsf__linux__sys__utsname__vplt__t_html_a9e7562b66facfe09145929a21c29ec6a"><div class="ttname"><a href="structvsf__linux__sys__utsname__vplt__t.html#a9e7562b66facfe09145929a21c29ec6a">vsf_linux_sys_utsname_vplt_t::info</a></div><div class="ttdeci">vsf_vplt_info_t info</div><div class="ttdef"><b>Definition:</b> utsname.h:37</div></div>
 <div class="ttc" id="astructvsf__vplt__info__t_html"><div class="ttname"><a href="structvsf__vplt__info__t.html">vsf_vplt_info_t</a></div><div class="ttdef"><b>Definition:</b> vsf_cfg.h:95</div></div>
 <div class="ttc" id="autsname_8h_html_a4ee74fdb2ef7fbf5a858064cfecddfc7"><div class="ttname"><a href="utsname_8h.html#a4ee74fdb2ef7fbf5a858064cfecddfc7">VSF_LINUX_RELEASE</a></div><div class="ttdeci">#define VSF_LINUX_RELEASE</div><div class="ttdef"><b>Definition:</b> utsname.h:16</div></div>
