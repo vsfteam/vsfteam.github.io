@@ -70,49 +70,100 @@
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">/*====================== Reentrant Header File================================*/</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">//#ifndef __VSF_UTILITIES_H__</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">//#define __VSF_UTILITIES_H__</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">/* do not modify this */</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__utilities__cfg_8h.html">./vsf_utilities_cfg.h</a>&quot;</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">/* compiler abstraction, supports GCC, IAR, Arm Compiler 5, Arm Compiler 6 */</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;<a class="code" href="compiler_8h.html">./compiler/compiler.h</a>&quot;</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">/* minimal OO support for interface definie only, no class support */</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;./3rd-party/PLOOC/raw/plooc.h&quot;</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">/* definition for communication pipe and memory block */</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;<a class="code" href="communicate_8h.html">./communicate.h</a>&quot;</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">/* template for abstraction data type */</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &quot;<a class="code" href="template_8h.html">./template/template.h</a>&quot;</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">/* other high level language externsion for OOPC */</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &quot;<a class="code" href="language__extension_8h.html">./language_extension/language_extension.h</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">/* do not modify this */</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__utilities__cfg_8h.html">./vsf_utilities_cfg.h</a>&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">/* compiler abstraction, supports GCC, IAR, Arm Compiler 5, Arm Compiler 6 */</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="compiler_8h.html">./compiler/compiler.h</a>&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">/* minimal OO support for interface definie only, no class support */</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;./3rd-party/PLOOC/raw/plooc.h&quot;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">/* template for abstraction data type */</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="template_8h.html">./template/template.h</a>&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">/* other high level language externsion for OOPC */</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;<a class="code" href="language__extension_8h.html">./language_extension/language_extension.h</a>&quot;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#ifndef __VSF_UTILITIES_H__</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="vsf__utilities_8h.html#a995f0d3074afe44a0e4d1de5acf2a280">   39</a></span><span class="preprocessor">#define __VSF_UTILITIES_H__</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">//#endif</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">/* EOF */</span></div>
-<div class="ttc" id="acommunicate_8h_html"><div class="ttname"><a href="communicate_8h.html">communicate.h</a></div></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#if !defined(__STDC_VERSION__) || __STDC_VERSION__ &lt; 199901L</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="vsf__utilities_8h.html#a601cc162ab5c10397ce0403731410ccb">   50</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvsf__mem__t.html">vsf_mem_t</a> <a class="code hl_struct" href="structvsf__mem__t.html">vsf_mem_t</a>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structvsf__mem__t.html">   51</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structvsf__mem__t.html">vsf_mem_t</a> {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">union </span>{</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="comment">// implement linux-style variable</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structvsf__mem__t.html#a81f79afb22a65a46e5445c0030cd375e">   54</a></span>        <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *<a class="code hl_variable" href="structvsf__mem__t.html#a81f79afb22a65a46e5445c0030cd375e">buffer</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="structvsf__mem__t.html#a3582e83b454948e23dbce2d0914eced7">   55</a></span>        <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *<a class="code hl_variable" href="structvsf__mem__t.html#a3582e83b454948e23dbce2d0914eced7">src</a>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structvsf__mem__t.html#a00fba6155fcfe625a681b64a9fe187e6">   56</a></span>        <span class="keywordtype">void</span> *<a class="code hl_variable" href="structvsf__mem__t.html#a00fba6155fcfe625a681b64a9fe187e6">obj</a>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="structvsf__mem__t.html#a45ca9c5064751cf53a0a1403032af950">   58</a></span>        <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *<a class="code hl_variable" href="structvsf__mem__t.html#a45ca9c5064751cf53a0a1403032af950">buffer_ptr</a>;         </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="structvsf__mem__t.html#a154e9b5522fe442d63f28290bf26d795">   59</a></span>        <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *<a class="code hl_variable" href="structvsf__mem__t.html#a154e9b5522fe442d63f28290bf26d795">src_ptr</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structvsf__mem__t.html#a8e49571d0497c76e9a38ac07ddefd241">   60</a></span>        <span class="keywordtype">void</span> *<a class="code hl_variable" href="structvsf__mem__t.html#a8e49571d0497c76e9a38ac07ddefd241">obj_ptr</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="structvsf__mem__t.html#a7d6fabd44822a4e973e9adc5f7f2be8a">   61</a></span>    } <a class="code hl_variable" href="structvsf__mem__t.html#a7d6fabd44822a4e973e9adc5f7f2be8a">ptr</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="structvsf__mem__t.html#a7b61189ae1e4ce03d0e3516ccea8b077">   62</a></span>    <a class="code hl_typedef" href="arm_2type_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> <a class="code hl_variable" href="structvsf__mem__t.html#a7b61189ae1e4ce03d0e3516ccea8b077">size</a>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>};</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvsf__mem__t.html">vsf_mem_t</a> <a class="code hl_struct" href="structvsf__mem__t.html">vsf_mem_t</a>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">struct </span><a class="code hl_struct" href="structvsf__mem__t.html">vsf_mem_t</a> {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keyword">union </span>{</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keyword">union </span>{</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="comment">// implement linux-style variable</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *<a class="code hl_variable" href="structvsf__mem__t.html#a81f79afb22a65a46e5445c0030cd375e">buffer</a>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *<a class="code hl_variable" href="structvsf__mem__t.html#a3582e83b454948e23dbce2d0914eced7">src</a>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordtype">void</span> *<a class="code hl_variable" href="structvsf__mem__t.html#a00fba6155fcfe625a681b64a9fe187e6">obj</a>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *<a class="code hl_variable" href="structvsf__mem__t.html#a45ca9c5064751cf53a0a1403032af950">buffer_ptr</a>;         </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *<a class="code hl_variable" href="structvsf__mem__t.html#a154e9b5522fe442d63f28290bf26d795">src_ptr</a>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordtype">void</span> *<a class="code hl_variable" href="structvsf__mem__t.html#a8e49571d0497c76e9a38ac07ddefd241">obj_ptr</a>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        };</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keyword">union </span>{</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *<a class="code hl_variable" href="structvsf__mem__t.html#a45ca9c5064751cf53a0a1403032af950">buffer_ptr</a>;         </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *<a class="code hl_variable" href="structvsf__mem__t.html#a154e9b5522fe442d63f28290bf26d795">src_ptr</a>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            <span class="keywordtype">void</span> *<a class="code hl_variable" href="structvsf__mem__t.html#a8e49571d0497c76e9a38ac07ddefd241">obj_ptr</a>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        } <a class="code hl_variable" href="structvsf__mem__t.html#a7d6fabd44822a4e973e9adc5f7f2be8a">ptr</a>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    };</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keyword">union </span>{</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="comment">// implement linux-style variable</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <a class="code hl_typedef" href="arm_2type_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> <a class="code hl_variable" href="structvsf__mem__t.html#a7b61189ae1e4ce03d0e3516ccea8b077">size</a>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <a class="code hl_typedef" href="arm_2type_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> s32_size;                  </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    };</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>};</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>}</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">/* EOF */</span></div>
+<div class="ttc" id="aarm_2type_8h_html_ab1967d8591af1a4e48c37fd2b0f184d0"><div class="ttname"><a href="arm_2type_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a></div><div class="ttdeci">signed int int32_t</div><div class="ttdef"><b>Definition:</b> type.h:36</div></div>
+<div class="ttc" id="aarm_2type_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> type.h:25</div></div>
 <div class="ttc" id="acompiler_8h_html"><div class="ttname"><a href="compiler_8h.html">compiler.h</a></div></div>
 <div class="ttc" id="alanguage__extension_8h_html"><div class="ttname"><a href="language__extension_8h.html">language_extension.h</a></div></div>
+<div class="ttc" id="astructvsf__mem__t_html"><div class="ttname"><a href="structvsf__mem__t.html">vsf_mem_t</a></div><div class="ttdef"><b>Definition:</b> vsf_utilities.h:51</div></div>
+<div class="ttc" id="astructvsf__mem__t_html_a00fba6155fcfe625a681b64a9fe187e6"><div class="ttname"><a href="structvsf__mem__t.html#a00fba6155fcfe625a681b64a9fe187e6">vsf_mem_t::obj</a></div><div class="ttdeci">void * obj</div><div class="ttdef"><b>Definition:</b> vsf_utilities.h:56</div></div>
+<div class="ttc" id="astructvsf__mem__t_html_a154e9b5522fe442d63f28290bf26d795"><div class="ttname"><a href="structvsf__mem__t.html#a154e9b5522fe442d63f28290bf26d795">vsf_mem_t::src_ptr</a></div><div class="ttdeci">uint8_t * src_ptr</div><div class="ttdef"><b>Definition:</b> vsf_utilities.h:59</div></div>
+<div class="ttc" id="astructvsf__mem__t_html_a3582e83b454948e23dbce2d0914eced7"><div class="ttname"><a href="structvsf__mem__t.html#a3582e83b454948e23dbce2d0914eced7">vsf_mem_t::src</a></div><div class="ttdeci">uint8_t * src</div><div class="ttdef"><b>Definition:</b> vsf_utilities.h:55</div></div>
+<div class="ttc" id="astructvsf__mem__t_html_a45ca9c5064751cf53a0a1403032af950"><div class="ttname"><a href="structvsf__mem__t.html#a45ca9c5064751cf53a0a1403032af950">vsf_mem_t::buffer_ptr</a></div><div class="ttdeci">uint8_t * buffer_ptr</div><div class="ttdoc">stream buffer</div><div class="ttdef"><b>Definition:</b> vsf_utilities.h:58</div></div>
+<div class="ttc" id="astructvsf__mem__t_html_a7b61189ae1e4ce03d0e3516ccea8b077"><div class="ttname"><a href="structvsf__mem__t.html#a7b61189ae1e4ce03d0e3516ccea8b077">vsf_mem_t::size</a></div><div class="ttdeci">int32_t size</div><div class="ttdef"><b>Definition:</b> vsf_utilities.h:62</div></div>
+<div class="ttc" id="astructvsf__mem__t_html_a7d6fabd44822a4e973e9adc5f7f2be8a"><div class="ttname"><a href="structvsf__mem__t.html#a7d6fabd44822a4e973e9adc5f7f2be8a">vsf_mem_t::ptr</a></div><div class="ttdeci">union vsf_mem_t::@439 ptr</div></div>
+<div class="ttc" id="astructvsf__mem__t_html_a81f79afb22a65a46e5445c0030cd375e"><div class="ttname"><a href="structvsf__mem__t.html#a81f79afb22a65a46e5445c0030cd375e">vsf_mem_t::buffer</a></div><div class="ttdeci">uint8_t * buffer</div><div class="ttdef"><b>Definition:</b> vsf_utilities.h:54</div></div>
+<div class="ttc" id="astructvsf__mem__t_html_a8e49571d0497c76e9a38ac07ddefd241"><div class="ttname"><a href="structvsf__mem__t.html#a8e49571d0497c76e9a38ac07ddefd241">vsf_mem_t::obj_ptr</a></div><div class="ttdeci">void * obj_ptr</div><div class="ttdef"><b>Definition:</b> vsf_utilities.h:60</div></div>
 <div class="ttc" id="atemplate_8h_html"><div class="ttname"><a href="template_8h.html">template.h</a></div></div>
 <div class="ttc" id="avsf__utilities__cfg_8h_html"><div class="ttname"><a href="vsf__utilities__cfg_8h.html">vsf_utilities_cfg.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
