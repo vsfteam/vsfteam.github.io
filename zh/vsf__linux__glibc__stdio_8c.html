@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>VSF Documented: source/shell/sys/linux/lib/glibc/vsf_linux_glibc_stdio.c 文件参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -26,7 +26,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.4 -->
+<!-- 制作者 Doxygen 1.9.5 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>首页</span></a></li>
@@ -49,14 +49,1584 @@
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
   <div class="headertitle"><div class="title">vsf_linux_glibc_stdio.c 文件参考</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__linux__cfg_8h_source.html">../../vsf_linux_cfg.h</a>&quot;</code><br />
-</div></div><!-- contents -->
+<code>#include &quot;<a class="el" href="unistd_8h_source.html">../../include/unistd.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="linux_2include_2sys_2types_8h_source.html">../../include/sys/types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="wait_8h_source.html">../../include/sys/wait.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stdio_8h_source.html">../../include/simple_libc/stdio.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="errno_8h_source.html">../../include/errno.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fcntl_8h_source.html">../../include/fcntl.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="string_8h_source.html">../../include/simple_libc/string.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a56bf24a74c400dfffdef33bfca636614"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a56bf24a74c400dfffdef33bfca636614">__VSF_LINUX_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:a56bf24a74c400dfffdef33bfca636614"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a795b77210031b6e7565dbc7e1bd71393"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a795b77210031b6e7565dbc7e1bd71393">__VSF_LINUX_FS_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:a795b77210031b6e7565dbc7e1bd71393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a369266c24eacffb87046522897a570d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a369266c24eacffb87046522897a570d5">_GNU_SOURCE</a></td></tr>
+<tr class="separator:a369266c24eacffb87046522897a570d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91c552b40d00ee7cd895af48ea847f2b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a91c552b40d00ee7cd895af48ea847f2b">VSF_LINUX_CFG_PRINT_BUFF_SIZE</a>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:a91c552b40d00ee7cd895af48ea847f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ecab69d463578ddf94b89cec912774d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a5ecab69d463578ddf94b89cec912774d">VSF_LINUX_APPLET_LIBC_STDIO_FUNC</a>(__FUNC)&#160;&#160;&#160;.__FUNC = __FUNC</td></tr>
+<tr class="separator:a5ecab69d463578ddf94b89cec912774d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a826208e99936d86040429300d5960516"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a826208e99936d86040429300d5960516">__vsf_linux_stdin</a> (void)</td></tr>
+<tr class="separator:a826208e99936d86040429300d5960516"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5561e46d2971a653c9afa3a0195bb93"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#ab5561e46d2971a653c9afa3a0195bb93">__vsf_linux_stdout</a> (void)</td></tr>
+<tr class="separator:ab5561e46d2971a653c9afa3a0195bb93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60ad215c953fa871164a14876c10c79d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a60ad215c953fa871164a14876c10c79d">__vsf_linux_stderr</a> (void)</td></tr>
+<tr class="separator:a60ad215c953fa871164a14876c10c79d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a400c2d9654538f6bb7f51d4a57957572"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a400c2d9654538f6bb7f51d4a57957572">setbuf</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f, char *buf)</td></tr>
+<tr class="separator:a400c2d9654538f6bb7f51d4a57957572"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92132979bde440e7f335dc6b030eded0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a92132979bde440e7f335dc6b030eded0">setvbuf</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *stream, char *buffer, int mode, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
+<tr class="separator:a92132979bde440e7f335dc6b030eded0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9013a1ef6a72ced716cb882cdd794c4b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a9013a1ef6a72ced716cb882cdd794c4b">ungetc</a> (int ch, <a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a9013a1ef6a72ced716cb882cdd794c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f21408871dc718d04419aed860a4bd8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a5f21408871dc718d04419aed860a4bd8">getc</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a5f21408871dc718d04419aed860a4bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e29caa20f7cffe18f410f01278905a8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a3e29caa20f7cffe18f410f01278905a8">getchar</a> (void)</td></tr>
+<tr class="separator:a3e29caa20f7cffe18f410f01278905a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76a21223ed39a2692fdfc854aab93b2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a76a21223ed39a2692fdfc854aab93b2c">fopen</a> (const char *filename, const char *mode)</td></tr>
+<tr class="separator:a76a21223ed39a2692fdfc854aab93b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb28a293649a3afa0a3ef57b2743b3bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#afb28a293649a3afa0a3ef57b2743b3bd">fdopen</a> (int fd, const char *mode)</td></tr>
+<tr class="separator:afb28a293649a3afa0a3ef57b2743b3bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b7592be6c07c9859d9481efc0181f62"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a7b7592be6c07c9859d9481efc0181f62">freopen</a> (const char *filename, const char *mode, <a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a7b7592be6c07c9859d9481efc0181f62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16899976ac8e865813485db3d5f5186f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a16899976ac8e865813485db3d5f5186f">fclose</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a16899976ac8e865813485db3d5f5186f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af86fa14728c9bad5418a6d29cad9f9ff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#af86fa14728c9bad5418a6d29cad9f9ff">fileno</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *stream)</td></tr>
+<tr class="separator:af86fa14728c9bad5418a6d29cad9f9ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38632fb8ed4ccf2b6cf06bf012f639e0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a38632fb8ed4ccf2b6cf06bf012f639e0">fseeko</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f, <a class="el" href="linux_2include_2sys_2types_8h.html#af83497edef361523a95b06deda0b4c2d">off_t</a> <a class="el" href="vsf__memfs_8h.html#a612bb2807d848cca89ea1437cceea886">offset</a>, int fromwhere)</td></tr>
+<tr class="separator:a38632fb8ed4ccf2b6cf06bf012f639e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83fc35a90a300ca22cf121ce8c305a43"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a83fc35a90a300ca22cf121ce8c305a43">fseek</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f, long <a class="el" href="vsf__memfs_8h.html#a612bb2807d848cca89ea1437cceea886">offset</a>, int fromwhere)</td></tr>
+<tr class="separator:a83fc35a90a300ca22cf121ce8c305a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50f176a98ddc7ee4be575ed6e4134647"><td class="memItemLeft" align="right" valign="top"><a class="el" href="linux_2include_2sys_2types_8h.html#aa688ec058157f2483db747a121ae6035">off64_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a50f176a98ddc7ee4be575ed6e4134647">ftello64</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a50f176a98ddc7ee4be575ed6e4134647"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3febcf574ee4f28b29d220321fe75227"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a3febcf574ee4f28b29d220321fe75227">rewind</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a3febcf574ee4f28b29d220321fe75227"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad946ad45b1ca8b432ee09882a85cd006"><td class="memItemLeft" align="right" valign="top"><a class="el" href="linux_2include_2sys_2types_8h.html#af83497edef361523a95b06deda0b4c2d">off_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#ad946ad45b1ca8b432ee09882a85cd006">ftello</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:ad946ad45b1ca8b432ee09882a85cd006"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bb7913c8747269a48d8c5ab2731900c"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a3bb7913c8747269a48d8c5ab2731900c">ftell</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a3bb7913c8747269a48d8c5ab2731900c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34874fc4e85b9c4c7daaf85e2613ddca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a34874fc4e85b9c4c7daaf85e2613ddca">fgetpos</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f, <a class="el" href="stdio_8h.html#ac45f0800206b052e5c2e5056f8b9ee27">fpos_t</a> *pos)</td></tr>
+<tr class="separator:a34874fc4e85b9c4c7daaf85e2613ddca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18ce36e5dd512f7ce334612dd9edd660"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a18ce36e5dd512f7ce334612dd9edd660">fsetpos</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f, const <a class="el" href="stdio_8h.html#ac45f0800206b052e5c2e5056f8b9ee27">fpos_t</a> *pos)</td></tr>
+<tr class="separator:a18ce36e5dd512f7ce334612dd9edd660"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a152a43e71b495278570e5790af9b5043"><td class="memItemLeft" align="right" valign="top"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a152a43e71b495278570e5790af9b5043">fwrite</a> (const void *ptr, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> nmemb, <a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a152a43e71b495278570e5790af9b5043"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58171c5b12ceca32c28fd878fe8a5450"><td class="memItemLeft" align="right" valign="top"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a58171c5b12ceca32c28fd878fe8a5450">fread</a> (void *ptr, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> nmemb, <a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a58171c5b12ceca32c28fd878fe8a5450"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0ed35dbaf8a840c92daef7aa52b40bf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#aa0ed35dbaf8a840c92daef7aa52b40bf">fflush</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:aa0ed35dbaf8a840c92daef7aa52b40bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c4fad5f95f4c5242c3ea25d791df6e5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a2c4fad5f95f4c5242c3ea25d791df6e5">fgetc</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a2c4fad5f95f4c5242c3ea25d791df6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a925e4ea2813cd5ec22dda210b1a2d295"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a925e4ea2813cd5ec22dda210b1a2d295">fgets</a> (char *str, int n, <a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a925e4ea2813cd5ec22dda210b1a2d295"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32adb9855ad078db04e5766646843064"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a32adb9855ad078db04e5766646843064">gets</a> (char *str)</td></tr>
+<tr class="separator:a32adb9855ad078db04e5766646843064"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abac7707b6be5733e890091048fcb99a2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#abac7707b6be5733e890091048fcb99a2">fputc</a> (int ch, <a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:abac7707b6be5733e890091048fcb99a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02eb45ac244fb01198145b66c4229ca9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a02eb45ac244fb01198145b66c4229ca9">fputs</a> (const char *str, <a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a02eb45ac244fb01198145b66c4229ca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24df0c04767d20bfc8337baa088605ff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a24df0c04767d20bfc8337baa088605ff">puts</a> (const char *str)</td></tr>
+<tr class="separator:a24df0c04767d20bfc8337baa088605ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdde0b80c7c7d91203f4a9ad18291053"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#afdde0b80c7c7d91203f4a9ad18291053">putc</a> (int ch, <a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:afdde0b80c7c7d91203f4a9ad18291053"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4de2514b7778805db3815e8dd6cf09a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#af4de2514b7778805db3815e8dd6cf09a">putchar</a> (int c)</td></tr>
+<tr class="separator:af4de2514b7778805db3815e8dd6cf09a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6bf4a399ca586987366f97ef7a8f96c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#ac6bf4a399ca586987366f97ef7a8f96c">vfprintf</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f, const char *<a class="el" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>, va_list ap)</td></tr>
+<tr class="separator:ac6bf4a399ca586987366f97ef7a8f96c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b037e5e1db404842a42cd8e9cecaddb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a2b037e5e1db404842a42cd8e9cecaddb">vprintf</a> (const char *<a class="el" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>, va_list arg)</td></tr>
+<tr class="separator:a2b037e5e1db404842a42cd8e9cecaddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98631211a4a8aee62f572375d5b637be"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a98631211a4a8aee62f572375d5b637be">printf</a> (const char *<a class="el" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>,...)</td></tr>
+<tr class="separator:a98631211a4a8aee62f572375d5b637be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15867ca25a2c4a05fa95b8d0ec464b86"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a15867ca25a2c4a05fa95b8d0ec464b86">fprintf</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f, const char *<a class="el" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>,...)</td></tr>
+<tr class="separator:a15867ca25a2c4a05fa95b8d0ec464b86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acedf9c52968d03e28f4c499ab6cd77f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#acedf9c52968d03e28f4c499ab6cd77f0">vfscanf</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f, const char *<a class="el" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>, va_list ap)</td></tr>
+<tr class="separator:acedf9c52968d03e28f4c499ab6cd77f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40250d63904acd3e898061c9eab6ead3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a40250d63904acd3e898061c9eab6ead3">vscanf</a> (const char *<a class="el" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>, va_list ap)</td></tr>
+<tr class="separator:a40250d63904acd3e898061c9eab6ead3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcbffe326e16df540ec298ab884c8dd0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#afcbffe326e16df540ec298ab884c8dd0">fscanf</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f, const char *<a class="el" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>,...)</td></tr>
+<tr class="separator:afcbffe326e16df540ec298ab884c8dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c48433db9c04031772d5b36e6c4411d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a5c48433db9c04031772d5b36e6c4411d">scanf</a> (const char *<a class="el" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>,...)</td></tr>
+<tr class="separator:a5c48433db9c04031772d5b36e6c4411d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d3d2b0c891c340cfaf0921aacfe392c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a7d3d2b0c891c340cfaf0921aacfe392c">ferror</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a7d3d2b0c891c340cfaf0921aacfe392c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86b8bec1783636991d09c6eb714fd5da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a86b8bec1783636991d09c6eb714fd5da">clearerr</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a86b8bec1783636991d09c6eb714fd5da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f7feada471a178fa9b019e70b54bf4b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a2f7feada471a178fa9b019e70b54bf4b">feof</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a2f7feada471a178fa9b019e70b54bf4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af38eb7b0b01f7de79166633fd2fe0459"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#af38eb7b0b01f7de79166633fd2fe0459">perror</a> (const char *str)</td></tr>
+<tr class="separator:af38eb7b0b01f7de79166633fd2fe0459"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a361a1a7f7772d4ff8bd7795a844f52ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a361a1a7f7772d4ff8bd7795a844f52ae">popen</a> (const char *command, const char *<a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>)</td></tr>
+<tr class="separator:a361a1a7f7772d4ff8bd7795a844f52ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af19264fb0f56dc09d1d4ee5c5aec0ee8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#af19264fb0f56dc09d1d4ee5c5aec0ee8">pclose</a> (<a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *stream)</td></tr>
+<tr class="separator:af19264fb0f56dc09d1d4ee5c5aec0ee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23bda9b63cbe1f3d86aaff779b2b9f10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a23bda9b63cbe1f3d86aaff779b2b9f10">tmpfile</a> (void)</td></tr>
+<tr class="separator:a23bda9b63cbe1f3d86aaff779b2b9f10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5908daf892f24d01e2770a706e8d331d"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a5908daf892f24d01e2770a706e8d331d">tmpnam</a> (char *str)</td></tr>
+<tr class="separator:a5908daf892f24d01e2770a706e8d331d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18566a555d80aacae25a0971f4ed20a3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a18566a555d80aacae25a0971f4ed20a3">rename</a> (const char *old_filename, const char *new_filename)</td></tr>
+<tr class="separator:a18566a555d80aacae25a0971f4ed20a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4928010844b544a2fcbe2d375485dc70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a4928010844b544a2fcbe2d375485dc70">renameat</a> (int olddirfd, const char *oldpath, int newdirfd, const char *newpath)</td></tr>
+<tr class="separator:a4928010844b544a2fcbe2d375485dc70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02b13b56a188401119ea4da43c184913"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a02b13b56a188401119ea4da43c184913">remove</a> (const char *pathname)</td></tr>
+<tr class="separator:a02b13b56a188401119ea4da43c184913"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a830d0c894369f01548073de2fec4df46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="linux_2include_2sys_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a830d0c894369f01548073de2fec4df46">getline</a> (char **lineptr, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *n, <a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *f)</td></tr>
+<tr class="separator:a830d0c894369f01548073de2fec4df46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:ae4c3fff0c70479db3a3a5206e15962a8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structvsf__linux__fd__op__t.html">vsf_linux_fd_op_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#ae4c3fff0c70479db3a3a5206e15962a8">__vsf_linux_fs_fdop</a></td></tr>
+<tr class="separator:ae4c3fff0c70479db3a3a5206e15962a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73286b2d139603354f2804e71132d0a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="el" href="structvsf__linux__libc__stdio__vplt__t.html">vsf_linux_libc_stdio_vplt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__stdio_8c.html#a73286b2d139603354f2804e71132d0a5">vsf_linux_libc_stdio_vplt</a></td></tr>
+<tr class="separator:a73286b2d139603354f2804e71132d0a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a56bf24a74c400dfffdef33bfca636614" name="a56bf24a74c400dfffdef33bfca636614"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56bf24a74c400dfffdef33bfca636614">&#9670;&#160;</a></span>__VSF_LINUX_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_LINUX_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a795b77210031b6e7565dbc7e1bd71393" name="a795b77210031b6e7565dbc7e1bd71393"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a795b77210031b6e7565dbc7e1bd71393">&#9670;&#160;</a></span>__VSF_LINUX_FS_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_LINUX_FS_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a369266c24eacffb87046522897a570d5" name="a369266c24eacffb87046522897a570d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a369266c24eacffb87046522897a570d5">&#9670;&#160;</a></span>_GNU_SOURCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _GNU_SOURCE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a91c552b40d00ee7cd895af48ea847f2b" name="a91c552b40d00ee7cd895af48ea847f2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91c552b40d00ee7cd895af48ea847f2b">&#9670;&#160;</a></span>VSF_LINUX_CFG_PRINT_BUFF_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_LINUX_CFG_PRINT_BUFF_SIZE&#160;&#160;&#160;256</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5ecab69d463578ddf94b89cec912774d" name="a5ecab69d463578ddf94b89cec912774d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ecab69d463578ddf94b89cec912774d">&#9670;&#160;</a></span>VSF_LINUX_APPLET_LIBC_STDIO_FUNC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_LINUX_APPLET_LIBC_STDIO_FUNC</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__FUNC</td><td>)</td>
+          <td>&#160;&#160;&#160;.__FUNC = __FUNC</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a826208e99936d86040429300d5960516" name="a826208e99936d86040429300d5960516"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a826208e99936d86040429300d5960516">&#9670;&#160;</a></span>__vsf_linux_stdin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> * __vsf_linux_stdin </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab5561e46d2971a653c9afa3a0195bb93" name="ab5561e46d2971a653c9afa3a0195bb93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5561e46d2971a653c9afa3a0195bb93">&#9670;&#160;</a></span>__vsf_linux_stdout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> * __vsf_linux_stdout </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a60ad215c953fa871164a14876c10c79d" name="a60ad215c953fa871164a14876c10c79d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60ad215c953fa871164a14876c10c79d">&#9670;&#160;</a></span>__vsf_linux_stderr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> * __vsf_linux_stderr </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a400c2d9654538f6bb7f51d4a57957572" name="a400c2d9654538f6bb7f51d4a57957572"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a400c2d9654538f6bb7f51d4a57957572">&#9670;&#160;</a></span>setbuf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setbuf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a92132979bde440e7f335dc6b030eded0" name="a92132979bde440e7f335dc6b030eded0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92132979bde440e7f335dc6b030eded0">&#9670;&#160;</a></span>setvbuf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int setvbuf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9013a1ef6a72ced716cb882cdd794c4b" name="a9013a1ef6a72ced716cb882cdd794c4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9013a1ef6a72ced716cb882cdd794c4b">&#9670;&#160;</a></span>ungetc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ungetc </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f21408871dc718d04419aed860a4bd8" name="a5f21408871dc718d04419aed860a4bd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f21408871dc718d04419aed860a4bd8">&#9670;&#160;</a></span>getc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3e29caa20f7cffe18f410f01278905a8" name="a3e29caa20f7cffe18f410f01278905a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e29caa20f7cffe18f410f01278905a8">&#9670;&#160;</a></span>getchar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getchar </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76a21223ed39a2692fdfc854aab93b2c" name="a76a21223ed39a2692fdfc854aab93b2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76a21223ed39a2692fdfc854aab93b2c">&#9670;&#160;</a></span>fopen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> * fopen </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afb28a293649a3afa0a3ef57b2743b3bd" name="afb28a293649a3afa0a3ef57b2743b3bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb28a293649a3afa0a3ef57b2743b3bd">&#9670;&#160;</a></span>fdopen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> * fdopen </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b7592be6c07c9859d9481efc0181f62" name="a7b7592be6c07c9859d9481efc0181f62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b7592be6c07c9859d9481efc0181f62">&#9670;&#160;</a></span>freopen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> * freopen </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a16899976ac8e865813485db3d5f5186f" name="a16899976ac8e865813485db3d5f5186f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16899976ac8e865813485db3d5f5186f">&#9670;&#160;</a></span>fclose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fclose </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af86fa14728c9bad5418a6d29cad9f9ff" name="af86fa14728c9bad5418a6d29cad9f9ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af86fa14728c9bad5418a6d29cad9f9ff">&#9670;&#160;</a></span>fileno()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fileno </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a38632fb8ed4ccf2b6cf06bf012f639e0" name="a38632fb8ed4ccf2b6cf06bf012f639e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38632fb8ed4ccf2b6cf06bf012f639e0">&#9670;&#160;</a></span>fseeko()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fseeko </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#af83497edef361523a95b06deda0b4c2d">off_t</a>&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fromwhere</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83fc35a90a300ca22cf121ce8c305a43" name="a83fc35a90a300ca22cf121ce8c305a43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83fc35a90a300ca22cf121ce8c305a43">&#9670;&#160;</a></span>fseek()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fseek </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fromwhere</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a50f176a98ddc7ee4be575ed6e4134647" name="a50f176a98ddc7ee4be575ed6e4134647"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50f176a98ddc7ee4be575ed6e4134647">&#9670;&#160;</a></span>ftello64()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="linux_2include_2sys_2types_8h.html#aa688ec058157f2483db747a121ae6035">off64_t</a> ftello64 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3febcf574ee4f28b29d220321fe75227" name="a3febcf574ee4f28b29d220321fe75227"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3febcf574ee4f28b29d220321fe75227">&#9670;&#160;</a></span>rewind()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rewind </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad946ad45b1ca8b432ee09882a85cd006" name="ad946ad45b1ca8b432ee09882a85cd006"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad946ad45b1ca8b432ee09882a85cd006">&#9670;&#160;</a></span>ftello()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="linux_2include_2sys_2types_8h.html#af83497edef361523a95b06deda0b4c2d">off_t</a> ftello </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3bb7913c8747269a48d8c5ab2731900c" name="a3bb7913c8747269a48d8c5ab2731900c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bb7913c8747269a48d8c5ab2731900c">&#9670;&#160;</a></span>ftell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long ftell </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a34874fc4e85b9c4c7daaf85e2613ddca" name="a34874fc4e85b9c4c7daaf85e2613ddca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34874fc4e85b9c4c7daaf85e2613ddca">&#9670;&#160;</a></span>fgetpos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fgetpos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac45f0800206b052e5c2e5056f8b9ee27">fpos_t</a> *&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18ce36e5dd512f7ce334612dd9edd660" name="a18ce36e5dd512f7ce334612dd9edd660"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18ce36e5dd512f7ce334612dd9edd660">&#9670;&#160;</a></span>fsetpos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fsetpos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="stdio_8h.html#ac45f0800206b052e5c2e5056f8b9ee27">fpos_t</a> *&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a152a43e71b495278570e5790af9b5043" name="a152a43e71b495278570e5790af9b5043"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a152a43e71b495278570e5790af9b5043">&#9670;&#160;</a></span>fwrite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> fwrite </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
+          <td class="paramname"><em>nmemb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a58171c5b12ceca32c28fd878fe8a5450" name="a58171c5b12ceca32c28fd878fe8a5450"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58171c5b12ceca32c28fd878fe8a5450">&#9670;&#160;</a></span>fread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> fread </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
+          <td class="paramname"><em>nmemb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa0ed35dbaf8a840c92daef7aa52b40bf" name="aa0ed35dbaf8a840c92daef7aa52b40bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0ed35dbaf8a840c92daef7aa52b40bf">&#9670;&#160;</a></span>fflush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fflush </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c4fad5f95f4c5242c3ea25d791df6e5" name="a2c4fad5f95f4c5242c3ea25d791df6e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c4fad5f95f4c5242c3ea25d791df6e5">&#9670;&#160;</a></span>fgetc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fgetc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a925e4ea2813cd5ec22dda210b1a2d295" name="a925e4ea2813cd5ec22dda210b1a2d295"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a925e4ea2813cd5ec22dda210b1a2d295">&#9670;&#160;</a></span>fgets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * fgets </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a32adb9855ad078db04e5766646843064" name="a32adb9855ad078db04e5766646843064"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32adb9855ad078db04e5766646843064">&#9670;&#160;</a></span>gets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * gets </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abac7707b6be5733e890091048fcb99a2" name="abac7707b6be5733e890091048fcb99a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abac7707b6be5733e890091048fcb99a2">&#9670;&#160;</a></span>fputc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fputc </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a02eb45ac244fb01198145b66c4229ca9" name="a02eb45ac244fb01198145b66c4229ca9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02eb45ac244fb01198145b66c4229ca9">&#9670;&#160;</a></span>fputs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fputs </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a24df0c04767d20bfc8337baa088605ff" name="a24df0c04767d20bfc8337baa088605ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24df0c04767d20bfc8337baa088605ff">&#9670;&#160;</a></span>puts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int puts </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afdde0b80c7c7d91203f4a9ad18291053" name="afdde0b80c7c7d91203f4a9ad18291053"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdde0b80c7c7d91203f4a9ad18291053">&#9670;&#160;</a></span>putc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int putc </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af4de2514b7778805db3815e8dd6cf09a" name="af4de2514b7778805db3815e8dd6cf09a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4de2514b7778805db3815e8dd6cf09a">&#9670;&#160;</a></span>putchar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int putchar </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac6bf4a399ca586987366f97ef7a8f96c" name="ac6bf4a399ca586987366f97ef7a8f96c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6bf4a399ca586987366f97ef7a8f96c">&#9670;&#160;</a></span>vfprintf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int vfprintf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>ap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b037e5e1db404842a42cd8e9cecaddb" name="a2b037e5e1db404842a42cd8e9cecaddb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b037e5e1db404842a42cd8e9cecaddb">&#9670;&#160;</a></span>vprintf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int vprintf </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a98631211a4a8aee62f572375d5b637be" name="a98631211a4a8aee62f572375d5b637be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98631211a4a8aee62f572375d5b637be">&#9670;&#160;</a></span>printf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int printf </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a15867ca25a2c4a05fa95b8d0ec464b86" name="a15867ca25a2c4a05fa95b8d0ec464b86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15867ca25a2c4a05fa95b8d0ec464b86">&#9670;&#160;</a></span>fprintf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fprintf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acedf9c52968d03e28f4c499ab6cd77f0" name="acedf9c52968d03e28f4c499ab6cd77f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acedf9c52968d03e28f4c499ab6cd77f0">&#9670;&#160;</a></span>vfscanf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int vfscanf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>ap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a40250d63904acd3e898061c9eab6ead3" name="a40250d63904acd3e898061c9eab6ead3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40250d63904acd3e898061c9eab6ead3">&#9670;&#160;</a></span>vscanf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int vscanf </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>ap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afcbffe326e16df540ec298ab884c8dd0" name="afcbffe326e16df540ec298ab884c8dd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcbffe326e16df540ec298ab884c8dd0">&#9670;&#160;</a></span>fscanf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fscanf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5c48433db9c04031772d5b36e6c4411d" name="a5c48433db9c04031772d5b36e6c4411d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c48433db9c04031772d5b36e6c4411d">&#9670;&#160;</a></span>scanf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int scanf </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7d3d2b0c891c340cfaf0921aacfe392c" name="a7d3d2b0c891c340cfaf0921aacfe392c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d3d2b0c891c340cfaf0921aacfe392c">&#9670;&#160;</a></span>ferror()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ferror </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a86b8bec1783636991d09c6eb714fd5da" name="a86b8bec1783636991d09c6eb714fd5da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86b8bec1783636991d09c6eb714fd5da">&#9670;&#160;</a></span>clearerr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clearerr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2f7feada471a178fa9b019e70b54bf4b" name="a2f7feada471a178fa9b019e70b54bf4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f7feada471a178fa9b019e70b54bf4b">&#9670;&#160;</a></span>feof()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int feof </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af38eb7b0b01f7de79166633fd2fe0459" name="af38eb7b0b01f7de79166633fd2fe0459"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af38eb7b0b01f7de79166633fd2fe0459">&#9670;&#160;</a></span>perror()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void perror </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a361a1a7f7772d4ff8bd7795a844f52ae" name="a361a1a7f7772d4ff8bd7795a844f52ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a361a1a7f7772d4ff8bd7795a844f52ae">&#9670;&#160;</a></span>popen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> * popen </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>command</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af19264fb0f56dc09d1d4ee5c5aec0ee8" name="af19264fb0f56dc09d1d4ee5c5aec0ee8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af19264fb0f56dc09d1d4ee5c5aec0ee8">&#9670;&#160;</a></span>pclose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pclose </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23bda9b63cbe1f3d86aaff779b2b9f10" name="a23bda9b63cbe1f3d86aaff779b2b9f10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23bda9b63cbe1f3d86aaff779b2b9f10">&#9670;&#160;</a></span>tmpfile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> * tmpfile </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5908daf892f24d01e2770a706e8d331d" name="a5908daf892f24d01e2770a706e8d331d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5908daf892f24d01e2770a706e8d331d">&#9670;&#160;</a></span>tmpnam()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * tmpnam </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18566a555d80aacae25a0971f4ed20a3" name="a18566a555d80aacae25a0971f4ed20a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18566a555d80aacae25a0971f4ed20a3">&#9670;&#160;</a></span>rename()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rename </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>old_filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>new_filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4928010844b544a2fcbe2d375485dc70" name="a4928010844b544a2fcbe2d375485dc70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4928010844b544a2fcbe2d375485dc70">&#9670;&#160;</a></span>renameat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int renameat </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>olddirfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>oldpath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>newdirfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>newpath</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a02b13b56a188401119ea4da43c184913" name="a02b13b56a188401119ea4da43c184913"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02b13b56a188401119ea4da43c184913">&#9670;&#160;</a></span>remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int remove </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pathname</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a830d0c894369f01548073de2fec4df46" name="a830d0c894369f01548073de2fec4df46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a830d0c894369f01548073de2fec4df46">&#9670;&#160;</a></span>getline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="linux_2include_2sys_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a> getline </td>
+          <td>(</td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>lineptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a> *&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a id="ae4c3fff0c70479db3a3a5206e15962a8" name="ae4c3fff0c70479db3a3a5206e15962a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4c3fff0c70479db3a3a5206e15962a8">&#9670;&#160;</a></span>__vsf_linux_fs_fdop</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structvsf__linux__fd__op__t.html">vsf_linux_fd_op_t</a> __vsf_linux_fs_fdop</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a73286b2d139603354f2804e71132d0a5" name="a73286b2d139603354f2804e71132d0a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73286b2d139603354f2804e71132d0a5">&#9670;&#160;</a></span>vsf_linux_libc_stdio_vplt</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="el" href="structvsf__linux__libc__stdio__vplt__t.html">vsf_linux_libc_stdio_vplt_t</a> vsf_linux_libc_stdio_vplt</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
 </small></address>
 </body>
 </html>

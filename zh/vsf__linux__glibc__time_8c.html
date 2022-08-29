@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>VSF Documented: source/shell/sys/linux/lib/glibc/vsf_linux_glibc_time.c 文件参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -26,7 +26,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.4 -->
+<!-- 制作者 Doxygen 1.9.5 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>首页</span></a></li>
@@ -49,14 +49,693 @@
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
   <div class="headertitle"><div class="title">vsf_linux_glibc_time.c 文件参考</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__linux__cfg_8h_source.html">../../vsf_linux_cfg.h</a>&quot;</code><br />
-</div></div><!-- contents -->
+<code>#include &quot;<a class="el" href="unistd_8h_source.html">../../include/unistd.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="simple__libc_2time_8h_source.html">../../include/simple_libc/time.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sys_2time_8h_source.html">../../include/sys/time.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__glibc__time__t.html">vsf_linux_glibc_time_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a56bf24a74c400dfffdef33bfca636614"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#a56bf24a74c400dfffdef33bfca636614">__VSF_LINUX_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:a56bf24a74c400dfffdef33bfca636614"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a427ffe4394306d962b8972b3bc952e1c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#a427ffe4394306d962b8972b3bc952e1c">SECONDS_PER_DAY</a>&#160;&#160;&#160;(24 * 60 * 60)</td></tr>
+<tr class="separator:a427ffe4394306d962b8972b3bc952e1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63c6358d5a59ed5071c28e700e6a588e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#a63c6358d5a59ed5071c28e700e6a588e">SECONDS_PER_YEAR</a>&#160;&#160;&#160;(365 * <a class="el" href="vsf__linux__glibc__time_8c.html#a427ffe4394306d962b8972b3bc952e1c">SECONDS_PER_DAY</a>)</td></tr>
+<tr class="separator:a63c6358d5a59ed5071c28e700e6a588e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad35f34c22792f664091d6005300f8308"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#ad35f34c22792f664091d6005300f8308">SECONDS_PER_4YEARS</a>&#160;&#160;&#160;((4 * 365 + 1) * <a class="el" href="vsf__linux__glibc__time_8c.html#a427ffe4394306d962b8972b3bc952e1c">SECONDS_PER_DAY</a>)</td></tr>
+<tr class="separator:ad35f34c22792f664091d6005300f8308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93aaf8daac46519ad7045a2e8abc5c93"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#a93aaf8daac46519ad7045a2e8abc5c93">IS_LEAP_YEAR</a>(__Y)&#160;&#160;&#160;((!((__Y) % 4) &amp;&amp; ((__Y) % 100)) || !(((__Y) + 1900) % 400))</td></tr>
+<tr class="separator:a93aaf8daac46519ad7045a2e8abc5c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2226abbaa0472b7475453a6f91e2ead2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#a2226abbaa0472b7475453a6f91e2ead2">LEAP_YEARS_SINCE</a>(__Y)&#160;&#160;&#160;((((__Y) - 1) / 4) - (((__Y) - 1) / 100) + (((__Y) + 299) / 400) - 17)</td></tr>
+<tr class="separator:a2226abbaa0472b7475453a6f91e2ead2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ced11f4b6fec2c5eb88c200de7bcc2c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(__FUNC)&#160;&#160;&#160;.__FUNC = __FUNC</td></tr>
+<tr class="separator:a9ced11f4b6fec2c5eb88c200de7bcc2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:afc0e3f373a3ea00b37714f1b621ae0b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#afc0e3f373a3ea00b37714f1b621ae0b1">mktime</a> (struct <a class="el" href="structtm.html">tm</a> *<a class="el" href="structtm.html">tm</a>)</td></tr>
+<tr class="separator:afc0e3f373a3ea00b37714f1b621ae0b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7841e681c8c9d59818568d39553642c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#ae7841e681c8c9d59818568d39553642c">time</a> (<a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> *t)</td></tr>
+<tr class="separator:ae7841e681c8c9d59818568d39553642c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8b537240f49262e3334ec2d8008fdad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#aa8b537240f49262e3334ec2d8008fdad">strftime</a> (char *str, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> maxsize, const char *<a class="el" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>, const struct <a class="el" href="structtm.html">tm</a> *<a class="el" href="structtm.html">tm</a>)</td></tr>
+<tr class="separator:aa8b537240f49262e3334ec2d8008fdad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c392f2d225f4d3444eeee1e06f46435"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#a2c392f2d225f4d3444eeee1e06f46435">asctime_r</a> (const struct <a class="el" href="structtm.html">tm</a> *<a class="el" href="structtm.html">tm</a>, char *buf)</td></tr>
+<tr class="separator:a2c392f2d225f4d3444eeee1e06f46435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af872b30a27fec91a34d340f2bec3795f"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#af872b30a27fec91a34d340f2bec3795f">asctime</a> (const struct <a class="el" href="structtm.html">tm</a> *<a class="el" href="structtm.html">tm</a>)</td></tr>
+<tr class="separator:af872b30a27fec91a34d340f2bec3795f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b87a028d4ba6d5d0fd04c06645083c5"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#a7b87a028d4ba6d5d0fd04c06645083c5">ctime</a> (const <a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> *t)</td></tr>
+<tr class="separator:a7b87a028d4ba6d5d0fd04c06645083c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c4e9e4f1d20d6660d1ac6513e18aea9"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#a9c4e9e4f1d20d6660d1ac6513e18aea9">ctime_r</a> (const <a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> *t, char *buf)</td></tr>
+<tr class="separator:a9c4e9e4f1d20d6660d1ac6513e18aea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa642b0e866bdff9ecb9298c820775e39"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtm.html">tm</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#aa642b0e866bdff9ecb9298c820775e39">gmtime_r</a> (const <a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> *timep, struct <a class="el" href="structtm.html">tm</a> *result)</td></tr>
+<tr class="separator:aa642b0e866bdff9ecb9298c820775e39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bc4ff58d4ac838a36ba939747e5833e"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtm.html">tm</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#a4bc4ff58d4ac838a36ba939747e5833e">gmtime</a> (const <a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> *timep)</td></tr>
+<tr class="separator:a4bc4ff58d4ac838a36ba939747e5833e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1a8bb3c8d2e615a7bccfa780ac5440f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtm.html">tm</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#ab1a8bb3c8d2e615a7bccfa780ac5440f">localtime_r</a> (const <a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> *timep, struct <a class="el" href="structtm.html">tm</a> *result)</td></tr>
+<tr class="separator:ab1a8bb3c8d2e615a7bccfa780ac5440f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d4076dc90ad030f7d4dad295a01357a"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtm.html">tm</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#a2d4076dc90ad030f7d4dad295a01357a">localtime</a> (const <a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> *timep)</td></tr>
+<tr class="separator:a2d4076dc90ad030f7d4dad295a01357a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85cd4cf3ebc8d5d15f7c34c61a5d91c9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#a85cd4cf3ebc8d5d15f7c34c61a5d91c9">nanosleep</a> (const struct <a class="el" href="structtimespec.html">timespec</a> *requested_time, struct <a class="el" href="structtimespec.html">timespec</a> *remaining)</td></tr>
+<tr class="separator:a85cd4cf3ebc8d5d15f7c34c61a5d91c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade863cfcca9ee19f20ca95796f8ddc1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="linux_2include_2sys_2types_8h.html#a0450ea8b06b50d6e055f6d47bd77622c">clock_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#ade863cfcca9ee19f20ca95796f8ddc1e">clock</a> (void)</td></tr>
+<tr class="separator:ade863cfcca9ee19f20ca95796f8ddc1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49d0147c5c0a6a7327541bfa7c694fe9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#a49d0147c5c0a6a7327541bfa7c694fe9">clock_getres</a> (<a class="el" href="linux_2include_2sys_2types_8h.html#a2f9c761af656069fe6fc3df81fa4331a">clockid_t</a> clk_id, struct <a class="el" href="structtimespec.html">timespec</a> *res)</td></tr>
+<tr class="separator:a49d0147c5c0a6a7327541bfa7c694fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fa4fcf1ad1f2f62773a03323f08592e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#a6fa4fcf1ad1f2f62773a03323f08592e">clock_gettime</a> (<a class="el" href="linux_2include_2sys_2types_8h.html#a2f9c761af656069fe6fc3df81fa4331a">clockid_t</a> clk_id, struct <a class="el" href="structtimespec.html">timespec</a> *tp)</td></tr>
+<tr class="separator:a6fa4fcf1ad1f2f62773a03323f08592e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee0b91fe1ac5bce5f9457628289b8146"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#aee0b91fe1ac5bce5f9457628289b8146">getitimer</a> (int <a class="el" href="vsf__tgui__control_8h.html#a5b5d6de3808ae65bdaef685a8ec16f8b">which</a>, struct <a class="el" href="structitimerval.html">itimerval</a> *curr_value)</td></tr>
+<tr class="separator:aee0b91fe1ac5bce5f9457628289b8146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b92a3b70897ebc9080275e03620baf2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#a1b92a3b70897ebc9080275e03620baf2">setitimer</a> (int <a class="el" href="vsf__tgui__control_8h.html#a5b5d6de3808ae65bdaef685a8ec16f8b">which</a>, const struct <a class="el" href="structitimerval.html">itimerval</a> *new_value, struct <a class="el" href="structitimerval.html">itimerval</a> *old_value)</td></tr>
+<tr class="separator:a1b92a3b70897ebc9080275e03620baf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:aea6a7d247af60bdd4788cae23751da04"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structvsf__linux__glibc__time__t.html">vsf_linux_glibc_time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#aea6a7d247af60bdd4788cae23751da04">__vsf_linux_glibc_time</a></td></tr>
+<tr class="separator:aea6a7d247af60bdd4788cae23751da04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad35b3490816fd6a3bab1309f1c3ed93c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="el" href="structvsf__linux__libc__time__vplt__t.html">vsf_linux_libc_time_vplt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__glibc__time_8c.html#ad35b3490816fd6a3bab1309f1c3ed93c">vsf_linux_libc_time_vplt</a></td></tr>
+<tr class="separator:ad35b3490816fd6a3bab1309f1c3ed93c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a56bf24a74c400dfffdef33bfca636614" name="a56bf24a74c400dfffdef33bfca636614"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56bf24a74c400dfffdef33bfca636614">&#9670;&#160;</a></span>__VSF_LINUX_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_LINUX_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a427ffe4394306d962b8972b3bc952e1c" name="a427ffe4394306d962b8972b3bc952e1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a427ffe4394306d962b8972b3bc952e1c">&#9670;&#160;</a></span>SECONDS_PER_DAY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SECONDS_PER_DAY&#160;&#160;&#160;(24 * 60 * 60)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63c6358d5a59ed5071c28e700e6a588e" name="a63c6358d5a59ed5071c28e700e6a588e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63c6358d5a59ed5071c28e700e6a588e">&#9670;&#160;</a></span>SECONDS_PER_YEAR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SECONDS_PER_YEAR&#160;&#160;&#160;(365 * <a class="el" href="vsf__linux__glibc__time_8c.html#a427ffe4394306d962b8972b3bc952e1c">SECONDS_PER_DAY</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad35f34c22792f664091d6005300f8308" name="ad35f34c22792f664091d6005300f8308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad35f34c22792f664091d6005300f8308">&#9670;&#160;</a></span>SECONDS_PER_4YEARS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SECONDS_PER_4YEARS&#160;&#160;&#160;((4 * 365 + 1) * <a class="el" href="vsf__linux__glibc__time_8c.html#a427ffe4394306d962b8972b3bc952e1c">SECONDS_PER_DAY</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a93aaf8daac46519ad7045a2e8abc5c93" name="a93aaf8daac46519ad7045a2e8abc5c93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93aaf8daac46519ad7045a2e8abc5c93">&#9670;&#160;</a></span>IS_LEAP_YEAR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_LEAP_YEAR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__Y</td><td>)</td>
+          <td>&#160;&#160;&#160;((!((__Y) % 4) &amp;&amp; ((__Y) % 100)) || !(((__Y) + 1900) % 400))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2226abbaa0472b7475453a6f91e2ead2" name="a2226abbaa0472b7475453a6f91e2ead2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2226abbaa0472b7475453a6f91e2ead2">&#9670;&#160;</a></span>LEAP_YEARS_SINCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LEAP_YEARS_SINCE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__Y</td><td>)</td>
+          <td>&#160;&#160;&#160;((((__Y) - 1) / 4) - (((__Y) - 1) / 100) + (((__Y) + 299) / 400) - 17)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9ced11f4b6fec2c5eb88c200de7bcc2c" name="a9ced11f4b6fec2c5eb88c200de7bcc2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ced11f4b6fec2c5eb88c200de7bcc2c">&#9670;&#160;</a></span>VSF_LINUX_APPLET_LIBC_TIME_FUNC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_LINUX_APPLET_LIBC_TIME_FUNC</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__FUNC</td><td>)</td>
+          <td>&#160;&#160;&#160;.__FUNC = __FUNC</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="afc0e3f373a3ea00b37714f1b621ae0b1" name="afc0e3f373a3ea00b37714f1b621ae0b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc0e3f373a3ea00b37714f1b621ae0b1">&#9670;&#160;</a></span>mktime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> mktime </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structtm.html">tm</a> *&#160;</td>
+          <td class="paramname"><em>tm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae7841e681c8c9d59818568d39553642c" name="ae7841e681c8c9d59818568d39553642c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7841e681c8c9d59818568d39553642c">&#9670;&#160;</a></span>time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> time </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> *&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa8b537240f49262e3334ec2d8008fdad" name="aa8b537240f49262e3334ec2d8008fdad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8b537240f49262e3334ec2d8008fdad">&#9670;&#160;</a></span>strftime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> strftime </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
+          <td class="paramname"><em>maxsize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const struct <a class="el" href="structtm.html">tm</a> *&#160;</td>
+          <td class="paramname"><em>tm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c392f2d225f4d3444eeee1e06f46435" name="a2c392f2d225f4d3444eeee1e06f46435"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c392f2d225f4d3444eeee1e06f46435">&#9670;&#160;</a></span>asctime_r()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * asctime_r </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="structtm.html">tm</a> *&#160;</td>
+          <td class="paramname"><em>tm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af872b30a27fec91a34d340f2bec3795f" name="af872b30a27fec91a34d340f2bec3795f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af872b30a27fec91a34d340f2bec3795f">&#9670;&#160;</a></span>asctime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * asctime </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="structtm.html">tm</a> *&#160;</td>
+          <td class="paramname"><em>tm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b87a028d4ba6d5d0fd04c06645083c5" name="a7b87a028d4ba6d5d0fd04c06645083c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b87a028d4ba6d5d0fd04c06645083c5">&#9670;&#160;</a></span>ctime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * ctime </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> *&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9c4e9e4f1d20d6660d1ac6513e18aea9" name="a9c4e9e4f1d20d6660d1ac6513e18aea9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c4e9e4f1d20d6660d1ac6513e18aea9">&#9670;&#160;</a></span>ctime_r()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * ctime_r </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> *&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa642b0e866bdff9ecb9298c820775e39" name="aa642b0e866bdff9ecb9298c820775e39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa642b0e866bdff9ecb9298c820775e39">&#9670;&#160;</a></span>gmtime_r()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structtm.html">tm</a> * gmtime_r </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> *&#160;</td>
+          <td class="paramname"><em>timep</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structtm.html">tm</a> *&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4bc4ff58d4ac838a36ba939747e5833e" name="a4bc4ff58d4ac838a36ba939747e5833e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bc4ff58d4ac838a36ba939747e5833e">&#9670;&#160;</a></span>gmtime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structtm.html">tm</a> * gmtime </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> *&#160;</td>
+          <td class="paramname"><em>timep</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab1a8bb3c8d2e615a7bccfa780ac5440f" name="ab1a8bb3c8d2e615a7bccfa780ac5440f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1a8bb3c8d2e615a7bccfa780ac5440f">&#9670;&#160;</a></span>localtime_r()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structtm.html">tm</a> * localtime_r </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> *&#160;</td>
+          <td class="paramname"><em>timep</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structtm.html">tm</a> *&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2d4076dc90ad030f7d4dad295a01357a" name="a2d4076dc90ad030f7d4dad295a01357a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d4076dc90ad030f7d4dad295a01357a">&#9670;&#160;</a></span>localtime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structtm.html">tm</a> * localtime </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> *&#160;</td>
+          <td class="paramname"><em>timep</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a85cd4cf3ebc8d5d15f7c34c61a5d91c9" name="a85cd4cf3ebc8d5d15f7c34c61a5d91c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85cd4cf3ebc8d5d15f7c34c61a5d91c9">&#9670;&#160;</a></span>nanosleep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int nanosleep </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="structtimespec.html">timespec</a> *&#160;</td>
+          <td class="paramname"><em>requested_time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structtimespec.html">timespec</a> *&#160;</td>
+          <td class="paramname"><em>remaining</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ade863cfcca9ee19f20ca95796f8ddc1e" name="ade863cfcca9ee19f20ca95796f8ddc1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade863cfcca9ee19f20ca95796f8ddc1e">&#9670;&#160;</a></span>clock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="linux_2include_2sys_2types_8h.html#a0450ea8b06b50d6e055f6d47bd77622c">clock_t</a> clock </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a49d0147c5c0a6a7327541bfa7c694fe9" name="a49d0147c5c0a6a7327541bfa7c694fe9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49d0147c5c0a6a7327541bfa7c694fe9">&#9670;&#160;</a></span>clock_getres()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int clock_getres </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a2f9c761af656069fe6fc3df81fa4331a">clockid_t</a>&#160;</td>
+          <td class="paramname"><em>clk_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structtimespec.html">timespec</a> *&#160;</td>
+          <td class="paramname"><em>res</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6fa4fcf1ad1f2f62773a03323f08592e" name="a6fa4fcf1ad1f2f62773a03323f08592e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fa4fcf1ad1f2f62773a03323f08592e">&#9670;&#160;</a></span>clock_gettime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int clock_gettime </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a2f9c761af656069fe6fc3df81fa4331a">clockid_t</a>&#160;</td>
+          <td class="paramname"><em>clk_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structtimespec.html">timespec</a> *&#160;</td>
+          <td class="paramname"><em>tp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee0b91fe1ac5bce5f9457628289b8146" name="aee0b91fe1ac5bce5f9457628289b8146"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee0b91fe1ac5bce5f9457628289b8146">&#9670;&#160;</a></span>getitimer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getitimer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>which</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structitimerval.html">itimerval</a> *&#160;</td>
+          <td class="paramname"><em>curr_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1b92a3b70897ebc9080275e03620baf2" name="a1b92a3b70897ebc9080275e03620baf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b92a3b70897ebc9080275e03620baf2">&#9670;&#160;</a></span>setitimer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int setitimer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>which</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const struct <a class="el" href="structitimerval.html">itimerval</a> *&#160;</td>
+          <td class="paramname"><em>new_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structitimerval.html">itimerval</a> *&#160;</td>
+          <td class="paramname"><em>old_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a id="aea6a7d247af60bdd4788cae23751da04" name="aea6a7d247af60bdd4788cae23751da04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea6a7d247af60bdd4788cae23751da04">&#9670;&#160;</a></span>__vsf_linux_glibc_time</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structvsf__linux__glibc__time__t.html">vsf_linux_glibc_time_t</a> __vsf_linux_glibc_time</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad35b3490816fd6a3bab1309f1c3ed93c" name="ad35b3490816fd6a3bab1309f1c3ed93c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad35b3490816fd6a3bab1309f1c3ed93c">&#9670;&#160;</a></span>vsf_linux_libc_time_vplt</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="el" href="structvsf__linux__libc__time__vplt__t.html">vsf_linux_libc_time_vplt_t</a> vsf_linux_libc_time_vplt</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .info.entry_num = (<span class="keyword">sizeof</span>(<a class="code hl_struct" href="structvsf__linux__libc__time__vplt__t.html">vsf_linux_libc_time_vplt_t</a>) - <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structvsf__vplt__info__t.html">vsf_vplt_info_t</a>)) / <span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *),</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_function" href="vsf__linux__glibc__time_8c.html#ade863cfcca9ee19f20ca95796f8ddc1e">clock</a>),</div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_define" href="simple__libc_2time_8h.html#a48c9eeee31d85fcd2f22d4a05e572331">clock_gettime</a>),</div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_define" href="simple__libc_2time_8h.html#a2f7a66f0feccbff2ac10317750ad0b54">clock_getres</a>),</div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_function" href="vsf__linux__glibc__time_8c.html#ae7841e681c8c9d59818568d39553642c">time</a>),</div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_function" href="simple__libc_2time_8h.html#a1901c00eb89e8e35ea193c6a4676679c">difftime</a>),</div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_function" href="vsf__linux__glibc__time_8c.html#af872b30a27fec91a34d340f2bec3795f">asctime</a>),</div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_function" href="vsf__linux__glibc__time_8c.html#a2c392f2d225f4d3444eeee1e06f46435">asctime_r</a>),</div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_function" href="vsf__linux__glibc__time_8c.html#a7b87a028d4ba6d5d0fd04c06645083c5">ctime</a>),</div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_function" href="vsf__linux__glibc__time_8c.html#a9c4e9e4f1d20d6660d1ac6513e18aea9">ctime_r</a>),</div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_function" href="vsf__linux__glibc__time_8c.html#a4bc4ff58d4ac838a36ba939747e5833e">gmtime</a>),</div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_function" href="vsf__linux__glibc__time_8c.html#aa642b0e866bdff9ecb9298c820775e39">gmtime_r</a>),</div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_function" href="vsf__linux__glibc__time_8c.html#a2d4076dc90ad030f7d4dad295a01357a">localtime</a>),</div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_function" href="vsf__linux__glibc__time_8c.html#ab1a8bb3c8d2e615a7bccfa780ac5440f">localtime_r</a>),</div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_function" href="vsf__linux__glibc__time_8c.html#afc0e3f373a3ea00b37714f1b621ae0b1">mktime</a>),</div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_function" href="vsf__linux__glibc__time_8c.html#aa8b537240f49262e3334ec2d8008fdad">strftime</a>),</div>
+<div class="line">    <a class="code hl_define" href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a>(<a class="code hl_define" href="simple__libc_2time_8h.html#aa014d7ec4e9b954fca762935e5463f76">nanosleep</a>),</div>
+<div class="line">}</div>
+<div class="ttc" id="asimple__libc_2time_8h_html_a1901c00eb89e8e35ea193c6a4676679c"><div class="ttname"><a href="simple__libc_2time_8h.html#a1901c00eb89e8e35ea193c6a4676679c">difftime</a></div><div class="ttdeci">double difftime(time_t time1, time_t time2)</div></div>
+<div class="ttc" id="asimple__libc_2time_8h_html_a2f7a66f0feccbff2ac10317750ad0b54"><div class="ttname"><a href="simple__libc_2time_8h.html#a2f7a66f0feccbff2ac10317750ad0b54">clock_getres</a></div><div class="ttdeci">#define clock_getres</div><div class="ttdef"><b>Definition:</b> time.h:16</div></div>
+<div class="ttc" id="asimple__libc_2time_8h_html_a48c9eeee31d85fcd2f22d4a05e572331"><div class="ttname"><a href="simple__libc_2time_8h.html#a48c9eeee31d85fcd2f22d4a05e572331">clock_gettime</a></div><div class="ttdeci">#define clock_gettime</div><div class="ttdef"><b>Definition:</b> time.h:15</div></div>
+<div class="ttc" id="asimple__libc_2time_8h_html_aa014d7ec4e9b954fca762935e5463f76"><div class="ttname"><a href="simple__libc_2time_8h.html#aa014d7ec4e9b954fca762935e5463f76">nanosleep</a></div><div class="ttdeci">#define nanosleep</div><div class="ttdef"><b>Definition:</b> time.h:17</div></div>
+<div class="ttc" id="astructvsf__linux__libc__time__vplt__t_html"><div class="ttname"><a href="structvsf__linux__libc__time__vplt__t.html">vsf_linux_libc_time_vplt_t</a></div><div class="ttdef"><b>Definition:</b> time.h:41</div></div>
+<div class="ttc" id="astructvsf__vplt__info__t_html"><div class="ttname"><a href="structvsf__vplt__info__t.html">vsf_vplt_info_t</a></div><div class="ttdef"><b>Definition:</b> vsf_cfg.h:95</div></div>
+<div class="ttc" id="avsf__linux__glibc__time_8c_html_a2c392f2d225f4d3444eeee1e06f46435"><div class="ttname"><a href="vsf__linux__glibc__time_8c.html#a2c392f2d225f4d3444eeee1e06f46435">asctime_r</a></div><div class="ttdeci">char * asctime_r(const struct tm *tm, char *buf)</div><div class="ttdef"><b>Definition:</b> vsf_linux_glibc_time.c:224</div></div>
+<div class="ttc" id="avsf__linux__glibc__time_8c_html_a2d4076dc90ad030f7d4dad295a01357a"><div class="ttname"><a href="vsf__linux__glibc__time_8c.html#a2d4076dc90ad030f7d4dad295a01357a">localtime</a></div><div class="ttdeci">struct tm * localtime(const time_t *timep)</div><div class="ttdef"><b>Definition:</b> vsf_linux_glibc_time.c:306</div></div>
+<div class="ttc" id="avsf__linux__glibc__time_8c_html_a4bc4ff58d4ac838a36ba939747e5833e"><div class="ttname"><a href="vsf__linux__glibc__time_8c.html#a4bc4ff58d4ac838a36ba939747e5833e">gmtime</a></div><div class="ttdeci">struct tm * gmtime(const time_t *timep)</div><div class="ttdef"><b>Definition:</b> vsf_linux_glibc_time.c:296</div></div>
+<div class="ttc" id="avsf__linux__glibc__time_8c_html_a7b87a028d4ba6d5d0fd04c06645083c5"><div class="ttname"><a href="vsf__linux__glibc__time_8c.html#a7b87a028d4ba6d5d0fd04c06645083c5">ctime</a></div><div class="ttdeci">char * ctime(const time_t *t)</div><div class="ttdef"><b>Definition:</b> vsf_linux_glibc_time.c:236</div></div>
+<div class="ttc" id="avsf__linux__glibc__time_8c_html_a9c4e9e4f1d20d6660d1ac6513e18aea9"><div class="ttname"><a href="vsf__linux__glibc__time_8c.html#a9c4e9e4f1d20d6660d1ac6513e18aea9">ctime_r</a></div><div class="ttdeci">char * ctime_r(const time_t *t, char *buf)</div><div class="ttdef"><b>Definition:</b> vsf_linux_glibc_time.c:241</div></div>
+<div class="ttc" id="avsf__linux__glibc__time_8c_html_a9ced11f4b6fec2c5eb88c200de7bcc2c"><div class="ttname"><a href="vsf__linux__glibc__time_8c.html#a9ced11f4b6fec2c5eb88c200de7bcc2c">VSF_LINUX_APPLET_LIBC_TIME_FUNC</a></div><div class="ttdeci">#define VSF_LINUX_APPLET_LIBC_TIME_FUNC(__FUNC)</div><div class="ttdef"><b>Definition:</b> vsf_linux_glibc_time.c:439</div></div>
+<div class="ttc" id="avsf__linux__glibc__time_8c_html_aa642b0e866bdff9ecb9298c820775e39"><div class="ttname"><a href="vsf__linux__glibc__time_8c.html#aa642b0e866bdff9ecb9298c820775e39">gmtime_r</a></div><div class="ttdeci">struct tm * gmtime_r(const time_t *timep, struct tm *result)</div><div class="ttdef"><b>Definition:</b> vsf_linux_glibc_time.c:246</div></div>
+<div class="ttc" id="avsf__linux__glibc__time_8c_html_aa8b537240f49262e3334ec2d8008fdad"><div class="ttname"><a href="vsf__linux__glibc__time_8c.html#aa8b537240f49262e3334ec2d8008fdad">strftime</a></div><div class="ttdeci">size_t strftime(char *str, size_t maxsize, const char *format, const struct tm *tm)</div><div class="ttdef"><b>Definition:</b> vsf_linux_glibc_time.c:87</div></div>
+<div class="ttc" id="avsf__linux__glibc__time_8c_html_ab1a8bb3c8d2e615a7bccfa780ac5440f"><div class="ttname"><a href="vsf__linux__glibc__time_8c.html#ab1a8bb3c8d2e615a7bccfa780ac5440f">localtime_r</a></div><div class="ttdeci">struct tm * localtime_r(const time_t *timep, struct tm *result)</div><div class="ttdef"><b>Definition:</b> vsf_linux_glibc_time.c:301</div></div>
+<div class="ttc" id="avsf__linux__glibc__time_8c_html_ade863cfcca9ee19f20ca95796f8ddc1e"><div class="ttname"><a href="vsf__linux__glibc__time_8c.html#ade863cfcca9ee19f20ca95796f8ddc1e">clock</a></div><div class="ttdeci">clock_t clock(void)</div><div class="ttdef"><b>Definition:</b> vsf_linux_glibc_time.c:327</div></div>
+<div class="ttc" id="avsf__linux__glibc__time_8c_html_ae7841e681c8c9d59818568d39553642c"><div class="ttname"><a href="vsf__linux__glibc__time_8c.html#ae7841e681c8c9d59818568d39553642c">time</a></div><div class="ttdeci">time_t time(time_t *t)</div><div class="ttdef"><b>Definition:</b> vsf_linux_glibc_time.c:71</div></div>
+<div class="ttc" id="avsf__linux__glibc__time_8c_html_af872b30a27fec91a34d340f2bec3795f"><div class="ttname"><a href="vsf__linux__glibc__time_8c.html#af872b30a27fec91a34d340f2bec3795f">asctime</a></div><div class="ttdeci">char * asctime(const struct tm *tm)</div><div class="ttdef"><b>Definition:</b> vsf_linux_glibc_time.c:229</div></div>
+<div class="ttc" id="avsf__linux__glibc__time_8c_html_afc0e3f373a3ea00b37714f1b621ae0b1"><div class="ttname"><a href="vsf__linux__glibc__time_8c.html#afc0e3f373a3ea00b37714f1b621ae0b1">mktime</a></div><div class="ttdeci">time_t mktime(struct tm *tm)</div><div class="ttdef"><b>Definition:</b> vsf_linux_glibc_time.c:52</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
 </small></address>
 </body>
 </html>

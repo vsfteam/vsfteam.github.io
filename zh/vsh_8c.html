@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>VSF Documented: source/shell/sys/linux/port/busybox/shell/vsh.c 文件参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -26,7 +26,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.4 -->
+<!-- 制作者 Doxygen 1.9.5 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>首页</span></a></li>
@@ -49,14 +49,603 @@
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#enum-members">枚举</a> &#124;
+<a href="#func-members">函数</a>  </div>
   <div class="headertitle"><div class="title">vsh.c 文件参考</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="config_8h_source.html">../config.h</a>&quot;</code><br />
-</div></div><!-- contents -->
+<code>#include &quot;<a class="el" href="unistd_8h_source.html">../../../include/unistd.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="errno_8h_source.html">../../../include/errno.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="wait_8h_source.html">../../../include/sys/wait.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dirent_8h_source.html">../../../include/dirent.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ctype_8h_source.html">../../../include/simple_libc/ctype.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stdlib_8h_source.html">../../../include/simple_libc/stdlib.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stdio_8h_source.html">../../../include/simple_libc/stdio.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="string_8h_source.html">../../../include/simple_libc/string.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsh__cmd__ctx__t.html">vsh_cmd_ctx_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a56bf24a74c400dfffdef33bfca636614"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#a56bf24a74c400dfffdef33bfca636614">__VSF_LINUX_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:a56bf24a74c400dfffdef33bfca636614"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac146c3559b8faa87d7fae9354e6bd174"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#ac146c3559b8faa87d7fae9354e6bd174">__VSF_LINUX_FS_CLASS_IMPLEMENT</a></td></tr>
+<tr class="separator:ac146c3559b8faa87d7fae9354e6bd174"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6743358a997e7a021290a5d1018e5e5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#af6743358a997e7a021290a5d1018e5e5">VSH_PROMPT</a>&#160;&#160;&#160;&quot;&gt;&gt;&gt;&quot;</td></tr>
+<tr class="separator:af6743358a997e7a021290a5d1018e5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:acb7f14a83a261ed77fe36d1ab7d37c24"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsh__cmd__ctx__t.html">vsh_cmd_ctx_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#acb7f14a83a261ed77fe36d1ab7d37c24">vsh_cmd_ctx_t</a></td></tr>
+<tr class="separator:acb7f14a83a261ed77fe36d1ab7d37c24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f66ce1eea50cd68adc876899c98af70"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="vsh_8c.html#a7f5522d910a6e1a5dc4e47b65bbd8e65">vsh_shell_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#a5f66ce1eea50cd68adc876899c98af70">vsh_shell_state_t</a></td></tr>
+<tr class="separator:a5f66ce1eea50cd68adc876899c98af70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+枚举</h2></td></tr>
+<tr class="memitem:a7f5522d910a6e1a5dc4e47b65bbd8e65"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#a7f5522d910a6e1a5dc4e47b65bbd8e65">vsh_shell_state_t</a> { <br />
+&#160;&#160;<a class="el" href="vsh_8c.html#a7f5522d910a6e1a5dc4e47b65bbd8e65a6443e031436d5edc2d81f18a6d438538">SHELL_STATE_NORMAL</a>
+, <br />
+&#160;&#160;<a class="el" href="vsh_8c.html#a7f5522d910a6e1a5dc4e47b65bbd8e65a88fdae6faea1afe1d13ff2a17a410d78">SHELL_STATE_ESC</a>
+<br />
+ }</td></tr>
+<tr class="separator:a7f5522d910a6e1a5dc4e47b65bbd8e65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a482bb58687bf04139eb4c94982e667e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#a482bb58687bf04139eb4c94982e667e6">vsh_set_path</a> (char *path)</td></tr>
+<tr class="separator:a482bb58687bf04139eb4c94982e667e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afae2681806d905c5605c16286f78b790"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#afae2681806d905c5605c16286f78b790">__vsh_get_exe</a> (char *pathname, int path_out_lenlen, char *cmd, <a class="el" href="vsf__linux_8h.html#a0abc84cf41771f6f6ad943e4a92fa938">vsf_linux_main_entry_t</a> *<a class="el" href="vsf__thread_8h.html#a7b1bd7ace931306a646900d724bb7329">entry</a>)</td></tr>
+<tr class="separator:afae2681806d905c5605c16286f78b790"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6916979736db1ccb4e609deb824a0602"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvsf__linux__process__t.html">vsf_linux_process_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#a6916979736db1ccb4e609deb824a0602">__vsh_prepare_process</a> (char *cmd, int fd_in, int fd_out)</td></tr>
+<tr class="separator:a6916979736db1ccb4e609deb824a0602"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e436992dd580653b0fc82214dff252f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#a7e436992dd580653b0fc82214dff252f">__vsh_run_cmd</a> (char *cmd)</td></tr>
+<tr class="separator:a7e436992dd580653b0fc82214dff252f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14bc9c83ce669237d9338062474c3186"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#a14bc9c83ce669237d9338062474c3186">vsh_main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:a14bc9c83ce669237d9338062474c3186"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17035f2bda682fc121f53ef19b54dda0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#a17035f2bda682fc121f53ef19b54dda0">pwd_main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:a17035f2bda682fc121f53ef19b54dda0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23ea26cde8088a7c8b5f404a8139236b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#a23ea26cde8088a7c8b5f404a8139236b">cd_main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:a23ea26cde8088a7c8b5f404a8139236b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a923d615c8378dac5eddc34bd8b87cff5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#a923d615c8378dac5eddc34bd8b87cff5">ls_main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:a923d615c8378dac5eddc34bd8b87cff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9221658abb0a801405d4cf79214a67a4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#a9221658abb0a801405d4cf79214a67a4">mkdir_main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:a9221658abb0a801405d4cf79214a67a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa36a80293b14a35c2c486f1454f9e9e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#aa36a80293b14a35c2c486f1454f9e9e7">echo_main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:aa36a80293b14a35c2c486f1454f9e9e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed7ef4d97edf5ca7592c44d52fb11613"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#aed7ef4d97edf5ca7592c44d52fb11613">cat_main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:aed7ef4d97edf5ca7592c44d52fb11613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a225c7bfb647a998ec4ac872905b50729"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#a225c7bfb647a998ec4ac872905b50729">clear_main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:a225c7bfb647a998ec4ac872905b50729"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0a88d5b6408fe560f1f6abd43656475"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#ae0a88d5b6408fe560f1f6abd43656475">time_main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:ae0a88d5b6408fe560f1f6abd43656475"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7407da21f315c22aefae4a8195586d82"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#a7407da21f315c22aefae4a8195586d82">free_main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:a7407da21f315c22aefae4a8195586d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd14144d9823591e244560df0e1cfc0b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsh_8c.html#abd14144d9823591e244560df0e1cfc0b">export_main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:abd14144d9823591e244560df0e1cfc0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a56bf24a74c400dfffdef33bfca636614" name="a56bf24a74c400dfffdef33bfca636614"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56bf24a74c400dfffdef33bfca636614">&#9670;&#160;</a></span>__VSF_LINUX_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_LINUX_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac146c3559b8faa87d7fae9354e6bd174" name="ac146c3559b8faa87d7fae9354e6bd174"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac146c3559b8faa87d7fae9354e6bd174">&#9670;&#160;</a></span>__VSF_LINUX_FS_CLASS_IMPLEMENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_LINUX_FS_CLASS_IMPLEMENT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af6743358a997e7a021290a5d1018e5e5" name="af6743358a997e7a021290a5d1018e5e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6743358a997e7a021290a5d1018e5e5">&#9670;&#160;</a></span>VSH_PROMPT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSH_PROMPT&#160;&#160;&#160;&quot;&gt;&gt;&gt;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类型定义说明</h2>
+<a id="acb7f14a83a261ed77fe36d1ab7d37c24" name="acb7f14a83a261ed77fe36d1ab7d37c24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb7f14a83a261ed77fe36d1ab7d37c24">&#9670;&#160;</a></span>vsh_cmd_ctx_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsh__cmd__ctx__t.html">vsh_cmd_ctx_t</a> <a class="el" href="structvsh__cmd__ctx__t.html">vsh_cmd_ctx_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f66ce1eea50cd68adc876899c98af70" name="a5f66ce1eea50cd68adc876899c98af70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f66ce1eea50cd68adc876899c98af70">&#9670;&#160;</a></span>vsh_shell_state_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="vsh_8c.html#a7f5522d910a6e1a5dc4e47b65bbd8e65">vsh_shell_state_t</a> <a class="el" href="vsh_8c.html#a7f5522d910a6e1a5dc4e47b65bbd8e65">vsh_shell_state_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">枚举类型说明</h2>
+<a id="a7f5522d910a6e1a5dc4e47b65bbd8e65" name="a7f5522d910a6e1a5dc4e47b65bbd8e65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f5522d910a6e1a5dc4e47b65bbd8e65">&#9670;&#160;</a></span>vsh_shell_state_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="vsh_8c.html#a7f5522d910a6e1a5dc4e47b65bbd8e65">vsh_shell_state_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a7f5522d910a6e1a5dc4e47b65bbd8e65a6443e031436d5edc2d81f18a6d438538" name="a7f5522d910a6e1a5dc4e47b65bbd8e65a6443e031436d5edc2d81f18a6d438538"></a>SHELL_STATE_NORMAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7f5522d910a6e1a5dc4e47b65bbd8e65a88fdae6faea1afe1d13ff2a17a410d78" name="a7f5522d910a6e1a5dc4e47b65bbd8e65a88fdae6faea1afe1d13ff2a17a410d78"></a>SHELL_STATE_ESC&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a482bb58687bf04139eb4c94982e667e6" name="a482bb58687bf04139eb4c94982e667e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a482bb58687bf04139eb4c94982e667e6">&#9670;&#160;</a></span>vsh_set_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsh_set_path </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afae2681806d905c5605c16286f78b790" name="afae2681806d905c5605c16286f78b790"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afae2681806d905c5605c16286f78b790">&#9670;&#160;</a></span>__vsh_get_exe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int __vsh_get_exe </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>pathname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>path_out_lenlen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>cmd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__linux_8h.html#a0abc84cf41771f6f6ad943e4a92fa938">vsf_linux_main_entry_t</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6916979736db1ccb4e609deb824a0602" name="a6916979736db1ccb4e609deb824a0602"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6916979736db1ccb4e609deb824a0602">&#9670;&#160;</a></span>__vsh_prepare_process()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvsf__linux__process__t.html">vsf_linux_process_t</a> * __vsh_prepare_process </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>cmd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd_out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7e436992dd580653b0fc82214dff252f" name="a7e436992dd580653b0fc82214dff252f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e436992dd580653b0fc82214dff252f">&#9670;&#160;</a></span>__vsh_run_cmd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int __vsh_run_cmd </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>cmd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a14bc9c83ce669237d9338062474c3186" name="a14bc9c83ce669237d9338062474c3186"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14bc9c83ce669237d9338062474c3186">&#9670;&#160;</a></span>vsh_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int vsh_main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a17035f2bda682fc121f53ef19b54dda0" name="a17035f2bda682fc121f53ef19b54dda0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17035f2bda682fc121f53ef19b54dda0">&#9670;&#160;</a></span>pwd_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pwd_main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23ea26cde8088a7c8b5f404a8139236b" name="a23ea26cde8088a7c8b5f404a8139236b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23ea26cde8088a7c8b5f404a8139236b">&#9670;&#160;</a></span>cd_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cd_main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a923d615c8378dac5eddc34bd8b87cff5" name="a923d615c8378dac5eddc34bd8b87cff5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a923d615c8378dac5eddc34bd8b87cff5">&#9670;&#160;</a></span>ls_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ls_main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9221658abb0a801405d4cf79214a67a4" name="a9221658abb0a801405d4cf79214a67a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9221658abb0a801405d4cf79214a67a4">&#9670;&#160;</a></span>mkdir_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int mkdir_main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa36a80293b14a35c2c486f1454f9e9e7" name="aa36a80293b14a35c2c486f1454f9e9e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa36a80293b14a35c2c486f1454f9e9e7">&#9670;&#160;</a></span>echo_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int echo_main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed7ef4d97edf5ca7592c44d52fb11613" name="aed7ef4d97edf5ca7592c44d52fb11613"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed7ef4d97edf5ca7592c44d52fb11613">&#9670;&#160;</a></span>cat_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cat_main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a225c7bfb647a998ec4ac872905b50729" name="a225c7bfb647a998ec4ac872905b50729"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a225c7bfb647a998ec4ac872905b50729">&#9670;&#160;</a></span>clear_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int clear_main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae0a88d5b6408fe560f1f6abd43656475" name="ae0a88d5b6408fe560f1f6abd43656475"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0a88d5b6408fe560f1f6abd43656475">&#9670;&#160;</a></span>time_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int time_main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7407da21f315c22aefae4a8195586d82" name="a7407da21f315c22aefae4a8195586d82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7407da21f315c22aefae4a8195586d82">&#9670;&#160;</a></span>free_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int free_main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd14144d9823591e244560df0e1cfc0b" name="abd14144d9823591e244560df0e1cfc0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd14144d9823591e244560df0e1cfc0b">&#9670;&#160;</a></span>export_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int export_main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
 </small></address>
 </body>
 </html>
