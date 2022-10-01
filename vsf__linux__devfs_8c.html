@@ -69,12 +69,19 @@
 <code>#include &quot;<a class="el" href="input_8h_source.html">shell/sys/linux/include/linux/input.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="fb_8h_source.html">shell/sys/linux/include/linux/fb.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="fs_8h_source.html">shell/sys/linux/include/linux/fs.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="i2c_8h_source.html">shell/sys/linux/include/linux/i2c.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="i2c-dev_8h_source.html">shell/sys/linux/include/linux/i2c-dev.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spidev_8h_source.html">shell/sys/linux/include/linux/spi/spidev.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="stdio_8h_source.html">shell/sys/linux/include/simple_libc/stdio.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="impl__vsf__pool_8inc.html">service/pool/impl_vsf_pool.inc</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__uart__priv__t.html">vsf_linux_uart_priv_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__i2c__priv__t.html">vsf_linux_i2c_priv_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__spi__priv__t.html">vsf_linux_spi_priv_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__mal__priv__t.html">vsf_linux_mal_priv_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,6 +119,10 @@ Macros</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:aae367af68333e5d1e289a62244586f84"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__uart__priv__t.html">vsf_linux_uart_priv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#aae367af68333e5d1e289a62244586f84">vsf_linux_uart_priv_t</a></td></tr>
 <tr class="separator:aae367af68333e5d1e289a62244586f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ce2487b8434ababff0ef197025775cd"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__i2c__priv__t.html">vsf_linux_i2c_priv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a3ce2487b8434ababff0ef197025775cd">vsf_linux_i2c_priv_t</a></td></tr>
+<tr class="separator:a3ce2487b8434ababff0ef197025775cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a521b033f4b050f3c76ef0073170710da"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__spi__priv__t.html">vsf_linux_spi_priv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a521b033f4b050f3c76ef0073170710da">vsf_linux_spi_priv_t</a></td></tr>
+<tr class="separator:a521b033f4b050f3c76ef0073170710da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8e99c06bf4532577b07b9b43c04ebcf"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__mal__priv__t.html">vsf_linux_mal_priv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#aa8e99c06bf4532577b07b9b43c04ebcf">vsf_linux_mal_priv_t</a></td></tr>
 <tr class="separator:aa8e99c06bf4532577b07b9b43c04ebcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a133c1110bb46ac29d1ed0cbe76dc9393"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__input__event__t.html">vsf_linux_input_event_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a133c1110bb46ac29d1ed0cbe76dc9393">vsf_linux_input_event_t</a></td></tr>
@@ -323,6 +334,34 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef struct <a class="el" href="structvsf__linux__uart__priv__t.html">vsf_linux_uart_priv_t</a> <a class="el" href="structvsf__linux__uart__priv__t.html">vsf_linux_uart_priv_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3ce2487b8434ababff0ef197025775cd" name="a3ce2487b8434ababff0ef197025775cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ce2487b8434ababff0ef197025775cd">&#9670;&#160;</a></span>vsf_linux_i2c_priv_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__linux__i2c__priv__t.html">vsf_linux_i2c_priv_t</a> <a class="el" href="structvsf__linux__i2c__priv__t.html">vsf_linux_i2c_priv_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a521b033f4b050f3c76ef0073170710da" name="a521b033f4b050f3c76ef0073170710da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a521b033f4b050f3c76ef0073170710da">&#9670;&#160;</a></span>vsf_linux_spi_priv_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__linux__spi__priv__t.html">vsf_linux_spi_priv_t</a> <a class="el" href="structvsf__linux__spi__priv__t.html">vsf_linux_spi_priv_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
