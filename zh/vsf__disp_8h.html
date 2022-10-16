@@ -54,12 +54,14 @@
 <a href="#define-members">宏定义</a> &#124;
 <a href="#typedef-members">类型定义</a> &#124;
 <a href="#enum-members">枚举</a> &#124;
-<a href="#func-members">函数</a>  </div>
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
   <div class="headertitle"><div class="title">vsf_disp.h 文件参考</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__ui__cfg_8h_source.html">component/ui/vsf_ui_cfg.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__utilities_8h_source.html">utilities/vsf_utilities.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__kernel_8h_source.html">kernel/vsf_kernel.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ooc__class_8h_source.html">utilities/ooc_class.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__disp__sdl2_8h_source.html">./driver/sdl2/vsf_disp_sdl2.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__disp__usbd__uvc_8h_source.html">./driver/usbd_uvc/vsf_disp_usbd_uvc.h</a>&quot;</code><br />
@@ -83,6 +85,8 @@
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvk__disp__param__t.html">vk_disp_param_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvk__disp__t.html">vk_disp_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvk__reentrant__disp__t.html">vk_reentrant_disp_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -194,6 +198,11 @@
 <tr class="separator:a1f63eb702f0659d71fb2b54ef5f0b9f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9169dde8fbe9a8170282bbbbbd874a36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__disp_8h.html#a9169dde8fbe9a8170282bbbbbd874a36">vk_disp_refresh</a> (<a class="el" href="classvk__disp__t.html">vk_disp_t</a> *pthis, <a class="el" href="structvk__disp__area__t.html">vk_disp_area_t</a> *area, void *disp_buff)</td></tr>
 <tr class="separator:a9169dde8fbe9a8170282bbbbbd874a36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:a4a401f0a6ab506eeaf4e619b0dd2d8b4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classvk__disp__drv__t.html">vk_disp_drv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__disp_8h.html#a4a401f0a6ab506eeaf4e619b0dd2d8b4">vk_reentrant_disp_drv</a></td></tr>
+<tr class="separator:a4a401f0a6ab506eeaf4e619b0dd2d8b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">宏定义说明</h2>
 <a id="a2cd346171c38ae9865ce4338a1dcb649" name="a2cd346171c38ae9865ce4338a1dcb649"></a>
@@ -298,7 +307,7 @@
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line">            VSF_DISP_COLOR_##__NAME = <a class="code hl_define" href="vsf__disp_8h.html#aee210415f678f0f447135d3070c4ed3e">VSF_DISP_COLOR_VALUE</a>(                     \</div>
 <div class="line">                (VSF_DISP_COLOR_IDX_##__NAME), __BITLEN, __BYTELEN, __HAS_ALPHA)</div>
-<div class="ttc" id="avsf__disp_8h_html_aee210415f678f0f447135d3070c4ed3e"><div class="ttname"><a href="vsf__disp_8h.html#aee210415f678f0f447135d3070c4ed3e">VSF_DISP_COLOR_VALUE</a></div><div class="ttdeci">#define VSF_DISP_COLOR_VALUE(__INDEX, __BITLEN, __BYTELEN, __HAS_ALPHA)</div><div class="ttdef"><b>Definition:</b> vsf_disp.h:49</div></div>
+<div class="ttc" id="avsf__disp_8h_html_aee210415f678f0f447135d3070c4ed3e"><div class="ttname"><a href="vsf__disp_8h.html#aee210415f678f0f447135d3070c4ed3e">VSF_DISP_COLOR_VALUE</a></div><div class="ttdeci">#define VSF_DISP_COLOR_VALUE(__INDEX, __BITLEN, __BYTELEN, __HAS_ALPHA)</div><div class="ttdef"><b>Definition:</b> vsf_disp.h:50</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -683,6 +692,29 @@
           <td></td><td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a id="a4a401f0a6ab506eeaf4e619b0dd2d8b4" name="a4a401f0a6ab506eeaf4e619b0dd2d8b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a401f0a6ab506eeaf4e619b0dd2d8b4">&#9670;&#160;</a></span>vk_reentrant_disp_drv</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classvk__disp__drv__t.html">vk_disp_drv_t</a> vk_reentrant_disp_drv</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
