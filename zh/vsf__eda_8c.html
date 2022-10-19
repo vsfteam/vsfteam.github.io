@@ -1255,6 +1255,7 @@
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section note"><dt>注解</dt><dd>Priority of kernel task generally should be the highest priority of ! tasks(__vsf_eda.highest_prio, or vsf_prio_highest). ! If a task with vsf_prio_highest priority will not exit, eg: call yield ! and never go to idle <a class="el" href="vsf__msg__tree_8h.html#a0b57aa10271a66f3dc936bba1d2f3830">state(yield will yield to the same priority, not lower)</a>. ! So if priority of kernel task is lower than vsf_prio_highest, the kernel ! task will never have a change to run. ! Basically, we don't recommend to use this design pattern, a task should ! not takes all the CPU resources, which will deprive the chance for tasks ! with lower pririty to run. If there is no such tasks, priority of kernel ! task can be lower than vsf_prio_highest. Please use VSF_KERNEL_CFG_KERNEL_TASK_PRIORITY ! to configure the priority of the kernel task.</dd></dl>
 
 </div>
 </div>
