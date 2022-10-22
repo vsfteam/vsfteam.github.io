@@ -63,7 +63,14 @@
 <tr class="memitem:ac7dc22eedffadc60e233d4383b18561a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#aaa5d1cd013383c889537491c3cfd9aad">uint64_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvk__reentrant__mal__t.html#ac7dc22eedffadc60e233d4383b18561a">offset</a></td></tr>
 <tr class="separator:ac7dc22eedffadc60e233d4383b18561a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">结构体成员变量说明</h2>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >可重入 mal 类 </p><dl class="section note"><dt>注解</dt><dd>一般而言， mal 实例不是可重入的。按照如下步骤，可得到多个由同一个互斥量保护的可重入 mal 实例。<ol type="1">
+<li>为 malA 准备一个互斥量实例</li>
+<li>每个会访问 malA 的任务里，实现一个 <a class="el" href="classvk__reentrant__mal__t.html">vk_reentrant_mal_t</a> 实例。 mal 成员指向 malA 、 mutex 成员指向第一步中的互斥量实例、 offset 成员是 malA 中的字节偏移、 <a class="el" href="classvk__mal__t.html" title="mal类">vk_mal_t</a> 中的 size 成员是当前可重入 mal 实例的字节大小。</li>
+<li>每个任务里的 <a class="el" href="classvk__reentrant__mal__t.html">vk_reentrant_mal_t</a> 实例，会被同一个 mutex 保护，实现了可重入。 </li>
+</ol>
+</dd></dl>
+</div><h2 class="groupheader">结构体成员变量说明</h2>
 <a id="a098eb69b1be56e7031d1b50fac99c11f" name="a098eb69b1be56e7031d1b50fac99c11f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a098eb69b1be56e7031d1b50fac99c11f">&#9670;&#160;</a></span>mal</h2>
 

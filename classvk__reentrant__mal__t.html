@@ -63,7 +63,14 @@ Data Fields</h2></td></tr>
 <tr class="memitem:ac7dc22eedffadc60e233d4383b18561a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#aaa5d1cd013383c889537491c3cfd9aad">uint64_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvk__reentrant__mal__t.html#ac7dc22eedffadc60e233d4383b18561a">offset</a></td></tr>
 <tr class="separator:ac7dc22eedffadc60e233d4383b18561a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Field Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >reentrant mal class </p><dl class="section note"><dt>Note</dt><dd>Normally, a mal instance is not reentrant. Follow the steps to get mutiple mal instance which is protect with a common mutex.<ol type="1">
+<li>prepare a common mutex instance for malA</li>
+<li>in each task which will asscess malA, implement a <a class="el" href="classvk__reentrant__mal__t.html">vk_reentrant_mal_t</a> instance. mal member points to malA, mutex member points to the common mutex in step 1, offset member is the byte offset in malA, size member of <a class="el" href="classvk__mal__t.html" title="mal class">vk_mal_t</a> is the size of the reentrant mal instance.</li>
+<li>each <a class="el" href="classvk__reentrant__mal__t.html">vk_reentrant_mal_t</a> instance in each task will be protected by the common mutex. </li>
+</ol>
+</dd></dl>
+</div><h2 class="groupheader">Field Documentation</h2>
 <a id="a098eb69b1be56e7031d1b50fac99c11f" name="a098eb69b1be56e7031d1b50fac99c11f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a098eb69b1be56e7031d1b50fac99c11f">&#9670;&#160;</a></span>mal</h2>
 
