@@ -60,7 +60,7 @@
 <div class="textblock"><code>#include &lt;<a class="el" href="unistd_8h_source.html">unistd.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="xboot_2include_2types_8h_source.html">types.h</a>&gt;</code><br />
 <code>#include &lt;math.h&gt;</code><br />
-<code>#include &lt;<a class="el" href="spinlock_8h_source.html">spinlock.h</a>&gt;</code><br />
+<code>#include &lt;spinlock.h&gt;</code><br />
 <code>#include &lt;shash.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="xfs_8h_source.html">xfs/xfs.h</a>&gt;</code><br />
 <code>#include &lt;xboot/ktime.h&gt;</code><br />
@@ -89,7 +89,7 @@
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 宏定义</h2></td></tr>
-<tr class="memitem:a796047b418dea3d1cab0692daeb9c5f5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xboot_8h.html#a796047b418dea3d1cab0692daeb9c5f5">clamp</a>(v,  a,  b)&#160;&#160;&#160;min(max(a, v), b)</td></tr>
+<tr class="memitem:a796047b418dea3d1cab0692daeb9c5f5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xboot_8h.html#a796047b418dea3d1cab0692daeb9c5f5">clamp</a>(v,  a,  b)&#160;&#160;&#160;<a class="el" href="minmax_8h.html#abb702d8b501669a23aa0ab3b281b9384">min</a>(<a class="el" href="minmax_8h.html#ac39d9cef6a5e030ba8d9e11121054268">max</a>(a, v), b)</td></tr>
 <tr class="separator:a796047b418dea3d1cab0692daeb9c5f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1be991509df34528238678a3917f8d9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xboot_8h.html#a1be991509df34528238678a3917f8d9e">idiv255</a>(x)&#160;&#160;&#160;((((int)(x) + 1) * 257) &gt;&gt; 16)</td></tr>
 <tr class="separator:a1be991509df34528238678a3917f8d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,7 +122,7 @@
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 类型定义</h2></td></tr>
-<tr class="memitem:a4f3cbeb9dfbdf5df8dbe7e522683ba4c"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xboot_8h.html#a4f3cbeb9dfbdf5df8dbe7e522683ba4c">task_func_t</a>) (struct <a class="el" href="structtask__t.html">task_t</a> *task, void *data)</td></tr>
+<tr class="memitem:a4f3cbeb9dfbdf5df8dbe7e522683ba4c"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xboot_8h.html#a4f3cbeb9dfbdf5df8dbe7e522683ba4c">task_func_t</a>) (struct <a class="el" href="structtask__t.html">task_t</a> *task, void *<a class="el" href="ieee80211_8h.html#a0523b4597a0b055eae49bfe42a58b918">data</a>)</td></tr>
 <tr class="separator:a4f3cbeb9dfbdf5df8dbe7e522683ba4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -131,7 +131,7 @@
 <tr class="separator:acee9691164f481ba669f8656b1a47e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a098b232e1cfa2b0ce1d94b7ad0440cbb"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xboot_8h.html#a098b232e1cfa2b0ce1d94b7ad0440cbb">strsep</a> (char **stringp, const char *delim)</td></tr>
 <tr class="separator:a098b232e1cfa2b0ce1d94b7ad0440cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad810c68e876c387a65efd09a6023719e"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtask__t.html">task_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xboot_8h.html#ad810c68e876c387a65efd09a6023719e">task_create</a> (struct <a class="el" href="structscheduler__t.html">scheduler_t</a> *sched, const char *name, <a class="el" href="xboot_8h.html#a4f3cbeb9dfbdf5df8dbe7e522683ba4c">task_func_t</a> func, void *data, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> stksz, int nice)</td></tr>
+<tr class="memitem:ad810c68e876c387a65efd09a6023719e"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtask__t.html">task_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xboot_8h.html#ad810c68e876c387a65efd09a6023719e">task_create</a> (struct <a class="el" href="structscheduler__t.html">scheduler_t</a> *sched, const char *name, <a class="el" href="xboot_8h.html#a4f3cbeb9dfbdf5df8dbe7e522683ba4c">task_func_t</a> func, void *<a class="el" href="ieee80211_8h.html#a0523b4597a0b055eae49bfe42a58b918">data</a>, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> stksz, int nice)</td></tr>
 <tr class="separator:ad810c68e876c387a65efd09a6023719e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb380cfe3e7e94a855590b680a13106c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xboot_8h.html#afb380cfe3e7e94a855590b680a13106c">task_destroy</a> (struct <a class="el" href="structtask__t.html">task_t</a> *task)</td></tr>
 <tr class="separator:afb380cfe3e7e94a855590b680a13106c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -184,7 +184,7 @@
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;min(max(a, v), b)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="minmax_8h.html#abb702d8b501669a23aa0ab3b281b9384">min</a>(<a class="el" href="minmax_8h.html#ac39d9cef6a5e030ba8d9e11121054268">max</a>(a, v), b)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -399,7 +399,7 @@
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* task_func_t) (struct <a class="el" href="structtask__t.html">task_t</a> *task, void *data)</td>
+          <td class="memname">typedef void(* task_func_t) (struct <a class="el" href="structtask__t.html">task_t</a> *task, void *<a class="el" href="ieee80211_8h.html#a0523b4597a0b055eae49bfe42a58b918">data</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
