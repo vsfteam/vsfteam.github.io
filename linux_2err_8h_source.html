@@ -52,20 +52,20 @@
   <div class="headertitle"><div class="title">err.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="linux_2err_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;<a class="code" href="linux_2err_8h.html">err.h</a>&gt;</span></div>
+<a href="linux_2err_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;<a class="code" href="linux_2errno_8h.html">linux/errno.h</a>&gt;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="linux_2err_8h.html#a9998f145d5911cecdac6aa347ad08559">    3</a></span><span class="preprocessor">#define MAX_ERRNO               4095</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="linux_2err_8h.html#ae10694fd1e8c92ac67486f7fe4fce968">    5</a></span><span class="preprocessor">#define IS_ERR_VALUE(__X)       ((unsigned long)(__X) &gt;= (unsigned long)-MAX_ERRNO)</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="linux_2err_8h.html#ae10694fd1e8c92ac67486f7fe4fce968">    5</a></span><span class="preprocessor">#define IS_ERR_VALUE(__X)       ((unsigned long)(uintptr_t)(__X) &gt;= (unsigned long)-MAX_ERRNO)</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> * ERR_PTR(<span class="keywordtype">long</span> error)</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keywordflow">return</span> (<span class="keywordtype">void</span> *)error;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keywordflow">return</span> (<span class="keywordtype">void</span> *)(<a class="code hl_typedef" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>)error;</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>}</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">long</span> PTR_ERR(<span class="keyword">const</span> <span class="keywordtype">void</span> *ptr)</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordflow">return</span> (<span class="keywordtype">long</span>) ptr;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordflow">return</span> (<span class="keywordtype">long</span>)(<a class="code hl_typedef" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>)ptr;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>}</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> IS_ERR(<span class="keyword">const</span> <span class="keywordtype">void</span> *ptr)</div>
@@ -91,8 +91,9 @@
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
-<div class="ttc" id="alinux_2err_8h_html"><div class="ttname"><a href="linux_2err_8h.html">err.h</a></div></div>
+<div class="ttc" id="aarm_2type_8h_html_a09674b9e56fd7a93a2169aa9210deec7"><div class="ttname"><a href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a></div><div class="ttdeci">uint32_t uintptr_t</div><div class="ttdef"><b>Definition:</b> type.h:49</div></div>
 <div class="ttc" id="alinux_2err_8h_html_ae10694fd1e8c92ac67486f7fe4fce968"><div class="ttname"><a href="linux_2err_8h.html#ae10694fd1e8c92ac67486f7fe4fce968">IS_ERR_VALUE</a></div><div class="ttdeci">#define IS_ERR_VALUE(__X)</div><div class="ttdef"><b>Definition:</b> err.h:5</div></div>
+<div class="ttc" id="alinux_2errno_8h_html"><div class="ttname"><a href="linux_2errno_8h.html">errno.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -65,15 +65,39 @@
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="structmutex.html#aab3663cf9e7c9bd413b511df5f34bc15">   11</a></span>    <a class="code hl_class" href="classvsf__sync__owner__t.html">vsf_mutex_t</a>             <a class="code hl_variable" href="structmutex.html#aab3663cf9e7c9bd413b511df5f34bc15">mutex</a>;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>};</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>}</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassvsf__sync__owner__t_html"><div class="ttname"><a href="classvsf__sync__owner__t.html">vsf_sync_owner_t</a></div><div class="ttdef"><b>Definition:</b> vsf_eda.h:873</div></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> mutex_init(<span class="keyword">struct</span> <a class="code hl_struct" href="structmutex.html">mutex</a> *lock)</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_define" href="vsf__eda_8h.html#a2f5a42615ca4dbd7862d3c4b11ea4a35">vsf_eda_mutex_init</a>(&amp;lock-&gt;<a class="code hl_variable" href="structmutex.html#aab3663cf9e7c9bd413b511df5f34bc15">mutex</a>);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> mutex_lock(<span class="keyword">struct</span> <a class="code hl_struct" href="structmutex.html">mutex</a> *lock)</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_define" href="vsf__thread_8h.html#ade3ae5d6be68e7db4bce7a8df68d6164">vsf_thread_mutex_enter</a>(&amp;lock-&gt;<a class="code hl_variable" href="structmutex.html#aab3663cf9e7c9bd413b511df5f34bc15">mutex</a>, -1);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> mutex_trylock(<span class="keyword">struct</span> <a class="code hl_struct" href="structmutex.html">mutex</a> *lock)</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="vsf__eda_8h.html#aeaa3152ca9e561ff10865c65a67bb939a60237abf13c6ef4ab6e13b60925b4933">VSF_SYNC_GET</a> == <a class="code hl_define" href="vsf__thread_8h.html#ade3ae5d6be68e7db4bce7a8df68d6164">vsf_thread_mutex_enter</a>(&amp;lock-&gt;<a class="code hl_variable" href="structmutex.html#aab3663cf9e7c9bd413b511df5f34bc15">mutex</a>, 0) ? 1 : 0;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> mutex_unlock(<span class="keyword">struct</span> <a class="code hl_struct" href="structmutex.html">mutex</a> *lock)</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_define" href="vsf__eda_8h.html#a1ff045c80caded926000ec60c0fd798a">vsf_eda_mutex_leave</a>(&amp;lock-&gt;<a class="code hl_variable" href="structmutex.html#aab3663cf9e7c9bd413b511df5f34bc15">mutex</a>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassvsf__sync__owner__t_html"><div class="ttname"><a href="classvsf__sync__owner__t.html">vsf_sync_owner_t</a></div><div class="ttdef"><b>Definition:</b> vsf_eda.h:876</div></div>
 <div class="ttc" id="astructmutex_html"><div class="ttname"><a href="structmutex.html">mutex</a></div><div class="ttdef"><b>Definition:</b> mutex.h:10</div></div>
 <div class="ttc" id="astructmutex_html_aab3663cf9e7c9bd413b511df5f34bc15"><div class="ttname"><a href="structmutex.html#aab3663cf9e7c9bd413b511df5f34bc15">mutex::mutex</a></div><div class="ttdeci">vsf_mutex_t mutex</div><div class="ttdef"><b>Definition:</b> mutex.h:11</div></div>
+<div class="ttc" id="avsf__eda_8h_html_a1ff045c80caded926000ec60c0fd798a"><div class="ttname"><a href="vsf__eda_8h.html#a1ff045c80caded926000ec60c0fd798a">vsf_eda_mutex_leave</a></div><div class="ttdeci">#define vsf_eda_mutex_leave(__pmtx)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:99</div></div>
+<div class="ttc" id="avsf__eda_8h_html_a2f5a42615ca4dbd7862d3c4b11ea4a35"><div class="ttname"><a href="vsf__eda_8h.html#a2f5a42615ca4dbd7862d3c4b11ea4a35">vsf_eda_mutex_init</a></div><div class="ttdeci">#define vsf_eda_mutex_init(__pmtx)</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:87</div></div>
+<div class="ttc" id="avsf__eda_8h_html_aeaa3152ca9e561ff10865c65a67bb939a60237abf13c6ef4ab6e13b60925b4933"><div class="ttname"><a href="vsf__eda_8h.html#aeaa3152ca9e561ff10865c65a67bb939a60237abf13c6ef4ab6e13b60925b4933">VSF_SYNC_GET</a></div><div class="ttdeci">@ VSF_SYNC_GET</div><div class="ttdef"><b>Definition:</b> vsf_eda.h:1038</div></div>
 <div class="ttc" id="avsf__kernel_8h_html"><div class="ttname"><a href="vsf__kernel_8h.html">vsf_kernel.h</a></div></div>
+<div class="ttc" id="avsf__thread_8h_html_ade3ae5d6be68e7db4bce7a8df68d6164"><div class="ttname"><a href="vsf__thread_8h.html#ade3ae5d6be68e7db4bce7a8df68d6164">vsf_thread_mutex_enter</a></div><div class="ttdeci">#define vsf_thread_mutex_enter(__mtx, timeout)</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:363</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
