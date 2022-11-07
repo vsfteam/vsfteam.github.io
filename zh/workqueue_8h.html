@@ -58,7 +58,8 @@
   <div class="headertitle"><div class="title">workqueue.h 文件参考</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="list_8h_source.html">linux/list.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__kernel_8h_source.html">kernel/vsf_kernel.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="list_8h_source.html">linux/list.h</a>&gt;</code><br />
 </div>
 <p><a href="workqueue_8h_source.html">浏览源代码.</a></p>
 <table class="memberdecls">
@@ -71,8 +72,10 @@
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 宏定义</h2></td></tr>
-<tr class="memitem:aff4300c8a433b3383007d8569b9c6d86"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="workqueue_8h.html#aff4300c8a433b3383007d8569b9c6d86">INIT_WORK</a>(__work,  __func)</td></tr>
-<tr class="separator:aff4300c8a433b3383007d8569b9c6d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a933407a3bd594fe76e90fe826718fa4b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="workqueue_8h.html#a933407a3bd594fe76e90fe826718fa4b">INIT_WORK</a>(__WORK,  __FUNC)</td></tr>
+<tr class="separator:a933407a3bd594fe76e90fe826718fa4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34b773911388e268af68486bca96a72f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="workqueue_8h.html#a34b773911388e268af68486bca96a72f">INIT_DELAYED_WORK</a>(__DWORK,  __FUNC)&#160;&#160;&#160;<a class="el" href="workqueue_8h.html#a933407a3bd594fe76e90fe826718fa4b">INIT_WORK</a>(&amp;(__DWORK)-&gt;work, (__FUNC))</td></tr>
+<tr class="separator:a34b773911388e268af68486bca96a72f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04af32e74c940233355c22fae7f0b1a4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="workqueue_8h.html#a04af32e74c940233355c22fae7f0b1a4">alloc_ordered_workqueue</a>(__fmt,  __flags, ...)&#160;&#160;&#160;        <a class="el" href="workqueue_8h.html#a33b3ed3870396d32f6328928c3418077">alloc_workqueue</a>(__fmt, __flags, 1, ##__VA_ARGS__)</td></tr>
 <tr class="separator:a04af32e74c940233355c22fae7f0b1a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedffd3b4448e6b129f649ee9e6b84d7c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="workqueue_8h.html#aedffd3b4448e6b129f649ee9e6b84d7c">create_singlethread_workqueue</a>(<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)&#160;&#160;&#160;        <a class="el" href="workqueue_8h.html#a04af32e74c940233355c22fae7f0b1a4">alloc_ordered_workqueue</a>(&quot;%s&quot;, 0, (<a class="el" href="vsf__os_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>))</td></tr>
@@ -97,6 +100,18 @@
 <tr class="separator:af053fd1f6f0d6bc7e2d37a725412a315"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac74e44f2d15bd566b9e03ce3f550807f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="workqueue_8h.html#ac74e44f2d15bd566b9e03ce3f550807f">flush_workqueue</a> (struct <a class="el" href="structworkqueue__struct.html">workqueue_struct</a> *wq)</td></tr>
 <tr class="separator:ac74e44f2d15bd566b9e03ce3f550807f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94e6db1005a99be1270a4ce82f6b7a68"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="workqueue_8h.html#a94e6db1005a99be1270a4ce82f6b7a68">flush_work</a> (struct <a class="el" href="structwork__struct.html">work_struct</a> *work)</td></tr>
+<tr class="separator:a94e6db1005a99be1270a4ce82f6b7a68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9e2eccab980893423ef618b7fd3cff1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="workqueue_8h.html#ad9e2eccab980893423ef618b7fd3cff1">cancel_work</a> (struct <a class="el" href="structwork__struct.html">work_struct</a> *work)</td></tr>
+<tr class="separator:ad9e2eccab980893423ef618b7fd3cff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af738f56b54930c9b0235bdd52a133995"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="workqueue_8h.html#af738f56b54930c9b0235bdd52a133995">cancel_work_sync</a> (struct <a class="el" href="structwork__struct.html">work_struct</a> *work)</td></tr>
+<tr class="separator:af738f56b54930c9b0235bdd52a133995"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8203e6f5cc2e6a1b62f7043b328e327"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="workqueue_8h.html#ae8203e6f5cc2e6a1b62f7043b328e327">flush_delayed_work</a> (struct <a class="el" href="structdelayed__work.html">delayed_work</a> *dwork)</td></tr>
+<tr class="separator:ae8203e6f5cc2e6a1b62f7043b328e327"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a289bb13cdfde5b311e0a3163e38c4dc6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="workqueue_8h.html#a289bb13cdfde5b311e0a3163e38c4dc6">cancel_delayed_work</a> (struct <a class="el" href="structdelayed__work.html">delayed_work</a> *dwork)</td></tr>
+<tr class="separator:a289bb13cdfde5b311e0a3163e38c4dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc977994b186dcaf47583f2e9853f8db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="workqueue_8h.html#abc977994b186dcaf47583f2e9853f8db">cancel_delayed_work_sync</a> (struct <a class="el" href="structdelayed__work.html">delayed_work</a> *dwork)</td></tr>
+<tr class="separator:abc977994b186dcaf47583f2e9853f8db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 变量</h2></td></tr>
@@ -104,8 +119,8 @@
 <tr class="separator:a866edb1819352c011102c5471e6c279f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">宏定义说明</h2>
-<a id="aff4300c8a433b3383007d8569b9c6d86" name="aff4300c8a433b3383007d8569b9c6d86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff4300c8a433b3383007d8569b9c6d86">&#9670;&#160;</a></span>INIT_WORK</h2>
+<a id="a933407a3bd594fe76e90fe826718fa4b" name="a933407a3bd594fe76e90fe826718fa4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a933407a3bd594fe76e90fe826718fa4b">&#9670;&#160;</a></span>INIT_WORK</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -114,13 +129,13 @@
           <td class="memname">#define INIT_WORK</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">__work, </td>
+          <td class="paramname">__WORK, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">__func&#160;</td>
+          <td class="paramname">__FUNC&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -130,12 +145,40 @@
       </table>
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line">        <span class="keywordflow">do</span> {                                                                    \</div>
-<div class="line">            (__work)-&gt;func = (__func);                                          \</div>
-<div class="line">            vsf_dlist_init_node(<span class="keyword">struct</span> <a class="code hl_struct" href="structwork__struct.html">work_struct</a>, <a class="code hl_variable" href="vsf__thread_8h.html#a7b1bd7ace931306a646900d724bb7329">entry</a>, (__work));           \</div>
+<div class="line">            (__WORK)-&gt;func = (__FUNC);                                          \</div>
+<div class="line">            vsf_dlist_init_node(<span class="keyword">struct</span> <a class="code hl_struct" href="structwork__struct.html">work_struct</a>, <a class="code hl_variable" href="vsf__thread_8h.html#a7b1bd7ace931306a646900d724bb7329">entry</a>, (__WORK));           \</div>
 <div class="line">        } <span class="keywordflow">while</span> (0)</div>
-<div class="ttc" id="astructwork__struct_html"><div class="ttname"><a href="structwork__struct.html">work_struct</a></div><div class="ttdef"><b>Definition:</b> workqueue.h:14</div></div>
+<div class="ttc" id="astructwork__struct_html"><div class="ttname"><a href="structwork__struct.html">work_struct</a></div><div class="ttdef"><b>Definition:</b> workqueue.h:15</div></div>
 <div class="ttc" id="avsf__thread_8h_html_a7b1bd7ace931306a646900d724bb7329"><div class="ttname"><a href="vsf__thread_8h.html#a7b1bd7ace931306a646900d724bb7329">entry</a></div><div class="ttdeci">vsf_thread_entry_t * entry</div><div class="ttdoc">&lt; stack must be 8byte aligned</div><div class="ttdef"><b>Definition:</b> vsf_thread.h:397</div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="a34b773911388e268af68486bca96a72f" name="a34b773911388e268af68486bca96a72f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34b773911388e268af68486bca96a72f">&#9670;&#160;</a></span>INIT_DELAYED_WORK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INIT_DELAYED_WORK</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__DWORK, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__FUNC&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="workqueue_8h.html#a933407a3bd594fe76e90fe826718fa4b">INIT_WORK</a>(&amp;(__DWORK)-&gt;work, (__FUNC))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a id="a04af32e74c940233355c22fae7f0b1a4" name="a04af32e74c940233355c22fae7f0b1a4"></a>
@@ -355,6 +398,114 @@
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structworkqueue__struct.html">workqueue_struct</a> *&#160;</td>
           <td class="paramname"><em>wq</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a94e6db1005a99be1270a4ce82f6b7a68" name="a94e6db1005a99be1270a4ce82f6b7a68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94e6db1005a99be1270a4ce82f6b7a68">&#9670;&#160;</a></span>flush_work()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> flush_work </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structwork__struct.html">work_struct</a> *&#160;</td>
+          <td class="paramname"><em>work</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad9e2eccab980893423ef618b7fd3cff1" name="ad9e2eccab980893423ef618b7fd3cff1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9e2eccab980893423ef618b7fd3cff1">&#9670;&#160;</a></span>cancel_work()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> cancel_work </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structwork__struct.html">work_struct</a> *&#160;</td>
+          <td class="paramname"><em>work</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af738f56b54930c9b0235bdd52a133995" name="af738f56b54930c9b0235bdd52a133995"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af738f56b54930c9b0235bdd52a133995">&#9670;&#160;</a></span>cancel_work_sync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> cancel_work_sync </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structwork__struct.html">work_struct</a> *&#160;</td>
+          <td class="paramname"><em>work</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae8203e6f5cc2e6a1b62f7043b328e327" name="ae8203e6f5cc2e6a1b62f7043b328e327"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8203e6f5cc2e6a1b62f7043b328e327">&#9670;&#160;</a></span>flush_delayed_work()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> flush_delayed_work </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdelayed__work.html">delayed_work</a> *&#160;</td>
+          <td class="paramname"><em>dwork</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a289bb13cdfde5b311e0a3163e38c4dc6" name="a289bb13cdfde5b311e0a3163e38c4dc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a289bb13cdfde5b311e0a3163e38c4dc6">&#9670;&#160;</a></span>cancel_delayed_work()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> cancel_delayed_work </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdelayed__work.html">delayed_work</a> *&#160;</td>
+          <td class="paramname"><em>dwork</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abc977994b186dcaf47583f2e9853f8db" name="abc977994b186dcaf47583f2e9853f8db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc977994b186dcaf47583f2e9853f8db">&#9670;&#160;</a></span>cancel_delayed_work_sync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> cancel_delayed_work_sync </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdelayed__work.html">delayed_work</a> *&#160;</td>
+          <td class="paramname"><em>dwork</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

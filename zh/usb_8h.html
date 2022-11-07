@@ -63,7 +63,7 @@
 <code>#include &lt;<a class="el" href="linux_2wait_8h_source.html">linux/wait.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="device_8h_source.html">linux/device.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="pm_8h_source.html">linux/pm.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="module_8h_source.html">linux/module.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="jiffies_8h_source.html">linux/jiffies.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="ch9_8h_source.html">linux/usb/ch9.h</a>&gt;</code><br />
 </div>
 <p><a href="usb_8h_source.html">浏览源代码.</a></p>
@@ -91,10 +91,10 @@
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 宏定义</h2></td></tr>
-<tr class="memitem:a07f274e4add38aa9d2422e98ddcd91fc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a07f274e4add38aa9d2422e98ddcd91fc">__VSF_USBH_CLASS_IMPLEMENT_CLASS__</a></td></tr>
-<tr class="separator:a07f274e4add38aa9d2422e98ddcd91fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abea47e19906c3c6f35b6263b26cc1ecb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#abea47e19906c3c6f35b6263b26cc1ecb">module_usb_driver</a>(__usb_driver)</td></tr>
 <tr class="separator:abea47e19906c3c6f35b6263b26cc1ecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2f09e92d5a0ff35e9ec36f9e90a5102"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#ac2f09e92d5a0ff35e9ec36f9e90a5102">module_usb_driver_register</a>(__usb_driver)</td></tr>
+<tr class="separator:ac2f09e92d5a0ff35e9ec36f9e90a5102"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b634d5924c8c017a2e7ad5914345d79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a0b634d5924c8c017a2e7ad5914345d79">USB_DEVICE_ID_MATCH_VENDOR</a>&#160;&#160;&#160;<a class="el" href="vsf__usbh_8h.html#ac49813d32430be24a922a032b5c12946">VSF_USBH_MATCH_FLAGS_VENDOR</a></td></tr>
 <tr class="separator:a0b634d5924c8c017a2e7ad5914345d79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb468dd4bd2ffa171a6c0764787ba31b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#aeb468dd4bd2ffa171a6c0764787ba31b">USB_DEVICE_ID_MATCH_PRODUCT</a>&#160;&#160;&#160;<a class="el" href="vsf__usbh_8h.html#a99dd0418d3d533c93dec8f7e4ff53cdb">VSF_USBH_MATCH_FLAGS_PRODUCT</a></td></tr>
@@ -135,6 +135,10 @@
 <tr class="separator:ac443ffc1653aec3cf3102561b9e9bf85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fa67c40792278d6e414355394b13a9f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a3fa67c40792278d6e414355394b13a9f">URB_FREE_BUFFER</a>&#160;&#160;&#160;0x0100</td></tr>
 <tr class="separator:a3fa67c40792278d6e414355394b13a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af44c16881fc4df1ee2ca564567ef08e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#af44c16881fc4df1ee2ca564567ef08e3">to_usb_interface</a>(__d)&#160;&#160;&#160;<a class="el" href="____type_8h.html#a442ac2279048a3241a8fa5b363e920e4">container_of</a>(__d, struct <a class="el" href="structusb__interface.html">usb_interface</a>, dev)</td></tr>
+<tr class="separator:af44c16881fc4df1ee2ca564567ef08e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81606ce322fd29cc1455abe6e6aa9327"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a81606ce322fd29cc1455abe6e6aa9327">to_usb_device</a>(__d)&#160;&#160;&#160;<a class="el" href="____type_8h.html#a442ac2279048a3241a8fa5b363e920e4">container_of</a>(__d, struct <a class="el" href="structusb__device.html">usb_device</a>, dev)</td></tr>
+<tr class="separator:a81606ce322fd29cc1455abe6e6aa9327"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab07e1fbc546ec239dadcbd5de0d19df6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#ab07e1fbc546ec239dadcbd5de0d19df6">PIPE_ISOCHRONOUS</a>&#160;&#160;&#160;<a class="el" href="usb__common_8h.html#a9fe3555e2438dddbb6cae3d657aa558ea9373bfab2c758f34e3deb6fa2842b564">USB_ENDPOINT_XFER_ISOC</a></td></tr>
 <tr class="separator:ab07e1fbc546ec239dadcbd5de0d19df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71bd41c976ab2d4065a5be4d6e4b113c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a71bd41c976ab2d4065a5be4d6e4b113c">PIPE_INTERRUPT</a>&#160;&#160;&#160;<a class="el" href="usb__common_8h.html#a9fe3555e2438dddbb6cae3d657aa558ea51a2760bdee2a55c320329cdfe966367">USB_ENDPOINT_XFER_INT</a></td></tr>
@@ -147,11 +151,11 @@
 <tr class="separator:a71cb9ac2a2543cc02fb5189d97544837"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad81832c5b61260e48635308836acdccf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#ad81832c5b61260e48635308836acdccf">usb_pipeout</a>(__pipe)&#160;&#160;&#160;(!<a class="el" href="usb_8h.html#a71cb9ac2a2543cc02fb5189d97544837">usb_pipein</a>(__pipe))</td></tr>
 <tr class="separator:ad81832c5b61260e48635308836acdccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addcf9694d25b4134d393d8fe4708c9bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#addcf9694d25b4134d393d8fe4708c9bb">usb_pipedevice</a>(__pipe)&#160;&#160;&#160;(((<a class="el" href="unionvk__usbh__pipe__flag__t.html">vk_usbh_pipe_flag_t</a>)(__pipe)).address)</td></tr>
+<tr class="memitem:addcf9694d25b4134d393d8fe4708c9bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#addcf9694d25b4134d393d8fe4708c9bb">usb_pipedevice</a>(__pipe)</td></tr>
 <tr class="separator:addcf9694d25b4134d393d8fe4708c9bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbc7b6e544027fddd4b7c1ea0398f827"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#afbc7b6e544027fddd4b7c1ea0398f827">usb_pipeendpoint</a>(__pipe)&#160;&#160;&#160;(((<a class="el" href="unionvk__usbh__pipe__flag__t.html">vk_usbh_pipe_flag_t</a>)(__pipe)).endpoint)</td></tr>
+<tr class="memitem:afbc7b6e544027fddd4b7c1ea0398f827"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#afbc7b6e544027fddd4b7c1ea0398f827">usb_pipeendpoint</a>(__pipe)</td></tr>
 <tr class="separator:afbc7b6e544027fddd4b7c1ea0398f827"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7919e3e523a5a39e3c2de4c03566e6f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#af7919e3e523a5a39e3c2de4c03566e6f">usb_pipetype</a>(__pipe)&#160;&#160;&#160;(((<a class="el" href="unionvk__usbh__pipe__flag__t.html">vk_usbh_pipe_flag_t</a>)(__pipe)).<a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>)</td></tr>
+<tr class="memitem:af7919e3e523a5a39e3c2de4c03566e6f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#af7919e3e523a5a39e3c2de4c03566e6f">usb_pipetype</a>(__pipe)</td></tr>
 <tr class="separator:af7919e3e523a5a39e3c2de4c03566e6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af87a1be973ce68b07cef7b61643caede"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#af87a1be973ce68b07cef7b61643caede">usb_pipeisoc</a>(__pipe)&#160;&#160;&#160;(<a class="el" href="usb_8h.html#af7919e3e523a5a39e3c2de4c03566e6f">usb_pipetype</a>(__pipe) == <a class="el" href="usb_8h.html#ab07e1fbc546ec239dadcbd5de0d19df6">PIPE_ISOCHRONOUS</a>)</td></tr>
 <tr class="separator:af87a1be973ce68b07cef7b61643caede"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,6 +181,18 @@
 <tr class="separator:af855c5af544ba5dca12bfc284223692b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19439b5bcfb94942663c5e28231bc220"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a19439b5bcfb94942663c5e28231bc220">usb_rcvintpipe</a>(__udev,  __endpoint)&#160;&#160;&#160;<a class="el" href="vsf__usbh_8c.html#aa3290cf97dcf035f54351781f4c1459c">__vk_usbh_get_pipe_value</a>((__udev)-&gt;__dev, __endpoint | <a class="el" href="usb__common_8h.html#ac8a76acd5a4f562121857c3b5fa12f62a459af0a7bedce0e507024159485ebb06">USB_DIR_IN</a>, <a class="el" href="usb_8h.html#a71bd41c976ab2d4065a5be4d6e4b113c">PIPE_INTERRUPT</a>, (__udev)-&gt;ep_out[__endpoint]-&gt;desc.wMaxPacketSize)</td></tr>
 <tr class="separator:a19439b5bcfb94942663c5e28231bc220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bc55b7f0c5e6ac795202dd241f5bf66"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a9bc55b7f0c5e6ac795202dd241f5bf66">usb_enable_autosuspend</a>(__udev)</td></tr>
+<tr class="separator:a9bc55b7f0c5e6ac795202dd241f5bf66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1c71ee17ce4cd8dc920555466de1156"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#af1c71ee17ce4cd8dc920555466de1156">usb_disable_autosuspend</a>(__udev)</td></tr>
+<tr class="separator:af1c71ee17ce4cd8dc920555466de1156"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab612b83aa83e4a1761f02c27ac37d40f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#ab612b83aa83e4a1761f02c27ac37d40f">usb_autopm_get_interface</a>(__udev)&#160;&#160;&#160;0</td></tr>
+<tr class="separator:ab612b83aa83e4a1761f02c27ac37d40f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7a02378f0b3b581c075324a7b925b3a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#ac7a02378f0b3b581c075324a7b925b3a">usb_autopm_set_interface</a>(__udev)&#160;&#160;&#160;0</td></tr>
+<tr class="separator:ac7a02378f0b3b581c075324a7b925b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a941693e3ed374363da24099b21d53d5d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a941693e3ed374363da24099b21d53d5d">usb_register</a>(__drv)&#160;&#160;&#160;<a class="el" href="usb_8h.html#a4816e61b72a6b9395e56306a872dfd32">usb_register_driver</a>((__drv), <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)</td></tr>
+<tr class="separator:a941693e3ed374363da24099b21d53d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4cfb23caef64d64987fca9570c9ba6a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#ad4cfb23caef64d64987fca9570c9ba6a">usb_deregister</a>(__drv)&#160;&#160;&#160;<a class="el" href="usb_8h.html#aade7659526502187e374eefc4a14a598">usb_deregister_driver</a>((__drv), <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)</td></tr>
+<tr class="separator:ad4cfb23caef64d64987fca9570c9ba6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 类型定义</h2></td></tr>
@@ -187,6 +203,8 @@
 函数</h2></td></tr>
 <tr class="memitem:aa3290cf97dcf035f54351781f4c1459c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#aa3290cf97dcf035f54351781f4c1459c">__vk_usbh_get_pipe_value</a> (<a class="el" href="classvk__usbh__dev__t.html">vk_usbh_dev_t</a> *dev, <a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> endpoint, <a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, <a class="el" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
 <tr class="separator:aa3290cf97dcf035f54351781f4c1459c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74ba43976b0d6be6ea3a0843d4b8dd8e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a74ba43976b0d6be6ea3a0843d4b8dd8e">usb_reset_device</a> (struct <a class="el" href="structusb__device.html">usb_device</a> *udev)</td></tr>
+<tr class="separator:a74ba43976b0d6be6ea3a0843d4b8dd8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a066fc3c2bd3d89694d6342659365b734"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a066fc3c2bd3d89694d6342659365b734">usb_init_urb</a> (struct <a class="el" href="structurb.html">urb</a> *<a class="el" href="structurb.html">urb</a>)</td></tr>
 <tr class="separator:a066fc3c2bd3d89694d6342659365b734"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7046301fae53a6cecf864407fdee07ca"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structurb.html">urb</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a7046301fae53a6cecf864407fdee07ca">usb_alloc_urb</a> (int iso_packets, <a class="el" href="gfp_8h.html#a99dcacb83509949e516cf6ae0367ff73">gfp_t</a> flags)</td></tr>
@@ -197,14 +215,22 @@
 <tr class="separator:af90e5c4569576b4a291f92e12459fa71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44061f98b15e47c4c0391e86e79ac411"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a44061f98b15e47c4c0391e86e79ac411">usb_unlink_urb</a> (struct <a class="el" href="structurb.html">urb</a> *<a class="el" href="structurb.html">urb</a>)</td></tr>
 <tr class="separator:a44061f98b15e47c4c0391e86e79ac411"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa18fa1bdec4a95d75d7191186b33cdc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#afa18fa1bdec4a95d75d7191186b33cdc">usb_kill_urb</a> (struct <a class="el" href="structurb.html">urb</a> *<a class="el" href="structurb.html">urb</a>)</td></tr>
+<tr class="separator:afa18fa1bdec4a95d75d7191186b33cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1b9a14ec6512683c13c1b7f73cf0b78"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#ac1b9a14ec6512683c13c1b7f73cf0b78">usb_urb_dir_in</a> (struct <a class="el" href="structurb.html">urb</a> *<a class="el" href="structurb.html">urb</a>)</td></tr>
+<tr class="separator:ac1b9a14ec6512683c13c1b7f73cf0b78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65091f8d3269479c46c1fba4da8ff483"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a65091f8d3269479c46c1fba4da8ff483">usb_control_msg</a> (struct <a class="el" href="structusb__device.html">usb_device</a> *udev, unsigned int <a class="el" href="unistd_8h.html#a6814fc1239a7cd0fffedf14b10dd26eb">pipe</a>, <a class="el" href="linux_2include_2linux_2types_8h.html#a77f8102529baef48621b98012524115d">__u8</a> request, <a class="el" href="linux_2include_2linux_2types_8h.html#a77f8102529baef48621b98012524115d">__u8</a> requesttype, <a class="el" href="linux_2include_2linux_2types_8h.html#abc70358187152575fd05fbf6d253151f">__u16</a> <a class="el" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>, <a class="el" href="linux_2include_2linux_2types_8h.html#abc70358187152575fd05fbf6d253151f">__u16</a> index, void *<a class="el" href="ieee80211_8h.html#a0523b4597a0b055eae49bfe42a58b918">data</a>, <a class="el" href="linux_2include_2linux_2types_8h.html#abc70358187152575fd05fbf6d253151f">__u16</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, int <a class="el" href="ieee80211_8h.html#a3234a50f2c5eabfb2aa2f4f982256750">timeout</a>)</td></tr>
 <tr class="separator:a65091f8d3269479c46c1fba4da8ff483"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a582506ed8903e5db52899d893107d6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a7a582506ed8903e5db52899d893107d6">usb_control_msg_send</a> (struct <a class="el" href="structusb__device.html">usb_device</a> *udev, <a class="el" href="linux_2include_2linux_2types_8h.html#a77f8102529baef48621b98012524115d">__u8</a> endpoint, <a class="el" href="linux_2include_2linux_2types_8h.html#a77f8102529baef48621b98012524115d">__u8</a> request, <a class="el" href="linux_2include_2linux_2types_8h.html#a77f8102529baef48621b98012524115d">__u8</a> requesttype, <a class="el" href="linux_2include_2linux_2types_8h.html#abc70358187152575fd05fbf6d253151f">__u16</a> <a class="el" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>, <a class="el" href="linux_2include_2linux_2types_8h.html#abc70358187152575fd05fbf6d253151f">__u16</a> index, const void *<a class="el" href="ieee80211_8h.html#a0523b4597a0b055eae49bfe42a58b918">data</a>, <a class="el" href="linux_2include_2linux_2types_8h.html#abc70358187152575fd05fbf6d253151f">__u16</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, int <a class="el" href="ieee80211_8h.html#a3234a50f2c5eabfb2aa2f4f982256750">timeout</a>, <a class="el" href="gfp_8h.html#a99dcacb83509949e516cf6ae0367ff73">gfp_t</a> memflags)</td></tr>
+<tr class="separator:a7a582506ed8903e5db52899d893107d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec47232037665565d69ccb5115eb3f0b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#aec47232037665565d69ccb5115eb3f0b">usb_control_msg_recv</a> (struct <a class="el" href="structusb__device.html">usb_device</a> *udev, <a class="el" href="linux_2include_2linux_2types_8h.html#a77f8102529baef48621b98012524115d">__u8</a> endpoint, <a class="el" href="linux_2include_2linux_2types_8h.html#a77f8102529baef48621b98012524115d">__u8</a> request, <a class="el" href="linux_2include_2linux_2types_8h.html#a77f8102529baef48621b98012524115d">__u8</a> requesttype, <a class="el" href="linux_2include_2linux_2types_8h.html#abc70358187152575fd05fbf6d253151f">__u16</a> <a class="el" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>, <a class="el" href="linux_2include_2linux_2types_8h.html#abc70358187152575fd05fbf6d253151f">__u16</a> index, void *<a class="el" href="ieee80211_8h.html#a0523b4597a0b055eae49bfe42a58b918">data</a>, <a class="el" href="linux_2include_2linux_2types_8h.html#abc70358187152575fd05fbf6d253151f">__u16</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, int <a class="el" href="ieee80211_8h.html#a3234a50f2c5eabfb2aa2f4f982256750">timeout</a>, <a class="el" href="gfp_8h.html#a99dcacb83509949e516cf6ae0367ff73">gfp_t</a> memflags)</td></tr>
+<tr class="separator:aec47232037665565d69ccb5115eb3f0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a85d2291bde4122aec6de1588b9f099"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a4a85d2291bde4122aec6de1588b9f099">usb_interrupt_msg</a> (struct <a class="el" href="structusb__device.html">usb_device</a> *udev, unsigned int <a class="el" href="unistd_8h.html#a6814fc1239a7cd0fffedf14b10dd26eb">pipe</a>, void *<a class="el" href="ieee80211_8h.html#a0523b4597a0b055eae49bfe42a58b918">data</a>, int len, int *actual_length, int <a class="el" href="ieee80211_8h.html#a3234a50f2c5eabfb2aa2f4f982256750">timeout</a>)</td></tr>
 <tr class="separator:a4a85d2291bde4122aec6de1588b9f099"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c5d6c7632dff11ce8c66f6afea92930"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a5c5d6c7632dff11ce8c66f6afea92930">usb_bulk_msg</a> (struct <a class="el" href="structusb__device.html">usb_device</a> *udev, unsigned int <a class="el" href="unistd_8h.html#a6814fc1239a7cd0fffedf14b10dd26eb">pipe</a>, void *<a class="el" href="ieee80211_8h.html#a0523b4597a0b055eae49bfe42a58b918">data</a>, int len, int *actual_length, int <a class="el" href="ieee80211_8h.html#a3234a50f2c5eabfb2aa2f4f982256750">timeout</a>)</td></tr>
 <tr class="separator:a5c5d6c7632dff11ce8c66f6afea92930"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a9a8729ba9d5a3e8e34091f4c960a0e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a5a9a8729ba9d5a3e8e34091f4c960a0e">usb_get_descriptor</a> (struct <a class="el" href="structusb__device.html">usb_device</a> *udev, unsigned char desctype, unsigned char descindex, void *buf, int <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
-<tr class="separator:a5a9a8729ba9d5a3e8e34091f4c960a0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9ed7fde6c2dc39781d92ac547bb03bd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#ad9ed7fde6c2dc39781d92ac547bb03bd">usb_get_descriptor</a> (struct <a class="el" href="structusb__device.html">usb_device</a> *udev, unsigned char <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, unsigned char index, void *buf, int <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
+<tr class="separator:ad9ed7fde6c2dc39781d92ac547bb03bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88c5d34ad8fe5a9e166bb9e677967867"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a88c5d34ad8fe5a9e166bb9e677967867">usb_get_status</a> (struct <a class="el" href="structusb__device.html">usb_device</a> *udev, int recip, int <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, int target, void *<a class="el" href="ieee80211_8h.html#a0523b4597a0b055eae49bfe42a58b918">data</a>)</td></tr>
 <tr class="separator:a88c5d34ad8fe5a9e166bb9e677967867"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24c3134d4a3fcd37984c5b4d82f51144"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a24c3134d4a3fcd37984c5b4d82f51144">usb_string</a> (struct <a class="el" href="structusb__device.html">usb_device</a> *udev, int index, char *buf, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
@@ -219,22 +245,18 @@
 <tr class="separator:a03262b57fd8cdf25443debb5b00c7990"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53269c6056fbff178549787e62827c1e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a53269c6056fbff178549787e62827c1e">usb_set_configuration</a> (struct <a class="el" href="structusb__device.html">usb_device</a> *dev, int configuration)</td></tr>
 <tr class="separator:a53269c6056fbff178549787e62827c1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4816e61b72a6b9395e56306a872dfd32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a4816e61b72a6b9395e56306a872dfd32">usb_register_driver</a> (struct <a class="el" href="structusb__driver.html">usb_driver</a> *drv, struct <a class="el" href="structmodule.html">module</a> *mod, const char *name)</td></tr>
+<tr class="separator:a4816e61b72a6b9395e56306a872dfd32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aade7659526502187e374eefc4a14a598"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#aade7659526502187e374eefc4a14a598">usb_deregister_driver</a> (struct <a class="el" href="structusb__driver.html">usb_driver</a> *drv)</td></tr>
+<tr class="separator:aade7659526502187e374eefc4a14a598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad68cb4ead2e3e3037eb037f75a0111e9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#ad68cb4ead2e3e3037eb037f75a0111e9">usb_driver_claim_interface</a> (struct <a class="el" href="structusb__driver.html">usb_driver</a> *driver, struct <a class="el" href="structusb__interface.html">usb_interface</a> *iface, void *<a class="el" href="ieee80211_8h.html#a0523b4597a0b055eae49bfe42a58b918">data</a>)</td></tr>
+<tr class="separator:ad68cb4ead2e3e3037eb037f75a0111e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05e8622ca448b7211c7abbd0a034656d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a05e8622ca448b7211c7abbd0a034656d">usb_driver_release_interface</a> (struct <a class="el" href="structusb__driver.html">usb_driver</a> *driver, struct <a class="el" href="structusb__interface.html">usb_interface</a> *iface)</td></tr>
+<tr class="separator:a05e8622ca448b7211c7abbd0a034656d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6c2becdb1122a8a24408354047ca693"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#af6c2becdb1122a8a24408354047ca693">vsf_linux_usb_init</a> (<a class="el" href="classvk__usbh__t.html">vk_usbh_t</a> *usbh)</td></tr>
+<tr class="separator:af6c2becdb1122a8a24408354047ca693"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">宏定义说明</h2>
-<a id="a07f274e4add38aa9d2422e98ddcd91fc" name="a07f274e4add38aa9d2422e98ddcd91fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07f274e4add38aa9d2422e98ddcd91fc">&#9670;&#160;</a></span>__VSF_USBH_CLASS_IMPLEMENT_CLASS__</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define __VSF_USBH_CLASS_IMPLEMENT_CLASS__</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="abea47e19906c3c6f35b6263b26cc1ecb" name="abea47e19906c3c6f35b6263b26cc1ecb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abea47e19906c3c6f35b6263b26cc1ecb">&#9670;&#160;</a></span>module_usb_driver</h2>
 
@@ -250,7 +272,30 @@
         </tr>
       </table>
 </div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            <span class="keywordtype">void</span> __usb_driver ## _register(<span class="keywordtype">void</span>) {                              \</div>
+<div class="line">                usb_register(&amp;__usb_driver);                                    \</div>
+<div class="line">            }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac2f09e92d5a0ff35e9ec36f9e90a5102" name="ac2f09e92d5a0ff35e9ec36f9e90a5102"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2f09e92d5a0ff35e9ec36f9e90a5102">&#9670;&#160;</a></span>module_usb_driver_register</h2>
 
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define module_usb_driver_register</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__usb_driver</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            <span class="keyword">extern</span> <span class="keywordtype">void</span> __usb_driver ## _register(<span class="keywordtype">void</span>);                        \</div>
+<div class="line">            __usb_driver ## _register()</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a0b634d5924c8c017a2e7ad5914345d79" name="a0b634d5924c8c017a2e7ad5914345d79"></a>
@@ -463,7 +508,7 @@
 <b>值:</b><div class="fragment"><div class="line">            .match_flags            = <a class="code hl_define" href="usb_8h.html#ad02a58f8bfefa47681cb1532caf019c7">USB_DEVICE_ID_MATCH_DEVICE</a>,               \</div>
 <div class="line">            .idVendor               = (__vid),                                  \</div>
 <div class="line">            .idProduct              = (__pid),</div>
-<div class="ttc" id="ausb_8h_html_ad02a58f8bfefa47681cb1532caf019c7"><div class="ttname"><a href="usb_8h.html#ad02a58f8bfefa47681cb1532caf019c7">USB_DEVICE_ID_MATCH_DEVICE</a></div><div class="ttdeci">#define USB_DEVICE_ID_MATCH_DEVICE</div><div class="ttdef"><b>Definition:</b> usb.h:23</div></div>
+<div class="ttc" id="ausb_8h_html_ad02a58f8bfefa47681cb1532caf019c7"><div class="ttname"><a href="usb_8h.html#ad02a58f8bfefa47681cb1532caf019c7">USB_DEVICE_ID_MATCH_DEVICE</a></div><div class="ttdeci">#define USB_DEVICE_ID_MATCH_DEVICE</div><div class="ttdef"><b>Definition:</b> usb.h:28</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -545,6 +590,42 @@
       <table class="memname">
         <tr>
           <td class="memname">#define URB_FREE_BUFFER&#160;&#160;&#160;0x0100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af44c16881fc4df1ee2ca564567ef08e3" name="af44c16881fc4df1ee2ca564567ef08e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af44c16881fc4df1ee2ca564567ef08e3">&#9670;&#160;</a></span>to_usb_interface</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define to_usb_interface</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__d</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="____type_8h.html#a442ac2279048a3241a8fa5b363e920e4">container_of</a>(__d, struct <a class="el" href="structusb__interface.html">usb_interface</a>, dev)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a81606ce322fd29cc1455abe6e6aa9327" name="a81606ce322fd29cc1455abe6e6aa9327"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81606ce322fd29cc1455abe6e6aa9327">&#9670;&#160;</a></span>to_usb_device</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define to_usb_device</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__d</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="____type_8h.html#a442ac2279048a3241a8fa5b363e920e4">container_of</a>(__d, struct <a class="el" href="structusb__device.html">usb_device</a>, dev)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -654,11 +735,19 @@
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">__pipe</td><td>)</td>
-          <td>&#160;&#160;&#160;(((<a class="el" href="unionvk__usbh__pipe__flag__t.html">vk_usbh_pipe_flag_t</a>)(__pipe)).address)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>值:</b><div class="fragment"><div class="line">            ({                                          \</div>
+<div class="line">            <a class="code hl_union" href="unionvk__usbh__pipe__flag__t.html">vk_usbh_pipe_flag_t</a> flag;                                           \</div>
+<div class="line">            flag.<a class="code hl_variable" href="unionvk__usbh__pipe__flag__t.html#a61f32e6c7cfc75905e0d2548c824d268">value</a> = (__pipe);                                              \</div>
+<div class="line">            flag.<a class="code hl_variable" href="unionvk__usbh__pipe__flag__t.html#ae4a650262ebe5fedacdf3fbf1c97bbed">address</a>;                                                       \</div>
+<div class="line">        })</div>
+<div class="ttc" id="aunionvk__usbh__pipe__flag__t_html"><div class="ttname"><a href="unionvk__usbh__pipe__flag__t.html">vk_usbh_pipe_flag_t</a></div><div class="ttdef"><b>Definition:</b> vsf_usbh.h:279</div></div>
+<div class="ttc" id="aunionvk__usbh__pipe__flag__t_html_a61f32e6c7cfc75905e0d2548c824d268"><div class="ttname"><a href="unionvk__usbh__pipe__flag__t.html#a61f32e6c7cfc75905e0d2548c824d268">vk_usbh_pipe_flag_t::value</a></div><div class="ttdeci">uint32_t value</div><div class="ttdef"><b>Definition:</b> vsf_usbh.h:291</div></div>
+<div class="ttc" id="aunionvk__usbh__pipe__flag__t_html_ae4a650262ebe5fedacdf3fbf1c97bbed"><div class="ttname"><a href="unionvk__usbh__pipe__flag__t.html#ae4a650262ebe5fedacdf3fbf1c97bbed">vk_usbh_pipe_flag_t::address</a></div><div class="ttdeci">uint32_t address</div><div class="ttdef"><b>Definition:</b> vsf_usbh.h:286</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="afbc7b6e544027fddd4b7c1ea0398f827" name="afbc7b6e544027fddd4b7c1ea0398f827"></a>
@@ -672,11 +761,17 @@
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">__pipe</td><td>)</td>
-          <td>&#160;&#160;&#160;(((<a class="el" href="unionvk__usbh__pipe__flag__t.html">vk_usbh_pipe_flag_t</a>)(__pipe)).endpoint)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>值:</b><div class="fragment"><div class="line">            ({                                          \</div>
+<div class="line">            <a class="code hl_union" href="unionvk__usbh__pipe__flag__t.html">vk_usbh_pipe_flag_t</a> flag;                                           \</div>
+<div class="line">            flag.<a class="code hl_variable" href="unionvk__usbh__pipe__flag__t.html#a61f32e6c7cfc75905e0d2548c824d268">value</a> = (__pipe);                                              \</div>
+<div class="line">            flag.<a class="code hl_variable" href="unionvk__usbh__pipe__flag__t.html#aaf6c67778e67238bd897d73e64343d9a">endpoint</a>;                                                      \</div>
+<div class="line">        })</div>
+<div class="ttc" id="aunionvk__usbh__pipe__flag__t_html_aaf6c67778e67238bd897d73e64343d9a"><div class="ttname"><a href="unionvk__usbh__pipe__flag__t.html#aaf6c67778e67238bd897d73e64343d9a">vk_usbh_pipe_flag_t::endpoint</a></div><div class="ttdeci">uint32_t endpoint</div><div class="ttdef"><b>Definition:</b> vsf_usbh.h:283</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af7919e3e523a5a39e3c2de4c03566e6f" name="af7919e3e523a5a39e3c2de4c03566e6f"></a>
@@ -690,11 +785,17 @@
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">__pipe</td><td>)</td>
-          <td>&#160;&#160;&#160;(((<a class="el" href="unionvk__usbh__pipe__flag__t.html">vk_usbh_pipe_flag_t</a>)(__pipe)).<a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>值:</b><div class="fragment"><div class="line">            ({                                          \</div>
+<div class="line">            <a class="code hl_union" href="unionvk__usbh__pipe__flag__t.html">vk_usbh_pipe_flag_t</a> flag;                                           \</div>
+<div class="line">            flag.<a class="code hl_variable" href="unionvk__usbh__pipe__flag__t.html#a61f32e6c7cfc75905e0d2548c824d268">value</a> = (__pipe);                                              \</div>
+<div class="line">            flag.<a class="code hl_variable" href="unionvk__usbh__pipe__flag__t.html#a8e830a3a74e34b851e09b7132d444c36">type</a>;                                                          \</div>
+<div class="line">        })</div>
+<div class="ttc" id="aunionvk__usbh__pipe__flag__t_html_a8e830a3a74e34b851e09b7132d444c36"><div class="ttname"><a href="unionvk__usbh__pipe__flag__t.html#a8e830a3a74e34b851e09b7132d444c36">vk_usbh_pipe_flag_t::type</a></div><div class="ttdeci">uint32_t type</div><div class="ttdef"><b>Definition:</b> vsf_usbh.h:284</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af87a1be973ce68b07cef7b61643caede" name="af87a1be973ce68b07cef7b61643caede"></a>
@@ -993,6 +1094,114 @@
 
 </div>
 </div>
+<a id="a9bc55b7f0c5e6ac795202dd241f5bf66" name="a9bc55b7f0c5e6ac795202dd241f5bf66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bc55b7f0c5e6ac795202dd241f5bf66">&#9670;&#160;</a></span>usb_enable_autosuspend</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define usb_enable_autosuspend</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__udev</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af1c71ee17ce4cd8dc920555466de1156" name="af1c71ee17ce4cd8dc920555466de1156"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1c71ee17ce4cd8dc920555466de1156">&#9670;&#160;</a></span>usb_disable_autosuspend</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define usb_disable_autosuspend</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__udev</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab612b83aa83e4a1761f02c27ac37d40f" name="ab612b83aa83e4a1761f02c27ac37d40f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab612b83aa83e4a1761f02c27ac37d40f">&#9670;&#160;</a></span>usb_autopm_get_interface</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define usb_autopm_get_interface</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__udev</td><td>)</td>
+          <td>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac7a02378f0b3b581c075324a7b925b3a" name="ac7a02378f0b3b581c075324a7b925b3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7a02378f0b3b581c075324a7b925b3a">&#9670;&#160;</a></span>usb_autopm_set_interface</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define usb_autopm_set_interface</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__udev</td><td>)</td>
+          <td>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a941693e3ed374363da24099b21d53d5d" name="a941693e3ed374363da24099b21d53d5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a941693e3ed374363da24099b21d53d5d">&#9670;&#160;</a></span>usb_register</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define usb_register</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__drv</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="usb_8h.html#a4816e61b72a6b9395e56306a872dfd32">usb_register_driver</a>((__drv), <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad4cfb23caef64d64987fca9570c9ba6a" name="ad4cfb23caef64d64987fca9570c9ba6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4cfb23caef64d64987fca9570c9ba6a">&#9670;&#160;</a></span>usb_deregister</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define usb_deregister</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__drv</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="usb_8h.html#aade7659526502187e374eefc4a14a598">usb_deregister_driver</a>((__drv), <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">类型定义说明</h2>
 <a id="a9abaabd1d8057fc4aa895b4440c934e6" name="a9abaabd1d8057fc4aa895b4440c934e6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9abaabd1d8057fc4aa895b4440c934e6">&#9670;&#160;</a></span>usb_complete_t</h2>
@@ -1043,6 +1252,24 @@
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a74ba43976b0d6be6ea3a0843d4b8dd8e" name="a74ba43976b0d6be6ea3a0843d4b8dd8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74ba43976b0d6be6ea3a0843d4b8dd8e">&#9670;&#160;</a></span>usb_reset_device()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int usb_reset_device </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structusb__device.html">usb_device</a> *&#160;</td>
+          <td class="paramname"><em>udev</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1159,6 +1386,42 @@
 
 </div>
 </div>
+<a id="afa18fa1bdec4a95d75d7191186b33cdc" name="afa18fa1bdec4a95d75d7191186b33cdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa18fa1bdec4a95d75d7191186b33cdc">&#9670;&#160;</a></span>usb_kill_urb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void usb_kill_urb </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structurb.html">urb</a> *&#160;</td>
+          <td class="paramname"><em>urb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac1b9a14ec6512683c13c1b7f73cf0b78" name="ac1b9a14ec6512683c13c1b7f73cf0b78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1b9a14ec6512683c13c1b7f73cf0b78">&#9670;&#160;</a></span>usb_urb_dir_in()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int usb_urb_dir_in </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structurb.html">urb</a> *&#160;</td>
+          <td class="paramname"><em>urb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a65091f8d3269479c46c1fba4da8ff483" name="a65091f8d3269479c46c1fba4da8ff483"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a65091f8d3269479c46c1fba4da8ff483">&#9670;&#160;</a></span>usb_control_msg()</h2>
 
@@ -1218,6 +1481,158 @@
           <td></td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7a582506ed8903e5db52899d893107d6" name="a7a582506ed8903e5db52899d893107d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a582506ed8903e5db52899d893107d6">&#9670;&#160;</a></span>usb_control_msg_send()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int usb_control_msg_send </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structusb__device.html">usb_device</a> *&#160;</td>
+          <td class="paramname"><em>udev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2linux_2types_8h.html#a77f8102529baef48621b98012524115d">__u8</a>&#160;</td>
+          <td class="paramname"><em>endpoint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2linux_2types_8h.html#a77f8102529baef48621b98012524115d">__u8</a>&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2linux_2types_8h.html#a77f8102529baef48621b98012524115d">__u8</a>&#160;</td>
+          <td class="paramname"><em>requesttype</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2linux_2types_8h.html#abc70358187152575fd05fbf6d253151f">__u16</a>&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2linux_2types_8h.html#abc70358187152575fd05fbf6d253151f">__u16</a>&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2linux_2types_8h.html#abc70358187152575fd05fbf6d253151f">__u16</a>&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gfp_8h.html#a99dcacb83509949e516cf6ae0367ff73">gfp_t</a>&#160;</td>
+          <td class="paramname"><em>memflags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aec47232037665565d69ccb5115eb3f0b" name="aec47232037665565d69ccb5115eb3f0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec47232037665565d69ccb5115eb3f0b">&#9670;&#160;</a></span>usb_control_msg_recv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int usb_control_msg_recv </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structusb__device.html">usb_device</a> *&#160;</td>
+          <td class="paramname"><em>udev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2linux_2types_8h.html#a77f8102529baef48621b98012524115d">__u8</a>&#160;</td>
+          <td class="paramname"><em>endpoint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2linux_2types_8h.html#a77f8102529baef48621b98012524115d">__u8</a>&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2linux_2types_8h.html#a77f8102529baef48621b98012524115d">__u8</a>&#160;</td>
+          <td class="paramname"><em>requesttype</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2linux_2types_8h.html#abc70358187152575fd05fbf6d253151f">__u16</a>&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2linux_2types_8h.html#abc70358187152575fd05fbf6d253151f">__u16</a>&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2linux_2types_8h.html#abc70358187152575fd05fbf6d253151f">__u16</a>&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gfp_8h.html#a99dcacb83509949e516cf6ae0367ff73">gfp_t</a>&#160;</td>
+          <td class="paramname"><em>memflags</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1333,8 +1748,8 @@
 
 </div>
 </div>
-<a id="a5a9a8729ba9d5a3e8e34091f4c960a0e" name="a5a9a8729ba9d5a3e8e34091f4c960a0e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a9a8729ba9d5a3e8e34091f4c960a0e">&#9670;&#160;</a></span>usb_get_descriptor()</h2>
+<a id="ad9ed7fde6c2dc39781d92ac547bb03bd" name="ad9ed7fde6c2dc39781d92ac547bb03bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9ed7fde6c2dc39781d92ac547bb03bd">&#9670;&#160;</a></span>usb_get_descriptor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1349,13 +1764,13 @@
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned char&#160;</td>
-          <td class="paramname"><em>desctype</em>, </td>
+          <td class="paramname"><em>type</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned char&#160;</td>
-          <td class="paramname"><em>descindex</em>, </td>
+          <td class="paramname"><em>index</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1595,6 +2010,138 @@
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4816e61b72a6b9395e56306a872dfd32" name="a4816e61b72a6b9395e56306a872dfd32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4816e61b72a6b9395e56306a872dfd32">&#9670;&#160;</a></span>usb_register_driver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void usb_register_driver </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structusb__driver.html">usb_driver</a> *&#160;</td>
+          <td class="paramname"><em>drv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structmodule.html">module</a> *&#160;</td>
+          <td class="paramname"><em>mod</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aade7659526502187e374eefc4a14a598" name="aade7659526502187e374eefc4a14a598"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aade7659526502187e374eefc4a14a598">&#9670;&#160;</a></span>usb_deregister_driver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void usb_deregister_driver </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structusb__driver.html">usb_driver</a> *&#160;</td>
+          <td class="paramname"><em>drv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad68cb4ead2e3e3037eb037f75a0111e9" name="ad68cb4ead2e3e3037eb037f75a0111e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad68cb4ead2e3e3037eb037f75a0111e9">&#9670;&#160;</a></span>usb_driver_claim_interface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int usb_driver_claim_interface </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structusb__driver.html">usb_driver</a> *&#160;</td>
+          <td class="paramname"><em>driver</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structusb__interface.html">usb_interface</a> *&#160;</td>
+          <td class="paramname"><em>iface</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a05e8622ca448b7211c7abbd0a034656d" name="a05e8622ca448b7211c7abbd0a034656d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05e8622ca448b7211c7abbd0a034656d">&#9670;&#160;</a></span>usb_driver_release_interface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void usb_driver_release_interface </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structusb__driver.html">usb_driver</a> *&#160;</td>
+          <td class="paramname"><em>driver</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structusb__interface.html">usb_interface</a> *&#160;</td>
+          <td class="paramname"><em>iface</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af6c2becdb1122a8a24408354047ca693" name="af6c2becdb1122a8a24408354047ca693"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6c2becdb1122a8a24408354047ca693">&#9670;&#160;</a></span>vsf_linux_usb_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_linux_usb_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvk__usbh__t.html">vk_usbh_t</a> *&#160;</td>
+          <td class="paramname"><em>usbh</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">

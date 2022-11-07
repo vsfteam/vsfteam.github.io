@@ -59,6 +59,7 @@
 <div class="textblock"><code>#include &lt;<a class="el" href="kobject_8h_source.html">linux/kobject.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="linux_2include_2linux_2types_8h_source.html">linux/types.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="mutex_8h_source.html">linux/mutex.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="slab_8h_source.html">linux/slab.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="sysfs_8h_source.html">linux/sysfs.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="bus_8h_source.html">linux/device/bus.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="class_8h_source.html">linux/device/class.h</a>&gt;</code><br />
@@ -94,6 +95,28 @@ Macros</h2></td></tr>
 <tr class="separator:a53df428e86660f3c794dc7d4d51e1598"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a925369ee9debb0f0d4da48fefef246ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a925369ee9debb0f0d4da48fefef246ac">dev_info</a>(__dev,  __fmt, ...)&#160;&#160;&#160;<a class="el" href="printk_8h.html#a5b2284114edf54e56d0d15a0fdf9ecce">pr_info</a>(__fmt, ##__VA_ARGS__)</td></tr>
 <tr class="separator:a925369ee9debb0f0d4da48fefef246ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1a838faad7bca80a92c6c99fa5628b4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(__level,  __dev,  __fmt, ...)</td></tr>
+<tr class="separator:ae1a838faad7bca80a92c6c99fa5628b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9235c1ebb59b85963c1bca8fa764bae5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a9235c1ebb59b85963c1bca8fa764bae5">dev_dbg_once</a>(__dev,  __fmt, ...)&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#a88a24add10fe1149d714737e5a062451">dev_dbg</a>, __dev, __fmt, ##__VA_ARGS__)</td></tr>
+<tr class="separator:a9235c1ebb59b85963c1bca8fa764bae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75595d7edafcc803c5d3892f3eccc62f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a75595d7edafcc803c5d3892f3eccc62f">dev_emerg_once</a>(__dev,  __fmt, ...)&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#ab19788a803a2425961f8d16d74291865">dev_emerg</a>, __dev, __fmt, ##__VA_ARGS__)</td></tr>
+<tr class="separator:a75595d7edafcc803c5d3892f3eccc62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf2bffd76531de88c42f3fb49d8984ce"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#abf2bffd76531de88c42f3fb49d8984ce">dev_crit_once</a>(__dev,  __fmt, ...)&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#ad4f5f5c604002bbbeedc90ab3ecec6bc">dev_crit</a>, __dev, __fmt, ##__VA_ARGS__)</td></tr>
+<tr class="separator:abf2bffd76531de88c42f3fb49d8984ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0561ad78e8943255884c7bda4464a4d9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a0561ad78e8943255884c7bda4464a4d9">dev_alert_once</a>(__dev,  __fmt, ...)&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#aff8d830d3f4261da37ebc5baed3a6806">dev_alert</a>, __dev, __fmt, ##__VA_ARGS__)</td></tr>
+<tr class="separator:a0561ad78e8943255884c7bda4464a4d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a682407815e6d518f1a39092c0468827f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a682407815e6d518f1a39092c0468827f">dev_err_once</a>(__dev,  __fmt, ...)&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#a1b76c1f354ee937e35bc5e55caf22300">dev_err</a>, __dev, __fmt, ##__VA_ARGS__)</td></tr>
+<tr class="separator:a682407815e6d518f1a39092c0468827f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a679544ed9399bb3a21480d4c960f5f00"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a679544ed9399bb3a21480d4c960f5f00">dev_warn_once</a>(__dev,  __fmt, ...)&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#a7453fe01d49e804f94bb6ebbae317858">dev_warn</a>, __dev, __fmt, ##__VA_ARGS__)</td></tr>
+<tr class="separator:a679544ed9399bb3a21480d4c960f5f00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0a87f5cfb1e77a0e441425962ecf7c4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#ab0a87f5cfb1e77a0e441425962ecf7c4">dev_notice_once</a>(__dev,  __fmt, ...)&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#a53df428e86660f3c794dc7d4d51e1598">dev_notice</a>, __dev, __fmt, ##__VA_ARGS__)</td></tr>
+<tr class="separator:ab0a87f5cfb1e77a0e441425962ecf7c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eb82c963877191bb4dcb8593239481e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a2eb82c963877191bb4dcb8593239481e">dev_info_once</a>(__dev,  __fmt, ...)&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#a925369ee9debb0f0d4da48fefef246ac">dev_info</a>, __dev, __fmt, ##__VA_ARGS__)</td></tr>
+<tr class="separator:a2eb82c963877191bb4dcb8593239481e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12cd76e2ba8b171ec409215165dc5fda"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a12cd76e2ba8b171ec409215165dc5fda">device_wakeup_enable</a>(__dev)</td></tr>
+<tr class="separator:a12cd76e2ba8b171ec409215165dc5fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad321eb93ad255f472ab2558b4489e8b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#ad321eb93ad255f472ab2558b4489e8b3">device_wakeup_disable</a>(__dev)</td></tr>
+<tr class="separator:ad321eb93ad255f472ab2558b4489e8b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -381,6 +404,361 @@ Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td>&#160;&#160;&#160;<a class="el" href="printk_8h.html#a5b2284114edf54e56d0d15a0fdf9ecce">pr_info</a>(__fmt, ##__VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae1a838faad7bca80a92c6c99fa5628b4" name="ae1a838faad7bca80a92c6c99fa5628b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1a838faad7bca80a92c6c99fa5628b4">&#9670;&#160;</a></span>dev_level_once</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dev_level_once</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__level, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__dev, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">        <span class="keywordflow">do</span> {                                                                    \</div>
+<div class="line">            <span class="keyword">static</span> <span class="keywordtype">bool</span> __printed = <span class="keyword">false</span>;                                      \</div>
+<div class="line">            if (!__printed) {                                                   \</div>
+<div class="line">                __printed = <span class="keyword">true</span>;                                               \</div>
+<div class="line">                __level(__dev, __fmt, ##__VA_ARGS__);                           \</div>
+<div class="line">            }                                                                   \</div>
+<div class="line">        } <span class="keywordflow">while</span> (0)</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9235c1ebb59b85963c1bca8fa764bae5" name="a9235c1ebb59b85963c1bca8fa764bae5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9235c1ebb59b85963c1bca8fa764bae5">&#9670;&#160;</a></span>dev_dbg_once</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dev_dbg_once</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__dev, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#a88a24add10fe1149d714737e5a062451">dev_dbg</a>, __dev, __fmt, ##__VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a75595d7edafcc803c5d3892f3eccc62f" name="a75595d7edafcc803c5d3892f3eccc62f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75595d7edafcc803c5d3892f3eccc62f">&#9670;&#160;</a></span>dev_emerg_once</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dev_emerg_once</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__dev, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#ab19788a803a2425961f8d16d74291865">dev_emerg</a>, __dev, __fmt, ##__VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abf2bffd76531de88c42f3fb49d8984ce" name="abf2bffd76531de88c42f3fb49d8984ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf2bffd76531de88c42f3fb49d8984ce">&#9670;&#160;</a></span>dev_crit_once</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dev_crit_once</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__dev, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#ad4f5f5c604002bbbeedc90ab3ecec6bc">dev_crit</a>, __dev, __fmt, ##__VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0561ad78e8943255884c7bda4464a4d9" name="a0561ad78e8943255884c7bda4464a4d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0561ad78e8943255884c7bda4464a4d9">&#9670;&#160;</a></span>dev_alert_once</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dev_alert_once</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__dev, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#aff8d830d3f4261da37ebc5baed3a6806">dev_alert</a>, __dev, __fmt, ##__VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a682407815e6d518f1a39092c0468827f" name="a682407815e6d518f1a39092c0468827f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a682407815e6d518f1a39092c0468827f">&#9670;&#160;</a></span>dev_err_once</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dev_err_once</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__dev, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#a1b76c1f354ee937e35bc5e55caf22300">dev_err</a>, __dev, __fmt, ##__VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a679544ed9399bb3a21480d4c960f5f00" name="a679544ed9399bb3a21480d4c960f5f00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a679544ed9399bb3a21480d4c960f5f00">&#9670;&#160;</a></span>dev_warn_once</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dev_warn_once</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__dev, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#a7453fe01d49e804f94bb6ebbae317858">dev_warn</a>, __dev, __fmt, ##__VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab0a87f5cfb1e77a0e441425962ecf7c4" name="ab0a87f5cfb1e77a0e441425962ecf7c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0a87f5cfb1e77a0e441425962ecf7c4">&#9670;&#160;</a></span>dev_notice_once</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dev_notice_once</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__dev, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#a53df428e86660f3c794dc7d4d51e1598">dev_notice</a>, __dev, __fmt, ##__VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2eb82c963877191bb4dcb8593239481e" name="a2eb82c963877191bb4dcb8593239481e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eb82c963877191bb4dcb8593239481e">&#9670;&#160;</a></span>dev_info_once</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dev_info_once</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__dev, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="device_8h.html#ae1a838faad7bca80a92c6c99fa5628b4">dev_level_once</a>(<a class="el" href="device_8h.html#a925369ee9debb0f0d4da48fefef246ac">dev_info</a>, __dev, __fmt, ##__VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a12cd76e2ba8b171ec409215165dc5fda" name="a12cd76e2ba8b171ec409215165dc5fda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12cd76e2ba8b171ec409215165dc5fda">&#9670;&#160;</a></span>device_wakeup_enable</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define device_wakeup_enable</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__dev</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad321eb93ad255f472ab2558b4489e8b3" name="ad321eb93ad255f472ab2558b4489e8b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad321eb93ad255f472ab2558b4489e8b3">&#9670;&#160;</a></span>device_wakeup_disable</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define device_wakeup_disable</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__dev</td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
