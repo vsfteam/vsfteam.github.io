@@ -51,32 +51,357 @@
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
 <a href="#typedef-members">类型定义</a> &#124;
 <a href="#func-members">函数</a>  </div>
   <div class="headertitle"><div class="title">wait.h 文件参考</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="linux_2include_2linux_2spinlock_8h_source.html">linux/spinlock.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__kernel_8h_source.html">kernel/vsf_kernel.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="linux_2include_2linux_2spinlock_8h_source.html">linux/spinlock.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="list_8h_source.html">linux/list.h</a>&gt;</code><br />
 </div>
 <p><a href="linux_2wait_8h_source.html">浏览源代码.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwait__queue__entry.html">wait_queue_entry</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwait__queue__head.html">wait_queue_head</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a9b6e0ab3fb23b83bb1153ff4d06f14b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a9b6e0ab3fb23b83bb1153ff4d06f14b9">WQ_FLAG_EXCLUSIVE</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="separator:a9b6e0ab3fb23b83bb1153ff4d06f14b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47b0fe275fdc0aca9daa6a9ee3a540e0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a47b0fe275fdc0aca9daa6a9ee3a540e0">WQ_FLAG_WOKEN</a>&#160;&#160;&#160;0x02</td></tr>
+<tr class="separator:a47b0fe275fdc0aca9daa6a9ee3a540e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f88f4aa5af857b91836d696e78f0e09"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a8f88f4aa5af857b91836d696e78f0e09">WQ_FLAG_BOOKMARK</a>&#160;&#160;&#160;0x04</td></tr>
+<tr class="separator:a8f88f4aa5af857b91836d696e78f0e09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02f1078f061784209e37d426e25723f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a02f1078f061784209e37d426e25723f6">WQ_FLAG_CUSTOM</a>&#160;&#160;&#160;0x08</td></tr>
+<tr class="separator:a02f1078f061784209e37d426e25723f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03e5b956f140a23f570747f49e63985b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a03e5b956f140a23f570747f49e63985b">WQ_FLAG_DONE</a>&#160;&#160;&#160;0x10</td></tr>
+<tr class="separator:a03e5b956f140a23f570747f49e63985b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2515d03a1371aea6a456e6149126f621"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a2515d03a1371aea6a456e6149126f621">WQ_FLAG_PRIORITY</a>&#160;&#160;&#160;0x20</td></tr>
+<tr class="separator:a2515d03a1371aea6a456e6149126f621"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a161f9c2842e33053666c1711eb5e8538"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a161f9c2842e33053666c1711eb5e8538">__wait_event_timeout</a>(__wqh,  __cond,  __timeout)</td></tr>
+<tr class="separator:a161f9c2842e33053666c1711eb5e8538"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d1816ac5b1fd1ebc0d02766cef73ee2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a7d1816ac5b1fd1ebc0d02766cef73ee2">wait_event_timeout</a>(__wqh,  __cond,  __timeout)</td></tr>
+<tr class="separator:a7d1816ac5b1fd1ebc0d02766cef73ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafc6624da2eb67e3793d220cdb7b2715"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#aafc6624da2eb67e3793d220cdb7b2715">wait_event</a>(__wqh,  __cond)&#160;&#160;&#160;<a class="el" href="linux_2wait_8h.html#a7d1816ac5b1fd1ebc0d02766cef73ee2">wait_event_timeout</a>(__wqh, __cond, -1)</td></tr>
+<tr class="separator:aafc6624da2eb67e3793d220cdb7b2715"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4362c83164472306e9392c1ed2ad930d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a4362c83164472306e9392c1ed2ad930d">wake_up</a>(__wqh)&#160;&#160;&#160;<a class="el" href="linux_2wait_8h.html#a97aa79662afca6939e12bd851f6092c4">wake_up_nr</a>((__wqh), 1)</td></tr>
+<tr class="separator:a4362c83164472306e9392c1ed2ad930d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15af23f3050956d04db10ebf1df5c2cb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a15af23f3050956d04db10ebf1df5c2cb">wake_up_all</a>(__wqh)&#160;&#160;&#160;<a class="el" href="linux_2wait_8h.html#a97aa79662afca6939e12bd851f6092c4">wake_up_nr</a>((__wqh), -1)</td></tr>
+<tr class="separator:a15af23f3050956d04db10ebf1df5c2cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 类型定义</h2></td></tr>
+<tr class="memitem:a25819ddf9cb3c15b90fa0566485e9f69"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a25819ddf9cb3c15b90fa0566485e9f69">wait_queue_func_t</a>) (struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *wqe, unsigned mode, int flags, void *key)</td></tr>
+<tr class="separator:a25819ddf9cb3c15b90fa0566485e9f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae244b071a7539600cd227ded38cb75ee"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#ae244b071a7539600cd227ded38cb75ee">wait_queue_entry_t</a></td></tr>
+<tr class="separator:ae244b071a7539600cd227ded38cb75ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb3abe8a10e13f6e9e3037520ccb4e42"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structwait__queue__head.html">wait_queue_head</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#abb3abe8a10e13f6e9e3037520ccb4e42">wait_queue_head_t</a></td></tr>
 <tr class="separator:abb3abe8a10e13f6e9e3037520ccb4e42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 函数</h2></td></tr>
-<tr class="memitem:ab8334bc9c4408b619700284b26876869"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#ab8334bc9c4408b619700284b26876869">init_wait_queue_head</a> (struct <a class="el" href="structwait__queue__head.html">wait_queue_head</a> *wqh)</td></tr>
-<tr class="separator:ab8334bc9c4408b619700284b26876869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cf630edba74415f8b5186e485a14c23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a9cf630edba74415f8b5186e485a14c23">init_wait_entry</a> (struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *wqe, int flags)</td></tr>
+<tr class="separator:a9cf630edba74415f8b5186e485a14c23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a34251ff7fe02d4231a6533cc3adf9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a1a34251ff7fe02d4231a6533cc3adf9c">prepare_to_wait</a> (struct <a class="el" href="structwait__queue__head.html">wait_queue_head</a> *wqh, struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *wqe, int <a class="el" href="vsf__msg__tree_8h.html#a0b57aa10271a66f3dc936bba1d2f3830">state</a>)</td></tr>
+<tr class="separator:a1a34251ff7fe02d4231a6533cc3adf9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af562e8faf9b831653ee517c3a859533d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#af562e8faf9b831653ee517c3a859533d">prepare_to_wait_exclusive</a> (struct <a class="el" href="structwait__queue__head.html">wait_queue_head</a> *wqh, struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *wqe, int <a class="el" href="vsf__msg__tree_8h.html#a0b57aa10271a66f3dc936bba1d2f3830">state</a>)</td></tr>
+<tr class="separator:af562e8faf9b831653ee517c3a859533d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f13441250939ca3566e5988dec63381"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a5f13441250939ca3566e5988dec63381">prepare_to_wait_event</a> (struct <a class="el" href="structwait__queue__head.html">wait_queue_head</a> *wqh, struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *wqe, int <a class="el" href="vsf__msg__tree_8h.html#a0b57aa10271a66f3dc936bba1d2f3830">state</a>)</td></tr>
+<tr class="separator:a5f13441250939ca3566e5988dec63381"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c72edc9c0f04271f2c86d9f58ca14b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a2c72edc9c0f04271f2c86d9f58ca14b4">finish_wait</a> (struct <a class="el" href="structwait__queue__head.html">wait_queue_head</a> *wqh, struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *wqe)</td></tr>
+<tr class="separator:a2c72edc9c0f04271f2c86d9f58ca14b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4a733b0d3c6557350b4ecaa65bb2738"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#ad4a733b0d3c6557350b4ecaa65bb2738">wait_woken</a> (struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *wqe, unsigned mode, long <a class="el" href="ieee80211_8h.html#a3234a50f2c5eabfb2aa2f4f982256750">timeout</a>)</td></tr>
+<tr class="separator:ad4a733b0d3c6557350b4ecaa65bb2738"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ba57e4d30585c14eee913c67b176d44"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a3ba57e4d30585c14eee913c67b176d44">woken_wake_function</a> (struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *wqe, unsigned mode, int sync, void *key)</td></tr>
+<tr class="separator:a3ba57e4d30585c14eee913c67b176d44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0580c24a8d015d28f9aafb7cdfc9b8e1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a0580c24a8d015d28f9aafb7cdfc9b8e1">autoremove_wake_function</a> (struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *wqe, unsigned mode, int sync, void *key)</td></tr>
+<tr class="separator:a0580c24a8d015d28f9aafb7cdfc9b8e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97aa79662afca6939e12bd851f6092c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linux_2wait_8h.html#a97aa79662afca6939e12bd851f6092c4">wake_up_nr</a> (struct <a class="el" href="structwait__queue__head.html">wait_queue_head</a> *wqh, int nr)</td></tr>
+<tr class="separator:a97aa79662afca6939e12bd851f6092c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a9b6e0ab3fb23b83bb1153ff4d06f14b9" name="a9b6e0ab3fb23b83bb1153ff4d06f14b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b6e0ab3fb23b83bb1153ff4d06f14b9">&#9670;&#160;</a></span>WQ_FLAG_EXCLUSIVE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WQ_FLAG_EXCLUSIVE&#160;&#160;&#160;0x01</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a47b0fe275fdc0aca9daa6a9ee3a540e0" name="a47b0fe275fdc0aca9daa6a9ee3a540e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47b0fe275fdc0aca9daa6a9ee3a540e0">&#9670;&#160;</a></span>WQ_FLAG_WOKEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WQ_FLAG_WOKEN&#160;&#160;&#160;0x02</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f88f4aa5af857b91836d696e78f0e09" name="a8f88f4aa5af857b91836d696e78f0e09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f88f4aa5af857b91836d696e78f0e09">&#9670;&#160;</a></span>WQ_FLAG_BOOKMARK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WQ_FLAG_BOOKMARK&#160;&#160;&#160;0x04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a02f1078f061784209e37d426e25723f6" name="a02f1078f061784209e37d426e25723f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02f1078f061784209e37d426e25723f6">&#9670;&#160;</a></span>WQ_FLAG_CUSTOM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WQ_FLAG_CUSTOM&#160;&#160;&#160;0x08</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a03e5b956f140a23f570747f49e63985b" name="a03e5b956f140a23f570747f49e63985b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03e5b956f140a23f570747f49e63985b">&#9670;&#160;</a></span>WQ_FLAG_DONE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WQ_FLAG_DONE&#160;&#160;&#160;0x10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2515d03a1371aea6a456e6149126f621" name="a2515d03a1371aea6a456e6149126f621"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2515d03a1371aea6a456e6149126f621">&#9670;&#160;</a></span>WQ_FLAG_PRIORITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WQ_FLAG_PRIORITY&#160;&#160;&#160;0x20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a161f9c2842e33053666c1711eb5e8538" name="a161f9c2842e33053666c1711eb5e8538"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a161f9c2842e33053666c1711eb5e8538">&#9670;&#160;</a></span>__wait_event_timeout</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __wait_event_timeout</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__wqh, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__cond, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__timeout&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    ({                       \</div>
+<div class="line">    <span class="keyword">struct </span><a class="code hl_struct" href="structwait__queue__entry.html">wait_queue_entry</a> __wqe;                                              \</div>
+<div class="line">    <span class="keywordtype">long</span> local_timeout = (__timeout);                                           \</div>
+<div class="line">    <a class="code hl_class" href="classvsf__sync__t.html">vsf_trig_t</a> trig;                                                            \</div>
+<div class="line">    vsf_eda_trig_init(&amp;trig, <span class="keyword">false</span>, <span class="keyword">true</span>);                                      \</div>
+<div class="line">    __wqe.__trig = &amp;trig;                                                       \</div>
+<div class="line">    init_wait_entry(&amp;__wqe, 0);                                                 \</div>
+<div class="line">    while (1) {                                                                 \</div>
+<div class="line">        prepare_to_wait_event(&amp;__wqh, &amp;__wqe, 0);                               \</div>
+<div class="line">        if (__cond) {                                                           \</div>
+<div class="line">            <span class="keywordflow">break</span>;                                                              \</div>
+<div class="line">        }                                                                       \</div>
+<div class="line">        vsf_thread_trig_pend(&amp;trig, local_timeout);                             \</div>
+<div class="line">    }                                                                           \</div>
+<div class="line">    finish_wait(&amp;__wqh, &amp;__wqe);                                                \</div>
+<div class="line">    local_timeout;                                                              \</div>
+<div class="line">})</div>
+<div class="ttc" id="aclassvsf__sync__t_html"><div class="ttname"><a href="classvsf__sync__t.html">vsf_sync_t</a></div><div class="ttdef"><b>Definition:</b> vsf_eda.h:848</div></div>
+<div class="ttc" id="astructwait__queue__entry_html"><div class="ttname"><a href="structwait__queue__entry.html">wait_queue_entry</a></div><div class="ttdef"><b>Definition:</b> wait.h:22</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7d1816ac5b1fd1ebc0d02766cef73ee2" name="a7d1816ac5b1fd1ebc0d02766cef73ee2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d1816ac5b1fd1ebc0d02766cef73ee2">&#9670;&#160;</a></span>wait_event_timeout</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define wait_event_timeout</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__wqh, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__cond, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__timeout&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    ({                         \</div>
+<div class="line">    <span class="keywordtype">long</span> local_timeout = (__timeout);                                           \</div>
+<div class="line">    <span class="keywordtype">bool</span> local_cond = (__cond);                                                 \</div>
+<div class="line">    if (local_cond &amp;&amp; !local_timeout) {                                         \</div>
+<div class="line">        local_timeout = 1;                                                      \</div>
+<div class="line">    }                                                                           \</div>
+<div class="line">    if (!(local_cond || !local_timeout)) {                                      \</div>
+<div class="line">        local_timeout = <a class="code hl_define" href="linux_2wait_8h.html#a161f9c2842e33053666c1711eb5e8538">__wait_event_timeout</a>(__wqh, __cond, __timeout);         \</div>
+<div class="line">    }                                                                           \</div>
+<div class="line">    local_timeout;                                                              \</div>
+<div class="line">})</div>
+<div class="ttc" id="alinux_2wait_8h_html_a161f9c2842e33053666c1711eb5e8538"><div class="ttname"><a href="linux_2wait_8h.html#a161f9c2842e33053666c1711eb5e8538">__wait_event_timeout</a></div><div class="ttdeci">#define __wait_event_timeout(__wqh, __cond, __timeout)</div><div class="ttdef"><b>Definition:</b> wait.h:51</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aafc6624da2eb67e3793d220cdb7b2715" name="aafc6624da2eb67e3793d220cdb7b2715"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafc6624da2eb67e3793d220cdb7b2715">&#9670;&#160;</a></span>wait_event</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define wait_event</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__wqh, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__cond&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="linux_2wait_8h.html#a7d1816ac5b1fd1ebc0d02766cef73ee2">wait_event_timeout</a>(__wqh, __cond, -1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4362c83164472306e9392c1ed2ad930d" name="a4362c83164472306e9392c1ed2ad930d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4362c83164472306e9392c1ed2ad930d">&#9670;&#160;</a></span>wake_up</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define wake_up</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__wqh</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="linux_2wait_8h.html#a97aa79662afca6939e12bd851f6092c4">wake_up_nr</a>((__wqh), 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a15af23f3050956d04db10ebf1df5c2cb" name="a15af23f3050956d04db10ebf1df5c2cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15af23f3050956d04db10ebf1df5c2cb">&#9670;&#160;</a></span>wake_up_all</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define wake_up_all</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__wqh</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="linux_2wait_8h.html#a97aa79662afca6939e12bd851f6092c4">wake_up_nr</a>((__wqh), -1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">类型定义说明</h2>
+<a id="a25819ddf9cb3c15b90fa0566485e9f69" name="a25819ddf9cb3c15b90fa0566485e9f69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25819ddf9cb3c15b90fa0566485e9f69">&#9670;&#160;</a></span>wait_queue_func_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* wait_queue_func_t) (struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *wqe, unsigned mode, int flags, void *key)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae244b071a7539600cd227ded38cb75ee" name="ae244b071a7539600cd227ded38cb75ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae244b071a7539600cd227ded38cb75ee">&#9670;&#160;</a></span>wait_queue_entry_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> <a class="el" href="linux_2wait_8h.html#ae244b071a7539600cd227ded38cb75ee">wait_queue_entry_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="abb3abe8a10e13f6e9e3037520ccb4e42" name="abb3abe8a10e13f6e9e3037520ccb4e42"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abb3abe8a10e13f6e9e3037520ccb4e42">&#9670;&#160;</a></span>wait_queue_head_t</h2>
 
@@ -92,18 +417,300 @@
 </div>
 </div>
 <h2 class="groupheader">函数说明</h2>
-<a id="ab8334bc9c4408b619700284b26876869" name="ab8334bc9c4408b619700284b26876869"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8334bc9c4408b619700284b26876869">&#9670;&#160;</a></span>init_wait_queue_head()</h2>
+<a id="a9cf630edba74415f8b5186e485a14c23" name="a9cf630edba74415f8b5186e485a14c23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cf630edba74415f8b5186e485a14c23">&#9670;&#160;</a></span>init_wait_entry()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void init_wait_queue_head </td>
+          <td class="memname">void init_wait_entry </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *&#160;</td>
+          <td class="paramname"><em>wqe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a34251ff7fe02d4231a6533cc3adf9c" name="a1a34251ff7fe02d4231a6533cc3adf9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a34251ff7fe02d4231a6533cc3adf9c">&#9670;&#160;</a></span>prepare_to_wait()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prepare_to_wait </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structwait__queue__head.html">wait_queue_head</a> *&#160;</td>
-          <td class="paramname"><em>wqh</em></td><td>)</td>
+          <td class="paramname"><em>wqh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *&#160;</td>
+          <td class="paramname"><em>wqe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af562e8faf9b831653ee517c3a859533d" name="af562e8faf9b831653ee517c3a859533d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af562e8faf9b831653ee517c3a859533d">&#9670;&#160;</a></span>prepare_to_wait_exclusive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> prepare_to_wait_exclusive </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structwait__queue__head.html">wait_queue_head</a> *&#160;</td>
+          <td class="paramname"><em>wqh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *&#160;</td>
+          <td class="paramname"><em>wqe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f13441250939ca3566e5988dec63381" name="a5f13441250939ca3566e5988dec63381"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f13441250939ca3566e5988dec63381">&#9670;&#160;</a></span>prepare_to_wait_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long prepare_to_wait_event </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structwait__queue__head.html">wait_queue_head</a> *&#160;</td>
+          <td class="paramname"><em>wqh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *&#160;</td>
+          <td class="paramname"><em>wqe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c72edc9c0f04271f2c86d9f58ca14b4" name="a2c72edc9c0f04271f2c86d9f58ca14b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c72edc9c0f04271f2c86d9f58ca14b4">&#9670;&#160;</a></span>finish_wait()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void finish_wait </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structwait__queue__head.html">wait_queue_head</a> *&#160;</td>
+          <td class="paramname"><em>wqh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *&#160;</td>
+          <td class="paramname"><em>wqe</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad4a733b0d3c6557350b4ecaa65bb2738" name="ad4a733b0d3c6557350b4ecaa65bb2738"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4a733b0d3c6557350b4ecaa65bb2738">&#9670;&#160;</a></span>wait_woken()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long wait_woken </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *&#160;</td>
+          <td class="paramname"><em>wqe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3ba57e4d30585c14eee913c67b176d44" name="a3ba57e4d30585c14eee913c67b176d44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ba57e4d30585c14eee913c67b176d44">&#9670;&#160;</a></span>woken_wake_function()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int woken_wake_function </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *&#160;</td>
+          <td class="paramname"><em>wqe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sync</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0580c24a8d015d28f9aafb7cdfc9b8e1" name="a0580c24a8d015d28f9aafb7cdfc9b8e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0580c24a8d015d28f9aafb7cdfc9b8e1">&#9670;&#160;</a></span>autoremove_wake_function()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int autoremove_wake_function </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structwait__queue__entry.html">wait_queue_entry</a> *&#160;</td>
+          <td class="paramname"><em>wqe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sync</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a97aa79662afca6939e12bd851f6092c4" name="a97aa79662afca6939e12bd851f6092c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97aa79662afca6939e12bd851f6092c4">&#9670;&#160;</a></span>wake_up_nr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wake_up_nr </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structwait__queue__head.html">wait_queue_head</a> *&#160;</td>
+          <td class="paramname"><em>wqh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

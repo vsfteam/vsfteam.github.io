@@ -59,6 +59,8 @@
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__usb_8h_source.html">component/usb/vsf_usb.h</a>&quot;</code><br />
 <code>#include &lt;<a class="el" href="linux_2include_2linux_2types_8h_source.html">linux/types.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="linux_2include_2linux_2atomic_8h_source.html">linux/atomic.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="linux_2include_2linux_2spinlock_8h_source.html">linux/spinlock.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="list_8h_source.html">linux/list.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="linux_2wait_8h_source.html">linux/wait.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="device_8h_source.html">linux/device.h</a>&gt;</code><br />
@@ -187,8 +189,10 @@ Macros</h2></td></tr>
 <tr class="separator:af1c71ee17ce4cd8dc920555466de1156"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab612b83aa83e4a1761f02c27ac37d40f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#ab612b83aa83e4a1761f02c27ac37d40f">usb_autopm_get_interface</a>(__udev)&#160;&#160;&#160;0</td></tr>
 <tr class="separator:ab612b83aa83e4a1761f02c27ac37d40f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7a02378f0b3b581c075324a7b925b3a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#ac7a02378f0b3b581c075324a7b925b3a">usb_autopm_set_interface</a>(__udev)&#160;&#160;&#160;0</td></tr>
-<tr class="separator:ac7a02378f0b3b581c075324a7b925b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5baccb5515a87bc017c173b1e89dbb99"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a5baccb5515a87bc017c173b1e89dbb99">usb_autopm_put_interface</a>(__udev)&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a5baccb5515a87bc017c173b1e89dbb99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1a7f86e5fb5dbc2838ea9a70643474a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#ad1a7f86e5fb5dbc2838ea9a70643474a">usb_put_urb</a>&#160;&#160;&#160;<a class="el" href="usb_8h.html#addc7c6f775a27c8d5335deef56a66fb3">usb_free_urb</a></td></tr>
+<tr class="separator:ad1a7f86e5fb5dbc2838ea9a70643474a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a941693e3ed374363da24099b21d53d5d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a941693e3ed374363da24099b21d53d5d">usb_register</a>(__drv)&#160;&#160;&#160;<a class="el" href="usb_8h.html#a4816e61b72a6b9395e56306a872dfd32">usb_register_driver</a>((__drv), <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)</td></tr>
 <tr class="separator:a941693e3ed374363da24099b21d53d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4cfb23caef64d64987fca9570c9ba6a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#ad4cfb23caef64d64987fca9570c9ba6a">usb_deregister</a>(__drv)&#160;&#160;&#160;<a class="el" href="usb_8h.html#aade7659526502187e374eefc4a14a598">usb_deregister_driver</a>((__drv), <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)</td></tr>
@@ -205,12 +209,24 @@ Functions</h2></td></tr>
 <tr class="separator:aa3290cf97dcf035f54351781f4c1459c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74ba43976b0d6be6ea3a0843d4b8dd8e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a74ba43976b0d6be6ea3a0843d4b8dd8e">usb_reset_device</a> (struct <a class="el" href="structusb__device.html">usb_device</a> *udev)</td></tr>
 <tr class="separator:a74ba43976b0d6be6ea3a0843d4b8dd8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98820ef000d431d439a793d47805f832"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a98820ef000d431d439a793d47805f832">usb_anchor_urb</a> (struct <a class="el" href="structurb.html">urb</a> *<a class="el" href="structurb.html">urb</a>, struct <a class="el" href="structusb__anchor.html">usb_anchor</a> *anchor)</td></tr>
+<tr class="separator:a98820ef000d431d439a793d47805f832"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d2c0a9c5df3119ff5459a40a8ffb554"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a1d2c0a9c5df3119ff5459a40a8ffb554">usb_unanchor_urb</a> (struct <a class="el" href="structurb.html">urb</a> *<a class="el" href="structurb.html">urb</a>)</td></tr>
+<tr class="separator:a1d2c0a9c5df3119ff5459a40a8ffb554"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6c9d982a6670a1ff54125879aa2817c"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structurb.html">urb</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#ac6c9d982a6670a1ff54125879aa2817c">usb_get_from_anchor</a> (struct <a class="el" href="structusb__anchor.html">usb_anchor</a> *anchor)</td></tr>
+<tr class="separator:ac6c9d982a6670a1ff54125879aa2817c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f7451062e8392703880b3a57403df90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a6f7451062e8392703880b3a57403df90">usb_kill_anchored_urbs</a> (struct <a class="el" href="structusb__anchor.html">usb_anchor</a> *anchor)</td></tr>
+<tr class="separator:a6f7451062e8392703880b3a57403df90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d712b4107be148ab431d5be4bc24fcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a4d712b4107be148ab431d5be4bc24fcf">usb_unlink_anchored_urbs</a> (struct <a class="el" href="structusb__anchor.html">usb_anchor</a> *anchor)</td></tr>
+<tr class="separator:a4d712b4107be148ab431d5be4bc24fcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a066fc3c2bd3d89694d6342659365b734"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a066fc3c2bd3d89694d6342659365b734">usb_init_urb</a> (struct <a class="el" href="structurb.html">urb</a> *<a class="el" href="structurb.html">urb</a>)</td></tr>
 <tr class="separator:a066fc3c2bd3d89694d6342659365b734"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7046301fae53a6cecf864407fdee07ca"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structurb.html">urb</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a7046301fae53a6cecf864407fdee07ca">usb_alloc_urb</a> (int iso_packets, <a class="el" href="gfp_8h.html#a99dcacb83509949e516cf6ae0367ff73">gfp_t</a> flags)</td></tr>
 <tr class="separator:a7046301fae53a6cecf864407fdee07ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addc7c6f775a27c8d5335deef56a66fb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#addc7c6f775a27c8d5335deef56a66fb3">usb_free_urb</a> (struct <a class="el" href="structurb.html">urb</a> *<a class="el" href="structurb.html">urb</a>)</td></tr>
 <tr class="separator:addc7c6f775a27c8d5335deef56a66fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aede3090b4f970481dc4ed14a1695496c"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structurb.html">urb</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#aede3090b4f970481dc4ed14a1695496c">usb_get_urb</a> (struct <a class="el" href="structurb.html">urb</a> *<a class="el" href="structurb.html">urb</a>)</td></tr>
+<tr class="separator:aede3090b4f970481dc4ed14a1695496c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af90e5c4569576b4a291f92e12459fa71"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#af90e5c4569576b4a291f92e12459fa71">usb_submit_urb</a> (struct <a class="el" href="structurb.html">urb</a> *<a class="el" href="structurb.html">urb</a>, <a class="el" href="gfp_8h.html#a99dcacb83509949e516cf6ae0367ff73">gfp_t</a> flags)</td></tr>
 <tr class="separator:af90e5c4569576b4a291f92e12459fa71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44061f98b15e47c4c0391e86e79ac411"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a44061f98b15e47c4c0391e86e79ac411">usb_unlink_urb</a> (struct <a class="el" href="structurb.html">urb</a> *<a class="el" href="structurb.html">urb</a>)</td></tr>
@@ -508,7 +524,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">            .match_flags            = <a class="code hl_define" href="usb_8h.html#ad02a58f8bfefa47681cb1532caf019c7">USB_DEVICE_ID_MATCH_DEVICE</a>,               \</div>
 <div class="line">            .idVendor               = (__vid),                                  \</div>
 <div class="line">            .idProduct              = (__pid),</div>
-<div class="ttc" id="ausb_8h_html_ad02a58f8bfefa47681cb1532caf019c7"><div class="ttname"><a href="usb_8h.html#ad02a58f8bfefa47681cb1532caf019c7">USB_DEVICE_ID_MATCH_DEVICE</a></div><div class="ttdeci">#define USB_DEVICE_ID_MATCH_DEVICE</div><div class="ttdef"><b>Definition:</b> usb.h:28</div></div>
+<div class="ttc" id="ausb_8h_html_ad02a58f8bfefa47681cb1532caf019c7"><div class="ttname"><a href="usb_8h.html#ad02a58f8bfefa47681cb1532caf019c7">USB_DEVICE_ID_MATCH_DEVICE</a></div><div class="ttdeci">#define USB_DEVICE_ID_MATCH_DEVICE</div><div class="ttdef"><b>Definition:</b> usb.h:30</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1148,18 +1164,32 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac7a02378f0b3b581c075324a7b925b3a" name="ac7a02378f0b3b581c075324a7b925b3a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7a02378f0b3b581c075324a7b925b3a">&#9670;&#160;</a></span>usb_autopm_set_interface</h2>
+<a id="a5baccb5515a87bc017c173b1e89dbb99" name="a5baccb5515a87bc017c173b1e89dbb99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5baccb5515a87bc017c173b1e89dbb99">&#9670;&#160;</a></span>usb_autopm_put_interface</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define usb_autopm_set_interface</td>
+          <td class="memname">#define usb_autopm_put_interface</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">__udev</td><td>)</td>
           <td>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad1a7f86e5fb5dbc2838ea9a70643474a" name="ad1a7f86e5fb5dbc2838ea9a70643474a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1a7f86e5fb5dbc2838ea9a70643474a">&#9670;&#160;</a></span>usb_put_urb</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define usb_put_urb&#160;&#160;&#160;<a class="el" href="usb_8h.html#addc7c6f775a27c8d5335deef56a66fb3">usb_free_urb</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1276,6 +1306,106 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a98820ef000d431d439a793d47805f832" name="a98820ef000d431d439a793d47805f832"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98820ef000d431d439a793d47805f832">&#9670;&#160;</a></span>usb_anchor_urb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void usb_anchor_urb </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structurb.html">urb</a> *&#160;</td>
+          <td class="paramname"><em>urb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structusb__anchor.html">usb_anchor</a> *&#160;</td>
+          <td class="paramname"><em>anchor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1d2c0a9c5df3119ff5459a40a8ffb554" name="a1d2c0a9c5df3119ff5459a40a8ffb554"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d2c0a9c5df3119ff5459a40a8ffb554">&#9670;&#160;</a></span>usb_unanchor_urb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void usb_unanchor_urb </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structurb.html">urb</a> *&#160;</td>
+          <td class="paramname"><em>urb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac6c9d982a6670a1ff54125879aa2817c" name="ac6c9d982a6670a1ff54125879aa2817c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6c9d982a6670a1ff54125879aa2817c">&#9670;&#160;</a></span>usb_get_from_anchor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structurb.html">urb</a> * usb_get_from_anchor </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structusb__anchor.html">usb_anchor</a> *&#160;</td>
+          <td class="paramname"><em>anchor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6f7451062e8392703880b3a57403df90" name="a6f7451062e8392703880b3a57403df90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f7451062e8392703880b3a57403df90">&#9670;&#160;</a></span>usb_kill_anchored_urbs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void usb_kill_anchored_urbs </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structusb__anchor.html">usb_anchor</a> *&#160;</td>
+          <td class="paramname"><em>anchor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4d712b4107be148ab431d5be4bc24fcf" name="a4d712b4107be148ab431d5be4bc24fcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d712b4107be148ab431d5be4bc24fcf">&#9670;&#160;</a></span>usb_unlink_anchored_urbs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void usb_unlink_anchored_urbs </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structusb__anchor.html">usb_anchor</a> *&#160;</td>
+          <td class="paramname"><em>anchor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a066fc3c2bd3d89694d6342659365b734" name="a066fc3c2bd3d89694d6342659365b734"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a066fc3c2bd3d89694d6342659365b734">&#9670;&#160;</a></span>usb_init_urb()</h2>
 
@@ -1330,6 +1460,24 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">void usb_free_urb </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structurb.html">urb</a> *&#160;</td>
+          <td class="paramname"><em>urb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aede3090b4f970481dc4ed14a1695496c" name="aede3090b4f970481dc4ed14a1695496c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aede3090b4f970481dc4ed14a1695496c">&#9670;&#160;</a></span>usb_get_urb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structurb.html">urb</a> * usb_get_urb </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structurb.html">urb</a> *&#160;</td>
           <td class="paramname"><em>urb</em></td><td>)</td>

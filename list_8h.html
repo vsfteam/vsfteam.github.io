@@ -70,6 +70,14 @@ Macros</h2></td></tr>
 <tr class="separator:a7fee1b71cb0d1671c6e013da9b0f79aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a33054d44d98a5e437521983473bee8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a6a33054d44d98a5e437521983473bee8">LIST_HEAD</a>(__NAME)&#160;&#160;&#160;struct <a class="el" href="structlist__head.html">list_head</a> __NAME = <a class="el" href="list_8h.html#a7fee1b71cb0d1671c6e013da9b0f79aa">LIST_HEAD_INIT</a>(__NAME)</td></tr>
 <tr class="separator:a6a33054d44d98a5e437521983473bee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26c976b7f654e70df318c1843e5094de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>(ptr,  <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>,  member)&#160;&#160;&#160;<a class="el" href="____type_8h.html#a442ac2279048a3241a8fa5b363e920e4">container_of</a>(ptr, <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, member)</td></tr>
+<tr class="separator:a26c976b7f654e70df318c1843e5094de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29b80cf9d55392a4949d2071b7db4d5c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a29b80cf9d55392a4949d2071b7db4d5c">list_first_entry</a>(ptr,  <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>,  member)&#160;&#160;&#160;<a class="el" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>((ptr)-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>, <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, member)</td></tr>
+<tr class="separator:a29b80cf9d55392a4949d2071b7db4d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8b24e6660ab3760c923e4b4db3fa502"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#ab8b24e6660ab3760c923e4b4db3fa502">list_for_each</a>(pos,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)&#160;&#160;&#160;for (pos = (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>; !list_is_head(pos, (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)); pos = pos-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>)</td></tr>
+<tr class="separator:ab8b24e6660ab3760c923e4b4db3fa502"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e4b9328744994b9d3878f5dad75c09f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a9e4b9328744994b9d3878f5dad75c09f">list_for_each_safe</a>(pos,  n,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)&#160;&#160;&#160;    for (pos = (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>, n = pos-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>; !list_is_head(pos, (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)); pos = n, n = pos-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>)</td></tr>
+<tr class="separator:a9e4b9328744994b9d3878f5dad75c09f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a7fee1b71cb0d1671c6e013da9b0f79aa" name="a7fee1b71cb0d1671c6e013da9b0f79aa"></a>
@@ -102,6 +110,136 @@ Macros</h2></td></tr>
           <td class="paramtype">&#160;</td>
           <td class="paramname">__NAME</td><td>)</td>
           <td>&#160;&#160;&#160;struct <a class="el" href="structlist__head.html">list_head</a> __NAME = <a class="el" href="list_8h.html#a7fee1b71cb0d1671c6e013da9b0f79aa">LIST_HEAD_INIT</a>(__NAME)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a26c976b7f654e70df318c1843e5094de" name="a26c976b7f654e70df318c1843e5094de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26c976b7f654e70df318c1843e5094de">&#9670;&#160;</a></span>list_entry</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_entry</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ptr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="____type_8h.html#a442ac2279048a3241a8fa5b363e920e4">container_of</a>(ptr, <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, member)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a29b80cf9d55392a4949d2071b7db4d5c" name="a29b80cf9d55392a4949d2071b7db4d5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29b80cf9d55392a4949d2071b7db4d5c">&#9670;&#160;</a></span>list_first_entry</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_first_entry</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ptr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>((ptr)-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>, <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, member)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8b24e6660ab3760c923e4b4db3fa502" name="ab8b24e6660ab3760c923e4b4db3fa502"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8b24e6660ab3760c923e4b4db3fa502">&#9670;&#160;</a></span>list_for_each</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;for (pos = (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>; !list_is_head(pos, (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)); pos = pos-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9e4b9328744994b9d3878f5dad75c09f" name="a9e4b9328744994b9d3878f5dad75c09f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e4b9328744994b9d3878f5dad75c09f">&#9670;&#160;</a></span>list_for_each_safe</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each_safe</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    for (pos = (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>, n = pos-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>; !list_is_head(pos, (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)); pos = n, n = pos-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
