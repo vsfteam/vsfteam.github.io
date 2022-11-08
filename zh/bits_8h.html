@@ -63,7 +63,9 @@
 <tr class="separator:ac83e707aceec3d7b37f2cb25fa2faa05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a028b2d0599efe806767719756b334d53"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8h.html#a028b2d0599efe806767719756b334d53">BIT_ULL</a>(__NR)&#160;&#160;&#160;(1ULL &lt;&lt; (__NR))</td></tr>
 <tr class="separator:a028b2d0599efe806767719756b334d53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b317028869b99d8b2f3ad45a1f05de8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8h.html#a0b317028869b99d8b2f3ad45a1f05de8">GENMASK</a>(__H,  __L)&#160;&#160;&#160;(1ULL &lt;&lt; ((__H) + 1)) - (1ULL &lt;&lt; ((__L) + 1))</td></tr>
+<tr class="memitem:a2f660aa23a5dbc0f4b8df48b4302b8c3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8h.html#a2f660aa23a5dbc0f4b8df48b4302b8c3">BITS_PER_LONG</a>&#160;&#160;&#160;(sizeof(long) &lt;&lt; 3)</td></tr>
+<tr class="separator:a2f660aa23a5dbc0f4b8df48b4302b8c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b317028869b99d8b2f3ad45a1f05de8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8h.html#a0b317028869b99d8b2f3ad45a1f05de8">GENMASK</a>(__H,  __L)&#160;&#160;&#160;(((~0UL) &lt;&lt; (__L)) &amp; (~0UL &gt;&gt; (<a class="el" href="bits_8h.html#a2f660aa23a5dbc0f4b8df48b4302b8c3">BITS_PER_LONG</a> - 1 - (__H))))</td></tr>
 <tr class="separator:a0b317028869b99d8b2f3ad45a1f05de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">宏定义说明</h2>
@@ -103,6 +105,20 @@
 
 </div>
 </div>
+<a id="a2f660aa23a5dbc0f4b8df48b4302b8c3" name="a2f660aa23a5dbc0f4b8df48b4302b8c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f660aa23a5dbc0f4b8df48b4302b8c3">&#9670;&#160;</a></span>BITS_PER_LONG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BITS_PER_LONG&#160;&#160;&#160;(sizeof(long) &lt;&lt; 3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a0b317028869b99d8b2f3ad45a1f05de8" name="a0b317028869b99d8b2f3ad45a1f05de8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0b317028869b99d8b2f3ad45a1f05de8">&#9670;&#160;</a></span>GENMASK</h2>
 
@@ -124,7 +140,7 @@
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(1ULL &lt;&lt; ((__H) + 1)) - (1ULL &lt;&lt; ((__L) + 1))</td>
+          <td></td><td>&#160;&#160;&#160;(((~0UL) &lt;&lt; (__L)) &amp; (~0UL &gt;&gt; (<a class="el" href="bits_8h.html#a2f660aa23a5dbc0f4b8df48b4302b8c3">BITS_PER_LONG</a> - 1 - (__H))))</td>
         </tr>
       </table>
 </div><div class="memdoc">
