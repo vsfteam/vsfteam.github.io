@@ -51,6 +51,7 @@
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
 <a href="#func-members">函数</a>  </div>
   <div class="headertitle"><div class="title">driver.h 文件参考</div></div>
 </div><!--header-->
@@ -67,6 +68,13 @@
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdevice__driver.html">device_driver</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a058540a502a11aeb42422b45d1aa16cc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_2sys_2linux_2include_2linux_2device_2driver_8h.html#a058540a502a11aeb42422b45d1aa16cc">module_driver</a>(__driver,  __register,  __unregister, ...)</td></tr>
+<tr class="separator:a058540a502a11aeb42422b45d1aa16cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29772bb27479c9ff5ebac724b221431b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_2sys_2linux_2include_2linux_2device_2driver_8h.html#a29772bb27479c9ff5ebac724b221431b">module_driver_init</a>(__driver)</td></tr>
+<tr class="separator:a29772bb27479c9ff5ebac724b221431b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 函数</h2></td></tr>
 <tr class="memitem:aec41171cefd012217d687445fad9123d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_2sys_2linux_2include_2linux_2device_2driver_8h.html#aec41171cefd012217d687445fad9123d">driver_register</a> (struct <a class="el" href="structdevice__driver.html">device_driver</a> *drv)</td></tr>
@@ -74,6 +82,80 @@
 <tr class="memitem:a3822ce2fc7c65056e69193942497659e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_2sys_2linux_2include_2linux_2device_2driver_8h.html#a3822ce2fc7c65056e69193942497659e">driver_unregister</a> (struct <a class="el" href="structdevice__driver.html">device_driver</a> *drv)</td></tr>
 <tr class="separator:a3822ce2fc7c65056e69193942497659e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a058540a502a11aeb42422b45d1aa16cc" name="a058540a502a11aeb42422b45d1aa16cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a058540a502a11aeb42422b45d1aa16cc">&#9670;&#160;</a></span>module_driver</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define module_driver</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__driver, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__register, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__unregister, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_define" href="module_8h.html#aca8f1e05ca62886e6d99e8dc006e5500">__init</a> __driver##_init(<span class="keywordtype">void</span>)                                               \</div>
+<div class="line">{                                                                               \</div>
+<div class="line">    __register(&amp;(__driver) , ##__VA_ARGS__);                                    \</div>
+<div class="line">}                                                                               \</div>
+<div class="line">module_init(__driver##_init);                                                   \</div>
+<div class="line"><span class="keywordtype">void</span> <a class="code hl_define" href="module_8h.html#a98997f8af097472ccf19534c24cb4a24">__exit</a> __driver##<a class="code hl_function" href="stdlib_8h.html#abc96bd69b58b2deaddb484478d911c1b">_exit</a>(<span class="keywordtype">void</span>)                                               \</div>
+<div class="line">{                                                                               \</div>
+<div class="line">    __unregister(&amp;(__driver) , ##__VA_ARGS__);                                  \</div>
+<div class="line">}                                                                               \</div>
+<div class="line">module_exit(__driver##<a class="code hl_function" href="stdlib_8h.html#abc96bd69b58b2deaddb484478d911c1b">_exit</a>);</div>
+<div class="ttc" id="amodule_8h_html_a98997f8af097472ccf19534c24cb4a24"><div class="ttname"><a href="module_8h.html#a98997f8af097472ccf19534c24cb4a24">__exit</a></div><div class="ttdeci">#define __exit</div><div class="ttdef"><b>Definition:</b> module.h:14</div></div>
+<div class="ttc" id="amodule_8h_html_aca8f1e05ca62886e6d99e8dc006e5500"><div class="ttname"><a href="module_8h.html#aca8f1e05ca62886e6d99e8dc006e5500">__init</a></div><div class="ttdeci">#define __init</div><div class="ttdef"><b>Definition:</b> module.h:11</div></div>
+<div class="ttc" id="astdlib_8h_html_abc96bd69b58b2deaddb484478d911c1b"><div class="ttname"><a href="stdlib_8h.html#abc96bd69b58b2deaddb484478d911c1b">_exit</a></div><div class="ttdeci">void _exit(int status)</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a29772bb27479c9ff5ebac724b221431b" name="a29772bb27479c9ff5ebac724b221431b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29772bb27479c9ff5ebac724b221431b">&#9670;&#160;</a></span>module_driver_init</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define module_driver_init</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__driver</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line"><span class="keyword">extern</span> <span class="keywordtype">int</span> __driver##_init(<span class="keywordtype">void</span>);                                               \</div>
+<div class="line">__driver##_init()</div>
+</div><!-- fragment -->
+</div>
+</div>
 <h2 class="groupheader">函数说明</h2>
 <a id="aec41171cefd012217d687445fad9123d" name="aec41171cefd012217d687445fad9123d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aec41171cefd012217d687445fad9123d">&#9670;&#160;</a></span>driver_register()</h2>
