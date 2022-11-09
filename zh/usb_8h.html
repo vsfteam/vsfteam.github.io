@@ -159,7 +159,7 @@
 <tr class="separator:aeee254796667ebf5d6caaf327a0feed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b0bcb7de1e12f4efc4a101b3ecb0a20"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a4b0bcb7de1e12f4efc4a101b3ecb0a20">PIPE_BULK</a>&#160;&#160;&#160;<a class="el" href="usb__common_8h.html#a9fe3555e2438dddbb6cae3d657aa558ea3c6736c11d93a67e7b97b75b98dd5841">USB_ENDPOINT_XFER_BULK</a></td></tr>
 <tr class="separator:a4b0bcb7de1e12f4efc4a101b3ecb0a20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71cb9ac2a2543cc02fb5189d97544837"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a71cb9ac2a2543cc02fb5189d97544837">usb_pipein</a>(__pipe)&#160;&#160;&#160;(((<a class="el" href="unionvk__usbh__pipe__flag__t.html">vk_usbh_pipe_flag_t</a>)(__pipe)).dir_in1out0)</td></tr>
+<tr class="memitem:a71cb9ac2a2543cc02fb5189d97544837"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#a71cb9ac2a2543cc02fb5189d97544837">usb_pipein</a>(__pipe)</td></tr>
 <tr class="separator:a71cb9ac2a2543cc02fb5189d97544837"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad81832c5b61260e48635308836acdccf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb_8h.html#ad81832c5b61260e48635308836acdccf">usb_pipeout</a>(__pipe)&#160;&#160;&#160;(!<a class="el" href="usb_8h.html#a71cb9ac2a2543cc02fb5189d97544837">usb_pipein</a>(__pipe))</td></tr>
 <tr class="separator:ad81832c5b61260e48635308836acdccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -794,11 +794,19 @@
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">__pipe</td><td>)</td>
-          <td>&#160;&#160;&#160;(((<a class="el" href="unionvk__usbh__pipe__flag__t.html">vk_usbh_pipe_flag_t</a>)(__pipe)).dir_in1out0)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>值:</b><div class="fragment"><div class="line">            ({                                          \</div>
+<div class="line">            <a class="code hl_union" href="unionvk__usbh__pipe__flag__t.html">vk_usbh_pipe_flag_t</a> flag;                                           \</div>
+<div class="line">            flag.<a class="code hl_variable" href="unionvk__usbh__pipe__flag__t.html#a61f32e6c7cfc75905e0d2548c824d268">value</a> = (__pipe);                                              \</div>
+<div class="line">            flag.<a class="code hl_variable" href="unionvk__usbh__pipe__flag__t.html#ab775b653f661d05c4f3ef732d56d993e">dir_in1out0</a>;                                                   \</div>
+<div class="line">        })</div>
+<div class="ttc" id="aunionvk__usbh__pipe__flag__t_html"><div class="ttname"><a href="unionvk__usbh__pipe__flag__t.html">vk_usbh_pipe_flag_t</a></div><div class="ttdef"><b>Definition:</b> vsf_usbh.h:282</div></div>
+<div class="ttc" id="aunionvk__usbh__pipe__flag__t_html_a61f32e6c7cfc75905e0d2548c824d268"><div class="ttname"><a href="unionvk__usbh__pipe__flag__t.html#a61f32e6c7cfc75905e0d2548c824d268">vk_usbh_pipe_flag_t::value</a></div><div class="ttdeci">uint32_t value</div><div class="ttdef"><b>Definition:</b> vsf_usbh.h:294</div></div>
+<div class="ttc" id="aunionvk__usbh__pipe__flag__t_html_ab775b653f661d05c4f3ef732d56d993e"><div class="ttname"><a href="unionvk__usbh__pipe__flag__t.html#ab775b653f661d05c4f3ef732d56d993e">vk_usbh_pipe_flag_t::dir_in1out0</a></div><div class="ttdeci">uint32_t dir_in1out0</div><div class="ttdef"><b>Definition:</b> vsf_usbh.h:290</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad81832c5b61260e48635308836acdccf" name="ad81832c5b61260e48635308836acdccf"></a>
@@ -839,8 +847,6 @@
 <div class="line">            flag.<a class="code hl_variable" href="unionvk__usbh__pipe__flag__t.html#a61f32e6c7cfc75905e0d2548c824d268">value</a> = (__pipe);                                              \</div>
 <div class="line">            flag.<a class="code hl_variable" href="unionvk__usbh__pipe__flag__t.html#ae4a650262ebe5fedacdf3fbf1c97bbed">address</a>;                                                       \</div>
 <div class="line">        })</div>
-<div class="ttc" id="aunionvk__usbh__pipe__flag__t_html"><div class="ttname"><a href="unionvk__usbh__pipe__flag__t.html">vk_usbh_pipe_flag_t</a></div><div class="ttdef"><b>Definition:</b> vsf_usbh.h:282</div></div>
-<div class="ttc" id="aunionvk__usbh__pipe__flag__t_html_a61f32e6c7cfc75905e0d2548c824d268"><div class="ttname"><a href="unionvk__usbh__pipe__flag__t.html#a61f32e6c7cfc75905e0d2548c824d268">vk_usbh_pipe_flag_t::value</a></div><div class="ttdeci">uint32_t value</div><div class="ttdef"><b>Definition:</b> vsf_usbh.h:294</div></div>
 <div class="ttc" id="aunionvk__usbh__pipe__flag__t_html_ae4a650262ebe5fedacdf3fbf1c97bbed"><div class="ttname"><a href="unionvk__usbh__pipe__flag__t.html#ae4a650262ebe5fedacdf3fbf1c97bbed">vk_usbh_pipe_flag_t::address</a></div><div class="ttdeci">uint32_t address</div><div class="ttdef"><b>Definition:</b> vsf_usbh.h:289</div></div>
 </div><!-- fragment -->
 </div>
