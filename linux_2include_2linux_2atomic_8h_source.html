@@ -55,37 +55,41 @@
 <a href="linux_2include_2linux_2atomic_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef __VSF_LINUX_ATOMIC_H__</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __VSF_LINUX_ATOMIC_H__</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="structatomic__t.html">    8</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="structatomic__t.html#a020ccc869804eafc5ef2e62c3cf63a36">    9</a></span>    <span class="keyword">volatile</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structatomic__t.html#a020ccc869804eafc5ef2e62c3cf63a36">counter</a>;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>} <a class="code hl_struct" href="structatomic__t.html">atomic_t</a>;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="linux_2include_2linux_2atomic_8h.html#a958f85bbd95de8858de95790a49a5138">   11</a></span><span class="preprocessor">#define ATOMIC_INIT(__VALUE)            { (__VALUE) }</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> atomic_read(<span class="keyword">const</span> <a class="code hl_struct" href="structatomic__t.html">atomic_t</a> *a)</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordflow">return</span> a-&gt;<a class="code hl_variable" href="structatomic__t.html#a020ccc869804eafc5ef2e62c3cf63a36">counter</a>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> atomic_set(<a class="code hl_struct" href="structatomic__t.html">atomic_t</a> *a, <span class="keywordtype">int</span> v)</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    a-&gt;<a class="code hl_variable" href="structatomic__t.html#a020ccc869804eafc5ef2e62c3cf63a36">counter</a> = v;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="linux_2include_2linux_2atomic_8h.html#a2ee495fd93ad487d2cde52e889cfa832">atomic_inc</a>(<a class="code hl_struct" href="structatomic__t.html">atomic_t</a> *a);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code hl_function" href="linux_2include_2linux_2atomic_8h.html#a869b928852b1d6dda3506f2eab37ff2b">atomic_dec_and_test</a>(<a class="code hl_struct" href="structatomic__t.html">atomic_t</a> *a);</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// for uintalu_t</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;hal/arch/vsf_arch.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="structatomic__t.html">   11</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structatomic__t.html#ae26cee7002c0a85cc93c33d9a1af4cfa">   12</a></span>    <span class="keyword">volatile</span> <a class="code hl_typedef" href="arm_2type_8h.html#ac8e3d6f27cb089386219c1a817170c3d">uintalu_t</a> <a class="code hl_variable" href="structatomic__t.html#ae26cee7002c0a85cc93c33d9a1af4cfa">counter</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>} <a class="code hl_struct" href="structatomic__t.html">atomic_t</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="linux_2include_2linux_2atomic_8h.html#a958f85bbd95de8858de95790a49a5138">   14</a></span><span class="preprocessor">#define ATOMIC_INIT(__VALUE)            { (__VALUE) }</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> atomic_read(<span class="keyword">const</span> <a class="code hl_struct" href="structatomic__t.html">atomic_t</a> *a)</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordflow">return</span> a-&gt;<a class="code hl_variable" href="structatomic__t.html#ae26cee7002c0a85cc93c33d9a1af4cfa">counter</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>}</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> atomic_set(<a class="code hl_struct" href="structatomic__t.html">atomic_t</a> *a, <span class="keywordtype">int</span> v)</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    a-&gt;<a class="code hl_variable" href="structatomic__t.html#ae26cee7002c0a85cc93c33d9a1af4cfa">counter</a> = v;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="linux_2include_2linux_2atomic_8h.html#a2ee495fd93ad487d2cde52e889cfa832">atomic_inc</a>(<a class="code hl_struct" href="structatomic__t.html">atomic_t</a> *a);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code hl_function" href="linux_2include_2linux_2atomic_8h.html#a869b928852b1d6dda3506f2eab37ff2b">atomic_dec_and_test</a>(<a class="code hl_struct" href="structatomic__t.html">atomic_t</a> *a);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aarm_2type_8h_html_ac8e3d6f27cb089386219c1a817170c3d"><div class="ttname"><a href="arm_2type_8h.html#ac8e3d6f27cb089386219c1a817170c3d">uintalu_t</a></div><div class="ttdeci">uint_fast8_t uintalu_t</div><div class="ttdef"><b>Definition:</b> type.h:82</div></div>
 <div class="ttc" id="alinux_2include_2linux_2atomic_8h_html_a2ee495fd93ad487d2cde52e889cfa832"><div class="ttname"><a href="linux_2include_2linux_2atomic_8h.html#a2ee495fd93ad487d2cde52e889cfa832">atomic_inc</a></div><div class="ttdeci">void atomic_inc(atomic_t *a)</div><div class="ttdef"><b>Definition:</b> vsf_linux_core.c:55</div></div>
 <div class="ttc" id="alinux_2include_2linux_2atomic_8h_html_a869b928852b1d6dda3506f2eab37ff2b"><div class="ttname"><a href="linux_2include_2linux_2atomic_8h.html#a869b928852b1d6dda3506f2eab37ff2b">atomic_dec_and_test</a></div><div class="ttdeci">int atomic_dec_and_test(atomic_t *a)</div><div class="ttdef"><b>Definition:</b> vsf_linux_core.c:63</div></div>
-<div class="ttc" id="astructatomic__t_html"><div class="ttname"><a href="structatomic__t.html">atomic_t</a></div><div class="ttdef"><b>Definition:</b> atomic.h:8</div></div>
-<div class="ttc" id="astructatomic__t_html_a020ccc869804eafc5ef2e62c3cf63a36"><div class="ttname"><a href="structatomic__t.html#a020ccc869804eafc5ef2e62c3cf63a36">atomic_t::counter</a></div><div class="ttdeci">volatile int counter</div><div class="ttdef"><b>Definition:</b> atomic.h:9</div></div>
+<div class="ttc" id="astructatomic__t_html"><div class="ttname"><a href="structatomic__t.html">atomic_t</a></div><div class="ttdef"><b>Definition:</b> atomic.h:11</div></div>
+<div class="ttc" id="astructatomic__t_html_ae26cee7002c0a85cc93c33d9a1af4cfa"><div class="ttname"><a href="structatomic__t.html#ae26cee7002c0a85cc93c33d9a1af4cfa">atomic_t::counter</a></div><div class="ttdeci">volatile uintalu_t counter</div><div class="ttdef"><b>Definition:</b> atomic.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
