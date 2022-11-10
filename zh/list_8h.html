@@ -74,10 +74,52 @@
 <tr class="separator:a26c976b7f654e70df318c1843e5094de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29b80cf9d55392a4949d2071b7db4d5c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a29b80cf9d55392a4949d2071b7db4d5c">list_first_entry</a>(ptr,  <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>,  member)&#160;&#160;&#160;<a class="el" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>((ptr)-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>, <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, member)</td></tr>
 <tr class="separator:a29b80cf9d55392a4949d2071b7db4d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d4aa6766f2ceda84f6b833d40ce97a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a7d4aa6766f2ceda84f6b833d40ce97a6">list_last_entry</a>(ptr,  <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>,  member)&#160;&#160;&#160;<a class="el" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>((ptr)-&gt;prev, <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, member)</td></tr>
+<tr class="separator:a7d4aa6766f2ceda84f6b833d40ce97a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5a7bbc278609c0fee4536eeeaa1afab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a>(pos,  member)&#160;&#160;&#160;<a class="el" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>((pos)-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">member.next</a>, typeof(*(pos)), member)</td></tr>
+<tr class="separator:ad5a7bbc278609c0fee4536eeeaa1afab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa28bcd3dc5d3b68fc90cf8d184ad6db1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#aa28bcd3dc5d3b68fc90cf8d184ad6db1">list_next_entry_circular</a>(pos,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>,  member)&#160;&#160;&#160;    (list_is_last(&amp;(pos)-&gt;member, <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>) ? <a class="el" href="list_8h.html#a29b80cf9d55392a4949d2071b7db4d5c">list_first_entry</a>(<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, typeof(*(pos)), member) : <a class="el" href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a>(pos, member))</td></tr>
+<tr class="separator:aa28bcd3dc5d3b68fc90cf8d184ad6db1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9130468440cee8613eea994b4c737b6c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a9130468440cee8613eea994b4c737b6c">list_prev_entry</a>(pos,  member)&#160;&#160;&#160;<a class="el" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>((pos)-&gt;member.prev, typeof(*(pos)), member)</td></tr>
+<tr class="separator:a9130468440cee8613eea994b4c737b6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdf84bcbecf513b366693599c3c83285"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#afdf84bcbecf513b366693599c3c83285">list_prev_entry_circular</a>(pos,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>,  member)&#160;&#160;&#160;    (list_is_first(&amp;(pos)-&gt;member, <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>) ? <a class="el" href="list_8h.html#a7d4aa6766f2ceda84f6b833d40ce97a6">list_last_entry</a>(<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, typeof(*(pos)), member) : <a class="el" href="list_8h.html#a9130468440cee8613eea994b4c737b6c">list_prev_entry</a>(pos, member))</td></tr>
+<tr class="separator:afdf84bcbecf513b366693599c3c83285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6b018d18f465feee8964831d3c858c2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#ad6b018d18f465feee8964831d3c858c2">list_first_entry_or_null</a>(ptr,  <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>,  member)</td></tr>
+<tr class="separator:ad6b018d18f465feee8964831d3c858c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a419ef9513bf508915b2ae9156e67dd6b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a419ef9513bf508915b2ae9156e67dd6b">list_entry_is_head</a>(pos,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>,  member)&#160;&#160;&#160;(&amp;pos-&gt;member == (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>))</td></tr>
+<tr class="separator:a419ef9513bf508915b2ae9156e67dd6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6fc8bdd3ce7ee375e35baf9d2b2e62a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#af6fc8bdd3ce7ee375e35baf9d2b2e62a">list_prepare_entry</a>(pos,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>,  member)&#160;&#160;&#160;((pos) ? : <a class="el" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>(<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, typeof(*pos), member))</td></tr>
+<tr class="separator:af6fc8bdd3ce7ee375e35baf9d2b2e62a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8b24e6660ab3760c923e4b4db3fa502"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#ab8b24e6660ab3760c923e4b4db3fa502">list_for_each</a>(pos,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)&#160;&#160;&#160;for (pos = (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>; !list_is_head(pos, (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)); pos = pos-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>)</td></tr>
 <tr class="separator:ab8b24e6660ab3760c923e4b4db3fa502"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42c8760863ab7f07270168f7b52352f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a42c8760863ab7f07270168f7b52352f4">list_for_each_continue</a>(pos,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)&#160;&#160;&#160;for (pos = pos-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>; !list_is_head(pos, (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)); pos = pos-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>)</td></tr>
+<tr class="separator:a42c8760863ab7f07270168f7b52352f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19fc06b83f3502a83ce566b8887e6aec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a19fc06b83f3502a83ce566b8887e6aec">list_for_each_prev</a>(pos,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)&#160;&#160;&#160;for (pos = (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)-&gt;prev; !list_is_head(pos, (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)); pos = pos-&gt;prev)</td></tr>
+<tr class="separator:a19fc06b83f3502a83ce566b8887e6aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e4b9328744994b9d3878f5dad75c09f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a9e4b9328744994b9d3878f5dad75c09f">list_for_each_safe</a>(pos,  n,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)&#160;&#160;&#160;    for (pos = (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>, n = pos-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>; !list_is_head(pos, (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)); pos = n, n = pos-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>)</td></tr>
 <tr class="separator:a9e4b9328744994b9d3878f5dad75c09f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4166108f765690426e9d89f02bff7df4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a4166108f765690426e9d89f02bff7df4">list_for_each_prev_safe</a>(pos,  n,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)&#160;&#160;&#160;    for (pos = (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)-&gt;prev, n = pos-&gt;prev; !list_is_head(pos, (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)); pos = n, n = pos-&gt;prev)</td></tr>
+<tr class="separator:a4166108f765690426e9d89f02bff7df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b782fefb5ab71ce9762182e45a615e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a9b782fefb5ab71ce9762182e45a615e1">list_for_each_entry</a>(pos,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>,  member)</td></tr>
+<tr class="separator:a9b782fefb5ab71ce9762182e45a615e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accc8d8e6c8ffe8ce964c5a1b59732cf3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#accc8d8e6c8ffe8ce964c5a1b59732cf3">list_for_each_entry_reverse</a>(pos,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>,  member)</td></tr>
+<tr class="separator:accc8d8e6c8ffe8ce964c5a1b59732cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91b31084b4ece72dbd75d2bb1f01d9ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a91b31084b4ece72dbd75d2bb1f01d9ff">list_for_each_entry_continue</a>(pos,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>,  member)</td></tr>
+<tr class="separator:a91b31084b4ece72dbd75d2bb1f01d9ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1633f5ae3e74918112a8e89ab696bff8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a1633f5ae3e74918112a8e89ab696bff8">list_for_each_entry_continue_reverse</a>(pos,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>,  member)</td></tr>
+<tr class="separator:a1633f5ae3e74918112a8e89ab696bff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35f39924661f4dc908e710e8aee1eff0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a35f39924661f4dc908e710e8aee1eff0">list_for_each_entry_from</a>(pos,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>,  member)&#160;&#160;&#160;    for (; !<a class="el" href="list_8h.html#a419ef9513bf508915b2ae9156e67dd6b">list_entry_is_head</a>(pos, <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, member); pos = <a class="el" href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a>(pos, member))</td></tr>
+<tr class="separator:a35f39924661f4dc908e710e8aee1eff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afac66af4168b581dbca23fdc09f0d69e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#afac66af4168b581dbca23fdc09f0d69e">list_for_each_entry_from_reverse</a>(pos,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>,  member)&#160;&#160;&#160;    for (; !<a class="el" href="list_8h.html#a419ef9513bf508915b2ae9156e67dd6b">list_entry_is_head</a>(pos, <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, member); pos = <a class="el" href="list_8h.html#a9130468440cee8613eea994b4c737b6c">list_prev_entry</a>(pos, member))</td></tr>
+<tr class="separator:afac66af4168b581dbca23fdc09f0d69e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3f72d6bd5144c7970824813810d2da1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#ac3f72d6bd5144c7970824813810d2da1">list_for_each_entry_safe</a>(pos,  n,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>,  member)</td></tr>
+<tr class="separator:ac3f72d6bd5144c7970824813810d2da1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70fb81027ddca24ebb21aa8e70e4b4ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a70fb81027ddca24ebb21aa8e70e4b4ff">list_for_each_entry_safe_continue</a>(pos,  n,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>,  member)</td></tr>
+<tr class="separator:a70fb81027ddca24ebb21aa8e70e4b4ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9eb9a805ba4f3bd2a9d332ad34cb3e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#ab9eb9a805ba4f3bd2a9d332ad34cb3e1">list_for_each_entry_safe_from</a>(pos,  n,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>,  member)</td></tr>
+<tr class="separator:ab9eb9a805ba4f3bd2a9d332ad34cb3e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a3ce0f89762fe2bc0a1d840ee610532"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a3a3ce0f89762fe2bc0a1d840ee610532">list_for_each_entry_safe_reverse</a>(pos,  n,  <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>,  member)</td></tr>
+<tr class="separator:a3a3ce0f89762fe2bc0a1d840ee610532"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">宏定义说明</h2>
 <a id="a7fee1b71cb0d1671c6e013da9b0f79aa" name="a7fee1b71cb0d1671c6e013da9b0f79aa"></a>
@@ -184,6 +226,276 @@
 
 </div>
 </div>
+<a id="a7d4aa6766f2ceda84f6b833d40ce97a6" name="a7d4aa6766f2ceda84f6b833d40ce97a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d4aa6766f2ceda84f6b833d40ce97a6">&#9670;&#160;</a></span>list_last_entry</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_last_entry</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ptr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>((ptr)-&gt;prev, <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, member)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad5a7bbc278609c0fee4536eeeaa1afab" name="ad5a7bbc278609c0fee4536eeeaa1afab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5a7bbc278609c0fee4536eeeaa1afab">&#9670;&#160;</a></span>list_next_entry</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_next_entry</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>((pos)-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">member.next</a>, typeof(*(pos)), member)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa28bcd3dc5d3b68fc90cf8d184ad6db1" name="aa28bcd3dc5d3b68fc90cf8d184ad6db1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa28bcd3dc5d3b68fc90cf8d184ad6db1">&#9670;&#160;</a></span>list_next_entry_circular</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_next_entry_circular</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    (list_is_last(&amp;(pos)-&gt;member, <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>) ? <a class="el" href="list_8h.html#a29b80cf9d55392a4949d2071b7db4d5c">list_first_entry</a>(<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, typeof(*(pos)), member) : <a class="el" href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a>(pos, member))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9130468440cee8613eea994b4c737b6c" name="a9130468440cee8613eea994b4c737b6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9130468440cee8613eea994b4c737b6c">&#9670;&#160;</a></span>list_prev_entry</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_prev_entry</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>((pos)-&gt;member.prev, typeof(*(pos)), member)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afdf84bcbecf513b366693599c3c83285" name="afdf84bcbecf513b366693599c3c83285"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdf84bcbecf513b366693599c3c83285">&#9670;&#160;</a></span>list_prev_entry_circular</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_prev_entry_circular</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    (list_is_first(&amp;(pos)-&gt;member, <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>) ? <a class="el" href="list_8h.html#a7d4aa6766f2ceda84f6b833d40ce97a6">list_last_entry</a>(<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, typeof(*(pos)), member) : <a class="el" href="list_8h.html#a9130468440cee8613eea994b4c737b6c">list_prev_entry</a>(pos, member))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6b018d18f465feee8964831d3c858c2" name="ad6b018d18f465feee8964831d3c858c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6b018d18f465feee8964831d3c858c2">&#9670;&#160;</a></span>list_first_entry_or_null</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_first_entry_or_null</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ptr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    ({                          \</div>
+<div class="line">    <span class="keyword">struct </span><a class="code hl_struct" href="structlist__head.html">list_head</a> *head__ = (ptr);                                           \</div>
+<div class="line">    <span class="keyword">struct </span><a class="code hl_struct" href="structlist__head.html">list_head</a> *pos__ = READ_ONCE(head__-&gt;<a class="code hl_variable" href="structlist__head.html#ac3b0ff0dfb978a0cfbdad6b9d19cdcfe">next</a>);                          \</div>
+<div class="line">    pos__ != head__ ? <a class="code hl_define" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>(pos__, <a class="code hl_variable" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, member) : <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;                   \</div>
+<div class="line">})</div>
+<div class="ttc" id="alinux_2include_2simple__libc_2stddef_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition:</b> stddef.h:44</div></div>
+<div class="ttc" id="alist_8h_html_a26c976b7f654e70df318c1843e5094de"><div class="ttname"><a href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a></div><div class="ttdeci">#define list_entry(ptr, type, member)</div><div class="ttdef"><b>Definition:</b> list.h:13</div></div>
+<div class="ttc" id="astructlist__head_html"><div class="ttname"><a href="structlist__head.html">list_head</a></div><div class="ttdef"><b>Definition:</b> list.h:77</div></div>
+<div class="ttc" id="astructlist__head_html_ac3b0ff0dfb978a0cfbdad6b9d19cdcfe"><div class="ttname"><a href="structlist__head.html#ac3b0ff0dfb978a0cfbdad6b9d19cdcfe">list_head::next</a></div><div class="ttdeci">struct list_head * next</div><div class="ttdef"><b>Definition:</b> list.h:78</div></div>
+<div class="ttc" id="avsf__audio_8h_html_ad64e18f867699b8e854388de816016af"><div class="ttname"><a href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a></div><div class="ttdeci">vk_av_control_type_t type</div><div class="ttdef"><b>Definition:</b> vsf_audio.h:145</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a419ef9513bf508915b2ae9156e67dd6b" name="a419ef9513bf508915b2ae9156e67dd6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a419ef9513bf508915b2ae9156e67dd6b">&#9670;&#160;</a></span>list_entry_is_head</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_entry_is_head</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(&amp;pos-&gt;member == (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af6fc8bdd3ce7ee375e35baf9d2b2e62a" name="af6fc8bdd3ce7ee375e35baf9d2b2e62a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6fc8bdd3ce7ee375e35baf9d2b2e62a">&#9670;&#160;</a></span>list_prepare_entry</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_prepare_entry</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;((pos) ? : <a class="el" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>(<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, typeof(*pos), member))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ab8b24e6660ab3760c923e4b4db3fa502" name="ab8b24e6660ab3760c923e4b4db3fa502"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab8b24e6660ab3760c923e4b4db3fa502">&#9670;&#160;</a></span>list_for_each</h2>
 
@@ -206,6 +518,62 @@
           <td></td>
           <td>)</td>
           <td></td><td>&#160;&#160;&#160;for (pos = (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>; !list_is_head(pos, (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)); pos = pos-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42c8760863ab7f07270168f7b52352f4" name="a42c8760863ab7f07270168f7b52352f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42c8760863ab7f07270168f7b52352f4">&#9670;&#160;</a></span>list_for_each_continue</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each_continue</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;for (pos = pos-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>; !list_is_head(pos, (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)); pos = pos-&gt;<a class="el" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a19fc06b83f3502a83ce566b8887e6aec" name="a19fc06b83f3502a83ce566b8887e6aec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19fc06b83f3502a83ce566b8887e6aec">&#9670;&#160;</a></span>list_for_each_prev</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each_prev</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;for (pos = (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)-&gt;prev; !list_is_head(pos, (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)); pos = pos-&gt;prev)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -244,6 +612,436 @@
       </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<a id="a4166108f765690426e9d89f02bff7df4" name="a4166108f765690426e9d89f02bff7df4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4166108f765690426e9d89f02bff7df4">&#9670;&#160;</a></span>list_for_each_prev_safe</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each_prev_safe</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    for (pos = (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)-&gt;prev, n = pos-&gt;prev; !list_is_head(pos, (<a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>)); pos = n, n = pos-&gt;prev)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9b782fefb5ab71ce9762182e45a615e1" name="a9b782fefb5ab71ce9762182e45a615e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b782fefb5ab71ce9762182e45a615e1">&#9670;&#160;</a></span>list_for_each_entry</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each_entry</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">for</span> (pos = <a class="code hl_define" href="list_8h.html#a29b80cf9d55392a4949d2071b7db4d5c">list_first_entry</a>(<a class="code hl_variable" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, typeof(*pos), member);                    \</div>
+<div class="line">        !<a class="code hl_define" href="list_8h.html#a419ef9513bf508915b2ae9156e67dd6b">list_entry_is_head</a>(pos, <a class="code hl_variable" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, member);                                 \</div>
+<div class="line">        pos = <a class="code hl_define" href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a>(pos, member))</div>
+<div class="ttc" id="alist_8h_html_a29b80cf9d55392a4949d2071b7db4d5c"><div class="ttname"><a href="list_8h.html#a29b80cf9d55392a4949d2071b7db4d5c">list_first_entry</a></div><div class="ttdeci">#define list_first_entry(ptr, type, member)</div><div class="ttdef"><b>Definition:</b> list.h:14</div></div>
+<div class="ttc" id="alist_8h_html_a419ef9513bf508915b2ae9156e67dd6b"><div class="ttname"><a href="list_8h.html#a419ef9513bf508915b2ae9156e67dd6b">list_entry_is_head</a></div><div class="ttdeci">#define list_entry_is_head(pos, head, member)</div><div class="ttdef"><b>Definition:</b> list.h:27</div></div>
+<div class="ttc" id="alist_8h_html_ad5a7bbc278609c0fee4536eeeaa1afab"><div class="ttname"><a href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a></div><div class="ttdeci">#define list_next_entry(pos, member)</div><div class="ttdef"><b>Definition:</b> list.h:16</div></div>
+<div class="ttc" id="avsf__queue_8h_html_ae0411d119b6e19281b04bbe57cc854bc"><div class="ttname"><a href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a></div><div class="ttdeci">uint16_t head</div><div class="ttdef"><b>Definition:</b> vsf_queue.h:632</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="accc8d8e6c8ffe8ce964c5a1b59732cf3" name="accc8d8e6c8ffe8ce964c5a1b59732cf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accc8d8e6c8ffe8ce964c5a1b59732cf3">&#9670;&#160;</a></span>list_for_each_entry_reverse</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each_entry_reverse</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">for</span> (pos = <a class="code hl_define" href="list_8h.html#a7d4aa6766f2ceda84f6b833d40ce97a6">list_last_entry</a>(<a class="code hl_variable" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, typeof(*pos), member);                     \</div>
+<div class="line">        !<a class="code hl_define" href="list_8h.html#a419ef9513bf508915b2ae9156e67dd6b">list_entry_is_head</a>(pos, <a class="code hl_variable" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, member);                                 \</div>
+<div class="line">        pos = <a class="code hl_define" href="list_8h.html#a9130468440cee8613eea994b4c737b6c">list_prev_entry</a>(pos, member))</div>
+<div class="ttc" id="alist_8h_html_a7d4aa6766f2ceda84f6b833d40ce97a6"><div class="ttname"><a href="list_8h.html#a7d4aa6766f2ceda84f6b833d40ce97a6">list_last_entry</a></div><div class="ttdeci">#define list_last_entry(ptr, type, member)</div><div class="ttdef"><b>Definition:</b> list.h:15</div></div>
+<div class="ttc" id="alist_8h_html_a9130468440cee8613eea994b4c737b6c"><div class="ttname"><a href="list_8h.html#a9130468440cee8613eea994b4c737b6c">list_prev_entry</a></div><div class="ttdeci">#define list_prev_entry(pos, member)</div><div class="ttdef"><b>Definition:</b> list.h:19</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a91b31084b4ece72dbd75d2bb1f01d9ff" name="a91b31084b4ece72dbd75d2bb1f01d9ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91b31084b4ece72dbd75d2bb1f01d9ff">&#9670;&#160;</a></span>list_for_each_entry_continue</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each_entry_continue</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">for</span> (pos = <a class="code hl_define" href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a>(pos, member);                                    \</div>
+<div class="line">        !<a class="code hl_define" href="list_8h.html#a419ef9513bf508915b2ae9156e67dd6b">list_entry_is_head</a>(pos, <a class="code hl_variable" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, member);                                 \</div>
+<div class="line">        pos = <a class="code hl_define" href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a>(pos, member))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1633f5ae3e74918112a8e89ab696bff8" name="a1633f5ae3e74918112a8e89ab696bff8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1633f5ae3e74918112a8e89ab696bff8">&#9670;&#160;</a></span>list_for_each_entry_continue_reverse</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each_entry_continue_reverse</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">for</span> (pos = <a class="code hl_define" href="list_8h.html#a9130468440cee8613eea994b4c737b6c">list_prev_entry</a>(pos, member);                                    \</div>
+<div class="line">        !<a class="code hl_define" href="list_8h.html#a419ef9513bf508915b2ae9156e67dd6b">list_entry_is_head</a>(pos, <a class="code hl_variable" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, member);                                 \</div>
+<div class="line">        pos = <a class="code hl_define" href="list_8h.html#a9130468440cee8613eea994b4c737b6c">list_prev_entry</a>(pos, member))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a35f39924661f4dc908e710e8aee1eff0" name="a35f39924661f4dc908e710e8aee1eff0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35f39924661f4dc908e710e8aee1eff0">&#9670;&#160;</a></span>list_for_each_entry_from</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each_entry_from</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    for (; !<a class="el" href="list_8h.html#a419ef9513bf508915b2ae9156e67dd6b">list_entry_is_head</a>(pos, <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, member); pos = <a class="el" href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a>(pos, member))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afac66af4168b581dbca23fdc09f0d69e" name="afac66af4168b581dbca23fdc09f0d69e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afac66af4168b581dbca23fdc09f0d69e">&#9670;&#160;</a></span>list_for_each_entry_from_reverse</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each_entry_from_reverse</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    for (; !<a class="el" href="list_8h.html#a419ef9513bf508915b2ae9156e67dd6b">list_entry_is_head</a>(pos, <a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, member); pos = <a class="el" href="list_8h.html#a9130468440cee8613eea994b4c737b6c">list_prev_entry</a>(pos, member))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3f72d6bd5144c7970824813810d2da1" name="ac3f72d6bd5144c7970824813810d2da1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3f72d6bd5144c7970824813810d2da1">&#9670;&#160;</a></span>list_for_each_entry_safe</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each_entry_safe</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">for</span> (pos = <a class="code hl_define" href="list_8h.html#a29b80cf9d55392a4949d2071b7db4d5c">list_first_entry</a>(<a class="code hl_variable" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, typeof(*pos), member),                    \</div>
+<div class="line">            n = <a class="code hl_define" href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a>(pos, member);                                   \</div>
+<div class="line">        !<a class="code hl_define" href="list_8h.html#a419ef9513bf508915b2ae9156e67dd6b">list_entry_is_head</a>(pos, <a class="code hl_variable" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, member);                                 \</div>
+<div class="line">        pos = n, n = <a class="code hl_define" href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a>(n, member))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a70fb81027ddca24ebb21aa8e70e4b4ff" name="a70fb81027ddca24ebb21aa8e70e4b4ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70fb81027ddca24ebb21aa8e70e4b4ff">&#9670;&#160;</a></span>list_for_each_entry_safe_continue</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each_entry_safe_continue</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">for</span> (pos = <a class="code hl_define" href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a>(pos, member), n = <a class="code hl_define" href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a>(pos, member);  \</div>
+<div class="line">        !<a class="code hl_define" href="list_8h.html#a419ef9513bf508915b2ae9156e67dd6b">list_entry_is_head</a>(pos, <a class="code hl_variable" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, member);                                 \</div>
+<div class="line">        pos = n, n = <a class="code hl_define" href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a>(n, member))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab9eb9a805ba4f3bd2a9d332ad34cb3e1" name="ab9eb9a805ba4f3bd2a9d332ad34cb3e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9eb9a805ba4f3bd2a9d332ad34cb3e1">&#9670;&#160;</a></span>list_for_each_entry_safe_from</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each_entry_safe_from</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">for</span> (n = <a class="code hl_define" href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a>(pos, member);                                      \</div>
+<div class="line">        !<a class="code hl_define" href="list_8h.html#a419ef9513bf508915b2ae9156e67dd6b">list_entry_is_head</a>(pos, <a class="code hl_variable" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, member);                                 \</div>
+<div class="line">        pos = n, n = <a class="code hl_define" href="list_8h.html#ad5a7bbc278609c0fee4536eeeaa1afab">list_next_entry</a>(n, member))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3a3ce0f89762fe2bc0a1d840ee610532" name="a3a3ce0f89762fe2bc0a1d840ee610532"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a3ce0f89762fe2bc0a1d840ee610532">&#9670;&#160;</a></span>list_for_each_entry_safe_reverse</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each_entry_safe_reverse</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">for</span> (pos = <a class="code hl_define" href="list_8h.html#a7d4aa6766f2ceda84f6b833d40ce97a6">list_last_entry</a>(<a class="code hl_variable" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, typeof(*pos), member),                     \</div>
+<div class="line">            n = <a class="code hl_define" href="list_8h.html#a9130468440cee8613eea994b4c737b6c">list_prev_entry</a>(pos, member);                                   \</div>
+<div class="line">        !<a class="code hl_define" href="list_8h.html#a419ef9513bf508915b2ae9156e67dd6b">list_entry_is_head</a>(pos, <a class="code hl_variable" href="vsf__queue_8h.html#ae0411d119b6e19281b04bbe57cc854bc">head</a>, member);                                 \</div>
+<div class="line">        pos = n, n = <a class="code hl_define" href="list_8h.html#a9130468440cee8613eea994b4c737b6c">list_prev_entry</a>(n, member))</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
