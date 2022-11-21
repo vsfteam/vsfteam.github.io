@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/hal/arch/arm/cortex-m/SysTick/i_io_systick.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_e31421c8d11a714f997d94dfd878485b.html">hal</a></li><li class="navelem"><a class="el" href="dir_5a74d4dedfa7dcab34dadcbc73f4bede.html">arch</a></li><li class="navelem"><a class="el" href="dir_d49eefab1a417634393347efa3164a7e.html">arm</a></li><li class="navelem"><a class="el" href="dir_11773c14bca20cf98c4d42d8c1c58cd7.html">cortex-m</a></li><li class="navelem"><a class="el" href="dir_3713ce93248f44ee4a7fa6c099dcfe73.html">SysTick</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">i_io_systick.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="i__io__systick_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2018 by Gorgon Meducer&lt;Embedded_zhuoran@hotmail.com&gt;   *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifndef __I_IO_SYS_TICK_H__</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define __I_IO_SYS_TICK_H__</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a2d1c6e9cfa5ce324f9328bf99274f00c">   37</a></span><span class="preprocessor">#define SYSTICK_BASE_ADDRESS            (0xE000E010UL)</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a8d67a3727716f84eab9daa83ab7f99f3">   40</a></span><span class="preprocessor">#define ARM_SYSTICK                     (*(systick_reg_t *)SYSTICK_BASE_ADDRESS)</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#ifndef __REG_MACRO__</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a770f420aff398c03af01c25e5c0c7091">   43</a></span><span class="preprocessor">#define __REG_MACRO__</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#aa0c52d5c5b4e2fdd9f4fe5fe944211f7">   44</a></span><span class="preprocessor">#define DEF_REG                                                                 \</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">        union {                                                                 \</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">            struct {</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#aa0851cc8130fb6115ce39da63b1450ea">   48</a></span><span class="preprocessor">#define END_DEF_REG32(__NAME)                                                   \</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">            };                                                                  \</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">            reg32_t VALUE;                                                      \</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">        }__NAME;</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">/* ---------------------------REGISTER DEFINE BEGIN ------------------------- */</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a2128a6f0413db8c13998fb6e6f97aecf">   60</a></span><span class="preprocessor">#define SYSTICK_CSR_REG                 ARM_SYSTICK.SYST_CSR</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#afbe09f1e000a94ee481376e00de6776b">   61</a></span><span class="preprocessor">#define SYSTICK_CSR                     SYSTICK_CSR_REG.VALUE</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a8f7996de8353652cf4daab1deab0c818">   62</a></span><span class="preprocessor">#define SYSTICK_CSR_BIT                 SYSTICK_CSR_REG</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#adadaa59bb29202702ef6f2c3b60260c1">   65</a></span><span class="preprocessor">#define SYSTICK_RVR_REG                 ARM_SYSTICK.SYST_RVR</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ab73fb7801def15b4d7f5dd5ada6d63aa">   66</a></span><span class="preprocessor">#define SYSTICK_RVR                     SYSTICK_RVR_REG.VALUE</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a338e0b628b18792e45d58161c26c7a8d">   67</a></span><span class="preprocessor">#define SYSTICK_RVR_BIT                 SYSTICK_RVR_REG</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a92887d6dbad8868ff4f7287bede7aec3">   71</a></span><span class="preprocessor">#define SYSTICK_CVR_REG                 ARM_SYSTICK.SYST_CVR</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a2a5f7bca76160a1dfd45ef7da588dd0f">   72</a></span><span class="preprocessor">#define SYSTICK_CVR                     SYSTICK_CVR_REG.VALUE</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#aa5d77738ee74e29ca2554b09db370dea">   73</a></span><span class="preprocessor">#define SYSTICK_CVR_BIT                 SYSTICK_CVR_REG</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a49158c42ba51bc3d4f248b76434b86bd">   76</a></span><span class="preprocessor">#define SYSTICK_CALIB_REG               ARM_SYSTICK.SYST_CALIB</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#aa32a343abbc3a5b80fde19d65496bcdc">   77</a></span><span class="preprocessor">#define SYSTICK_CALIB                   SYSTICK_CALIB_REG.VALUE</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a1167569937d629135af1dde40fe78928">   78</a></span><span class="preprocessor">#define SYSTICK_CALIB_BIT               SYSTICK_CALIB_REG</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">/* ----------------------------REGISTER DEFINE  END-------------------------- */</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">/* -----------------------DEFINE REGISTER OP MAC  BETIN---------------------- */</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ac02cd5ac520780a2f5ddb12e0941f773">   88</a></span><span class="preprocessor">#define SYSTICK_CSR_ENABLE              0</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a40f2c1a7fbe6b8b2be747037d10dfd89">   89</a></span><span class="preprocessor">#define SYSTICK_CSR_ENABLE_MSK          (1&lt;&lt;SYSTICK_CSR_ENABLE)</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a04617219830c078f7e8ed404a674d5fd">   91</a></span><span class="preprocessor">#define SYSTICK_CSR_TICKINT             1</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a73f98220cad63107c2fd627448953f3e">   92</a></span><span class="preprocessor">#define SYSTICK_CSR_TICKINT_MSK         (1&lt;&lt;SYSTICK_CSR_TICKINT)</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a7e71affc5bd57a6756410b15322b8e20">   94</a></span><span class="preprocessor">#define SYSTICK_CSR_CLKSOURCE           2</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a24a09870bd38d2f879cbf25d29a4ad45">   95</a></span><span class="preprocessor">#define SYSTICK_CSR_CLKSOURCE_MSK       (1&lt;&lt;SYSTICK_CSR_CLKSOURCE)</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ac88ad21c10e9bf72311a31ec16daae8b">   97</a></span><span class="preprocessor">#define SYSTICK_CSR_COUNTFLAG           16</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ae86e551de05e59d373acd1efc48872e6">   98</a></span><span class="preprocessor">#define SYSTICK_CSR_COUNTFLAG_MSK       (1&lt;&lt;SYSTICK_CSR_COUNTFLAG)</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a2c16ed3d7c52939a3619fa25a5dfe7d4">  101</a></span><span class="preprocessor">#define SYSTICK_CALIB_SKEW              30</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ad3695a076b05eba4299a8b08dfc3ec29">  102</a></span><span class="preprocessor">#define SYSTICK_CALIB_SKEW_MSK          (1&lt;&lt;SYSTICK_CALIB_SKEW)</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a84ea197cd03551dff17906e16fe87bcf">  104</a></span><span class="preprocessor">#define SYSTICK_CALIB_NOREF             31</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a59eaa0a71bc90e8d18eb288971e632db">  105</a></span><span class="preprocessor">#define SYSTICK_CALIB_NOREF_MSK         (1&lt;&lt;SYSTICK_CALIB_NOREF)</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">/* --------------------------DEFINE REGISTER OP MAC   END-------------------- */</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">// copied from utilities/compiler/__common/__type.h</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">#ifndef __REG_TYPE__</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a9de5cbbb25cbd6662be386188ab9f787">  116</a></span><span class="preprocessor">#define __REG_TYPE__</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a935cac9f5fb2bb1b3ae6c455eb596ecb">  118</a></span><span class="keyword">typedef</span> <span class="keyword">volatile</span> <a class="code hl_typedef" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>            <a class="code hl_typedef" href="i__io__systick_8h.html#a935cac9f5fb2bb1b3ae6c455eb596ecb">reg8_t</a>;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a1daf700d608b9b747dd2ed7ab3966fd9">  119</a></span><span class="keyword">typedef</span> <span class="keyword">volatile</span> <a class="code hl_typedef" href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>           <a class="code hl_typedef" href="i__io__systick_8h.html#a1daf700d608b9b747dd2ed7ab3966fd9">reg16_t</a>;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a0e1b07bbc5af28a654767bb3dfb132ad">  120</a></span><span class="keyword">typedef</span> <span class="keyword">volatile</span> <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>           <a class="code hl_typedef" href="i__io__systick_8h.html#a0e1b07bbc5af28a654767bb3dfb132ad">reg32_t</a>;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a85b737d0e2faf1bd4749abf0615267e6">  122</a></span><span class="preprocessor">#define __REG_CONNECT(__A, __B)     __A##__B</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a923879b1028e7d79ac187b872c71bb63">  123</a></span><span class="preprocessor">#define __REG_RSVD_NAME(__NAME)     __REG_CONNECT(__unused_, __NAME)</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a1ee66488aead4642f0b5c48180c8a7b2">  125</a></span><span class="preprocessor">#define ____REG_RSVD(__NAME, __BIT)                                             \</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">        reg##__BIT##_t              __NAME : __BIT;</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a29c85712b9077733fc9e03f6d49cb08b">  127</a></span><span class="preprocessor">#define ____REG_RSVD_N(__NAME, __BIT, __N)                                      \</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="preprocessor">        reg##__BIT##_t              __NAME[__N];</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a1712c96c38cd3443c1915f9c7a85eda0">  129</a></span><span class="preprocessor">#define __REG_RSVD(__BIT)           ____REG_RSVD(REG_RSVD_NAME, __BIT)</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a86769ef163b1d239509cc960f0d7bdde">  130</a></span><span class="preprocessor">#define __REG_RSVD_N(__BIT, __N)    ____REG_RSVD_N(REG_RSVD_NAME, __BIT, (__N))</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ac607e6d1590c02e6d73abe03c2ec252f">  132</a></span><span class="preprocessor">#define REG_RSVD_NAME               __REG_RSVD_NAME(__LINE__)</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a049118f9bdf1fccef94f039d0ec4c29d">  133</a></span><span class="preprocessor">#define REG_RSVD(__BIT)             __REG_RSVD(__BIT)</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ae1b73dc85c62376736001a0947099833">  134</a></span><span class="preprocessor">#define REG_RSVD_N(__BIT, __N)      __REG_RSVD_N(__BIT, (__N))</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ae2755cb4f38e7fb9bd55060c786c3ee3">  136</a></span><span class="preprocessor">#define REG_RSVD_U8                 REG_RSVD(8)</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a3f2f240b4d9c184f843e19eb38d74993">  137</a></span><span class="preprocessor">#define REG_RSVD_U16                REG_RSVD(16)</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a8a4cc841de38d24decca96a1aad68ac3">  138</a></span><span class="preprocessor">#define REG_RSVD_U32                REG_RSVD(32)</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a7d8e8de15bfa21af5aeb23926ec63ed9">  140</a></span><span class="preprocessor">#define REG_RSVD_U8N(__N)           REG_RSVD_N(8, (__N))</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a6b909c582cbe31cb5c426d00cb78740a">  141</a></span><span class="preprocessor">#define REG_RSVD_U16N(__N)          REG_RSVD_N(16, (__N))</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#aea8b15ab09d6bb49bd7d3ef417eb5390">  142</a></span><span class="preprocessor">#define REG_RSVD_U32N(__N)          REG_RSVD_N(32, (__N))</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a60dc27dd9f227939a0e17d76a9b1788e">  144</a></span><span class="preprocessor">#define REG8_RSVD_N(__N)            REG_RSVD_U8N(__N)</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a1099e081ce7a01416e0a0766f53b843a">  145</a></span><span class="preprocessor">#define REG8_RSVD_B(__BYTE_CNT)     REG8_RSVD_N(__BYTE_CNT)</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#afad60b3113655ac1291c60a53b52cffa">  146</a></span><span class="preprocessor">#define REG8_RSVD_8B                REG8_RSVD_B(8)</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a1fd25c2415e597762dab79d90f158ecb">  147</a></span><span class="preprocessor">#define REG8_RSVD_16B               REG8_RSVD_B(16)</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a584756e21b11b58cd9afc28d4be665db">  148</a></span><span class="preprocessor">#define REG8_RSVD_32B               REG8_RSVD_B(32)</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a70725fdc9ea9b794abeda1b8e3b3759b">  149</a></span><span class="preprocessor">#define REG8_RSVD_64B               REG8_RSVD_B(64)</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a45343eb34084ece597d5928b1a9610dc">  150</a></span><span class="preprocessor">#define REG8_RSVD_128B              REG8_RSVD_B(128)</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a70ca3b5fdf238bf3037b4ae8c742edf9">  151</a></span><span class="preprocessor">#define REG8_RSVD_256B              REG8_RSVD_B(256)</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a4ca8c77e44c4a9a3b24296fe8a35a1d1">  152</a></span><span class="preprocessor">#define REG8_RSVD_512B              REG8_RSVD_B(512)</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ab7b6cc737944e5aa7d52915030c1124d">  153</a></span><span class="preprocessor">#define REG8_RSVD_1K                REG8_RSVD_B(1024)</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a7b26881c051088fae1ed5443159ce55f">  154</a></span><span class="preprocessor">#define REG8_RSVD_2K                REG8_RSVD_B(2048)</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a5ba2454a9bf407e4178aac784501cb1f">  155</a></span><span class="preprocessor">#define REG8_RSVD_4K                REG8_RSVD_B(4096)</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a11fd2888050c6c10581e11987db7c33e">  156</a></span><span class="preprocessor">#define REG8_RSVD_8K                REG8_RSVD_B(8192)</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a21455f87c9d8445879c019c5d8e4ded8">  157</a></span><span class="preprocessor">#define REG8_RSVD_16K               REG8_RSVD_B(16 * 1024)</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a85d2f3e91b78fc0189632d98a57e91c9">  158</a></span><span class="preprocessor">#define REG8_RSVD_32K               REG8_RSVD_B(32 * 1024)</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a603550c134ce6672cadde32382951ea5">  159</a></span><span class="preprocessor">#define REG8_RSVD_64K               REG8_RSVD_B(64 * 1024)</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ac755e6951c896c5bce52e10be0d03803">  160</a></span><span class="preprocessor">#define REG8_RSVD_128K              REG8_RSVD_B(128 * 1024)</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a9e0b9b7909d9064c815b908c206c0dad">  161</a></span><span class="preprocessor">#define REG8_RSVD_256K              REG8_RSVD_B(256 * 1024)</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a3712e4fba5f0b1812ad18396cc67e090">  162</a></span><span class="preprocessor">#define REG8_RSVD_512K              REG8_RSVD_B(512 * 1024)</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#aefdda170088ce95f4cc3a5a065eecd39">  163</a></span><span class="preprocessor">#define REG8_RSVD_1M                REG8_RSVD_B(1024 * 1024)</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a9844d50c1593c83b92feaa4336fd05e8">  165</a></span><span class="preprocessor">#define REG16_RSVD_N(__N)           REG_RSVD_U16N(__N)</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">// __BYTE_CNT MUST be mutiple of 2</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#aed0495ebfb6e15cc18950caab535af87">  167</a></span><span class="preprocessor">#define REG16_RSVD_B(__BYTE_CNT)    REG16_RSVD_N(__BYTE_CNT &gt;&gt; 1)</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ae3ecbd08eff18b0c98de7017534ee5a0">  168</a></span><span class="preprocessor">#define REG16_RSVD_8B               REG16_RSVD_B(8)</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a128558850c8e122abc1784c4ef91653c">  169</a></span><span class="preprocessor">#define REG16_RSVD_16B              REG16_RSVD_B(16)</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ab4093f7d18eafe49aca0617eff906db7">  170</a></span><span class="preprocessor">#define REG16_RSVD_32B              REG16_RSVD_B(32)</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a60e1c0661413dbc135515aa265216b07">  171</a></span><span class="preprocessor">#define REG16_RSVD_64B              REG16_RSVD_B(64)</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a7f341b5f41ee18e6ffd48b9c2d3036ab">  172</a></span><span class="preprocessor">#define REG16_RSVD_128B             REG16_RSVD_B(128)</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a5adf2f5d16b0f8a2bd61c0f309a877ae">  173</a></span><span class="preprocessor">#define REG16_RSVD_256B             REG16_RSVD_B(256)</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a2a70551afcdbaccdfa48ecb6ef187555">  174</a></span><span class="preprocessor">#define REG16_RSVD_512B             REG16_RSVD_B(512)</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a595476caf46645cf249cd01bd419c348">  175</a></span><span class="preprocessor">#define REG16_RSVD_1K               REG16_RSVD_B(1024)</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ae9dccacbacb975dfeac7b827d07b0785">  176</a></span><span class="preprocessor">#define REG16_RSVD_2K               REG16_RSVD_B(2048)</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#aab95c60f7c14079f5904dc60d3e6c9f1">  177</a></span><span class="preprocessor">#define REG16_RSVD_4K               REG16_RSVD_B(4096)</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a501c11098f852da9d02e45fd9075cdde">  178</a></span><span class="preprocessor">#define REG16_RSVD_8K               REG16_RSVD_B(8192)</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a94f30a1b3b035865f05ea6807d0ea0aa">  179</a></span><span class="preprocessor">#define REG16_RSVD_16K              REG16_RSVD_B(16 * 1024)</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a5fe5261b1071151e35691e62450493ba">  180</a></span><span class="preprocessor">#define REG16_RSVD_32K              REG16_RSVD_B(32 * 1024)</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a665b288f83624c0128ad7c1d3281106f">  181</a></span><span class="preprocessor">#define REG16_RSVD_64K              REG16_RSVD_B(64 * 1024)</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a3973f05b4bcd8bce3b4ece591508f368">  182</a></span><span class="preprocessor">#define REG16_RSVD_128K             REG16_RSVD_B(128 * 1024)</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#aeebcfd1e43fdb6d8c87b9317d1d808b2">  183</a></span><span class="preprocessor">#define REG16_RSVD_256K             REG16_RSVD_B(256 * 1024)</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a9deb0e3f81b030a0f5f78a386c828652">  184</a></span><span class="preprocessor">#define REG16_RSVD_512K             REG16_RSVD_B(512 * 1024)</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ad4793c42faabe58d336a146db084ae4a">  185</a></span><span class="preprocessor">#define REG16_RSVD_1M               REG16_RSVD_B(1024 * 1024)</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ae4eebd650aeb2c608b74ef6a660cf976">  187</a></span><span class="preprocessor">#define REG32_RSVD_N(__N)           REG_RSVD_U32N(__N)</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment">// __BYTE_CNT MUST be mutiple of 4</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a57a0450702e2ab95c73173e8ba7c9c33">  189</a></span><span class="preprocessor">#define REG32_RSVD_B(__BYTE_CNT)    REG_RSVD_U32N(__BYTE_CNT &gt;&gt; 2)</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a472830fb78eb57107e60fc07c47af0a1">  190</a></span><span class="preprocessor">#define REG32_RSVD_8B               REG32_RSVD_B(8)</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a9e7510ecb418c2415bad9e7d0465533c">  191</a></span><span class="preprocessor">#define REG32_RSVD_16B              REG32_RSVD_B(16)</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#aeddda096af32bc93d7da214cc9050d58">  192</a></span><span class="preprocessor">#define REG32_RSVD_32B              REG32_RSVD_B(32)</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a7bec37223a4cbc47d34a755d9f3a921f">  193</a></span><span class="preprocessor">#define REG32_RSVD_64B              REG32_RSVD_B(64)</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#afcab6ab03136ace843c2f16e913e70db">  194</a></span><span class="preprocessor">#define REG32_RSVD_128B             REG32_RSVD_B(128)</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#afa1c4f8befb3d6cbf4c3549df8e31a23">  195</a></span><span class="preprocessor">#define REG32_RSVD_256B             REG32_RSVD_B(256)</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#adca6edbbf41f2fe34bc6db4953f65c70">  196</a></span><span class="preprocessor">#define REG32_RSVD_512B             REG32_RSVD_B(512)</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#acbe4df82e1d5c022d7c787c84459f6c6">  197</a></span><span class="preprocessor">#define REG32_RSVD_1K               REG32_RSVD_B(1024)</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#ac44e4364edc62892b230d76641cd1d8a">  198</a></span><span class="preprocessor">#define REG32_RSVD_2K               REG32_RSVD_B(2048)</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a6a6ba8a787d02cc37989d98987e43302">  199</a></span><span class="preprocessor">#define REG32_RSVD_4K               REG32_RSVD_B(4096)</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#abfdd5dc7222b7027eb8a27383637b955">  200</a></span><span class="preprocessor">#define REG32_RSVD_8K               REG32_RSVD_B(8192)</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a1c5bfa0bd6cbebcbb72a2276af15c18e">  201</a></span><span class="preprocessor">#define REG32_RSVD_16K              REG32_RSVD_B(16 * 1024)</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a4b707296167aa095911a18771df68116">  202</a></span><span class="preprocessor">#define REG32_RSVD_32K              REG32_RSVD_B(32 * 1024)</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a016a8c44b72d3f89f43fc148b7208270">  203</a></span><span class="preprocessor">#define REG32_RSVD_64K              REG32_RSVD_B(64 * 1024)</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a8ccba167f1631a18eec8b642152db1fe">  204</a></span><span class="preprocessor">#define REG32_RSVD_128K             REG32_RSVD_B(128 * 1024)</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a6505f1445ae978252b927caf430b4ab6">  205</a></span><span class="preprocessor">#define REG32_RSVD_256K             REG32_RSVD_B(256 * 1024)</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#a0ff6a0dc3094d0881c33e20f44628ef0">  206</a></span><span class="preprocessor">#define REG32_RSVD_512K             REG32_RSVD_B(512 * 1024)</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno"><a class="line" href="i__io__systick_8h.html#aeb799fbf37333f3702ed4eed7354b193">  207</a></span><span class="preprocessor">#define REG32_RSVD_1M               REG32_RSVD_B(1024 * 1024)</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="preprocessor">#endif      </span><span class="comment">// __REG_TYPE__</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno"><a class="line" href="structsystick__reg__t.html">  213</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <a class="code hl_define" href="i__io__systick_8h.html#aa0c52d5c5b4e2fdd9f4fe5fe944211f7">DEF_REG</a></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="structsystick__reg__t.html#a89f21128c231bf96d7bdda5dda857f19">  216</a></span>        <a class="code hl_typedef" href="i__io__systick_8h.html#a0e1b07bbc5af28a654767bb3dfb132ad">reg32_t</a>  <a class="code hl_variable" href="structsystick__reg__t.html#a89f21128c231bf96d7bdda5dda857f19">EN</a>                     : 1;</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno"><a class="line" href="structsystick__reg__t.html#a1213668c6aae1cbc3611c8acca4d789c">  217</a></span>        <a class="code hl_typedef" href="i__io__systick_8h.html#a0e1b07bbc5af28a654767bb3dfb132ad">reg32_t</a>  <a class="code hl_variable" href="structsystick__reg__t.html#a1213668c6aae1cbc3611c8acca4d789c">TICKINT</a>                : 1;</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno"><a class="line" href="structsystick__reg__t.html#ab096759e6130ceaecd4c94767d46d002">  218</a></span>        <a class="code hl_typedef" href="i__io__systick_8h.html#a0e1b07bbc5af28a654767bb3dfb132ad">reg32_t</a>  <a class="code hl_variable" href="structsystick__reg__t.html#ab096759e6130ceaecd4c94767d46d002">CLKSOURCE</a>              : 1;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno"><a class="line" href="structsystick__reg__t.html#a2a86c7975f6712602a844b9e0a3eb1b9">  219</a></span>        <a class="code hl_typedef" href="i__io__systick_8h.html#a0e1b07bbc5af28a654767bb3dfb132ad">reg32_t</a>  <a class="code hl_variable" href="structsystick__reg__t.html#a2a86c7975f6712602a844b9e0a3eb1b9">__RSVD0</a>                :13;</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno"><a class="line" href="structsystick__reg__t.html#a7e1711052b7f19bb9c713c32ce935607">  220</a></span>        <a class="code hl_typedef" href="i__io__systick_8h.html#a0e1b07bbc5af28a654767bb3dfb132ad">reg32_t</a>  <a class="code hl_variable" href="structsystick__reg__t.html#a7e1711052b7f19bb9c713c32ce935607">COUNTFLAG</a>              : 1;</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <a class="code hl_define" href="i__io__systick_8h.html#aa0851cc8130fb6115ce39da63b1450ea">END_DEF_REG32</a>(SYST_CSR)</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    </div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    <a class="code hl_define" href="i__io__systick_8h.html#aa0c52d5c5b4e2fdd9f4fe5fe944211f7">DEF_REG</a></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno"><a class="line" href="structsystick__reg__t.html#a5e8c954855f3af5132ad4964594b5acd">  225</a></span>        <a class="code hl_typedef" href="i__io__systick_8h.html#a0e1b07bbc5af28a654767bb3dfb132ad">reg32_t</a>  <a class="code hl_variable" href="structsystick__reg__t.html#a5e8c954855f3af5132ad4964594b5acd">RELOAD</a>                 :24;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <a class="code hl_define" href="i__io__systick_8h.html#aa0851cc8130fb6115ce39da63b1450ea">END_DEF_REG32</a>(SYST_RVR)</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    </div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    <a class="code hl_define" href="i__io__systick_8h.html#aa0c52d5c5b4e2fdd9f4fe5fe944211f7">DEF_REG</a></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno"><a class="line" href="structsystick__reg__t.html#ae36cfe6730ee07d5f1ea73f5e307feb7">  230</a></span>        <a class="code hl_typedef" href="i__io__systick_8h.html#a0e1b07bbc5af28a654767bb3dfb132ad">reg32_t</a> <a class="code hl_variable" href="structsystick__reg__t.html#ae36cfe6730ee07d5f1ea73f5e307feb7">CURRENT</a>                 :24;</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    <a class="code hl_define" href="i__io__systick_8h.html#aa0851cc8130fb6115ce39da63b1450ea">END_DEF_REG32</a>(SYST_CVR)</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    </div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <a class="code hl_define" href="i__io__systick_8h.html#aa0c52d5c5b4e2fdd9f4fe5fe944211f7">DEF_REG</a></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno"><a class="line" href="structsystick__reg__t.html#a7987f99268c5027d2a60ed0db9ee311c">  235</a></span>        <a class="code hl_typedef" href="i__io__systick_8h.html#a0e1b07bbc5af28a654767bb3dfb132ad">reg32_t</a> <a class="code hl_variable" href="structsystick__reg__t.html#a7987f99268c5027d2a60ed0db9ee311c">TENMS</a>                   :24;</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <a class="code hl_typedef" href="i__io__systick_8h.html#a0e1b07bbc5af28a654767bb3dfb132ad">reg32_t</a> __RSVD0                 : 6;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno"><a class="line" href="structsystick__reg__t.html#a5c143b1884e0aa1bc8f879e34a9f765d">  237</a></span>        <a class="code hl_typedef" href="i__io__systick_8h.html#a0e1b07bbc5af28a654767bb3dfb132ad">reg32_t</a> <a class="code hl_variable" href="structsystick__reg__t.html#a5c143b1884e0aa1bc8f879e34a9f765d">SKEW</a>                    : 1;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno"><a class="line" href="structsystick__reg__t.html#af9dd7a15b6d498a57ba51dd1ccbc33f3">  238</a></span>        <a class="code hl_typedef" href="i__io__systick_8h.html#a0e1b07bbc5af28a654767bb3dfb132ad">reg32_t</a> <a class="code hl_variable" href="structsystick__reg__t.html#af9dd7a15b6d498a57ba51dd1ccbc33f3">NOREF</a>                   : 1;</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    <a class="code hl_define" href="i__io__systick_8h.html#aa0851cc8130fb6115ce39da63b1450ea">END_DEF_REG32</a>(SYST_CALIB)</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>} <a class="code hl_struct" href="structsystick__reg__t.html">systick_reg_t</a>;</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>}</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span> </div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aarm_2type_8h_html_a273cf69d639a59973b6019625df33e30"><div class="ttname"><a href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a></div><div class="ttdeci">unsigned short uint16_t</div><div class="ttdef"><b>Definition:</b> type.h:30</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a435d1572bf3f880d55459d9805097f62"><div class="ttname"><a href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a></div><div class="ttdeci">unsigned int uint32_t</div><div class="ttdef"><b>Definition:</b> type.h:35</div></div>
+<div class="ttc" id="aarm_2type_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition:</b> type.h:25</div></div>
+<div class="ttc" id="ai__io__systick_8h_html_a0e1b07bbc5af28a654767bb3dfb132ad"><div class="ttname"><a href="i__io__systick_8h.html#a0e1b07bbc5af28a654767bb3dfb132ad">reg32_t</a></div><div class="ttdeci">volatile uint32_t reg32_t</div><div class="ttdef"><b>Definition:</b> i_io_systick.h:120</div></div>
+<div class="ttc" id="ai__io__systick_8h_html_a1daf700d608b9b747dd2ed7ab3966fd9"><div class="ttname"><a href="i__io__systick_8h.html#a1daf700d608b9b747dd2ed7ab3966fd9">reg16_t</a></div><div class="ttdeci">volatile uint16_t reg16_t</div><div class="ttdef"><b>Definition:</b> i_io_systick.h:119</div></div>
+<div class="ttc" id="ai__io__systick_8h_html_a935cac9f5fb2bb1b3ae6c455eb596ecb"><div class="ttname"><a href="i__io__systick_8h.html#a935cac9f5fb2bb1b3ae6c455eb596ecb">reg8_t</a></div><div class="ttdeci">volatile uint8_t reg8_t</div><div class="ttdef"><b>Definition:</b> i_io_systick.h:118</div></div>
+<div class="ttc" id="ai__io__systick_8h_html_aa0851cc8130fb6115ce39da63b1450ea"><div class="ttname"><a href="i__io__systick_8h.html#aa0851cc8130fb6115ce39da63b1450ea">END_DEF_REG32</a></div><div class="ttdeci">#define END_DEF_REG32(__NAME)</div><div class="ttdef"><b>Definition:</b> i_io_systick.h:48</div></div>
+<div class="ttc" id="ai__io__systick_8h_html_aa0c52d5c5b4e2fdd9f4fe5fe944211f7"><div class="ttname"><a href="i__io__systick_8h.html#aa0c52d5c5b4e2fdd9f4fe5fe944211f7">DEF_REG</a></div><div class="ttdeci">#define DEF_REG</div><div class="ttdef"><b>Definition:</b> i_io_systick.h:44</div></div>
+<div class="ttc" id="astructsystick__reg__t_html"><div class="ttname"><a href="structsystick__reg__t.html">systick_reg_t</a></div><div class="ttdef"><b>Definition:</b> i_io_systick.h:213</div></div>
+<div class="ttc" id="astructsystick__reg__t_html_a1213668c6aae1cbc3611c8acca4d789c"><div class="ttname"><a href="structsystick__reg__t.html#a1213668c6aae1cbc3611c8acca4d789c">systick_reg_t::TICKINT</a></div><div class="ttdeci">reg32_t TICKINT</div><div class="ttdef"><b>Definition:</b> i_io_systick.h:217</div></div>
+<div class="ttc" id="astructsystick__reg__t_html_a2a86c7975f6712602a844b9e0a3eb1b9"><div class="ttname"><a href="structsystick__reg__t.html#a2a86c7975f6712602a844b9e0a3eb1b9">systick_reg_t::__RSVD0</a></div><div class="ttdeci">reg32_t __RSVD0</div><div class="ttdef"><b>Definition:</b> i_io_systick.h:219</div></div>
+<div class="ttc" id="astructsystick__reg__t_html_a5c143b1884e0aa1bc8f879e34a9f765d"><div class="ttname"><a href="structsystick__reg__t.html#a5c143b1884e0aa1bc8f879e34a9f765d">systick_reg_t::SKEW</a></div><div class="ttdeci">reg32_t SKEW</div><div class="ttdef"><b>Definition:</b> i_io_systick.h:237</div></div>
+<div class="ttc" id="astructsystick__reg__t_html_a5e8c954855f3af5132ad4964594b5acd"><div class="ttname"><a href="structsystick__reg__t.html#a5e8c954855f3af5132ad4964594b5acd">systick_reg_t::RELOAD</a></div><div class="ttdeci">DEF_REG reg32_t RELOAD</div><div class="ttdoc">System Timer Reload value register</div><div class="ttdef"><b>Definition:</b> i_io_systick.h:225</div></div>
+<div class="ttc" id="astructsystick__reg__t_html_a7987f99268c5027d2a60ed0db9ee311c"><div class="ttname"><a href="structsystick__reg__t.html#a7987f99268c5027d2a60ed0db9ee311c">systick_reg_t::TENMS</a></div><div class="ttdeci">DEF_REG reg32_t TENMS</div><div class="ttdoc">System Timer Calibration value register</div><div class="ttdef"><b>Definition:</b> i_io_systick.h:235</div></div>
+<div class="ttc" id="astructsystick__reg__t_html_a7e1711052b7f19bb9c713c32ce935607"><div class="ttname"><a href="structsystick__reg__t.html#a7e1711052b7f19bb9c713c32ce935607">systick_reg_t::COUNTFLAG</a></div><div class="ttdeci">reg32_t COUNTFLAG</div><div class="ttdef"><b>Definition:</b> i_io_systick.h:220</div></div>
+<div class="ttc" id="astructsystick__reg__t_html_a89f21128c231bf96d7bdda5dda857f19"><div class="ttname"><a href="structsystick__reg__t.html#a89f21128c231bf96d7bdda5dda857f19">systick_reg_t::EN</a></div><div class="ttdeci">DEF_REG reg32_t EN</div><div class="ttdoc">SysTick Timer Control and status register</div><div class="ttdef"><b>Definition:</b> i_io_systick.h:216</div></div>
+<div class="ttc" id="astructsystick__reg__t_html_ab096759e6130ceaecd4c94767d46d002"><div class="ttname"><a href="structsystick__reg__t.html#ab096759e6130ceaecd4c94767d46d002">systick_reg_t::CLKSOURCE</a></div><div class="ttdeci">reg32_t CLKSOURCE</div><div class="ttdef"><b>Definition:</b> i_io_systick.h:218</div></div>
+<div class="ttc" id="astructsystick__reg__t_html_ae36cfe6730ee07d5f1ea73f5e307feb7"><div class="ttname"><a href="structsystick__reg__t.html#ae36cfe6730ee07d5f1ea73f5e307feb7">systick_reg_t::CURRENT</a></div><div class="ttdeci">DEF_REG reg32_t CURRENT</div><div class="ttdoc">System Timer Current value register</div><div class="ttdef"><b>Definition:</b> i_io_systick.h:230</div></div>
+<div class="ttc" id="astructsystick__reg__t_html_af9dd7a15b6d498a57ba51dd1ccbc33f3"><div class="ttname"><a href="structsystick__reg__t.html#af9dd7a15b6d498a57ba51dd1ccbc33f3">systick_reg_t::NOREF</a></div><div class="ttdeci">reg32_t NOREF</div><div class="ttdef"><b>Definition:</b> i_io_systick.h:238</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>

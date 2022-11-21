@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/hal/driver/generic/linux/rtc/rtc.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_e31421c8d11a714f997d94dfd878485b.html">hal</a></li><li class="navelem"><a class="el" href="dir_25d0b491454d9cd33ec551022795e759.html">driver</a></li><li class="navelem"><a class="el" href="dir_af8060ea184628aa3640bf1eb3fd2987.html">generic</a></li><li class="navelem"><a class="el" href="dir_70e0d70f85f4a6e001f1ee37d90280b3.html">linux</a></li><li class="navelem"><a class="el" href="dir_b210173205190775accddc527d1cd879.html">rtc</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">rtc.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="generic_2linux_2rtc_2rtc_8h_source.html">./rtc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__utilities_8h_source.html">utilities/vsf_utilities.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="sys_2time_8h_source.html">sys/time.h</a>&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="rtc__template_8inc.html">hal/driver/common/rtc/rtc_template.inc</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a1b3eee6560db6f13a8cbff6584a3284e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic_2linux_2rtc_2rtc_8c.html#a1b3eee6560db6f13a8cbff6584a3284e">VSF_RTC_CFG_IMP_PREFIX</a>&#160;&#160;&#160;vsf_hw</td></tr>
+<tr class="separator:a1b3eee6560db6f13a8cbff6584a3284e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26731a4697630c174c1c442f3a5dc01b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic_2linux_2rtc_2rtc_8c.html#a26731a4697630c174c1c442f3a5dc01b">VSF_RTC_CFG_IMP_UPCASE_PREFIX</a>&#160;&#160;&#160;VSF_HW</td></tr>
+<tr class="separator:a26731a4697630c174c1c442f3a5dc01b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af729fb4a9a3213046d42bfb7d934bef9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic_2linux_2rtc_2rtc_8c.html#af729fb4a9a3213046d42bfb7d934bef9">VSF_RTC_CFG_IMP_LV0</a>(__COUNT,  __hal_op)</td></tr>
+<tr class="separator:af729fb4a9a3213046d42bfb7d934bef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:a9d1413229cde929516717c369e59012b"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic_2linux_2rtc_2rtc_8c.html#a9d1413229cde929516717c369e59012b">vsf_hw_rtc_t</a></td></tr>
+<tr class="separator:a9d1413229cde929516717c369e59012b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ad2d2898199283c86ea473f2af814502f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic_2linux_2rtc_2rtc_8c.html#ad2d2898199283c86ea473f2af814502f">vsf_hw_rtc_init</a> (<a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> *hw_rtc_ptr, <a class="el" href="structvsf__rtc__cfg__t.html">vsf_rtc_cfg_t</a> *cfg_ptr)</td></tr>
+<tr class="separator:ad2d2898199283c86ea473f2af814502f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a955a8aaa972cdfe9184854ef0700d3f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic_2linux_2rtc_2rtc_8c.html#a955a8aaa972cdfe9184854ef0700d3f0">vsf_hw_rtc_enable</a> (<a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> *hw_rtc_ptr)</td></tr>
+<tr class="separator:a955a8aaa972cdfe9184854ef0700d3f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f062182ec7c3e4af7812eb2d514e56a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic_2linux_2rtc_2rtc_8c.html#a8f062182ec7c3e4af7812eb2d514e56a">vsf_hw_rtc_disable</a> (<a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> *hw_rtc_ptr)</td></tr>
+<tr class="separator:a8f062182ec7c3e4af7812eb2d514e56a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae01cf1245977f282671041eb7b1d135"><td class="memItemLeft" align="right" valign="top"><a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic_2linux_2rtc_2rtc_8c.html#aae01cf1245977f282671041eb7b1d135">vsf_hw_rtc_get_second</a> (<a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> *hw_rtc_ptr)</td></tr>
+<tr class="separator:aae01cf1245977f282671041eb7b1d135"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac839244832ee0c4b353b3e4a2cea9a09"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic_2linux_2rtc_2rtc_8c.html#ac839244832ee0c4b353b3e4a2cea9a09">vsf_hw_rtc_set_second</a> (<a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> *rtc_ptr, <a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> second)</td></tr>
+<tr class="separator:ac839244832ee0c4b353b3e4a2cea9a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9728114d56cd47757b7fa714ff9c9b8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic_2linux_2rtc_2rtc_8c.html#a9728114d56cd47757b7fa714ff9c9b8b">vsf_hw_rtc_get</a> (<a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> *hw_rtc_ptr, <a class="el" href="structvsf__rtc__tm__t.html">vsf_rtc_tm_t</a> *rtc_tm)</td></tr>
+<tr class="separator:a9728114d56cd47757b7fa714ff9c9b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec0fe675e33fc2635b431aa104e884ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic_2linux_2rtc_2rtc_8c.html#aec0fe675e33fc2635b431aa104e884ac">vsf_hw_rtc_set</a> (<a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> *hw_rtc_ptr, const <a class="el" href="structvsf__rtc__tm__t.html">vsf_rtc_tm_t</a> *rtc_tm)</td></tr>
+<tr class="separator:aec0fe675e33fc2635b431aa104e884ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a1b3eee6560db6f13a8cbff6584a3284e" name="a1b3eee6560db6f13a8cbff6584a3284e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b3eee6560db6f13a8cbff6584a3284e">&#9670;&#160;</a></span>VSF_RTC_CFG_IMP_PREFIX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_RTC_CFG_IMP_PREFIX&#160;&#160;&#160;vsf_hw</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a26731a4697630c174c1c442f3a5dc01b" name="a26731a4697630c174c1c442f3a5dc01b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26731a4697630c174c1c442f3a5dc01b">&#9670;&#160;</a></span>VSF_RTC_CFG_IMP_UPCASE_PREFIX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_RTC_CFG_IMP_UPCASE_PREFIX&#160;&#160;&#160;VSF_HW</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af729fb4a9a3213046d42bfb7d934bef9" name="af729fb4a9a3213046d42bfb7d934bef9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af729fb4a9a3213046d42bfb7d934bef9">&#9670;&#160;</a></span>VSF_RTC_CFG_IMP_LV0</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_RTC_CFG_IMP_LV0</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__COUNT, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__hal_op&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_struct" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> vsf_hw_rtc##__COUNT = {                                        \</div>
+<div class="line">        __hal_op                                                                \</div>
+<div class="line">    };</div>
+<div class="ttc" id="astructvsf__hw__rtc__t_html"><div class="ttname"><a href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a></div><div class="ttdef"><b>Definition:</b> rtc.c:37</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">类型定义说明</h2>
+<a id="a9d1413229cde929516717c369e59012b" name="a9d1413229cde929516717c369e59012b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d1413229cde929516717c369e59012b">&#9670;&#160;</a></span>vsf_hw_rtc_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> <a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="ad2d2898199283c86ea473f2af814502f" name="ad2d2898199283c86ea473f2af814502f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2d2898199283c86ea473f2af814502f">&#9670;&#160;</a></span>vsf_hw_rtc_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_hw_rtc_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> *&#160;</td>
+          <td class="paramname"><em>hw_rtc_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvsf__rtc__cfg__t.html">vsf_rtc_cfg_t</a> *&#160;</td>
+          <td class="paramname"><em>cfg_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a955a8aaa972cdfe9184854ef0700d3f0" name="a955a8aaa972cdfe9184854ef0700d3f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a955a8aaa972cdfe9184854ef0700d3f0">&#9670;&#160;</a></span>vsf_hw_rtc_enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a> vsf_hw_rtc_enable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> *&#160;</td>
+          <td class="paramname"><em>hw_rtc_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f062182ec7c3e4af7812eb2d514e56a" name="a8f062182ec7c3e4af7812eb2d514e56a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f062182ec7c3e4af7812eb2d514e56a">&#9670;&#160;</a></span>vsf_hw_rtc_disable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a> vsf_hw_rtc_disable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> *&#160;</td>
+          <td class="paramname"><em>hw_rtc_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aae01cf1245977f282671041eb7b1d135" name="aae01cf1245977f282671041eb7b1d135"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae01cf1245977f282671041eb7b1d135">&#9670;&#160;</a></span>vsf_hw_rtc_get_second()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> vsf_hw_rtc_get_second </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> *&#160;</td>
+          <td class="paramname"><em>hw_rtc_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac839244832ee0c4b353b3e4a2cea9a09" name="ac839244832ee0c4b353b3e4a2cea9a09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac839244832ee0c4b353b3e4a2cea9a09">&#9670;&#160;</a></span>vsf_hw_rtc_set_second()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_hw_rtc_set_second </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> *&#160;</td>
+          <td class="paramname"><em>rtc_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a>&#160;</td>
+          <td class="paramname"><em>second</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9728114d56cd47757b7fa714ff9c9b8b" name="a9728114d56cd47757b7fa714ff9c9b8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9728114d56cd47757b7fa714ff9c9b8b">&#9670;&#160;</a></span>vsf_hw_rtc_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_hw_rtc_get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> *&#160;</td>
+          <td class="paramname"><em>hw_rtc_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvsf__rtc__tm__t.html">vsf_rtc_tm_t</a> *&#160;</td>
+          <td class="paramname"><em>rtc_tm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aec0fe675e33fc2635b431aa104e884ac" name="aec0fe675e33fc2635b431aa104e884ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec0fe675e33fc2635b431aa104e884ac">&#9670;&#160;</a></span>vsf_hw_rtc_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_hw_rtc_set </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> *&#160;</td>
+          <td class="paramname"><em>hw_rtc_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structvsf__rtc__tm__t.html">vsf_rtc_tm_t</a> *&#160;</td>
+          <td class="paramname"><em>rtc_tm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>

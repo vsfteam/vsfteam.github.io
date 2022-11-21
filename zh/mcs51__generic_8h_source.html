@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/hal/arch/mcs51/mcs51_generic.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_e31421c8d11a714f997d94dfd878485b.html">hal</a></li><li class="navelem"><a class="el" href="dir_5a74d4dedfa7dcab34dadcbc73f4bede.html">arch</a></li><li class="navelem"><a class="el" href="dir_b2cafd375f13324b1f9d7353b870b2a9.html">mcs51</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">mcs51_generic.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="mcs51__generic_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2022 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifndef __MCS51_GENERIC_H__</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define __MCS51_GENERIC_H__</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__hal__cfg_8h.html">hal/vsf_hal_cfg.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#a25968dfff8dcf70170ee8021db57a7e3">   24</a></span><span class="preprocessor">#define __VSF_HEADER_ONLY_SHOW_ARCH_INFO__</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;hal/driver/driver.h&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#undef  __VSF_HEADER_ONLY_SHOW_ARCH_INFO__</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#ifndef __LITTLE_ENDIAN</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#aeccf3e279c16687d91cd28d0463cbde6">   35</a></span><span class="preprocessor">#   define __LITTLE_ENDIAN                 1</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#ifndef __BYTE_ORDER</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#a53577389633eb80892bdc0b8387573c5">   38</a></span><span class="preprocessor">#   define __BYTE_ORDER                    __LITTLE_ENDIAN</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#afaf84e5f6860515951dda8a7975289fc">   41</a></span><span class="preprocessor">#define VSF_ARCH_PRI_NUM                2</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#a55565482d0ce19466ef997600e2ae65e">   42</a></span><span class="preprocessor">#define VSF_ARCH_PRI_BIT                1</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">// software interrupt provided by arch</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#aad1dc6d7916451fbadd12d62de015ef3">   45</a></span><span class="preprocessor">#define VSF_ARCH_SWI_NUM                0</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#ifndef VSF_SYSTIMER_CFG_IMPL_MODE</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#abb5831819aace151ff975896aae93934">   47</a></span><span class="preprocessor">#   define VSF_SYSTIMER_CFG_IMPL_MODE VSF_SYSTIMER_IMPL_WITH_NORMAL_TIMER</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#acb791d45b84434b77128b6f62b8725da">   49</a></span><span class="preprocessor">#define __VSF_ARCH_SYSTIMER_BITS        16</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#ae110acd3fa0c12833883aa2e54d3f45c">   53</a></span><span class="preprocessor">#define vsf_arch_wakeup()</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#a60978fc9640c36a19791b1f69b167070">   57</a></span><span class="keyword">typedef</span> <a class="code hl_typedef" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> <a class="code hl_typedef" href="mcs51__generic_8h.html#a60978fc9640c36a19791b1f69b167070">vsf_systimer_tick_t</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#a55bf4b1cc7c3a9c1644b430c0f131ef9">   58</a></span><span class="keyword">typedef</span>  <a class="code hl_typedef" href="arm_2type_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> <a class="code hl_typedef" href="mcs51__generic_8h.html#a55bf4b1cc7c3a9c1644b430c0f131ef9">vsf_systimer_cnt_signed_t</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#aa3ba3804ec093b3392df076b44237d76">   60</a></span><span class="preprocessor">#define __VSF_ARCH_PRI_INDEX(__N, __UNUSED)                                     \</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">            __vsf_arch_prio_index_##__N = (__N),</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <a class="code hl_define" href="vsf__repeat__macro_8h.html#ad673e52e05fc2a65590c1d4d9252acda">VSF_MREPEAT</a>(<a class="code hl_define" href="mcs51__generic_8h.html#afaf84e5f6860515951dda8a7975289fc">VSF_ARCH_PRI_NUM</a>,<a class="code hl_define" href="mcs51__generic_8h.html#aa3ba3804ec093b3392df076b44237d76">__VSF_ARCH_PRI_INDEX</a>, <a class="code hl_define" href="mcs51__generic_8h.html#a55565482d0ce19466ef997600e2ae65e">VSF_ARCH_PRI_BIT</a>)</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>};</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#a3d92099692cbb9ad0a8bb5948b61fcdb">   67</a></span><span class="preprocessor">#define __VSF_ARCH_PRI(__N, __BIT)                                              \</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">            VSF_ARCH_PRIO_##__N = (__N),                                        \</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">            vsf_arch_prio_##__N = (__N),</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633f">   71</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="cortex__a__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633f">vsf_arch_prio_t</a> {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633fa8b346789e7d4a370f468f210ad442546">   72</a></span>    <a class="code hl_enumvalue" href="mcs51__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633fa8b346789e7d4a370f468f210ad442546">VSF_ARCH_PRIO_INVALID</a> = -1,</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633faf4be30ef14ea38f871387f676d4ae6ae">   73</a></span>    <a class="code hl_enumvalue" href="mcs51__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633faf4be30ef14ea38f871387f676d4ae6ae">vsf_arch_prio_invalid</a> = -1,</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_define" href="vsf__repeat__macro_8h.html#ad673e52e05fc2a65590c1d4d9252acda">VSF_MREPEAT</a>(<a class="code hl_define" href="mcs51__generic_8h.html#afaf84e5f6860515951dda8a7975289fc">VSF_ARCH_PRI_NUM</a>, <a class="code hl_define" href="mcs51__generic_8h.html#a3d92099692cbb9ad0a8bb5948b61fcdb">__VSF_ARCH_PRI</a>, <a class="code hl_define" href="mcs51__generic_8h.html#a55565482d0ce19466ef997600e2ae65e">VSF_ARCH_PRI_BIT</a>)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633fa8dcdc2b5b20aeb0e375a9ba79fbe0812">   75</a></span>    <a class="code hl_enumvalue" href="mcs51__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633fa8dcdc2b5b20aeb0e375a9ba79fbe0812">vsf_arch_prio_highest</a> = <a class="code hl_define" href="mcs51__generic_8h.html#afaf84e5f6860515951dda8a7975289fc">VSF_ARCH_PRI_NUM</a> - 1,</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>};</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="mcs51__generic_8h.html#aa77cc8534e3fdc633cfe388d3ca113b6">   77</a></span>typedef enum <a class="code hl_enumeration" href="cortex__a__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633f">vsf_arch_prio_t</a> <a class="code hl_enumeration" href="cortex__a__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633f">vsf_arch_prio_t</a>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">/* EOF */</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="ttc" id="aarm_2type_8h_html_a435d1572bf3f880d55459d9805097f62"><div class="ttname"><a href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a></div><div class="ttdeci">unsigned int uint32_t</div><div class="ttdef"><b>Definition:</b> type.h:35</div></div>
+<div class="ttc" id="aarm_2type_8h_html_ab1967d8591af1a4e48c37fd2b0f184d0"><div class="ttname"><a href="arm_2type_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a></div><div class="ttdeci">signed int int32_t</div><div class="ttdef"><b>Definition:</b> type.h:36</div></div>
+<div class="ttc" id="acortex__a__generic_8h_html_a0f1041ab7f9d152f2f0c932b3529633f"><div class="ttname"><a href="cortex__a__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633f">vsf_arch_prio_t</a></div><div class="ttdeci">vsf_arch_prio_t</div><div class="ttdef"><b>Definition:</b> cortex_a_generic.h:88</div></div>
+<div class="ttc" id="amcs51__generic_8h_html_a0f1041ab7f9d152f2f0c932b3529633fa8b346789e7d4a370f468f210ad442546"><div class="ttname"><a href="mcs51__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633fa8b346789e7d4a370f468f210ad442546">VSF_ARCH_PRIO_INVALID</a></div><div class="ttdeci">@ VSF_ARCH_PRIO_INVALID</div><div class="ttdef"><b>Definition:</b> mcs51_generic.h:72</div></div>
+<div class="ttc" id="amcs51__generic_8h_html_a0f1041ab7f9d152f2f0c932b3529633fa8dcdc2b5b20aeb0e375a9ba79fbe0812"><div class="ttname"><a href="mcs51__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633fa8dcdc2b5b20aeb0e375a9ba79fbe0812">vsf_arch_prio_highest</a></div><div class="ttdeci">@ vsf_arch_prio_highest</div><div class="ttdef"><b>Definition:</b> mcs51_generic.h:75</div></div>
+<div class="ttc" id="amcs51__generic_8h_html_a0f1041ab7f9d152f2f0c932b3529633faf4be30ef14ea38f871387f676d4ae6ae"><div class="ttname"><a href="mcs51__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633faf4be30ef14ea38f871387f676d4ae6ae">vsf_arch_prio_invalid</a></div><div class="ttdeci">@ vsf_arch_prio_invalid</div><div class="ttdef"><b>Definition:</b> mcs51_generic.h:73</div></div>
+<div class="ttc" id="amcs51__generic_8h_html_a3d92099692cbb9ad0a8bb5948b61fcdb"><div class="ttname"><a href="mcs51__generic_8h.html#a3d92099692cbb9ad0a8bb5948b61fcdb">__VSF_ARCH_PRI</a></div><div class="ttdeci">#define __VSF_ARCH_PRI(__N, __BIT)</div><div class="ttdef"><b>Definition:</b> mcs51_generic.h:67</div></div>
+<div class="ttc" id="amcs51__generic_8h_html_a55565482d0ce19466ef997600e2ae65e"><div class="ttname"><a href="mcs51__generic_8h.html#a55565482d0ce19466ef997600e2ae65e">VSF_ARCH_PRI_BIT</a></div><div class="ttdeci">#define VSF_ARCH_PRI_BIT</div><div class="ttdef"><b>Definition:</b> mcs51_generic.h:42</div></div>
+<div class="ttc" id="amcs51__generic_8h_html_a55bf4b1cc7c3a9c1644b430c0f131ef9"><div class="ttname"><a href="mcs51__generic_8h.html#a55bf4b1cc7c3a9c1644b430c0f131ef9">vsf_systimer_cnt_signed_t</a></div><div class="ttdeci">int32_t vsf_systimer_cnt_signed_t</div><div class="ttdef"><b>Definition:</b> mcs51_generic.h:58</div></div>
+<div class="ttc" id="amcs51__generic_8h_html_a60978fc9640c36a19791b1f69b167070"><div class="ttname"><a href="mcs51__generic_8h.html#a60978fc9640c36a19791b1f69b167070">vsf_systimer_tick_t</a></div><div class="ttdeci">uint32_t vsf_systimer_tick_t</div><div class="ttdef"><b>Definition:</b> mcs51_generic.h:57</div></div>
+<div class="ttc" id="amcs51__generic_8h_html_aa3ba3804ec093b3392df076b44237d76"><div class="ttname"><a href="mcs51__generic_8h.html#aa3ba3804ec093b3392df076b44237d76">__VSF_ARCH_PRI_INDEX</a></div><div class="ttdeci">#define __VSF_ARCH_PRI_INDEX(__N, __UNUSED)</div><div class="ttdef"><b>Definition:</b> mcs51_generic.h:60</div></div>
+<div class="ttc" id="amcs51__generic_8h_html_afaf84e5f6860515951dda8a7975289fc"><div class="ttname"><a href="mcs51__generic_8h.html#afaf84e5f6860515951dda8a7975289fc">VSF_ARCH_PRI_NUM</a></div><div class="ttdeci">#define VSF_ARCH_PRI_NUM</div><div class="ttdef"><b>Definition:</b> mcs51_generic.h:41</div></div>
+<div class="ttc" id="avsf__hal__cfg_8h_html"><div class="ttname"><a href="vsf__hal__cfg_8h.html">vsf_hal_cfg.h</a></div></div>
+<div class="ttc" id="avsf__repeat__macro_8h_html_ad673e52e05fc2a65590c1d4d9252acda"><div class="ttname"><a href="vsf__repeat__macro_8h.html#ad673e52e05fc2a65590c1d4d9252acda">VSF_MREPEAT</a></div><div class="ttdeci">#define VSF_MREPEAT(__COUNT, __MACRO, __PARAM)</div><div class="ttdef"><b>Definition:</b> vsf_repeat_macro.h:49</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>
