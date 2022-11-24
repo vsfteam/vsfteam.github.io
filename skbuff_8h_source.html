@@ -351,21 +351,27 @@
 <div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    <span class="keywordflow">return</span> skb;</div>
 <div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>}</div>
 <div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span> </div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno"><a class="line" href="skbuff_8h.html#acdc7ef6dd7e1fb7a18a9fe8f0efc416a">  300</a></span><span class="preprocessor">#define dev_kfree_skb(__skb)        consume_skb(__skb)</span></div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno"><a class="line" href="skbuff_8h.html#a7af8c0e02302809da925b2e036d0895f">  301</a></span><span class="preprocessor">#define dev_kfree_skb_any(__skb)    dev_kfree_skb(__skb)</span></div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno"><a class="line" href="skbuff_8h.html#a77df7c5aae1ce184c9a5754f7eb96289">  302</a></span><span class="preprocessor">#define dev_consume_skb_any(__skb)  consume_skb(__skb)</span></div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">struct </span><a class="code hl_struct" href="structsk__buff.html">sk_buff</a> * dev_alloc_skb(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="vsf__pbuf_8c.html#ae4be32df35b12bdacfbe8ae8cd5a8177">length</a>)</div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>{</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="skbuff_8h.html#a5dd028351e5213a18a02cbe28293432e">alloc_skb</a>(<a class="code hl_variable" href="vsf__pbuf_8c.html#ae4be32df35b12bdacfbe8ae8cd5a8177">length</a>, <a class="code hl_define" href="gfp_8h.html#aa9d5f32b75f79a459c1161e3519ed1e1">GFP_ATOMIC</a>);</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>}</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="skbuff_8h.html#a17767ef06b163a3ea869b5f23fbb437b">skb_init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>}</div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="skbuff_8h.html#ada70695894f602db11094bd931853ed0">kfree_skb</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structsk__buff.html">sk_buff</a> *skb);</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> consume_skb(<span class="keyword">struct</span> <a class="code hl_struct" href="structsk__buff.html">sk_buff</a> *skb)</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>{</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    <a class="code hl_function" href="skbuff_8h.html#ada70695894f602db11094bd931853ed0">kfree_skb</a>(skb);</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>}</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span> </div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno"><a class="line" href="skbuff_8h.html#acdc7ef6dd7e1fb7a18a9fe8f0efc416a">  306</a></span><span class="preprocessor">#define dev_kfree_skb(__skb)        consume_skb(__skb)</span></div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno"><a class="line" href="skbuff_8h.html#a7af8c0e02302809da925b2e036d0895f">  307</a></span><span class="preprocessor">#define dev_kfree_skb_any(__skb)    dev_kfree_skb(__skb)</span></div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno"><a class="line" href="skbuff_8h.html#a77df7c5aae1ce184c9a5754f7eb96289">  308</a></span><span class="preprocessor">#define dev_consume_skb_any(__skb)  consume_skb(__skb)</span></div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">struct </span><a class="code hl_struct" href="structsk__buff.html">sk_buff</a> * dev_alloc_skb(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="vsf__pbuf_8c.html#ae4be32df35b12bdacfbe8ae8cd5a8177">length</a>)</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>{</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="skbuff_8h.html#a5dd028351e5213a18a02cbe28293432e">alloc_skb</a>(<a class="code hl_variable" href="vsf__pbuf_8c.html#ae4be32df35b12bdacfbe8ae8cd5a8177">length</a>, <a class="code hl_define" href="gfp_8h.html#aa9d5f32b75f79a459c1161e3519ed1e1">GFP_ATOMIC</a>);</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>}</div>
 <div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span> </div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="skbuff_8h.html#a17767ef06b163a3ea869b5f23fbb437b">skb_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span> </div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>}</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span> </div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="agfp_8h_html"><div class="ttname"><a href="gfp_8h.html">gfp.h</a></div></div>
 <div class="ttc" id="agfp_8h_html_a99dcacb83509949e516cf6ae0367ff73"><div class="ttname"><a href="gfp_8h.html#a99dcacb83509949e516cf6ae0367ff73">gfp_t</a></div><div class="ttdeci">unsigned int gfp_t</div><div class="ttdef"><b>Definition:</b> gfp.h:10</div></div>
 <div class="ttc" id="agfp_8h_html_aa9d5f32b75f79a459c1161e3519ed1e1"><div class="ttname"><a href="gfp_8h.html#aa9d5f32b75f79a459c1161e3519ed1e1">GFP_ATOMIC</a></div><div class="ttdeci">#define GFP_ATOMIC</div><div class="ttdef"><b>Definition:</b> gfp.h:15</div></div>
@@ -386,6 +392,7 @@
 <div class="ttc" id="askbuff_8h_html_a07024fffed46339cddc7e8fcebd916bb"><div class="ttname"><a href="skbuff_8h.html#a07024fffed46339cddc7e8fcebd916bb">sk_buff_data_t</a></div><div class="ttdeci">unsigned int sk_buff_data_t</div><div class="ttdef"><b>Definition:</b> skbuff.h:15</div></div>
 <div class="ttc" id="askbuff_8h_html_a17767ef06b163a3ea869b5f23fbb437b"><div class="ttname"><a href="skbuff_8h.html#a17767ef06b163a3ea869b5f23fbb437b">skb_init</a></div><div class="ttdeci">void skb_init(void)</div><div class="ttdef"><b>Definition:</b> vsf_linux_core.c:940</div></div>
 <div class="ttc" id="askbuff_8h_html_a5dd028351e5213a18a02cbe28293432e"><div class="ttname"><a href="skbuff_8h.html#a5dd028351e5213a18a02cbe28293432e">alloc_skb</a></div><div class="ttdeci">struct sk_buff * alloc_skb(unsigned int size, gfp_t priority)</div><div class="ttdef"><b>Definition:</b> vsf_linux_core.c:883</div></div>
+<div class="ttc" id="askbuff_8h_html_ada70695894f602db11094bd931853ed0"><div class="ttname"><a href="skbuff_8h.html#ada70695894f602db11094bd931853ed0">kfree_skb</a></div><div class="ttdeci">void kfree_skb(struct sk_buff *skb)</div><div class="ttdef"><b>Definition:</b> vsf_linux_core.c:923</div></div>
 <div class="ttc" id="astring_8h_html_a197a5ce3df6fce7ba62f5af007a05f70"><div class="ttname"><a href="string_8h.html#a197a5ce3df6fce7ba62f5af007a05f70">memset</a></div><div class="ttdeci">void * memset(void *s, int ch, size_t n)</div></div>
 <div class="ttc" id="astring_8h_html_aba088e716bccbc96d42da97e96316df1"><div class="ttname"><a href="string_8h.html#aba088e716bccbc96d42da97e96316df1">memcpy</a></div><div class="ttdeci">void * memcpy(void *dest, const void *src, size_t n)</div></div>
 <div class="ttc" id="astructatomic__t_html"><div class="ttname"><a href="structatomic__t.html">atomic_t</a></div><div class="ttdef"><b>Definition:</b> atomic.h:11</div></div>
