@@ -538,7 +538,7 @@
 <p >! get pin feature and make sure pin-input is enabled by default ! this is an example to enable some feature to be default. uint_fast8_t feature = cfg_ptr-&gt;feature ^ IOCTRL_PIN_IE_MSK; <br  />
 </p>
 <p >! set pin feature: this is the most optimal solution GSP_IOCTRL.PIN[pin_index].Value = feature;</p>
-<p >! but if we are not lucky enough, we can only use the following way if (feature &amp; IO_PULL_UP) { IOCTRL_ENABLE_PULL_UP(pin_index); } else { IOCTRL_DISABLE_PULL_UP } if (feature &amp; IO_HIGH_DRV) { IOCTRL_ENABLE_HIGH_DRIVER_STRENGH(pin_index); } else { IOCTRL_DISABLE_HIGH_DRIVER_STRENGH(pin_index); } ...</p>
+<p >! but if we are not lucky enough, we can only use the following way if (feature &amp; VSF_IO_PULL_UP) { IOCTRL_ENABLE_PULL_UP(pin_index); } else { IOCTRL_DISABLE_PULL_UP } if (feature &amp; VSF_IO_HIGH_DRV) { IOCTRL_ENABLE_HIGH_DRIVER_STRENGH(pin_index); } else { IOCTRL_DISABLE_HIGH_DRIVER_STRENGH(pin_index); } ...</p>
 <p >! I know this is ugly, but some times, the two methods aforementioned ! can be combined. So you should fully use the 32 bit of the ! cfg_ptr-&gt;feature</p>
 <p >! set pin function selection IOCTRL_FUNCTION_SELECT(pin_index, function);</p>
 <pre class="fragment">    cfg_ptr++;                                //!&lt; next one...
