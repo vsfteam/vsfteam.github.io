@@ -67,6 +67,9 @@
 <tr class="memitem:a98fe4cb69eb220970a84fad591aed76f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c__common_8c.html#a98fe4cb69eb220970a84fad591aed76f">vsf_i2c_init</a> (<a class="el" href="structvsf__i2c__t.html">vsf_i2c_t</a> *i2c_ptr, <a class="el" href="structvsf__i2c__cfg__t.html">vsf_i2c_cfg_t</a> *cfg_ptr)</td></tr>
 <tr class="memdesc:a98fe4cb69eb220970a84fad591aed76f"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化一个 i2c 实例  <a href="i2c__common_8c.html#a98fe4cb69eb220970a84fad591aed76f">更多...</a><br /></td></tr>
 <tr class="separator:a98fe4cb69eb220970a84fad591aed76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa736da3264aee2f1b12d53f376e62226"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c__common_8c.html#aa736da3264aee2f1b12d53f376e62226">vsf_i2c_fini</a> (<a class="el" href="structvsf__i2c__t.html">vsf_i2c_t</a> *i2c_ptr)</td></tr>
+<tr class="memdesc:aa736da3264aee2f1b12d53f376e62226"><td class="mdescLeft">&#160;</td><td class="mdescRight">终止一个 i2c 实例  <a href="i2c__common_8c.html#aa736da3264aee2f1b12d53f376e62226">更多...</a><br /></td></tr>
+<tr class="separator:aa736da3264aee2f1b12d53f376e62226"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1bd783202f79ed2c3f6a16627d223b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c__common_8c.html#ac1bd783202f79ed2c3f6a16627d223b0">vsf_i2c_enable</a> (<a class="el" href="structvsf__i2c__t.html">vsf_i2c_t</a> *i2c_ptr)</td></tr>
 <tr class="memdesc:ac1bd783202f79ed2c3f6a16627d223b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">使能 i2c 实例  <a href="i2c__common_8c.html#ac1bd783202f79ed2c3f6a16627d223b0">更多...</a><br /></td></tr>
 <tr class="separator:ac1bd783202f79ed2c3f6a16627d223b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,6 +143,34 @@
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果 i2c 初始化完成返回 VSF_ERR_NONE , 否则返回负数。 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>初始化一个i2c实例应该包括开启对应的电源门控，不包括引脚复用功能 </dd></dl>
+
+</div>
+</div>
+<a id="aa736da3264aee2f1b12d53f376e62226" name="aa736da3264aee2f1b12d53f376e62226"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa736da3264aee2f1b12d53f376e62226">&#9670;&#160;</a></span>vsf_i2c_fini()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_i2c_fini </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__i2c__t.html">vsf_i2c_t</a> *&#160;</td>
+          <td class="paramname"><em>i2c_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>终止一个 i2c 实例 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">i2c_ptr</td><td>结构体 <a class="el" href="structvsf__i2c__t.html">vsf_i2c_t</a> 的指针，参考 <a class="el" href="structvsf__i2c__t.html">vsf_i2c_t</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>终止一个i2c实例应该包括关闭对应的电源门控 </dd></dl>
 
 </div>
 </div>
@@ -167,6 +198,7 @@
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>fsm_rt_t: 如果使能成功，返回 fsm_rt_cpl, 未完成初始化返回 fsm_rt_onging </dd></dl>
+<dl class="section note"><dt>注解</dt><dd><a class="el" href="vsf__template__i2c_8h.html#ac4d1c9151384bbdf3bceb960f2892d6b">vsf_i2c_enable()</a> 应该在 <a class="el" href="vsf__template__i2c_8h.html#a9e8fa29481690c8d99364500c77c81b1">vsf_i2c_init()</a> 之后调用。时钟门控位只需要确保在 <a class="el" href="vsf__template__i2c_8h.html#ac4d1c9151384bbdf3bceb960f2892d6b">vsf_i2c_enable()</a> 之后开启。 </dd></dl>
 
 </div>
 </div>
@@ -194,6 +226,7 @@
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>fsm_rt_t: 如果禁能成功，返回 fsm_rt_cpl, 未完成初始化返回 fsm_rt_onging </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>需要确保在 <a class="el" href="vsf__template__i2c_8h.html#a2489cb3c6a5d5bada2a4d78ae9c7398b">vsf_i2c_disable()</a> 之后调用 <a class="el" href="vsf__template__i2c_8h.html#ac4d1c9151384bbdf3bceb960f2892d6b">vsf_i2c_enable()</a> 是可以正常工作的， 而不需要调用 <a class="el" href="vsf__template__i2c_8h.html#a9e8fa29481690c8d99364500c77c81b1">vsf_i2c_init()</a> </dd></dl>
 
 </div>
 </div>
