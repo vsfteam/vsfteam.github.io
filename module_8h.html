@@ -84,8 +84,12 @@ Macros</h2></td></tr>
 <tr class="separator:ab90dfd2ed5781c67420daa1502cc7478"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a718caa48129be186065373eeb08ebe8e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="module_8h.html#a718caa48129be186065373eeb08ebe8e">module_init</a>(__init_func)</td></tr>
 <tr class="separator:a718caa48129be186065373eeb08ebe8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28f5aab01d301a4e06661a1b173f4319"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="module_8h.html#a28f5aab01d301a4e06661a1b173f4319">module_run_init</a>(__init_func)</td></tr>
+<tr class="separator:a28f5aab01d301a4e06661a1b173f4319"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35834afcdcf9bbdc0444e5b05a5fa4f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="module_8h.html#a35834afcdcf9bbdc0444e5b05a5fa4f4">module_exit</a>(__exit_func)</td></tr>
 <tr class="separator:a35834afcdcf9bbdc0444e5b05a5fa4f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30870293025194eb8282a3bb26409891"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="module_8h.html#a30870293025194eb8282a3bb26409891">module_run_exit</a>(__exit_func)</td></tr>
+<tr class="separator:a30870293025194eb8282a3bb26409891"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a026ecb225c8ecf49f8a6075a7071a962"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="module_8h.html#a026ecb225c8ecf49f8a6075a7071a962">THIS_MODULE</a>&#160;&#160;&#160;((struct <a class="el" href="structmodule.html">module</a> *)<a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)</td></tr>
 <tr class="separator:a026ecb225c8ecf49f8a6075a7071a962"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5da7f75d94cc9304af39b614c001bcee"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="module_8h.html#a5da7f75d94cc9304af39b614c001bcee">KBUILD_MODNAME</a>&#160;&#160;&#160;((const char *)<a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)</td></tr>
@@ -255,7 +259,32 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_define" href="module_8h.html#aca8f1e05ca62886e6d99e8dc006e5500">__init</a> __vsf_mod_##__init_func(<span class="keywordtype">void</span>)                                       \</div>
+<div class="line">{                                                                               \</div>
+<div class="line">    __init_func();                                                              \</div>
+<div class="line">}</div>
+<div class="ttc" id="amodule_8h_html_aca8f1e05ca62886e6d99e8dc006e5500"><div class="ttname"><a href="module_8h.html#aca8f1e05ca62886e6d99e8dc006e5500">__init</a></div><div class="ttdeci">#define __init</div><div class="ttdef"><b>Definition:</b> module.h:11</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a28f5aab01d301a4e06661a1b173f4319" name="a28f5aab01d301a4e06661a1b173f4319"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28f5aab01d301a4e06661a1b173f4319">&#9670;&#160;</a></span>module_run_init</h2>
 
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define module_run_init</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__init_func</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">extern</span> <span class="keywordtype">int</span> __vsf_mod_##__init_func(<span class="keywordtype">void</span>);                                       \</div>
+<div class="line">__vsf_mod_##__init_func()</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a35834afcdcf9bbdc0444e5b05a5fa4f4" name="a35834afcdcf9bbdc0444e5b05a5fa4f4"></a>
@@ -273,7 +302,31 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_define" href="module_8h.html#aca8f1e05ca62886e6d99e8dc006e5500">__init</a> __vsf_mod_##__exit_func(<span class="keywordtype">void</span>)                                       \</div>
+<div class="line">{                                                                               \</div>
+<div class="line">    __exit_func();                                                              \</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a30870293025194eb8282a3bb26409891" name="a30870293025194eb8282a3bb26409891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30870293025194eb8282a3bb26409891">&#9670;&#160;</a></span>module_run_exit</h2>
 
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define module_run_exit</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__exit_func</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">extern</span> <span class="keywordtype">int</span> __vsf_mod_##__exit_func(<span class="keywordtype">void</span>);                                       \</div>
+<div class="line">__vsf_mod_##__exit_func()</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a026ecb225c8ecf49f8a6075a7071a962" name="a026ecb225c8ecf49f8a6075a7071a962"></a>

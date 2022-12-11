@@ -72,7 +72,7 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a058540a502a11aeb42422b45d1aa16cc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_2sys_2linux_2include_2linux_2device_2driver_8h.html#a058540a502a11aeb42422b45d1aa16cc">module_driver</a>(__driver,  __register,  __unregister, ...)</td></tr>
 <tr class="separator:a058540a502a11aeb42422b45d1aa16cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29772bb27479c9ff5ebac724b221431b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_2sys_2linux_2include_2linux_2device_2driver_8h.html#a29772bb27479c9ff5ebac724b221431b">module_driver_init</a>(__driver)</td></tr>
+<tr class="memitem:a29772bb27479c9ff5ebac724b221431b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_2sys_2linux_2include_2linux_2device_2driver_8h.html#a29772bb27479c9ff5ebac724b221431b">module_driver_init</a>(__driver)&#160;&#160;&#160;<a class="el" href="module_8h.html#a28f5aab01d301a4e06661a1b173f4319">module_run_init</a>(__driver##<a class="el" href="init_8c.html#a53578094a6e7647b6a9f9ea86975c4c2">_init</a>)</td></tr>
 <tr class="separator:a29772bb27479c9ff5ebac724b221431b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -120,12 +120,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_define" href="module_8h.html#aca8f1e05ca62886e6d99e8dc006e5500">__init</a> __driver##<a class="code hl_function" href="init_8c.html#a53578094a6e7647b6a9f9ea86975c4c2">_init</a>(<span class="keywordtype">void</span>)                                               \</div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_define" href="module_8h.html#aca8f1e05ca62886e6d99e8dc006e5500">__init</a> __driver##<a class="code hl_function" href="init_8c.html#a53578094a6e7647b6a9f9ea86975c4c2">_init</a>(<span class="keywordtype">void</span>)                                        \</div>
 <div class="line">{                                                                               \</div>
 <div class="line">    __register(&amp;(__driver) , ##__VA_ARGS__);                                    \</div>
 <div class="line">}                                                                               \</div>
 <div class="line">module_init(__driver##<a class="code hl_function" href="init_8c.html#a53578094a6e7647b6a9f9ea86975c4c2">_init</a>);                                                   \</div>
-<div class="line"><span class="keywordtype">void</span> <a class="code hl_define" href="module_8h.html#a98997f8af097472ccf19534c24cb4a24">__exit</a> __driver##<a class="code hl_function" href="stdlib_8h.html#abc96bd69b58b2deaddb484478d911c1b">_exit</a>(<span class="keywordtype">void</span>)                                               \</div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_define" href="module_8h.html#a98997f8af097472ccf19534c24cb4a24">__exit</a> __driver##<a class="code hl_function" href="stdlib_8h.html#abc96bd69b58b2deaddb484478d911c1b">_exit</a>(<span class="keywordtype">void</span>)                                        \</div>
 <div class="line">{                                                                               \</div>
 <div class="line">    __unregister(&amp;(__driver) , ##__VA_ARGS__);                                  \</div>
 <div class="line">}                                                                               \</div>
@@ -148,13 +148,11 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">__driver</td><td>)</td>
-          <td></td>
+          <td>&#160;&#160;&#160;<a class="el" href="module_8h.html#a28f5aab01d301a4e06661a1b173f4319">module_run_init</a>(__driver##<a class="el" href="init_8c.html#a53578094a6e7647b6a9f9ea86975c4c2">_init</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">extern</span> <span class="keywordtype">int</span> __driver##<a class="code hl_function" href="init_8c.html#a53578094a6e7647b6a9f9ea86975c4c2">_init</a>(<span class="keywordtype">void</span>);                                               \</div>
-<div class="line">__driver##<a class="code hl_function" href="init_8c.html#a53578094a6e7647b6a9f9ea86975c4c2">_init</a>()</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
