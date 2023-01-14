@@ -219,30 +219,35 @@
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>            <a class="code hl_class" href="classvsf__stream__t.html">vsf_stream_t</a> *stream, <a class="code hl_union" href="unionvk__audio__format__t.html">vk_audio_format_t</a> *<a class="code hl_variable" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>);</div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="keyword">extern</span> <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code hl_function" href="vsf__audio_8h.html#a256ae510e3e3dbcba90c18c0069d1a36">vk_audio_stop</a>(<a class="code hl_class" href="classvk__audio__dev__t.html">vk_audio_dev_t</a> *pthis, <a class="code hl_typedef" href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a> stream_idx);</div>
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>}</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="preprocessor">#if VSF_AUDIO_USE_DECODER_WAV == ENABLED</span></div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="preprocessor">#   include &quot;<a class="code" href="vsf__wav_8h.html">./decoder/wav/vsf_wav.h</a>&quot;</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="preprocessor">#if VSF_AUDIO_USE_WINSOUND == ENABLED</span></div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="preprocessor">#   include &quot;<a class="code" href="vsf__winsound_8h.html">./driver/winsound/vsf_winsound.h</a>&quot;</span></div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="preprocessor">#if VSF_HAL_USE_I2S == ENABLED</span></div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="preprocessor">#   include &quot;<a class="code" href="vsf__audio__i2s_8h.html">./driver/i2s/vsf_audio_i2s.h</a>&quot;</span></div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="preprocessor">#   if VSF_AUDIO_USE_AIC1000A == ENABLED</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="preprocessor">#       include &quot;<a class="code" href="vsf__aic1000a_8h.html">./driver/aic1000a/vsf_aic1000a.h</a>&quot;</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="preprocessor">#if VSF_AUDIO_USE_PLAYBACK == ENABLED</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">// for playback only</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="vsf__audio_8h.html#a188abb4255fd5b60b1988ab150d8ac00">vsf_audio_ticktock_stream_adapter_init</a>(<a class="code hl_class" href="classvsf__stream__adapter__t.html">vsf_stream_adapter_t</a> *adapter);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>}</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="preprocessor">#if VSF_AUDIO_USE_DECODER_WAV == ENABLED</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="preprocessor">#   include &quot;<a class="code" href="vsf__wav_8h.html">./decoder/wav/vsf_wav.h</a>&quot;</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="preprocessor">#if VSF_AUDIO_USE_WINSOUND == ENABLED</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="preprocessor">#   include &quot;<a class="code" href="vsf__winsound_8h.html">./driver/winsound/vsf_winsound.h</a>&quot;</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="preprocessor">#if VSF_HAL_USE_I2S == ENABLED</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="preprocessor">#   include &quot;<a class="code" href="vsf__audio__i2s_8h.html">./driver/i2s/vsf_audio_i2s.h</a>&quot;</span></div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_AUDIO</span></div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_AUDIO_H__</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="preprocessor">#   if VSF_AUDIO_USE_AIC1000A == ENABLED</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="preprocessor">#       include &quot;<a class="code" href="vsf__aic1000a_8h.html">./driver/aic1000a/vsf_aic1000a.h</a>&quot;</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_AUDIO</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_AUDIO_H__</span></div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition:</b> __type.h:42</div></div>
 <div class="ttc" id="aarm_2type_8h_html_a273cf69d639a59973b6019625df33e30"><div class="ttname"><a href="arm_2type_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a></div><div class="ttdeci">unsigned short uint16_t</div><div class="ttdef"><b>Definition:</b> type.h:30</div></div>
 <div class="ttc" id="aarm_2type_8h_html_a435d1572bf3f880d55459d9805097f62"><div class="ttname"><a href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a></div><div class="ttdeci">unsigned int uint32_t</div><div class="ttdef"><b>Definition:</b> type.h:35</div></div>
@@ -250,6 +255,7 @@
 <div class="ttc" id="aarm_2type_8h_html_ad0906fbe05a45fbdb000c58fe8929e70"><div class="ttname"><a href="arm_2type_8h.html#ad0906fbe05a45fbdb000c58fe8929e70">uint_fast8_t</a></div><div class="ttdeci">unsigned int uint_fast8_t</div><div class="ttdef"><b>Definition:</b> type.h:27</div></div>
 <div class="ttc" id="aclassvk__audio__dev__t_html"><div class="ttname"><a href="classvk__audio__dev__t.html">vk_audio_dev_t</a></div><div class="ttdef"><b>Definition:</b> vsf_audio.h:135</div></div>
 <div class="ttc" id="aclassvk__audio__drv__t_html"><div class="ttname"><a href="classvk__audio__drv__t.html">vk_audio_drv_t</a></div><div class="ttdef"><b>Definition:</b> vsf_audio.h:54</div></div>
+<div class="ttc" id="aclassvsf__stream__adapter__t_html"><div class="ttname"><a href="classvsf__stream__adapter__t.html">vsf_stream_adapter_t</a></div><div class="ttdef"><b>Definition:</b> vsf_simple_stream.h:282</div></div>
 <div class="ttc" id="aclassvsf__stream__t_html"><div class="ttname"><a href="classvsf__stream__t.html">vsf_stream_t</a></div><div class="ttdef"><b>Definition:</b> vsf_simple_stream.h:254</div></div>
 <div class="ttc" id="acortex__a__generic_8h_html_a0f1041ab7f9d152f2f0c932b3529633f"><div class="ttname"><a href="cortex__a__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633f">vsf_arch_prio_t</a></div><div class="ttdeci">vsf_arch_prio_t</div><div class="ttdef"><b>Definition:</b> cortex_a_generic.h:88</div></div>
 <div class="ttc" id="aooc__class_8h_html"><div class="ttname"><a href="ooc__class_8h.html">ooc_class.h</a></div></div>
@@ -280,6 +286,7 @@
 <div class="ttc" id="aunionvk__audio__format__t_html_ae5af3ed96589b85df7e9b2254021cda0"><div class="ttname"><a href="unionvk__audio__format__t.html#ae5af3ed96589b85df7e9b2254021cda0">vk_audio_format_t::is_be</a></div><div class="ttdeci">uint8_t is_be</div><div class="ttdef"><b>Definition:</b> vsf_audio.h:112</div></div>
 <div class="ttc" id="avsf__aic1000a_8h_html"><div class="ttname"><a href="vsf__aic1000a_8h.html">vsf_aic1000a.h</a></div></div>
 <div class="ttc" id="avsf__audio_8h_html_a06ffd0eb1b8f5ae4734e1b1fb88360f4"><div class="ttname"><a href="vsf__audio_8h.html#a06ffd0eb1b8f5ae4734e1b1fb88360f4">vk_audio_control</a></div><div class="ttdeci">vsf_err_t vk_audio_control(vk_audio_dev_t *pthis, uint_fast8_t stream_idx, vk_av_control_type_t type, vk_av_control_value_t value)</div><div class="ttdef"><b>Definition:</b> vsf_audio.c:67</div></div>
+<div class="ttc" id="avsf__audio_8h_html_a188abb4255fd5b60b1988ab150d8ac00"><div class="ttname"><a href="vsf__audio_8h.html#a188abb4255fd5b60b1988ab150d8ac00">vsf_audio_ticktock_stream_adapter_init</a></div><div class="ttdeci">void vsf_audio_ticktock_stream_adapter_init(vsf_stream_adapter_t *adapter)</div><div class="ttdef"><b>Definition:</b> vsf_audio.c:138</div></div>
 <div class="ttc" id="avsf__audio_8h_html_a256ae510e3e3dbcba90c18c0069d1a36"><div class="ttname"><a href="vsf__audio_8h.html#a256ae510e3e3dbcba90c18c0069d1a36">vk_audio_stop</a></div><div class="ttdeci">vsf_err_t vk_audio_stop(vk_audio_dev_t *pthis, uint_fast8_t stream_idx)</div><div class="ttdef"><b>Definition:</b> vsf_audio.c:106</div></div>
 <div class="ttc" id="avsf__audio_8h_html_a5945eeebd1a54fb6d2114480265502d4"><div class="ttname"><a href="vsf__audio_8h.html#a5945eeebd1a54fb6d2114480265502d4">audio_stream</a></div><div class="ttdeci">vk_audio_stream_t * audio_stream</div><div class="ttdef"><b>Definition:</b> vsf_audio.h:146</div></div>
 <div class="ttc" id="avsf__audio_8h_html_a97080908dd0e56ede2c71bcc77f391bb"><div class="ttname"><a href="vsf__audio_8h.html#a97080908dd0e56ede2c71bcc77f391bb">VSF_AUDIO_DATA_TYPE_BESL</a></div><div class="ttdeci">#define VSF_AUDIO_DATA_TYPE_BESL(__LEN)</div><div class="ttdef"><b>Definition:</b> vsf_audio.h:81</div></div>
