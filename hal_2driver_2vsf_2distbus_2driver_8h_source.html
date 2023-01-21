@@ -153,82 +153,46 @@
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>} vsf_hal_distbus_cmd_t;</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classvsf__hal__distbus__t.html">  102</a></span><a class="code hl_define" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code hl_class" href="classvsf__hal__distbus__t.html">vsf_hal_distbus_t</a>) {</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    protected_member(</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <a class="code hl_class" href="classvsf__distbus__service__t.html">vsf_distbus_service_t</a>       service;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <a class="code hl_class" href="classvsf__distbus__t.html">vsf_distbus_t</a>               *distbus;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor">#define VSF_HAL_DISTBUS_DEFINE(__TYPE)                                          \</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="preprocessor">        struct {                                                                \</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">            uint8_t                 dev_num;                                    \</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">            VSF_MCONNECT(vsf_hal_distbus_, __TYPE, _t) *dev;                    \</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="preprocessor">        } __TYPE;</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#if 0</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="comment">// some compiler doesnot support include directive within macro arguments</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <a class="code hl_define" href="vsf__foreach__macro_8h.html#a2cd447435773d0154dd654f11e324f5d">VSF_MFOREACH</a>(VSF_HAL_DISTBUS_DEFINE,</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>#include <span class="stringliteral">&quot;vsf_hal_distbus_enum.inc&quot;</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        )</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="preprocessor">#if VSF_HAL_USE_IO == ENABLED &amp;&amp; VSF_HAL_DISTBUS_USE_IO == ENABLED</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        VSF_HAL_DISTBUS_DEFINE(io)</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="preprocessor">#if VSF_HAL_USE_GPIO == ENABLED &amp;&amp; VSF_HAL_DISTBUS_USE_GPIO == ENABLED</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        VSF_HAL_DISTBUS_DEFINE(gpio)</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="preprocessor">#if VSF_HAL_USE_I2C == ENABLED &amp;&amp; VSF_HAL_DISTBUS_USE_I2C == ENABLED</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        VSF_HAL_DISTBUS_DEFINE(i2c)</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="preprocessor">#if VSF_HAL_USE_SPI == ENABLED &amp;&amp; VSF_HAL_DISTBUS_USE_SPI == ENABLED</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        VSF_HAL_DISTBUS_DEFINE(spi)</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="preprocessor">#if VSF_HAL_USE_USART == ENABLED &amp;&amp; VSF_HAL_DISTBUS_USE_USART == ENABLED</span></div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        VSF_HAL_DISTBUS_DEFINE(usart)</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="preprocessor">#if VSF_HAL_USE_MMC == ENABLED &amp;&amp; VSF_HAL_DISTBUS_USE_MMC == ENABLED</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        VSF_HAL_DISTBUS_DEFINE(mmc)</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="struct____vsf__hal__distbus__enum.html">  102</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct____vsf__hal__distbus__enum.html">__vsf_hal_distbus_enum</a> {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="hal_2driver_2vsf_2distbus_2driver_8h.html#a06673bcdbf957b86763e44d71182c51a">  103</a></span><span class="preprocessor">#define VSF_HAL_DISTBUS_DEFINE(__TYPE)                                          \</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">        struct {                                                                \</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="preprocessor">            uint8_t                 dev_num;                                    \</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="preprocessor">            VSF_MCONNECT(vsf_hal_distbus_, __TYPE, _t) *dev;                    \</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor">        } __TYPE;</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="hal_2driver_2vsf_2distbus_2driver_8h.html#a499c8b509408c830eb28669713cadcfa">  109</a></span><span class="preprocessor">#define __VSF_HAL_DISTBUS_ENUM      VSF_HAL_DISTBUS_DEFINE</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__hal__distbus__enum_8inc.html">vsf_hal_distbus_enum.inc</a>&quot;</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="hal_2driver_2vsf_2distbus_2driver_8h.html#ad6afa48bfa486b56ea4b4b3255aa6a25">  111</a></span>} <a class="code hl_struct" href="struct____vsf__hal__distbus__enum.html">__vsf_hal_distbus_enum</a>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="classvsf__hal__distbus__t.html">  113</a></span><a class="code hl_define" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code hl_class" href="classvsf__hal__distbus__t.html">vsf_hal_distbus_t</a>) {</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    protected_member(</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <a class="code hl_class" href="classvsf__distbus__service__t.html">vsf_distbus_service_t</a>       service;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <a class="code hl_class" href="classvsf__distbus__t.html">vsf_distbus_t</a>               *distbus;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        implement(<a class="code hl_struct" href="struct____vsf__hal__distbus__enum.html">__vsf_hal_distbus_enum</a>)</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="classvsf__hal__distbus__t.html#ad04a841be6f6bc641b404d2e44024bad">  119</a></span>    )</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>};</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="hal_2driver_2vsf_2distbus_2driver_8h.html#a26375be74475f6116a4d56bc54b7aec2">vsf_hal_distbus_register</a>(<a class="code hl_class" href="classvsf__distbus__t.html">vsf_distbus_t</a> *distbus, <a class="code hl_class" href="classvsf__hal__distbus__t.html">vsf_hal_distbus_t</a> *hal_distbus);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>}</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="preprocessor">#undef __VSF_HAL_DISTBUS_CLASS_IMPLEMENT</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="preprocessor">#undef __VSF_HAL_DISTBUS_CLASS_INHERIT__</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="preprocessor">#if VSF_HAL_USE_ADC == ENABLED &amp;&amp; VSF_HAL_DISTBUS_USE_ADC == ENABLED</span></div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        VSF_HAL_DISTBUS_DEFINE(adc)</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="preprocessor">#if VSF_HAL_USE_DAC == ENABLED &amp;&amp; VSF_HAL_DISTBUS_USE_DAC == ENABLED</span></div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        VSF_HAL_DISTBUS_DEFINE(dac)</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="preprocessor">#if VSF_HAL_USE_PWM == ENABLED &amp;&amp; VSF_HAL_DISTBUS_USE_PWM == ENABLED</span></div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        VSF_HAL_DISTBUS_DEFINE(pwm)</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="preprocessor">#if VSF_HAL_USE_I2S == ENABLED &amp;&amp; VSF_HAL_DISTBUS_USE_I2S == ENABLED</span></div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        VSF_HAL_DISTBUS_DEFINE(i2s)</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="preprocessor">#if VSF_USE_USB_DEVICE == ENABLED &amp;&amp; VSF_HAL_USE_USBD == ENABLED &amp;&amp; VSF_HAL_DISTBUS_USE_USBD == ENABLED</span></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        VSF_HAL_DISTBUS_DEFINE(usbd)</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="preprocessor">#if VSF_USE_USB_HOST == ENABLED &amp;&amp; VSF_HAL_USE_USBH == ENABLED &amp;&amp; VSF_HAL_DISTBUS_USE_USBH == ENABLED</span></div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        VSF_HAL_DISTBUS_DEFINE(usbh)</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="classvsf__hal__distbus__t.html#ad04a841be6f6bc641b404d2e44024bad">  155</a></span>    )</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>};</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="hal_2driver_2vsf_2distbus_2driver_8h.html#a26375be74475f6116a4d56bc54b7aec2">vsf_hal_distbus_register</a>(<a class="code hl_class" href="classvsf__distbus__t.html">vsf_distbus_t</a> *distbus, <a class="code hl_class" href="classvsf__hal__distbus__t.html">vsf_hal_distbus_t</a> *hal_distbus);</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>}</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="preprocessor">#undef __VSF_HAL_DISTBUS_CLASS_IMPLEMENT</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="preprocessor">#undef __VSF_HAL_DISTBUS_CLASS_INHERIT__</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment">/* EOF */</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment">/* EOF */</span></div>
 <div class="ttc" id="aclassvsf__distbus__service__t_html"><div class="ttname"><a href="classvsf__distbus__service__t.html">vsf_distbus_service_t</a></div><div class="ttdef"><b>Definition:</b> vsf_distbus.h:86</div></div>
 <div class="ttc" id="aclassvsf__distbus__t_html"><div class="ttname"><a href="classvsf__distbus__t.html">vsf_distbus_t</a></div><div class="ttdef"><b>Definition:</b> vsf_distbus.h:119</div></div>
-<div class="ttc" id="aclassvsf__hal__distbus__t_html"><div class="ttname"><a href="classvsf__hal__distbus__t.html">vsf_hal_distbus_t</a></div><div class="ttdef"><b>Definition:</b> driver.h:102</div></div>
-<div class="ttc" id="ahal_2driver_2vsf_2distbus_2driver_8h_html_a26375be74475f6116a4d56bc54b7aec2"><div class="ttname"><a href="hal_2driver_2vsf_2distbus_2driver_8h.html#a26375be74475f6116a4d56bc54b7aec2">vsf_hal_distbus_register</a></div><div class="ttdeci">void vsf_hal_distbus_register(vsf_distbus_t *distbus, vsf_hal_distbus_t *hal_distbus)</div><div class="ttdef"><b>Definition:</b> vsf_hal_distbus.c:198</div></div>
+<div class="ttc" id="aclassvsf__hal__distbus__t_html"><div class="ttname"><a href="classvsf__hal__distbus__t.html">vsf_hal_distbus_t</a></div><div class="ttdef"><b>Definition:</b> driver.h:113</div></div>
+<div class="ttc" id="ahal_2driver_2vsf_2distbus_2driver_8h_html_a26375be74475f6116a4d56bc54b7aec2"><div class="ttname"><a href="hal_2driver_2vsf_2distbus_2driver_8h.html#a26375be74475f6116a4d56bc54b7aec2">vsf_hal_distbus_register</a></div><div class="ttdeci">void vsf_hal_distbus_register(vsf_distbus_t *distbus, vsf_hal_distbus_t *hal_distbus)</div><div class="ttdef"><b>Definition:</b> vsf_hal_distbus.c:117</div></div>
 <div class="ttc" id="ahal_2driver_2vsf_2distbus_2driver_8h_html_a3b272e9d75a4e8098a1e43fe6fec7ef8"><div class="ttname"><a href="hal_2driver_2vsf_2distbus_2driver_8h.html#a3b272e9d75a4e8098a1e43fe6fec7ef8">vsf_hal_distbus_type_t</a></div><div class="ttdeci">vsf_hal_distbus_type_t</div><div class="ttdef"><b>Definition:</b> driver.h:64</div></div>
 <div class="ttc" id="ahal_2driver_2vsf_2distbus_2driver_8h_html_a3b272e9d75a4e8098a1e43fe6fec7ef8a1795724406a30c72aa6e1e21bb4434ad"><div class="ttname"><a href="hal_2driver_2vsf_2distbus_2driver_8h.html#a3b272e9d75a4e8098a1e43fe6fec7ef8a1795724406a30c72aa6e1e21bb4434ad">VSF_HAL_DISTBUS_DAC</a></div><div class="ttdeci">@ VSF_HAL_DISTBUS_DAC</div><div class="ttdef"><b>Definition:</b> driver.h:72</div></div>
 <div class="ttc" id="ahal_2driver_2vsf_2distbus_2driver_8h_html_a3b272e9d75a4e8098a1e43fe6fec7ef8a220f06a18046361e0e2d73053ebe8379"><div class="ttname"><a href="hal_2driver_2vsf_2distbus_2driver_8h.html#a3b272e9d75a4e8098a1e43fe6fec7ef8a220f06a18046361e0e2d73053ebe8379">VSF_HAL_DISTBUS_PWM</a></div><div class="ttdeci">@ VSF_HAL_DISTBUS_PWM</div><div class="ttdef"><b>Definition:</b> driver.h:73</div></div>
@@ -256,10 +220,11 @@
 <div class="ttc" id="ahal_2driver_2vsf_2distbus_2driver_8h_html_a3b272e9d75a4e8098a1e43fe6fec7ef8aff2ecf749d17d94037d11c2172a863c3"><div class="ttname"><a href="hal_2driver_2vsf_2distbus_2driver_8h.html#a3b272e9d75a4e8098a1e43fe6fec7ef8aff2ecf749d17d94037d11c2172a863c3">VSF_HAL_DISTBUS_mmc</a></div><div class="ttdeci">@ VSF_HAL_DISTBUS_mmc</div><div class="ttdef"><b>Definition:</b> driver.h:84</div></div>
 <div class="ttc" id="aooc__class_8h_html"><div class="ttname"><a href="ooc__class_8h.html">ooc_class.h</a></div></div>
 <div class="ttc" id="aooc__class_8h_html_a62f3fe6fb9699483707f5352d777f2f0"><div class="ttname"><a href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a></div><div class="ttdeci">#define vsf_class(__name)</div><div class="ttdef"><b>Definition:</b> ooc_class.h:44</div></div>
-<div class="ttc" id="avsf__foreach__macro_8h_html_a2cd447435773d0154dd654f11e324f5d"><div class="ttname"><a href="vsf__foreach__macro_8h.html#a2cd447435773d0154dd654f11e324f5d">VSF_MFOREACH</a></div><div class="ttdeci">#define VSF_MFOREACH(__MACRO,...)</div><div class="ttdef"><b>Definition:</b> vsf_foreach_macro.h:54</div></div>
+<div class="ttc" id="astruct____vsf__hal__distbus__enum_html"><div class="ttname"><a href="struct____vsf__hal__distbus__enum.html">__vsf_hal_distbus_enum</a></div><div class="ttdef"><b>Definition:</b> driver.h:102</div></div>
 <div class="ttc" id="avsf__hal__cfg_8h_html"><div class="ttname"><a href="vsf__hal__cfg_8h.html">vsf_hal_cfg.h</a></div></div>
 <div class="ttc" id="avsf__hal__distbus__adc_8h_html"><div class="ttname"><a href="vsf__hal__distbus__adc_8h.html">vsf_hal_distbus_adc.h</a></div></div>
 <div class="ttc" id="avsf__hal__distbus__dac_8h_html"><div class="ttname"><a href="vsf__hal__distbus__dac_8h.html">vsf_hal_distbus_dac.h</a></div></div>
+<div class="ttc" id="avsf__hal__distbus__enum_8inc_html"><div class="ttname"><a href="vsf__hal__distbus__enum_8inc.html">vsf_hal_distbus_enum.inc</a></div></div>
 <div class="ttc" id="avsf__hal__distbus__gpio_8h_html"><div class="ttname"><a href="vsf__hal__distbus__gpio_8h.html">vsf_hal_distbus_gpio.h</a></div></div>
 <div class="ttc" id="avsf__hal__distbus__i2c_8h_html"><div class="ttname"><a href="vsf__hal__distbus__i2c_8h.html">vsf_hal_distbus_i2c.h</a></div></div>
 <div class="ttc" id="avsf__hal__distbus__i2s_8h_html"><div class="ttname"><a href="vsf__hal__distbus__i2s_8h.html">vsf_hal_distbus_i2s.h</a></div></div>
