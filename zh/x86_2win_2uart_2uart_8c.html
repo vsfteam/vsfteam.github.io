@@ -53,21 +53,23 @@
 <a href="#nested-classes">结构体</a> &#124;
 <a href="#define-members">宏定义</a> &#124;
 <a href="#typedef-members">类型定义</a> &#124;
-<a href="#enum-members">枚举</a> &#124;
 <a href="#func-members">函数</a>  </div>
   <div class="headertitle"><div class="title">uart.c 文件参考</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="x86_2win_2uart_2uart_8h_source.html">./uart.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fifo2req__usart_8h_source.html">hal/driver/common/usart/fifo2req_usart.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__service_8h_source.html">service/vsf_service.h</a>&quot;</code><br />
 <code>#include &lt;Windows.h&gt;</code><br />
+<code>#include &lt;SetupAPI.h&gt;</code><br />
+<code>#include &lt;tchar.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="usart__template_8inc.html">hal/driver/common/usart/usart_template.inc</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 结构体</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structx86__usart__win__t.html">x86_usart_win_t</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__win__usart__t.html">vsf_win_usart_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -76,116 +78,46 @@
 <tr class="separator:a1719ca4fc288d03f3a1c87f29ba17daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c559364f5d2ba2e4fc6c72021d293bf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a9c559364f5d2ba2e4fc6c72021d293bf">VSF_USART_CFG_IMP_UPCASE_PREFIX</a>&#160;&#160;&#160;VSF_HW</td></tr>
 <tr class="separator:a9c559364f5d2ba2e4fc6c72021d293bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31647690fdb2937da50570271f9a8905"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a31647690fdb2937da50570271f9a8905">VSF_USART_CFG_FIFO_TO_REQUEST</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td></tr>
+<tr class="separator:a31647690fdb2937da50570271f9a8905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3795c90d93fba4016ca41b28849556a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a3795c90d93fba4016ca41b28849556a6">__VSF_SIMPLE_STREAM_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:a3795c90d93fba4016ca41b28849556a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7675cdb5b4b0313d65d6488cf247fb7d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a7675cdb5b4b0313d65d6488cf247fb7d">vsf_hw_usart_init</a>&#160;&#160;&#160;__vsf_hw_usart_init</td></tr>
+<tr class="separator:a7675cdb5b4b0313d65d6488cf247fb7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a59e1d2806746018b8f085781eb5aa8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a9a59e1d2806746018b8f085781eb5aa8">vsf_hw_usart_irq_enable</a>&#160;&#160;&#160;__vsf_hw_usart_irq_enable</td></tr>
+<tr class="separator:a9a59e1d2806746018b8f085781eb5aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c7094a123efddd7a45bad22989861be"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a2c7094a123efddd7a45bad22989861be">vsf_hw_usart_irq_disable</a>&#160;&#160;&#160;__vsf_hw_usart_irq_disable</td></tr>
+<tr class="separator:a2c7094a123efddd7a45bad22989861be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8883763910f324b5e1a11fa7ebfef877"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a8883763910f324b5e1a11fa7ebfef877">VSF_HW_USART_CFG_MULTI_CLASS</a>&#160;&#160;&#160;<a class="el" href="vsf__template__usart_8h.html#a087f4d6163489cb615e365a63729319e">VSF_USART_CFG_MULTI_CLASS</a></td></tr>
 <tr class="separator:a8883763910f324b5e1a11fa7ebfef877"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a778e47674c160c279b0f2eb9e4a1d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a5a778e47674c160c279b0f2eb9e4a1d5">VSF_WIN_USART_CFG_TX_BLOCK</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td></tr>
 <tr class="separator:a5a778e47674c160c279b0f2eb9e4a1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95edfd62558955cac1467847f4e9d92f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a95edfd62558955cac1467847f4e9d92f">VSF_HW_USART_CFG_TRACE_EN</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td></tr>
-<tr class="separator:a95edfd62558955cac1467847f4e9d92f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accd26959b066fbee2332e698f9baaab7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#accd26959b066fbee2332e698f9baaab7">VSF_HW_USART_CFG_TRACE_FUNCTION</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td></tr>
-<tr class="separator:accd26959b066fbee2332e698f9baaab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afda87eb86c1b0adf4f407224f56039ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#afda87eb86c1b0adf4f407224f56039ef">VSF_HW_USART_CFG_TRACE_IRQ</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td></tr>
-<tr class="separator:afda87eb86c1b0adf4f407224f56039ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae87c8208a47714cb65971c4fc499a422"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#ae87c8208a47714cb65971c4fc499a422">VSF_HW_USART_CFG_TRACE_CALLSTACK</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td></tr>
-<tr class="separator:ae87c8208a47714cb65971c4fc499a422"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abecdbf178a2833e6031056e1f2c2a194"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#abecdbf178a2833e6031056e1f2c2a194">VSF_HW_USART_CFG_TRACE_SYSTIMER</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td></tr>
-<tr class="separator:abecdbf178a2833e6031056e1f2c2a194"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5a2a9ef113499a91c39d104b7cc0f15"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#aa5a2a9ef113499a91c39d104b7cc0f15">VSF_HW_USART_CFG_TRACE_STATUS</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td></tr>
-<tr class="separator:aa5a2a9ef113499a91c39d104b7cc0f15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a587dfddc850c995990bf9d9a4228b1b8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a587dfddc850c995990bf9d9a4228b1b8">VSF_HW_USART_CFG_START_PORT</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a587dfddc850c995990bf9d9a4228b1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae983ca784579b0a3b6c943e958b32d26"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#ae983ca784579b0a3b6c943e958b32d26">VSF_HW_USART_CFG_END_PORT</a>&#160;&#160;&#160;255</td></tr>
-<tr class="separator:ae983ca784579b0a3b6c943e958b32d26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74f520ca3c5f7c1370ac86663a314690"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a74f520ca3c5f7c1370ac86663a314690">VSF_HW_USART_CFG_INPUT_BUFFER</a>&#160;&#160;&#160;1024</td></tr>
-<tr class="separator:a74f520ca3c5f7c1370ac86663a314690"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c3153dfedfc5360c9708ff2f7cd910b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a4c3153dfedfc5360c9708ff2f7cd910b">VSF_HW_USART_CFG_OUTPUT_BUFFER</a>&#160;&#160;&#160;1024</td></tr>
-<tr class="separator:a4c3153dfedfc5360c9708ff2f7cd910b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93a667b882da4e992f981ed489c4f171"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a93a667b882da4e992f981ed489c4f171">VSF_HW_USART_CFG_TRACE_IRQ_PEND</a>&#160;&#160;&#160;&quot;irq_request_pend:&quot;</td></tr>
-<tr class="separator:a93a667b882da4e992f981ed489c4f171"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefdf277005d8fc60127eb5f8c538ac7c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#aefdf277005d8fc60127eb5f8c538ac7c">VSF_HW_USART_CFG_TRACE_IRQ_GOING</a>&#160;&#160;&#160;&quot;irq_request_going:&quot;</td></tr>
-<tr class="separator:aefdf277005d8fc60127eb5f8c538ac7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06c25cdc1312e2a2646fb2bb7d0b9eeb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a06c25cdc1312e2a2646fb2bb7d0b9eeb">VSF_HW_USART_CFG_TRACE_FUNC</a>(...)&#160;&#160;&#160;<a class="el" href="stdio_8h.html#a3cb9f0894fab1c8fbb0753c9c7c2a8d9">printf</a>(__VA_ARGS__)</td></tr>
-<tr class="separator:a06c25cdc1312e2a2646fb2bb7d0b9eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a439c6544042c73a534e3c15dca4ea821"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a439c6544042c73a534e3c15dca4ea821">VSF_HW_USART_TRACE_HEADER</a>&#160;&#160;&#160;&quot;[x86/x64]:&quot;</td></tr>
-<tr class="separator:a439c6544042c73a534e3c15dca4ea821"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a668b99a4c5bdd30eca15f422869261"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a0a668b99a4c5bdd30eca15f422869261">vsf_hw_usart_trace_function</a>(...)</td></tr>
-<tr class="separator:a0a668b99a4c5bdd30eca15f422869261"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6144ddc5af9d31d15f16da8b12a757c4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a6144ddc5af9d31d15f16da8b12a757c4">vsf_hw_usart_trace_irq</a>(...)</td></tr>
-<tr class="separator:a6144ddc5af9d31d15f16da8b12a757c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bb03a55933487853b29bc704112f396"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a0bb03a55933487853b29bc704112f396">VSF_WIN_USART_CFG_FIFO_SIZE</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="separator:a0bb03a55933487853b29bc704112f396"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a2aaafe0a82393343aa516cc9fc8eb6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a9a2aaafe0a82393343aa516cc9fc8eb6">VSF_HAL_DISTBUS_USART_CFG_PROTECT_LEVEL</a>&#160;&#160;&#160;interrupt</td></tr>
+<tr class="separator:a9a2aaafe0a82393343aa516cc9fc8eb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8b3e3ca2b6b5d43f33ab767b4027b85"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#ad8b3e3ca2b6b5d43f33ab767b4027b85">__vsf_usart_protect</a>&#160;&#160;&#160;<a class="el" href="vsf__arch__abstraction_8h.html#aa6808d15ad9706a92a4ccac67a9f5423">vsf_protect</a>(<a class="el" href="vsf__hal__distbus__usart_8c.html#a9a2aaafe0a82393343aa516cc9fc8eb6">VSF_HAL_DISTBUS_USART_CFG_PROTECT_LEVEL</a>)</td></tr>
+<tr class="separator:ad8b3e3ca2b6b5d43f33ab767b4027b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedf1ea7eaaffc7698bb39203ccb16668"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#aedf1ea7eaaffc7698bb39203ccb16668">__vsf_usart_unprotect</a>&#160;&#160;&#160;<a class="el" href="vsf__arch__abstraction_8h.html#a72c27169039404e509647469f31efa12">vsf_unprotect</a>(<a class="el" href="vsf__hal__distbus__usart_8c.html#a9a2aaafe0a82393343aa516cc9fc8eb6">VSF_HAL_DISTBUS_USART_CFG_PROTECT_LEVEL</a>)</td></tr>
+<tr class="separator:aedf1ea7eaaffc7698bb39203ccb16668"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1314be2a24c819b0b503fb98e893f98"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#aa1314be2a24c819b0b503fb98e893f98">VSF_WIN_USART_INIT_PORT</a>(__N,  __VALUE)&#160;&#160;&#160;            [(__N)]                     = &amp;<a class="el" href="vsf__template__declaration_8h.html#a7de138be7d18f0b3c0428de641190c63">VSF_MCONNECT</a>(vsf_hw_usart, __N),</td></tr>
+<tr class="separator:aa1314be2a24c819b0b503fb98e893f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39b59ee7de2d480beb515cb844532a5a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a39b59ee7de2d480beb515cb844532a5a">__USART_REQUEST_IMP</a>&#160;&#160;&#160;<a class="el" href="fifo2req__usart_8h.html#a0ee71b072779016360444730146368cf">VSF_USART_FIFO2REQ_IMP_LV0</a>(<a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a1719ca4fc288d03f3a1c87f29ba17daa">VSF_USART_CFG_IMP_PREFIX</a>)</td></tr>
+<tr class="separator:a39b59ee7de2d480beb515cb844532a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79359646bf843327cc09d49aee3f9a1d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a79359646bf843327cc09d49aee3f9a1d">VSF_USART_CFG_IMP_LV0</a>(__count,  __hal_op)</td></tr>
 <tr class="separator:a79359646bf843327cc09d49aee3f9a1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 类型定义</h2></td></tr>
-<tr class="memitem:a1bef810a1d8797927f5bf256a8c9227f"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ff">em_usart_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a1bef810a1d8797927f5bf256a8c9227f">em_usart_status_t</a></td></tr>
-<tr class="separator:a1bef810a1d8797927f5bf256a8c9227f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeab3645609a8c859944277676e9902d4"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="x86_2win_2uart_2uart_8c.html#a2a0931e323158e83cb27c9001ab19bd7">usart_cancel_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#aeab3645609a8c859944277676e9902d4">usart_cancel_status_t</a></td></tr>
-<tr class="separator:aeab3645609a8c859944277676e9902d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c7f1234a6aa94cf24e27243fed72d6c"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a2c7f1234a6aa94cf24e27243fed72d6c">vsf_hw_usart_t</a></td></tr>
 <tr class="separator:a2c7f1234a6aa94cf24e27243fed72d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46435cdb635875cfd1fd1071dd709981"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structx86__usart__win__t.html">x86_usart_win_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a46435cdb635875cfd1fd1071dd709981">x86_usart_win_t</a></td></tr>
-<tr class="separator:a46435cdb635875cfd1fd1071dd709981"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-枚举</h2></td></tr>
-<tr class="memitem:a06c67f12d964bb5d33a068873e2d34ff"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ff">em_usart_status_t</a> { <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ffaaf967f42ed23eada7c89a88b2decc0e1">USART_INIT_IS_BUSY</a> = 0x80U
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ffa84e86035ce3de09077a85452935a71b0">USART_READ_IS_BUSY</a> = 0x40U
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ffa085e97c659fafa616247b9e90bbd38f9">USART_WRITE_IS_BUSY</a> = 0x20U
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ffaca7a76991bae9df0463499f234574559">USART_RESET</a> = 0x10U
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ffa7a4ed9a5b878617f1f9c342719be4fb7">USART_ENABLE</a> = 0x08U
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ffa614f6f95c5a4bf4724f8963baa164aa5">USART_DISABLE</a> = 0xF7U
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ffa0896d510f2fac99b3fede49fa224617e">USART_SEND_BLOCK</a> = 0x02U
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ffa82c8a33e78c3d57d055e87bd5bad696f">USART_SEND_BYTE</a> = 0x00U
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ffa2283443b651c304d1998e39a59b8e7c8">USART_READ_BLOCK</a> = 0x01U
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ffa60a7c3cce33227066607c8f108c3684b">USART_READ_BYTE</a> = 0x00U
-<br />
- }</td></tr>
-<tr class="separator:a06c67f12d964bb5d33a068873e2d34ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a0931e323158e83cb27c9001ab19bd7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a2a0931e323158e83cb27c9001ab19bd7">usart_cancel_status_t</a> { <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a2a0931e323158e83cb27c9001ab19bd7a4b2ef9cc02853f2cc6fcb4e957f71fd8">WILL_CANCEL_WRITE</a> = 0x80U
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a2a0931e323158e83cb27c9001ab19bd7a5c9e1394212f1c61be9652be696d60c1">CANCELED_WRITE</a> = 0x40U
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a2a0931e323158e83cb27c9001ab19bd7af717638e5a831b78d5f99189437ed56c">WILL_CANCEL_READ</a> = 0x20U
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a2a0931e323158e83cb27c9001ab19bd7a7d614014fa8a853f1b25c6e9318d260d">CANCELED_READ</a> = 0x10U
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a2a0931e323158e83cb27c9001ab19bd7a0a95c182fdfc680f7a0bd86aad5e32ba">CANCEL_READ_CLP</a> = 0x08U
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a2a0931e323158e83cb27c9001ab19bd7aa6ac457338e0bd1bb98eb90925731e16">CANCEL_WRITE_CLP</a> = 0x04U
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#a2a0931e323158e83cb27c9001ab19bd7a363631445a519a928ccb2ecfd8a8ef36">CANCEL_INIT</a> = 0x00U
-<br />
- }</td></tr>
-<tr class="separator:a2a0931e323158e83cb27c9001ab19bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adee68fda292365d485e7194ab1b40d1d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#adee68fda292365d485e7194ab1b40d1da2afa5ccfbd271e35e08f4e483f9abf66">VSF_HW_USART_TRACE_CALLSTACK_COLOR</a>
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#adee68fda292365d485e7194ab1b40d1da177e755339416a57429f96e700a9adf9">VSF_HW_USART_TRACE_IRQ_COLOR</a>
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#adee68fda292365d485e7194ab1b40d1da77ae0ed4112d6c4b8fb369a95bbb417b">VSF_HW_USART_TRACE_SYSTIMER_COLOR</a>
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#adee68fda292365d485e7194ab1b40d1dae5671f7369d87eb064e8a01d948af220">VSF_HW_USART_TRACE_STATUS_COLOR</a>
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#adee68fda292365d485e7194ab1b40d1dab4a6eda560f16b35c3ec04972f13f2cd">VSF_HW_USART_TRACE_FUNCTION_COLOR</a>
-, <br />
-&#160;&#160;<a class="el" href="x86_2win_2uart_2uart_8c.html#adee68fda292365d485e7194ab1b40d1dae1c73ef1dd5ac3cefcb771888b21efbd">VSF_HW_USART_TRACE_RESET_COLOR</a>
-<br />
- }</td></tr>
-<tr class="separator:adee68fda292365d485e7194ab1b40d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aa7f65f827cb65dfa6ab41e13d55ff8"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__win__usart__t.html">vsf_win_usart_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a1aa7f65f827cb65dfa6ab41e13d55ff8">vsf_win_usart_t</a></td></tr>
+<tr class="separator:a1aa7f65f827cb65dfa6ab41e13d55ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 函数</h2></td></tr>
+<tr class="memitem:a0c7da554900950406221a017cd590fd5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a0c7da554900950406221a017cd590fd5">vsf_hw_usart_scan_devices</a> (<a class="el" href="structvsf__usart__win__device__t.html">vsf_usart_win_device_t</a> *devices, <a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> device_num)</td></tr>
+<tr class="separator:a0c7da554900950406221a017cd590fd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8842214310813d7504bb9ec077b4b53"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#ae8842214310813d7504bb9ec077b4b53">vsf_hw_usart_init</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart, <a class="el" href="structvsf__usart__cfg__t.html">vsf_usart_cfg_t</a> *cfg)</td></tr>
 <tr class="separator:ae8842214310813d7504bb9ec077b4b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b44f1d0df364a42bc193845914b98a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a2b44f1d0df364a42bc193845914b98a2">vsf_hw_usart_enable</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart)</td></tr>
@@ -200,32 +132,12 @@
 <tr class="separator:a4bcdf5e1e058f2341537c777fd289c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b562afaa3ae55ae96cd7b374425ad6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a1b562afaa3ae55ae96cd7b374425ad6d">vsf_hw_usart_rxfifo_get_data_count</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart)</td></tr>
 <tr class="separator:a1b562afaa3ae55ae96cd7b374425ad6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6ccf9e6e92b42e8ea6b71eb5742413b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#ae6ccf9e6e92b42e8ea6b71eb5742413b">vsf_hw_usart_rxfifo_read</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart, void *buffer_ptr, <a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
-<tr class="separator:ae6ccf9e6e92b42e8ea6b71eb5742413b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1638122d80fe505e64ef3c68b86fced7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a1638122d80fe505e64ef3c68b86fced7">vsf_hw_usart_rxfifo_read</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart, void *buffer, <a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
+<tr class="separator:a1638122d80fe505e64ef3c68b86fced7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade707c8fed1c7ec92a532a28cee0105f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#ade707c8fed1c7ec92a532a28cee0105f">vsf_hw_usart_txfifo_get_free_count</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart)</td></tr>
 <tr class="separator:ade707c8fed1c7ec92a532a28cee0105f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6975c545de9efad05ea20c221845684d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a6975c545de9efad05ea20c221845684d">vsf_hw_usart_txfifo_write</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart, void *buffer_ptr, <a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
-<tr class="separator:a6975c545de9efad05ea20c221845684d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18b42a1d5866a11afa08f3451fb27e8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a18b42a1d5866a11afa08f3451fb27e8b">vsf_hw_usart_fifo_flush</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart)</td></tr>
-<tr class="separator:a18b42a1d5866a11afa08f3451fb27e8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15cbc334cb0bf7d6bea3dfde70a37eeb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a15cbc334cb0bf7d6bea3dfde70a37eeb">vsf_hw_usart_request_rx</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart, void *buffer, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
-<tr class="separator:a15cbc334cb0bf7d6bea3dfde70a37eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e6cbe1c8ce5a8e9f0064c1994f972d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a8e6cbe1c8ce5a8e9f0064c1994f972d5">vsf_hw_usart_request_tx</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart, void *buffer, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
-<tr class="separator:a8e6cbe1c8ce5a8e9f0064c1994f972d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8562d78b5bae63e0856350b384a492f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a8562d78b5bae63e0856350b384a492f7">vsf_hw_usart_is_scanning</a> (<a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *device_num)</td></tr>
-<tr class="separator:a8562d78b5bae63e0856350b384a492f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16d312b2bdb61c209b4938b2891b2177"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a16d312b2bdb61c209b4938b2891b2177">vsf_hw_usart_scan_devices</a> (void)</td></tr>
-<tr class="separator:a16d312b2bdb61c209b4938b2891b2177"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3e5268d43ab74e964b66bee661442fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#ad3e5268d43ab74e964b66bee661442fc">vsf_hw_usart_get_devices</a> (<a class="el" href="structvsf__usart__win__device__t.html">vsf_usart_win_device_t</a> *devices, <a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
-<tr class="separator:ad3e5268d43ab74e964b66bee661442fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d08a1f8869175bd4e72dae8b592412d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a2d08a1f8869175bd4e72dae8b592412d">vsf_hw_usart_cancel_rx</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart)</td></tr>
-<tr class="separator:a2d08a1f8869175bd4e72dae8b592412d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ee7181b1d9573f7cd70396a401157f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a2ee7181b1d9573f7cd70396a401157f4">vsf_hw_usart_cancel_tx</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart)</td></tr>
-<tr class="separator:a2ee7181b1d9573f7cd70396a401157f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6abede56cc55076e552d9ba6098bb0a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#ae884dda22bf64c7e974894a6d3b67929">int_fast32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a6abede56cc55076e552d9ba6098bb0a3">vsf_hw_usart_get_rx_count</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart)</td></tr>
-<tr class="separator:a6abede56cc55076e552d9ba6098bb0a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6064402874e38d197bf18491c8f045dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#ae884dda22bf64c7e974894a6d3b67929">int_fast32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a6064402874e38d197bf18491c8f045dd">vsf_hw_usart_get_tx_count</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart)</td></tr>
-<tr class="separator:a6064402874e38d197bf18491c8f045dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4edb083d99d1c5767fb11d617612d053"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="x86_2win_2uart_2uart_8c.html#a4edb083d99d1c5767fb11d617612d053">vsf_hw_usart_txfifo_write</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart, void *buffer, <a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
+<tr class="separator:a4edb083d99d1c5767fb11d617612d053"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">宏定义说明</h2>
 <a id="a1719ca4fc288d03f3a1c87f29ba17daa" name="a1719ca4fc288d03f3a1c87f29ba17daa"></a>
@@ -250,6 +162,76 @@
       <table class="memname">
         <tr>
           <td class="memname">#define VSF_USART_CFG_IMP_UPCASE_PREFIX&#160;&#160;&#160;VSF_HW</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a31647690fdb2937da50570271f9a8905" name="a31647690fdb2937da50570271f9a8905"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31647690fdb2937da50570271f9a8905">&#9670;&#160;</a></span>VSF_USART_CFG_FIFO_TO_REQUEST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_USART_CFG_FIFO_TO_REQUEST&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3795c90d93fba4016ca41b28849556a6" name="a3795c90d93fba4016ca41b28849556a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3795c90d93fba4016ca41b28849556a6">&#9670;&#160;</a></span>__VSF_SIMPLE_STREAM_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_SIMPLE_STREAM_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7675cdb5b4b0313d65d6488cf247fb7d" name="a7675cdb5b4b0313d65d6488cf247fb7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7675cdb5b4b0313d65d6488cf247fb7d">&#9670;&#160;</a></span>vsf_hw_usart_init</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_hw_usart_init&#160;&#160;&#160;__vsf_hw_usart_init</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a59e1d2806746018b8f085781eb5aa8" name="a9a59e1d2806746018b8f085781eb5aa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a59e1d2806746018b8f085781eb5aa8">&#9670;&#160;</a></span>vsf_hw_usart_irq_enable</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_hw_usart_irq_enable&#160;&#160;&#160;__vsf_hw_usart_irq_enable</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c7094a123efddd7a45bad22989861be" name="a2c7094a123efddd7a45bad22989861be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c7094a123efddd7a45bad22989861be">&#9670;&#160;</a></span>vsf_hw_usart_irq_disable</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_hw_usart_irq_disable&#160;&#160;&#160;__vsf_hw_usart_irq_disable</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -284,261 +266,102 @@
 
 </div>
 </div>
-<a id="a95edfd62558955cac1467847f4e9d92f" name="a95edfd62558955cac1467847f4e9d92f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95edfd62558955cac1467847f4e9d92f">&#9670;&#160;</a></span>VSF_HW_USART_CFG_TRACE_EN</h2>
+<a id="a0bb03a55933487853b29bc704112f396" name="a0bb03a55933487853b29bc704112f396"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bb03a55933487853b29bc704112f396">&#9670;&#160;</a></span>VSF_WIN_USART_CFG_FIFO_SIZE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define VSF_HW_USART_CFG_TRACE_EN&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td>
+          <td class="memname">#define VSF_WIN_USART_CFG_FIFO_SIZE&#160;&#160;&#160;1024</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="accd26959b066fbee2332e698f9baaab7" name="accd26959b066fbee2332e698f9baaab7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accd26959b066fbee2332e698f9baaab7">&#9670;&#160;</a></span>VSF_HW_USART_CFG_TRACE_FUNCTION</h2>
+<a id="a9a2aaafe0a82393343aa516cc9fc8eb6" name="a9a2aaafe0a82393343aa516cc9fc8eb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a2aaafe0a82393343aa516cc9fc8eb6">&#9670;&#160;</a></span>VSF_HAL_DISTBUS_USART_CFG_PROTECT_LEVEL</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define VSF_HW_USART_CFG_TRACE_FUNCTION&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td>
+          <td class="memname">#define VSF_HAL_DISTBUS_USART_CFG_PROTECT_LEVEL&#160;&#160;&#160;interrupt</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="afda87eb86c1b0adf4f407224f56039ef" name="afda87eb86c1b0adf4f407224f56039ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afda87eb86c1b0adf4f407224f56039ef">&#9670;&#160;</a></span>VSF_HW_USART_CFG_TRACE_IRQ</h2>
+<a id="ad8b3e3ca2b6b5d43f33ab767b4027b85" name="ad8b3e3ca2b6b5d43f33ab767b4027b85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8b3e3ca2b6b5d43f33ab767b4027b85">&#9670;&#160;</a></span>__vsf_usart_protect</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define VSF_HW_USART_CFG_TRACE_IRQ&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td>
+          <td class="memname">#define __vsf_usart_protect&#160;&#160;&#160;<a class="el" href="vsf__arch__abstraction_8h.html#aa6808d15ad9706a92a4ccac67a9f5423">vsf_protect</a>(<a class="el" href="vsf__hal__distbus__usart_8c.html#a9a2aaafe0a82393343aa516cc9fc8eb6">VSF_HAL_DISTBUS_USART_CFG_PROTECT_LEVEL</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="ae87c8208a47714cb65971c4fc499a422" name="ae87c8208a47714cb65971c4fc499a422"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae87c8208a47714cb65971c4fc499a422">&#9670;&#160;</a></span>VSF_HW_USART_CFG_TRACE_CALLSTACK</h2>
+<a id="aedf1ea7eaaffc7698bb39203ccb16668" name="aedf1ea7eaaffc7698bb39203ccb16668"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedf1ea7eaaffc7698bb39203ccb16668">&#9670;&#160;</a></span>__vsf_usart_unprotect</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define VSF_HW_USART_CFG_TRACE_CALLSTACK&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td>
+          <td class="memname">#define __vsf_usart_unprotect&#160;&#160;&#160;<a class="el" href="vsf__arch__abstraction_8h.html#a72c27169039404e509647469f31efa12">vsf_unprotect</a>(<a class="el" href="vsf__hal__distbus__usart_8c.html#a9a2aaafe0a82393343aa516cc9fc8eb6">VSF_HAL_DISTBUS_USART_CFG_PROTECT_LEVEL</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="abecdbf178a2833e6031056e1f2c2a194" name="abecdbf178a2833e6031056e1f2c2a194"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abecdbf178a2833e6031056e1f2c2a194">&#9670;&#160;</a></span>VSF_HW_USART_CFG_TRACE_SYSTIMER</h2>
+<a id="aa1314be2a24c819b0b503fb98e893f98" name="aa1314be2a24c819b0b503fb98e893f98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1314be2a24c819b0b503fb98e893f98">&#9670;&#160;</a></span>VSF_WIN_USART_INIT_PORT</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define VSF_HW_USART_CFG_TRACE_SYSTIMER&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa5a2a9ef113499a91c39d104b7cc0f15" name="aa5a2a9ef113499a91c39d104b7cc0f15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5a2a9ef113499a91c39d104b7cc0f15">&#9670;&#160;</a></span>VSF_HW_USART_CFG_TRACE_STATUS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define VSF_HW_USART_CFG_TRACE_STATUS&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a587dfddc850c995990bf9d9a4228b1b8" name="a587dfddc850c995990bf9d9a4228b1b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a587dfddc850c995990bf9d9a4228b1b8">&#9670;&#160;</a></span>VSF_HW_USART_CFG_START_PORT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define VSF_HW_USART_CFG_START_PORT&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae983ca784579b0a3b6c943e958b32d26" name="ae983ca784579b0a3b6c943e958b32d26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae983ca784579b0a3b6c943e958b32d26">&#9670;&#160;</a></span>VSF_HW_USART_CFG_END_PORT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define VSF_HW_USART_CFG_END_PORT&#160;&#160;&#160;255</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a74f520ca3c5f7c1370ac86663a314690" name="a74f520ca3c5f7c1370ac86663a314690"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74f520ca3c5f7c1370ac86663a314690">&#9670;&#160;</a></span>VSF_HW_USART_CFG_INPUT_BUFFER</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define VSF_HW_USART_CFG_INPUT_BUFFER&#160;&#160;&#160;1024</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4c3153dfedfc5360c9708ff2f7cd910b" name="a4c3153dfedfc5360c9708ff2f7cd910b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c3153dfedfc5360c9708ff2f7cd910b">&#9670;&#160;</a></span>VSF_HW_USART_CFG_OUTPUT_BUFFER</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define VSF_HW_USART_CFG_OUTPUT_BUFFER&#160;&#160;&#160;1024</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a93a667b882da4e992f981ed489c4f171" name="a93a667b882da4e992f981ed489c4f171"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a93a667b882da4e992f981ed489c4f171">&#9670;&#160;</a></span>VSF_HW_USART_CFG_TRACE_IRQ_PEND</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define VSF_HW_USART_CFG_TRACE_IRQ_PEND&#160;&#160;&#160;&quot;irq_request_pend:&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aefdf277005d8fc60127eb5f8c538ac7c" name="aefdf277005d8fc60127eb5f8c538ac7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aefdf277005d8fc60127eb5f8c538ac7c">&#9670;&#160;</a></span>VSF_HW_USART_CFG_TRACE_IRQ_GOING</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define VSF_HW_USART_CFG_TRACE_IRQ_GOING&#160;&#160;&#160;&quot;irq_request_going:&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a06c25cdc1312e2a2646fb2bb7d0b9eeb" name="a06c25cdc1312e2a2646fb2bb7d0b9eeb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06c25cdc1312e2a2646fb2bb7d0b9eeb">&#9670;&#160;</a></span>VSF_HW_USART_CFG_TRACE_FUNC</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define VSF_HW_USART_CFG_TRACE_FUNC</td>
+          <td class="memname">#define VSF_WIN_USART_INIT_PORT</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em></td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="stdio_8h.html#a3cb9f0894fab1c8fbb0753c9c7c2a8d9">printf</a>(__VA_ARGS__)</td>
+          <td class="paramname">__N, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a439c6544042c73a534e3c15dca4ea821" name="a439c6544042c73a534e3c15dca4ea821"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a439c6544042c73a534e3c15dca4ea821">&#9670;&#160;</a></span>VSF_HW_USART_TRACE_HEADER</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">#define VSF_HW_USART_TRACE_HEADER&#160;&#160;&#160;&quot;[x86/x64]:&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0a668b99a4c5bdd30eca15f422869261" name="a0a668b99a4c5bdd30eca15f422869261"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a668b99a4c5bdd30eca15f422869261">&#9670;&#160;</a></span>vsf_hw_usart_trace_function</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define vsf_hw_usart_trace_function</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__VALUE&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;            [(__N)]                     = &amp;<a class="el" href="vsf__template__declaration_8h.html#a7de138be7d18f0b3c0428de641190c63">VSF_MCONNECT</a>(vsf_hw_usart, __N),</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span>{                                                                         \</div>
-<div class="line">        VSF_HW_USART_CFG_TRACE_FUNC(<span class="stringliteral">&quot;%s&quot;</span> <a class="code hl_define" href="x86_2win_2uart_2uart_8c.html#a439c6544042c73a534e3c15dca4ea821">VSF_HW_USART_TRACE_HEADER</a>,             \</div>
-<div class="line">                    __vsf_x86_trace_color[<a class="code hl_enumvalue" href="x86_2win_2uart_2uart_8c.html#adee68fda292365d485e7194ab1b40d1dab4a6eda560f16b35c3ec04972f13f2cd">VSF_HW_USART_TRACE_FUNCTION_COLOR</a>]);  \</div>
-<div class="line">        VSF_HW_USART_CFG_TRACE_FUNC(__VA_ARGS__);                               \</div>
-<div class="line">        VSF_HW_USART_CFG_TRACE_FUNC(<a class="code hl_define" href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a>);                     \</div>
-<div class="line">        VSF_HW_USART_CFG_TRACE_FUNC(<span class="stringliteral">&quot;%s&quot;</span>,                                       \</div>
-<div class="line">        __vsf_x86_trace_color[<a class="code hl_enumvalue" href="x86_2win_2uart_2uart_8c.html#adee68fda292365d485e7194ab1b40d1dae1c73ef1dd5ac3cefcb771888b21efbd">VSF_HW_USART_TRACE_RESET_COLOR</a>]);                 \</div>
-<div class="line">    }<span class="keywordflow">while</span>(0)</div>
-<div class="ttc" id="avsf__trace_8h_html_a2d4ff51789ad484c6a3bb465687810f0"><div class="ttname"><a href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a></div><div class="ttdeci">#define VSF_TRACE_CFG_LINEEND</div><div class="ttdef"><b>Definition:</b> vsf_trace.h:41</div></div>
-<div class="ttc" id="ax86_2win_2uart_2uart_8c_html_a439c6544042c73a534e3c15dca4ea821"><div class="ttname"><a href="x86_2win_2uart_2uart_8c.html#a439c6544042c73a534e3c15dca4ea821">VSF_HW_USART_TRACE_HEADER</a></div><div class="ttdeci">#define VSF_HW_USART_TRACE_HEADER</div><div class="ttdef"><b>Definition:</b> uart.c:97</div></div>
-<div class="ttc" id="ax86_2win_2uart_2uart_8c_html_adee68fda292365d485e7194ab1b40d1dab4a6eda560f16b35c3ec04972f13f2cd"><div class="ttname"><a href="x86_2win_2uart_2uart_8c.html#adee68fda292365d485e7194ab1b40d1dab4a6eda560f16b35c3ec04972f13f2cd">VSF_HW_USART_TRACE_FUNCTION_COLOR</a></div><div class="ttdeci">@ VSF_HW_USART_TRACE_FUNCTION_COLOR</div><div class="ttdef"><b>Definition:</b> uart.c:237</div></div>
-<div class="ttc" id="ax86_2win_2uart_2uart_8c_html_adee68fda292365d485e7194ab1b40d1dae1c73ef1dd5ac3cefcb771888b21efbd"><div class="ttname"><a href="x86_2win_2uart_2uart_8c.html#adee68fda292365d485e7194ab1b40d1dae1c73ef1dd5ac3cefcb771888b21efbd">VSF_HW_USART_TRACE_RESET_COLOR</a></div><div class="ttdeci">@ VSF_HW_USART_TRACE_RESET_COLOR</div><div class="ttdef"><b>Definition:</b> uart.c:238</div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
-<a id="a6144ddc5af9d31d15f16da8b12a757c4" name="a6144ddc5af9d31d15f16da8b12a757c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6144ddc5af9d31d15f16da8b12a757c4">&#9670;&#160;</a></span>vsf_hw_usart_trace_irq</h2>
+<a id="a39b59ee7de2d480beb515cb844532a5a" name="a39b59ee7de2d480beb515cb844532a5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39b59ee7de2d480beb515cb844532a5a">&#9670;&#160;</a></span>__USART_REQUEST_IMP</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define vsf_hw_usart_trace_irq</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em></td><td>)</td>
-          <td></td>
+          <td class="memname">#define __USART_REQUEST_IMP&#160;&#160;&#160;<a class="el" href="fifo2req__usart_8h.html#a0ee71b072779016360444730146368cf">VSF_USART_FIFO2REQ_IMP_LV0</a>(<a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a1719ca4fc288d03f3a1c87f29ba17daa">VSF_USART_CFG_IMP_PREFIX</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span>{                                                                         \</div>
-<div class="line">        VSF_HW_USART_CFG_TRACE_FUNC(<span class="stringliteral">&quot;%s&quot;</span> <a class="code hl_define" href="x86_2win_2uart_2uart_8c.html#a439c6544042c73a534e3c15dca4ea821">VSF_HW_USART_TRACE_HEADER</a>,             \</div>
-<div class="line">                        __vsf_x86_trace_color[<a class="code hl_enumvalue" href="x86_2win_2uart_2uart_8c.html#adee68fda292365d485e7194ab1b40d1da177e755339416a57429f96e700a9adf9">VSF_HW_USART_TRACE_IRQ_COLOR</a>]);   \</div>
-<div class="line">        VSF_HW_USART_CFG_TRACE_FUNC(__VA_ARGS__);                               \</div>
-<div class="line">        VSF_HW_USART_CFG_TRACE_FUNC(<a class="code hl_define" href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a>);                     \</div>
-<div class="line">        VSF_HW_USART_CFG_TRACE_FUNC(                                            \</div>
-<div class="line">        __vsf_x86_trace_color[<a class="code hl_enumvalue" href="x86_2win_2uart_2uart_8c.html#adee68fda292365d485e7194ab1b40d1dae1c73ef1dd5ac3cefcb771888b21efbd">VSF_HW_USART_TRACE_RESET_COLOR</a>]);                 \</div>
-<div class="line">    }<span class="keywordflow">while</span>(0)</div>
-<div class="ttc" id="ax86_2win_2uart_2uart_8c_html_adee68fda292365d485e7194ab1b40d1da177e755339416a57429f96e700a9adf9"><div class="ttname"><a href="x86_2win_2uart_2uart_8c.html#adee68fda292365d485e7194ab1b40d1da177e755339416a57429f96e700a9adf9">VSF_HW_USART_TRACE_IRQ_COLOR</a></div><div class="ttdeci">@ VSF_HW_USART_TRACE_IRQ_COLOR</div><div class="ttdef"><b>Definition:</b> uart.c:234</div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a79359646bf843327cc09d49aee3f9a1d" name="a79359646bf843327cc09d49aee3f9a1d"></a>
@@ -567,51 +390,15 @@
       </table>
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line">    <a class="code hl_struct" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> vsf_hw_usart ## __count = {                                  \</div>
-<div class="line">        .<a class="code hl_variable" href="structvsf__hw__usart__t.html#a6f41d72b4e9fc0a9314c9feeec67e213">com_port</a>                          = __count,                           \</div>
-<div class="line">        .com_status                        = <a class="code hl_enumvalue" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ffaaf967f42ed23eada7c89a88b2decc0e1">USART_INIT_IS_BUSY</a>,                \</div>
-<div class="line">        .handle_com                        = <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>,                              \</div>
-<div class="line">        .read.irq_cancel_request           = <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>,                              \</div>
-<div class="line">        .write.irq_cancel_request          = <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>,                              \</div>
-<div class="line">        .cancel_status                     = 0x00,                              \</div>
-<div class="line">        .init_flag                         = 1,                                 \</div>
+<div class="line">        .<a class="code hl_variable" href="structvsf__hw__usart__t.html#a9d15ae0a624903cf338f54d82093a8a6">handle</a>                            = INVALID_HANDLE_VALUE,              \</div>
 <div class="line">        __hal_op                                                                \</div>
 <div class="line">    };</div>
-<div class="ttc" id="alinux_2include_2simple__libc_2stddef_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition:</b> stddef.h:44</div></div>
 <div class="ttc" id="astructvsf__hw__usart__t_html"><div class="ttname"><a href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a></div><div class="ttdef"><b>Definition:</b> uart.c:58</div></div>
-<div class="ttc" id="astructvsf__hw__usart__t_html_a6f41d72b4e9fc0a9314c9feeec67e213"><div class="ttname"><a href="structvsf__hw__usart__t.html#a6f41d72b4e9fc0a9314c9feeec67e213">vsf_hw_usart_t::com_port</a></div><div class="ttdeci">uint8_t com_port</div><div class="ttdef"><b>Definition:</b> uart.c:164</div></div>
-<div class="ttc" id="ax86_2win_2uart_2uart_8c_html_a06c67f12d964bb5d33a068873e2d34ffaaf967f42ed23eada7c89a88b2decc0e1"><div class="ttname"><a href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ffaaf967f42ed23eada7c89a88b2decc0e1">USART_INIT_IS_BUSY</a></div><div class="ttdeci">@ USART_INIT_IS_BUSY</div><div class="ttdef"><b>Definition:</b> uart.c:132</div></div>
+<div class="ttc" id="astructvsf__hw__usart__t_html_a9d15ae0a624903cf338f54d82093a8a6"><div class="ttname"><a href="structvsf__hw__usart__t.html#a9d15ae0a624903cf338f54d82093a8a6">vsf_hw_usart_t::handle</a></div><div class="ttdeci">HANDLE handle</div><div class="ttdef"><b>Definition:</b> uart.c:81</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">类型定义说明</h2>
-<a id="a1bef810a1d8797927f5bf256a8c9227f" name="a1bef810a1d8797927f5bf256a8c9227f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1bef810a1d8797927f5bf256a8c9227f">&#9670;&#160;</a></span>em_usart_status_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef enum <a class="el" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ff">em_usart_status_t</a> <a class="el" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ff">em_usart_status_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aeab3645609a8c859944277676e9902d4" name="aeab3645609a8c859944277676e9902d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeab3645609a8c859944277676e9902d4">&#9670;&#160;</a></span>usart_cancel_status_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef enum <a class="el" href="x86_2win_2uart_2uart_8c.html#a2a0931e323158e83cb27c9001ab19bd7">usart_cancel_status_t</a> <a class="el" href="x86_2win_2uart_2uart_8c.html#a2a0931e323158e83cb27c9001ab19bd7">usart_cancel_status_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a2c7f1234a6aa94cf24e27243fed72d6c" name="a2c7f1234a6aa94cf24e27243fed72d6c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c7f1234a6aa94cf24e27243fed72d6c">&#9670;&#160;</a></span>vsf_hw_usart_t</h2>
 
@@ -626,93 +413,49 @@
 
 </div>
 </div>
-<a id="a46435cdb635875cfd1fd1071dd709981" name="a46435cdb635875cfd1fd1071dd709981"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46435cdb635875cfd1fd1071dd709981">&#9670;&#160;</a></span>x86_usart_win_t</h2>
+<a id="a1aa7f65f827cb65dfa6ab41e13d55ff8" name="a1aa7f65f827cb65dfa6ab41e13d55ff8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1aa7f65f827cb65dfa6ab41e13d55ff8">&#9670;&#160;</a></span>vsf_win_usart_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct <a class="el" href="structx86__usart__win__t.html">x86_usart_win_t</a> <a class="el" href="structx86__usart__win__t.html">x86_usart_win_t</a></td>
+          <td class="memname">typedef struct <a class="el" href="structvsf__win__usart__t.html">vsf_win_usart_t</a> <a class="el" href="structvsf__win__usart__t.html">vsf_win_usart_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">枚举类型说明</h2>
-<a id="a06c67f12d964bb5d33a068873e2d34ff" name="a06c67f12d964bb5d33a068873e2d34ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06c67f12d964bb5d33a068873e2d34ff">&#9670;&#160;</a></span>em_usart_status_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="x86_2win_2uart_2uart_8c.html#a06c67f12d964bb5d33a068873e2d34ff">em_usart_status_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a06c67f12d964bb5d33a068873e2d34ffaaf967f42ed23eada7c89a88b2decc0e1" name="a06c67f12d964bb5d33a068873e2d34ffaaf967f42ed23eada7c89a88b2decc0e1"></a>USART_INIT_IS_BUSY&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a06c67f12d964bb5d33a068873e2d34ffa84e86035ce3de09077a85452935a71b0" name="a06c67f12d964bb5d33a068873e2d34ffa84e86035ce3de09077a85452935a71b0"></a>USART_READ_IS_BUSY&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a06c67f12d964bb5d33a068873e2d34ffa085e97c659fafa616247b9e90bbd38f9" name="a06c67f12d964bb5d33a068873e2d34ffa085e97c659fafa616247b9e90bbd38f9"></a>USART_WRITE_IS_BUSY&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a06c67f12d964bb5d33a068873e2d34ffaca7a76991bae9df0463499f234574559" name="a06c67f12d964bb5d33a068873e2d34ffaca7a76991bae9df0463499f234574559"></a>USART_RESET&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a06c67f12d964bb5d33a068873e2d34ffa7a4ed9a5b878617f1f9c342719be4fb7" name="a06c67f12d964bb5d33a068873e2d34ffa7a4ed9a5b878617f1f9c342719be4fb7"></a>USART_ENABLE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a06c67f12d964bb5d33a068873e2d34ffa614f6f95c5a4bf4724f8963baa164aa5" name="a06c67f12d964bb5d33a068873e2d34ffa614f6f95c5a4bf4724f8963baa164aa5"></a>USART_DISABLE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a06c67f12d964bb5d33a068873e2d34ffa0896d510f2fac99b3fede49fa224617e" name="a06c67f12d964bb5d33a068873e2d34ffa0896d510f2fac99b3fede49fa224617e"></a>USART_SEND_BLOCK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a06c67f12d964bb5d33a068873e2d34ffa82c8a33e78c3d57d055e87bd5bad696f" name="a06c67f12d964bb5d33a068873e2d34ffa82c8a33e78c3d57d055e87bd5bad696f"></a>USART_SEND_BYTE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a06c67f12d964bb5d33a068873e2d34ffa2283443b651c304d1998e39a59b8e7c8" name="a06c67f12d964bb5d33a068873e2d34ffa2283443b651c304d1998e39a59b8e7c8"></a>USART_READ_BLOCK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a06c67f12d964bb5d33a068873e2d34ffa60a7c3cce33227066607c8f108c3684b" name="a06c67f12d964bb5d33a068873e2d34ffa60a7c3cce33227066607c8f108c3684b"></a>USART_READ_BYTE&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-</div>
-</div>
-<a id="a2a0931e323158e83cb27c9001ab19bd7" name="a2a0931e323158e83cb27c9001ab19bd7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a0931e323158e83cb27c9001ab19bd7">&#9670;&#160;</a></span>usart_cancel_status_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="x86_2win_2uart_2uart_8c.html#a2a0931e323158e83cb27c9001ab19bd7">usart_cancel_status_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a2a0931e323158e83cb27c9001ab19bd7a4b2ef9cc02853f2cc6fcb4e957f71fd8" name="a2a0931e323158e83cb27c9001ab19bd7a4b2ef9cc02853f2cc6fcb4e957f71fd8"></a>WILL_CANCEL_WRITE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a2a0931e323158e83cb27c9001ab19bd7a5c9e1394212f1c61be9652be696d60c1" name="a2a0931e323158e83cb27c9001ab19bd7a5c9e1394212f1c61be9652be696d60c1"></a>CANCELED_WRITE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a2a0931e323158e83cb27c9001ab19bd7af717638e5a831b78d5f99189437ed56c" name="a2a0931e323158e83cb27c9001ab19bd7af717638e5a831b78d5f99189437ed56c"></a>WILL_CANCEL_READ&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a2a0931e323158e83cb27c9001ab19bd7a7d614014fa8a853f1b25c6e9318d260d" name="a2a0931e323158e83cb27c9001ab19bd7a7d614014fa8a853f1b25c6e9318d260d"></a>CANCELED_READ&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a2a0931e323158e83cb27c9001ab19bd7a0a95c182fdfc680f7a0bd86aad5e32ba" name="a2a0931e323158e83cb27c9001ab19bd7a0a95c182fdfc680f7a0bd86aad5e32ba"></a>CANCEL_READ_CLP&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a2a0931e323158e83cb27c9001ab19bd7aa6ac457338e0bd1bb98eb90925731e16" name="a2a0931e323158e83cb27c9001ab19bd7aa6ac457338e0bd1bb98eb90925731e16"></a>CANCEL_WRITE_CLP&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a2a0931e323158e83cb27c9001ab19bd7a363631445a519a928ccb2ecfd8a8ef36" name="a2a0931e323158e83cb27c9001ab19bd7a363631445a519a928ccb2ecfd8a8ef36"></a>CANCEL_INIT&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-</div>
-</div>
-<a id="adee68fda292365d485e7194ab1b40d1d" name="adee68fda292365d485e7194ab1b40d1d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adee68fda292365d485e7194ab1b40d1d">&#9670;&#160;</a></span>anonymous enum</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">anonymous enum</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="adee68fda292365d485e7194ab1b40d1da2afa5ccfbd271e35e08f4e483f9abf66" name="adee68fda292365d485e7194ab1b40d1da2afa5ccfbd271e35e08f4e483f9abf66"></a>VSF_HW_USART_TRACE_CALLSTACK_COLOR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adee68fda292365d485e7194ab1b40d1da177e755339416a57429f96e700a9adf9" name="adee68fda292365d485e7194ab1b40d1da177e755339416a57429f96e700a9adf9"></a>VSF_HW_USART_TRACE_IRQ_COLOR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adee68fda292365d485e7194ab1b40d1da77ae0ed4112d6c4b8fb369a95bbb417b" name="adee68fda292365d485e7194ab1b40d1da77ae0ed4112d6c4b8fb369a95bbb417b"></a>VSF_HW_USART_TRACE_SYSTIMER_COLOR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adee68fda292365d485e7194ab1b40d1dae5671f7369d87eb064e8a01d948af220" name="adee68fda292365d485e7194ab1b40d1dae5671f7369d87eb064e8a01d948af220"></a>VSF_HW_USART_TRACE_STATUS_COLOR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adee68fda292365d485e7194ab1b40d1dab4a6eda560f16b35c3ec04972f13f2cd" name="adee68fda292365d485e7194ab1b40d1dab4a6eda560f16b35c3ec04972f13f2cd"></a>VSF_HW_USART_TRACE_FUNCTION_COLOR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adee68fda292365d485e7194ab1b40d1dae1c73ef1dd5ac3cefcb771888b21efbd" name="adee68fda292365d485e7194ab1b40d1dae1c73ef1dd5ac3cefcb771888b21efbd"></a>VSF_HW_USART_TRACE_RESET_COLOR&#160;</td><td class="fielddoc"></td></tr>
-</table>
 
 </div>
 </div>
 <h2 class="groupheader">函数说明</h2>
+<a id="a0c7da554900950406221a017cd590fd5" name="a0c7da554900950406221a017cd590fd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c7da554900950406221a017cd590fd5">&#9670;&#160;</a></span>vsf_hw_usart_scan_devices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> vsf_hw_usart_scan_devices </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__usart__win__device__t.html">vsf_usart_win_device_t</a> *&#160;</td>
+          <td class="paramname"><em>devices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
+          <td class="paramname"><em>device_num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae8842214310813d7504bb9ec077b4b53" name="ae8842214310813d7504bb9ec077b4b53"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae8842214310813d7504bb9ec077b4b53">&#9670;&#160;</a></span>vsf_hw_usart_init()</h2>
 
@@ -869,8 +612,8 @@
 
 </div>
 </div>
-<a id="ae6ccf9e6e92b42e8ea6b71eb5742413b" name="ae6ccf9e6e92b42e8ea6b71eb5742413b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6ccf9e6e92b42e8ea6b71eb5742413b">&#9670;&#160;</a></span>vsf_hw_usart_rxfifo_read()</h2>
+<a id="a1638122d80fe505e64ef3c68b86fced7" name="a1638122d80fe505e64ef3c68b86fced7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1638122d80fe505e64ef3c68b86fced7">&#9670;&#160;</a></span>vsf_hw_usart_rxfifo_read()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -885,7 +628,7 @@
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>buffer_ptr</em>, </td>
+          <td class="paramname"><em>buffer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -921,8 +664,8 @@
 
 </div>
 </div>
-<a id="a6975c545de9efad05ea20c221845684d" name="a6975c545de9efad05ea20c221845684d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6975c545de9efad05ea20c221845684d">&#9670;&#160;</a></span>vsf_hw_usart_txfifo_write()</h2>
+<a id="a4edb083d99d1c5767fb11d617612d053" name="a4edb083d99d1c5767fb11d617612d053"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4edb083d99d1c5767fb11d617612d053">&#9670;&#160;</a></span>vsf_hw_usart_txfifo_write()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -937,7 +680,7 @@
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>buffer_ptr</em>, </td>
+          <td class="paramname"><em>buffer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -949,228 +692,6 @@
           <td></td>
           <td>)</td>
           <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a18b42a1d5866a11afa08f3451fb27e8b" name="a18b42a1d5866a11afa08f3451fb27e8b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18b42a1d5866a11afa08f3451fb27e8b">&#9670;&#160;</a></span>vsf_hw_usart_fifo_flush()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> vsf_hw_usart_fifo_flush </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *&#160;</td>
-          <td class="paramname"><em>hw_usart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a15cbc334cb0bf7d6bea3dfde70a37eeb" name="a15cbc334cb0bf7d6bea3dfde70a37eeb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15cbc334cb0bf7d6bea3dfde70a37eeb">&#9670;&#160;</a></span>vsf_hw_usart_request_rx()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_hw_usart_request_rx </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *&#160;</td>
-          <td class="paramname"><em>hw_usart</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td>
-          <td class="paramname"><em>size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8e6cbe1c8ce5a8e9f0064c1994f972d5" name="a8e6cbe1c8ce5a8e9f0064c1994f972d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e6cbe1c8ce5a8e9f0064c1994f972d5">&#9670;&#160;</a></span>vsf_hw_usart_request_tx()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_hw_usart_request_tx </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *&#160;</td>
-          <td class="paramname"><em>hw_usart</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td>
-          <td class="paramname"><em>size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8562d78b5bae63e0856350b384a492f7" name="a8562d78b5bae63e0856350b384a492f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8562d78b5bae63e0856350b384a492f7">&#9670;&#160;</a></span>vsf_hw_usart_is_scanning()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> vsf_hw_usart_is_scanning </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *&#160;</td>
-          <td class="paramname"><em>device_num</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a16d312b2bdb61c209b4938b2891b2177" name="a16d312b2bdb61c209b4938b2891b2177"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16d312b2bdb61c209b4938b2891b2177">&#9670;&#160;</a></span>vsf_hw_usart_scan_devices()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vsf_hw_usart_scan_devices </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad3e5268d43ab74e964b66bee661442fc" name="ad3e5268d43ab74e964b66bee661442fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3e5268d43ab74e964b66bee661442fc">&#9670;&#160;</a></span>vsf_hw_usart_get_devices()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> vsf_hw_usart_get_devices </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvsf__usart__win__device__t.html">vsf_usart_win_device_t</a> *&#160;</td>
-          <td class="paramname"><em>devices</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
-          <td class="paramname"><em>size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a2d08a1f8869175bd4e72dae8b592412d" name="a2d08a1f8869175bd4e72dae8b592412d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d08a1f8869175bd4e72dae8b592412d">&#9670;&#160;</a></span>vsf_hw_usart_cancel_rx()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_hw_usart_cancel_rx </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *&#160;</td>
-          <td class="paramname"><em>hw_usart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a2ee7181b1d9573f7cd70396a401157f4" name="a2ee7181b1d9573f7cd70396a401157f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ee7181b1d9573f7cd70396a401157f4">&#9670;&#160;</a></span>vsf_hw_usart_cancel_tx()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_hw_usart_cancel_tx </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *&#160;</td>
-          <td class="paramname"><em>hw_usart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6abede56cc55076e552d9ba6098bb0a3" name="a6abede56cc55076e552d9ba6098bb0a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6abede56cc55076e552d9ba6098bb0a3">&#9670;&#160;</a></span>vsf_hw_usart_get_rx_count()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="arm_2type_8h.html#ae884dda22bf64c7e974894a6d3b67929">int_fast32_t</a> vsf_hw_usart_get_rx_count </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *&#160;</td>
-          <td class="paramname"><em>hw_usart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6064402874e38d197bf18491c8f045dd" name="a6064402874e38d197bf18491c8f045dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6064402874e38d197bf18491c8f045dd">&#9670;&#160;</a></span>vsf_hw_usart_get_tx_count()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="arm_2type_8h.html#ae884dda22bf64c7e974894a6d3b67929">int_fast32_t</a> vsf_hw_usart_get_tx_count </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *&#160;</td>
-          <td class="paramname"><em>hw_usart</em></td><td>)</td>
-          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
