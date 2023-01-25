@@ -68,6 +68,12 @@ Macros</h2></td></tr>
 <tr class="separator:a3795c90d93fba4016ca41b28849556a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af08f3b8ca47e58cfcb8cacad451d5033"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#af08f3b8ca47e58cfcb8cacad451d5033">__VSF_USBD_CLASS_IMPLEMENT</a></td></tr>
 <tr class="separator:af08f3b8ca47e58cfcb8cacad451d5033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90350966e3f0ab27382ea8b099d6c88c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#a90350966e3f0ab27382ea8b099d6c88c">VSF_USBD_CFG_PROTECT_LEVEL</a>&#160;&#160;&#160;interrupt</td></tr>
+<tr class="separator:a90350966e3f0ab27382ea8b099d6c88c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e415dfe874dcbe6a685ece78c8a08cc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#a1e415dfe874dcbe6a685ece78c8a08cc">__vsf_usbd_protect</a>&#160;&#160;&#160;<a class="el" href="vsf__arch__abstraction_8h.html#aa6808d15ad9706a92a4ccac67a9f5423">vsf_protect</a>(<a class="el" href="vsf__usbd_8c.html#a90350966e3f0ab27382ea8b099d6c88c">VSF_USBD_CFG_PROTECT_LEVEL</a>)</td></tr>
+<tr class="separator:a1e415dfe874dcbe6a685ece78c8a08cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1b53318853ac51b380f20b5d6c60b0b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#ab1b53318853ac51b380f20b5d6c60b0b">__vsf_usbd_unprotect</a>&#160;&#160;&#160;<a class="el" href="vsf__arch__abstraction_8h.html#a72c27169039404e509647469f31efa12">vsf_unprotect</a>(<a class="el" href="vsf__usbd_8c.html#a90350966e3f0ab27382ea8b099d6c88c">VSF_USBD_CFG_PROTECT_LEVEL</a>)</td></tr>
+<tr class="separator:ab1b53318853ac51b380f20b5d6c60b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa204ef6d8293df338c74794eaaa6f3eb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#aa204ef6d8293df338c74794eaaa6f3eb">__vsf_usbd_trace</a>(...)&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#ac43ad43b38f960d12c4e1a8e5253af32">vsf_trace_debug</a>(__VA_ARGS__)</td></tr>
 <tr class="separator:aa204ef6d8293df338c74794eaaa6f3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e1d24235201a662311e48e5c2edd230"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbd_8c.html#a0e1d24235201a662311e48e5c2edd230">__vsf_usbd_trace_buffer</a>(__ptr,  __size)&#160;&#160;&#160;<a class="el" href="vsf__trace_8h.html#aa1f84c84cca873999f880b4f5f536d7b">vsf_trace_buffer</a>(<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecaaf049cb1d8895fb74c0e8b6b52f6058f">VSF_TRACE_DEBUG</a>, (__ptr), (__size), <a class="el" href="vsf__trace_8h.html#a4becb84e007deb6eb67c11b354623d33">VSF_TRACE_DF_NEWLINE</a>)</td></tr>
@@ -145,6 +151,49 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define __VSF_USBD_CLASS_IMPLEMENT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a90350966e3f0ab27382ea8b099d6c88c" name="a90350966e3f0ab27382ea8b099d6c88c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90350966e3f0ab27382ea8b099d6c88c">&#9670;&#160;</a></span>VSF_USBD_CFG_PROTECT_LEVEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_USBD_CFG_PROTECT_LEVEL&#160;&#160;&#160;interrupt</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section note"><dt>Note</dt><dd>If ep_stream is enabled, default protect level will be interrupt, ! because vk_usbd_ep_recv and vk_usbd_ep_send will be called in ! evthandler of stream, which is maybe called in interrupt. ! If ep_stream is not enabled, default protect level will be none. ! ! in the case when you want to disable it, ! please use following macro: ! #define VSF_USBD_CFG_PROTECT_LEVEL none ! ! in the case when you want to use scheduler-safe, ! please use following macro: ! #define VSF_USBD_CFG_PROTECT_LEVEL scheduler ! ! NOTE: This macro should be defined in vsf_usr_cfg.h </dd></dl>
+
+</div>
+</div>
+<a id="a1e415dfe874dcbe6a685ece78c8a08cc" name="a1e415dfe874dcbe6a685ece78c8a08cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e415dfe874dcbe6a685ece78c8a08cc">&#9670;&#160;</a></span>__vsf_usbd_protect</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __vsf_usbd_protect&#160;&#160;&#160;<a class="el" href="vsf__arch__abstraction_8h.html#aa6808d15ad9706a92a4ccac67a9f5423">vsf_protect</a>(<a class="el" href="vsf__usbd_8c.html#a90350966e3f0ab27382ea8b099d6c88c">VSF_USBD_CFG_PROTECT_LEVEL</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab1b53318853ac51b380f20b5d6c60b0b" name="ab1b53318853ac51b380f20b5d6c60b0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1b53318853ac51b380f20b5d6c60b0b">&#9670;&#160;</a></span>__vsf_usbd_unprotect</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __vsf_usbd_unprotect&#160;&#160;&#160;<a class="el" href="vsf__arch__abstraction_8h.html#a72c27169039404e509647469f31efa12">vsf_unprotect</a>(<a class="el" href="vsf__usbd_8c.html#a90350966e3f0ab27382ea8b099d6c88c">VSF_USBD_CFG_PROTECT_LEVEL</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
