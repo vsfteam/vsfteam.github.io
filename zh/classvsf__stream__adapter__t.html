@@ -60,13 +60,15 @@
 <tr class="separator:a2e82a80f8de61d82b23778dd799aadf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf5810ae2834b446a8b8d20314a370e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvsf__stream__t.html">vsf_stream_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvsf__stream__adapter__t.html#abf5810ae2834b446a8b8d20314a370e4">stream_rx</a></td></tr>
 <tr class="separator:abf5810ae2834b446a8b8d20314a370e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f2bfeede7db0b2bbe1cb64c0104f2fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvsf__stream__adapter__t.html#a8f2bfeede7db0b2bbe1cb64c0104f2fe">threshold</a></td></tr>
-<tr class="separator:a8f2bfeede7db0b2bbe1cb64c0104f2fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4244668775a1dae9b1cfa51a376c5a34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvsf__stream__adapter__t.html#a4244668775a1dae9b1cfa51a376c5a34">block_size</a></td></tr>
-<tr class="separator:a4244668775a1dae9b1cfa51a376c5a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6604442ab1b6a02903ef1f5b665acaa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvsf__stream__adapter__t.html#ac6604442ab1b6a02903ef1f5b665acaa">threshold_tx</a></td></tr>
+<tr class="separator:ac6604442ab1b6a02903ef1f5b665acaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf23d5a204af77c1ca9dc09b21e23fe7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvsf__stream__adapter__t.html#adf23d5a204af77c1ca9dc09b21e23fe7">threshold_rx</a></td></tr>
+<tr class="separator:adf23d5a204af77c1ca9dc09b21e23fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff32a75fb4c116c15a12b8e87f442986"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvsf__stream__adapter__t.html#aff32a75fb4c116c15a12b8e87f442986">on_data</a> )(<a class="el" href="classvsf__stream__adapter__t.html">vsf_stream_adapter_t</a> *adapter, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> tx_data_size, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> rx_free_size)</td></tr>
+<tr class="separator:aff32a75fb4c116c15a12b8e87f442986"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p>vsf 流适配器类, 用于连接 2 个流 </p><dl class="section note"><dt>注解</dt><dd>流终端连接方式: stream_tx.rx &lt;==&gt; stream_rx.tx(stream_tx =&gt; stream_rx) 重要: stream_tx 的发送端和 stream_rx 的接收端不能互相抢占 </dd></dl>
+<div class="textblock"><p>vsf 流适配器类, 用于连接 2 个流 </p><dl class="section note"><dt>注解</dt><dd>流终端连接方式: stream_tx.rx &lt;==&gt; stream_rx.tx(stream_tx =&gt; stream_rx) 数据流: stream_tx ==&gt; adapter ==&gt; stream_rx 重要: stream_tx 的发送端和 stream_rx 的接收端不能互相抢占 </dd></dl>
 </div><h2 class="groupheader">结构体成员变量说明</h2>
 <a id="a2e82a80f8de61d82b23778dd799aadf4" name="a2e82a80f8de61d82b23778dd799aadf4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2e82a80f8de61d82b23778dd799aadf4">&#9670;&#160;</a></span>stream_tx</h2>
@@ -96,28 +98,42 @@
 
 </div>
 </div>
-<a id="a8f2bfeede7db0b2bbe1cb64c0104f2fe" name="a8f2bfeede7db0b2bbe1cb64c0104f2fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f2bfeede7db0b2bbe1cb64c0104f2fe">&#9670;&#160;</a></span>threshold</h2>
+<a id="ac6604442ab1b6a02903ef1f5b665acaa" name="ac6604442ab1b6a02903ef1f5b665acaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6604442ab1b6a02903ef1f5b665acaa">&#9670;&#160;</a></span>threshold_tx</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> vsf_stream_adapter_t::threshold</td>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> vsf_stream_adapter_t::threshold_tx</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a4244668775a1dae9b1cfa51a376c5a34" name="a4244668775a1dae9b1cfa51a376c5a34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4244668775a1dae9b1cfa51a376c5a34">&#9670;&#160;</a></span>block_size</h2>
+<a id="adf23d5a204af77c1ca9dc09b21e23fe7" name="adf23d5a204af77c1ca9dc09b21e23fe7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf23d5a204af77c1ca9dc09b21e23fe7">&#9670;&#160;</a></span>threshold_rx</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> vsf_stream_adapter_t::block_size</td>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> vsf_stream_adapter_t::threshold_rx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aff32a75fb4c116c15a12b8e87f442986" name="aff32a75fb4c116c15a12b8e87f442986"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff32a75fb4c116c15a12b8e87f442986">&#9670;&#160;</a></span>on_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>(* vsf_stream_adapter_t::on_data) (<a class="el" href="classvsf__stream__adapter__t.html">vsf_stream_adapter_t</a> *adapter, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> tx_data_size, <a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> rx_free_size)</td>
         </tr>
       </table>
 </div><div class="memdoc">
