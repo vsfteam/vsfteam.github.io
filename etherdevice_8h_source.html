@@ -64,13 +64,26 @@
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <a class="code hl_function" href="string_8h.html#a197a5ce3df6fce7ba62f5af007a05f70">memset</a>(addr, 0xFF, <a class="code hl_define" href="if__ether_8h.html#a9822d89774e0d6ddaa06503950130423">ETH_ALEN</a>);</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>}</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> is_local_ether_addr(<span class="keyword">const</span> <a class="code hl_typedef" href="linux_2include_2linux_2types_8h.html#a10801722996ad842da66f2e8410abbfd">u8</a> *addr)</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordflow">return</span> 0x02 &amp; addr[0];</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> is_broadcast_ether_addr(<span class="keyword">const</span> <a class="code hl_typedef" href="linux_2include_2linux_2types_8h.html#a10801722996ad842da66f2e8410abbfd">u8</a> *addr)</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordflow">return</span> (*(<span class="keyword">const</span> <a class="code hl_typedef" href="linux_2include_2linux_2types_8h.html#a511bb645f13930f9dfb7378323c18d8c">u16</a> *)(addr + 0) &amp;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            *(<span class="keyword">const</span> <a class="code hl_typedef" href="linux_2include_2linux_2types_8h.html#a511bb645f13930f9dfb7378323c18d8c">u16</a> *)(addr + 2) &amp;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            *(<span class="keyword">const</span> <a class="code hl_typedef" href="linux_2include_2linux_2types_8h.html#a511bb645f13930f9dfb7378323c18d8c">u16</a> *)(addr + 4)) == 0xffff;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aif__ether_8h_html_a9822d89774e0d6ddaa06503950130423"><div class="ttname"><a href="if__ether_8h.html#a9822d89774e0d6ddaa06503950130423">ETH_ALEN</a></div><div class="ttdeci">#define ETH_ALEN</div><div class="ttdef"><b>Definition:</b> if_ether.h:12</div></div>
 <div class="ttc" id="alinux_2include_2linux_2types_8h_html_a10801722996ad842da66f2e8410abbfd"><div class="ttname"><a href="linux_2include_2linux_2types_8h.html#a10801722996ad842da66f2e8410abbfd">u8</a></div><div class="ttdeci">__u8 u8</div><div class="ttdef"><b>Definition:</b> types.h:66</div></div>
+<div class="ttc" id="alinux_2include_2linux_2types_8h_html_a511bb645f13930f9dfb7378323c18d8c"><div class="ttname"><a href="linux_2include_2linux_2types_8h.html#a511bb645f13930f9dfb7378323c18d8c">u16</a></div><div class="ttdeci">__u16 u16</div><div class="ttdef"><b>Definition:</b> types.h:68</div></div>
 <div class="ttc" id="astring_8h_html_a197a5ce3df6fce7ba62f5af007a05f70"><div class="ttname"><a href="string_8h.html#a197a5ce3df6fce7ba62f5af007a05f70">memset</a></div><div class="ttdeci">void * memset(void *s, int ch, size_t n)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
