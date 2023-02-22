@@ -75,9 +75,9 @@
 <tr class="separator:a6683bb6050276e933771abcd14f03132"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae869161ac7df858751f131d00cf9b4c0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xboot_2include_2arch_2spinlock_8h.html#ae869161ac7df858751f131d00cf9b4c0">spin_unlock</a>(lock)&#160;&#160;&#160;do { <a class="el" href="vsf__arch__abstraction_8h.html#a1b0d8a7ae206accc2a7e6f5c4e3d78e3">vsf_protect_t</a> orig = <a class="el" href="vsf__arch__abstraction_8h.html#a7c03c8d361503984bed9099c80890f54">vsf_protect_int</a>(); <a class="el" href="linux_2include_2linux_2spinlock_8h.html#a872d10f3b8ba88b4fbf2d5463f1202ef">__spin_unlock</a>(lock); <a class="el" href="vsf__arch__abstraction_8h.html#ad73b8c9ea65510638e6f5bec8c6621f3">vsf_unprotect_int</a>(orig); } while (0)</td></tr>
 <tr class="separator:ae869161ac7df858751f131d00cf9b4c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4bbfd79ee40bb6cd66f5660f379379b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xboot_2include_2arch_2spinlock_8h.html#ab4bbfd79ee40bb6cd66f5660f379379b">spin_lock_irq</a>(lock)&#160;&#160;&#160;do { <a class="el" href="arm9__generic_8c.html#a6d6be07351de98be193349d5a8e5a6a1">vsf_disable_interrupt</a>(); <a class="el" href="linux_2include_2linux_2spinlock_8h.html#a7e61b60c62dd06a0cfa65fd154a11e70">__spin_lock</a>(lock); } while(0)</td></tr>
+<tr class="memitem:ab4bbfd79ee40bb6cd66f5660f379379b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xboot_2include_2arch_2spinlock_8h.html#ab4bbfd79ee40bb6cd66f5660f379379b">spin_lock_irq</a>(lock)&#160;&#160;&#160;do { <a class="el" href="arm9__generic_8c.html#a718eb823c82ffd4d8929470efe736d91">vsf_disable_interrupt</a>(); <a class="el" href="linux_2include_2linux_2spinlock_8h.html#a7e61b60c62dd06a0cfa65fd154a11e70">__spin_lock</a>(lock); } while(0)</td></tr>
 <tr class="separator:ab4bbfd79ee40bb6cd66f5660f379379b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3be11fd55b088cf4ce31243ff7a3f29"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xboot_2include_2arch_2spinlock_8h.html#ab3be11fd55b088cf4ce31243ff7a3f29">spin_unlock_irq</a>(lock)&#160;&#160;&#160;do { <a class="el" href="linux_2include_2linux_2spinlock_8h.html#a872d10f3b8ba88b4fbf2d5463f1202ef">__spin_unlock</a>(lock); <a class="el" href="arm9__generic_8c.html#abfa706164a894e963372e93a6b1f821c">vsf_enable_interrupt</a>(); } while(0)</td></tr>
+<tr class="memitem:ab3be11fd55b088cf4ce31243ff7a3f29"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xboot_2include_2arch_2spinlock_8h.html#ab3be11fd55b088cf4ce31243ff7a3f29">spin_unlock_irq</a>(lock)&#160;&#160;&#160;do { <a class="el" href="linux_2include_2linux_2spinlock_8h.html#a872d10f3b8ba88b4fbf2d5463f1202ef">__spin_unlock</a>(lock); <a class="el" href="arm9__generic_8c.html#ac74d7f82173c8b72aa92e8d72ad6273c">vsf_enable_interrupt</a>(); } while(0)</td></tr>
 <tr class="separator:ab3be11fd55b088cf4ce31243ff7a3f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd13c671b71b924b56a112bbf4ba0d8d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xboot_2include_2arch_2spinlock_8h.html#afd13c671b71b924b56a112bbf4ba0d8d">spin_lock_irqsave</a>(lock,  flags)&#160;&#160;&#160;do { flags = <a class="el" href="vsf__arch__abstraction_8h.html#a7c03c8d361503984bed9099c80890f54">vsf_protect_int</a>(); <a class="el" href="linux_2include_2linux_2spinlock_8h.html#a7e61b60c62dd06a0cfa65fd154a11e70">__spin_lock</a>(lock); } while(0)</td></tr>
 <tr class="separator:afd13c671b71b924b56a112bbf4ba0d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -228,7 +228,7 @@
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">lock</td><td>)</td>
-          <td>&#160;&#160;&#160;do { <a class="el" href="arm9__generic_8c.html#a6d6be07351de98be193349d5a8e5a6a1">vsf_disable_interrupt</a>(); <a class="el" href="linux_2include_2linux_2spinlock_8h.html#a7e61b60c62dd06a0cfa65fd154a11e70">__spin_lock</a>(lock); } while(0)</td>
+          <td>&#160;&#160;&#160;do { <a class="el" href="arm9__generic_8c.html#a718eb823c82ffd4d8929470efe736d91">vsf_disable_interrupt</a>(); <a class="el" href="linux_2include_2linux_2spinlock_8h.html#a7e61b60c62dd06a0cfa65fd154a11e70">__spin_lock</a>(lock); } while(0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -246,7 +246,7 @@
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">lock</td><td>)</td>
-          <td>&#160;&#160;&#160;do { <a class="el" href="linux_2include_2linux_2spinlock_8h.html#a872d10f3b8ba88b4fbf2d5463f1202ef">__spin_unlock</a>(lock); <a class="el" href="arm9__generic_8c.html#abfa706164a894e963372e93a6b1f821c">vsf_enable_interrupt</a>(); } while(0)</td>
+          <td>&#160;&#160;&#160;do { <a class="el" href="linux_2include_2linux_2spinlock_8h.html#a872d10f3b8ba88b4fbf2d5463f1202ef">__spin_unlock</a>(lock); <a class="el" href="arm9__generic_8c.html#ac74d7f82173c8b72aa92e8d72ad6273c">vsf_enable_interrupt</a>(); } while(0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
