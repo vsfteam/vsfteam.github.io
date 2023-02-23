@@ -60,6 +60,7 @@
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__input__cfg_8h_source.html">./vsf_input_cfg.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__utilities_8h_source.html">utilities/vsf_utilities.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ooc__class_8h_source.html">utilities/ooc_class.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__input__get__type_8h_source.html">./vsf_input_get_type.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__input__gamepad_8h_source.html">./protocol/vsf_input_gamepad.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__input__sensor_8h_source.html">./protocol/vsf_input_sensor.h</a>&quot;</code><br />
@@ -81,7 +82,7 @@
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvk__input__parser__t.html">vk_input_parser_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvk__input__notifier__t.html">vk_input_notifier_t</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvk__input__notifier__t.html">vk_input_notifier_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -107,9 +108,7 @@
 <tr class="separator:a82fb4e11cca5d1bbee2ab2b41428d9d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b2c3029404ee1c82057661e47ab8cec"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvk__input__parser__t.html">vk_input_parser_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input_8h.html#a4b2c3029404ee1c82057661e47ab8cec">vk_input_parser_t</a></td></tr>
 <tr class="separator:a4b2c3029404ee1c82057661e47ab8cec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bb04a56656efdb489bc8a1a3057087e"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvk__input__notifier__t.html">vk_input_notifier_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input_8h.html#a3bb04a56656efdb489bc8a1a3057087e">vk_input_notifier_t</a></td></tr>
-<tr class="separator:a3bb04a56656efdb489bc8a1a3057087e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac435cf6325dc0e212f58ece13d68f3f8"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input_8h.html#ac435cf6325dc0e212f58ece13d68f3f8">vk_input_on_evt_t</a>) (<a class="el" href="structvk__input__notifier__t.html">vk_input_notifier_t</a> *<a class="el" href="vsf__xboot_8c.html#afedc728dc9cd98f8fa8efdfedd159531">notifier</a>, <a class="el" href="vsf__input_8h.html#af0514a3f61422726e0fbaf9b456ba72e">vk_input_type_t</a> <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, <a class="el" href="structvk__input__evt__t.html">vk_input_evt_t</a> *evt)</td></tr>
+<tr class="memitem:ac435cf6325dc0e212f58ece13d68f3f8"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input_8h.html#ac435cf6325dc0e212f58ece13d68f3f8">vk_input_on_evt_t</a>) (<a class="el" href="classvk__input__notifier__t.html">vk_input_notifier_t</a> *<a class="el" href="vsf__xboot_8c.html#afedc728dc9cd98f8fa8efdfedd159531">notifier</a>, <a class="el" href="vsf__input_8h.html#af0514a3f61422726e0fbaf9b456ba72e">vk_input_type_t</a> <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, <a class="el" href="structvk__input__evt__t.html">vk_input_evt_t</a> *evt)</td></tr>
 <tr class="separator:ac435cf6325dc0e212f58ece13d68f3f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
@@ -133,9 +132,9 @@
 <tr class="separator:a1e7945b8ed708aaf8cfd8ed9e2f27cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9884f19e41322f7bd1e1c459e2ce11c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvk__input__item__info__t.html">vk_input_item_info_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input_8h.html#aa9884f19e41322f7bd1e1c459e2ce11c">vk_input_parse</a> (<a class="el" href="structvk__input__parser__t.html">vk_input_parser_t</a> *parser, <a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pre, <a class="el" href="arm_2type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *<a class="el" href="vsh_8c.html#a11f3486819639641bcd21317d88eb8bb">cur</a>)</td></tr>
 <tr class="separator:aa9884f19e41322f7bd1e1c459e2ce11c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56afb21dfd5fe0e462cfe74341ddee60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input_8h.html#a56afb21dfd5fe0e462cfe74341ddee60">vk_input_notifier_register</a> (<a class="el" href="structvk__input__notifier__t.html">vk_input_notifier_t</a> *<a class="el" href="vsf__xboot_8c.html#afedc728dc9cd98f8fa8efdfedd159531">notifier</a>)</td></tr>
+<tr class="memitem:a56afb21dfd5fe0e462cfe74341ddee60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input_8h.html#a56afb21dfd5fe0e462cfe74341ddee60">vk_input_notifier_register</a> (<a class="el" href="classvk__input__notifier__t.html">vk_input_notifier_t</a> *<a class="el" href="vsf__xboot_8c.html#afedc728dc9cd98f8fa8efdfedd159531">notifier</a>)</td></tr>
 <tr class="separator:a56afb21dfd5fe0e462cfe74341ddee60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78220dd63a127d9bea3b41095f1326f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input_8h.html#a78220dd63a127d9bea3b41095f1326f6">vk_input_notifier_unregister</a> (<a class="el" href="structvk__input__notifier__t.html">vk_input_notifier_t</a> *<a class="el" href="vsf__xboot_8c.html#afedc728dc9cd98f8fa8efdfedd159531">notifier</a>)</td></tr>
+<tr class="memitem:a78220dd63a127d9bea3b41095f1326f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input_8h.html#a78220dd63a127d9bea3b41095f1326f6">vk_input_notifier_unregister</a> (<a class="el" href="classvk__input__notifier__t.html">vk_input_notifier_t</a> *<a class="el" href="vsf__xboot_8c.html#afedc728dc9cd98f8fa8efdfedd159531">notifier</a>)</td></tr>
 <tr class="separator:a78220dd63a127d9bea3b41095f1326f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab71c42a882b0eebdb8abe0aa225ac403"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__input_8h.html#ab71c42a882b0eebdb8abe0aa225ac403">vsf_input_on_sensor</a> (<a class="el" href="structvk__sensor__evt__t.html">vk_sensor_evt_t</a> *sensor_evt)</td></tr>
 <tr class="separator:ab71c42a882b0eebdb8abe0aa225ac403"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -348,20 +347,6 @@
 
 </div>
 </div>
-<a id="a3bb04a56656efdb489bc8a1a3057087e" name="a3bb04a56656efdb489bc8a1a3057087e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3bb04a56656efdb489bc8a1a3057087e">&#9670;&#160;</a></span>vk_input_notifier_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structvk__input__notifier__t.html">vk_input_notifier_t</a> <a class="el" href="structvk__input__notifier__t.html">vk_input_notifier_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ac435cf6325dc0e212f58ece13d68f3f8" name="ac435cf6325dc0e212f58ece13d68f3f8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac435cf6325dc0e212f58ece13d68f3f8">&#9670;&#160;</a></span>vk_input_on_evt_t</h2>
 
@@ -369,7 +354,7 @@
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* vk_input_on_evt_t) (<a class="el" href="structvk__input__notifier__t.html">vk_input_notifier_t</a> *<a class="el" href="vsf__xboot_8c.html#afedc728dc9cd98f8fa8efdfedd159531">notifier</a>, <a class="el" href="vsf__input_8h.html#af0514a3f61422726e0fbaf9b456ba72e">vk_input_type_t</a> <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, <a class="el" href="structvk__input__evt__t.html">vk_input_evt_t</a> *evt)</td>
+          <td class="memname">typedef void(* vk_input_on_evt_t) (<a class="el" href="classvk__input__notifier__t.html">vk_input_notifier_t</a> *<a class="el" href="vsf__xboot_8c.html#afedc728dc9cd98f8fa8efdfedd159531">notifier</a>, <a class="el" href="vsf__input_8h.html#af0514a3f61422726e0fbaf9b456ba72e">vk_input_type_t</a> <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, <a class="el" href="structvk__input__evt__t.html">vk_input_evt_t</a> *evt)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -597,7 +582,7 @@
         <tr>
           <td class="memname">void vk_input_notifier_register </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structvk__input__notifier__t.html">vk_input_notifier_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="classvk__input__notifier__t.html">vk_input_notifier_t</a> *&#160;</td>
           <td class="paramname"><em>notifier</em></td><td>)</td>
           <td></td>
         </tr>
@@ -615,7 +600,7 @@
         <tr>
           <td class="memname">void vk_input_notifier_unregister </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structvk__input__notifier__t.html">vk_input_notifier_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="classvk__input__notifier__t.html">vk_input_notifier_t</a> *&#160;</td>
           <td class="paramname"><em>notifier</em></td><td>)</td>
           <td></td>
         </tr>
