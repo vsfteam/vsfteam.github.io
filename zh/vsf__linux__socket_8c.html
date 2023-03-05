@@ -64,6 +64,7 @@
 <code>#include &quot;<a class="el" href="inet_8h_source.html">../../include/arpa/inet.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="netdb_8h_source.html">../../include/netdb.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ifaddrs_8h_source.html">../../include/ifaddrs.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="errno_8h_source.html">../../include/errno.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__linux__socket_8h_source.html">./vsf_linux_socket.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -131,6 +132,8 @@
 <tr class="separator:a5989c21d05cb17caba26cef496a7beea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7937a1ce0c865387d092f8440f7ef5bd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__socket_8c.html#a7937a1ce0c865387d092f8440f7ef5bd">accept</a> (int sockfd, struct <a class="el" href="structsockaddr.html">sockaddr</a> *addr, <a class="el" href="socket_8h.html#a3f5f480bed01f54df564b99350f1d1bb">socklen_t</a> *addrlen)</td></tr>
 <tr class="separator:a7937a1ce0c865387d092f8440f7ef5bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6ab87b0bd13b1765ec0adc376388dac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__socket_8c.html#ac6ab87b0bd13b1765ec0adc376388dac">accept4</a> (int sockfd, struct <a class="el" href="structsockaddr.html">sockaddr</a> *addr, <a class="el" href="socket_8h.html#a3f5f480bed01f54df564b99350f1d1bb">socklen_t</a> *addrlen, int flags)</td></tr>
+<tr class="separator:ac6ab87b0bd13b1765ec0adc376388dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82199bcd81894331533a25f08e172480"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__socket_8c.html#a82199bcd81894331533a25f08e172480">bind</a> (int sockfd, const struct <a class="el" href="structsockaddr.html">sockaddr</a> *addr, <a class="el" href="socket_8h.html#a3f5f480bed01f54df564b99350f1d1bb">socklen_t</a> addrlen)</td></tr>
 <tr class="separator:a82199bcd81894331533a25f08e172480"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab81d992040a0b29b4f9fd20a263ab1d0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__socket_8c.html#ab81d992040a0b29b4f9fd20a263ab1d0">getsockopt</a> (int sockfd, int level, int optname, void *optval, <a class="el" href="socket_8h.html#a3f5f480bed01f54df564b99350f1d1bb">socklen_t</a> *optlen)</td></tr>
@@ -157,6 +160,10 @@
 <tr class="separator:a89920818bfb53e5db67da5d5f9a784d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b010ca009ba854af5e8debf45901b7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__socket_8c.html#a5b010ca009ba854af5e8debf45901b7f">freeifaddrs</a> (struct <a class="el" href="structifaddrs.html">ifaddrs</a> *<a class="el" href="structifaddrs.html">ifaddrs</a>)</td></tr>
 <tr class="separator:a5b010ca009ba854af5e8debf45901b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabacc3c49f072845092730128fbadd93"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__socket_8c.html#aabacc3c49f072845092730128fbadd93">if_nametoindex</a> (const char *ifname)</td></tr>
+<tr class="separator:aabacc3c49f072845092730128fbadd93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4da7243450c66298378e0f2d6434b997"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__socket_8c.html#a4da7243450c66298378e0f2d6434b997">if_indextoname</a> (unsigned int ifindex, char *ifname)</td></tr>
+<tr class="separator:a4da7243450c66298378e0f2d6434b997"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 变量</h2></td></tr>
@@ -935,6 +942,46 @@
 
 </div>
 </div>
+<a id="ac6ab87b0bd13b1765ec0adc376388dac" name="ac6ab87b0bd13b1765ec0adc376388dac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6ab87b0bd13b1765ec0adc376388dac">&#9670;&#160;</a></span>accept4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int accept4 </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structsockaddr.html">sockaddr</a> *&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="socket_8h.html#a3f5f480bed01f54df564b99350f1d1bb">socklen_t</a> *&#160;</td>
+          <td class="paramname"><em>addrlen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a82199bcd81894331533a25f08e172480" name="a82199bcd81894331533a25f08e172480"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a82199bcd81894331533a25f08e172480">&#9670;&#160;</a></span>bind()</h2>
 
@@ -1381,6 +1428,52 @@
 
 </div>
 </div>
+<a id="aabacc3c49f072845092730128fbadd93" name="aabacc3c49f072845092730128fbadd93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabacc3c49f072845092730128fbadd93">&#9670;&#160;</a></span>if_nametoindex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int if_nametoindex </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>ifname</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4da7243450c66298378e0f2d6434b997" name="a4da7243450c66298378e0f2d6434b997"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4da7243450c66298378e0f2d6434b997">&#9670;&#160;</a></span>if_indextoname()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * if_indextoname </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>ifindex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>ifname</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">变量说明</h2>
 <a id="a1949ae569a5d436034bb0913562e9e17" name="a1949ae569a5d436034bb0913562e9e17"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1949ae569a5d436034bb0913562e9e17">&#9670;&#160;</a></span>vsf_linux_socket_unix_op</h2>
@@ -1475,7 +1568,7 @@
 <div class="ttc" id="aifaddrs_8h_html_af85ec136316d6417383c84ac9c2f6690"><div class="ttname"><a href="ifaddrs_8h.html#af85ec136316d6417383c84ac9c2f6690">getifaddrs</a></div><div class="ttdeci">#define getifaddrs</div><div class="ttdef"><b>Definition:</b> ifaddrs.h:48</div></div>
 <div class="ttc" id="astructvsf__linux__ifaddrs__vplt__t_html"><div class="ttname"><a href="structvsf__linux__ifaddrs__vplt__t.html">vsf_linux_ifaddrs_vplt_t</a></div><div class="ttdef"><b>Definition:</b> ifaddrs.h:53</div></div>
 <div class="ttc" id="astructvsf__vplt__info__t_html"><div class="ttname"><a href="structvsf__vplt__info__t.html">vsf_vplt_info_t</a></div><div class="ttdef"><b>Definition:</b> vsf_cfg.h:95</div></div>
-<div class="ttc" id="avsf__linux__socket_8c_html_a1ca21951ee11b64f81934682754bb831"><div class="ttname"><a href="vsf__linux__socket_8c.html#a1ca21951ee11b64f81934682754bb831">VSF_LINUX_APPLET_IFADDRS_FUNC</a></div><div class="ttdeci">#define VSF_LINUX_APPLET_IFADDRS_FUNC(__FUNC)</div><div class="ttdef"><b>Definition:</b> vsf_linux_socket.c:670</div></div>
+<div class="ttc" id="avsf__linux__socket_8c_html_a1ca21951ee11b64f81934682754bb831"><div class="ttname"><a href="vsf__linux__socket_8c.html#a1ca21951ee11b64f81934682754bb831">VSF_LINUX_APPLET_IFADDRS_FUNC</a></div><div class="ttdeci">#define VSF_LINUX_APPLET_IFADDRS_FUNC(__FUNC)</div><div class="ttdef"><b>Definition:</b> vsf_linux_socket.c:697</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1507,7 +1600,7 @@
 <div class="ttc" id="anetdb_8h_html_ac0293040c0a9b5b7a9f15ac5e128f750"><div class="ttname"><a href="netdb_8h.html#ac0293040c0a9b5b7a9f15ac5e128f750">getnameinfo</a></div><div class="ttdeci">#define getnameinfo</div><div class="ttdef"><b>Definition:</b> netdb.h:81</div></div>
 <div class="ttc" id="anetdb_8h_html_adef9f0657cf2d7402f4a63fc37a2e5e9"><div class="ttname"><a href="netdb_8h.html#adef9f0657cf2d7402f4a63fc37a2e5e9">freeaddrinfo</a></div><div class="ttdeci">#define freeaddrinfo</div><div class="ttdef"><b>Definition:</b> netdb.h:86</div></div>
 <div class="ttc" id="astructvsf__linux__netdb__vplt__t_html"><div class="ttname"><a href="structvsf__linux__netdb__vplt__t.html">vsf_linux_netdb_vplt_t</a></div><div class="ttdef"><b>Definition:</b> netdb.h:100</div></div>
-<div class="ttc" id="avsf__linux__socket_8c_html_a971eea3f8fd1642a6aa4a9f90ef8576c"><div class="ttname"><a href="vsf__linux__socket_8c.html#a971eea3f8fd1642a6aa4a9f90ef8576c">VSF_LINUX_APPLET_NETDB_FUNC</a></div><div class="ttdeci">#define VSF_LINUX_APPLET_NETDB_FUNC(__FUNC)</div><div class="ttdef"><b>Definition:</b> vsf_linux_socket.c:681</div></div>
+<div class="ttc" id="avsf__linux__socket_8c_html_a971eea3f8fd1642a6aa4a9f90ef8576c"><div class="ttname"><a href="vsf__linux__socket_8c.html#a971eea3f8fd1642a6aa4a9f90ef8576c">VSF_LINUX_APPLET_NETDB_FUNC</a></div><div class="ttdeci">#define VSF_LINUX_APPLET_NETDB_FUNC(__FUNC)</div><div class="ttdef"><b>Definition:</b> vsf_linux_socket.c:708</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1545,24 +1638,24 @@
 <div class="line">    <a class="code hl_define" href="vsf__linux__socket_8c.html#af6b6ea8c911f6999e0c6c371d1af55fc">VSF_LINUX_APPLET_SYS_SOCKET_FUNC</a>(<a class="code hl_define" href="socket_8h.html#ab93f620662d6d88d2b7c0b8fd8378760">socketpair</a>),</div>
 <div class="line">}</div>
 <div class="ttc" id="asocket_8h_html_a1defe1af9b3afa03c09c0e4755048e7c"><div class="ttname"><a href="socket_8h.html#a1defe1af9b3afa03c09c0e4755048e7c">getpeername</a></div><div class="ttdeci">#define getpeername</div><div class="ttdef"><b>Definition:</b> socket.h:76</div></div>
-<div class="ttc" id="asocket_8h_html_a2d3d00e67d3046983357fc3a5b0e63ed"><div class="ttname"><a href="socket_8h.html#a2d3d00e67d3046983357fc3a5b0e63ed">listen</a></div><div class="ttdeci">#define listen</div><div class="ttdef"><b>Definition:</b> socket.h:82</div></div>
-<div class="ttc" id="asocket_8h_html_a2d5554509a221fd4fba736052581fefd"><div class="ttname"><a href="socket_8h.html#a2d5554509a221fd4fba736052581fefd">sendmsg</a></div><div class="ttdeci">#define sendmsg</div><div class="ttdef"><b>Definition:</b> socket.h:87</div></div>
+<div class="ttc" id="asocket_8h_html_a2d3d00e67d3046983357fc3a5b0e63ed"><div class="ttname"><a href="socket_8h.html#a2d3d00e67d3046983357fc3a5b0e63ed">listen</a></div><div class="ttdeci">#define listen</div><div class="ttdef"><b>Definition:</b> socket.h:83</div></div>
+<div class="ttc" id="asocket_8h_html_a2d5554509a221fd4fba736052581fefd"><div class="ttname"><a href="socket_8h.html#a2d5554509a221fd4fba736052581fefd">sendmsg</a></div><div class="ttdeci">#define sendmsg</div><div class="ttdef"><b>Definition:</b> socket.h:88</div></div>
 <div class="ttc" id="asocket_8h_html_a2ebd12809845fab1c8fe85b1337de183"><div class="ttname"><a href="socket_8h.html#a2ebd12809845fab1c8fe85b1337de183">setsockopt</a></div><div class="ttdeci">#define setsockopt</div><div class="ttdef"><b>Definition:</b> socket.h:73</div></div>
 <div class="ttc" id="asocket_8h_html_a2fe3d034024f850bed737a97851616bf"><div class="ttname"><a href="socket_8h.html#a2fe3d034024f850bed737a97851616bf">accept</a></div><div class="ttdeci">#define accept</div><div class="ttdef"><b>Definition:</b> socket.h:79</div></div>
-<div class="ttc" id="asocket_8h_html_a3102fdddc55c0c8906c40365b5b2fa71"><div class="ttname"><a href="socket_8h.html#a3102fdddc55c0c8906c40365b5b2fa71">recvfrom</a></div><div class="ttdeci">#define recvfrom</div><div class="ttdef"><b>Definition:</b> socket.h:85</div></div>
-<div class="ttc" id="asocket_8h_html_a41f9a86568fee1d3e923e08583a37e83"><div class="ttname"><a href="socket_8h.html#a41f9a86568fee1d3e923e08583a37e83">sendto</a></div><div class="ttdeci">#define sendto</div><div class="ttdef"><b>Definition:</b> socket.h:88</div></div>
-<div class="ttc" id="asocket_8h_html_a66a0272fadf2b7e64d98d8ec0a6ad4db"><div class="ttname"><a href="socket_8h.html#a66a0272fadf2b7e64d98d8ec0a6ad4db">recvmsg</a></div><div class="ttdeci">#define recvmsg</div><div class="ttdef"><b>Definition:</b> socket.h:84</div></div>
+<div class="ttc" id="asocket_8h_html_a3102fdddc55c0c8906c40365b5b2fa71"><div class="ttname"><a href="socket_8h.html#a3102fdddc55c0c8906c40365b5b2fa71">recvfrom</a></div><div class="ttdeci">#define recvfrom</div><div class="ttdef"><b>Definition:</b> socket.h:86</div></div>
+<div class="ttc" id="asocket_8h_html_a41f9a86568fee1d3e923e08583a37e83"><div class="ttname"><a href="socket_8h.html#a41f9a86568fee1d3e923e08583a37e83">sendto</a></div><div class="ttdeci">#define sendto</div><div class="ttdef"><b>Definition:</b> socket.h:89</div></div>
+<div class="ttc" id="asocket_8h_html_a66a0272fadf2b7e64d98d8ec0a6ad4db"><div class="ttname"><a href="socket_8h.html#a66a0272fadf2b7e64d98d8ec0a6ad4db">recvmsg</a></div><div class="ttdeci">#define recvmsg</div><div class="ttdef"><b>Definition:</b> socket.h:85</div></div>
 <div class="ttc" id="asocket_8h_html_a6d2e979cce939b0bccfe059fb553dbb8"><div class="ttname"><a href="socket_8h.html#a6d2e979cce939b0bccfe059fb553dbb8">getsockopt</a></div><div class="ttdeci">#define getsockopt</div><div class="ttdef"><b>Definition:</b> socket.h:74</div></div>
 <div class="ttc" id="asocket_8h_html_aa2348cb2e6f1d3bee7ffec9bcb33ca58"><div class="ttname"><a href="socket_8h.html#aa2348cb2e6f1d3bee7ffec9bcb33ca58">getsockname</a></div><div class="ttdeci">#define getsockname</div><div class="ttdef"><b>Definition:</b> socket.h:77</div></div>
-<div class="ttc" id="asocket_8h_html_aa8318fbee111c5bde5952c63e894c962"><div class="ttname"><a href="socket_8h.html#aa8318fbee111c5bde5952c63e894c962">socket</a></div><div class="ttdeci">#define socket</div><div class="ttdef"><b>Definition:</b> socket.h:90</div></div>
-<div class="ttc" id="asocket_8h_html_ab93f620662d6d88d2b7c0b8fd8378760"><div class="ttname"><a href="socket_8h.html#ab93f620662d6d88d2b7c0b8fd8378760">socketpair</a></div><div class="ttdeci">#define socketpair</div><div class="ttdef"><b>Definition:</b> socket.h:91</div></div>
-<div class="ttc" id="asocket_8h_html_abb5abf491305ecb624576b9d3120e0ae"><div class="ttname"><a href="socket_8h.html#abb5abf491305ecb624576b9d3120e0ae">shutdown</a></div><div class="ttdeci">#define shutdown</div><div class="ttdef"><b>Definition:</b> socket.h:89</div></div>
-<div class="ttc" id="asocket_8h_html_adfd4ee688142ebda1142c1b0c7577e91"><div class="ttname"><a href="socket_8h.html#adfd4ee688142ebda1142c1b0c7577e91">connect</a></div><div class="ttdeci">#define connect</div><div class="ttdef"><b>Definition:</b> socket.h:81</div></div>
-<div class="ttc" id="asocket_8h_html_af5c55c2a392615b0376df3644dc2e792"><div class="ttname"><a href="socket_8h.html#af5c55c2a392615b0376df3644dc2e792">recv</a></div><div class="ttdeci">#define recv</div><div class="ttdef"><b>Definition:</b> socket.h:83</div></div>
-<div class="ttc" id="asocket_8h_html_af65cc88d9ccb2274b94e0025d25d965f"><div class="ttname"><a href="socket_8h.html#af65cc88d9ccb2274b94e0025d25d965f">bind</a></div><div class="ttdeci">#define bind</div><div class="ttdef"><b>Definition:</b> socket.h:80</div></div>
-<div class="ttc" id="asocket_8h_html_af9761b02a9cdd0bba649e4f48ce07eb1"><div class="ttname"><a href="socket_8h.html#af9761b02a9cdd0bba649e4f48ce07eb1">send</a></div><div class="ttdeci">#define send</div><div class="ttdef"><b>Definition:</b> socket.h:86</div></div>
-<div class="ttc" id="astructvsf__linux__sys__socket__vplt__t_html"><div class="ttname"><a href="structvsf__linux__sys__socket__vplt__t.html">vsf_linux_sys_socket_vplt_t</a></div><div class="ttdef"><b>Definition:</b> socket.h:226</div></div>
-<div class="ttc" id="avsf__linux__socket_8c_html_af6b6ea8c911f6999e0c6c371d1af55fc"><div class="ttname"><a href="vsf__linux__socket_8c.html#af6b6ea8c911f6999e0c6c371d1af55fc">VSF_LINUX_APPLET_SYS_SOCKET_FUNC</a></div><div class="ttdeci">#define VSF_LINUX_APPLET_SYS_SOCKET_FUNC(__FUNC)</div><div class="ttdef"><b>Definition:</b> vsf_linux_socket.c:695</div></div>
+<div class="ttc" id="asocket_8h_html_aa8318fbee111c5bde5952c63e894c962"><div class="ttname"><a href="socket_8h.html#aa8318fbee111c5bde5952c63e894c962">socket</a></div><div class="ttdeci">#define socket</div><div class="ttdef"><b>Definition:</b> socket.h:91</div></div>
+<div class="ttc" id="asocket_8h_html_ab93f620662d6d88d2b7c0b8fd8378760"><div class="ttname"><a href="socket_8h.html#ab93f620662d6d88d2b7c0b8fd8378760">socketpair</a></div><div class="ttdeci">#define socketpair</div><div class="ttdef"><b>Definition:</b> socket.h:92</div></div>
+<div class="ttc" id="asocket_8h_html_abb5abf491305ecb624576b9d3120e0ae"><div class="ttname"><a href="socket_8h.html#abb5abf491305ecb624576b9d3120e0ae">shutdown</a></div><div class="ttdeci">#define shutdown</div><div class="ttdef"><b>Definition:</b> socket.h:90</div></div>
+<div class="ttc" id="asocket_8h_html_adfd4ee688142ebda1142c1b0c7577e91"><div class="ttname"><a href="socket_8h.html#adfd4ee688142ebda1142c1b0c7577e91">connect</a></div><div class="ttdeci">#define connect</div><div class="ttdef"><b>Definition:</b> socket.h:82</div></div>
+<div class="ttc" id="asocket_8h_html_af5c55c2a392615b0376df3644dc2e792"><div class="ttname"><a href="socket_8h.html#af5c55c2a392615b0376df3644dc2e792">recv</a></div><div class="ttdeci">#define recv</div><div class="ttdef"><b>Definition:</b> socket.h:84</div></div>
+<div class="ttc" id="asocket_8h_html_af65cc88d9ccb2274b94e0025d25d965f"><div class="ttname"><a href="socket_8h.html#af65cc88d9ccb2274b94e0025d25d965f">bind</a></div><div class="ttdeci">#define bind</div><div class="ttdef"><b>Definition:</b> socket.h:81</div></div>
+<div class="ttc" id="asocket_8h_html_af9761b02a9cdd0bba649e4f48ce07eb1"><div class="ttname"><a href="socket_8h.html#af9761b02a9cdd0bba649e4f48ce07eb1">send</a></div><div class="ttdeci">#define send</div><div class="ttdef"><b>Definition:</b> socket.h:87</div></div>
+<div class="ttc" id="astructvsf__linux__sys__socket__vplt__t_html"><div class="ttname"><a href="structvsf__linux__sys__socket__vplt__t.html">vsf_linux_sys_socket_vplt_t</a></div><div class="ttdef"><b>Definition:</b> socket.h:227</div></div>
+<div class="ttc" id="avsf__linux__socket_8c_html_af6b6ea8c911f6999e0c6c371d1af55fc"><div class="ttname"><a href="vsf__linux__socket_8c.html#af6b6ea8c911f6999e0c6c371d1af55fc">VSF_LINUX_APPLET_SYS_SOCKET_FUNC</a></div><div class="ttdeci">#define VSF_LINUX_APPLET_SYS_SOCKET_FUNC(__FUNC)</div><div class="ttdef"><b>Definition:</b> vsf_linux_socket.c:722</div></div>
 </div><!-- fragment -->
 </div>
 </div>
