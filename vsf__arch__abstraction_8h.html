@@ -60,6 +60,7 @@
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__hal__cfg_8h_source.html">hal/vsf_hal_cfg.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__utilities_8h_source.html">utilities/vsf_utilities.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__heap_8h_source.html">service/heap/vsf_heap.h</a>&quot;</code><br />
 <code>#include &lt;VSF_ARCH_HEADER&gt;</code><br />
 </div>
 <p><a href="vsf__arch__abstraction_8h_source.html">Go to the source code of this file.</a></p>
@@ -199,6 +200,8 @@ Functions</h2></td></tr>
 <tr class="separator:a3a256562b0704eda76d7179835830e69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acdeab4ee98904ad9bab2df7e442a117a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__arch__abstraction_8h.html#acdeab4ee98904ad9bab2df7e442a117a">vsf_arch_heap_size</a> (void *buffer)</td></tr>
 <tr class="separator:acdeab4ee98904ad9bab2df7e442a117a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcde6dd2472f7cf45f17a7e96d90fe51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__arch__abstraction_8h.html#afcde6dd2472f7cf45f17a7e96d90fe51">vsf_arch_heap_statistics</a> (<a class="el" href="structvsf__heap__statistics__t.html">vsf_heap_statistics_t</a> *statistics)</td></tr>
+<tr class="separator:afcde6dd2472f7cf45f17a7e96d90fe51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab86769ce2194f789db8ed46d822f4b73"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__arch__abstraction_8h.html#ab86769ce2194f789db8ed46d822f4b73">bswap_16</a> (<a class="el" href="arm_2type_8h.html#a226d967fb6d06433caf43f20dc876aae">uint_fast16_t</a>)</td></tr>
 <tr class="separator:ab86769ce2194f789db8ed46d822f4b73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0111d229465275489e0c336f18fe2a31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__arch__abstraction_8h.html#a0111d229465275489e0c336f18fe2a31">bswap_32</a> (<a class="el" href="arm_2type_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>)</td></tr>
@@ -601,7 +604,7 @@ Variables</h2></td></tr>
 <div class="line">            ((<a class="code hl_define" href="vsf__preprocessor_8h.html#a5fd32e93159a228f586c0e21900043ce">VSF_MACRO_SAFE_NAME</a>(protect_status) = (__region)-&gt;enter()), <span class="keyword">true</span>) : <span class="keyword">false</span>;\</div>
 <div class="line">        (__region)-&gt;leave(<a class="code hl_define" href="vsf__preprocessor_8h.html#a5fd32e93159a228f586c0e21900043ce">VSF_MACRO_SAFE_NAME</a>(protect_status)))</div>
 <div class="ttc" id="alinux_2include_2simple__libc_2stddef_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition:</b> stddef.h:44</div></div>
-<div class="ttc" id="avsf__arch__abstraction_8h_html_a1b0d8a7ae206accc2a7e6f5c4e3d78e3"><div class="ttname"><a href="vsf__arch__abstraction_8h.html#a1b0d8a7ae206accc2a7e6f5c4e3d78e3">vsf_protect_t</a></div><div class="ttdeci">uintalu_t vsf_protect_t</div><div class="ttdef"><b>Definition:</b> vsf_arch_abstraction.h:52</div></div>
+<div class="ttc" id="avsf__arch__abstraction_8h_html_a1b0d8a7ae206accc2a7e6f5c4e3d78e3"><div class="ttname"><a href="vsf__arch__abstraction_8h.html#a1b0d8a7ae206accc2a7e6f5c4e3d78e3">vsf_protect_t</a></div><div class="ttdeci">uintalu_t vsf_protect_t</div><div class="ttdef"><b>Definition:</b> vsf_arch_abstraction.h:57</div></div>
 <div class="ttc" id="avsf__preprocessor_8h_html_a5fd32e93159a228f586c0e21900043ce"><div class="ttname"><a href="vsf__preprocessor_8h.html#a5fd32e93159a228f586c0e21900043ce">VSF_MACRO_SAFE_NAME</a></div><div class="ttdeci">#define VSF_MACRO_SAFE_NAME(__NAME)</div><div class="ttdef"><b>Definition:</b> vsf_preprocessor.h:32</div></div>
 </div><!-- fragment -->
 </div>
@@ -948,7 +951,7 @@ Variables</h2></td></tr>
 <div class="line">                (<a class="code hl_define" href="vsf__arch__abstraction_8h.html#a5bbc15197ce16a864e3050b07d66fff9">vsf_arch_host_invoke_ctx_t</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>) *ctx);                      \</div>
 <div class="line">        <span class="keyword">extern</span> <a class="code hl_function" href="vsf__template__declaration_8h.html#a7de138be7d18f0b3c0428de641190c63">VSF_MCONNECT</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, _t) <a class="code hl_function" href="vsf__template__declaration_8h.html#a7de138be7d18f0b3c0428de641190c63">VSF_MCONNECT</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, _instance);</div>
 <div class="ttc" id="ahci__transport__aic8800_8c_html_a7f565b52ec477e9c0c235e88b9355558"><div class="ttname"><a href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a></div><div class="ttdeci">#define __name</div><div class="ttdef"><b>Definition:</b> hci_transport_aic8800.c:552</div></div>
-<div class="ttc" id="avsf__arch__abstraction_8h_html_a5bbc15197ce16a864e3050b07d66fff9"><div class="ttname"><a href="vsf__arch__abstraction_8h.html#a5bbc15197ce16a864e3050b07d66fff9">vsf_arch_host_invoke_ctx_t</a></div><div class="ttdeci">#define vsf_arch_host_invoke_ctx_t(__name)</div><div class="ttdef"><b>Definition:</b> vsf_arch_abstraction.h:249</div></div>
+<div class="ttc" id="avsf__arch__abstraction_8h_html_a5bbc15197ce16a864e3050b07d66fff9"><div class="ttname"><a href="vsf__arch__abstraction_8h.html#a5bbc15197ce16a864e3050b07d66fff9">vsf_arch_host_invoke_ctx_t</a></div><div class="ttdeci">#define vsf_arch_host_invoke_ctx_t(__name)</div><div class="ttdef"><b>Definition:</b> vsf_arch_abstraction.h:254</div></div>
 <div class="ttc" id="avsf__template__declaration_8h_html_a7de138be7d18f0b3c0428de641190c63"><div class="ttname"><a href="vsf__template__declaration_8h.html#a7de138be7d18f0b3c0428de641190c63">VSF_MCONNECT</a></div><div class="ttdeci">struct VSF_MCONNECT(__VSF_HAL_TEMPLATE_PREFIX, __VSF_HAL_TEMPLATE_NAME, _t) VSF_MCONNECT(__VSF_HAL_TEMPLATE_PREFIX</div></div>
 </div><!-- fragment -->
 </div>
@@ -1396,6 +1399,24 @@ Variables</h2></td></tr>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afcde6dd2472f7cf45f17a7e96d90fe51" name="afcde6dd2472f7cf45f17a7e96d90fe51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcde6dd2472f7cf45f17a7e96d90fe51">&#9670;&#160;</a></span>vsf_arch_heap_statistics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_arch_heap_statistics </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__heap__statistics__t.html">vsf_heap_statistics_t</a> *&#160;</td>
+          <td class="paramname"><em>statistics</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
