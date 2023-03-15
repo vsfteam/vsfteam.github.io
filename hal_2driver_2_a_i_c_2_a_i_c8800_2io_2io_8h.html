@@ -69,8 +69,6 @@ Macros</h2></td></tr>
 <tr class="separator:a983a59d0c2da2edeb6ea459236052e58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6721099861a7076d2ecd96b1bf1b4ee"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hal_2driver_2_a_i_c_2_a_i_c8800_2io_2io_8h.html#af6721099861a7076d2ecd96b1bf1b4ee">__VSF_HW_IO_FUNCTION_MASK</a>&#160;&#160;&#160;IOMUX_GPIO_CONFIG_SEL_MASK</td></tr>
 <tr class="separator:af6721099861a7076d2ecd96b1bf1b4ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94d423c6b62f55967965e48235af5a4c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hal_2driver_2_a_i_c_2_a_i_c8800_2io_2io_8h.html#a94d423c6b62f55967965e48235af5a4c">__VSF_HW_IO_PIN_MASK</a>&#160;&#160;&#160;((1ul &lt;&lt; <a class="el" href="hal_2driver_2_a_i_c_2_a_i_c8800_2device_8h.html#a5b847a04d3e2cf89447cce046d8ceb7a">VSF_HW_IO_PIN_MAX</a>) - 1)</td></tr>
-<tr class="separator:a94d423c6b62f55967965e48235af5a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaba71ffb5f2152b70f655f97496a8712"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hal_2driver_2_a_i_c_2_a_i_c8800_2io_2io_8h.html#aaba71ffb5f2152b70f655f97496a8712">__VSF_HW_IO_IS_VAILID_PIN</a>(__P)</td></tr>
 <tr class="separator:aaba71ffb5f2152b70f655f97496a8712"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e8bb07d7e7708212df0984bccb4872a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hal_2driver_2_a_i_c_2_a_i_c8800_2io_2io_8h.html#a9e8bb07d7e7708212df0984bccb4872a">__VSF_HW_IO_IS_VAILID_FEATURE</a>(__F)&#160;&#160;&#160;    ((__F &amp; ~(<a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>)<a class="el" href="hal_2driver_2_a_i_c_2_a_i_c8800_2io_2io_8h.html#aeae76c9ca708c7d35dcee621c1b76ef6a42ceb294dc9d02bb9994c509d6f01316">__VSF_HW_IO_FEATURE_ALL_BITS</a>) == 0)</td></tr>
@@ -232,20 +230,6 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a id="a94d423c6b62f55967965e48235af5a4c" name="a94d423c6b62f55967965e48235af5a4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94d423c6b62f55967965e48235af5a4c">&#9670;&#160;</a></span>__VSF_HW_IO_PIN_MASK</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define __VSF_HW_IO_PIN_MASK&#160;&#160;&#160;((1ul &lt;&lt; <a class="el" href="hal_2driver_2_a_i_c_2_a_i_c8800_2device_8h.html#a5b847a04d3e2cf89447cce046d8ceb7a">VSF_HW_IO_PIN_MAX</a>) - 1)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="aaba71ffb5f2152b70f655f97496a8712" name="aaba71ffb5f2152b70f655f97496a8712"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaba71ffb5f2152b70f655f97496a8712">&#9670;&#160;</a></span>__VSF_HW_IO_IS_VAILID_PIN</h2>
 
@@ -261,9 +245,8 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    (((__P &amp;  <a class="code hl_define" href="hal_2driver_2_a_i_c_2_a_i_c8800_2io_2io_8h.html#a94d423c6b62f55967965e48235af5a4c">__VSF_HW_IO_PIN_MASK</a>) != 0) &amp;&amp;                                    \</div>
-<div class="line">     ((__P &amp; ~__VSF_HW_IO_PIN_MASK) == 0))</div>
-<div class="ttc" id="ahal_2driver_2_a_i_c_2_a_i_c8800_2io_2io_8h_html_a94d423c6b62f55967965e48235af5a4c"><div class="ttname"><a href="hal_2driver_2_a_i_c_2_a_i_c8800_2io_2io_8h.html#a94d423c6b62f55967965e48235af5a4c">__VSF_HW_IO_PIN_MASK</a></div><div class="ttdeci">#define __VSF_HW_IO_PIN_MASK</div><div class="ttdef"><b>Definition:</b> io.h:36</div></div>
+<b>Value:</b><div class="fragment"><div class="line">    (((__P &amp;  VSF_HW_IO_PIN_MASK) != 0) &amp;&amp;                                      \</div>
+<div class="line">     ((__P &amp; ~VSF_HW_IO_PIN_MASK) == 0))</div>
 </div><!-- fragment -->
 </div>
 </div>
