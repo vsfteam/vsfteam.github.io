@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>VSF Documented: source/hal/driver/AIC/AIC8800/gpio/gpio.h Source File</title>
+<title>VSF Documented: source/hal/driver/BouffaloLab/BL61X/gpio/gpio.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -45,14 +45,14 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_e31421c8d11a714f997d94dfd878485b.html">hal</a></li><li class="navelem"><a class="el" href="dir_25d0b491454d9cd33ec551022795e759.html">driver</a></li><li class="navelem"><a class="el" href="dir_6d8d36caf28d1d71ba4502031e987ff0.html">AIC</a></li><li class="navelem"><a class="el" href="dir_deb5538d909e6dd607eda30aa6695e8d.html">AIC8800</a></li><li class="navelem"><a class="el" href="dir_7a5cf1de32f02f2a4ce2d73b191b3e92.html">gpio</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_e31421c8d11a714f997d94dfd878485b.html">hal</a></li><li class="navelem"><a class="el" href="dir_25d0b491454d9cd33ec551022795e759.html">driver</a></li><li class="navelem"><a class="el" href="dir_3c2a5bcce80b7ae8a97f29ae59a2923e.html">BouffaloLab</a></li><li class="navelem"><a class="el" href="dir_3b3a7b598d258a6a2a12a8bebc639042.html">BL61X</a></li><li class="navelem"><a class="el" href="dir_dfb9953b8f1aa0de4db4d9ce95d73242.html">gpio</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">gpio.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="gpio_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<a href="_bouffalo_lab_2_b_l61_x_2gpio_2gpio_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2022 by VSF Team                                       *</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
@@ -69,8 +69,8 @@
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifndef __HAL_DRIVER_AIC8800_HW_GPIO_H__</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define __HAL_DRIVER_AIC8800_HW_GPIO_H__</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifndef __HAL_DRIVER_BL61X_HW_GPIO_H__</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define __HAL_DRIVER_BL61X_HW_GPIO_H__</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
@@ -78,23 +78,21 @@
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#if VSF_HAL_USE_GPIO == ENABLED</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#   include &quot;../io/io.h&quot;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="gpio_8h.html#a5e5aedde821498fbbc57124816c4be5c">__vsf_hw_aic8800_gpio_init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="gpio_8h.html#a51f41f813842c219cccba3557937e909">   44</a></span><span class="preprocessor">#define VSF_GPIO_CFG_DEC_PREFIX         vsf_hw</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="gpio_8h.html#ac5086e0fb19e115c3d38b1872a91e686">   45</a></span><span class="preprocessor">#define VSF_GPIO_CFG_DEC_UPCASE_PREFIX  VSF_HW</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#include &quot;<a class="code" href="gpio__template_8h.html">hal/driver/common/gpio/gpio_template.h</a>&quot;</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif </span><span class="comment">/* VSF_HAL_USE_GPIO */</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#endif </span><span class="comment">/* __HAL_DRIVER_AIC8800_HW_GPIO_H__ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="agpio_8h_html_a5e5aedde821498fbbc57124816c4be5c"><div class="ttname"><a href="gpio_8h.html#a5e5aedde821498fbbc57124816c4be5c">__vsf_hw_aic8800_gpio_init</a></div><div class="ttdeci">void __vsf_hw_aic8800_gpio_init(void)</div><div class="ttdoc">To ensure that the GPIO is working properly, it needs to be called inside vsf_driver_init()</div><div class="ttdef"><b>Definition:</b> gpio.c:83</div></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="_bouffalo_lab_2_b_l61_x_2gpio_2gpio_8h.html#a2f556ab4e3f2b137714fcdd766ad00d4">__vsf_hw_bl61x_gpio_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="_bouffalo_lab_2_b_l61_x_2gpio_2gpio_8h.html#a51f41f813842c219cccba3557937e909">   41</a></span><span class="preprocessor">#define VSF_GPIO_CFG_DEC_PREFIX         vsf_hw</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="_bouffalo_lab_2_b_l61_x_2gpio_2gpio_8h.html#ac5086e0fb19e115c3d38b1872a91e686">   42</a></span><span class="preprocessor">#define VSF_GPIO_CFG_DEC_UPCASE_PREFIX  VSF_HW</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &quot;<a class="code" href="gpio__template_8h.html">hal/driver/common/gpio/gpio_template.h</a>&quot;</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif </span><span class="comment">/* VSF_HAL_USE_GPIO */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif </span><span class="comment">/* __HAL_DRIVER_BL61X_HW_GPIO_H__ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a_bouffalo_lab_2_b_l61_x_2gpio_2gpio_8h_html_a2f556ab4e3f2b137714fcdd766ad00d4"><div class="ttname"><a href="_bouffalo_lab_2_b_l61_x_2gpio_2gpio_8h.html#a2f556ab4e3f2b137714fcdd766ad00d4">__vsf_hw_bl61x_gpio_init</a></div><div class="ttdeci">void __vsf_hw_bl61x_gpio_init(void)</div><div class="ttdoc">To ensure that the GPIO is working properly, it needs to be called inside vsf_driver_init()</div><div class="ttdef"><b>Definition:</b> gpio.c:66</div></div>
 <div class="ttc" id="agpio__template_8h_html"><div class="ttname"><a href="gpio__template_8h.html">gpio_template.h</a></div></div>
 <div class="ttc" id="avsf__hal__cfg_8h_html"><div class="ttname"><a href="vsf__hal__cfg_8h.html">vsf_hal_cfg.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
