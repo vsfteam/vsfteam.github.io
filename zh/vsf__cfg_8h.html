@@ -93,8 +93,10 @@
 <tr class="separator:a5cd9d83f10833a78b85aa8f816bd10d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e7db8a40e9f620d287d17d85082ac42"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__cfg_8h.html#a4e7db8a40e9f620d287d17d85082ac42">VSF_APPLET_VPLT_INFO</a>(__TYPE,  __MAJOR,  __MINOR,  __FINAL)</td></tr>
 <tr class="separator:a4e7db8a40e9f620d287d17d85082ac42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d35bceb11af3bdeca7b2acbd9f04111"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__cfg_8h.html#a6d35bceb11af3bdeca7b2acbd9f04111">VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a>(__NAME)&#160;&#160;&#160;    <a class="el" href="structvsf__vplt__entry__t.html">vsf_vplt_entry_t</a> <a class="el" href="vsf__template__declaration_8h.html#a7de138be7d18f0b3c0428de641190c63">VSF_MCONNECT</a>(fn_, __NAME)</td></tr>
+<tr class="memitem:a6d35bceb11af3bdeca7b2acbd9f04111"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__cfg_8h.html#a6d35bceb11af3bdeca7b2acbd9f04111">VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a>(__NAME)&#160;&#160;&#160;    <a class="el" href="structvsf__vplt__entry__t.html">vsf_vplt_entry_t</a> fn_##__NAME</td></tr>
 <tr class="separator:a6d35bceb11af3bdeca7b2acbd9f04111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c848959ac30d57b7728371a1b47c9ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__cfg_8h.html#a2c848959ac30d57b7728371a1b47c9ea">VSF_APPLET_VPLT_ENTRY_FUNC_ENTRY</a>(__VPLT,  __NAME)&#160;&#160;&#160;    ((__##__NAME##_prototype_t)((__VPLT)-&gt;fn_##__NAME.ptr))</td></tr>
+<tr class="separator:a2c848959ac30d57b7728371a1b47c9ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96e1b8c9c443bebb9afb92a73dee6f2a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__cfg_8h.html#a96e1b8c9c443bebb9afb92a73dee6f2a">VSF_APPLET_VPLT_ENTRY_FUNC_IMP</a>(__VPLT,  __NAME,  __RET, ...)</td></tr>
 <tr class="separator:a96e1b8c9c443bebb9afb92a73dee6f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c6f5ae4cba97297fa5e0c2fc3668b5f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__cfg_8h.html#a3c6f5ae4cba97297fa5e0c2fc3668b5f">VSF_APPLET_VPLT_ENTRY_FUNC</a>(__NAME)</td></tr>
@@ -281,7 +283,7 @@
 <div class="line">        .entry_num = (<span class="keyword">sizeof</span>(__TYPE) - <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structvsf__vplt__info__t.html">vsf_vplt_info_t</a>)) / <span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *),\</div>
 <div class="line">    }</div>
 <div class="ttc" id="astructvsf__vplt__info__t_html"><div class="ttname"><a href="structvsf__vplt__info__t.html">vsf_vplt_info_t</a></div><div class="ttdef"><b>Definition:</b> vsf_cfg.h:95</div></div>
-<div class="ttc" id="asysmacros_8h_html_a447cfa1f8cb8cb769d37da2492e6d947"><div class="ttname"><a href="sysmacros_8h.html#a447cfa1f8cb8cb769d37da2492e6d947">minor</a></div><div class="ttdeci">unsigned int minor(dev_t dev)</div><div class="ttdef"><b>Definition:</b> vsf_linux.c:2492</div></div>
+<div class="ttc" id="asysmacros_8h_html_a447cfa1f8cb8cb769d37da2492e6d947"><div class="ttname"><a href="sysmacros_8h.html#a447cfa1f8cb8cb769d37da2492e6d947">minor</a></div><div class="ttdeci">unsigned int minor(dev_t dev)</div><div class="ttdef"><b>Definition:</b> vsf_linux.c:2496</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -296,7 +298,35 @@
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">__NAME</td><td>)</td>
-          <td>&#160;&#160;&#160;    <a class="el" href="structvsf__vplt__entry__t.html">vsf_vplt_entry_t</a> <a class="el" href="vsf__template__declaration_8h.html#a7de138be7d18f0b3c0428de641190c63">VSF_MCONNECT</a>(fn_, __NAME)</td>
+          <td>&#160;&#160;&#160;    <a class="el" href="structvsf__vplt__entry__t.html">vsf_vplt_entry_t</a> fn_##__NAME</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c848959ac30d57b7728371a1b47c9ea" name="a2c848959ac30d57b7728371a1b47c9ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c848959ac30d57b7728371a1b47c9ea">&#9670;&#160;</a></span>VSF_APPLET_VPLT_ENTRY_FUNC_ENTRY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_APPLET_VPLT_ENTRY_FUNC_ENTRY</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__VPLT, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__NAME&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    ((__##__NAME##_prototype_t)((__VPLT)-&gt;fn_##__NAME.ptr))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -340,10 +370,8 @@
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">    <span class="keyword">static</span> <span class="keyword">inline</span> __RET __NAME(__VA_ARGS__) {                                   \</div>
-<div class="line">        return ((__RET (*)(__VA_ARGS__))((__VPLT)-&gt;<a class="code hl_function" href="vsf__template__declaration_8h.html#a7de138be7d18f0b3c0428de641190c63">VSF_MCONNECT</a>(fn_, __NAME).ptr))(__VA_ARGS__);\</div>
-<div class="line">    }</div>
-<div class="ttc" id="avsf__template__declaration_8h_html_a7de138be7d18f0b3c0428de641190c63"><div class="ttname"><a href="vsf__template__declaration_8h.html#a7de138be7d18f0b3c0428de641190c63">VSF_MCONNECT</a></div><div class="ttdeci">struct VSF_MCONNECT(__VSF_HAL_TEMPLATE_PREFIX, __VSF_HAL_TEMPLATE_NAME, _t) VSF_MCONNECT(__VSF_HAL_TEMPLATE_PREFIX</div></div>
+<b>值:</b><div class="fragment"><div class="line">    <span class="keyword">typedef</span> __RET (*__##__NAME##_prototype_t)(__VA_ARGS__);                     \</div>
+<div class="line">    <span class="keyword">static</span> <span class="keyword">inline</span> __RET __NAME(__VA_ARGS__)</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -362,7 +390,7 @@
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">    .VSF_MCONNECT(fn_, __NAME) = {                                              \</div>
+<b>值:</b><div class="fragment"><div class="line">    .fn_##__NAME = {                                                            \</div>
 <div class="line">        .name = <a class="code hl_define" href="____type_8h.html#a55a14cc5e73754473f4c0160fd3704c2">VSF_STR</a>(__NAME),                                                \</div>
 <div class="line">        .ptr = (__NAME),                                                        \</div>
 <div class="line">    }</div>

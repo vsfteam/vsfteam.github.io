@@ -83,7 +83,7 @@
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structvsf__linux__sys__times__vplt__t.html">   29</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvsf__linux__sys__times__vplt__t.html">vsf_linux_sys_times_vplt_t</a> {</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structvsf__linux__sys__times__vplt__t.html#a5faa33400014357df870c701ed6e98f9">   30</a></span>    <a class="code hl_struct" href="structvsf__vplt__info__t.html">vsf_vplt_info_t</a> <a class="code hl_variable" href="structvsf__linux__sys__times__vplt__t.html#a5faa33400014357df870c701ed6e98f9">info</a>;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structvsf__linux__sys__times__vplt__t.html#aac95dbc6ddeabd3e12d73cba594f280a">   32</a></span>    <a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a0450ea8b06b50d6e055f6d47bd77622c">clock_t</a> (*<a class="code hl_variable" href="structvsf__linux__sys__times__vplt__t.html#aac95dbc6ddeabd3e12d73cba594f280a">times</a>)(<span class="keyword">struct </span><a class="code hl_struct" href="structtms.html">tms</a> *buf);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structvsf__linux__sys__times__vplt__t.html#af6e65c30c6eab16dc45316b83b16c809">   32</a></span>    <a class="code hl_function" href="structvsf__linux__sys__times__vplt__t.html#af6e65c30c6eab16dc45316b83b16c809">VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a>(<a class="code hl_define" href="times_8h.html#aa7d9bfe8ef0b258ac1d5c74774dcf1c0">times</a>);</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="times_8h.html#ace4dc2ffa8fb9b213698bfada5b1e2f1">   33</a></span>} <a class="code hl_struct" href="structvsf__linux__sys__times__vplt__t.html">vsf_linux_sys_times_vplt_t</a>;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#   ifndef __VSF_APPLET__</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">extern</span> <a class="code hl_define" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="code hl_struct" href="structvsf__linux__sys__times__vplt__t.html">vsf_linux_sys_times_vplt_t</a> <a class="code hl_variable" href="times_8h.html#abbe0b62faaf101ae34bf4e93e1a37d1e">vsf_linux_sys_times_vplt</a>;</div>
@@ -94,29 +94,34 @@
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#ifndef VSF_LINUX_APPLET_SYS_TIMES_VPLT</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#   if VSF_LINUX_USE_APPLET == ENABLED</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#       define VSF_LINUX_APPLET_SYS_TIMES_VPLT                                   \</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#       define VSF_LINUX_APPLET_SYS_TIMES_VPLT                                  \</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">            ((vsf_linux_sys_times_vplt_t *)(VSF_LINUX_APPLET_VPLT-&gt;sys_times_vplt))</span></div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#   else</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#       define VSF_LINUX_APPLET_SYS_TIMES_VPLT                                   \</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#       define VSF_LINUX_APPLET_SYS_TIMES_VPLT                                  \</span></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">            ((vsf_linux_sys_times_vplt_t *)vsf_vplt((void *)0))</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#   endif</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">static</span> <span class="keyword">inline</span> <a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a0450ea8b06b50d6e055f6d47bd77622c">clock_t</a> <a class="code hl_define" href="times_8h.html#aa7d9bfe8ef0b258ac1d5c74774dcf1c0">times</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structtms.html">tms</a> *buf) {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">return</span> VSF_LINUX_APPLET_SYS_TIMES_VPLT-&gt;times(buf);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#else       </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_SYS_TIMES</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a0450ea8b06b50d6e055f6d47bd77622c">clock_t</a> <a class="code hl_define" href="times_8h.html#aa7d9bfe8ef0b258ac1d5c74774dcf1c0">times</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structtms.html">tms</a> *buf);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_SYS_TIMES</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#define VSF_LINUX_APPLET_SYS_TIMES_ENTRY(__NAME)                                \</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">            VSF_APPLET_VPLT_ENTRY_FUNC_ENTRY(VSF_LINUX_APPLET_SYS_TIMES_VPLT, __NAME)</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#define VSF_LINUX_APPLET_SYS_TIMES_IMP(...)                                     \</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">            VSF_APPLET_VPLT_ENTRY_FUNC_IMP(VSF_LINUX_APPLET_SYS_TIMES_VPLT, __VA_ARGS__)</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>VSF_LINUX_APPLET_SYS_TIMES_IMP(<a class="code hl_define" href="times_8h.html#aa7d9bfe8ef0b258ac1d5c74774dcf1c0">times</a>, <a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a0450ea8b06b50d6e055f6d47bd77622c">clock_t</a>, <span class="keyword">struct</span> <a class="code hl_struct" href="structtms.html">tms</a> *buf) {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">return</span> VSF_LINUX_APPLET_SYS_TIMES_ENTRY(<a class="code hl_define" href="times_8h.html#aa7d9bfe8ef0b258ac1d5c74774dcf1c0">times</a>)(buf);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#else       </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_SYS_TIMES</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a0450ea8b06b50d6e055f6d47bd77622c">clock_t</a> <a class="code hl_define" href="times_8h.html#aa7d9bfe8ef0b258ac1d5c74774dcf1c0">times</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structtms.html">tms</a> *buf);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_SYS_TIMES</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="alinux_2include_2sys_2types_8h_html"><div class="ttname"><a href="linux_2include_2sys_2types_8h.html">types.h</a></div></div>
 <div class="ttc" id="alinux_2include_2sys_2types_8h_html_a0450ea8b06b50d6e055f6d47bd77622c"><div class="ttname"><a href="linux_2include_2sys_2types_8h.html#a0450ea8b06b50d6e055f6d47bd77622c">clock_t</a></div><div class="ttdeci">__CLOCK_T clock_t</div><div class="ttdef"><b>Definition:</b> types.h:92</div></div>
 <div class="ttc" id="astructtms_html"><div class="ttname"><a href="structtms.html">tms</a></div><div class="ttdef"><b>Definition:</b> times.h:21</div></div>
@@ -126,7 +131,7 @@
 <div class="ttc" id="astructtms_html_adc1a7576a7287de70b7611047829ab6f"><div class="ttname"><a href="structtms.html#adc1a7576a7287de70b7611047829ab6f">tms::tms_cutime</a></div><div class="ttdeci">clock_t tms_cutime</div><div class="ttdef"><b>Definition:</b> times.h:24</div></div>
 <div class="ttc" id="astructvsf__linux__sys__times__vplt__t_html"><div class="ttname"><a href="structvsf__linux__sys__times__vplt__t.html">vsf_linux_sys_times_vplt_t</a></div><div class="ttdef"><b>Definition:</b> times.h:29</div></div>
 <div class="ttc" id="astructvsf__linux__sys__times__vplt__t_html_a5faa33400014357df870c701ed6e98f9"><div class="ttname"><a href="structvsf__linux__sys__times__vplt__t.html#a5faa33400014357df870c701ed6e98f9">vsf_linux_sys_times_vplt_t::info</a></div><div class="ttdeci">vsf_vplt_info_t info</div><div class="ttdef"><b>Definition:</b> times.h:30</div></div>
-<div class="ttc" id="astructvsf__linux__sys__times__vplt__t_html_aac95dbc6ddeabd3e12d73cba594f280a"><div class="ttname"><a href="structvsf__linux__sys__times__vplt__t.html#aac95dbc6ddeabd3e12d73cba594f280a">vsf_linux_sys_times_vplt_t::times</a></div><div class="ttdeci">clock_t(* times)(struct tms *buf)</div><div class="ttdef"><b>Definition:</b> times.h:32</div></div>
+<div class="ttc" id="astructvsf__linux__sys__times__vplt__t_html_af6e65c30c6eab16dc45316b83b16c809"><div class="ttname"><a href="structvsf__linux__sys__times__vplt__t.html#af6e65c30c6eab16dc45316b83b16c809">vsf_linux_sys_times_vplt_t::VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a></div><div class="ttdeci">VSF_APPLET_VPLT_ENTRY_FUNC_DEF(times)</div></div>
 <div class="ttc" id="astructvsf__vplt__info__t_html"><div class="ttname"><a href="structvsf__vplt__info__t.html">vsf_vplt_info_t</a></div><div class="ttdef"><b>Definition:</b> vsf_cfg.h:95</div></div>
 <div class="ttc" id="asys_2time_8h_html"><div class="ttname"><a href="sys_2time_8h.html">time.h</a></div></div>
 <div class="ttc" id="atimes_8h_html_aa7d9bfe8ef0b258ac1d5c74774dcf1c0"><div class="ttname"><a href="times_8h.html#aa7d9bfe8ef0b258ac1d5c74774dcf1c0">times</a></div><div class="ttdeci">#define times</div><div class="ttdef"><b>Definition:</b> times.h:18</div></div>
