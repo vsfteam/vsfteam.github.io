@@ -61,6 +61,7 @@
 <code>#include &quot;<a class="el" href="vsf__utilities_8h_source.html">utilities/vsf_utilities.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ooc__class_8h_source.html">utilities/ooc_class.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__elfloader_8h_source.html">./elf/vsf_elfloader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__peloader_8h_source.html">./pe/vsf_peloader.h</a>&quot;</code><br />
 </div>
 <p><a href="vsf__loader_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -70,8 +71,12 @@ Data Structures</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__loader__target__t.html">vsf_loader_target_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__loader__op__t.html">vsf_loader_op_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvsf__loader__t.html">vsf_loader_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacc7f0d8dc063cf3524fdf9707913eec6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vsf__loader.html#gacc7f0d8dc063cf3524fdf9707913eec6">PUBLIC_CONST</a>&#160;&#160;&#160;const</td></tr>
+<tr class="separator:gacc7f0d8dc063cf3524fdf9707913eec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8ef99286a905d1b2b85c23239132b0cf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vsf__loader.html#ga8ef99286a905d1b2b85c23239132b0cf">vsf_loader_read</a>(__target,  __offset,  __ptr,  __size)&#160;&#160;&#160;        (__target)-&gt;fn_read((__target), (__offset), (__ptr), (__size))</td></tr>
 <tr class="separator:ga8ef99286a905d1b2b85c23239132b0cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf600e9c1e6d17ae673ec7dc8c6fde2a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vsf__loader.html#gaf600e9c1e6d17ae673ec7dc8c6fde2a6">vsf_loader_malloc</a>(__loader,  __attr,  __size,  __align)&#160;&#160;&#160;        (__loader)-&gt;heap_op-&gt;fn_malloc((<a class="el" href="classvsf__loader__t.html">vsf_loader_t</a> *)(__loader), (__attr), (__size), (__align))</td></tr>
@@ -97,12 +102,22 @@ Data Structures</h2></td></tr>
 <tr class="separator:ga01a2556e1b9d8031d7f6db7658af3d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga83b8fd095ad7adad39a09ae2618000fa"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__loader__target__t.html">vsf_loader_target_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vsf__loader.html#ga83b8fd095ad7adad39a09ae2618000fa">vsf_loader_target_t</a></td></tr>
 <tr class="separator:ga83b8fd095ad7adad39a09ae2618000fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab641c3cfcdf0f60a51285b8e45bf565b"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__loader__op__t.html">vsf_loader_op_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vsf__loader.html#gab641c3cfcdf0f60a51285b8e45bf565b">vsf_loader_op_t</a></td></tr>
+<tr class="separator:gab641c3cfcdf0f60a51285b8e45bf565b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0007aaa6c4841e40b13533a331b8188e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structvsf__loader__heap__op__t.html">vsf_loader_heap_op_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vsf__loader.html#ga0007aaa6c4841e40b13533a331b8188e">vsf_loader_default_heap_op</a></td></tr>
 <tr class="separator:ga0007aaa6c4841e40b13533a331b8188e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5e059b3f710daf70307e733e8593c62e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vsf__loader.html#ga5e059b3f710daf70307e733e8593c62e">vsf_loader_xip_read</a> (<a class="el" href="structvsf__loader__target__t.html">vsf_loader_target_t</a> *target, <a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> <a class="el" href="vsf__memfs_8h.html#a612bb2807d848cca89ea1437cceea886">offset</a>, void *buffer, <a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
 <tr class="separator:ga5e059b3f710daf70307e733e8593c62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf55e6ea6570dff904775342acbc9fd73"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vsf__loader.html#gaf55e6ea6570dff904775342acbc9fd73">vsf_loader_stdio_read</a> (<a class="el" href="structvsf__loader__target__t.html">vsf_loader_target_t</a> *target, <a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> <a class="el" href="vsf__memfs_8h.html#a612bb2807d848cca89ea1437cceea886">offset</a>, void *buffer, <a class="el" href="arm_2type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> <a class="el" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>)</td></tr>
 <tr class="separator:gaf55e6ea6570dff904775342acbc9fd73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga48a585cfd31df8e5a8dcde5e48794e9c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vsf__loader.html#ga48a585cfd31df8e5a8dcde5e48794e9c">vsf_loader_load</a> (<a class="el" href="classvsf__loader__t.html">vsf_loader_t</a> *loader, <a class="el" href="structvsf__loader__target__t.html">vsf_loader_target_t</a> *target)</td></tr>
+<tr class="separator:ga48a585cfd31df8e5a8dcde5e48794e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0c2ed56cfbd50bc94d9b22df0ed230f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vsf__loader.html#ga0c2ed56cfbd50bc94d9b22df0ed230f1">vsf_loader_cleanup</a> (<a class="el" href="classvsf__loader__t.html">vsf_loader_t</a> *loader)</td></tr>
+<tr class="separator:ga0c2ed56cfbd50bc94d9b22df0ed230f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeb5a402a2b9bcf647256b83d4f475292"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vsf__loader.html#gaeb5a402a2b9bcf647256b83d4f475292">vsf_loader_call_init_array</a> (<a class="el" href="classvsf__loader__t.html">vsf_loader_t</a> *loader)</td></tr>
+<tr class="separator:gaeb5a402a2b9bcf647256b83d4f475292"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4bbb04e192636b7521520d73104a213b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vsf__loader.html#ga4bbb04e192636b7521520d73104a213b">vsf_loader_call_fini_array</a> (<a class="el" href="classvsf__loader__t.html">vsf_loader_t</a> *loader)</td></tr>
+<tr class="separator:ga4bbb04e192636b7521520d73104a213b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>vsf loader support </p>
