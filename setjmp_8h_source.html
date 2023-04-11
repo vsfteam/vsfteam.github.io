@@ -62,77 +62,79 @@
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">// for ALIGN and stdint.h</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="utilities_2compiler_2compiler_8h.html">utilities/compiler/compiler.h</a>&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#if     defined(__CPU_X64__)</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <a class="code hl_typedef" href="stdint_8h.html#aaa5d1cd013383c889537491c3cfd9aad">uint64_t</a> part[2];</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>} <a class="code hl_define" href="____compiler_8h.html#a772cdb796bf75855c6a30626131d5e45">ALIGN</a>(16) setjmp_float128;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>typedef setjmp_float128 jmp_buf[16];</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#   error not supported, do not add to path, use setjmp from libc instead</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#if VSF_LINUX_APPLET_USE_LIBC_SETJMP == ENABLED</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structvsf__linux__libc__setjmp__vplt__t.html">   23</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvsf__linux__libc__setjmp__vplt__t.html">vsf_linux_libc_setjmp_vplt_t</a> {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structvsf__linux__libc__setjmp__vplt__t.html#a6565cc20459f5ea57eff5f2e03d447e7">   24</a></span>    <a class="code hl_union" href="unionvsf__vplt__info__t.html">vsf_vplt_info_t</a> <a class="code hl_variable" href="structvsf__linux__libc__setjmp__vplt__t.html#a6565cc20459f5ea57eff5f2e03d447e7">info</a>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structvsf__linux__libc__setjmp__vplt__t.html#a1b3b23e50b82d3c13514d7e87f1c4111">   26</a></span>    <a class="code hl_function" href="structvsf__linux__libc__setjmp__vplt__t.html#a1b3b23e50b82d3c13514d7e87f1c4111">VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a>(<a class="code hl_function" href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">setjmp</a>);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structvsf__linux__libc__setjmp__vplt__t.html#a4b9f25e79eb8a7c9334bcb0a5519a344">   27</a></span>    <a class="code hl_function" href="structvsf__linux__libc__setjmp__vplt__t.html#a4b9f25e79eb8a7c9334bcb0a5519a344">VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a>(<a class="code hl_function" href="setjmp_8h.html#a02b1e5e0ceeddf3c6af73d714aecc000">longjmp</a>);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="setjmp_8h.html#a1698f7517b2ff3d4a2c6d3d996904a6b">   28</a></span>} <a class="code hl_struct" href="structvsf__linux__libc__setjmp__vplt__t.html">vsf_linux_libc_setjmp_vplt_t</a>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#   ifndef __VSF_APPLET__</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">extern</span> <a class="code hl_define" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="code hl_struct" href="structvsf__linux__libc__setjmp__vplt__t.html">vsf_linux_libc_setjmp_vplt_t</a> <a class="code hl_variable" href="setjmp_8h.html#ad20b45c2373f055ed2214e455e4edb33">vsf_linux_libc_setjmp_vplt</a>;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#if defined(__VSF_APPLET__) &amp;&amp; VSF_APPLET_CFG_ABI_PATCH != ENABLED &amp;&amp; VSF_LINUX_APPLET_USE_LIBC_SETJMP == ENABLED</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef __SIMPLE_LIBC_SETJMP_VPLT_ONLY__</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#   if  defined(__CPU_X64__)</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_typedef" href="stdint_8h.html#aaa5d1cd013383c889537491c3cfd9aad">uint64_t</a> part[2];</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>} <a class="code hl_define" href="____compiler_8h.html#a772cdb796bf75855c6a30626131d5e45">ALIGN</a>(16) setjmp_float128;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>typedef setjmp_float128 jmp_buf[16];</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#   else</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#   error not supported, do not add to path, use setjmp from libc instead</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#if VSF_LINUX_APPLET_USE_LIBC_SETJMP == ENABLED</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structvsf__linux__libc__setjmp__vplt__t.html">   25</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvsf__linux__libc__setjmp__vplt__t.html">vsf_linux_libc_setjmp_vplt_t</a> {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structvsf__linux__libc__setjmp__vplt__t.html#a6565cc20459f5ea57eff5f2e03d447e7">   26</a></span>    <a class="code hl_union" href="unionvsf__vplt__info__t.html">vsf_vplt_info_t</a> <a class="code hl_variable" href="structvsf__linux__libc__setjmp__vplt__t.html#a6565cc20459f5ea57eff5f2e03d447e7">info</a>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structvsf__linux__libc__setjmp__vplt__t.html#a1b3b23e50b82d3c13514d7e87f1c4111">   28</a></span>    <a class="code hl_function" href="structvsf__linux__libc__setjmp__vplt__t.html#a1b3b23e50b82d3c13514d7e87f1c4111">VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a>(<a class="code hl_function" href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">setjmp</a>);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structvsf__linux__libc__setjmp__vplt__t.html#a4b9f25e79eb8a7c9334bcb0a5519a344">   29</a></span>    <a class="code hl_function" href="structvsf__linux__libc__setjmp__vplt__t.html#a4b9f25e79eb8a7c9334bcb0a5519a344">VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a>(<a class="code hl_function" href="setjmp_8h.html#a02b1e5e0ceeddf3c6af73d714aecc000">longjmp</a>);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="setjmp_8h.html#a1698f7517b2ff3d4a2c6d3d996904a6b">   30</a></span>} <a class="code hl_struct" href="structvsf__linux__libc__setjmp__vplt__t.html">vsf_linux_libc_setjmp_vplt_t</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#   ifndef __VSF_APPLET__</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">extern</span> <a class="code hl_define" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="code hl_struct" href="structvsf__linux__libc__setjmp__vplt__t.html">vsf_linux_libc_setjmp_vplt_t</a> <a class="code hl_variable" href="setjmp_8h.html#ad20b45c2373f055ed2214e455e4edb33">vsf_linux_libc_setjmp_vplt</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#ifndef VSF_LINUX_APPLET_LIBC_SETJMP_VPLT</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#   if VSF_LINUX_USE_APPLET == ENABLED</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#       define VSF_LINUX_APPLET_LIBC_SETJMP_VPLT                                \</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">            ((vsf_linux_libc_setjmp_vplt_t *)(VSF_LINUX_APPLET_VPLT-&gt;libc_setjmp_vplt))</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#   else</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#       define VSF_LINUX_APPLET_LIBC_SETJMP_VPLT                                \</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">            ((vsf_linux_libc_setjmp_vplt_t *)vsf_vplt((void *)0))</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#define VSF_LINUX_APPLET_LIBC_SETJMP_ENTRY(__NAME)                              \</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">            VSF_APPLET_VPLT_ENTRY_FUNC_ENTRY(VSF_LINUX_APPLET_LIBC_SETJMP_VPLT, __NAME)</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#define VSF_LINUX_APPLET_LIBC_SETJMP_IMP(...)                                   \</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">            VSF_APPLET_VPLT_ENTRY_FUNC_IMP(VSF_LINUX_APPLET_LIBC_SETJMP_VPLT, __VA_ARGS__)</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>VSF_LINUX_APPLET_LIBC_SETJMP_IMP(<a class="code hl_function" href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">setjmp</a>, <span class="keywordtype">int</span>, jmp_buf env) {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">return</span> VSF_LINUX_APPLET_LIBC_SETJMP_ENTRY(<a class="code hl_function" href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">setjmp</a>)(env);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>VSF_LINUX_APPLET_LIBC_SETJMP_IMP(<a class="code hl_function" href="setjmp_8h.html#a02b1e5e0ceeddf3c6af73d714aecc000">longjmp</a>, <span class="keywordtype">void</span>, jmp_buf env, <span class="keywordtype">int</span> val) {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    VSF_LINUX_APPLET_LIBC_SETJMP_ENTRY(<a class="code hl_function" href="setjmp_8h.html#a02b1e5e0ceeddf3c6af73d714aecc000">longjmp</a>)(env, val);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#else       </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_LIBC_SETJMP</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#if defined(__VSF_APPLET__) &amp;&amp; VSF_APPLET_CFG_ABI_PATCH != ENABLED &amp;&amp; VSF_LINUX_APPLET_USE_LIBC_SETJMP == ENABLED</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#ifndef VSF_LINUX_APPLET_LIBC_SETJMP_VPLT</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#   if VSF_LINUX_USE_APPLET == ENABLED</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#       define VSF_LINUX_APPLET_LIBC_SETJMP_VPLT                                \</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">            ((vsf_linux_libc_setjmp_vplt_t *)(VSF_LINUX_APPLET_VPLT-&gt;libc_setjmp_vplt))</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#   else</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#       define VSF_LINUX_APPLET_LIBC_SETJMP_VPLT                                \</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">            ((vsf_linux_libc_setjmp_vplt_t *)vsf_vplt((void *)0))</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#define VSF_LINUX_APPLET_LIBC_SETJMP_ENTRY(__NAME)                              \</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">            VSF_APPLET_VPLT_ENTRY_FUNC_ENTRY(VSF_LINUX_APPLET_LIBC_SETJMP_VPLT, __NAME)</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#define VSF_LINUX_APPLET_LIBC_SETJMP_IMP(...)                                   \</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">            VSF_APPLET_VPLT_ENTRY_FUNC_IMP(VSF_LINUX_APPLET_LIBC_SETJMP_VPLT, __VA_ARGS__)</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>VSF_LINUX_APPLET_LIBC_SETJMP_IMP(<a class="code hl_function" href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">setjmp</a>, <span class="keywordtype">int</span>, jmp_buf env) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">return</span> VSF_LINUX_APPLET_LIBC_SETJMP_ENTRY(<a class="code hl_function" href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">setjmp</a>)(env);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>VSF_LINUX_APPLET_LIBC_SETJMP_IMP(<a class="code hl_function" href="setjmp_8h.html#a02b1e5e0ceeddf3c6af73d714aecc000">longjmp</a>, <span class="keywordtype">void</span>, jmp_buf env, <span class="keywordtype">int</span> val) {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    VSF_LINUX_APPLET_LIBC_SETJMP_ENTRY(<a class="code hl_function" href="setjmp_8h.html#a02b1e5e0ceeddf3c6af73d714aecc000">longjmp</a>)(env, val);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#if defined(VSF_ARCH_SETJMP) &amp;&amp; !defined(__VSF_APPLET__)</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#   define setjmp               VSF_ARCH_SETJMP</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">   63</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">setjmp</a>(jmp_buf env);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#if defined(VSF_ARCH_LONGJMP) &amp;&amp; !defined(__VSF_APPLET__)</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#   define longjmp              VSF_ARCH_LONGJMP</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="setjmp_8h.html#a02b1e5e0ceeddf3c6af73d714aecc000">   68</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="setjmp_8h.html#a02b1e5e0ceeddf3c6af73d714aecc000">longjmp</a>(jmp_buf env, <span class="keywordtype">int</span> val);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_LIBC_SETJMP</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#elif   !defined(__SIMPLE_LIBC_SETJMP_VPLT_ONLY__)</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#if defined(VSF_ARCH_SETJMP) &amp;&amp; !defined(__VSF_APPLET__)</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#   define setjmp               VSF_ARCH_SETJMP</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">   65</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">setjmp</a>(jmp_buf env);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#if defined(VSF_ARCH_LONGJMP) &amp;&amp; !defined(__VSF_APPLET__)</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#   define longjmp              VSF_ARCH_LONGJMP</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="setjmp_8h.html#a02b1e5e0ceeddf3c6af73d714aecc000">   70</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="setjmp_8h.html#a02b1e5e0ceeddf3c6af73d714aecc000">longjmp</a>(jmp_buf env, <span class="keywordtype">int</span> val);</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_LIBC_SETJMP</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="a____compiler_8h_html_a772cdb796bf75855c6a30626131d5e45"><div class="ttname"><a href="____compiler_8h.html#a772cdb796bf75855c6a30626131d5e45">ALIGN</a></div><div class="ttdeci">#define ALIGN(__N)</div><div class="ttdef"><b>Definition:</b> __compiler.h:176</div></div>
 <div class="ttc" id="asetjmp_8h_html_a02b1e5e0ceeddf3c6af73d714aecc000"><div class="ttname"><a href="setjmp_8h.html#a02b1e5e0ceeddf3c6af73d714aecc000">longjmp</a></div><div class="ttdeci">void longjmp(jmp_buf env, int val)</div></div>
 <div class="ttc" id="asetjmp_8h_html_a0ea8f6bdb917bfa1c71ddf65f43730ca"><div class="ttname"><a href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">setjmp</a></div><div class="ttdeci">int setjmp(jmp_buf env)</div></div>
-<div class="ttc" id="asetjmp_8h_html_ad20b45c2373f055ed2214e455e4edb33"><div class="ttname"><a href="setjmp_8h.html#ad20b45c2373f055ed2214e455e4edb33">vsf_linux_libc_setjmp_vplt</a></div><div class="ttdeci">__VSF_VPLT_DECORATOR__ vsf_linux_libc_setjmp_vplt_t vsf_linux_libc_setjmp_vplt</div><div class="ttdef"><b>Definition:</b> vsf_linux_glibc.c:210</div></div>
+<div class="ttc" id="asetjmp_8h_html_ad20b45c2373f055ed2214e455e4edb33"><div class="ttname"><a href="setjmp_8h.html#ad20b45c2373f055ed2214e455e4edb33">vsf_linux_libc_setjmp_vplt</a></div><div class="ttdeci">__VSF_VPLT_DECORATOR__ vsf_linux_libc_setjmp_vplt_t vsf_linux_libc_setjmp_vplt</div><div class="ttdef"><b>Definition:</b> vsf_linux_glibc.c:213</div></div>
 <div class="ttc" id="astdint_8h_html_aaa5d1cd013383c889537491c3cfd9aad"><div class="ttname"><a href="stdint_8h.html#aaa5d1cd013383c889537491c3cfd9aad">uint64_t</a></div><div class="ttdeci">unsigned long long uint64_t</div><div class="ttdef"><b>Definition:</b> stdint.h:11</div></div>
-<div class="ttc" id="astructvsf__linux__libc__setjmp__vplt__t_html"><div class="ttname"><a href="structvsf__linux__libc__setjmp__vplt__t.html">vsf_linux_libc_setjmp_vplt_t</a></div><div class="ttdef"><b>Definition:</b> setjmp.h:23</div></div>
+<div class="ttc" id="astructvsf__linux__libc__setjmp__vplt__t_html"><div class="ttname"><a href="structvsf__linux__libc__setjmp__vplt__t.html">vsf_linux_libc_setjmp_vplt_t</a></div><div class="ttdef"><b>Definition:</b> setjmp.h:25</div></div>
 <div class="ttc" id="astructvsf__linux__libc__setjmp__vplt__t_html_a1b3b23e50b82d3c13514d7e87f1c4111"><div class="ttname"><a href="structvsf__linux__libc__setjmp__vplt__t.html#a1b3b23e50b82d3c13514d7e87f1c4111">vsf_linux_libc_setjmp_vplt_t::VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a></div><div class="ttdeci">VSF_APPLET_VPLT_ENTRY_FUNC_DEF(setjmp)</div></div>
 <div class="ttc" id="astructvsf__linux__libc__setjmp__vplt__t_html_a4b9f25e79eb8a7c9334bcb0a5519a344"><div class="ttname"><a href="structvsf__linux__libc__setjmp__vplt__t.html#a4b9f25e79eb8a7c9334bcb0a5519a344">vsf_linux_libc_setjmp_vplt_t::VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a></div><div class="ttdeci">VSF_APPLET_VPLT_ENTRY_FUNC_DEF(longjmp)</div></div>
-<div class="ttc" id="astructvsf__linux__libc__setjmp__vplt__t_html_a6565cc20459f5ea57eff5f2e03d447e7"><div class="ttname"><a href="structvsf__linux__libc__setjmp__vplt__t.html#a6565cc20459f5ea57eff5f2e03d447e7">vsf_linux_libc_setjmp_vplt_t::info</a></div><div class="ttdeci">vsf_vplt_info_t info</div><div class="ttdef"><b>Definition:</b> setjmp.h:24</div></div>
+<div class="ttc" id="astructvsf__linux__libc__setjmp__vplt__t_html_a6565cc20459f5ea57eff5f2e03d447e7"><div class="ttname"><a href="structvsf__linux__libc__setjmp__vplt__t.html#a6565cc20459f5ea57eff5f2e03d447e7">vsf_linux_libc_setjmp_vplt_t::info</a></div><div class="ttdeci">vsf_vplt_info_t info</div><div class="ttdef"><b>Definition:</b> setjmp.h:26</div></div>
 <div class="ttc" id="aunionvsf__vplt__info__t_html"><div class="ttname"><a href="unionvsf__vplt__info__t.html">vsf_vplt_info_t</a></div><div class="ttdef"><b>Definition:</b> vsf_cfg.h:95</div></div>
 <div class="ttc" id="autilities_2compiler_2compiler_8h_html"><div class="ttname"><a href="utilities_2compiler_2compiler_8h.html">compiler.h</a></div></div>
 <div class="ttc" id="avsf__arch_8h_html"><div class="ttname"><a href="vsf__arch_8h.html">vsf_arch.h</a></div></div>
