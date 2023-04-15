@@ -95,8 +95,10 @@ Macros</h2></td></tr>
 <tr class="separator:a4e7db8a40e9f620d287d17d85082ac42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d35bceb11af3bdeca7b2acbd9f04111"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__cfg_8h.html#a6d35bceb11af3bdeca7b2acbd9f04111">VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a>(__NAME)&#160;&#160;&#160;    <a class="el" href="structvsf__vplt__entry__t.html">vsf_vplt_entry_t</a> fn_##__NAME</td></tr>
 <tr class="separator:a6d35bceb11af3bdeca7b2acbd9f04111"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c848959ac30d57b7728371a1b47c9ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__cfg_8h.html#a2c848959ac30d57b7728371a1b47c9ea">VSF_APPLET_VPLT_ENTRY_FUNC_ENTRY</a>(__VPLT,  __NAME)</td></tr>
+<tr class="memitem:a2c848959ac30d57b7728371a1b47c9ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__cfg_8h.html#a2c848959ac30d57b7728371a1b47c9ea">VSF_APPLET_VPLT_ENTRY_FUNC_ENTRY</a>(__VPLT,  __NAME)&#160;&#160;&#160;    ((__##__NAME##_prototype_t)((__VPLT)-&gt;fn_##__NAME.ptr))</td></tr>
 <tr class="separator:a2c848959ac30d57b7728371a1b47c9ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68af2348b685a4ef9283868b592e8207"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__cfg_8h.html#a68af2348b685a4ef9283868b592e8207">VSF_APPLET_VPLT_ENTRY_FUNC_TRACE</a>(__NAME)&#160;&#160;&#160;    vsf_linux_trace(<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecaaf049cb1d8895fb74c0e8b6b52f6058f">VSF_TRACE_DEBUG</a>, &quot;call vplt API: %s\n&quot;, #__NAME)</td></tr>
+<tr class="separator:a68af2348b685a4ef9283868b592e8207"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96e1b8c9c443bebb9afb92a73dee6f2a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__cfg_8h.html#a96e1b8c9c443bebb9afb92a73dee6f2a">VSF_APPLET_VPLT_ENTRY_FUNC_IMP</a>(__VPLT,  __NAME,  __RET, ...)</td></tr>
 <tr class="separator:a96e1b8c9c443bebb9afb92a73dee6f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54eaa411bbb013fc9713e4403fc9e3b0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__cfg_8h.html#a54eaa411bbb013fc9713e4403fc9e3b0">VSF_APPLET_VPLT_ENTRY_FUNC_EX</a>(__ENTRY,  __NAME,  __PTR)</td></tr>
@@ -330,14 +332,29 @@ Variables</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td>&#160;&#160;&#160;    ((__##__NAME##_prototype_t)((__VPLT)-&gt;fn_##__NAME.ptr))</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    vsf_linux_trace(<a class="code hl_enumvalue" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecaaf049cb1d8895fb74c0e8b6b52f6058f">VSF_TRACE_DEBUG</a>, <span class="stringliteral">&quot;call vplt API: %s\n&quot;</span>, #__NAME);           \</div>
-<div class="line">    ((__##__NAME##_prototype_t)((__VPLT)-&gt;fn_##__NAME.ptr))</div>
-<div class="ttc" id="avsf__trace_8h_html_a910616905801f71809ab727d6a5bf8ecaaf049cb1d8895fb74c0e8b6b52f6058f"><div class="ttname"><a href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecaaf049cb1d8895fb74c0e8b6b52f6058f">VSF_TRACE_DEBUG</a></div><div class="ttdeci">@ VSF_TRACE_DEBUG</div><div class="ttdef"><b>Definition:</b> vsf_trace.h:93</div></div>
-</div><!-- fragment -->
+
+</div>
+</div>
+<a id="a68af2348b685a4ef9283868b592e8207" name="a68af2348b685a4ef9283868b592e8207"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68af2348b685a4ef9283868b592e8207">&#9670;&#160;</a></span>VSF_APPLET_VPLT_ENTRY_FUNC_TRACE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_APPLET_VPLT_ENTRY_FUNC_TRACE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__NAME</td><td>)</td>
+          <td>&#160;&#160;&#160;    vsf_linux_trace(<a class="el" href="vsf__trace_8h.html#a910616905801f71809ab727d6a5bf8ecaaf049cb1d8895fb74c0e8b6b52f6058f">VSF_TRACE_DEBUG</a>, &quot;call vplt API: %s\n&quot;, #__NAME)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a id="a96e1b8c9c443bebb9afb92a73dee6f2a" name="a96e1b8c9c443bebb9afb92a73dee6f2a"></a>
