@@ -180,10 +180,10 @@
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="preprocessor">#if VSF_ARCH_USE_THREAD_REG == ENABLED</span></div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="keyword">static</span> ALWAYS_INLINE <a class="code hl_typedef" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> vsf_arch_set_thread_reg(<a class="code hl_typedef" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> <a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>)</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>{</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keyword">register</span> <a class="code hl_typedef" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> <a class="code hl_variable" href="vsh_8c.html#ad261c96bb17a9f12824003b3643e1656">result</a>;</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    __asm__ <a class="code hl_define" href="____compiler_8h.html#a64fa3037957156c60db536aad57ae07e">__volatile__</a> (<span class="stringliteral">&quot;MOV %0, r9&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(<a class="code hl_variable" href="vsh_8c.html#ad261c96bb17a9f12824003b3643e1656">result</a>));</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keyword">register</span> <a class="code hl_typedef" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> result;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    __asm__ <a class="code hl_define" href="____compiler_8h.html#a64fa3037957156c60db536aad57ae07e">__volatile__</a> (<span class="stringliteral">&quot;MOV %0, r9&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(result));</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    __asm__ <a class="code hl_define" href="____compiler_8h.html#a64fa3037957156c60db536aad57ae07e">__volatile__</a> (<span class="stringliteral">&quot;MOV r9, %0&quot;</span> : : <span class="stringliteral">&quot;r&quot;</span>(<a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>));</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="vsh_8c.html#ad261c96bb17a9f12824003b3643e1656">result</a>;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>}</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
@@ -220,7 +220,6 @@
 <div class="ttc" id="avsf__audio_8h_html_ad5265e9eca2f756804584a9ac3335519"><div class="ttname"><a href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a></div><div class="ttdeci">vk_av_control_value_t value</div><div class="ttdef"><b>Definition:</b> vsf_audio.h:166</div></div>
 <div class="ttc" id="avsf__hal__cfg_8h_html"><div class="ttname"><a href="vsf__hal__cfg_8h.html">vsf_hal_cfg.h</a></div></div>
 <div class="ttc" id="avsf__repeat__macro_8h_html_ad673e52e05fc2a65590c1d4d9252acda"><div class="ttname"><a href="vsf__repeat__macro_8h.html#ad673e52e05fc2a65590c1d4d9252acda">VSF_MREPEAT</a></div><div class="ttdeci">#define VSF_MREPEAT(__COUNT, __MACRO, __PARAM)</div><div class="ttdef"><b>Definition:</b> vsf_repeat_macro.h:51</div></div>
-<div class="ttc" id="avsh_8c_html_ad261c96bb17a9f12824003b3643e1656"><div class="ttname"><a href="vsh_8c.html#ad261c96bb17a9f12824003b3643e1656">result</a></div><div class="ttdeci">return rsize result</div><div class="ttdef"><b>Definition:</b> vsh.c:821</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
