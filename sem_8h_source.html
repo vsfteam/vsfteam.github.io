@@ -107,38 +107,39 @@
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#   endif</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#if defined(__VSF_APPLET__) &amp;&amp; defined(__VSF_APPLET_LIB__) &amp;&amp; VSF_APPLET_CFG_ABI_PATCH != ENABLED &amp;&amp; VSF_LINUX_APPLET_USE_SYS_SEM == ENABLED</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#ifndef VSF_LINUX_APPLET_SYS_SEM_VPLT</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#   if VSF_LINUX_USE_APPLET == ENABLED</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#       define VSF_LINUX_APPLET_SYS_SEM_VPLT                                    \</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">            ((vsf_linux_sys_sem_vplt_t *)(VSF_LINUX_APPLET_VPLT-&gt;sys_sem_vplt))</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#   else</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#       define VSF_LINUX_APPLET_SYS_SEM_VPLT                                    \</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">            ((vsf_linux_sys_sem_vplt_t *)vsf_vplt((void *)0))</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#define VSF_LINUX_APPLET_SYS_SEM_ENTRY(__NAME)                                  \</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">            VSF_APPLET_VPLT_ENTRY_FUNC_ENTRY(VSF_LINUX_APPLET_SYS_SEM_VPLT, __NAME)</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#define VSF_LINUX_APPLET_SYS_SEM_IMP(...)                                       \</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">            VSF_APPLET_VPLT_ENTRY_FUNC_IMP(VSF_LINUX_APPLET_SYS_SEM_VPLT, __VA_ARGS__)</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#else       </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_SYS_SEM</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keywordtype">int</span> <a class="code hl_define" href="sem_8h.html#a6884835641b3374d156d1f7a7b6288b2">semctl</a>(<span class="keywordtype">int</span> semid, <span class="keywordtype">int</span> semnum, <span class="keywordtype">int</span> cmd, ...);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keywordtype">int</span> <a class="code hl_define" href="sem_8h.html#a1e8479e3f520a2901d1aa987892e87aa">semget</a>(<a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a99c5bd20241a4a2708237037a1857062">key_t</a> key, <span class="keywordtype">int</span> nsems, <span class="keywordtype">int</span> semflg);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keywordtype">int</span> <a class="code hl_define" href="sem_8h.html#a5c65e12f6579eb8fd858e292fc144179">semop</a>(<span class="keywordtype">int</span> semid, <span class="keyword">struct</span> <a class="code hl_struct" href="structsembuf.html">sembuf</a> *sops, <span class="keywordtype">size_t</span> nsops);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keywordtype">int</span> <a class="code hl_define" href="sem_8h.html#a64c79215a0ed394e19a4e25199bccecb">semtimedop</a>(<span class="keywordtype">int</span> semid, <span class="keyword">struct</span> <a class="code hl_struct" href="structsembuf.html">sembuf</a> *sops, <span class="keywordtype">size_t</span> nsops,</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                    <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structtimespec.html">timespec</a> *<a class="code hl_variable" href="ieee80211_8h.html#a3234a50f2c5eabfb2aa2f4f982256750">timeout</a>);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_SYS_SEM</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_LINUX_SEM_H__</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#if     defined(__VSF_APPLET__) &amp;&amp; (defined(__VSF_APPLET_LIB__) || defined(__VSF_APPLET_LINUX_SYS_SEM_LIB__))\</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">    &amp;&amp;  VSF_APPLET_CFG_ABI_PATCH != ENABLED &amp;&amp; VSF_LINUX_APPLET_USE_SYS_SEM == ENABLED</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#ifndef VSF_LINUX_APPLET_SYS_SEM_VPLT</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#   if VSF_LINUX_USE_APPLET == ENABLED</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#       define VSF_LINUX_APPLET_SYS_SEM_VPLT                                    \</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">            ((vsf_linux_sys_sem_vplt_t *)(VSF_LINUX_APPLET_VPLT-&gt;sys_sem_vplt))</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#   else</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#       define VSF_LINUX_APPLET_SYS_SEM_VPLT                                    \</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">            ((vsf_linux_sys_sem_vplt_t *)vsf_vplt((void *)0))</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#define VSF_LINUX_APPLET_SYS_SEM_ENTRY(__NAME)                                  \</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">            VSF_APPLET_VPLT_ENTRY_FUNC_ENTRY(VSF_LINUX_APPLET_SYS_SEM_VPLT, __NAME)</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#define VSF_LINUX_APPLET_SYS_SEM_IMP(...)                                       \</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">            VSF_APPLET_VPLT_ENTRY_FUNC_IMP(VSF_LINUX_APPLET_SYS_SEM_VPLT, __VA_ARGS__)</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">#else       </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_SYS_SEM</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keywordtype">int</span> <a class="code hl_define" href="sem_8h.html#a6884835641b3374d156d1f7a7b6288b2">semctl</a>(<span class="keywordtype">int</span> semid, <span class="keywordtype">int</span> semnum, <span class="keywordtype">int</span> cmd, ...);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keywordtype">int</span> <a class="code hl_define" href="sem_8h.html#a1e8479e3f520a2901d1aa987892e87aa">semget</a>(<a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a99c5bd20241a4a2708237037a1857062">key_t</a> key, <span class="keywordtype">int</span> nsems, <span class="keywordtype">int</span> semflg);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keywordtype">int</span> <a class="code hl_define" href="sem_8h.html#a5c65e12f6579eb8fd858e292fc144179">semop</a>(<span class="keywordtype">int</span> semid, <span class="keyword">struct</span> <a class="code hl_struct" href="structsembuf.html">sembuf</a> *sops, <span class="keywordtype">size_t</span> nsops);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keywordtype">int</span> <a class="code hl_define" href="sem_8h.html#a64c79215a0ed394e19a4e25199bccecb">semtimedop</a>(<span class="keywordtype">int</span> semid, <span class="keyword">struct</span> <a class="code hl_struct" href="structsembuf.html">sembuf</a> *sops, <span class="keywordtype">size_t</span> nsops,</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                    <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structtimespec.html">timespec</a> *<a class="code hl_variable" href="ieee80211_8h.html#a3234a50f2c5eabfb2aa2f4f982256750">timeout</a>);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_SYS_SEM</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_LINUX_SEM_H__</span></div>
 <div class="ttc" id="aieee80211_8h_html_a3234a50f2c5eabfb2aa2f4f982256750"><div class="ttname"><a href="ieee80211_8h.html#a3234a50f2c5eabfb2aa2f4f982256750">timeout</a></div><div class="ttdeci">__le16 timeout</div><div class="ttdef"><b>Definition:</b> ieee80211.h:94</div></div>
 <div class="ttc" id="aipc_8h_html"><div class="ttname"><a href="ipc_8h.html">ipc.h</a></div></div>
 <div class="ttc" id="alinux_2include_2sys_2types_8h_html"><div class="ttname"><a href="linux_2include_2sys_2types_8h.html">types.h</a></div></div>
