@@ -125,6 +125,8 @@
 <tr class="separator:a1f764e06ceb542e991686056eea9aedd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6904caaf0a6baac24281b561379337c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="linux_2include_2sys_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#ac6904caaf0a6baac24281b561379337c">__vsf_linux_stream_write</a> (<a class="el" href="classvsf__linux__fd__t.html">vsf_linux_fd_t</a> *sfd, const void *buf, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> count)</td></tr>
 <tr class="separator:ac6904caaf0a6baac24281b561379337c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7739082bd0450bfb4f998e78bb7e833"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#ae7739082bd0450bfb4f998e78bb7e833">__vsf_linux_pipe_fcntl</a> (<a class="el" href="classvsf__linux__fd__t.html">vsf_linux_fd_t</a> *sfd, int cmd, <a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> arg)</td></tr>
+<tr class="separator:ae7739082bd0450bfb4f998e78bb7e833"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68719651608118acc5d3eb1f98662b4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="linux_2include_2sys_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#a68719651608118acc5d3eb1f98662b4c">__vsf_linux_stdio_fallback_read</a> (<a class="el" href="classvsf__linux__fd__t.html">vsf_linux_fd_t</a> *sfd, void *buf, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> count)</td></tr>
 <tr class="separator:a68719651608118acc5d3eb1f98662b4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad247c413647a6843fb23bfdbb2f14ced"><td class="memItemLeft" align="right" valign="top"><a class="el" href="linux_2include_2sys_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__fs_8c.html#ad247c413647a6843fb23bfdbb2f14ced">__vsf_linux_stdio_fallback_write</a> (<a class="el" href="classvsf__linux__fd__t.html">vsf_linux_fd_t</a> *sfd, const void *buf, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> count)</td></tr>
@@ -665,6 +667,40 @@
           <td></td>
           <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
           <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae7739082bd0450bfb4f998e78bb7e833" name="ae7739082bd0450bfb4f998e78bb7e833"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7739082bd0450bfb4f998e78bb7e833">&#9670;&#160;</a></span>__vsf_linux_pipe_fcntl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int __vsf_linux_pipe_fcntl </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__linux__fd__t.html">vsf_linux_fd_t</a> *&#160;</td>
+          <td class="paramname"><em>sfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cmd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -5510,13 +5546,14 @@
 <b>初始值:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .priv_size          = <span class="keyword">sizeof</span>(vsf_linux_pipe_priv_t),</div>
 <div class="line">    .feature            = <a class="code hl_enumvalue" href="vsf__linux__fs_8h.html#ae7af071151143a04ae05d045c2692d69a8284261a33038ee7249cdd0d18f0a764">VSF_LINUX_FDOP_FEATURE_FS</a>,</div>
-<div class="line">    .fn_fcntl           = __vsf_linux_pipe_fcntl,</div>
+<div class="line">    .fn_fcntl           = <a class="code hl_function" href="vsf__linux__fs_8c.html#ae7739082bd0450bfb4f998e78bb7e833">__vsf_linux_pipe_fcntl</a>,</div>
 <div class="line">    .fn_read            = <a class="code hl_function" href="vsf__linux__fs_8c.html#a1f764e06ceb542e991686056eea9aedd">__vsf_linux_stream_read</a>,</div>
 <div class="line">    .fn_write           = <a class="code hl_function" href="vsf__linux__fs_8c.html#ac6904caaf0a6baac24281b561379337c">__vsf_linux_stream_write</a>,</div>
 <div class="line">    .fn_close           = __vsf_linux_pipe_close,</div>
 <div class="line">    .fn_eof             = __vsf_linux_stream_eof,</div>
 <div class="line">    .fn_stat            = __vsf_linux_pipe_stat,</div>
 <div class="line">}</div>
+<div class="ttc" id="avsf__linux__fs_8c_html_ae7739082bd0450bfb4f998e78bb7e833"><div class="ttname"><a href="vsf__linux__fs_8c.html#ae7739082bd0450bfb4f998e78bb7e833">__vsf_linux_pipe_fcntl</a></div><div class="ttdeci">int __vsf_linux_pipe_fcntl(vsf_linux_fd_t *sfd, int cmd, uintptr_t arg)</div><div class="ttdef"><b>Definition:</b> vsf_linux_fs.c:2842</div></div>
 </div><!-- fragment -->
 </div>
 </div>
