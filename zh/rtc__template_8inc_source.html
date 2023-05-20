@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/hal/driver/common/rtc/rtc_template.inc 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.7 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_e31421c8d11a714f997d94dfd878485b.html">hal</a></li><li class="navelem"><a class="el" href="dir_25d0b491454d9cd33ec551022795e759.html">driver</a></li><li class="navelem"><a class="el" href="dir_52e0e582b2ebd62d9dea55e42130034d.html">common</a></li><li class="navelem"><a class="el" href="dir_61ed92fdb1237454ab4f2ab3afebd302.html">rtc</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">rtc_template.inc</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="rtc__template_8inc.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2022 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#if VSF_HAL_USE_RTC == ENABLED</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#define vsf_real_rtc_t          VSF_MCONNECT(VSF_RTC_CFG_IMP_PREFIX, _rtc_t)</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#define vsf_real_rtc_capability VSF_MCONNECT(VSF_RTC_CFG_IMP_PREFIX, _rtc_capability)</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#define vsf_real_rtc_get        VSF_MCONNECT(VSF_RTC_CFG_IMP_PREFIX, _rtc_get)</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#define vsf_real_rtc_set        VSF_MCONNECT(VSF_RTC_CFG_IMP_PREFIX, _rtc_set)</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#define vsf_real_rtc_get_time   VSF_MCONNECT(VSF_RTC_CFG_IMP_PREFIX, _rtc_get_time)</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#define vsf_real_rtc_set_time   VSF_MCONNECT(VSF_RTC_CFG_IMP_PREFIX, _rtc_set_time)</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#if VSF_RTC_CFG_GET_API_TEMPLATE == ENABLED &amp;&amp; VSF_RTC_CFG_GET_TIME_API_TEMPLATE == ENABLED</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#   error &quot;VSF_RTC_CFG_GET_API_TEMPLATE and  VSF_RTC_CFG_GET_TIME_API_TEMPLATE Only one can be defined at a time&quot;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#if VSF_RTC_CFG_SET_API_TEMPLATE == ENABLED &amp;&amp; VSF_RTC_CFG_SET_TIME_API_TEMPLATE == ENABLED</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#   error &quot;VSF_RTC_CFG_SET_API_TEMPLATE and  VSF_RTC_CFG_SET_TIME_API_TEMPLATE Only one can be defined at a time&quot;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">/*============================ IMPLEMENTATION ================================*/</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#if VSF_RTC_CFG_IMP_PWM_SET == DISABLED</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_real_rtc_pwm_set(vsf_real_rtc_t *rtc_ptr, <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> channel, <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> period, <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> pulse)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>{</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_define" href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a>(<a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a> != rtc_ptr);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_define" href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a>(0);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4ad38dface0088c102a859739a5d071a4d">VSF_ERR_FAIL</a>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#if VSF_RTC_CFG_REIMPLEMENT_API_CAPABILITY == DISABLED</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><a class="code hl_struct" href="structvsf__rtc__capability__t.html">vsf_rtc_capability_t</a> vsf_real_rtc_capability(vsf_real_rtc_t *rtc_ptr)</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>{</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_struct" href="structvsf__rtc__capability__t.html">vsf_rtc_capability_t</a> rtc_capability = {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        0,</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    };</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">return</span> rtc_capability;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#if VSF_RTC_CFG_GET_API_TEMPLATE == ENABLED</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_real_rtc_get(vsf_real_rtc_t *rtc_ptr, <a class="code hl_struct" href="structvsf__rtc__tm__t.html">vsf_rtc_tm_t</a> *rtc_tm)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>{</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_define" href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a>(rtc_ptr != <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_define" href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a>(rtc_tm != <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> second, milliseconds;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> result = vsf_real_rtc_get_time(rtc_ptr, &amp;second, &amp;milliseconds);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordflow">if</span> (result != <a class="code hl_enumvalue" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a>) {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structtm.html">tm</a> *t = <a class="code hl_function" href="simple__libc_2time_8h.html#a142b3ded08ee65200fe6e4c4c8664d4c">gmtime</a>(&amp;second);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordflow">if</span> (t == <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4ad38dface0088c102a859739a5d071a4d">VSF_ERR_FAIL</a>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    rtc_tm-&gt;<a class="code hl_variable" href="structvsf__rtc__tm__t.html#a68a84efe84ac13fa56dafb442edcf44f">tm_sec</a>  = t-&gt;<a class="code hl_variable" href="structtm.html#a4d098a9a5c03a00b2ee61e10851de81e">tm_sec</a>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    rtc_tm-&gt;<a class="code hl_variable" href="structvsf__rtc__tm__t.html#aeb67d0d6fcea9fffe64e19edaa16462a">tm_min</a>  = t-&gt;<a class="code hl_variable" href="structtm.html#af414eb7c86cc3099595211eee4d4211b">tm_min</a>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    rtc_tm-&gt;<a class="code hl_variable" href="structvsf__rtc__tm__t.html#ae3918211fad1ddaddc034dd2f331e3ef">tm_hour</a> = t-&gt;<a class="code hl_variable" href="structtm.html#a3e7ca4e37f1abcaf56b8a916c38eb9fe">tm_hour</a>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    rtc_tm-&gt;<a class="code hl_variable" href="structvsf__rtc__tm__t.html#ab29aff4605b15c393f6a817e5a140055">tm_mday</a> = t-&gt;<a class="code hl_variable" href="structtm.html#ab8d8904bad43b0c8b96e61941c5b5310">tm_mday</a>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    rtc_tm-&gt;<a class="code hl_variable" href="structvsf__rtc__tm__t.html#aaf928c187440da6217dcf7c4082d93a0">tm_wday</a> = t-&gt;<a class="code hl_variable" href="structtm.html#afe81a8c46f1c693c43f259b288859f4f">tm_wday</a> + 1;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    rtc_tm-&gt;<a class="code hl_variable" href="structvsf__rtc__tm__t.html#a9ede1eccaa9b148284145af784a0a509">tm_mon</a>  = t-&gt;<a class="code hl_variable" href="structtm.html#a112ac36fa2f593777138a417cf031e17">tm_mon</a>  + 1;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    rtc_tm-&gt;<a class="code hl_variable" href="structvsf__rtc__tm__t.html#a7a72bc0bb33115ef43b6f0ec44760ac6">tm_year</a> = t-&gt;<a class="code hl_variable" href="structtm.html#a33adf78fd6476b2120ce3b9c4a852053">tm_year</a> + 1900;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    rtc_tm-&gt;<a class="code hl_variable" href="structvsf__rtc__tm__t.html#a5fbf5ea01ba5b5ec8a6822e0f01d4b95">tm_ms</a>   = milliseconds;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#if VSF_RTC_CFG_SET_API_TEMPLATE == ENABLED</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_real_rtc_set(vsf_real_rtc_t *rtc_ptr, <span class="keyword">const</span> <a class="code hl_struct" href="structvsf__rtc__tm__t.html">vsf_rtc_tm_t</a> *rtc_tm)</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>{</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <a class="code hl_define" href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a>(rtc_ptr != <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <a class="code hl_define" href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a>(rtc_tm != <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structtm.html">tm</a> t = {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        .<a class="code hl_variable" href="structtm.html#a4d098a9a5c03a00b2ee61e10851de81e">tm_sec</a>  = rtc_tm-&gt;<a class="code hl_variable" href="structvsf__rtc__tm__t.html#a68a84efe84ac13fa56dafb442edcf44f">tm_sec</a>,</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        .tm_min  = rtc_tm-&gt;<a class="code hl_variable" href="structvsf__rtc__tm__t.html#aeb67d0d6fcea9fffe64e19edaa16462a">tm_min</a>,</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        .tm_hour = rtc_tm-&gt;<a class="code hl_variable" href="structvsf__rtc__tm__t.html#ae3918211fad1ddaddc034dd2f331e3ef">tm_hour</a>,</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        .tm_mday = rtc_tm-&gt;<a class="code hl_variable" href="structvsf__rtc__tm__t.html#ab29aff4605b15c393f6a817e5a140055">tm_mday</a>,</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        .tm_mon  = rtc_tm-&gt;<a class="code hl_variable" href="structvsf__rtc__tm__t.html#a9ede1eccaa9b148284145af784a0a509">tm_mon</a> - 1,</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        .tm_year = rtc_tm-&gt;<a class="code hl_variable" href="structvsf__rtc__tm__t.html#a7a72bc0bb33115ef43b6f0ec44760ac6">tm_year</a> - 1900,</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    };</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> second = <a class="code hl_function" href="simple__libc_2time_8h.html#afc0e3f373a3ea00b37714f1b621ae0b1">mktime</a>(&amp;t);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordflow">return</span> vsf_real_rtc_set_time(rtc_ptr, second,  rtc_tm-&gt;<a class="code hl_variable" href="structvsf__rtc__tm__t.html#a5fbf5ea01ba5b5ec8a6822e0f01d4b95">tm_ms</a>);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>}</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="preprocessor">#if VSF_RTC_CFG_GET_TIME_API_TEMPLATE == ENABLED</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_real_rtc_get_time(<a class="code hl_struct" href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a> *rtc_ptr, <a class="code hl_typedef" href="vsf__template__rtc_8h.html#aaf057bcd567e302682227f6d1e08d8e5">vsf_rtc_time_t</a> *second_ptr, <a class="code hl_typedef" href="vsf__template__rtc_8h.html#aaf057bcd567e302682227f6d1e08d8e5">vsf_rtc_time_t</a> *milliseconds_ptr)</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>{</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <a class="code hl_define" href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a>(rtc_ptr != <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <a class="code hl_define" href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a>((second_ptr != <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) || (milliseconds_ptr != <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>));</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <a class="code hl_struct" href="structvsf__rtc__tm__t.html">vsf_rtc_tm_t</a> rtc_tm;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> result = vsf_real_rtc_get(rtc_ptr, &amp;rtc_tm);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordflow">if</span> (result != <a class="code hl_enumvalue" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a>) {</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    }</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordflow">if</span> (second_ptr != <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) {</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keyword">struct </span><a class="code hl_struct" href="structtm.html">tm</a> t = {</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            .<a class="code hl_variable" href="structtm.html#a4d098a9a5c03a00b2ee61e10851de81e">tm_sec</a>  = rtc_tm.<a class="code hl_variable" href="structvsf__rtc__tm__t.html#a68a84efe84ac13fa56dafb442edcf44f">tm_sec</a>,</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            .tm_min  = rtc_tm.<a class="code hl_variable" href="structvsf__rtc__tm__t.html#aeb67d0d6fcea9fffe64e19edaa16462a">tm_min</a>,</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            .tm_hour = rtc_tm.<a class="code hl_variable" href="structvsf__rtc__tm__t.html#ae3918211fad1ddaddc034dd2f331e3ef">tm_hour</a>,</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            .tm_mday = rtc_tm.<a class="code hl_variable" href="structvsf__rtc__tm__t.html#ab29aff4605b15c393f6a817e5a140055">tm_mday</a>,</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            .tm_mon  = rtc_tm.<a class="code hl_variable" href="structvsf__rtc__tm__t.html#a9ede1eccaa9b148284145af784a0a509">tm_mon</a> - 1,</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>            .tm_year = rtc_tm.<a class="code hl_variable" href="structvsf__rtc__tm__t.html#a7a72bc0bb33115ef43b6f0ec44760ac6">tm_year</a> - 1900,</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        };</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        *second_ptr = <a class="code hl_function" href="simple__libc_2time_8h.html#afc0e3f373a3ea00b37714f1b621ae0b1">mktime</a>(&amp;t);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    }</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordflow">if</span> (milliseconds_ptr != <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) {</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        *milliseconds_ptr = rtc_tm.<a class="code hl_variable" href="structvsf__rtc__tm__t.html#a5fbf5ea01ba5b5ec8a6822e0f01d4b95">tm_ms</a>;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    }</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a>;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>}</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="preprocessor">#if VSF_RTC_CFG_SET_TIME_API_TEMPLATE == ENABLED</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_real_rtc_set_time(vsf_real_rtc_t *rtc_ptr, <a class="code hl_typedef" href="vsf__template__rtc_8h.html#aaf057bcd567e302682227f6d1e08d8e5">vsf_rtc_time_t</a> second, <a class="code hl_typedef" href="vsf__template__rtc_8h.html#aaf057bcd567e302682227f6d1e08d8e5">vsf_rtc_time_t</a> milliseconds)</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>{</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <a class="code hl_define" href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a>(rtc_ptr != <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structtm.html">tm</a> *t = <a class="code hl_function" href="simple__libc_2time_8h.html#a142b3ded08ee65200fe6e4c4c8664d4c">gmtime</a>((<span class="keyword">const</span> <a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a> *)&amp;second);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordflow">if</span> (<a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a> == t) {</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4ad38dface0088c102a859739a5d071a4d">VSF_ERR_FAIL</a>;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    }</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <a class="code hl_struct" href="structvsf__rtc__tm__t.html">vsf_rtc_tm_t</a> rtc_tm = {</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        .<a class="code hl_variable" href="structvsf__rtc__tm__t.html#a68a84efe84ac13fa56dafb442edcf44f">tm_sec</a>  = t-&gt;<a class="code hl_variable" href="structtm.html#a4d098a9a5c03a00b2ee61e10851de81e">tm_sec</a>,</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        .tm_min  = t-&gt;<a class="code hl_variable" href="structtm.html#af414eb7c86cc3099595211eee4d4211b">tm_min</a>,</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        .tm_hour = t-&gt;<a class="code hl_variable" href="structtm.html#a3e7ca4e37f1abcaf56b8a916c38eb9fe">tm_hour</a>,</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        .tm_mday = t-&gt;<a class="code hl_variable" href="structtm.html#ab8d8904bad43b0c8b96e61941c5b5310">tm_mday</a>,</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        .tm_mon  = t-&gt;<a class="code hl_variable" href="structtm.html#a112ac36fa2f593777138a417cf031e17">tm_mon</a> + 1,</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        .tm_year = t-&gt;<a class="code hl_variable" href="structtm.html#a33adf78fd6476b2120ce3b9c4a852053">tm_year</a> + 1900,</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        .tm_ms   = milliseconds,</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    };</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordflow">return</span> vsf_real_rtc_set(rtc_ptr, &amp;rtc_tm);</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>}</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="preprocessor">#define __VSF_HAL_TEMPLATE_NAME                     _rtc</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="preprocessor">#define __VSF_HAL_TEMPLATE_UPCASE_NAME              _RTC</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="preprocessor">#ifndef VSF_RTC_CFG_IMP_PREFIX</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="preprocessor">#   error &quot;Please define VSF_RTC_CFG_IMP_PREFIX in rtc driver&quot;</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="preprocessor">#ifndef VSF_RTC_CFG_IMP_UPCASE_PREFIX</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="preprocessor">#   error &quot;Please define VSF_RTC_CFG_IMP_UPCASE_PREFIX    in rtc driver&quot;</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__template__implementation_8h.html">hal/driver/common/template/vsf_template_implementation.h</a>&quot;</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_HAL_USE_RTC */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition</b> __type.h:42</div></div>
+<div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a></div><div class="ttdeci">@ VSF_ERR_NONE</div><div class="ttdoc">none error</div><div class="ttdef"><b>Definition</b> __type.h:44</div></div>
+<div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4ad38dface0088c102a859739a5d071a4d"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4ad38dface0088c102a859739a5d071a4d">VSF_ERR_FAIL</a></div><div class="ttdeci">@ VSF_ERR_FAIL</div><div class="ttdoc">failed</div><div class="ttdef"><b>Definition</b> __type.h:51</div></div>
+<div class="ttc" id="alinux_2include_2simple__libc_2stddef_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition</b> stddef.h:44</div></div>
+<div class="ttc" id="alinux_2include_2sys_2types_8h_html_abb9869afc581d83258dfbaf60d9d0861"><div class="ttname"><a href="linux_2include_2sys_2types_8h.html#abb9869afc581d83258dfbaf60d9d0861">time_t</a></div><div class="ttdeci">__TIME_T time_t</div><div class="ttdef"><b>Definition</b> types.h:106</div></div>
+<div class="ttc" id="asimple__libc_2time_8h_html_a142b3ded08ee65200fe6e4c4c8664d4c"><div class="ttname"><a href="simple__libc_2time_8h.html#a142b3ded08ee65200fe6e4c4c8664d4c">gmtime</a></div><div class="ttdeci">struct tm * gmtime(const time_t *t)</div><div class="ttdef"><b>Definition</b> vsf_linux_glibc_time.c:338</div></div>
+<div class="ttc" id="asimple__libc_2time_8h_html_afc0e3f373a3ea00b37714f1b621ae0b1"><div class="ttname"><a href="simple__libc_2time_8h.html#afc0e3f373a3ea00b37714f1b621ae0b1">mktime</a></div><div class="ttdeci">time_t mktime(struct tm *tm)</div><div class="ttdef"><b>Definition</b> vsf_linux_glibc_time.c:70</div></div>
+<div class="ttc" id="astdint_8h_html_a324c5d28c0d82f502a234ab99efac87a"><div class="ttname"><a href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a></div><div class="ttdeci">unsigned uint32_t</div><div class="ttdef"><b>Definition</b> stdint.h:9</div></div>
+<div class="ttc" id="astdint_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition</b> stdint.h:5</div></div>
+<div class="ttc" id="astructtm_html"><div class="ttname"><a href="structtm.html">tm</a></div><div class="ttdef"><b>Definition</b> time.h:49</div></div>
+<div class="ttc" id="astructtm_html_a112ac36fa2f593777138a417cf031e17"><div class="ttname"><a href="structtm.html#a112ac36fa2f593777138a417cf031e17">tm::tm_mon</a></div><div class="ttdeci">int tm_mon</div><div class="ttdef"><b>Definition</b> time.h:54</div></div>
+<div class="ttc" id="astructtm_html_a33adf78fd6476b2120ce3b9c4a852053"><div class="ttname"><a href="structtm.html#a33adf78fd6476b2120ce3b9c4a852053">tm::tm_year</a></div><div class="ttdeci">int tm_year</div><div class="ttdef"><b>Definition</b> time.h:55</div></div>
+<div class="ttc" id="astructtm_html_a3e7ca4e37f1abcaf56b8a916c38eb9fe"><div class="ttname"><a href="structtm.html#a3e7ca4e37f1abcaf56b8a916c38eb9fe">tm::tm_hour</a></div><div class="ttdeci">int tm_hour</div><div class="ttdef"><b>Definition</b> time.h:52</div></div>
+<div class="ttc" id="astructtm_html_a4d098a9a5c03a00b2ee61e10851de81e"><div class="ttname"><a href="structtm.html#a4d098a9a5c03a00b2ee61e10851de81e">tm::tm_sec</a></div><div class="ttdeci">int tm_sec</div><div class="ttdef"><b>Definition</b> time.h:50</div></div>
+<div class="ttc" id="astructtm_html_ab8d8904bad43b0c8b96e61941c5b5310"><div class="ttname"><a href="structtm.html#ab8d8904bad43b0c8b96e61941c5b5310">tm::tm_mday</a></div><div class="ttdeci">int tm_mday</div><div class="ttdef"><b>Definition</b> time.h:53</div></div>
+<div class="ttc" id="astructtm_html_af414eb7c86cc3099595211eee4d4211b"><div class="ttname"><a href="structtm.html#af414eb7c86cc3099595211eee4d4211b">tm::tm_min</a></div><div class="ttdeci">int tm_min</div><div class="ttdef"><b>Definition</b> time.h:51</div></div>
+<div class="ttc" id="astructtm_html_afe81a8c46f1c693c43f259b288859f4f"><div class="ttname"><a href="structtm.html#afe81a8c46f1c693c43f259b288859f4f">tm::tm_wday</a></div><div class="ttdeci">int tm_wday</div><div class="ttdef"><b>Definition</b> time.h:56</div></div>
+<div class="ttc" id="astructvsf__hw__rtc__t_html"><div class="ttname"><a href="structvsf__hw__rtc__t.html">vsf_hw_rtc_t</a></div><div class="ttdef"><b>Definition</b> rtc.c:37</div></div>
+<div class="ttc" id="astructvsf__rtc__capability__t_html"><div class="ttname"><a href="structvsf__rtc__capability__t.html">vsf_rtc_capability_t</a></div><div class="ttdef"><b>Definition</b> vsf_template_rtc.h:109</div></div>
+<div class="ttc" id="astructvsf__rtc__tm__t_html"><div class="ttname"><a href="structvsf__rtc__tm__t.html">vsf_rtc_tm_t</a></div><div class="ttdef"><b>Definition</b> vsf_template_rtc.h:83</div></div>
+<div class="ttc" id="astructvsf__rtc__tm__t_html_a5fbf5ea01ba5b5ec8a6822e0f01d4b95"><div class="ttname"><a href="structvsf__rtc__tm__t.html#a5fbf5ea01ba5b5ec8a6822e0f01d4b95">vsf_rtc_tm_t::tm_ms</a></div><div class="ttdeci">uint16_t tm_ms</div><div class="ttdef"><b>Definition</b> vsf_template_rtc.h:91</div></div>
+<div class="ttc" id="astructvsf__rtc__tm__t_html_a68a84efe84ac13fa56dafb442edcf44f"><div class="ttname"><a href="structvsf__rtc__tm__t.html#a68a84efe84ac13fa56dafb442edcf44f">vsf_rtc_tm_t::tm_sec</a></div><div class="ttdeci">uint8_t tm_sec</div><div class="ttdef"><b>Definition</b> vsf_template_rtc.h:84</div></div>
+<div class="ttc" id="astructvsf__rtc__tm__t_html_a7a72bc0bb33115ef43b6f0ec44760ac6"><div class="ttname"><a href="structvsf__rtc__tm__t.html#a7a72bc0bb33115ef43b6f0ec44760ac6">vsf_rtc_tm_t::tm_year</a></div><div class="ttdeci">uint16_t tm_year</div><div class="ttdef"><b>Definition</b> vsf_template_rtc.h:90</div></div>
+<div class="ttc" id="astructvsf__rtc__tm__t_html_a9ede1eccaa9b148284145af784a0a509"><div class="ttname"><a href="structvsf__rtc__tm__t.html#a9ede1eccaa9b148284145af784a0a509">vsf_rtc_tm_t::tm_mon</a></div><div class="ttdeci">uint8_t tm_mon</div><div class="ttdef"><b>Definition</b> vsf_template_rtc.h:89</div></div>
+<div class="ttc" id="astructvsf__rtc__tm__t_html_aaf928c187440da6217dcf7c4082d93a0"><div class="ttname"><a href="structvsf__rtc__tm__t.html#aaf928c187440da6217dcf7c4082d93a0">vsf_rtc_tm_t::tm_wday</a></div><div class="ttdeci">uint8_t tm_wday</div><div class="ttdef"><b>Definition</b> vsf_template_rtc.h:88</div></div>
+<div class="ttc" id="astructvsf__rtc__tm__t_html_ab29aff4605b15c393f6a817e5a140055"><div class="ttname"><a href="structvsf__rtc__tm__t.html#ab29aff4605b15c393f6a817e5a140055">vsf_rtc_tm_t::tm_mday</a></div><div class="ttdeci">uint8_t tm_mday</div><div class="ttdef"><b>Definition</b> vsf_template_rtc.h:87</div></div>
+<div class="ttc" id="astructvsf__rtc__tm__t_html_ae3918211fad1ddaddc034dd2f331e3ef"><div class="ttname"><a href="structvsf__rtc__tm__t.html#ae3918211fad1ddaddc034dd2f331e3ef">vsf_rtc_tm_t::tm_hour</a></div><div class="ttdeci">uint8_t tm_hour</div><div class="ttdef"><b>Definition</b> vsf_template_rtc.h:86</div></div>
+<div class="ttc" id="astructvsf__rtc__tm__t_html_aeb67d0d6fcea9fffe64e19edaa16462a"><div class="ttname"><a href="structvsf__rtc__tm__t.html#aeb67d0d6fcea9fffe64e19edaa16462a">vsf_rtc_tm_t::tm_min</a></div><div class="ttdeci">uint8_t tm_min</div><div class="ttdef"><b>Definition</b> vsf_template_rtc.h:85</div></div>
+<div class="ttc" id="avsf__hal__cfg_8h_html_ac53e084d43f6705ad3cb2687eb7a986c"><div class="ttname"><a href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a></div><div class="ttdeci">#define VSF_HAL_ASSERT(__CON)</div><div class="ttdoc">all hal modules use this configuration file</div><div class="ttdef"><b>Definition</b> vsf_hal_cfg.h:36</div></div>
+<div class="ttc" id="avsf__template__implementation_8h_html"><div class="ttname"><a href="vsf__template__implementation_8h.html">vsf_template_implementation.h</a></div></div>
+<div class="ttc" id="avsf__template__rtc_8h_html_aaf057bcd567e302682227f6d1e08d8e5"><div class="ttname"><a href="vsf__template__rtc_8h.html#aaf057bcd567e302682227f6d1e08d8e5">vsf_rtc_time_t</a></div><div class="ttdeci">VSF_RTC_CFG_TIME_TYPE vsf_rtc_time_t</div><div class="ttdef"><b>Definition</b> vsf_template_rtc.h:81</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>
