@@ -577,6 +577,8 @@ Functions</h2></td></tr>
 <tr class="separator:afb3713b5683a1c22e172436864525c0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d128fe944aa1ffc133ead79e250c2fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unistd_8h.html#a5d128fe944aa1ffc133ead79e250c2fa">acct</a> (const char *filename)</td></tr>
 <tr class="separator:a5d128fe944aa1ffc133ead79e250c2fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace516614bb288b71855a11b18a2d0adc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvsf__linux__process__t.html">vsf_linux_process_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unistd_8h.html#ace516614bb288b71855a11b18a2d0adc">__vsf_linux_vfork_prepare</a> (<a class="el" href="classvsf__linux__process__t.html">vsf_linux_process_t</a> *parent_process)</td></tr>
+<tr class="separator:ace516614bb288b71855a11b18a2d0adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -2442,12 +2444,10 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    ({                                                  \</div>
 <div class="line">    <a class="code hl_class" href="classvsf__linux__process__t.html">vsf_linux_process_t</a> *parent_process = <a class="code hl_function" href="vsf__linux_8c.html#ad807b27b155702b7c4da0852a6016bff">vsf_linux_get_cur_process</a>();          \</div>
-<div class="line">    <a class="code hl_class" href="classvsf__linux__process__t.html">vsf_linux_process_t</a> *child_process = <a class="code hl_function" href="vsf__linux_8c.html#a2a63277baf6960b253a8e0a8edcd1c04">vsf_linux_create_process</a>(0, 0, 0);     \</div>
+<div class="line">    <a class="code hl_class" href="classvsf__linux__process__t.html">vsf_linux_process_t</a> *child_process = <a class="code hl_function" href="unistd_8h.html#ace516614bb288b71855a11b18a2d0adc">__vsf_linux_vfork_prepare</a>(parent_process);\</div>
 <div class="line">    <a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a> child_pid = (<a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a>)-1;                                                \</div>
 <div class="line">    if (child_process != <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) {                                                \</div>
-<div class="line">        parent_process-&gt;is_vforking = <span class="keyword">true</span>;                                     \</div>
-<div class="line">        parent_process-&gt;vfork_child = child_process;                            \</div>
-<div class="line">        if (!<a class="code hl_function" href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">setjmp</a>(parent_process-&gt;vfork_jmpbuf)) {                            \</div>
+<div class="line">        if (!<a class="code hl_function" href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">setjmp</a>(parent_process-&gt;__vfork_jmpbuf)) {                          \</div>
 <div class="line">            child_pid = (<a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a>)0;                                               \</div>
 <div class="line">        } <span class="keywordflow">else</span> {                                                                \</div>
 <div class="line">            child_pid = child_process-&gt;id.pid;                                  \</div>
@@ -2459,7 +2459,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="alinux_2include_2simple__libc_2stddef_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition</b> stddef.h:44</div></div>
 <div class="ttc" id="alinux_2include_2sys_2types_8h_html_a288e13e815d43b06e75819f8939524df"><div class="ttname"><a href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a></div><div class="ttdeci">int pid_t</div><div class="ttdef"><b>Definition</b> types.h:69</div></div>
 <div class="ttc" id="asetjmp_8h_html_a0ea8f6bdb917bfa1c71ddf65f43730ca"><div class="ttname"><a href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">setjmp</a></div><div class="ttdeci">int setjmp(jmp_buf env)</div></div>
-<div class="ttc" id="avsf__linux_8c_html_a2a63277baf6960b253a8e0a8edcd1c04"><div class="ttname"><a href="vsf__linux_8c.html#a2a63277baf6960b253a8e0a8edcd1c04">vsf_linux_create_process</a></div><div class="ttdeci">vsf_linux_process_t * vsf_linux_create_process(int stack_size, int heap_size, int priv_size)</div><div class="ttdef"><b>Definition</b> vsf_linux.c:1162</div></div>
+<div class="ttc" id="aunistd_8h_html_ace516614bb288b71855a11b18a2d0adc"><div class="ttname"><a href="unistd_8h.html#ace516614bb288b71855a11b18a2d0adc">__vsf_linux_vfork_prepare</a></div><div class="ttdeci">vsf_linux_process_t * __vsf_linux_vfork_prepare(vsf_linux_process_t *parent_process)</div><div class="ttdef"><b>Definition</b> vsf_linux.c:3357</div></div>
 <div class="ttc" id="avsf__linux_8c_html_ad807b27b155702b7c4da0852a6016bff"><div class="ttname"><a href="vsf__linux_8c.html#ad807b27b155702b7c4da0852a6016bff">vsf_linux_get_cur_process</a></div><div class="ttdeci">vsf_linux_process_t * vsf_linux_get_cur_process(void)</div><div class="ttdef"><b>Definition</b> vsf_linux.c:1474</div></div>
 </div><!-- fragment -->
 </div>
@@ -4787,6 +4787,24 @@ Variables</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ace516614bb288b71855a11b18a2d0adc" name="ace516614bb288b71855a11b18a2d0adc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace516614bb288b71855a11b18a2d0adc">&#9670;&#160;</a></span>__vsf_linux_vfork_prepare()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvsf__linux__process__t.html">vsf_linux_process_t</a> * __vsf_linux_vfork_prepare </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__linux__process__t.html">vsf_linux_process_t</a> *&#160;</td>
+          <td class="paramname"><em>parent_process</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
