@@ -65,12 +65,16 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a053e00867d5e46f140e15b03e5903f58"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rng__common_8c.html#a053e00867d5e46f140e15b03e5903f58">vsf_rng_init</a> (<a class="el" href="structvsf__rng__t.html">vsf_rng_t</a> *rng_ptr)</td></tr>
+<tr class="memdesc:a053e00867d5e46f140e15b03e5903f58"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize a rng instance.  <br /></td></tr>
 <tr class="separator:a053e00867d5e46f140e15b03e5903f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59187c2008f9e0dad5d2bd65e9fd2b1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rng__common_8c.html#a59187c2008f9e0dad5d2bd65e9fd2b1e">vsf_rng_fini</a> (<a class="el" href="structvsf__rng__t.html">vsf_rng_t</a> *rng_ptr)</td></tr>
+<tr class="memdesc:a59187c2008f9e0dad5d2bd65e9fd2b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">finalize a rng instance.  <br /></td></tr>
 <tr class="separator:a59187c2008f9e0dad5d2bd65e9fd2b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a169f3520d28baee978f7490423e64696"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rng__common_8c.html#a169f3520d28baee978f7490423e64696">vsf_rng_generate_request</a> (<a class="el" href="structvsf__rng__t.html">vsf_rng_t</a> *rng_ptr, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *buffer, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> num, void *param, <a class="el" href="vsf__template__rng_8h.html#a0b732158d2acc0c7a40ed0b05de9648b">vsf_rng_on_ready_callback_t</a> *on_ready_cb)</td></tr>
+<tr class="memdesc:a169f3520d28baee978f7490423e64696"><td class="mdescLeft">&#160;</td><td class="mdescRight">rng generate request  <br /></td></tr>
 <tr class="separator:a169f3520d28baee978f7490423e64696"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d51606714c4b46186c110490c9e08a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvsf__rng__capability__t.html">vsf_rng_capability_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rng__common_8c.html#a0d51606714c4b46186c110490c9e08a5">vsf_rng_capability</a> (<a class="el" href="structvsf__rng__t.html">vsf_rng_t</a> *rng_ptr)</td></tr>
+<tr class="memdesc:a0d51606714c4b46186c110490c9e08a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the capability of rng instance.  <br /></td></tr>
 <tr class="separator:a0d51606714c4b46186c110490c9e08a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -105,6 +109,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>initialize a rng instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">rng_ptr</td><td>a pointer to structure <a class="el" href="structvsf__rng__t.html">vsf_rng_t</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cfg_ptr</td><td>a pointer to structure vsf_rng_cfg_t </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if rng was initialized, or a negative error code</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>It is not necessary to call <a class="el" href="vsf__template__rng_8h.html#a2b3723d962194a9a01912f30c187eb7d">vsf_rng_fini()</a> to deinitialization. <a class="el" href="vsf__template__rng_8h.html#a53522c06be8ac04e91af4cb90c20591f">vsf_rng_init()</a> should be called before any other rng API except <a class="el" href="vsf__template__rng_8h.html#a470056d37a2e3d9df374f26728f797d9">vsf_rng_capability()</a>. </dd></dl>
+
 </div>
 </div>
 <a id="a59187c2008f9e0dad5d2bd65e9fd2b1e" name="a59187c2008f9e0dad5d2bd65e9fd2b1e"></a>
@@ -122,6 +137,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>finalize a rng instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">rng_ptr</td><td>a pointer to structure <a class="el" href="structvsf__rng__t.html">vsf_rng_t</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
 
 </div>
 </div>
@@ -169,6 +193,19 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>rng generate request </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">rng_ptr</td><td>a pointer to structure <a class="el" href="structvsf__rng__t.html">vsf_rng_t</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>rng data buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>the length of rng data buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">param</td><td>call back param </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">on_ready_cb</td><td>call back </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if rng generate request was successfully, or a negative error code </dd></dl>
+
 </div>
 </div>
 <a id="a0d51606714c4b46186c110490c9e08a5" name="a0d51606714c4b46186c110490c9e08a5"></a>
@@ -186,6 +223,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>get the capability of rng instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">rng_ptr</td><td>a pointer to structure <a class="el" href="structvsf__rng__t.html">vsf_rng_t</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structvsf__rng__capability__t.html">vsf_rng_capability_t</a>: return all capability of current rng <a class="el" href="structvsf__rng__capability__t.html">vsf_rng_capability_t</a> </dd></dl>
 
 </div>
 </div>

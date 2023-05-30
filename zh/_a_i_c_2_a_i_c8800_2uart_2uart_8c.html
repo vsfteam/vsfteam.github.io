@@ -57,7 +57,8 @@
   <div class="headertitle"><div class="title">uart.c 文件参考</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8h_source.html">./uart.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="hal_2driver_2_a_i_c_2_a_i_c8800_2driver_8h_source.html">../driver.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__hal_8h_source.html">hal/vsf_hal.h</a>&quot;</code><br />
 <code>#include &quot;../vendor/plf/aic8800/src/driver/uart/reg_uart1.h&quot;</code><br />
 <code>#include &quot;../vendor/plf/aic8800/src/driver/iomux/reg_iomux.h&quot;</code><br />
 <code>#include &quot;../vendor/plf/aic8800/src/driver/ipc/reg_ipc_comreg.h&quot;</code><br />
@@ -76,6 +77,8 @@
 宏定义</h2></td></tr>
 <tr class="memitem:a8883763910f324b5e1a11fa7ebfef877"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a8883763910f324b5e1a11fa7ebfef877">VSF_HW_USART_CFG_MULTI_CLASS</a>&#160;&#160;&#160;<a class="el" href="vsf__template__usart_8h.html#a087f4d6163489cb615e365a63729319e">VSF_USART_CFG_MULTI_CLASS</a></td></tr>
 <tr class="separator:a8883763910f324b5e1a11fa7ebfef877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad410f09bd252dbc5658fd3b62a30cd0a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#ad410f09bd252dbc5658fd3b62a30cd0a">VSF_USART_CFG_IMP_INSTANCE_PREFIX</a>&#160;&#160;&#160;__vsf_hw</td></tr>
+<tr class="separator:ad410f09bd252dbc5658fd3b62a30cd0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1719ca4fc288d03f3a1c87f29ba17daa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a1719ca4fc288d03f3a1c87f29ba17daa">VSF_USART_CFG_IMP_PREFIX</a>&#160;&#160;&#160;vsf_hw</td></tr>
 <tr class="separator:a1719ca4fc288d03f3a1c87f29ba17daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c559364f5d2ba2e4fc6c72021d293bf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a9c559364f5d2ba2e4fc6c72021d293bf">VSF_USART_CFG_IMP_UPCASE_PREFIX</a>&#160;&#160;&#160;VSF_HW</td></tr>
@@ -83,6 +86,18 @@
 <tr class="memitem:a597f41952f95655acf636f45e11f0473"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a597f41952f95655acf636f45e11f0473">VSF_USART_CFG_IMP_FIFO_TO_REQUEST</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td></tr>
 <tr class="separator:a597f41952f95655acf636f45e11f0473"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e696b1df3d46bd12310ac92d3c99ac0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a0e696b1df3d46bd12310ac92d3c99ac0">VSF_USART_CFG_IMP_LV0</a>(__COUNT,  __HAL_OP)</td></tr>
+<tr class="separator:a0e696b1df3d46bd12310ac92d3c99ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad410f09bd252dbc5658fd3b62a30cd0a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#ad410f09bd252dbc5658fd3b62a30cd0a">VSF_USART_CFG_IMP_INSTANCE_PREFIX</a>&#160;&#160;&#160;vsf_hw</td></tr>
+<tr class="separator:ad410f09bd252dbc5658fd3b62a30cd0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1719ca4fc288d03f3a1c87f29ba17daa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a1719ca4fc288d03f3a1c87f29ba17daa">VSF_USART_CFG_IMP_PREFIX</a>&#160;&#160;&#160;vsf_fifo2req</td></tr>
+<tr class="separator:a1719ca4fc288d03f3a1c87f29ba17daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c559364f5d2ba2e4fc6c72021d293bf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a9c559364f5d2ba2e4fc6c72021d293bf">VSF_USART_CFG_IMP_UPCASE_PREFIX</a>&#160;&#160;&#160;VSF_FIFO2REQ</td></tr>
+<tr class="separator:a9c559364f5d2ba2e4fc6c72021d293bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06eaa44dbb1ec369bc085d711354670f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a06eaa44dbb1ec369bc085d711354670f">VSF_FIFO2REQ_USART_COUNT</a>&#160;&#160;&#160;<a class="el" href="hal_2driver_2_a_i_c_2_a_i_c8800_2device_8h.html#a0dac2f682766ccd7e3392c879a1b98e5">VSF_HW_USART_COUNT</a></td></tr>
+<tr class="separator:a06eaa44dbb1ec369bc085d711354670f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66b6e70edb419760dc63d0a3916645ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a66b6e70edb419760dc63d0a3916645ac">VSF_FIFO2REQ_USART_MASK</a>&#160;&#160;&#160;<a class="el" href="hal_2driver_2_a_i_c_2_a_i_c8800_2device_8h.html#a5250fb6e19f73d65dbfdb0d7236caa36">VSF_HW_USART_MASK</a></td></tr>
+<tr class="separator:a66b6e70edb419760dc63d0a3916645ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e696b1df3d46bd12310ac92d3c99ac0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a0e696b1df3d46bd12310ac92d3c99ac0">VSF_USART_CFG_IMP_LV0</a>(__COUNT,  __HAL_OP)&#160;&#160;&#160;    <a class="el" href="fifo2req__usart_8h.html#afd38b323b578116216cac1d6c76dcc73">describe_fifo2req_usart</a>(vsf_hw_usart ## __COUNT, __vsf_hw_usart ## __COUNT)</td></tr>
 <tr class="separator:a0e696b1df3d46bd12310ac92d3c99ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -98,10 +113,12 @@
 <tr class="separator:a0b5bccfbd723ae06206a4a9cab519f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab48163ca92e26194304db0aeabd5fff7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#ab48163ca92e26194304db0aeabd5fff7">vsf_hw_usart_fini</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart_ptr)</td></tr>
 <tr class="separator:ab48163ca92e26194304db0aeabd5fff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a459cc0b4d78a9de6e533fbe3871d8b6c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a459cc0b4d78a9de6e533fbe3871d8b6c">vsf_hw_usart_enable</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *usart_ptr)</td></tr>
-<tr class="separator:a459cc0b4d78a9de6e533fbe3871d8b6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e2164a8a3b0a9d19cd6d6084f03d17b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a9e2164a8a3b0a9d19cd6d6084f03d17b">vsf_hw_usart_disable</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *usart_ptr)</td></tr>
-<tr class="separator:a9e2164a8a3b0a9d19cd6d6084f03d17b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cd39ab920edb485e16fdc8318109d7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvsf__usart__capability__t.html">vsf_usart_capability_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a0cd39ab920edb485e16fdc8318109d7b">vsf_hw_usart_capability</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart_ptr)</td></tr>
+<tr class="separator:a0cd39ab920edb485e16fdc8318109d7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45a82509c53a3529c3c4b78b67a31cf9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a45a82509c53a3529c3c4b78b67a31cf9">vsf_hw_usart_enable</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart_ptr)</td></tr>
+<tr class="separator:a45a82509c53a3529c3c4b78b67a31cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14123cb562fbc40f035d71e6c0f69c74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a14123cb562fbc40f035d71e6c0f69c74">vsf_hw_usart_disable</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart_ptr)</td></tr>
+<tr class="separator:a14123cb562fbc40f035d71e6c0f69c74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b2ee5ca2b25936b70a0e1665cac2174"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a3b2ee5ca2b25936b70a0e1665cac2174">vsf_hw_usart_irq_enable</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart_ptr, <a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a7ea42303582a88dd1899a85f9c76d052">vsf_usart_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
 <tr class="separator:a3b2ee5ca2b25936b70a0e1665cac2174"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63233d63fd7cd2180cf3fd7c2ebfcfe2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a63233d63fd7cd2180cf3fd7c2ebfcfe2">vsf_hw_usart_irq_disable</a> (<a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *hw_usart_ptr, <a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a7ea42303582a88dd1899a85f9c76d052">vsf_usart_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
@@ -132,8 +149,22 @@
 
 </div>
 </div>
+<a id="ad410f09bd252dbc5658fd3b62a30cd0a" name="ad410f09bd252dbc5658fd3b62a30cd0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad410f09bd252dbc5658fd3b62a30cd0a">&#9670;&#160;</a></span>VSF_USART_CFG_IMP_INSTANCE_PREFIX <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_USART_CFG_IMP_INSTANCE_PREFIX&#160;&#160;&#160;__vsf_hw</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a1719ca4fc288d03f3a1c87f29ba17daa" name="a1719ca4fc288d03f3a1c87f29ba17daa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1719ca4fc288d03f3a1c87f29ba17daa">&#9670;&#160;</a></span>VSF_USART_CFG_IMP_PREFIX</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1719ca4fc288d03f3a1c87f29ba17daa">&#9670;&#160;</a></span>VSF_USART_CFG_IMP_PREFIX <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -147,7 +178,7 @@
 </div>
 </div>
 <a id="a9c559364f5d2ba2e4fc6c72021d293bf" name="a9c559364f5d2ba2e4fc6c72021d293bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c559364f5d2ba2e4fc6c72021d293bf">&#9670;&#160;</a></span>VSF_USART_CFG_IMP_UPCASE_PREFIX</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c559364f5d2ba2e4fc6c72021d293bf">&#9670;&#160;</a></span>VSF_USART_CFG_IMP_UPCASE_PREFIX <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -175,7 +206,7 @@
 </div>
 </div>
 <a id="a0e696b1df3d46bd12310ac92d3c99ac0" name="a0e696b1df3d46bd12310ac92d3c99ac0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e696b1df3d46bd12310ac92d3c99ac0">&#9670;&#160;</a></span>VSF_USART_CFG_IMP_LV0</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e696b1df3d46bd12310ac92d3c99ac0">&#9670;&#160;</a></span>VSF_USART_CFG_IMP_LV0 <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -210,16 +241,117 @@
 <div class="line">        .<a class="code hl_variable" href="structvsf__hw__usart__t.html#a4988e51e16b060a23375813382090058">usart_const</a>  = &amp;__vsf_hw_usart ## __COUNT ## _clock,                   \</div>
 <div class="line">        __HAL_OP                                                                \</div>
 <div class="line">    };                                                                          \</div>
-<div class="line">    describe_fifo2req_usart(vsf_hw_usart ## __COUNT, __vsf_hw_usart ## __COUNT) \</div>
 <div class="line">    <span class="keywordtype">void</span> UART ## __COUNT ## _IRQHandler(<span class="keywordtype">void</span>)                                   \</div>
 <div class="line">    {                                                                           \</div>
+<div class="line">        <a class="code hl_typedef" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> ctx = <a class="code hl_function" href="vsf__hal_8c.html#abfcfc6a9bbfd6cad28e139d71eadfd1b">vsf_hal_irq_enter</a>();                                    \</div>
 <div class="line">        __vsf_hw_usart_irq_handler(&amp;__vsf_hw_usart ## __COUNT);                 \</div>
+<div class="line">        vsf_hal_irq_leave(ctx);                                                 \</div>
 <div class="line">    }</div>
-<div class="ttc" id="astructvsf__hw__usart__const__t_html"><div class="ttname"><a href="structvsf__hw__usart__const__t.html">vsf_hw_usart_const_t</a></div><div class="ttdoc">include the infrastructure</div><div class="ttdef"><b>Definition</b> uart.c:38</div></div>
-<div class="ttc" id="astructvsf__hw__usart__const__t_html_ae2a7be9027fca029b2f5a14d01768414"><div class="ttname"><a href="structvsf__hw__usart__const__t.html#ae2a7be9027fca029b2f5a14d01768414">vsf_hw_usart_const_t::reg</a></div><div class="ttdeci">uart_reg_t * reg</div><div class="ttdef"><b>Definition</b> uart.c:40</div></div>
-<div class="ttc" id="astructvsf__hw__usart__t_html"><div class="ttname"><a href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a></div><div class="ttdef"><b>Definition</b> uart.c:47</div></div>
-<div class="ttc" id="astructvsf__hw__usart__t_html_a4988e51e16b060a23375813382090058"><div class="ttname"><a href="structvsf__hw__usart__t.html#a4988e51e16b060a23375813382090058">vsf_hw_usart_t::usart_const</a></div><div class="ttdeci">const vsf_hw_usart_const_t * usart_const</div><div class="ttdef"><b>Definition</b> uart.c:51</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a09674b9e56fd7a93a2169aa9210deec7"><div class="ttname"><a href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a></div><div class="ttdeci">uint32_t uintptr_t</div><div class="ttdef"><b>Definition</b> type.h:49</div></div>
+<div class="ttc" id="astructvsf__hw__usart__const__t_html"><div class="ttname"><a href="structvsf__hw__usart__const__t.html">vsf_hw_usart_const_t</a></div><div class="ttdoc">include the infrastructure</div><div class="ttdef"><b>Definition</b> uart.c:39</div></div>
+<div class="ttc" id="astructvsf__hw__usart__const__t_html_ae2a7be9027fca029b2f5a14d01768414"><div class="ttname"><a href="structvsf__hw__usart__const__t.html#ae2a7be9027fca029b2f5a14d01768414">vsf_hw_usart_const_t::reg</a></div><div class="ttdeci">uart_reg_t * reg</div><div class="ttdef"><b>Definition</b> uart.c:41</div></div>
+<div class="ttc" id="astructvsf__hw__usart__t_html"><div class="ttname"><a href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a></div><div class="ttdef"><b>Definition</b> uart.c:48</div></div>
+<div class="ttc" id="astructvsf__hw__usart__t_html_a4988e51e16b060a23375813382090058"><div class="ttname"><a href="structvsf__hw__usart__t.html#a4988e51e16b060a23375813382090058">vsf_hw_usart_t::usart_const</a></div><div class="ttdeci">const vsf_hw_usart_const_t * usart_const</div><div class="ttdef"><b>Definition</b> uart.c:52</div></div>
+<div class="ttc" id="avsf__hal_8c_html_abfcfc6a9bbfd6cad28e139d71eadfd1b"><div class="ttname"><a href="vsf__hal_8c.html#abfcfc6a9bbfd6cad28e139d71eadfd1b">vsf_hal_irq_enter</a></div><div class="ttdeci">uintptr_t vsf_hal_irq_enter(void)</div><div class="ttdef"><b>Definition</b> vsf_hal.c:58</div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="ad410f09bd252dbc5658fd3b62a30cd0a" name="ad410f09bd252dbc5658fd3b62a30cd0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad410f09bd252dbc5658fd3b62a30cd0a">&#9670;&#160;</a></span>VSF_USART_CFG_IMP_INSTANCE_PREFIX <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_USART_CFG_IMP_INSTANCE_PREFIX&#160;&#160;&#160;vsf_hw</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1719ca4fc288d03f3a1c87f29ba17daa" name="a1719ca4fc288d03f3a1c87f29ba17daa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1719ca4fc288d03f3a1c87f29ba17daa">&#9670;&#160;</a></span>VSF_USART_CFG_IMP_PREFIX <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_USART_CFG_IMP_PREFIX&#160;&#160;&#160;vsf_fifo2req</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9c559364f5d2ba2e4fc6c72021d293bf" name="a9c559364f5d2ba2e4fc6c72021d293bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c559364f5d2ba2e4fc6c72021d293bf">&#9670;&#160;</a></span>VSF_USART_CFG_IMP_UPCASE_PREFIX <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_USART_CFG_IMP_UPCASE_PREFIX&#160;&#160;&#160;VSF_FIFO2REQ</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06eaa44dbb1ec369bc085d711354670f" name="a06eaa44dbb1ec369bc085d711354670f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06eaa44dbb1ec369bc085d711354670f">&#9670;&#160;</a></span>VSF_FIFO2REQ_USART_COUNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_FIFO2REQ_USART_COUNT&#160;&#160;&#160;<a class="el" href="hal_2driver_2_a_i_c_2_a_i_c8800_2device_8h.html#a0dac2f682766ccd7e3392c879a1b98e5">VSF_HW_USART_COUNT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a66b6e70edb419760dc63d0a3916645ac" name="a66b6e70edb419760dc63d0a3916645ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66b6e70edb419760dc63d0a3916645ac">&#9670;&#160;</a></span>VSF_FIFO2REQ_USART_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_FIFO2REQ_USART_MASK&#160;&#160;&#160;<a class="el" href="hal_2driver_2_a_i_c_2_a_i_c8800_2device_8h.html#a5250fb6e19f73d65dbfdb0d7236caa36">VSF_HW_USART_MASK</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e696b1df3d46bd12310ac92d3c99ac0" name="a0e696b1df3d46bd12310ac92d3c99ac0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e696b1df3d46bd12310ac92d3c99ac0">&#9670;&#160;</a></span>VSF_USART_CFG_IMP_LV0 <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_USART_CFG_IMP_LV0</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__COUNT, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__HAL_OP&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    <a class="el" href="fifo2req__usart_8h.html#afd38b323b578116216cac1d6c76dcc73">describe_fifo2req_usart</a>(vsf_hw_usart ## __COUNT, __vsf_hw_usart ## __COUNT)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <h2 class="groupheader">类型定义说明</h2>
@@ -298,8 +430,26 @@
 
 </div>
 </div>
-<a id="a459cc0b4d78a9de6e533fbe3871d8b6c" name="a459cc0b4d78a9de6e533fbe3871d8b6c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a459cc0b4d78a9de6e533fbe3871d8b6c">&#9670;&#160;</a></span>vsf_hw_usart_enable()</h2>
+<a id="a0cd39ab920edb485e16fdc8318109d7b" name="a0cd39ab920edb485e16fdc8318109d7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cd39ab920edb485e16fdc8318109d7b">&#9670;&#160;</a></span>vsf_hw_usart_capability()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvsf__usart__capability__t.html">vsf_usart_capability_t</a> vsf_hw_usart_capability </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *&#160;</td>
+          <td class="paramname"><em>hw_usart_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45a82509c53a3529c3c4b78b67a31cf9" name="a45a82509c53a3529c3c4b78b67a31cf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45a82509c53a3529c3c4b78b67a31cf9">&#9670;&#160;</a></span>vsf_hw_usart_enable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -308,7 +458,7 @@
           <td class="memname"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a> vsf_hw_usart_enable </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *&#160;</td>
-          <td class="paramname"><em>usart_ptr</em></td><td>)</td>
+          <td class="paramname"><em>hw_usart_ptr</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -316,8 +466,8 @@
 
 </div>
 </div>
-<a id="a9e2164a8a3b0a9d19cd6d6084f03d17b" name="a9e2164a8a3b0a9d19cd6d6084f03d17b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e2164a8a3b0a9d19cd6d6084f03d17b">&#9670;&#160;</a></span>vsf_hw_usart_disable()</h2>
+<a id="a14123cb562fbc40f035d71e6c0f69c74" name="a14123cb562fbc40f035d71e6c0f69c74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14123cb562fbc40f035d71e6c0f69c74">&#9670;&#160;</a></span>vsf_hw_usart_disable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -326,7 +476,7 @@
           <td class="memname"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a> vsf_hw_usart_disable </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structvsf__hw__usart__t.html">vsf_hw_usart_t</a> *&#160;</td>
-          <td class="paramname"><em>usart_ptr</em></td><td>)</td>
+          <td class="paramname"><em>hw_usart_ptr</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

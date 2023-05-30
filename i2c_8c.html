@@ -57,7 +57,8 @@
   <div class="headertitle"><div class="title">i2c.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="hal_2driver_2_a_i_c_2_a_i_c8800_2i2c_2i2c_8h_source.html">./i2c.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="hal_2driver_2_a_i_c_2_a_i_c8800_2driver_8h_source.html">../driver.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__hal_8h_source.html">hal/vsf_hal.h</a>&quot;</code><br />
 <code>#include &quot;../vendor/plf/aic8800/src/driver/sysctrl/reg_sysctrl.h&quot;</code><br />
 <code>#include &quot;../vendor/plf/aic8800/src/driver/sysctrl/sysctrl_api.h&quot;</code><br />
 <code>#include &quot;../vendor/plf/aic8800/src/driver/i2cm/reg_i2cm.h&quot;</code><br />
@@ -72,16 +73,16 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a3d9964eded68bbe4e6c5d17cd034a1ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8c.html#a3d9964eded68bbe4e6c5d17cd034a1ed">VSF_I2C_CFG_IMP_PREFIX</a>&#160;&#160;&#160;vsf_hw</td></tr>
-<tr class="separator:a3d9964eded68bbe4e6c5d17cd034a1ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a757e7a14b4de6896acf358734fd8980f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8c.html#a757e7a14b4de6896acf358734fd8980f">VSF_I2C_CFG_IMP_UPCASE_PREFIX</a>&#160;&#160;&#160;VSF_HW</td></tr>
-<tr class="separator:a757e7a14b4de6896acf358734fd8980f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a504d6ba10f7450c3ff210ae24cfed558"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8c.html#a504d6ba10f7450c3ff210ae24cfed558">VSF_HW_I2C_CFG_MULTI_CLASS</a>&#160;&#160;&#160;<a class="el" href="vsf__template__i2c_8h.html#a0d11d9f236dca4d7436c4c338e97d1c6">VSF_I2C_CFG_MULTI_CLASS</a></td></tr>
 <tr class="separator:a504d6ba10f7450c3ff210ae24cfed558"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae15c6b53b84c794e320c703d89125370"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8c.html#ae15c6b53b84c794e320c703d89125370">VSF_HW_I2C_REQEUST_BUFFER_SIZE</a>&#160;&#160;&#160;3</td></tr>
 <tr class="separator:ae15c6b53b84c794e320c703d89125370"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa162b76fd4b33e7f47dbb157ee313769"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8c.html#aa162b76fd4b33e7f47dbb157ee313769">VSF_I2C_CFG_CAPABILITY_MAX_TRANSFER_SIZE</a>&#160;&#160;&#160;16</td></tr>
 <tr class="separator:aa162b76fd4b33e7f47dbb157ee313769"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d9964eded68bbe4e6c5d17cd034a1ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8c.html#a3d9964eded68bbe4e6c5d17cd034a1ed">VSF_I2C_CFG_IMP_PREFIX</a>&#160;&#160;&#160;vsf_hw</td></tr>
+<tr class="separator:a3d9964eded68bbe4e6c5d17cd034a1ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a757e7a14b4de6896acf358734fd8980f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8c.html#a757e7a14b4de6896acf358734fd8980f">VSF_I2C_CFG_IMP_UPCASE_PREFIX</a>&#160;&#160;&#160;VSF_HW</td></tr>
+<tr class="separator:a757e7a14b4de6896acf358734fd8980f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0708cf8d20b68b76e39656f61de1e6ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8c.html#a0708cf8d20b68b76e39656f61de1e6ad">VSF_I2C_CFG_IMP_LV0</a>(__COUNT,  __HAL_OP)</td></tr>
 <tr class="separator:a0708cf8d20b68b76e39656f61de1e6ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -112,36 +113,10 @@ Functions</h2></td></tr>
 <tr class="separator:a077c8d03e3a85eaae8d7cbe7ca8de566"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85b1dbd1c554f09e0e353e4c53c7ab98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8c.html#a85b1dbd1c554f09e0e353e4c53c7ab98">vsf_hw_i2c_get_transferred_count</a> (<a class="el" href="structvsf__hw__i2c__t.html">vsf_hw_i2c_t</a> *hw_i2c_ptr)</td></tr>
 <tr class="separator:a85b1dbd1c554f09e0e353e4c53c7ab98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab95e24a6fec5ab5c2a1eeb4fc7127c26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvsf__i2c__capability__t.html">vsf_i2c_capability_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8c.html#ab95e24a6fec5ab5c2a1eeb4fc7127c26">vsf_hw_i2c_capability</a> (<a class="el" href="structvsf__hw__i2c__t.html">vsf_hw_i2c_t</a> *i2c_ptr)</td></tr>
+<tr class="separator:ab95e24a6fec5ab5c2a1eeb4fc7127c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a3d9964eded68bbe4e6c5d17cd034a1ed" name="a3d9964eded68bbe4e6c5d17cd034a1ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d9964eded68bbe4e6c5d17cd034a1ed">&#9670;&#160;</a></span>VSF_I2C_CFG_IMP_PREFIX</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define VSF_I2C_CFG_IMP_PREFIX&#160;&#160;&#160;vsf_hw</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a757e7a14b4de6896acf358734fd8980f" name="a757e7a14b4de6896acf358734fd8980f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a757e7a14b4de6896acf358734fd8980f">&#9670;&#160;</a></span>VSF_I2C_CFG_IMP_UPCASE_PREFIX</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define VSF_I2C_CFG_IMP_UPCASE_PREFIX&#160;&#160;&#160;VSF_HW</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a504d6ba10f7450c3ff210ae24cfed558" name="a504d6ba10f7450c3ff210ae24cfed558"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a504d6ba10f7450c3ff210ae24cfed558">&#9670;&#160;</a></span>VSF_HW_I2C_CFG_MULTI_CLASS</h2>
 
@@ -184,6 +159,34 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a3d9964eded68bbe4e6c5d17cd034a1ed" name="a3d9964eded68bbe4e6c5d17cd034a1ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d9964eded68bbe4e6c5d17cd034a1ed">&#9670;&#160;</a></span>VSF_I2C_CFG_IMP_PREFIX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_I2C_CFG_IMP_PREFIX&#160;&#160;&#160;vsf_hw</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a757e7a14b4de6896acf358734fd8980f" name="a757e7a14b4de6896acf358734fd8980f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a757e7a14b4de6896acf358734fd8980f">&#9670;&#160;</a></span>VSF_I2C_CFG_IMP_UPCASE_PREFIX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_I2C_CFG_IMP_UPCASE_PREFIX&#160;&#160;&#160;VSF_HW</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a0708cf8d20b68b76e39656f61de1e6ad" name="a0708cf8d20b68b76e39656f61de1e6ad"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0708cf8d20b68b76e39656f61de1e6ad">&#9670;&#160;</a></span>VSF_I2C_CFG_IMP_LV0</h2>
 
@@ -220,12 +223,16 @@ Functions</h2></td></tr>
 <div class="line">    };                                                                          \</div>
 <div class="line">    <span class="keywordtype">void</span> VSF_HW_I2C ## __COUNT ## _IRQ(<span class="keywordtype">void</span>)                                    \</div>
 <div class="line">    {                                                                           \</div>
+<div class="line">        <a class="code hl_typedef" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> ctx = <a class="code hl_function" href="vsf__hal_8c.html#abfcfc6a9bbfd6cad28e139d71eadfd1b">vsf_hal_irq_enter</a>();                                    \</div>
 <div class="line">        __vsf_hw_i2c_irq_handler(&amp;vsf_hw_i2c ## __COUNT);                       \</div>
+<div class="line">        vsf_hal_irq_leave(ctx);                                                 \</div>
 <div class="line">    }</div>
-<div class="ttc" id="astructvsf__hw__i2c__const__t_html"><div class="ttname"><a href="structvsf__hw__i2c__const__t.html">vsf_hw_i2c_const_t</a></div><div class="ttdef"><b>Definition</b> i2c.c:48</div></div>
-<div class="ttc" id="astructvsf__hw__i2c__const__t_html_a8ed60ba9714faf2d283508705079ba60"><div class="ttname"><a href="structvsf__hw__i2c__const__t.html#a8ed60ba9714faf2d283508705079ba60">vsf_hw_i2c_const_t::reg</a></div><div class="ttdeci">AIC_I2CM_TypeDef * reg</div><div class="ttdef"><b>Definition</b> i2c.c:49</div></div>
-<div class="ttc" id="astructvsf__hw__i2c__t_html"><div class="ttname"><a href="structvsf__hw__i2c__t.html">vsf_hw_i2c_t</a></div><div class="ttdef"><b>Definition</b> i2c.c:57</div></div>
-<div class="ttc" id="astructvsf__hw__i2c__t_html_a17337af18750d87b48254653cf53e85f"><div class="ttname"><a href="structvsf__hw__i2c__t.html#a17337af18750d87b48254653cf53e85f">vsf_hw_i2c_t::i2c_const</a></div><div class="ttdeci">const vsf_hw_i2c_const_t * i2c_const</div><div class="ttdef"><b>Definition</b> i2c.c:62</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a09674b9e56fd7a93a2169aa9210deec7"><div class="ttname"><a href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a></div><div class="ttdeci">uint32_t uintptr_t</div><div class="ttdef"><b>Definition</b> type.h:49</div></div>
+<div class="ttc" id="astructvsf__hw__i2c__const__t_html"><div class="ttname"><a href="structvsf__hw__i2c__const__t.html">vsf_hw_i2c_const_t</a></div><div class="ttdef"><b>Definition</b> i2c.c:46</div></div>
+<div class="ttc" id="astructvsf__hw__i2c__const__t_html_a8ed60ba9714faf2d283508705079ba60"><div class="ttname"><a href="structvsf__hw__i2c__const__t.html#a8ed60ba9714faf2d283508705079ba60">vsf_hw_i2c_const_t::reg</a></div><div class="ttdeci">AIC_I2CM_TypeDef * reg</div><div class="ttdef"><b>Definition</b> i2c.c:47</div></div>
+<div class="ttc" id="astructvsf__hw__i2c__t_html"><div class="ttname"><a href="structvsf__hw__i2c__t.html">vsf_hw_i2c_t</a></div><div class="ttdef"><b>Definition</b> i2c.c:55</div></div>
+<div class="ttc" id="astructvsf__hw__i2c__t_html_a17337af18750d87b48254653cf53e85f"><div class="ttname"><a href="structvsf__hw__i2c__t.html#a17337af18750d87b48254653cf53e85f">vsf_hw_i2c_t::i2c_const</a></div><div class="ttdeci">const vsf_hw_i2c_const_t * i2c_const</div><div class="ttdef"><b>Definition</b> i2c.c:60</div></div>
+<div class="ttc" id="avsf__hal_8c_html_abfcfc6a9bbfd6cad28e139d71eadfd1b"><div class="ttname"><a href="vsf__hal_8c.html#abfcfc6a9bbfd6cad28e139d71eadfd1b">vsf_hal_irq_enter</a></div><div class="ttdeci">uintptr_t vsf_hal_irq_enter(void)</div><div class="ttdef"><b>Definition</b> vsf_hal.c:58</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -472,6 +479,24 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structvsf__hw__i2c__t.html">vsf_hw_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>hw_i2c_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab95e24a6fec5ab5c2a1eeb4fc7127c26" name="ab95e24a6fec5ab5c2a1eeb4fc7127c26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab95e24a6fec5ab5c2a1eeb4fc7127c26">&#9670;&#160;</a></span>vsf_hw_i2c_capability()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvsf__i2c__capability__t.html">vsf_i2c_capability_t</a> vsf_hw_i2c_capability </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__hw__i2c__t.html">vsf_hw_i2c_t</a> *&#160;</td>
+          <td class="paramname"><em>i2c_ptr</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

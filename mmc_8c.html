@@ -57,7 +57,8 @@
   <div class="headertitle"><div class="title">mmc.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="mmc_8h_source.html">./mmc.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="hal_2driver_2_a_i_c_2_a_i_c8800_2driver_8h_source.html">../driver.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__hal_8h_source.html">hal/vsf_hal.h</a>&quot;</code><br />
 <code>#include &quot;../vendor/plf/aic8800/src/driver/sysctrl/reg_sysctrl.h&quot;</code><br />
 <code>#include &quot;../vendor/plf/aic8800/src/driver/sysctrl/sysctrl_api.h&quot;</code><br />
 <code>#include &quot;../vendor/plf/aic8800/src/driver/iomux/reg_iomux.h&quot;</code><br />
@@ -74,16 +75,16 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a48504a35ac2cea670514e5d9801b8adc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mmc_8c.html#a48504a35ac2cea670514e5d9801b8adc">VSF_MMC_CFG_IMP_PREFIX</a>&#160;&#160;&#160;vsf_hw</td></tr>
-<tr class="separator:a48504a35ac2cea670514e5d9801b8adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0284848cb9b07e42a26180fc14af2db9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mmc_8c.html#a0284848cb9b07e42a26180fc14af2db9">VSF_MMC_CFG_IMP_UPCASE_PREFIX</a>&#160;&#160;&#160;VSF_HW</td></tr>
-<tr class="separator:a0284848cb9b07e42a26180fc14af2db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c3ac41af49320ac414cecadba66d1ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mmc_8c.html#a0c3ac41af49320ac414cecadba66d1ac">VSF_HW_MMC_CFG_MULTI_CLASS</a>&#160;&#160;&#160;<a class="el" href="vsf__template__mmc_8h.html#aab0ef77a95bb1a91ce2a3ef38d0cf604">VSF_MMC_CFG_MULTI_CLASS</a></td></tr>
 <tr class="separator:a0c3ac41af49320ac414cecadba66d1ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d1bd3ae595fb96b9416a3b653f3054f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mmc_8c.html#a8d1bd3ae595fb96b9416a3b653f3054f">DATARD_TRIG_TH</a>&#160;&#160;&#160;4</td></tr>
 <tr class="separator:a8d1bd3ae595fb96b9416a3b653f3054f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab70fd7b04d8be2de0da5441ea56081f5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mmc_8c.html#ab70fd7b04d8be2de0da5441ea56081f5">DATAWR_TRIG_TH</a>&#160;&#160;&#160;4</td></tr>
 <tr class="separator:ab70fd7b04d8be2de0da5441ea56081f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48504a35ac2cea670514e5d9801b8adc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mmc_8c.html#a48504a35ac2cea670514e5d9801b8adc">VSF_MMC_CFG_IMP_PREFIX</a>&#160;&#160;&#160;vsf_hw</td></tr>
+<tr class="separator:a48504a35ac2cea670514e5d9801b8adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0284848cb9b07e42a26180fc14af2db9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mmc_8c.html#a0284848cb9b07e42a26180fc14af2db9">VSF_MMC_CFG_IMP_UPCASE_PREFIX</a>&#160;&#160;&#160;VSF_HW</td></tr>
+<tr class="separator:a0284848cb9b07e42a26180fc14af2db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27a28ba448f9bc0c9eded8978ae92139"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mmc_8c.html#a27a28ba448f9bc0c9eded8978ae92139">VSF_MMC_CFG_IMP_LV0</a>(__COUNT,  __HAL_OP)</td></tr>
 <tr class="separator:a27a28ba448f9bc0c9eded8978ae92139"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -118,34 +119,6 @@ Functions</h2></td></tr>
 <tr class="separator:a7f3b21391d51a6bddaf6256355e15f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a48504a35ac2cea670514e5d9801b8adc" name="a48504a35ac2cea670514e5d9801b8adc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48504a35ac2cea670514e5d9801b8adc">&#9670;&#160;</a></span>VSF_MMC_CFG_IMP_PREFIX</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define VSF_MMC_CFG_IMP_PREFIX&#160;&#160;&#160;vsf_hw</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0284848cb9b07e42a26180fc14af2db9" name="a0284848cb9b07e42a26180fc14af2db9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0284848cb9b07e42a26180fc14af2db9">&#9670;&#160;</a></span>VSF_MMC_CFG_IMP_UPCASE_PREFIX</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define VSF_MMC_CFG_IMP_UPCASE_PREFIX&#160;&#160;&#160;VSF_HW</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a0c3ac41af49320ac414cecadba66d1ac" name="a0c3ac41af49320ac414cecadba66d1ac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c3ac41af49320ac414cecadba66d1ac">&#9670;&#160;</a></span>VSF_HW_MMC_CFG_MULTI_CLASS</h2>
 
@@ -188,6 +161,34 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a48504a35ac2cea670514e5d9801b8adc" name="a48504a35ac2cea670514e5d9801b8adc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48504a35ac2cea670514e5d9801b8adc">&#9670;&#160;</a></span>VSF_MMC_CFG_IMP_PREFIX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_MMC_CFG_IMP_PREFIX&#160;&#160;&#160;vsf_hw</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0284848cb9b07e42a26180fc14af2db9" name="a0284848cb9b07e42a26180fc14af2db9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0284848cb9b07e42a26180fc14af2db9">&#9670;&#160;</a></span>VSF_MMC_CFG_IMP_UPCASE_PREFIX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_MMC_CFG_IMP_UPCASE_PREFIX&#160;&#160;&#160;VSF_HW</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a27a28ba448f9bc0c9eded8978ae92139" name="a27a28ba448f9bc0c9eded8978ae92139"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27a28ba448f9bc0c9eded8978ae92139">&#9670;&#160;</a></span>VSF_MMC_CFG_IMP_LV0</h2>
 
@@ -223,12 +224,16 @@ Functions</h2></td></tr>
 <div class="line">    };                                                                          \</div>
 <div class="line">    <span class="keywordtype">void</span> VSF_HW_MMC ## __COUNT ## _IRQ(<span class="keywordtype">void</span>)                                    \</div>
 <div class="line">    {                                                                           \</div>
+<div class="line">        <a class="code hl_typedef" href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> ctx = <a class="code hl_function" href="vsf__hal_8c.html#abfcfc6a9bbfd6cad28e139d71eadfd1b">vsf_hal_irq_enter</a>();                                    \</div>
 <div class="line">        __vsf_hw_mmc_irq_handler(&amp;vsf_hw_mmc ## __COUNT);                       \</div>
+<div class="line">        vsf_hal_irq_leave(ctx);                                                 \</div>
 <div class="line">    }</div>
-<div class="ttc" id="astructvsf__hw__mmc__const__t_html"><div class="ttname"><a href="structvsf__hw__mmc__const__t.html">vsf_hw_mmc_const_t</a></div><div class="ttdef"><b>Definition</b> mmc.c:47</div></div>
-<div class="ttc" id="astructvsf__hw__mmc__const__t_html_a91017d9c2d993777db734d49d4cdf171"><div class="ttname"><a href="structvsf__hw__mmc__const__t.html#a91017d9c2d993777db734d49d4cdf171">vsf_hw_mmc_const_t::reg</a></div><div class="ttdeci">AIC_SDMMC_TypeDef * reg</div><div class="ttdef"><b>Definition</b> mmc.c:48</div></div>
-<div class="ttc" id="astructvsf__hw__mmc__t_html"><div class="ttname"><a href="structvsf__hw__mmc__t.html">vsf_hw_mmc_t</a></div><div class="ttdef"><b>Definition</b> mmc.c:52</div></div>
-<div class="ttc" id="astructvsf__hw__mmc__t_html_aa234f33d4f307b8014fb22313c3a3efe"><div class="ttname"><a href="structvsf__hw__mmc__t.html#aa234f33d4f307b8014fb22313c3a3efe">vsf_hw_mmc_t::mmc_const</a></div><div class="ttdeci">const vsf_hw_mmc_const_t * mmc_const</div><div class="ttdef"><b>Definition</b> mmc.c:57</div></div>
+<div class="ttc" id="aarm_2type_8h_html_a09674b9e56fd7a93a2169aa9210deec7"><div class="ttname"><a href="arm_2type_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a></div><div class="ttdeci">uint32_t uintptr_t</div><div class="ttdef"><b>Definition</b> type.h:49</div></div>
+<div class="ttc" id="astructvsf__hw__mmc__const__t_html"><div class="ttname"><a href="structvsf__hw__mmc__const__t.html">vsf_hw_mmc_const_t</a></div><div class="ttdef"><b>Definition</b> mmc.c:45</div></div>
+<div class="ttc" id="astructvsf__hw__mmc__const__t_html_a91017d9c2d993777db734d49d4cdf171"><div class="ttname"><a href="structvsf__hw__mmc__const__t.html#a91017d9c2d993777db734d49d4cdf171">vsf_hw_mmc_const_t::reg</a></div><div class="ttdeci">AIC_SDMMC_TypeDef * reg</div><div class="ttdef"><b>Definition</b> mmc.c:46</div></div>
+<div class="ttc" id="astructvsf__hw__mmc__t_html"><div class="ttname"><a href="structvsf__hw__mmc__t.html">vsf_hw_mmc_t</a></div><div class="ttdef"><b>Definition</b> mmc.c:50</div></div>
+<div class="ttc" id="astructvsf__hw__mmc__t_html_aa234f33d4f307b8014fb22313c3a3efe"><div class="ttname"><a href="structvsf__hw__mmc__t.html#aa234f33d4f307b8014fb22313c3a3efe">vsf_hw_mmc_t::mmc_const</a></div><div class="ttdeci">const vsf_hw_mmc_const_t * mmc_const</div><div class="ttdef"><b>Definition</b> mmc.c:55</div></div>
+<div class="ttc" id="avsf__hal_8c_html_abfcfc6a9bbfd6cad28e139d71eadfd1b"><div class="ttname"><a href="vsf__hal_8c.html#abfcfc6a9bbfd6cad28e139d71eadfd1b">vsf_hal_irq_enter</a></div><div class="ttdeci">uintptr_t vsf_hal_irq_enter(void)</div><div class="ttdef"><b>Definition</b> vsf_hal.c:58</div></div>
 </div><!-- fragment -->
 </div>
 </div>
