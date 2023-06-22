@@ -143,27 +143,27 @@
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="vsf__os_8h.html#ae9a1ef1a05f21db937560b964cd9c49a">   89</a></span><span class="preprocessor">#define vsf_unprotect_sched(__prot)         vsf_unprotect_scheduler(__prot)</span></div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">// kernel wrapper for host_request and host_thread</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">#ifdef VSF_ARCH_LIMIT_NO_SET_STACK</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">#if VSF_KERNEL_THREAD_USE_HOST == ENABLED</span></div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">#   ifdef VSF_ARCH_IRQ_REQUEST_SUPPORT_MANUAL_RESET</span></div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#       define __vsf_kernel_host_request_init(__req)    __vsf_arch_irq_request_init((__req), true)</span></div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#   else</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#       define __vsf_kernel_host_request_init(__req)    __vsf_arch_irq_request_init(__req)</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="vsf__os_8h.html#ac7ba03c48511f3f4490ef7e73b30c8b9">   96</a></span><span class="preprocessor">#       define __vsf_kernel_host_request_init(__req)    __vsf_arch_irq_request_init(__req)</span></div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">#   define __vsf_kernel_host_request_fini(__req)        __vsf_arch_irq_request_fini(__req)</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#   define __vsf_kernel_host_request_send(__req)        __vsf_arch_irq_request_send(__req)</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#   define __vsf_kernel_host_request_pend(__req)        __vsf_arch_irq_request_pend(__req)</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="vsf__os_8h.html#a2f6672b6771d1f1b0700e2f528282d2c">   98</a></span><span class="preprocessor">#   define __vsf_kernel_host_request_fini(__req)        __vsf_arch_irq_request_fini(__req)</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="vsf__os_8h.html#a0da0890554195ec6e31df9145a253f57">   99</a></span><span class="preprocessor">#   define __vsf_kernel_host_request_send(__req)        __vsf_arch_irq_request_send(__req)</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="vsf__os_8h.html#ac179ae54c2cc2bd511b3ad9f6d43c566">  100</a></span><span class="preprocessor">#   define __vsf_kernel_host_request_pend(__req)        __vsf_arch_irq_request_pend(__req)</span></div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">#   ifdef VSF_ARCH_IRQ_SUPPORT_STACK</span></div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="preprocessor">#       define __vsf_kernel_host_thread_init(__thread, __name, __entry, __prio, __stack, __stacksize)\</span></div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">                __vsf_arch_irq_init(__thread, __name, __entry, __prio, __stack, __stacksize)</span></div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="preprocessor">#   else</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="preprocessor">#       define __vsf_kernel_host_thread_init(__thread, __name, __entry, __prio, __stack, __stacksize)\</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="vsf__os_8h.html#ad4bad36232d2207d34b2ed75865ac820">  106</a></span><span class="preprocessor">#       define __vsf_kernel_host_thread_init(__thread, __name, __entry, __prio, __stack, __stacksize)\</span></div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor">                __vsf_arch_irq_init(__thread, __name, __entry, __prio)</span></div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="preprocessor">#   endif</span></div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">#   define __vsf_kernel_host_thread_restart(__thread, __request_pending)        \</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="vsf__os_8h.html#ac0187551b4ac1889c652f6899d44a47c">  110</a></span><span class="preprocessor">#   define __vsf_kernel_host_thread_restart(__thread, __request_pending)        \</span></div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="preprocessor">                __vsf_arch_irq_restart((__thread), (__request_pending))</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#   define __vsf_kernel_host_thread_exit(__thread)      __vsf_arch_irq_exit(__thread)</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="vsf__os_8h.html#a9d7369e6d463fc905a7d63560be48556">  112</a></span><span class="preprocessor">#   define __vsf_kernel_host_thread_exit(__thread)      __vsf_arch_irq_exit(__thread)</span></div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
