@@ -142,7 +142,7 @@
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#if VSF_KERNEL_THREAD_DYNAMIC_STACK == ENABLED</span></div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="vsf__thread_8h.html#a9791d64bf2ddfc024a53cda4bf8d5c10">   89</a></span><span class="preprocessor">#   define __vsf_thread_def_stack(__name, __bytesize)                           \</span></div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">            typedef enum {                                                      \</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">                vsf_thread##__name##_stack_bytesize = __bytesize,               \</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">                vsf_thread##__name##_stack_bytesize = (__bytesize),             \</span></div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">            };</span></div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="vsf__thread_8h.html#a2bba3de45527000cf8744504c5c2957d">   93</a></span><span class="preprocessor">#   define __vsf_thread_imp_stack(__name, __thread, __task)                     \</span></div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">            __thread-&gt;use_as__vsf_thread_cb_t.stack = NULL;                     \</span></div>
@@ -152,8 +152,8 @@
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">            .stack_size = (vsf_thread##__name##_stack_bytesize),</span></div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#else</span></div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#   define __vsf_thread_def_stack(__name, __bytesize)                           \</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">            uint64_t stack_arr[(__VSF_THREAD_STACK_SAFE_SIZE(__stack_bytesize) + 7) / 8]\</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">                        ALIGN(1 &lt;&lt; VSF_KERNEL_CFG_THREAD_STACK_ALIGN_BIT);      \</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">            uint64_t stack_arr[(__VSF_THREAD_STACK_SAFE_SIZE(__bytesize) + 7) / 8]\</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">                        ALIGN(1 &lt;&lt; VSF_KERNEL_CFG_THREAD_STACK_ALIGN_BIT);</span></div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="preprocessor">#   define __vsf_thread_imp_stack(__name, __thread, __task)                     \</span></div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">            __thread-&gt;use_as__vsf_thread_cb_t.stack = (__task)-&gt;param.stack_arr;\</span></div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="preprocessor">            __thread-&gt;use_as__vsf_thread_cb_t.stack_size = sizeof((__task)-&gt;param.stack_arr);;</span></div>
@@ -168,7 +168,7 @@
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="preprocessor">                implement(vsf_thread_cb_t)                                      \</span></div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">                __VA_ARGS__                                                     \</span></div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="preprocessor">                uint32_t canary;                                                \</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">                __vsf_thread_def_stack(__name, __stack_bytesize)                \</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">                __vsf_thread_def_stack(__name, (__stack_bytesize))              \</span></div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="preprocessor">            };                                                                  \</span></div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="preprocessor">            struct __name {                                                     \</span></div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="preprocessor">                implement(vsf_thread_t)                                         \</span></div>
@@ -292,7 +292,7 @@
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="preprocessor">                __VA_ARGS__                                                     \</span></div>
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="preprocessor">            };                                                                  \</span></div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="preprocessor">            struct __name {                                                     \</span></div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="preprocessor">                __vsf_thread_def_stack(__name, __stack_bytesize)                \</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="preprocessor">                __vsf_thread_def_stack(__name, (__stack_bytesize))              \</span></div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="preprocessor">                implement_ex(thread_cb_##__name##_t, param);                    \</span></div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="preprocessor">            } ALIGN(8);                                                         \</span></div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="preprocessor">            extern void vsf_thread_##__name##_start(struct __name *task,        \</span></div>
@@ -355,10 +355,10 @@
 <div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
 <div class="line"><a id="l00303" name="l00303"></a><span class="lineno"><a class="line" href="vsf__thread_8h.html#a2c7ebfc211ca368ae295d86c69c13fe2">  303</a></span><span class="preprocessor">#define def_vsf_thread(__name, __stack_bytesize, ...)                           \</span></div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="preprocessor">            __def_vsf_thread(__name, __stack_bytesize, __VA_ARGS__)</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="preprocessor">            __def_vsf_thread(__name, (__stack_bytesize), __VA_ARGS__)</span></div>
 <div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span> </div>
 <div class="line"><a id="l00306" name="l00306"></a><span class="lineno"><a class="line" href="vsf__thread_8h.html#ad82e94f4dd98a0648059672c3ede8241">  306</a></span><span class="preprocessor">#define define_vsf_thread(__name, __stack_bytesize, ...)                        \</span></div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="preprocessor">            def_vsf_thread(__name, __stack_bytesize, __VA_ARGS__)</span></div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="preprocessor">            def_vsf_thread(__name, (__stack_bytesize), __VA_ARGS__)</span></div>
 <div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>
 <div class="line"><a id="l00309" name="l00309"></a><span class="lineno"><a class="line" href="vsf__thread_8h.html#ab4efc06d30f29457efde3d52c304a844">  309</a></span><span class="preprocessor">#define def_vsf_thread_ex(__name, ...)                                          \</span></div>
 <div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="preprocessor">            __def_vsf_thread_ex(__name, __VA_ARGS__)</span></div>
