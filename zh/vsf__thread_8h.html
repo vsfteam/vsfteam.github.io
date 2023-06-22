@@ -507,7 +507,6 @@
 <div class="line">            <span class="keyword">struct </span>thread_cb_##<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_t {                                     \</div>
 <div class="line">                implement(vsf_thread_cb_t)                                      \</div>
 <div class="line">                __VA_ARGS__                                                     \</div>
-<div class="line">                uint32_t canary;                                                \</div>
 <div class="line">                __vsf_thread_def_stack_member(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, (__stack_bytesize))       \</div>
 <div class="line">            };                                                                  \</div>
 <div class="line">            <span class="keyword">struct </span><a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> {                                                     \</div>
@@ -550,9 +549,8 @@
 <div class="line">                __vsf_pthis-&gt;use_as__vsf_thread_cb_t.entry = (vsf_thread_entry_t *)\</div>
 <div class="line">                                    &amp;vsf_thread_##<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_entry;               \</div>
 <div class="line">                __vsf_thread_imp_stack(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, __vsf_pthis, task)               \</div>
-<div class="line">                __vsf_pthis-&gt;canary = 0xDEADBEEF;                               \</div>
 <div class="line">                vsf_thread_start(   &amp;(task-&gt;use_as__vsf_thread_t),              \</div>
-<div class="line">                                    &amp;(task-&gt;param.use_as__vsf_thread_cb_t),     \</div>
+<div class="line">                                    &amp;(__vsf_pthis-&gt;use_as__vsf_thread_cb_t),    \</div>
 <div class="line">                                    priority);                                  \</div>
 <div class="line">            }                                                                   \</div>
 <div class="line">            <span class="keywordtype">void</span> vsf_thread_##<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>##_entry(                                   \</div>
