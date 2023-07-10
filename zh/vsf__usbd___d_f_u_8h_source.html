@@ -103,69 +103,82 @@
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#aaace8bfaa2190bd55d1ab574293b966b">   49</a></span><span class="preprocessor">#define __usbd_dfu_desc(__name, __ifs_start, __i_func, __protocol, __dfu_attr, __detach_timeout, __transfer_size)\</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">            USB_DESC_DFU((__ifs_start), (__i_func), (__protocol), (__dfu_attr), (__detach_timeout), (__transfer_size))</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#a2925561ab521f35b0ca63ee7012f232d">   52</a></span><span class="preprocessor">#define USB_DFU_PARAM(__PROTOCOL, __DFU_ATTR, __TRANSFER_BUFFER)                \</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#aced9d341803c254e0407076523b98ec1">   52</a></span><span class="preprocessor">#define USB_DFU_PARAM(__PROTOCOL, __DFU_ATTR, __TRANSFER_SIZE, __TRANSFER_BUFFER)\</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">            .protocol = (__PROTOCOL),                                           \</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">            .attribute = (__DFU_ATTR),                                          \</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">            .transfer_buffer = (__TRANSFER_BUFFER),</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#abfb5dca1c476194d02e343030df05418">   57</a></span><span class="preprocessor">#define __usbd_dfu_func(__name, __func_id, __protocol, __dfu_attr, __transfer_size)\</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">            static uint8_t __##__name##_DFU##__transfer_buffer[__transfer_size];\</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">            .transfer_size = (__TRANSFER_SIZE),                                 \</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">            .transfer_buffer = (__TRANSFER_BUFFER),</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#aabed00fcb9c2ac4053519485be9527db">   58</a></span><span class="preprocessor">#define __usbd_dfu_func1(__name, __func_id, __protocol, __dfu_attr, __transfer_size, __transfer_buffer)\</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">            vk_usbd_dfu_t __##__name##_DFU##__func_id = {                       \</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">                USB_DFU_PARAM((__protocol), (__dfu_attr), __##__name##_DFU##__transfer_buffer)\</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">                USB_DFU_PARAM((__protocol), (__dfu_attr), (__transfer_size), (__transfer_buffer))\</span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">            };</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#a7958b979151febd1599337b1b3346724">   63</a></span><span class="preprocessor">#define __usbd_dfu_ifs(__name, __func_id)                                       \</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">            USB_IFS(&amp;vk_usbd_dfu, &amp;__##__name##_DFU##__func_id)</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#a67478e7619d9a57707fdb69ac1382da3">   62</a></span><span class="preprocessor">#define __usbd_dfu_func0(__name, __func_id, __protocol, __dfu_attr, __transfer_size)\</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">            static uint8_t __##__name##_DFU##__transfer_buffer[__transfer_size];\</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">            __usbd_dfu_func1(__name, __func_id, (__protocol), (__dfu_attr), (__transfer_size), &amp;__##__name##_DFU##__transfer_buffer[__transfer_size])</span></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#adc21b7b7fe34769b8b39862da683bb91">   66</a></span><span class="preprocessor">#define usbd_dfu_desc(__name, __ifs_start, __i_func, __protocol, __dfu_attr, __detach_timeout, __transfer_size)\</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">            __usbd_dfu_desc(__name, (__ifs_start), __i_func, (__protocol), (__dfu_attr), (__detach_timeout), (__transfer_size))</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#ac26f56534fe26e354202c9e6470cda04">   68</a></span><span class="preprocessor">#define usbd_dfu_desc_iad(__name, __ifs_start, __i_func, __protocol, __dfu_attr, __detach_timeout, __transfer_size)\</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">            __usbd_dfu_desc_iad(__name, (__ifs_start), __i_func, (__protocol), (__dfu_attr), (__transfer_size))</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#a3cd8b238522504762bae9ccd748f13fc">   70</a></span><span class="preprocessor">#define usbd_dfu_func(__name, __func_id, __protocol, __dfu_attr, __transfer_size)\</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">            __usbd_dfu_func(__name, __func_id, (__protocol), (__dfu_attr), (__transfer_size))</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#a1e4858859290e4a56de88ca31f4e5ca0">   72</a></span><span class="preprocessor">#define usbd_dfu_ifs(__name, __func_id)                                         \</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">            __usbd_dfu_ifs(__name, __func_id)</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classvk__usbd__dfu__t.html">   78</a></span><a class="code hl_define" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code hl_class" href="classvk__usbd__dfu__t.html">vk_usbd_dfu_t</a>) {</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    public_member(</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> protocol;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code hl_struct" href="structattribute.html">attribute</a>;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *transfer_buffer;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classvk__usbd__dfu__t.html#a4bb36be46aaca7dad9d0f5e3acd45b46">   83</a></span>    )</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    private_member(</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <a class="code hl_struct" href="structusb__dfu__status__t.html">usb_dfu_status_t</a> <a class="code hl_variable" href="vsf__tgui_8h.html#ade818037fd6c985038ff29656089758d">status</a>;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <a class="code hl_class" href="classvsf__eda__t.html">vsf_eda_t</a> eda;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        vk_usbd_dev_t *dev;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        vk_usbd_ifs_t *ifs;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    )</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>};</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="keyword">extern</span> <span class="keyword">const</span> vk_usbd_class_op_t <a class="code hl_variable" href="vsf__usbd___d_f_u_8h.html#a7d5de0c971d33d1ac58d191a5775335d">vk_usbd_dfu</a>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#a6e6faeee65bfc8a349bcf61c6fcfd597">   66</a></span><span class="preprocessor">#define __usbd_dfu_func(__name, __func_id, __protocol, __dfu_attr, __transfer_size, ...)\</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">            __PLOOC_EVAL(__usbd_dfu_func, __VA_ARGS__)(__name, __func_id, (__protocol), (__dfu_attr), (__transfer_size), ##__VA_ARGS__)</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#a7958b979151febd1599337b1b3346724">   69</a></span><span class="preprocessor">#define __usbd_dfu_ifs(__name, __func_id)                                       \</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">            USB_IFS(&amp;vk_usbd_dfu, &amp;__##__name##_DFU##__func_id)</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#adc21b7b7fe34769b8b39862da683bb91">   72</a></span><span class="preprocessor">#define usbd_dfu_desc(__name, __ifs_start, __i_func, __protocol, __dfu_attr, __detach_timeout, __transfer_size)\</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">            __usbd_dfu_desc(__name, (__ifs_start), __i_func, (__protocol), (__dfu_attr), (__detach_timeout), (__transfer_size))</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#ac26f56534fe26e354202c9e6470cda04">   74</a></span><span class="preprocessor">#define usbd_dfu_desc_iad(__name, __ifs_start, __i_func, __protocol, __dfu_attr, __detach_timeout, __transfer_size)\</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">            __usbd_dfu_desc_iad(__name, (__ifs_start), __i_func, (__protocol), (__dfu_attr), (__transfer_size))</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#ac6ca97dec87520ccd2f5cb3971873e8f">   76</a></span><span class="preprocessor">#define usbd_dfu_func(__name, __func_id, __protocol, __dfu_attr, __transfer_size, ...)\</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">            __usbd_dfu_func(__name, __func_id, (__protocol), (__dfu_attr), (__transfer_size), ##__VA_ARGS__)</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#a1e4858859290e4a56de88ca31f4e5ca0">   78</a></span><span class="preprocessor">#define usbd_dfu_ifs(__name, __func_id)                                         \</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">            __usbd_dfu_ifs(__name, __func_id)</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classvk__usbd__dfu__t.html">   84</a></span><a class="code hl_define" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code hl_class" href="classvk__usbd__dfu__t.html">vk_usbd_dfu_t</a>) {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    public_member(</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> protocol;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="code hl_struct" href="structattribute.html">attribute</a>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> transfer_size;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *transfer_buffer;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classvk__usbd__dfu__t.html#a4bb36be46aaca7dad9d0f5e3acd45b46">   90</a></span>    )</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    private_member(</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <a class="code hl_struct" href="structusb__dfu__status__t.html">usb_dfu_status_t</a> <a class="code hl_variable" href="vsf__tgui_8h.html#ade818037fd6c985038ff29656089758d">status</a>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> block_idx;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> addr;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> cur_size;</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_USB_DEVICE &amp;&amp; VSF_USBD_USE_DFU</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_USBD_DFU_H__</span></div>
-<div class="ttc" id="aclassvk__usbd__dfu__t_html"><div class="ttname"><a href="classvk__usbd__dfu__t.html">vk_usbd_dfu_t</a></div><div class="ttdef"><b>Definition</b> vsf_usbd_DFU.h:78</div></div>
-<div class="ttc" id="aclassvsf__eda__t_html"><div class="ttname"><a href="classvsf__eda__t.html">vsf_eda_t</a></div><div class="ttdef"><b>Definition</b> vsf_eda.h:750</div></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        vk_usbd_dev_t *dev;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        vk_usbd_ifs_t *ifs;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    )</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>};</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keyword">extern</span> <span class="keyword">const</span> vk_usbd_class_op_t <a class="code hl_variable" href="vsf__usbd___d_f_u_8h.html#a7d5de0c971d33d1ac58d191a5775335d">vk_usbd_dfu</a>;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="vsf__usbd___d_f_u_8h.html#a8f13c03a0821dee169e415a1b9216e83">  108</a></span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="vsf__usbd___d_f_u_8h.html#a8f13c03a0821dee169e415a1b9216e83">vk_usbd_dfu_downloaded</a>(<a class="code hl_class" href="classvk__usbd__dfu__t.html">vk_usbd_dfu_t</a> *dfu, <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> result);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>}</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_USB_DEVICE &amp;&amp; VSF_USBD_USE_DFU</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_USBD_DFU_H__</span></div>
+<div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition</b> __type.h:42</div></div>
+<div class="ttc" id="aclassvk__usbd__dfu__t_html"><div class="ttname"><a href="classvk__usbd__dfu__t.html">vk_usbd_dfu_t</a></div><div class="ttdef"><b>Definition</b> vsf_usbd_DFU.h:84</div></div>
 <div class="ttc" id="aooc__class_8h_html"><div class="ttname"><a href="ooc__class_8h.html">ooc_class.h</a></div></div>
 <div class="ttc" id="aooc__class_8h_html_a62f3fe6fb9699483707f5352d777f2f0"><div class="ttname"><a href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a></div><div class="ttdeci">#define vsf_class(__name)</div><div class="ttdef"><b>Definition</b> ooc_class.h:44</div></div>
+<div class="ttc" id="astdint_8h_html_a273cf69d639a59973b6019625df33e30"><div class="ttname"><a href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a></div><div class="ttdeci">unsigned short uint16_t</div><div class="ttdef"><b>Definition</b> stdint.h:7</div></div>
 <div class="ttc" id="astdint_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition</b> stdint.h:5</div></div>
 <div class="ttc" id="astructattribute_html"><div class="ttname"><a href="structattribute.html">attribute</a></div><div class="ttdef"><b>Definition</b> sysfs.h:10</div></div>
-<div class="ttc" id="astructusb__dfu__status__t_html"><div class="ttname"><a href="structusb__dfu__status__t.html">usb_dfu_status_t</a></div><div class="ttdef"><b>Definition</b> vsf_usb_dfu.h:73</div></div>
+<div class="ttc" id="astructusb__dfu__status__t_html"><div class="ttname"><a href="structusb__dfu__status__t.html">usb_dfu_status_t</a></div><div class="ttdef"><b>Definition</b> vsf_usb_dfu.h:106</div></div>
 <div class="ttc" id="avsf__tgui_8h_html_ade818037fd6c985038ff29656089758d"><div class="ttname"><a href="vsf__tgui_8h.html#ade818037fd6c985038ff29656089758d">status</a></div><div class="ttdeci">uint8_t status</div><div class="ttdef"><b>Definition</b> vsf_tgui.h:122</div></div>
 <div class="ttc" id="avsf__usb__cfg_8h_html"><div class="ttname"><a href="vsf__usb__cfg_8h.html">vsf_usb_cfg.h</a></div></div>
 <div class="ttc" id="avsf__usbd___d_f_u_8h_html_a7d5de0c971d33d1ac58d191a5775335d"><div class="ttname"><a href="vsf__usbd___d_f_u_8h.html#a7d5de0c971d33d1ac58d191a5775335d">vk_usbd_dfu</a></div><div class="ttdeci">const vk_usbd_class_op_t vk_usbd_dfu</div></div>
+<div class="ttc" id="avsf__usbd___d_f_u_8h_html_a8f13c03a0821dee169e415a1b9216e83"><div class="ttname"><a href="vsf__usbd___d_f_u_8h.html#a8f13c03a0821dee169e415a1b9216e83">vk_usbd_dfu_downloaded</a></div><div class="ttdeci">void vk_usbd_dfu_downloaded(vk_usbd_dfu_t *dfu, vsf_err_t result)</div></div>
 <div class="ttc" id="avsf__usbd___d_f_u__desc_8h_html"><div class="ttname"><a href="vsf__usbd___d_f_u__desc_8h.html">vsf_usbd_DFU_desc.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
