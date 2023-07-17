@@ -2446,7 +2446,7 @@
 <div class="line">    <a class="code hl_class" href="classvsf__linux__process__t.html">vsf_linux_process_t</a> *parent_process = <a class="code hl_function" href="vsf__linux_8c.html#ad807b27b155702b7c4da0852a6016bff">vsf_linux_get_cur_process</a>();          \</div>
 <div class="line">    <a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a> result = (<a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a>)-1, child_pid = <a class="code hl_function" href="unistd_8h.html#acef36cf03e70dcb55f37413ce62bbb9a">__vsf_linux_vfork_prepare</a>(parent_process);\</div>
 <div class="line">    if (child_pid &gt;= 0) {                                                       \</div>
-<div class="line">        result = !<a class="code hl_function" href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">setjmp</a>(parent_process-&gt;__vfork_jmpbuf)? (<a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a>)0 : child_pid; \</div>
+<div class="line">        result = !<a class="code hl_function" href="setjmp_8h.html#a0ea8f6bdb917bfa1c71ddf65f43730ca">setjmp</a>(parent_process-&gt;__vfork_jmpbuf) ? (<a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a>)0 : child_pid;\</div>
 <div class="line">    }                                                                           \</div>
 <div class="line">    result;                                                                     \</div>
 <div class="line">})</div>
