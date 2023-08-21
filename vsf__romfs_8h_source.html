@@ -125,32 +125,33 @@
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_class" href="classvk__romfs__file__t.html">vk_romfs_file_t</a> root;</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_struct" href="structvk__romfs__header__t.html">vk_romfs_header_t</a> *image;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="comment">// image_size is necessary only if is_chained is true</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="comment">// image_size/alignment is necessary only if is_chained is true</span></div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> image_size;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// used to chian multiple romfs</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">bool</span> is_chained;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>};</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_class" href="classvk__fs__op__t.html">vk_fs_op_t</a> <a class="code hl_variable" href="vsf__romfs_8h.html#a895baec687582e9c22f215d7fe74fb47">vk_romfs_op</a>;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#if defined(__VSF_ROMFS_CLASS_INHERIT__) || defined(__VSF_ROMFS_CLASS_IMPLEMENT)</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="vsf__romfs_8c.html#a917f3d34ad142d09dd5baa37973fe4f6">vsf_romfs_is_image_valid</a>(<a class="code hl_struct" href="structvk__romfs__header__t.html">vk_romfs_header_t</a> *image);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keyword">extern</span> <a class="code hl_struct" href="structvk__romfs__header__t.html">vk_romfs_header_t</a> * <a class="code hl_function" href="vsf__romfs_8c.html#aeba72da5ae5cee09705b6a65b4bd60dc">vsf_romfs_chain_get_next</a>(<a class="code hl_struct" href="structvk__romfs__header__t.html">vk_romfs_header_t</a> *image);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>}</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#undef __VSF_ROMFS_CLASS_IMPLEMENT</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#undef __VSF_ROMFS_CLASS_INHERIT__</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_FS &amp;&amp; VSF_FS_USE_ROMFS</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_ROMFS_H__</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> <a class="code hl_variable" href="vsf__heap_8h.html#a76a334eceff36dd821a66e376256a569">alignment</a>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// used to chian multiple romfs</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">bool</span> is_chained;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>};</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_class" href="classvk__fs__op__t.html">vk_fs_op_t</a> <a class="code hl_variable" href="vsf__romfs_8h.html#a895baec687582e9c22f215d7fe74fb47">vk_romfs_op</a>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#if defined(__VSF_ROMFS_CLASS_INHERIT__) || defined(__VSF_ROMFS_CLASS_IMPLEMENT)</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="vsf__romfs_8c.html#a917f3d34ad142d09dd5baa37973fe4f6">vsf_romfs_is_image_valid</a>(<a class="code hl_struct" href="structvk__romfs__header__t.html">vk_romfs_header_t</a> *image);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keyword">extern</span> <a class="code hl_struct" href="structvk__romfs__header__t.html">vk_romfs_header_t</a> * <a class="code hl_function" href="vsf__romfs_8c.html#a1fa4365f214e7e32b241f299d18cc118">vsf_romfs_chain_get_next</a>(<a class="code hl_class" href="classvk__romfs__info__t.html">vk_romfs_info_t</a> *info, <a class="code hl_struct" href="structvk__romfs__header__t.html">vk_romfs_header_t</a> *image, <span class="keywordtype">bool</span> force);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#undef __VSF_ROMFS_CLASS_IMPLEMENT</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">#undef __VSF_ROMFS_CLASS_INHERIT__</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_FS &amp;&amp; VSF_FS_USE_ROMFS</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_ROMFS_H__</span></div>
 <div class="ttc" id="a____type_8h_html_a73c228f87e038e8295ee8ea8eceaa5ac"><div class="ttname"><a href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></div><div class="ttdeci">#define ENABLED</div><div class="ttdef"><b>Definition</b> __type.h:28</div></div>
 <div class="ttc" id="aclassvk__file__t_html"><div class="ttname"><a href="classvk__file__t.html">vk_file_t</a></div><div class="ttdef"><b>Definition</b> vsf_fs.h:113</div></div>
 <div class="ttc" id="aclassvk__fs__op__t_html"><div class="ttname"><a href="classvk__fs__op__t.html">vk_fs_op_t</a></div><div class="ttdef"><b>Definition</b> vsf_fs.h:92</div></div>
@@ -166,8 +167,9 @@
 <div class="ttc" id="astructvk__romfs__header__t_html_a2f226bbbb50896174abe149f7adad33b"><div class="ttname"><a href="structvk__romfs__header__t.html#a2f226bbbb50896174abe149f7adad33b">vk_romfs_header_t::nextfh</a></div><div class="ttdeci">uint32_t nextfh</div><div class="ttdef"><b>Definition</b> vsf_romfs.h:49</div></div>
 <div class="ttc" id="astructvk__romfs__header__t_html_aa1c03eb401a09c229fa783fa0cff37fc"><div class="ttname"><a href="structvk__romfs__header__t.html#aa1c03eb401a09c229fa783fa0cff37fc">vk_romfs_header_t::spec</a></div><div class="ttdeci">uint32_t spec</div><div class="ttdef"><b>Definition</b> vsf_romfs.h:50</div></div>
 <div class="ttc" id="astructvk__romfs__header__t_html_af94311a8adbefe8c606e061fd76ec561"><div class="ttname"><a href="structvk__romfs__header__t.html#af94311a8adbefe8c606e061fd76ec561">vk_romfs_header_t::size</a></div><div class="ttdeci">uint32_t size</div><div class="ttdef"><b>Definition</b> vsf_romfs.h:51</div></div>
+<div class="ttc" id="avsf__heap_8h_html_a76a334eceff36dd821a66e376256a569"><div class="ttname"><a href="vsf__heap_8h.html#a76a334eceff36dd821a66e376256a569">alignment</a></div><div class="ttdeci">uint_fast32_t alignment</div><div class="ttdef"><b>Definition</b> vsf_heap.h:135</div></div>
+<div class="ttc" id="avsf__romfs_8c_html_a1fa4365f214e7e32b241f299d18cc118"><div class="ttname"><a href="vsf__romfs_8c.html#a1fa4365f214e7e32b241f299d18cc118">vsf_romfs_chain_get_next</a></div><div class="ttdeci">vk_romfs_header_t * vsf_romfs_chain_get_next(vk_romfs_info_t *fsinfo, vk_romfs_header_t *image, bool force)</div><div class="ttdef"><b>Definition</b> vsf_romfs.c:106</div></div>
 <div class="ttc" id="avsf__romfs_8c_html_a917f3d34ad142d09dd5baa37973fe4f6"><div class="ttname"><a href="vsf__romfs_8c.html#a917f3d34ad142d09dd5baa37973fe4f6">vsf_romfs_is_image_valid</a></div><div class="ttdeci">bool vsf_romfs_is_image_valid(vk_romfs_header_t *image)</div><div class="ttdef"><b>Definition</b> vsf_romfs.c:101</div></div>
-<div class="ttc" id="avsf__romfs_8c_html_aeba72da5ae5cee09705b6a65b4bd60dc"><div class="ttname"><a href="vsf__romfs_8c.html#aeba72da5ae5cee09705b6a65b4bd60dc">vsf_romfs_chain_get_next</a></div><div class="ttdeci">vk_romfs_header_t * vsf_romfs_chain_get_next(vk_romfs_header_t *image)</div><div class="ttdef"><b>Definition</b> vsf_romfs.c:106</div></div>
 <div class="ttc" id="avsf__romfs_8h_html_a895baec687582e9c22f215d7fe74fb47"><div class="ttname"><a href="vsf__romfs_8h.html#a895baec687582e9c22f215d7fe74fb47">vk_romfs_op</a></div><div class="ttdeci">const vk_fs_op_t vk_romfs_op</div></div>
 <div class="ttc" id="avsf__romfs_8h_html_adf4f48a2c7b755862b7245d6282b6141"><div class="ttname"><a href="vsf__romfs_8h.html#adf4f48a2c7b755862b7245d6282b6141">VSF_ROMFS_CFG_DIRECT_ACCESS</a></div><div class="ttdeci">#define VSF_ROMFS_CFG_DIRECT_ACCESS</div><div class="ttdef"><b>Definition</b> vsf_romfs.h:42</div></div>
 <div class="ttc" id="avsf__romfs_8h_html_ae93b20d8ec5b8e354b38cb59dd860ca7"><div class="ttname"><a href="vsf__romfs_8h.html#ae93b20d8ec5b8e354b38cb59dd860ca7">PACKED</a></div><div class="ttdeci">struct vk_romfs_header_t PACKED</div></div>
