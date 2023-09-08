@@ -60,6 +60,7 @@
 <code>#include &quot;PikaStdData_List.h&quot;</code><br />
 <code>#include &quot;PikaStdData_Dict.h&quot;</code><br />
 <code>#include &quot;PikaStdData_Tuple.h&quot;</code><br />
+<code>#include &quot;PikaStdData_FILEIO.h&quot;</code><br />
 </div>
 <p><a href="vsf__pikapython_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -109,7 +110,7 @@ Macros</h2></td></tr>
 <tr class="separator:a338326c9130f72dc6dc5bddea4c6fdfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0ec8bad63095a3f27102a80336b54fa" id="r_aa0ec8bad63095a3f27102a80336b54fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__pikapython_8h.html#aa0ec8bad63095a3f27102a80336b54fa">vsf_pyal_filearg_get_file</a>(__filearg)&#160;&#160;&#160;arg_getPtr(__filearg)</td></tr>
 <tr class="separator:aa0ec8bad63095a3f27102a80336b54fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7fbc2b54af4ab7d070b7f606f299c05" id="r_aa7fbc2b54af4ab7d070b7f606f299c05"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__pikapython_8h.html#aa7fbc2b54af4ab7d070b7f606f299c05">vsf_pyal_filearg_clear</a>(__filearg)&#160;&#160;&#160;arg_setPtr(__filearg, &quot;fd&quot;, ARG_TYPE_POINTER, <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)</td></tr>
+<tr class="memitem:aa7fbc2b54af4ab7d070b7f606f299c05" id="r_aa7fbc2b54af4ab7d070b7f606f299c05"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__pikapython_8h.html#aa7fbc2b54af4ab7d070b7f606f299c05">vsf_pyal_filearg_clear</a>(__filearg)&#160;&#160;&#160;arg_setPtr(__filearg, &quot;_d&quot;, ARG_TYPE_POINTER, <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)</td></tr>
 <tr class="separator:aa7fbc2b54af4ab7d070b7f606f299c05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb61e7a38f138f469bb00d72802e18ca" id="r_aeb61e7a38f138f469bb00d72802e18ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__pikapython_8h.html#aeb61e7a38f138f469bb00d72802e18ca">vsf_pyal_newobj_tuple</a>(__num,  __args)</td></tr>
 <tr class="separator:aeb61e7a38f138f469bb00d72802e18ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -635,8 +636,9 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    ({                                                                          \</div>
 <div class="line">        (void)(__is_text);                                                      \</div>
-<div class="line">        <a class="code hl_typedef" href="vsf__micropython_8h.html#ace6bb48c0e60a284e8f09401f3e23a61">vsf_pyal_obj_t</a> fileobj = newNormalObj(New_TinyObj);                     \</div>
-<div class="line">        obj_setPtr(fileobj, <span class="stringliteral">&quot;fd&quot;</span>, (__file));                                    \</div>
+<div class="line">        <a class="code hl_typedef" href="vsf__micropython_8h.html#ace6bb48c0e60a284e8f09401f3e23a61">vsf_pyal_obj_t</a> fileobj = newNormalObj(New_PikaStdData_FILEIO);          \</div>
+<div class="line">        obj_setPtr(fileobj, <span class="stringliteral">&quot;_f&quot;</span>, (__file));                                    \</div>
+<div class="line">        obj_setStr(fileobj, <span class="stringliteral">&quot;_mode&quot;</span>, (__is_text) ? <span class="stringliteral">&quot;t&quot;</span> : <span class="stringliteral">&quot;b&quot;</span>);                  \</div>
 <div class="line">        fileobj;                                                                \</div>
 <div class="line">    })</div>
 <div class="ttc" id="avsf__micropython_8h_html_ace6bb48c0e60a284e8f09401f3e23a61"><div class="ttname"><a href="vsf__micropython_8h.html#ace6bb48c0e60a284e8f09401f3e23a61">vsf_pyal_obj_t</a></div><div class="ttdeci">mp_obj_t vsf_pyal_obj_t</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:60</div></div>
@@ -708,7 +710,7 @@ Typedefs</h2></td></tr>
 <div class="line">        <a class="code hl_typedef" href="vsf__micropython_8h.html#ace6bb48c0e60a284e8f09401f3e23a61">vsf_pyal_obj_t</a> fileobj = <a class="code hl_define" href="vsf__pikapython_8h.html#a2b3efbf2e2ba19bf79485c000e790613">vsf_pyal_newobj_file</a>((__file), (__is_text));   \</div>
 <div class="line">        arg_newObj(fileobj);                                                    \</div>
 <div class="line">    })</div>
-<div class="ttc" id="avsf__pikapython_8h_html_a2b3efbf2e2ba19bf79485c000e790613"><div class="ttname"><a href="vsf__pikapython_8h.html#a2b3efbf2e2ba19bf79485c000e790613">vsf_pyal_newobj_file</a></div><div class="ttdeci">#define vsf_pyal_newobj_file(__file, __is_text)</div><div class="ttdef"><b>Definition</b> vsf_pikapython.h:104</div></div>
+<div class="ttc" id="avsf__pikapython_8h_html_a2b3efbf2e2ba19bf79485c000e790613"><div class="ttname"><a href="vsf__pikapython_8h.html#a2b3efbf2e2ba19bf79485c000e790613">vsf_pyal_newobj_file</a></div><div class="ttdeci">#define vsf_pyal_newobj_file(__file, __is_text)</div><div class="ttdef"><b>Definition</b> vsf_pikapython.h:105</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -741,7 +743,7 @@ Typedefs</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">__filearg</td><td>)</td>
-          <td>&#160;&#160;&#160;arg_setPtr(__filearg, &quot;fd&quot;, ARG_TYPE_POINTER, <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)</td>
+          <td>&#160;&#160;&#160;arg_setPtr(__filearg, &quot;_d&quot;, ARG_TYPE_POINTER, <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -954,7 +956,7 @@ Typedefs</h2></td></tr>
 <div class="line">        arg_deinit(arg);                                                        \</div>
 <div class="line">    })</div>
 <div class="ttc" id="ahci__transport__aic8800_8c_html_a7f565b52ec477e9c0c235e88b9355558"><div class="ttname"><a href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a></div><div class="ttdeci">#define __name</div><div class="ttdef"><b>Definition</b> hci_transport_aic8800.c:552</div></div>
-<div class="ttc" id="avsf__pikapython_8h_html_a910f6032e00cbf20b09b6249b2660d8b"><div class="ttname"><a href="vsf__pikapython_8h.html#a910f6032e00cbf20b09b6249b2660d8b">vsf_pyal_newarg_obj</a></div><div class="ttdeci">#define vsf_pyal_newarg_obj(__obj)</div><div class="ttdef"><b>Definition</b> vsf_pikapython.h:46</div></div>
+<div class="ttc" id="avsf__pikapython_8h_html_a910f6032e00cbf20b09b6249b2660d8b"><div class="ttname"><a href="vsf__pikapython_8h.html#a910f6032e00cbf20b09b6249b2660d8b">vsf_pyal_newarg_obj</a></div><div class="ttdeci">#define vsf_pyal_newarg_obj(__obj)</div><div class="ttdef"><b>Definition</b> vsf_pikapython.h:47</div></div>
 </div><!-- fragment -->
 </div>
 </div>
