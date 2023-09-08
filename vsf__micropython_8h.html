@@ -88,6 +88,8 @@ Macros</h2></td></tr>
 <tr class="separator:ad19f983b37b5f5bedef9e2c7586cd99b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf56428e7cf954c026ebe32e27591002" id="r_aaf56428e7cf954c026ebe32e27591002"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#aaf56428e7cf954c026ebe32e27591002">vsf_pyal_newarg_str</a>(__str)&#160;&#160;&#160;mp_obj_new_str((const char *)(__str), <a class="el" href="string_8h.html#a008e171a518fe0e0352f31b245e03875">strlen</a>(__str))</td></tr>
 <tr class="separator:aaf56428e7cf954c026ebe32e27591002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e8a9d1dae4090b72812021b977c6bc3" id="r_a1e8a9d1dae4090b72812021b977c6bc3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a1e8a9d1dae4090b72812021b977c6bc3">vsf_pyal_newarg_str_ret</a>(__str,  __need_free)</td></tr>
+<tr class="separator:a1e8a9d1dae4090b72812021b977c6bc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6cd682dc806e854f87691f9848d0398" id="r_ad6cd682dc806e854f87691f9848d0398"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#ad6cd682dc806e854f87691f9848d0398">vsf_pyal_strarg_get_str</a>(__str_arg)&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#aa1128376aa17dd162158468495d28879">vsf_pyal_strobj_get_str</a>(__str_arg)</td></tr>
 <tr class="separator:ad6cd682dc806e854f87691f9848d0398"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa94df49041912e1835bb705472ce5833" id="r_aa94df49041912e1835bb705472ce5833"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#aa94df49041912e1835bb705472ce5833">vsf_pyal_newarg_int</a>(__value)&#160;&#160;&#160;mp_obj_new_int(__value)</td></tr>
@@ -96,8 +98,6 @@ Macros</h2></td></tr>
 <tr class="separator:a592cc2a8d5115cef1409950e02cd567a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fa4d0cb2ef5fb4e9ad906e0b25e0b30" id="r_a1fa4d0cb2ef5fb4e9ad906e0b25e0b30"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a1fa4d0cb2ef5fb4e9ad906e0b25e0b30">vsf_pyal_newarg_bool</a>(__bool)&#160;&#160;&#160;({ (__bool) ? mp_const_true : mp_const_false; })</td></tr>
 <tr class="separator:a1fa4d0cb2ef5fb4e9ad906e0b25e0b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43328dd031d6bd75b8c9bd44bd29311e" id="r_a43328dd031d6bd75b8c9bd44bd29311e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a43328dd031d6bd75b8c9bd44bd29311e">vsf_pyal_newarg_bytes</a>(__data,  __len)&#160;&#160;&#160;mp_obj_new_bytes((const byte *)(__data), __len)</td></tr>
-<tr class="separator:a43328dd031d6bd75b8c9bd44bd29311e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e16fa0a869963ff91cfc2e1fbc5e349" id="r_a9e16fa0a869963ff91cfc2e1fbc5e349"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a9e16fa0a869963ff91cfc2e1fbc5e349">vsf_pyal_free_arg</a>(__arg)</td></tr>
 <tr class="separator:a9e16fa0a869963ff91cfc2e1fbc5e349"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b296f4d4015b91552f59eaf5f5cacfb" id="r_a5b296f4d4015b91552f59eaf5f5cacfb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a5b296f4d4015b91552f59eaf5f5cacfb">VSF_PYAL_OBJ_NULL</a>&#160;&#160;&#160;MP_OBJ_NULL</td></tr>
@@ -116,18 +116,28 @@ Macros</h2></td></tr>
 <tr class="separator:aa1128376aa17dd162158468495d28879"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7135ca220402755b22cfc946b3a6af38" id="r_a7135ca220402755b22cfc946b3a6af38"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a7135ca220402755b22cfc946b3a6af38">vsf_pyal_newobj_bytes</a>(__data,  __len)&#160;&#160;&#160;mp_obj_new_bytes((const byte *)(__data), __len)</td></tr>
 <tr class="separator:a7135ca220402755b22cfc946b3a6af38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec55b0dcaba211bfc26de1d4c29aa6a3" id="r_aec55b0dcaba211bfc26de1d4c29aa6a3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#aec55b0dcaba211bfc26de1d4c29aa6a3">vsf_pyal_newobj_bytes_from_buffer</a>(__buffer)&#160;&#160;&#160;mp_obj_new_bytes_from_vstr(&amp;(__buffer))</td></tr>
-<tr class="separator:aec55b0dcaba211bfc26de1d4c29aa6a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c68e719c154d13749ae677e90220ceb" id="r_a6c68e719c154d13749ae677e90220ceb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a6c68e719c154d13749ae677e90220ceb">vsf_pyal_newobj_bytes_from_buffer</a>(__buffer,  __len)</td></tr>
+<tr class="separator:a6c68e719c154d13749ae677e90220ceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07077e76fb2db69d3833edde206c88cb" id="r_a07077e76fb2db69d3833edde206c88cb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a07077e76fb2db69d3833edde206c88cb">vsf_pyal_bytesobj_get_data</a>(__bytesobj,  __len_ptr)&#160;&#160;&#160;                                                    (<a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *)mp_obj_str_get_data((__bytesobj), (__len_ptr))</td></tr>
 <tr class="separator:a07077e76fb2db69d3833edde206c88cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43328dd031d6bd75b8c9bd44bd29311e" id="r_a43328dd031d6bd75b8c9bd44bd29311e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a43328dd031d6bd75b8c9bd44bd29311e">vsf_pyal_newarg_bytes</a>(__data,  __len)&#160;&#160;&#160;mp_obj_new_bytes((const byte *)(__data), __len)</td></tr>
+<tr class="separator:a43328dd031d6bd75b8c9bd44bd29311e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f4c7155104ebda0fe222e92a815939f" id="r_a8f4c7155104ebda0fe222e92a815939f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a8f4c7155104ebda0fe222e92a815939f">vsf_pyal_newarg_bytes_ret</a>(__data,  __len,  __need_free)</td></tr>
+<tr class="separator:a8f4c7155104ebda0fe222e92a815939f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34b32513afdb77d0a084f310338b7d33" id="r_a34b32513afdb77d0a084f310338b7d33"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a34b32513afdb77d0a084f310338b7d33">vsf_pyal_bytesarg_get_data</a>(__bytesarg,  __len_ptr)&#160;&#160;&#160;                                                    <a class="el" href="vsf__micropython_8h.html#a07077e76fb2db69d3833edde206c88cb">vsf_pyal_bytesobj_get_data</a>((__bytesarg), (__len_ptr))</td></tr>
+<tr class="separator:a34b32513afdb77d0a084f310338b7d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b3efbf2e2ba19bf79485c000e790613" id="r_a2b3efbf2e2ba19bf79485c000e790613"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a2b3efbf2e2ba19bf79485c000e790613">vsf_pyal_newobj_file</a>(__file,  __is_text)</td></tr>
 <tr class="separator:a2b3efbf2e2ba19bf79485c000e790613"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ac8ce531aa62344ac69356a7e675868" id="r_a1ac8ce531aa62344ac69356a7e675868"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a1ac8ce531aa62344ac69356a7e675868">vsf_pyal_fileobj_get_file</a>(__fileobj)&#160;&#160;&#160;((<a class="el" href="vsf__micropython_8h.html#a705b0e9384522fae42d2484c84b5378b">mp_obj_file_t</a> *)(__fileobj))-&gt;f</td></tr>
 <tr class="separator:a1ac8ce531aa62344ac69356a7e675868"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9126c8481976bf6f86b5bc85de60a34b" id="r_a9126c8481976bf6f86b5bc85de60a34b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a9126c8481976bf6f86b5bc85de60a34b">vsf_pyal_fileobj_clear</a>(__fileobj)&#160;&#160;&#160;((<a class="el" href="vsf__micropython_8h.html#a705b0e9384522fae42d2484c84b5378b">mp_obj_file_t</a> *)(__fileobj))-&gt;f = <a class="el" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
 <tr class="separator:a9126c8481976bf6f86b5bc85de60a34b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3e46a870afe0e97756b3873628b9000" id="r_ad3e46a870afe0e97756b3873628b9000"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#ad3e46a870afe0e97756b3873628b9000">vsf_pyal_newobj_tuple</a>(__size,  __args)&#160;&#160;&#160;mp_obj_new_tuple((__size), (__args))</td></tr>
-<tr class="separator:ad3e46a870afe0e97756b3873628b9000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0ec8bad63095a3f27102a80336b54fa" id="r_aa0ec8bad63095a3f27102a80336b54fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#aa0ec8bad63095a3f27102a80336b54fa">vsf_pyal_filearg_get_file</a>(__filearg)&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#a1ac8ce531aa62344ac69356a7e675868">vsf_pyal_fileobj_get_file</a>(__filearg)</td></tr>
+<tr class="separator:aa0ec8bad63095a3f27102a80336b54fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7fbc2b54af4ab7d070b7f606f299c05" id="r_aa7fbc2b54af4ab7d070b7f606f299c05"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#aa7fbc2b54af4ab7d070b7f606f299c05">vsf_pyal_filearg_clear</a>(__filearg)&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#a9126c8481976bf6f86b5bc85de60a34b">vsf_pyal_fileobj_clear</a>(__filearg)</td></tr>
+<tr class="separator:aa7fbc2b54af4ab7d070b7f606f299c05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb61e7a38f138f469bb00d72802e18ca" id="r_aeb61e7a38f138f469bb00d72802e18ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#aeb61e7a38f138f469bb00d72802e18ca">vsf_pyal_newobj_tuple</a>(__num,  __args)&#160;&#160;&#160;mp_obj_new_tuple((__num), (__args))</td></tr>
+<tr class="separator:aeb61e7a38f138f469bb00d72802e18ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac98be7bf4d5e9fb95877ade437d37870" id="r_ac98be7bf4d5e9fb95877ade437d37870"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#ac98be7bf4d5e9fb95877ade437d37870">VSF_PYAL_DICT_EVT_ON_UPDATE</a>&#160;&#160;&#160;DICT_OP_UPDATE</td></tr>
 <tr class="separator:ac98be7bf4d5e9fb95877ade437d37870"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92173638e3b0b0ca5bfe12907602ccdd" id="r_a92173638e3b0b0ca5bfe12907602ccdd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a92173638e3b0b0ca5bfe12907602ccdd">VSF_PYAL_DICT_EVT_ON_DELETE</a>&#160;&#160;&#160;DICT_OP_DELETE</td></tr>
@@ -152,7 +162,7 @@ Macros</h2></td></tr>
 <tr class="separator:a0f045cb0683d5b3fb21729efe835aaa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58f5aa0c5531ee4203e64df00c129af8" id="r_a58f5aa0c5531ee4203e64df00c129af8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a58f5aa0c5531ee4203e64df00c129af8">vsf_pyal_funcarg_intobj</a>&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#ab18d77a41914431a2f55a9e7a31b7383">vsf_pyal_arg_t</a></td></tr>
 <tr class="separator:a58f5aa0c5531ee4203e64df00c129af8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17ef6098c51620defddfcb192c69f9e8" id="r_a17ef6098c51620defddfcb192c69f9e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a17ef6098c51620defddfcb192c69f9e8">vsf_pyal_funcarg_intobj_get_int</a>(__arg)&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#ad6cd682dc806e854f87691f9848d0398">vsf_pyal_strarg_get_str</a>(__arg)</td></tr>
+<tr class="memitem:a17ef6098c51620defddfcb192c69f9e8" id="r_a17ef6098c51620defddfcb192c69f9e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a17ef6098c51620defddfcb192c69f9e8">vsf_pyal_funcarg_intobj_get_int</a>(__arg)&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#a592cc2a8d5115cef1409950e02cd567a">vsf_pyal_intarg_get_int</a>(__arg)</td></tr>
 <tr class="separator:a17ef6098c51620defddfcb192c69f9e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c55e0c69f3dc6820401b572ec600916" id="r_a0c55e0c69f3dc6820401b572ec600916"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a0c55e0c69f3dc6820401b572ec600916">vsf_pyal_funcarg_newint</a>(__value)&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#aa94df49041912e1835bb705472ce5833">vsf_pyal_newarg_int</a>(__value)</td></tr>
 <tr class="separator:a0c55e0c69f3dc6820401b572ec600916"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,20 +170,24 @@ Macros</h2></td></tr>
 <tr class="separator:a37b898eef5b2787b3a945f4269584be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84751608905d8ceca54d9b13c9132a11" id="r_a84751608905d8ceca54d9b13c9132a11"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a84751608905d8ceca54d9b13c9132a11">vsf_pyal_funcarg_newbool</a>(__bool)&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#a1fa4d0cb2ef5fb4e9ad906e0b25e0b30">vsf_pyal_newarg_bool</a>(__bool)</td></tr>
 <tr class="separator:a84751608905d8ceca54d9b13c9132a11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25383a3412d2723c2e7b4dbe4c988e13" id="r_a25383a3412d2723c2e7b4dbe4c988e13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a25383a3412d2723c2e7b4dbe4c988e13">vsf_pyal_funcarg_bytesobj</a>&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#a6480fc25637dbb56d77590226ae0c399">vsf_pyal_funcarg_strobj</a></td></tr>
+<tr class="separator:a25383a3412d2723c2e7b4dbe4c988e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49d6c6d2a1af7664de73f3e0e29dfb3a" id="r_a49d6c6d2a1af7664de73f3e0e29dfb3a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a49d6c6d2a1af7664de73f3e0e29dfb3a">vsf_pyal_newarg_bytes_ret_from_buffer</a>(__buffer,  __length)</td></tr>
+<tr class="separator:a49d6c6d2a1af7664de73f3e0e29dfb3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a368eb65f5438f7c3ddcfa2715d22c75d" id="r_a368eb65f5438f7c3ddcfa2715d22c75d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a368eb65f5438f7c3ddcfa2715d22c75d">vsf_pyal_funcarg_var</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)&#160;&#160;&#160;<a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> <a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> ## _num, const mp_obj_t *<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> ## _arr</td></tr>
 <tr class="separator:a368eb65f5438f7c3ddcfa2715d22c75d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e5a470eff2d3b670e375a19d0c8eb57" id="r_a1e5a470eff2d3b670e375a19d0c8eb57"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a1e5a470eff2d3b670e375a19d0c8eb57">vsf_pyal_funcarg_var_num</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)&#160;&#160;&#160;<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> ## _num</td></tr>
 <tr class="separator:a1e5a470eff2d3b670e375a19d0c8eb57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa92cce71d49b1cc94c8b5a3f8dca841b" id="r_aa92cce71d49b1cc94c8b5a3f8dca841b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#aa92cce71d49b1cc94c8b5a3f8dca841b">vsf_pyal_funcarg_var_is_int</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __idx)&#160;&#160;&#160;mp_obj_is_int((<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> ## _arr)[__idx])</td></tr>
-<tr class="separator:aa92cce71d49b1cc94c8b5a3f8dca841b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa30381e1b12804924ff7cd58b5d72bb0" id="r_aa30381e1b12804924ff7cd58b5d72bb0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#aa30381e1b12804924ff7cd58b5d72bb0">vsf_pyal_funcarg_var_is_str</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __idx)&#160;&#160;&#160;mp_obj_is_str((<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> ## _arr)[__idx])</td></tr>
 <tr class="separator:aa30381e1b12804924ff7cd58b5d72bb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe3d2ab53e801c35b2994bfded8f8063" id="r_afe3d2ab53e801c35b2994bfded8f8063"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#afe3d2ab53e801c35b2994bfded8f8063">vsf_pyal_funcarg_var_get_str</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __idx)&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#aa1128376aa17dd162158468495d28879">vsf_pyal_strobj_get_str</a>((<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> ## _arr)[__idx])</td></tr>
 <tr class="separator:afe3d2ab53e801c35b2994bfded8f8063"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa92cce71d49b1cc94c8b5a3f8dca841b" id="r_aa92cce71d49b1cc94c8b5a3f8dca841b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#aa92cce71d49b1cc94c8b5a3f8dca841b">vsf_pyal_funcarg_var_is_int</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __idx)&#160;&#160;&#160;mp_obj_is_int((<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> ## _arr)[__idx])</td></tr>
+<tr class="separator:aa92cce71d49b1cc94c8b5a3f8dca841b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86356125867edd9523154f00eb005cb4" id="r_a86356125867edd9523154f00eb005cb4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a86356125867edd9523154f00eb005cb4">vsf_pyal_funcarg_var_get_int</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __idx)&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#a5e38f424f4de8f3d33911346dd31f36d">vsf_pyal_intobj_get_int</a>((<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> ## _arr)[__idx])</td></tr>
 <tr class="separator:a86356125867edd9523154f00eb005cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bcef2ec2dc85636fb420cf0376a1b74" id="r_a0bcef2ec2dc85636fb420cf0376a1b74"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a0bcef2ec2dc85636fb420cf0376a1b74">vsf_pyal_funcarg_var_get_obj</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __idx)&#160;&#160;&#160;((<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> ## _arr)[__idx])</td></tr>
-<tr class="separator:a0bcef2ec2dc85636fb420cf0376a1b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a911ddb75a845fc510ee3f2333c543545" id="r_a911ddb75a845fc510ee3f2333c543545"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a911ddb75a845fc510ee3f2333c543545">vsf_pyal_funcarg_var_get_arg</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __idx)&#160;&#160;&#160;((<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> ## _arr)[__idx])</td></tr>
+<tr class="separator:a911ddb75a845fc510ee3f2333c543545"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af31c8e43bbdbaac20c57ad7da2c60116" id="r_af31c8e43bbdbaac20c57ad7da2c60116"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#af31c8e43bbdbaac20c57ad7da2c60116">vsf_pyal_func_void_return_t</a>&#160;&#160;&#160;mp_obj_t</td></tr>
 <tr class="separator:af31c8e43bbdbaac20c57ad7da2c60116"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25d73a049a6a04bae7edbf0720ed637d" id="r_a25d73a049a6a04bae7edbf0720ed637d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a25d73a049a6a04bae7edbf0720ed637d">vsf_pyal_func_void_return</a>()&#160;&#160;&#160;return mp_const_none</td></tr>
@@ -192,8 +206,8 @@ Macros</h2></td></tr>
 <tr class="separator:a9b493e5f92b34e948c58408e5f1a1cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a150749c29667656450cdf45925fbb387" id="r_a150749c29667656450cdf45925fbb387"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a150749c29667656450cdf45925fbb387">vsf_pyal_module_func_init_return</a>()&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#a25d73a049a6a04bae7edbf0720ed637d">vsf_pyal_func_void_return</a>()</td></tr>
 <tr class="separator:a150749c29667656450cdf45925fbb387"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a991a256e16fbb38e86649a41a97d2075" id="r_a991a256e16fbb38e86649a41a97d2075"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a991a256e16fbb38e86649a41a97d2075">vsf_pyal_module_func_name</a>(__mod,  __func)&#160;&#160;&#160;__mod ## <a class="el" href="vsf__msg__tree_8h.html#a73100cc4743cfeb4da757cb6e1afb570">_</a> ## __func</td></tr>
-<tr class="separator:a991a256e16fbb38e86649a41a97d2075"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13a9de3eface045d2f5661f81c8e1f5f" id="r_a13a9de3eface045d2f5661f81c8e1f5f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a13a9de3eface045d2f5661f81c8e1f5f">vsf_pyal_module_func_call</a>(__mod,  __func, ...)&#160;&#160;&#160;    __mod ## <a class="el" href="vsf__msg__tree_8h.html#a73100cc4743cfeb4da757cb6e1afb570">_</a> ## __func(__VA_ARGS__)</td></tr>
+<tr class="separator:a13a9de3eface045d2f5661f81c8e1f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1bbb511cd67aba3d855b2ff204d70fd1" id="r_a1bbb511cd67aba3d855b2ff204d70fd1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a1bbb511cd67aba3d855b2ff204d70fd1">vsf_pyal_module_int</a>(__mod,  <a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __value)&#160;&#160;&#160;{ MP_ROM_QSTR(MP_QSTR_ ## <a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>), MP_ROM_INT(__value) }</td></tr>
 <tr class="separator:a1bbb511cd67aba3d855b2ff204d70fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a900664080afb4a19993657b23bc55143" id="r_a900664080afb4a19993657b23bc55143"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__micropython_8h.html#a900664080afb4a19993657b23bc55143">vsf_pyal_module_str</a>(__mod,  <a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __str)&#160;&#160;&#160;{ MP_ROM_QSTR(MP_QSTR_ ## <a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>), MP_ROM_QSTR(MP_QSTR_ ## __str) }</td></tr>
@@ -395,6 +409,42 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a1e8a9d1dae4090b72812021b977c6bc3" name="a1e8a9d1dae4090b72812021b977c6bc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e8a9d1dae4090b72812021b977c6bc3">&#9670;&#160;</a></span>vsf_pyal_newarg_str_ret</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_pyal_newarg_str_ret</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__str, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__need_free&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    ({                                                                          \</div>
+<div class="line">        <a class="code hl_typedef" href="vsf__micropython_8h.html#ab18d77a41914431a2f55a9e7a31b7383">vsf_pyal_arg_t</a> arg = <a class="code hl_define" href="vsf__micropython_8h.html#aaf56428e7cf954c026ebe32e27591002">vsf_pyal_newarg_str</a>(__str);                        \</div>
+<div class="line">        if (__need_free) { <a class="code hl_define" href="stdlib_8h.html#a2c6efa7679f8cd9f61af96e105017560">free</a>(__str); }                                       \</div>
+<div class="line">        arg;                                                                    \</div>
+<div class="line">    })</div>
+<div class="ttc" id="astdlib_8h_html_a2c6efa7679f8cd9f61af96e105017560"><div class="ttname"><a href="stdlib_8h.html#a2c6efa7679f8cd9f61af96e105017560">free</a></div><div class="ttdeci">#define free</div><div class="ttdef"><b>Definition</b> stdlib.h:24</div></div>
+<div class="ttc" id="avsf__micropython_8h_html_aaf56428e7cf954c026ebe32e27591002"><div class="ttname"><a href="vsf__micropython_8h.html#aaf56428e7cf954c026ebe32e27591002">vsf_pyal_newarg_str</a></div><div class="ttdeci">#define vsf_pyal_newarg_str(__str)</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:55</div></div>
+<div class="ttc" id="avsf__micropython_8h_html_ab18d77a41914431a2f55a9e7a31b7383"><div class="ttname"><a href="vsf__micropython_8h.html#ab18d77a41914431a2f55a9e7a31b7383">vsf_pyal_arg_t</a></div><div class="ttdeci">mp_obj_t vsf_pyal_arg_t</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:53</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="ad6cd682dc806e854f87691f9848d0398" name="ad6cd682dc806e854f87691f9848d0398"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad6cd682dc806e854f87691f9848d0398">&#9670;&#160;</a></span>vsf_pyal_strarg_get_str</h2>
 
@@ -461,34 +511,6 @@ Variables</h2></td></tr>
           <td class="paramtype">&#160;</td>
           <td class="paramname">__bool</td><td>)</td>
           <td>&#160;&#160;&#160;({ (__bool) ? mp_const_true : mp_const_false; })</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a43328dd031d6bd75b8c9bd44bd29311e" name="a43328dd031d6bd75b8c9bd44bd29311e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43328dd031d6bd75b8c9bd44bd29311e">&#9670;&#160;</a></span>vsf_pyal_newarg_bytes</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define vsf_pyal_newarg_bytes</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">__data, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">__len&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;mp_obj_new_bytes((const byte *)(__data), __len)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -689,8 +711,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aec55b0dcaba211bfc26de1d4c29aa6a3" name="aec55b0dcaba211bfc26de1d4c29aa6a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec55b0dcaba211bfc26de1d4c29aa6a3">&#9670;&#160;</a></span>vsf_pyal_newobj_bytes_from_buffer</h2>
+<a id="a6c68e719c154d13749ae677e90220ceb" name="a6c68e719c154d13749ae677e90220ceb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c68e719c154d13749ae677e90220ceb">&#9670;&#160;</a></span>vsf_pyal_newobj_bytes_from_buffer</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -699,12 +721,26 @@ Variables</h2></td></tr>
           <td class="memname">#define vsf_pyal_newobj_bytes_from_buffer</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">__buffer</td><td>)</td>
-          <td>&#160;&#160;&#160;mp_obj_new_bytes_from_vstr(&amp;(__buffer))</td>
+          <td class="paramname">__buffer, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__len&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Value:</b><div class="fragment"><div class="line">    ({                                                                          \</div>
+<div class="line">        vsf_pyal_buffer_set_len((__buffer), (__len));                           \</div>
+<div class="line">        mp_obj_new_bytes_from_vstr(&amp;(__buffer));                                \</div>
+<div class="line">    })</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a07077e76fb2db69d3833edde206c88cb" name="a07077e76fb2db69d3833edde206c88cb"></a>
@@ -729,6 +765,102 @@ Variables</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td>&#160;&#160;&#160;                                                    (<a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *)mp_obj_str_get_data((__bytesobj), (__len_ptr))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a43328dd031d6bd75b8c9bd44bd29311e" name="a43328dd031d6bd75b8c9bd44bd29311e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43328dd031d6bd75b8c9bd44bd29311e">&#9670;&#160;</a></span>vsf_pyal_newarg_bytes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_pyal_newarg_bytes</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__data, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__len&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;mp_obj_new_bytes((const byte *)(__data), __len)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f4c7155104ebda0fe222e92a815939f" name="a8f4c7155104ebda0fe222e92a815939f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f4c7155104ebda0fe222e92a815939f">&#9670;&#160;</a></span>vsf_pyal_newarg_bytes_ret</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_pyal_newarg_bytes_ret</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__data, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__len, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__need_free&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    ({                                                                          \</div>
+<div class="line">        <a class="code hl_typedef" href="vsf__micropython_8h.html#ab18d77a41914431a2f55a9e7a31b7383">vsf_pyal_arg_t</a> arg = <a class="code hl_define" href="vsf__micropython_8h.html#a43328dd031d6bd75b8c9bd44bd29311e">vsf_pyal_newarg_bytes</a>((__data), (__len));          \</div>
+<div class="line">        if (__need_free) { <a class="code hl_define" href="stdlib_8h.html#a2c6efa7679f8cd9f61af96e105017560">free</a>(__data); }                                      \</div>
+<div class="line">        arg;                                                                    \</div>
+<div class="line">    })</div>
+<div class="ttc" id="avsf__micropython_8h_html_a43328dd031d6bd75b8c9bd44bd29311e"><div class="ttname"><a href="vsf__micropython_8h.html#a43328dd031d6bd75b8c9bd44bd29311e">vsf_pyal_newarg_bytes</a></div><div class="ttdeci">#define vsf_pyal_newarg_bytes(__data, __len)</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:100</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a34b32513afdb77d0a084f310338b7d33" name="a34b32513afdb77d0a084f310338b7d33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34b32513afdb77d0a084f310338b7d33">&#9670;&#160;</a></span>vsf_pyal_bytesarg_get_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_pyal_bytesarg_get_data</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__bytesarg, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__len_ptr&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;                                                    <a class="el" href="vsf__micropython_8h.html#a07077e76fb2db69d3833edde206c88cb">vsf_pyal_bytesobj_get_data</a>((__bytesarg), (__len_ptr))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -766,9 +898,9 @@ Variables</h2></td></tr>
 <div class="line">        fileobj-&gt;<a class="code hl_variable" href="struct__mp__obj__file__t.html#a706395b5ad281a90eccb27e0662a86f8">f</a> = (__file);                                                  \</div>
 <div class="line">        MP_OBJ_FROM_PTR(fileobj);                                               \</div>
 <div class="line">    })</div>
-<div class="ttc" id="astruct__mp__obj__file__t_html"><div class="ttname"><a href="struct__mp__obj__file__t.html">_mp_obj_file_t</a></div><div class="ttdef"><b>Definition</b> vsf_micropython.h:85</div></div>
-<div class="ttc" id="astruct__mp__obj__file__t_html_a3ffb93c1533baa3630f14d89442ab0b1"><div class="ttname"><a href="struct__mp__obj__file__t.html#a3ffb93c1533baa3630f14d89442ab0b1">_mp_obj_file_t::base</a></div><div class="ttdeci">mp_obj_base_t base</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:86</div></div>
-<div class="ttc" id="astruct__mp__obj__file__t_html_a706395b5ad281a90eccb27e0662a86f8"><div class="ttname"><a href="struct__mp__obj__file__t.html#a706395b5ad281a90eccb27e0662a86f8">_mp_obj_file_t::f</a></div><div class="ttdeci">FILE * f</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:88</div></div>
+<div class="ttc" id="astruct__mp__obj__file__t_html"><div class="ttname"><a href="struct__mp__obj__file__t.html">_mp_obj_file_t</a></div><div class="ttdef"><b>Definition</b> vsf_micropython.h:112</div></div>
+<div class="ttc" id="astruct__mp__obj__file__t_html_a3ffb93c1533baa3630f14d89442ab0b1"><div class="ttname"><a href="struct__mp__obj__file__t.html#a3ffb93c1533baa3630f14d89442ab0b1">_mp_obj_file_t::base</a></div><div class="ttdeci">mp_obj_base_t base</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:113</div></div>
+<div class="ttc" id="astruct__mp__obj__file__t_html_a706395b5ad281a90eccb27e0662a86f8"><div class="ttname"><a href="struct__mp__obj__file__t.html#a706395b5ad281a90eccb27e0662a86f8">_mp_obj_file_t::f</a></div><div class="ttdeci">FILE * f</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:115</div></div>
 <div class="ttc" id="avsf__micropython_8h_html_a5e90c51b23dcd39f467606d9e5338e12"><div class="ttname"><a href="vsf__micropython_8h.html#a5e90c51b23dcd39f467606d9e5338e12">mp_type_textio</a></div><div class="ttdeci">const mp_obj_type_t mp_type_textio</div></div>
 <div class="ttc" id="avsf__micropython_8h_html_ae2ca15e971f0f9e323c1be3c5309f823"><div class="ttname"><a href="vsf__micropython_8h.html#ae2ca15e971f0f9e323c1be3c5309f823">mp_type_fileio</a></div><div class="ttdeci">const mp_obj_type_t mp_type_fileio</div></div>
 </div><!-- fragment -->
@@ -810,8 +942,44 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ad3e46a870afe0e97756b3873628b9000" name="ad3e46a870afe0e97756b3873628b9000"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3e46a870afe0e97756b3873628b9000">&#9670;&#160;</a></span>vsf_pyal_newobj_tuple</h2>
+<a id="aa0ec8bad63095a3f27102a80336b54fa" name="aa0ec8bad63095a3f27102a80336b54fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0ec8bad63095a3f27102a80336b54fa">&#9670;&#160;</a></span>vsf_pyal_filearg_get_file</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_pyal_filearg_get_file</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__filearg</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#a1ac8ce531aa62344ac69356a7e675868">vsf_pyal_fileobj_get_file</a>(__filearg)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa7fbc2b54af4ab7d070b7f606f299c05" name="aa7fbc2b54af4ab7d070b7f606f299c05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7fbc2b54af4ab7d070b7f606f299c05">&#9670;&#160;</a></span>vsf_pyal_filearg_clear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_pyal_filearg_clear</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__filearg</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#a9126c8481976bf6f86b5bc85de60a34b">vsf_pyal_fileobj_clear</a>(__filearg)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb61e7a38f138f469bb00d72802e18ca" name="aeb61e7a38f138f469bb00d72802e18ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb61e7a38f138f469bb00d72802e18ca">&#9670;&#160;</a></span>vsf_pyal_newobj_tuple</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -820,7 +988,7 @@ Variables</h2></td></tr>
           <td class="memname">#define vsf_pyal_newobj_tuple</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">__size, </td>
+          <td class="paramname">__num, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -831,7 +999,7 @@ Variables</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;mp_obj_new_tuple((__size), (__args))</td>
+          <td></td><td>&#160;&#160;&#160;mp_obj_new_tuple((__num), (__args))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1104,7 +1272,7 @@ Variables</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">__arg</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#ad6cd682dc806e854f87691f9848d0398">vsf_pyal_strarg_get_str</a>(__arg)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#a592cc2a8d5115cef1409950e02cd567a">vsf_pyal_intarg_get_int</a>(__arg)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1161,6 +1329,52 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a25383a3412d2723c2e7b4dbe4c988e13" name="a25383a3412d2723c2e7b4dbe4c988e13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25383a3412d2723c2e7b4dbe4c988e13">&#9670;&#160;</a></span>vsf_pyal_funcarg_bytesobj</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_pyal_funcarg_bytesobj&#160;&#160;&#160;<a class="el" href="vsf__micropython_8h.html#a6480fc25637dbb56d77590226ae0c399">vsf_pyal_funcarg_strobj</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a49d6c6d2a1af7664de73f3e0e29dfb3a" name="a49d6c6d2a1af7664de73f3e0e29dfb3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49d6c6d2a1af7664de73f3e0e29dfb3a">&#9670;&#160;</a></span>vsf_pyal_newarg_bytes_ret_from_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_pyal_newarg_bytes_ret_from_buffer</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__buffer, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__length&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    ({                                                                          \</div>
+<div class="line">        vsf_pyal_buffer_set_len((__buffer), (__length));                        \</div>
+<div class="line">        vsf_pyal_newobj_bytes_from_buffer((__buffer), (__length));              \</div>
+<div class="line">    })</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a368eb65f5438f7c3ddcfa2715d22c75d" name="a368eb65f5438f7c3ddcfa2715d22c75d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a368eb65f5438f7c3ddcfa2715d22c75d">&#9670;&#160;</a></span>vsf_pyal_funcarg_var</h2>
 
@@ -1191,34 +1405,6 @@ Variables</h2></td></tr>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a></td><td>)</td>
           <td>&#160;&#160;&#160;<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> ## _num</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa92cce71d49b1cc94c8b5a3f8dca841b" name="aa92cce71d49b1cc94c8b5a3f8dca841b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa92cce71d49b1cc94c8b5a3f8dca841b">&#9670;&#160;</a></span>vsf_pyal_funcarg_var_is_int</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define vsf_pyal_funcarg_var_is_int</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">__idx&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;mp_obj_is_int((<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> ## _arr)[__idx])</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1281,6 +1467,34 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="aa92cce71d49b1cc94c8b5a3f8dca841b" name="aa92cce71d49b1cc94c8b5a3f8dca841b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa92cce71d49b1cc94c8b5a3f8dca841b">&#9670;&#160;</a></span>vsf_pyal_funcarg_var_is_int</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vsf_pyal_funcarg_var_is_int</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__idx&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;mp_obj_is_int((<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a> ## _arr)[__idx])</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a86356125867edd9523154f00eb005cb4" name="a86356125867edd9523154f00eb005cb4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a86356125867edd9523154f00eb005cb4">&#9670;&#160;</a></span>vsf_pyal_funcarg_var_get_int</h2>
 
@@ -1309,14 +1523,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a0bcef2ec2dc85636fb420cf0376a1b74" name="a0bcef2ec2dc85636fb420cf0376a1b74"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0bcef2ec2dc85636fb420cf0376a1b74">&#9670;&#160;</a></span>vsf_pyal_funcarg_var_get_obj</h2>
+<a id="a911ddb75a845fc510ee3f2333c543545" name="a911ddb75a845fc510ee3f2333c543545"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a911ddb75a845fc510ee3f2333c543545">&#9670;&#160;</a></span>vsf_pyal_funcarg_var_get_arg</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define vsf_pyal_funcarg_var_get_obj</td>
+          <td class="memname">#define vsf_pyal_funcarg_var_get_arg</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, </td>
@@ -1550,14 +1764,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a991a256e16fbb38e86649a41a97d2075" name="a991a256e16fbb38e86649a41a97d2075"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a991a256e16fbb38e86649a41a97d2075">&#9670;&#160;</a></span>vsf_pyal_module_func_name</h2>
+<a id="a13a9de3eface045d2f5661f81c8e1f5f" name="a13a9de3eface045d2f5661f81c8e1f5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13a9de3eface045d2f5661f81c8e1f5f">&#9670;&#160;</a></span>vsf_pyal_module_func_call</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define vsf_pyal_module_func_name</td>
+          <td class="memname">#define vsf_pyal_module_func_call</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">__mod, </td>
@@ -1566,12 +1780,18 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">__func&#160;</td>
+          <td class="paramname">__func, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;__mod ## <a class="el" href="vsf__msg__tree_8h.html#a73100cc4743cfeb4da757cb6e1afb570">_</a> ## __func</td>
+          <td></td><td>&#160;&#160;&#160;    __mod ## <a class="el" href="vsf__msg__tree_8h.html#a73100cc4743cfeb4da757cb6e1afb570">_</a> ## __func(__VA_ARGS__)</td>
         </tr>
       </table>
 </div><div class="memdoc">
