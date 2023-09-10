@@ -176,13 +176,13 @@
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#a9935758ff1ab464e2687d7e086d4acf3">  122</a></span><span class="preprocessor">#define vsf_pyal_listarg_get_num(__listarg)         vsf_pyal_listobj_get_num(arg_getObj(__listarg))</span></div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#a53465ac75e9b8f1c3685280d3f364cbf">  123</a></span><span class="preprocessor">#define vsf_pyal_listarg_get_arg(__listarg, __idx)  vsf_pyal_listobj_get_arg(arg_getObj(__listarg), (__idx))</span></div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment">// instance of class</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment">// instance</span></div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#a948eaf27efcf20c9fc4e60fb56772134">  127</a></span><span class="preprocessor">#define vsf_pyal_newobj_inst(__size, __mod, __class)                            \</span></div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="preprocessor">    ({                                                                          \</span></div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="preprocessor">        vsf_pyal_arg_t inst = arg_newBytes(NULL, (__size));                     \</span></div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="preprocessor">        vsf_pyal_obj_t self = newNormalObj(New_ ## __mod ## _ ## __class);      \</span></div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="preprocessor">        obj_setArg(self, &quot;_priv&quot;, inst);                                        \</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="preprocessor">        obj_setArg(self, &quot;_self&quot;, inst);                                        \</span></div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="preprocessor">        arg_getBytes(inst);                                                     \</span></div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="preprocessor">    })</span></div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#a3402f7371c3a49bc5181a3d17e9c0422">  134</a></span><span class="preprocessor">#define vsf_pyal_inst_base()</span></div>
@@ -335,26 +335,53 @@
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span><span class="comment">// class</span></div>
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span><span class="comment">// class</span></div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#ac61b210343bfd3fc22e82d5fc43cd2df">  286</a></span><span class="preprocessor">#define vsf_pyal_class_declare(__mod, __class)                                  \</span></div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="preprocessor">    extern PikaObj * (* New_ ## __mod ## _ ## __class)(Args *args)</span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#a4a25926a23b9580a69cba58a40967631">  284</a></span><span class="preprocessor">#define vsf_pyal_class_arg_get_self(__mod, __class, __name)                     \</span></div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span><span class="preprocessor">        __mod ## _ ## __class ## _t *__name = vsf_pyal_instobj_get(selfobj)</span></div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#ab60a44dc0ceb2262864efdacc222bdd6">  286</a></span><span class="preprocessor">#define vsf_pyal_class_arg_get_self_from(__mod, __class, __name, __instobj)     \</span></div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="preprocessor">        __mod ## _ ## __class ## _t *__name = vsf_pyal_instobj_get(__instobj)</span></div>
 <div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span><span class="comment">// APIs</span></div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span> </div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#a6aab472bbbdc5f9a70e5ebcd2585d2b4">  291</a></span><span class="preprocessor">#define vsf_pyal_raise(__fmt, ...)                                              \</span></div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span><span class="preprocessor">    ({                                                                          \</span></div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span><span class="preprocessor">        pika_platform_printf((__fmt), ##__VA_ARGS__);                           \</span></div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span><span class="preprocessor">        obj_setErrorCode(self, -1);                                             \</span></div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span><span class="preprocessor">    })</span></div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#a304e7f272cec8fbe22f36f64ca0f6a58">  289</a></span><span class="preprocessor">#define vsf_pyal_class_new_func(__mod, __class, __arg_name)                     \</span></div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="preprocessor">    vsf_pyal_obj_t New ## __mod ## _ ## __class(vsf_pyal_arg_t __arg_name ## _args) {\</span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="preprocessor">        vsf_pyal_arg_t inst = arg_newBytes(NULL, sizeof(__mod ## _ ## __class ## _t));\</span></div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span><span class="preprocessor">        vsf_pyal_obj_t selfobj = New_TinyObj(__arg_name ## _args);              \</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span><span class="preprocessor">        obj_setClass(selfobj, __mod ## _ ## __class);                           \</span></div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span><span class="preprocessor">        obj_setArg(selfobj, &quot;_self&quot;, inst);                                     \</span></div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span><span class="preprocessor">        __mod ## _ ## __class ## _t *self = (__mod ## _ ## __class ## _t *)arg_getBytes(inst);</span></div>
 <div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="comment">/* EOF */</span></div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#a8c422c4258b7ef85a9aa04a0c3af094c">  297</a></span><span class="preprocessor">#define vsf_pyal_class_new_fail(__mod, __class, __fmt, ...)                     \</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="preprocessor">        vsf_pyal_raise((__fmt), ##__VA_ARGS__);                                 \</span></div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="preprocessor">        return VSF_PYAL_OBJ_NULL;</span></div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#a6f939ae9b416786a0f14d896072f4d0e">  300</a></span><span class="preprocessor">#define vsf_pyal_class_new_arg_num(__name)          1</span></div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#aa730bf8ccb1972d7d573a3e3d0c1aeca">  301</a></span><span class="preprocessor">#define vsf_pyal_class_new_get_int(__name, __idx)   vsf_pyal_intarg_get_int((__name ## _args)[__idx])</span></div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#a2c74126b23d6486e23739e4f0cc85135">  302</a></span><span class="preprocessor">#define vsf_pyal_class_new_get_arg(__name, __idx)   (__name ## _args)[__idx])</span></div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#a7555ec31058507c751dae864735373f3">  303</a></span><span class="preprocessor">#define vsf_pyal_class_new_func_end()                                           \</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="preprocessor">        return self;                                                            \</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="preprocessor">    }</span></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span> </div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#af7a8ce17ed4ad7e2db3e62389e4874f7">  307</a></span><span class="preprocessor">#define vsf_pyal_class_func_var_imp(__mod, __func, __ret_type, __min_arg, __max_arg, __arg_name)\</span></div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><span class="preprocessor">    __ret_type __mod ## _ ## __func(vsf_pyal_obj_t selfobj, vsf_pyal_funcarg_var(__arg_name))</span></div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#a68b414a3b686ff29b4a57fe437f964fa">  309</a></span><span class="preprocessor">#define vsf_pyal_class_func_fix_imp(__mod, __func, __func_type, __ret_type, ...)\</span></div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="preprocessor">    __ret_type __mod ## _ ## __func(vsf_pyal_obj_t selfobj, ##__VA_ARGS__)</span></div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span> </div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#ac61b210343bfd3fc22e82d5fc43cd2df">  312</a></span><span class="preprocessor">#define vsf_pyal_class_declare(__mod, __class)                                  \</span></div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span><span class="preprocessor">    extern vsf_pyal_obj_t (* New_ ## __mod ## _ ## __class)(Args *args);        \</span></div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="preprocessor">    extern const NativeProperty __mod ## _ ## __class ## NativeProp</span></div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span> </div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span><span class="comment">// APIs</span></div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno"><a class="line" href="vsf__pikapython_8h.html#a6aab472bbbdc5f9a70e5ebcd2585d2b4">  318</a></span><span class="preprocessor">#define vsf_pyal_raise(__fmt, ...)                                              \</span></div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span><span class="preprocessor">    ({                                                                          \</span></div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span><span class="preprocessor">        pika_platform_printf((__fmt), ##__VA_ARGS__);                           \</span></div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span><span class="preprocessor">        obj_setErrorCode(self, -1);                                             \</span></div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="preprocessor">    })</span></div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span> </div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span><span class="comment">/* EOF */</span></div>
 <div class="ttc" id="avsf__pikapython_8h_html_ab118e487c8eade2a43c5fd8954127b76"><div class="ttname"><a href="vsf__pikapython_8h.html#ab118e487c8eade2a43c5fd8954127b76">vsf_pyal_dict_key_t</a></div><div class="ttdeci">char * vsf_pyal_dict_key_t</div><div class="ttdef"><b>Definition</b> vsf_pikapython.h:188</div></div>
 <div class="ttc" id="avsf__pikapython_8h_html_ac42ea063b12246d74b01848344beee66"><div class="ttname"><a href="vsf__pikapython_8h.html#ac42ea063b12246d74b01848344beee66">vsf_pyal_obj_t</a></div><div class="ttdeci">PikaObj * vsf_pyal_obj_t</div><div class="ttdef"><b>Definition</b> vsf_pikapython.h:103</div></div>
 <div class="ttc" id="avsf__pikapython_8h_html_ac8d0788b771bea13894277e05b052185"><div class="ttname"><a href="vsf__pikapython_8h.html#ac8d0788b771bea13894277e05b052185">vsf_pyal_arg_t</a></div><div class="ttdeci">Arg * vsf_pyal_arg_t</div><div class="ttdef"><b>Definition</b> vsf_pikapython.h:43</div></div>
