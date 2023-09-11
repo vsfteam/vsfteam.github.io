@@ -417,34 +417,42 @@
 <div class="line"><a id="l00363" name="l00363"></a><span class="lineno"><a class="line" href="vsf__micropython_8h.html#ae8a9d9deead93f839894d2bd3010bcf7">  363</a></span><span class="preprocessor">#define vsf_pyal_class_int(__class, __name, __value){ MP_ROM_QSTR(MP_QSTR_ ## __name), MP_ROM_INT(__value) }</span></div>
 <div class="line"><a id="l00364" name="l00364"></a><span class="lineno"><a class="line" href="vsf__micropython_8h.html#a83735d17d55e9da7351b2b57936022e1">  364</a></span><span class="preprocessor">#define vsf_pyal_class_str(__class, __name, __str)  { MP_ROM_QSTR(MP_QSTR_ ## __name), MP_ROM_QSTR(MP_QSTR_ ## __str) }</span></div>
 <div class="line"><a id="l00365" name="l00365"></a><span class="lineno"><a class="line" href="vsf__micropython_8h.html#a512af96e6ae5cb5a544774c5de568062">  365</a></span><span class="preprocessor">#define vsf_pyal_class_func(__class, __name)        { MP_ROM_QSTR(MP_QSTR_ ## __name), MP_ROM_PTR(&amp;mp_ ## __class ## _ ## __name ## _obj) }</span></div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno"><a class="line" href="vsf__micropython_8h.html#ae7a6b342ccd3fa0fe08d9f9b0aecd207">  366</a></span><span class="preprocessor">#define vsf_pyal_class(__mod, __class, ...)                                     \</span></div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span><span class="preprocessor">    STATIC const mp_rom_map_elem_t __ ## __class ## _locals_dict_table[] = {    \</span></div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span><span class="preprocessor">        __VA_ARGS__                                                             \</span></div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span><span class="preprocessor">    };                                                                          \</span></div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span><span class="preprocessor">    STATIC MP_DEFINE_CONST_DICT(__ ## __class ## _locals_dict, __ ## __class ## _locals_dict_table);\</span></div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span><span class="preprocessor">    MP_DEFINE_CONST_OBJ_TYPE(                                                   \</span></div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span><span class="preprocessor">        mp_type_ ## __mod ## _ ## __class, MP_QSTR_ ## __class, MP_TYPE_FLAG_NONE,\</span></div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span><span class="preprocessor">        make_new, __mod ## _ ## __class ## _make_new,                           \</span></div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span><span class="preprocessor">        locals_dict, &amp;__ ## __class ## _locals_dict                             \</span></div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span><span class="preprocessor">    );</span></div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno"><a class="line" href="vsf__micropython_8h.html#ac61b210343bfd3fc22e82d5fc43cd2df">  376</a></span><span class="preprocessor">#define vsf_pyal_class_declare(__mod, __class)                                  \</span></div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span><span class="preprocessor">    extern const mp_obj_type_t mp_type_ ## __mod ## _ ## __class;               \</span></div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span><span class="preprocessor">    extern vsf_pyal_obj_t __mod ## _ ## __class ## _make_new(const mp_obj_type_t *type, size_t arg_num, size_t n_kw, const mp_obj_t *args)</span></div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span> </div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno"><a class="line" href="vsf__micropython_8h.html#a5e6533831f25edc7be177f12f2517f29">  380</a></span><span class="preprocessor">#define vsf_pyal_class_new_call(__mod, __class, __args_num, __args)             \</span></div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span><span class="preprocessor">    __mod ## _ ## __class ## _make_new(NULL, (__args_num), 0, (__args))</span></div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span><span class="comment">// APIs</span></div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span> </div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno"><a class="line" href="vsf__micropython_8h.html#a6aab472bbbdc5f9a70e5ebcd2585d2b4">  385</a></span><span class="preprocessor">#define vsf_pyal_raise(__fmt, ...)                  mp_raise_msg_varg(&amp;mp_type_TypeError, MP_ERROR_TEXT(__fmt), ##__VA_ARGS__)</span></div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span> </div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span> </div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno"><a class="line" href="vsf__micropython_8h.html#a07d82ba5c161a09148e8f51de2775637">  367</a></span><span class="preprocessor">#define vsf_pyal_class_feature(__mod, __class, __feature)                       \</span></div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span><span class="preprocessor">        __feature, __mod ## _ ## __class ## _ ## __feature</span></div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno"><a class="line" href="vsf__micropython_8h.html#a0bfdd7534f48a5b279dbb074d1e4731d">  369</a></span><span class="preprocessor">#define vsf_pyal_class_feature_new(__mod, __class)                              \</span></div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span><span class="preprocessor">        vsf_pyal_class_feature(__mod, __class, make_new)</span></div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno"><a class="line" href="vsf__micropython_8h.html#a85a6b03ac930946f4edda87036e8b0ea">  371</a></span><span class="preprocessor">#define vsf_pyal_class_begin(__mod, __class, ...)                               \</span></div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span><span class="preprocessor">    STATIC const mp_rom_map_elem_t __ ## __class ## _locals_dict_table[] = {    \</span></div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span><span class="preprocessor">        __VA_ARGS__                                                             \</span></div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span><span class="preprocessor">    };                                                                          \</span></div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span><span class="preprocessor">    STATIC MP_DEFINE_CONST_DICT(__ ## __class ## _locals_dict, __ ## __class ## _locals_dict_table);</span></div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span> </div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno"><a class="line" href="vsf__micropython_8h.html#af8a847696e85bd93b873d4c43e4be73c">  377</a></span><span class="preprocessor">#define vsf_pyal_class_end(__mod, __class, ...)                                 \</span></div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span><span class="preprocessor">    MP_DEFINE_CONST_OBJ_TYPE(                                                   \</span></div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span><span class="preprocessor">        mp_type_ ## __mod ## _ ## __class, MP_QSTR_ ## __class, MP_TYPE_FLAG_NONE,\</span></div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span><span class="preprocessor">        __VA_ARGS__                                                             \</span></div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span><span class="preprocessor">        locals_dict, &amp;__ ## __class ## _locals_dict                             \</span></div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span><span class="preprocessor">    );</span></div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span> </div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno"><a class="line" href="vsf__micropython_8h.html#ac61b210343bfd3fc22e82d5fc43cd2df">  384</a></span><span class="preprocessor">#define vsf_pyal_class_declare(__mod, __class)                                  \</span></div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span><span class="preprocessor">    extern const mp_obj_type_t mp_type_ ## __mod ## _ ## __class;               \</span></div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span><span class="preprocessor">    extern vsf_pyal_obj_t __mod ## _ ## __class ## _make_new(const mp_obj_type_t *type, size_t arg_num, size_t n_kw, const mp_obj_t *args)</span></div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span> </div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno"><a class="line" href="vsf__micropython_8h.html#a5e6533831f25edc7be177f12f2517f29">  388</a></span><span class="preprocessor">#define vsf_pyal_class_new_call(__mod, __class, __args_num, __args)             \</span></div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span><span class="preprocessor">    __mod ## _ ## __class ## _make_new(NULL, (__args_num), 0, (__args))</span></div>
 <div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span> </div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span> </div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span><span class="comment">/* EOF */</span></div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span><span class="comment">// APIs</span></div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span> </div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno"><a class="line" href="vsf__micropython_8h.html#a6aab472bbbdc5f9a70e5ebcd2585d2b4">  393</a></span><span class="preprocessor">#define vsf_pyal_raise(__fmt, ...)                  mp_raise_msg_varg(&amp;mp_type_TypeError, MP_ERROR_TEXT(__fmt), ##__VA_ARGS__)</span></div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span> </div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span> </div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span> </div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span><span class="comment">/* EOF */</span></div>
 <div class="ttc" id="astdio_8h_html_ac15bbd02a147d1595cdfb8b2979693d7"><div class="ttname"><a href="stdio_8h.html#ac15bbd02a147d1595cdfb8b2979693d7">FILE</a></div><div class="ttdeci">int FILE</div><div class="ttdef"><b>Definition</b> stdio.h:130</div></div>
 <div class="ttc" id="astruct__mp__obj__file__t_html"><div class="ttname"><a href="struct__mp__obj__file__t.html">_mp_obj_file_t</a></div><div class="ttdef"><b>Definition</b> vsf_micropython.h:137</div></div>
 <div class="ttc" id="astruct__mp__obj__file__t_html_a00e239144148587e85a13e2759b9de2b"><div class="ttname"><a href="struct__mp__obj__file__t.html#a00e239144148587e85a13e2759b9de2b">_mp_obj_file_t::vsf_pyal_inst_base</a></div><div class="ttdeci">vsf_pyal_inst_base() union</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:138</div></div>
