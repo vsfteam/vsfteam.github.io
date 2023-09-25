@@ -5497,7 +5497,7 @@
 <b>值:</b><div class="fragment"><div class="line">        <a class="code hl_define" href="vsf__micropython_8h.html#a6aab472bbbdc5f9a70e5ebcd2585d2b4">vsf_pyal_raise</a>((__fmt), ##__VA_ARGS__);                                 \</div>
 <div class="line">        <span class="keywordflow">return</span> <a class="code hl_define" href="vsf__micropython_8h.html#a5b296f4d4015b91552f59eaf5f5cacfb">VSF_PYAL_OBJ_NULL</a>;</div>
 <div class="ttc" id="avsf__micropython_8h_html_a5b296f4d4015b91552f59eaf5f5cacfb"><div class="ttname"><a href="vsf__micropython_8h.html#a5b296f4d4015b91552f59eaf5f5cacfb">VSF_PYAL_OBJ_NULL</a></div><div class="ttdeci">#define VSF_PYAL_OBJ_NULL</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:157</div></div>
-<div class="ttc" id="avsf__micropython_8h_html_a6aab472bbbdc5f9a70e5ebcd2585d2b4"><div class="ttname"><a href="vsf__micropython_8h.html#a6aab472bbbdc5f9a70e5ebcd2585d2b4">vsf_pyal_raise</a></div><div class="ttdeci">#define vsf_pyal_raise(__fmt,...)</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:681</div></div>
+<div class="ttc" id="avsf__micropython_8h_html_a6aab472bbbdc5f9a70e5ebcd2585d2b4"><div class="ttname"><a href="vsf__micropython_8h.html#a6aab472bbbdc5f9a70e5ebcd2585d2b4">vsf_pyal_raise</a></div><div class="ttdeci">#define vsf_pyal_raise(__fmt,...)</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:682</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6511,7 +6511,8 @@
 <div class="line">    MP_DEFINE_CONST_FUN_OBJ_KW(mp_ ## __mod ## <a class="code hl_variable" href="vsf__msg__tree_8h.html#ac5a8bd44904b255e964bd1e7f861311d">_</a> ## __func ## _obj, 0, __mod ## <a class="code hl_variable" href="vsf__msg__tree_8h.html#ac5a8bd44904b255e964bd1e7f861311d">_</a> ## __func);\</div>
 <div class="line">    __ret_type __mod ## <a class="code hl_variable" href="vsf__msg__tree_8h.html#ac5a8bd44904b255e964bd1e7f861311d">_</a> ## __func(<a class="code hl_define" href="vsf__micropython_8h.html#a347481473ceda193d661ee2a8aa85a70">vsf_pyal_funcarg_keyword</a>(__arg_name)) {     \</div>
 <div class="line">        <span class="keyword">enum</span> { <a class="code hl_define" href="vsf__foreach__macro_8h.html#af953da8b493e33c0286d731707dd457a">VSF_MFOREACH_ARG1</a>(<a class="code hl_define" href="vsf__micropython_8h.html#a52516f188c3ea045cd5d774d37027ef1">__vsf_pyal_keyword_enum</a>, __arg_name, __VA_ARGS__) };\</div>
-<div class="line">        mp_arg_val_t __arg_name ## _val[<a class="code hl_define" href="vsf__eval__macro_8h.html#aba545f8de7cbc983b90526abbdda148a">VSF_VA_NUM_ARGS</a>(__VA_ARGS__)];</div>
+<div class="line">        mp_arg_val_t __arg_name ## _val[<a class="code hl_define" href="vsf__eval__macro_8h.html#aba545f8de7cbc983b90526abbdda148a">VSF_VA_NUM_ARGS</a>(__VA_ARGS__)];          \</div>
+<div class="line">        VSF_UNUSED_PARAM(__arg_name ## _val);</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7249,7 +7250,7 @@
 <div class="line">        vsf_pyal_class_inherit_builtin(__mod, __class, __builtinclass);         \</div>
 <div class="line">        VSF_MFOREACH_ARG3(<a class="code hl_define" href="vsf__micropython_8h.html#a08a1f51e0896a6119a4678e66867b209">vsf_pyal_class_inherit_builtin_feature</a>, __mod, __class, __builtinclass, __VA_ARGS__)\</div>
 <div class="line">    }</div>
-<div class="ttc" id="avsf__micropython_8h_html_a08a1f51e0896a6119a4678e66867b209"><div class="ttname"><a href="vsf__micropython_8h.html#a08a1f51e0896a6119a4678e66867b209">vsf_pyal_class_inherit_builtin_feature</a></div><div class="ttdeci">#define vsf_pyal_class_inherit_builtin_feature(__mod, __class, __builtinclass, __feature)</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:621</div></div>
+<div class="ttc" id="avsf__micropython_8h_html_a08a1f51e0896a6119a4678e66867b209"><div class="ttname"><a href="vsf__micropython_8h.html#a08a1f51e0896a6119a4678e66867b209">vsf_pyal_class_inherit_builtin_feature</a></div><div class="ttdeci">#define vsf_pyal_class_inherit_builtin_feature(__mod, __class, __builtinclass, __feature)</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:622</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7326,7 +7327,7 @@
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line">        <a class="code hl_define" href="vsf__micropython_8h.html#acbdc61734ce1e5b67dc21a77aab36fc4">vsf_pyal_class_type</a>(__mod, __class).slots[<a class="code hl_define" href="vsf__micropython_8h.html#acbdc61734ce1e5b67dc21a77aab36fc4">vsf_pyal_class_type</a>(__mod, __class).slot_index_ ## __feature - 1] =\</div>
 <div class="line">            mp_type_ ## __builtinclass.slots[mp_type_ ## __builtinclass.slot_index_ ## __feature - 1]</div>
-<div class="ttc" id="avsf__micropython_8h_html_acbdc61734ce1e5b67dc21a77aab36fc4"><div class="ttname"><a href="vsf__micropython_8h.html#acbdc61734ce1e5b67dc21a77aab36fc4">vsf_pyal_class_type</a></div><div class="ttdeci">#define vsf_pyal_class_type(__mod, __class)</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:676</div></div>
+<div class="ttc" id="avsf__micropython_8h_html_acbdc61734ce1e5b67dc21a77aab36fc4"><div class="ttname"><a href="vsf__micropython_8h.html#acbdc61734ce1e5b67dc21a77aab36fc4">vsf_pyal_class_type</a></div><div class="ttdeci">#define vsf_pyal_class_type(__mod, __class)</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:677</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7714,7 +7715,7 @@
 <div class="line">        mp_type_ ## __mod ## <a class="code hl_variable" href="vsf__msg__tree_8h.html#ac5a8bd44904b255e964bd1e7f861311d">_</a> ## __class, MP_QSTR_ ## __class, MP_TYPE_FLAG_NONE,\</div>
 <div class="line">        __VA_ARGS__                                                             \</div>
 <div class="line">    );</div>
-<div class="ttc" id="avsf__micropython_8h_html_a25696343f02e370e8f46766b3a023ee1"><div class="ttname"><a href="vsf__micropython_8h.html#a25696343f02e370e8f46766b3a023ee1">MP_DEFINE_OBJ_TYPE</a></div><div class="ttdeci">#define MP_DEFINE_OBJ_TYPE(...)</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:705</div></div>
+<div class="ttc" id="avsf__micropython_8h_html_a25696343f02e370e8f46766b3a023ee1"><div class="ttname"><a href="vsf__micropython_8h.html#a25696343f02e370e8f46766b3a023ee1">MP_DEFINE_OBJ_TYPE</a></div><div class="ttdeci">#define MP_DEFINE_OBJ_TYPE(...)</div><div class="ttdef"><b>Definition</b> vsf_micropython.h:706</div></div>
 </div><!-- fragment -->
 </div>
 </div>
