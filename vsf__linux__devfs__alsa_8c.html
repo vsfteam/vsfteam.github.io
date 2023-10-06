@@ -60,6 +60,7 @@
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__linux__cfg_8h_source.html">shell/sys/linux/vsf_linux_cfg.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="unistd_8h_source.html">shell/sys/linux/include/unistd.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="errno_8h_source.html">shell/sys/linux/include/errno.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="poll_8h_source.html">shell/sys/linux/include/poll.h</a>&quot;</code><br />
 <code>#include &lt;limits.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="stdint_8h_source.html">stdint.h</a>&gt;</code><br />
 <code>#include &lt;alsa/sound/type_compat.h&gt;</code><br />
@@ -86,10 +87,14 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a07fd8b6998b0f48113526bc4112b0354" id="r_a07fd8b6998b0f48113526bc4112b0354"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs__alsa_8c.html#a07fd8b6998b0f48113526bc4112b0354">__VSF_FS_CLASS_INHERIT__</a></td></tr>
 <tr class="separator:a07fd8b6998b0f48113526bc4112b0354"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a795b77210031b6e7565dbc7e1bd71393" id="r_a795b77210031b6e7565dbc7e1bd71393"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs__alsa_8c.html#a795b77210031b6e7565dbc7e1bd71393">__VSF_LINUX_FS_CLASS_INHERIT__</a></td></tr>
-<tr class="separator:a795b77210031b6e7565dbc7e1bd71393"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1035a7e2f7cab98d09c1202a165f0e1" id="r_aa1035a7e2f7cab98d09c1202a165f0e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs__alsa_8c.html#aa1035a7e2f7cab98d09c1202a165f0e1">__VSF_AUDIO_CLASS_INHERIT__</a></td></tr>
 <tr class="separator:aa1035a7e2f7cab98d09c1202a165f0e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cf9f66fc41db173adc892f03a617fff" id="r_a2cf9f66fc41db173adc892f03a617fff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs__alsa_8c.html#a2cf9f66fc41db173adc892f03a617fff">__VSF_MEM_STREAM_CLASS_IMPLEMENT</a></td></tr>
+<tr class="separator:a2cf9f66fc41db173adc892f03a617fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a795b77210031b6e7565dbc7e1bd71393" id="r_a795b77210031b6e7565dbc7e1bd71393"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs__alsa_8c.html#a795b77210031b6e7565dbc7e1bd71393">__VSF_LINUX_FS_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:a795b77210031b6e7565dbc7e1bd71393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56bf24a74c400dfffdef33bfca636614" id="r_a56bf24a74c400dfffdef33bfca636614"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs__alsa_8c.html#a56bf24a74c400dfffdef33bfca636614">__VSF_LINUX_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:a56bf24a74c400dfffdef33bfca636614"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61d0b24c48f987a20ab87b2d5532ec56" id="r_a61d0b24c48f987a20ab87b2d5532ec56"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs__alsa_8c.html#a61d0b24c48f987a20ab87b2d5532ec56">__kernel_off_t</a>&#160;&#160;&#160;<a class="el" href="linux_2include_2sys_2types_8h.html#af83497edef361523a95b06deda0b4c2d">off_t</a></td></tr>
 <tr class="separator:a61d0b24c48f987a20ab87b2d5532ec56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5388382810b3b1209816b23bd21d931" id="r_ac5388382810b3b1209816b23bd21d931"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs__alsa_8c.html#ac5388382810b3b1209816b23bd21d931">__kernel_pid_t</a>&#160;&#160;&#160;<a class="el" href="linux_2include_2sys_2types_8h.html#a288e13e815d43b06e75819f8939524df">pid_t</a></td></tr>
@@ -126,6 +131,10 @@ Functions</h2></td></tr>
 <tr class="separator:a9273ae70dc1bdf48b8c73088b672613f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7c6d5f3ae54036594cad736d15289e4" id="r_aa7c6d5f3ae54036594cad736d15289e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs__alsa_8c.html#aa7c6d5f3ae54036594cad736d15289e4">__vsf_linux_tx_stream_drain</a> (vsf_linux_stream_priv_t *priv_tx)</td></tr>
 <tr class="separator:aa7c6d5f3ae54036594cad736d15289e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe773b74b5588e92ec4b88ed2dcf2b30" id="r_afe773b74b5588e92ec4b88ed2dcf2b30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs__alsa_8c.html#afe773b74b5588e92ec4b88ed2dcf2b30">__vsf_linux_rx_stream_drop</a> (vsf_linux_stream_priv_t *priv_rx)</td></tr>
+<tr class="separator:afe773b74b5588e92ec4b88ed2dcf2b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a9416622b58abc0a98872100f6e158c" id="r_a5a9416622b58abc0a98872100f6e158c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs__alsa_8c.html#a5a9416622b58abc0a98872100f6e158c">__vsf_linux_tx_stream_drop</a> (vsf_linux_stream_priv_t *priv_tx)</td></tr>
+<tr class="separator:a5a9416622b58abc0a98872100f6e158c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a073dee37da5c7f9709dde7d783812c" id="r_a6a073dee37da5c7f9709dde7d783812c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs__alsa_8c.html#a6a073dee37da5c7f9709dde7d783812c">__vsf_linux_tx_stream_fini</a> (vsf_linux_stream_priv_t *priv_tx)</td></tr>
 <tr class="separator:a6a073dee37da5c7f9709dde7d783812c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2390f716495595769a2fc9fc259fc121" id="r_a2390f716495595769a2fc9fc259fc121"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs__alsa_8c.html#a2390f716495595769a2fc9fc259fc121">__vsf_linux_rx_stream_fini</a> (vsf_linux_stream_priv_t *priv_rx)</td></tr>
@@ -182,6 +191,34 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aa1035a7e2f7cab98d09c1202a165f0e1" name="aa1035a7e2f7cab98d09c1202a165f0e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1035a7e2f7cab98d09c1202a165f0e1">&#9670;&#160;</a></span>__VSF_AUDIO_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_AUDIO_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2cf9f66fc41db173adc892f03a617fff" name="a2cf9f66fc41db173adc892f03a617fff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cf9f66fc41db173adc892f03a617fff">&#9670;&#160;</a></span>__VSF_MEM_STREAM_CLASS_IMPLEMENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_MEM_STREAM_CLASS_IMPLEMENT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a795b77210031b6e7565dbc7e1bd71393" name="a795b77210031b6e7565dbc7e1bd71393"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a795b77210031b6e7565dbc7e1bd71393">&#9670;&#160;</a></span>__VSF_LINUX_FS_CLASS_INHERIT__</h2>
 
@@ -196,14 +233,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa1035a7e2f7cab98d09c1202a165f0e1" name="aa1035a7e2f7cab98d09c1202a165f0e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1035a7e2f7cab98d09c1202a165f0e1">&#9670;&#160;</a></span>__VSF_AUDIO_CLASS_INHERIT__</h2>
+<a id="a56bf24a74c400dfffdef33bfca636614" name="a56bf24a74c400dfffdef33bfca636614"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56bf24a74c400dfffdef33bfca636614">&#9670;&#160;</a></span>__VSF_LINUX_CLASS_INHERIT__</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define __VSF_AUDIO_CLASS_INHERIT__</td>
+          <td class="memname">#define __VSF_LINUX_CLASS_INHERIT__</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -443,6 +480,58 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">void __vsf_linux_tx_stream_drain </td>
+          <td>(</td>
+          <td class="paramtype">vsf_linux_stream_priv_t *&#160;</td>
+          <td class="paramname"><em>priv_tx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afe773b74b5588e92ec4b88ed2dcf2b30" name="afe773b74b5588e92ec4b88ed2dcf2b30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe773b74b5588e92ec4b88ed2dcf2b30">&#9670;&#160;</a></span>__vsf_linux_rx_stream_drop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void __vsf_linux_rx_stream_drop </td>
+          <td>(</td>
+          <td class="paramtype">vsf_linux_stream_priv_t *&#160;</td>
+          <td class="paramname"><em>priv_rx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5a9416622b58abc0a98872100f6e158c" name="a5a9416622b58abc0a98872100f6e158c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a9416622b58abc0a98872100f6e158c">&#9670;&#160;</a></span>__vsf_linux_tx_stream_drop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void __vsf_linux_tx_stream_drop </td>
           <td>(</td>
           <td class="paramtype">vsf_linux_stream_priv_t *&#160;</td>
           <td class="paramname"><em>priv_tx</em></td><td>)</td>
