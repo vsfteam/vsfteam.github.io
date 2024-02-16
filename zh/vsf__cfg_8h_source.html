@@ -386,54 +386,55 @@
 <div class="line"><a id="l00334" name="l00334"></a><span class="lineno"><a class="line" href="structvsf__applet__vplt__t.html#a21aae02f5d3ed154a1c606bf553bd9d9">  334</a></span>    <a class="code hl_function" href="structvsf__applet__vplt__t.html#a21aae02f5d3ed154a1c606bf553bd9d9">VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a>(<a class="code hl_function" href="vsf_8c.html#a6829e4a624df5b4f482b25466da5024c">vsf_vplt_fini_array</a>);</div>
 <div class="line"><a id="l00335" name="l00335"></a><span class="lineno"><a class="line" href="structvsf__applet__vplt__t.html#a482b95bc8b60ae23294306c29a360940">  335</a></span>    <a class="code hl_function" href="structvsf__applet__vplt__t.html#a482b95bc8b60ae23294306c29a360940">VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a>(<a class="code hl_function" href="vsf_8c.html#a466e944c635d7ff828b7d570ddd70a16">vsf_applet_remap</a>);</div>
 <div class="line"><a id="l00336" name="l00336"></a><span class="lineno"><a class="line" href="structvsf__applet__vplt__t.html#a9c753d51b6540c1f04b9f68ed5dacc95">  336</a></span>    <a class="code hl_function" href="structvsf__applet__vplt__t.html#a9c753d51b6540c1f04b9f68ed5dacc95">VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a>(<a class="code hl_function" href="vsf__cfg_8h.html#aeb41212bd0f8e19f1d44f56b0cbbd933">vsf_vplt_link</a>);</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno"><a class="line" href="vsf__cfg_8h.html#a7e6b609d4ee97a55d5c21ddad62a38ab">  337</a></span>} <a class="code hl_typedef" href="vsf__cfg_8h.html#a7e6b609d4ee97a55d5c21ddad62a38ab">vsf_applet_vplt_t</a>;</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span><span class="keyword">extern</span> <a class="code hl_define" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="code hl_struct" href="structvsf__applet__vplt__t.html">vsf_applet_vplt_t</a> <a class="code hl_variable" href="vsf__cfg_8h.html#a58f0422cd8fda27983da671a9f950128">vsf_applet_vplt</a>;</div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span> </div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span><span class="preprocessor">#   if defined(__VSF_APPLET__) &amp;&amp; defined(__VSF_APPLET_LIB__) &amp;&amp; VSF_APPLET_CFG_DEBUG_VPLT == ENABLED</span></div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span><span class="preprocessor">#       include &lt;stdarg.h&gt;</span></div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="preprocessor">#       define VSF_APPLET_VPLT                                                  \</span></div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span><span class="preprocessor">            ((vsf_applet_vplt_t *)(((vsf_vplt_t *)vsf_vplt((void *)0))-&gt;applet_vplt))</span></div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span> </div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span><span class="preprocessor">#define VSF_VPLT_APPLET_ENTRY(__NAME)                                           \</span></div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span><span class="preprocessor">            VSF_APPLET_VPLT_ENTRY_FUNC_ENTRY(VSF_APPLET_VPLT, __NAME)</span></div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span><span class="preprocessor">#define VSF_VPLT_APPLET_IMP(...)                                                \</span></div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span><span class="preprocessor">            VSF_APPLET_VPLT_ENTRY_FUNC_IMP(VSF_APPLET_VPLT, __VA_ARGS__)</span></div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>VSF_VPLT_APPLET_IMP(<a class="code hl_function" href="vsf_8c.html#afcab7cde9d900de47862eb6adac0f1fd">vsf_vplt_trace_arg</a>, <span class="keywordtype">void</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, va_list arg) {</div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>    VSF_VPLT_APPLET_ENTRY(<a class="code hl_function" href="vsf_8c.html#afcab7cde9d900de47862eb6adac0f1fd">vsf_vplt_trace_arg</a>)(fmt, arg);</div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>}</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span> </div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span><span class="keyword">static</span> <span class="keywordtype">void</span> vsf_vplt_trace(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>, ...)</div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>{</div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>    va_list ap;</div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span> </div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    va_start(ap, <a class="code hl_variable" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>);</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>    <a class="code hl_function" href="vsf_8c.html#afcab7cde9d900de47862eb6adac0f1fd">vsf_vplt_trace_arg</a>(<a class="code hl_variable" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>, ap);</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>    va_end(ap);</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>}</div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span> </div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span> </div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span><span class="preprocessor">#   ifndef VSF_APPLET_USE_ARCH</span></div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno"><a class="line" href="vsf__cfg_8h.html#a38e78bb01b88a7c6055ab3a128e65dc0">  366</a></span><span class="preprocessor">#       define VSF_APPLET_USE_ARCH          ENABLED</span></div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span><span class="preprocessor">#   ifndef VSF_APPLET_USE_SERVICE</span></div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno"><a class="line" href="vsf__cfg_8h.html#a7795b89a8e4e589e6ae90aa33099f6c1">  369</a></span><span class="preprocessor">#       define VSF_APPLET_USE_SERVICE       ENABLED</span></div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span> </div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span> </div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>}</div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span><span class="comment">/* EOF */</span></div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno"><a class="line" href="structvsf__applet__vplt__t.html#a2d0e927ec482e1f251ad3a6b659c72ed">  337</a></span>    <a class="code hl_function" href="structvsf__applet__vplt__t.html#a2d0e927ec482e1f251ad3a6b659c72ed">VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a>(<a class="code hl_function" href="vsf__cfg_8h.html#af42394b5458b57923f0a2bf8869f2d36">vsf_vplt_load_dyn</a>);</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno"><a class="line" href="vsf__cfg_8h.html#a7e6b609d4ee97a55d5c21ddad62a38ab">  338</a></span>} <a class="code hl_typedef" href="vsf__cfg_8h.html#a7e6b609d4ee97a55d5c21ddad62a38ab">vsf_applet_vplt_t</a>;</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span><span class="keyword">extern</span> <a class="code hl_define" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="code hl_struct" href="structvsf__applet__vplt__t.html">vsf_applet_vplt_t</a> <a class="code hl_variable" href="vsf__cfg_8h.html#a58f0422cd8fda27983da671a9f950128">vsf_applet_vplt</a>;</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span> </div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span><span class="preprocessor">#   if defined(__VSF_APPLET__) &amp;&amp; defined(__VSF_APPLET_LIB__) &amp;&amp; VSF_APPLET_CFG_DEBUG_VPLT == ENABLED</span></div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="preprocessor">#       include &lt;stdarg.h&gt;</span></div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span><span class="preprocessor">#       define VSF_APPLET_VPLT                                                  \</span></div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span><span class="preprocessor">            ((vsf_applet_vplt_t *)(((vsf_vplt_t *)vsf_vplt((void *)0))-&gt;applet_vplt))</span></div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span><span class="preprocessor">#define VSF_VPLT_APPLET_ENTRY(__NAME)                                           \</span></div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span><span class="preprocessor">            VSF_APPLET_VPLT_ENTRY_FUNC_ENTRY(VSF_APPLET_VPLT, __NAME)</span></div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span><span class="preprocessor">#define VSF_VPLT_APPLET_IMP(...)                                                \</span></div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span><span class="preprocessor">            VSF_APPLET_VPLT_ENTRY_FUNC_IMP(VSF_APPLET_VPLT, __VA_ARGS__)</span></div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span> </div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>VSF_VPLT_APPLET_IMP(<a class="code hl_function" href="vsf_8c.html#afcab7cde9d900de47862eb6adac0f1fd">vsf_vplt_trace_arg</a>, <span class="keywordtype">void</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, va_list arg) {</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>    VSF_VPLT_APPLET_ENTRY(<a class="code hl_function" href="vsf_8c.html#afcab7cde9d900de47862eb6adac0f1fd">vsf_vplt_trace_arg</a>)(fmt, arg);</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>}</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span> </div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span><span class="keyword">static</span> <span class="keywordtype">void</span> vsf_vplt_trace(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>, ...)</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>{</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>    va_list ap;</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span> </div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>    va_start(ap, <a class="code hl_variable" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>);</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>    <a class="code hl_function" href="vsf_8c.html#afcab7cde9d900de47862eb6adac0f1fd">vsf_vplt_trace_arg</a>(<a class="code hl_variable" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>, ap);</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    va_end(ap);</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>}</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span> </div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span> </div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span><span class="preprocessor">#   ifndef VSF_APPLET_USE_ARCH</span></div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno"><a class="line" href="vsf__cfg_8h.html#a38e78bb01b88a7c6055ab3a128e65dc0">  367</a></span><span class="preprocessor">#       define VSF_APPLET_USE_ARCH          ENABLED</span></div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span><span class="preprocessor">#   ifndef VSF_APPLET_USE_SERVICE</span></div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno"><a class="line" href="vsf__cfg_8h.html#a7795b89a8e4e589e6ae90aa33099f6c1">  370</a></span><span class="preprocessor">#       define VSF_APPLET_USE_SERVICE       ENABLED</span></div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span> </div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span> </div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>}</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span> </div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span><span class="comment">/* EOF */</span></div>
 <div class="ttc" id="astructvsf__applet__ctx__t_html"><div class="ttname"><a href="structvsf__applet__ctx__t.html">vsf_applet_ctx_t</a></div><div class="ttdef"><b>Definition</b> vsf_cfg.h:217</div></div>
 <div class="ttc" id="astructvsf__applet__ctx__t_html_a006559f62ddbbd1e199caed62ccc06b7"><div class="ttname"><a href="structvsf__applet__ctx__t.html#a006559f62ddbbd1e199caed62ccc06b7">vsf_applet_ctx_t::envp</a></div><div class="ttdeci">char ** envp</div><div class="ttdef"><b>Definition</b> vsf_cfg.h:225</div></div>
 <div class="ttc" id="astructvsf__applet__ctx__t_html_a01480abc2f76461a36773bfdc2506719"><div class="ttname"><a href="structvsf__applet__ctx__t.html#a01480abc2f76461a36773bfdc2506719">vsf_applet_ctx_t::fn_fini</a></div><div class="ttdeci">void(* fn_fini)(void *)</div><div class="ttdef"><b>Definition</b> vsf_cfg.h:220</div></div>
@@ -444,6 +445,7 @@
 <div class="ttc" id="astructvsf__applet__ctx__t_html_ac994d7aa050d718fc53560b6a6b430f1"><div class="ttname"><a href="structvsf__applet__ctx__t.html#ac994d7aa050d718fc53560b6a6b430f1">vsf_applet_ctx_t::argc</a></div><div class="ttdeci">int argc</div><div class="ttdef"><b>Definition</b> vsf_cfg.h:223</div></div>
 <div class="ttc" id="astructvsf__applet__vplt__t_html"><div class="ttname"><a href="structvsf__applet__vplt__t.html">vsf_applet_vplt_t</a></div><div class="ttdef"><b>Definition</b> vsf_cfg.h:328</div></div>
 <div class="ttc" id="astructvsf__applet__vplt__t_html_a21aae02f5d3ed154a1c606bf553bd9d9"><div class="ttname"><a href="structvsf__applet__vplt__t.html#a21aae02f5d3ed154a1c606bf553bd9d9">vsf_applet_vplt_t::VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a></div><div class="ttdeci">VSF_APPLET_VPLT_ENTRY_FUNC_DEF(vsf_vplt_fini_array)</div></div>
+<div class="ttc" id="astructvsf__applet__vplt__t_html_a2d0e927ec482e1f251ad3a6b659c72ed"><div class="ttname"><a href="structvsf__applet__vplt__t.html#a2d0e927ec482e1f251ad3a6b659c72ed">vsf_applet_vplt_t::VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a></div><div class="ttdeci">VSF_APPLET_VPLT_ENTRY_FUNC_DEF(vsf_vplt_load_dyn)</div></div>
 <div class="ttc" id="astructvsf__applet__vplt__t_html_a482b95bc8b60ae23294306c29a360940"><div class="ttname"><a href="structvsf__applet__vplt__t.html#a482b95bc8b60ae23294306c29a360940">vsf_applet_vplt_t::VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a></div><div class="ttdeci">VSF_APPLET_VPLT_ENTRY_FUNC_DEF(vsf_applet_remap)</div></div>
 <div class="ttc" id="astructvsf__applet__vplt__t_html_a86e848623f6b1d7b6a643b586edf8511"><div class="ttname"><a href="structvsf__applet__vplt__t.html#a86e848623f6b1d7b6a643b586edf8511">vsf_applet_vplt_t::VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a></div><div class="ttdeci">VSF_APPLET_VPLT_ENTRY_FUNC_DEF(vsf_vplt_trace_arg)</div></div>
 <div class="ttc" id="astructvsf__applet__vplt__t_html_a9c753d51b6540c1f04b9f68ed5dacc95"><div class="ttname"><a href="structvsf__applet__vplt__t.html#a9c753d51b6540c1f04b9f68ed5dacc95">vsf_applet_vplt_t::VSF_APPLET_VPLT_ENTRY_FUNC_DEF</a></div><div class="ttdeci">VSF_APPLET_VPLT_ENTRY_FUNC_DEF(vsf_vplt_link)</div></div>
