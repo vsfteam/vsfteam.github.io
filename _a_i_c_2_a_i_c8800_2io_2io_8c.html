@@ -80,10 +80,10 @@ Macros</h2></td></tr>
 <tr class="separator:a19f046df9f66c226a4733ad8310a1dd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2b3234d0dc630813344b597864519a8" id="r_ab2b3234d0dc630813344b597864519a8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2b3234d0dc630813344b597864519a8">VSF_IO_CFG_IMP_UPCASE_PREFIX</a>&#160;&#160;&#160;VSF_HW</td></tr>
 <tr class="separator:ab2b3234d0dc630813344b597864519a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a4a8b476d4b9eca131978e093c3ea8b" id="r_a6a4a8b476d4b9eca131978e093c3ea8b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a4a8b476d4b9eca131978e093c3ea8b">__VSF_HW_IOMUX</a>(__COUNT,  __)</td></tr>
-<tr class="separator:a6a4a8b476d4b9eca131978e093c3ea8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81efa101df19f90a0ee83b65beb72623" id="r_a81efa101df19f90a0ee83b65beb72623"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81efa101df19f90a0ee83b65beb72623">VSF_IO_CFG_IMP_LV0</a>(__COUNT,  __HAL_OP)</td></tr>
-<tr class="separator:a81efa101df19f90a0ee83b65beb72623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6a6757721ad5c79b79ca24d0df60013" id="r_ab6a6757721ad5c79b79ca24d0df60013"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6a6757721ad5c79b79ca24d0df60013">__VSF_HW_IOMUX</a>(__IDX,  __)</td></tr>
+<tr class="separator:ab6a6757721ad5c79b79ca24d0df60013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeef9dbbb8afe5cdfc91686b7169b8c6f" id="r_aeef9dbbb8afe5cdfc91686b7169b8c6f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeef9dbbb8afe5cdfc91686b7169b8c6f">VSF_IO_CFG_IMP_LV0</a>(__IDX,  __HAL_OP)</td></tr>
+<tr class="separator:aeef9dbbb8afe5cdfc91686b7169b8c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -162,8 +162,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6a4a8b476d4b9eca131978e093c3ea8b" name="a6a4a8b476d4b9eca131978e093c3ea8b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a4a8b476d4b9eca131978e093c3ea8b">&#9670;&#160;</a></span>__VSF_HW_IOMUX</h2>
+<a id="ab6a6757721ad5c79b79ca24d0df60013" name="ab6a6757721ad5c79b79ca24d0df60013"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6a6757721ad5c79b79ca24d0df60013">&#9670;&#160;</a></span>__VSF_HW_IOMUX</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -171,7 +171,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">#define __VSF_HW_IOMUX</td>
           <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">__COUNT, </span></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">__IDX, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -180,18 +180,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    .ports[__COUNT] = {                                                         \</div>
-<div class="line">        .is_pmic = VSF_HW_IO_PORT ## __COUNT ## _IS_PMIC,                       \</div>
-<div class="line">        .IOMUX = ((AIC_IOMUX_TypeDef *) VSF_HW_IO_PORT ## __COUNT ## _IOMUX_REG_BASE),\</div>
-<div class="line">        .GPIO = (<a class="code hl_struct" href="struct_g_p_i_o___r_e_g___t.html">GPIO_REG_T</a> *)VSF_HW_GPIO ## __COUNT ## _BASE_ADDRESS,          \</div>
-<div class="line">        .gpio_map = VSF_HW_IO_PORT ## __COUNT ## _MAP,                          \</div>
+<b>Value:</b><div class="fragment"><div class="line">    .ports[__IDX] = {                                                           \</div>
+<div class="line">        .is_pmic = VSF_HW_IO_PORT ## __IDX ## _IS_PMIC,                         \</div>
+<div class="line">        .IOMUX = ((AIC_IOMUX_TypeDef *) VSF_HW_IO_PORT ## __IDX ## _IOMUX_REG_BASE),\</div>
+<div class="line">        .GPIO = (<a class="code hl_struct" href="struct_g_p_i_o___r_e_g___t.html">GPIO_REG_T</a> *)VSF_HW_GPIO ## __IDX ## _BASE_ADDRESS,            \</div>
+<div class="line">        .gpio_map = VSF_HW_IO_PORT ## __IDX ## _MAP,                            \</div>
 <div class="line">    },</div>
 <div class="ttc" id="astruct_g_p_i_o___r_e_g___t_html"><div class="ttname"><a href="struct_g_p_i_o___r_e_g___t.html">GPIO_REG_T</a></div><div class="ttdef"><b>Definition</b> i_reg_gpio.h:72</div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a81efa101df19f90a0ee83b65beb72623" name="a81efa101df19f90a0ee83b65beb72623"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81efa101df19f90a0ee83b65beb72623">&#9670;&#160;</a></span>VSF_IO_CFG_IMP_LV0</h2>
+<a id="aeef9dbbb8afe5cdfc91686b7169b8c6f" name="aeef9dbbb8afe5cdfc91686b7169b8c6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeef9dbbb8afe5cdfc91686b7169b8c6f">&#9670;&#160;</a></span>VSF_IO_CFG_IMP_LV0</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -199,7 +199,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">#define VSF_IO_CFG_IMP_LV0</td>
           <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">__COUNT, </span></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">__IDX, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -209,10 +209,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <a class="code hl_struct" href="structvsf__hw__io__t.html">vsf_hw_io_t</a> vsf_hw_io = {                                                   \</div>
-<div class="line">        VSF_MREPEAT(<a class="code hl_define" href="hal_2driver_2_a_i_c_2_a_i_c8800_2device_8h.html#ad004c238699e85816b218094a44f785b">VSF_HW_IO_PORT_COUNT</a>, <a class="code hl_define" href="#a6a4a8b476d4b9eca131978e093c3ea8b">__VSF_HW_IOMUX</a>, <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)                 \</div>
+<div class="line">        VSF_MREPEAT(<a class="code hl_define" href="hal_2driver_2_a_i_c_2_a_i_c8800_2device_8h.html#ad004c238699e85816b218094a44f785b">VSF_HW_IO_PORT_COUNT</a>, <a class="code hl_define" href="#ab6a6757721ad5c79b79ca24d0df60013">__VSF_HW_IOMUX</a>, <a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)                 \</div>
 <div class="line">        __HAL_OP                                                                \</div>
 <div class="line">    };</div>
-<div class="ttc" id="a_a_i_c_2_a_i_c8800_2io_2io_8c_html_a6a4a8b476d4b9eca131978e093c3ea8b"><div class="ttname"><a href="#a6a4a8b476d4b9eca131978e093c3ea8b">__VSF_HW_IOMUX</a></div><div class="ttdeci">#define __VSF_HW_IOMUX(__COUNT, __)</div><div class="ttdef"><b>Definition</b> io.c:154</div></div>
+<div class="ttc" id="a_a_i_c_2_a_i_c8800_2io_2io_8c_html_ab6a6757721ad5c79b79ca24d0df60013"><div class="ttname"><a href="#ab6a6757721ad5c79b79ca24d0df60013">__VSF_HW_IOMUX</a></div><div class="ttdeci">#define __VSF_HW_IOMUX(__IDX, __)</div><div class="ttdef"><b>Definition</b> io.c:154</div></div>
 <div class="ttc" id="ahal_2driver_2_a_i_c_2_a_i_c8800_2device_8h_html_ad004c238699e85816b218094a44f785b"><div class="ttname"><a href="hal_2driver_2_a_i_c_2_a_i_c8800_2device_8h.html#ad004c238699e85816b218094a44f785b">VSF_HW_IO_PORT_COUNT</a></div><div class="ttdeci">#define VSF_HW_IO_PORT_COUNT</div><div class="ttdef"><b>Definition</b> device.h:92</div></div>
 <div class="ttc" id="alinux_2include_2simple__libc_2stddef_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition</b> stddef.h:49</div></div>
 <div class="ttc" id="astructvsf__hw__io__t_html"><div class="ttname"><a href="structvsf__hw__io__t.html">vsf_hw_io_t</a></div><div class="ttdef"><b>Definition</b> io.c:45</div></div>
