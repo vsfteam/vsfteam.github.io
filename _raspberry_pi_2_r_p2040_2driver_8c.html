@@ -50,6 +50,7 @@
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">driver.c File Reference</div></div>
 </div><!--header-->
@@ -57,15 +58,218 @@
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__hal__cfg_8h_source.html">hal/vsf_hal_cfg.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hal_2driver_2_raspberry_pi_2_r_p2040_2device_8h_source.html">./device.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hal_2driver_2_raspberry_pi_2_r_p2040_2driver_8h_source.html">./driver.h</a>&quot;</code><br />
+<code>#include &quot;pico/platform.h&quot;</code><br />
+<code>#include &quot;hardware/platform_defs.h&quot;</code><br />
+<code>#include &quot;hardware/address_mapped.h&quot;</code><br />
+<code>#include &quot;hardware/regs/resets.h&quot;</code><br />
+<code>#include &quot;hardware/structs/xosc.h&quot;</code><br />
+<code>#include &quot;hardware/structs/clocks.h&quot;</code><br />
+<code>#include &quot;hardware/structs/pll.h&quot;</code><br />
+<code>#include &quot;hardware/structs/resets.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__swi__template_8inc_source.html">hal/driver/common/swi/arm/vsf_swi_template.inc</a>&quot;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ae1bd66fc9846c52601de355a20901b0e" id="r_ae1bd66fc9846c52601de355a20901b0e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1bd66fc9846c52601de355a20901b0e">KHZ</a>&#160;&#160;&#160;1000</td></tr>
+<tr class="separator:ae1bd66fc9846c52601de355a20901b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91dd8b26b5bbdd9ca65de2ebb0119743" id="r_a91dd8b26b5bbdd9ca65de2ebb0119743"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91dd8b26b5bbdd9ca65de2ebb0119743">MHZ</a>&#160;&#160;&#160;1000000</td></tr>
+<tr class="separator:a91dd8b26b5bbdd9ca65de2ebb0119743"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a324481435427a2d41c0511545f32777a" id="r_a324481435427a2d41c0511545f32777a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a324481435427a2d41c0511545f32777a">PLL_COMMON_REFDIV</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:a324481435427a2d41c0511545f32777a"><td class="mdescLeft">&#160;</td><td class="mdescRight">\tag::pll_settings[]  <br /></td></tr>
+<tr class="separator:a324481435427a2d41c0511545f32777a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafe78184edbb372dbd08feca4dae87cd" id="r_aafe78184edbb372dbd08feca4dae87cd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafe78184edbb372dbd08feca4dae87cd">PICO_XOSC_STARTUP_DELAY_MULTIPLIER</a>&#160;&#160;&#160;64</td></tr>
+<tr class="separator:aafe78184edbb372dbd08feca4dae87cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaed067aba1d8dc17479c812291ca1bcc" id="r_aaed067aba1d8dc17479c812291ca1bcc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaed067aba1d8dc17479c812291ca1bcc">STARTUP_DELAY</a>&#160;&#160;&#160;(((XOSC_KHZ + 128) / 256) * <a class="el" href="#aafe78184edbb372dbd08feca4dae87cd">PICO_XOSC_STARTUP_DELAY_MULTIPLIER</a>)</td></tr>
+<tr class="separator:aaed067aba1d8dc17479c812291ca1bcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a487dbffc27f23bdb4da3a0c372b800fb" id="r_a487dbffc27f23bdb4da3a0c372b800fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a487dbffc27f23bdb4da3a0c372b800fb">xosc_init</a> (void)</td></tr>
+<tr class="memdesc:a487dbffc27f23bdb4da3a0c372b800fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">\end::reset_funcs[]  <br /></td></tr>
+<tr class="separator:a487dbffc27f23bdb4da3a0c372b800fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f54500ec817d4e3c233a043b6362fe1" id="r_a9f54500ec817d4e3c233a043b6362fe1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f54500ec817d4e3c233a043b6362fe1">pll_init</a> (pll_hw_t *pll, <a class="el" href="linux_2include_2sys_2types_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> refdiv, <a class="el" href="linux_2include_2sys_2types_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> vco_freq, <a class="el" href="linux_2include_2sys_2types_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> post_div1, <a class="el" href="linux_2include_2sys_2types_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> post_div2)</td></tr>
+<tr class="memdesc:a9f54500ec817d4e3c233a043b6362fe1"><td class="mdescLeft">&#160;</td><td class="mdescRight">\tag::pll_init_calculations[]  <br /></td></tr>
+<tr class="separator:a9f54500ec817d4e3c233a043b6362fe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90f15783df4e2cb041971a197b2119b1" id="r_a90f15783df4e2cb041971a197b2119b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90f15783df4e2cb041971a197b2119b1">clock_configure</a> (enum clock_index clk_index, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> src, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> auxsrc, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> src_freq, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> freq)</td></tr>
+<tr class="memdesc:a90f15783df4e2cb041971a197b2119b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">\tag<a class="el" href="#a90f15783df4e2cb041971a197b2119b1" title="\tagclock_configure[]">clock_configure</a>[]  <br /></td></tr>
+<tr class="separator:a90f15783df4e2cb041971a197b2119b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a296f1c0f089ef21af9c6f28bb9b6ea74" id="r_a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a296f1c0f089ef21af9c6f28bb9b6ea74">vsf_driver_init</a> (void)</td></tr>
-<tr class="memdesc:a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="mdescLeft">&#160;</td><td class="mdescRight">common hal drivers  <br /></td></tr>
+<tr class="memdesc:a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="mdescLeft">&#160;</td><td class="mdescRight">\end<a class="el" href="#a90f15783df4e2cb041971a197b2119b1" title="\tagclock_configure[]">clock_configure</a>[]  <br /></td></tr>
 <tr class="separator:a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ae1bd66fc9846c52601de355a20901b0e" name="ae1bd66fc9846c52601de355a20901b0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1bd66fc9846c52601de355a20901b0e">&#9670;&#160;</a></span>KHZ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define KHZ&#160;&#160;&#160;1000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a91dd8b26b5bbdd9ca65de2ebb0119743" name="a91dd8b26b5bbdd9ca65de2ebb0119743"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91dd8b26b5bbdd9ca65de2ebb0119743">&#9670;&#160;</a></span>MHZ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MHZ&#160;&#160;&#160;1000000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a324481435427a2d41c0511545f32777a" name="a324481435427a2d41c0511545f32777a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a324481435427a2d41c0511545f32777a">&#9670;&#160;</a></span>PLL_COMMON_REFDIV</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLL_COMMON_REFDIV&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>\tag::pll_settings[] </p>
+<p>\end::pll_settings[] </p>
+
+</div>
+</div>
+<a id="aafe78184edbb372dbd08feca4dae87cd" name="aafe78184edbb372dbd08feca4dae87cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafe78184edbb372dbd08feca4dae87cd">&#9670;&#160;</a></span>PICO_XOSC_STARTUP_DELAY_MULTIPLIER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PICO_XOSC_STARTUP_DELAY_MULTIPLIER&#160;&#160;&#160;64</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaed067aba1d8dc17479c812291ca1bcc" name="aaed067aba1d8dc17479c812291ca1bcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaed067aba1d8dc17479c812291ca1bcc">&#9670;&#160;</a></span>STARTUP_DELAY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STARTUP_DELAY&#160;&#160;&#160;(((XOSC_KHZ + 128) / 256) * <a class="el" href="#aafe78184edbb372dbd08feca4dae87cd">PICO_XOSC_STARTUP_DELAY_MULTIPLIER</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a487dbffc27f23bdb4da3a0c372b800fb" name="a487dbffc27f23bdb4da3a0c372b800fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a487dbffc27f23bdb4da3a0c372b800fb">&#9670;&#160;</a></span>xosc_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void xosc_init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>\end::reset_funcs[] </p>
+
+</div>
+</div>
+<a id="a9f54500ec817d4e3c233a043b6362fe1" name="a9f54500ec817d4e3c233a043b6362fe1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f54500ec817d4e3c233a043b6362fe1">&#9670;&#160;</a></span>pll_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pll_init </td>
+          <td>(</td>
+          <td class="paramtype">pll_hw_t *</td>          <td class="paramname"><span class="paramname"><em>pll</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></td>          <td class="paramname"><span class="paramname"><em>refdiv</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></td>          <td class="paramname"><span class="paramname"><em>vco_freq</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></td>          <td class="paramname"><span class="paramname"><em>post_div1</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></td>          <td class="paramname"><span class="paramname"><em>post_div2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>\tag::pll_init_calculations[] </p>
+<p>\end::pll_init_calculations[]</p>
+<p>\tag::pll_init_finish[]</p>
+<p>\end::pll_init_finish[]</p>
+
+</div>
+</div>
+<a id="a90f15783df4e2cb041971a197b2119b1" name="a90f15783df4e2cb041971a197b2119b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90f15783df4e2cb041971a197b2119b1">&#9670;&#160;</a></span>clock_configure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> clock_configure </td>
+          <td>(</td>
+          <td class="paramtype">enum clock_index</td>          <td class="paramname"><span class="paramname"><em>clk_index</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a></td>          <td class="paramname"><span class="paramname"><em>src</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a></td>          <td class="paramname"><span class="paramname"><em>auxsrc</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a></td>          <td class="paramname"><span class="paramname"><em>src_freq</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a></td>          <td class="paramname"><span class="paramname"><em>freq</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>\tag<a class="el" href="#a90f15783df4e2cb041971a197b2119b1" title="\tagclock_configure[]">clock_configure</a>[] </p>
+
+</div>
+</div>
 <a id="a296f1c0f089ef21af9c6f28bb9b6ea74" name="a296f1c0f089ef21af9c6f28bb9b6ea74"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a296f1c0f089ef21af9c6f28bb9b6ea74">&#9670;&#160;</a></span>vsf_driver_init()</h2>
 
@@ -81,7 +285,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>common hal drivers </p>
+<p>\end<a class="el" href="#a90f15783df4e2cb041971a197b2119b1" title="\tagclock_configure[]">clock_configure</a>[] </p>
+<p>common hal drivers</p>
 <dl class="section note"><dt>Note</dt><dd>initialize device driver </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -96,7 +301,10 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>initialise interrupt controller;</p>
+<p>\tag<a class="el" href="#a9f54500ec817d4e3c233a043b6362fe1" title="\tag::pll_init_calculations[]">pll_init</a>[]</p>
+<p>\end<a class="el" href="#a9f54500ec817d4e3c233a043b6362fe1" title="\tag::pll_init_calculations[]">pll_init</a>[]</p>
+<p>\tag::configure_clk_sys[]</p>
+<p>\end::configure_clk_sys[]</p>
 
 </div>
 </div>
