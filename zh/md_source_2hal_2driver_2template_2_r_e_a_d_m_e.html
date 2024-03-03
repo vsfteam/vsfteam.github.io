@@ -43,25 +43,39 @@
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a> Template in current directory can be used for:</p><ol type="1">
-<li>Add a driver for peripherials of specific ${DEVICE} of a specific ${SERIES} from a specific ${VENDOR}. These drivers are called HW drivers in VSF, codes between "HW" - "HW end" comments sections in the source code of the template are for these drivers. It's recommended to use blackbox mode for peripherial drivers, which hide everything in peripherial header files(eg adc.h). Here ${VENDOR}/${SERIES}/${DEVICE} will be referenced in the source code of the template, please replace them with the actual name.</li>
-<li>Implement an IPCore driver ${XXX_IP} from ${VENDOR}. codes between "IPCore" - "IPCore end" comments sections in the source code of the template are for these drivers. IPCore drivers are actually provided to peripherial drivers, so information in IPCore drivers should be open. Here ${VENDOR}/${XXX_IP} will be referenced in the source code of the template, please replace them with the actual name.</li>
-<li>Implement a emulated driver as if it's an specified peripherial. In this case, it's similar to IPCore case, so the source code of the template will take it as IPCore usage. But ${VENDOR} is not used, ${XXX_IP} should be the name of the emulated peripherial driver. Usage case example:<ol type="a">
+<li>Add a driver for peripherials of DEVICE in a SERIES from VENDOR.</li>
+</ol>
+<p>These drivers are called HW drivers in VSF, codes between "HW" - "HW end" comments sections in the source code of the template are for these drivers. It's recommended to use blackbox mode for peripherial drivers, which hide everything in peripherial header files(eg adc.h). Here VENDOR/SERIES/DEVICE will be referenced in the source code of the template, please replace them with the actual name.</p>
+<ol type="1">
+<li>Implement an IPCore driver XXX_IP from VENDOR.</li>
+</ol>
+<p>codes between "IPCore" - "IPCore end" comments sections in the source code of the template are for these drivers. IPCore drivers are actually provided to peripherial drivers, so information in IPCore drivers should be open. Here VENDOR/XXX_IP will be referenced in the source code of the template, please replace them with the actual name.</p>
+<ol type="1">
+<li>Implement a emulated driver as if it's an specified peripherial.</li>
+</ol>
+<p>In this case, it's similar to IPCore case, so the source code of the template will take it as IPCore usage. But VENDOR is not used, XXX_IP should be the name of the emulated peripherial driver. Usage case example:</p><ul>
 <li>gpio_i2c: gpio emulated i2c driver which has the same API as <a class="el" href="structvsf__i2c__t.html">vsf_i2c_t</a> driver.</li>
 <li>spi_flash: spi flash driver can provide 2 interfaces. One is mal which is block interface, another is <a class="el" href="structvsf__flash__t.html">vsf_flash_t</a> driver interface.</li>
 <li>usbh_uart: usb host driver for CDCACM class, which will implement a UART interface.</li>
+</ul>
+<hr  />
+<p>本目录下的模板可用于：</p>
+<ol type="1">
+<li>增加一个 VENDOR 厂家的 SERIES 系列中的 DEVICE 芯片的外设驱动。</li>
 </ol>
-</li>
+<p>这种具体芯片的外设驱动在 VSF 中称为 HW 驱动。在 "H#" 到 "HW end" 注释段之间的代码，就是用于这种驱动的。 实现外设驱动的时候，推荐使用黑盒模式，外设驱动的头文件不提供具体的信息。 VENDOR/SERIES/DEVICE 会出现在模板代码中，请替换为实际的名字。</p>
+<ol type="1">
+<li>实现一个 VENDOR 厂家的 XXX_IP 的 IP 核驱动。</li>
 </ol>
-<p>本目录下的模板可用于：</p><ol type="1">
-<li>增加一个 ${VENDOR} 厂家的 ${SERIES} 系列忠的 ${DEVICE} 芯片的外设驱动。 这种具体芯片的外设驱动在 VSF 中称为 HW 驱动。在 "H#" 到 "HW end" 注释段之间的代码，就是用于这种驱动的。 实现外设驱动的时候，推荐使用黑盒模式，外设驱动的头文件不提供具体的信息。 ${VENDOR}/${SERIES}/${DEVICE} 会出现在模板代码中，请替换为实际的名字。</li>
-<li>实现一个 ${VENDOR} 厂家的 ${XXX_IP} 的 IP 核驱动。 在 "IPCore" 到 "IPCore end" 注释段之间的代码，就是用于这种驱动的。 IP 核驱动实际上是提供给具体芯片外设驱动使用，所以相关的信息都需要对高层可见。 ${VENDOR}/${XXX_IP} 会出现在模板代码中，请替换为实际的名字。</li>
-<li>实现一个模拟某种芯片外设接口的驱动。 这种情况下，和 IP 核驱动类似，模板代码将这种使用场景等同于 IP 核驱动的场景，${VENDOR} 不使用， ${XXX_IP} 为模拟驱动的名字。 使用用例：<ol type="a">
+<p>在 "IPCore" 到 "IPCore end" 注释段之间的代码，就是用于这种驱动的。 IP 核驱动实际上是提供给具体芯片外设驱动使用，所以相关的信息都需要对高层可见。 VENDOR/XXX_IP 会出现在模板代码中，请替换为实际的名字。</p>
+<ol type="1">
+<li>实现一个模拟某种芯片外设接口的驱动。</li>
+</ol>
+<p>这种情况下，和 IP 核驱动类似，模板代码将这种使用场景等同于 IP 核驱动的场景， VENDOR 不使用， XXX_IP 为模拟驱动的名字。 使用用例：</p><ul>
 <li>gpio_i2c: GPIO 模拟 I2C ，使用和硬件 I2C 一样的接口。</li>
 <li>spi_flash: spi flash 可以提供 2 种接口，一种是块设备接口，另一种是和硬件 flash 一样的接口。</li>
 <li>usbh_uart: CDCACM 类的 USB 主机驱动，实现一个 UART 的接口。 </li>
-</ol>
-</li>
-</ol>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
