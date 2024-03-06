@@ -246,18 +246,18 @@
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="keyword">static</span> ALWAYS_INLINE <span class="keywordtype">void</span> vsf_arch_set_stack(<a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> stack)</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <span class="keywordtype">void</span> vsf_arch_set_stack(<a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> stack)</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>{</div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    __set_MSP(stack);</div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>}</div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="keyword">static</span> ALWAYS_INLINE <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> vsf_arch_get_stack(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> vsf_arch_get_stack(<span class="keywordtype">void</span>)</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>{</div>
 <div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <span class="keywordflow">return</span> __get_MSP();</div>
 <div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>}</div>
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="preprocessor">#if VSF_ARCH_USE_THREAD_REG == ENABLED</span></div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="keyword">static</span> ALWAYS_INLINE <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> vsf_arch_set_thread_reg(<a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> <a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>)</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> vsf_arch_set_thread_reg(<a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> <a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>)</div>
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>{</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="keyword">register</span> <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> result;</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    __asm__ <a class="code hl_define" href="____compiler_8h.html#a64fa3037957156c60db536aad57ae07e">__volatile__</a> (<span class="stringliteral">&quot;MOV %0, r9&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(result));</div>
