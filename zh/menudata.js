@@ -25,7 +25,7 @@
 var menudata={children:[
 {text:"首页",url:"index.html"},
 {text:"相关页面",url:"pages.html"},
-{text:"Topics",url:"topics.html"},
+{text:"专题",url:"topics.html"},
 {text:"命名空间",url:"namespaces.html",children:[
 {text:"命名空间列表",url:"namespaces.html"},
 {text:"命名空间成员",url:"namespacemembers.html",children:[
