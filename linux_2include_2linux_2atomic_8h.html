@@ -64,8 +64,7 @@ $(function(){ initResizable(false); });
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">atomic.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -80,17 +79,56 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a3767149341706fc68b37b68121c40a13" id="r_a3767149341706fc68b37b68121c40a13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3767149341706fc68b37b68121c40a13">__VSF_LINUX_ATOM_BITLEN__</a>&#160;&#160;&#160;32</td></tr>
+<tr class="separator:a3767149341706fc68b37b68121c40a13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a958f85bbd95de8858de95790a49a5138" id="r_a958f85bbd95de8858de95790a49a5138"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a958f85bbd95de8858de95790a49a5138">ATOMIC_INIT</a>(__VALUE)&#160;&#160;&#160;{ (__VALUE) }</td></tr>
 <tr class="separator:a958f85bbd95de8858de95790a49a5138"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a2ee495fd93ad487d2cde52e889cfa832" id="r_a2ee495fd93ad487d2cde52e889cfa832"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ee495fd93ad487d2cde52e889cfa832">atomic_inc</a> (<a class="el" href="structatomic__t.html">atomic_t</a> *a)</td></tr>
-<tr class="separator:a2ee495fd93ad487d2cde52e889cfa832"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a869b928852b1d6dda3506f2eab37ff2b" id="r_a869b928852b1d6dda3506f2eab37ff2b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a869b928852b1d6dda3506f2eab37ff2b">atomic_dec_and_test</a> (<a class="el" href="structatomic__t.html">atomic_t</a> *a)</td></tr>
-<tr class="separator:a869b928852b1d6dda3506f2eab37ff2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fd32962403cae3312da3b43362ea5f2" id="r_a6fd32962403cae3312da3b43362ea5f2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fd32962403cae3312da3b43362ea5f2">atomic_set</a>(__v,  __i)&#160;&#160;&#160;((__v)-&gt;counter = (__i))</td></tr>
+<tr class="separator:a6fd32962403cae3312da3b43362ea5f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24da40783e753bfa81f1dca6568532da" id="r_a24da40783e753bfa81f1dca6568532da"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24da40783e753bfa81f1dca6568532da">atomic_read</a>(__v)&#160;&#160;&#160;((__v)-&gt;counter)</td></tr>
+<tr class="separator:a24da40783e753bfa81f1dca6568532da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1836beca4eb7c23c8a2c5a31bc735af" id="r_ac1836beca4eb7c23c8a2c5a31bc735af"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1836beca4eb7c23c8a2c5a31bc735af">atomic_add</a>(__i,  __v)&#160;&#160;&#160;<a class="el" href="vsf__arch__abstraction_8h.html#a12a7a81a98a7a30f107cb5cb4f3f13fd">vsf_atom_add</a>(<a class="el" href="#a3767149341706fc68b37b68121c40a13">__VSF_LINUX_ATOM_BITLEN__</a>, &amp;(__v)-&gt;counter, (__i))</td></tr>
+<tr class="separator:ac1836beca4eb7c23c8a2c5a31bc735af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a836c43a403ff1ea8f46ca82b31cf7aad" id="r_a836c43a403ff1ea8f46ca82b31cf7aad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a836c43a403ff1ea8f46ca82b31cf7aad">atomic_sub</a>(__i,  __v)&#160;&#160;&#160;<a class="el" href="#ac1836beca4eb7c23c8a2c5a31bc735af">atomic_add</a>(- (__i), (__v))</td></tr>
+<tr class="separator:a836c43a403ff1ea8f46ca82b31cf7aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0046a30d072f77bb9d8839f51f7daa8d" id="r_a0046a30d072f77bb9d8839f51f7daa8d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0046a30d072f77bb9d8839f51f7daa8d">atomic_inc</a>(__v)&#160;&#160;&#160;<a class="el" href="#ac1836beca4eb7c23c8a2c5a31bc735af">atomic_add</a>(1, __v)</td></tr>
+<tr class="separator:a0046a30d072f77bb9d8839f51f7daa8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad326e41d48042dd94e98ccf81a22e8ea" id="r_ad326e41d48042dd94e98ccf81a22e8ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad326e41d48042dd94e98ccf81a22e8ea">atomic_dec</a>(__v)&#160;&#160;&#160;<a class="el" href="#a836c43a403ff1ea8f46ca82b31cf7aad">atomic_sub</a>(1, __v)</td></tr>
+<tr class="separator:ad326e41d48042dd94e98ccf81a22e8ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89d1f19edf8f2b43d77db8f1204b7987" id="r_a89d1f19edf8f2b43d77db8f1204b7987"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89d1f19edf8f2b43d77db8f1204b7987">atomic_add_return</a>(__i,  __v)</td></tr>
+<tr class="separator:a89d1f19edf8f2b43d77db8f1204b7987"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0af6bedd32cb143b381f274768d4caf8" id="r_a0af6bedd32cb143b381f274768d4caf8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0af6bedd32cb143b381f274768d4caf8">atomic_sub_return</a>(__i,  __v)&#160;&#160;&#160;<a class="el" href="#a89d1f19edf8f2b43d77db8f1204b7987">atomic_add_return</a>(- (__i), (__v))</td></tr>
+<tr class="separator:a0af6bedd32cb143b381f274768d4caf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dcd2c7457363ad222b7e78c7d101959" id="r_a8dcd2c7457363ad222b7e78c7d101959"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dcd2c7457363ad222b7e78c7d101959">atomic_inc_return</a>(__v)&#160;&#160;&#160;<a class="el" href="#a89d1f19edf8f2b43d77db8f1204b7987">atomic_add_return</a>(1, (__v))</td></tr>
+<tr class="separator:a8dcd2c7457363ad222b7e78c7d101959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3957ccf27d7c434a0a086508249c869" id="r_ac3957ccf27d7c434a0a086508249c869"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3957ccf27d7c434a0a086508249c869">atomic_dec_return</a>(__v)&#160;&#160;&#160;<a class="el" href="#a0af6bedd32cb143b381f274768d4caf8">atomic_sub_return</a>(1, (__v))</td></tr>
+<tr class="separator:ac3957ccf27d7c434a0a086508249c869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a3a13eac24922bcfc6678b32d077ff4" id="r_a9a3a13eac24922bcfc6678b32d077ff4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a3a13eac24922bcfc6678b32d077ff4">atomic_inc_and_test</a>(__v)&#160;&#160;&#160;(!<a class="el" href="#a8dcd2c7457363ad222b7e78c7d101959">atomic_inc_return</a>(__v))</td></tr>
+<tr class="separator:a9a3a13eac24922bcfc6678b32d077ff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a813aa722576cd237f9e82909176b220a" id="r_a813aa722576cd237f9e82909176b220a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a813aa722576cd237f9e82909176b220a">atomic_dec_and_test</a>(__v)&#160;&#160;&#160;(!<a class="el" href="#ac3957ccf27d7c434a0a086508249c869">atomic_dec_return</a>(__v))</td></tr>
+<tr class="separator:a813aa722576cd237f9e82909176b220a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4866c3b01dbf04f38d670df780e30137" id="r_a4866c3b01dbf04f38d670df780e30137"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4866c3b01dbf04f38d670df780e30137">atomic_sub_and_test</a>(__i,  __v)&#160;&#160;&#160;(!<a class="el" href="#a0af6bedd32cb143b381f274768d4caf8">atomic_sub_return</a>((__i), (__v)))</td></tr>
+<tr class="separator:a4866c3b01dbf04f38d670df780e30137"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a933cc712d7d35a76e3c40330916151af" id="r_a933cc712d7d35a76e3c40330916151af"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a933cc712d7d35a76e3c40330916151af">atomic_add_negative</a>(__i,  __v)&#160;&#160;&#160;(<a class="el" href="#a0af6bedd32cb143b381f274768d4caf8">atomic_sub_return</a>((__i), (__v)) &lt; 0)</td></tr>
+<tr class="separator:a933cc712d7d35a76e3c40330916151af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeadc78151f9f32417362f0cbcedd05e2" id="r_aeadc78151f9f32417362f0cbcedd05e2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeadc78151f9f32417362f0cbcedd05e2">atomic_xchg</a>(__v,  __new)&#160;&#160;&#160;<a class="el" href="vsf__arch__abstraction_8h.html#ad0cd8d06e2114e4e010d929aed0d2a8b">vsf_atom_xchg</a>(<a class="el" href="#a3767149341706fc68b37b68121c40a13">__VSF_LINUX_ATOM_BITLEN__</a>, &amp;(__v)-&gt;counter, (__new))</td></tr>
+<tr class="separator:aeadc78151f9f32417362f0cbcedd05e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a3767149341706fc68b37b68121c40a13" name="a3767149341706fc68b37b68121c40a13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3767149341706fc68b37b68121c40a13">&#9670;&#160;</a></span>__VSF_LINUX_ATOM_BITLEN__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_LINUX_ATOM_BITLEN__&#160;&#160;&#160;32</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a958f85bbd95de8858de95790a49a5138" name="a958f85bbd95de8858de95790a49a5138"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a958f85bbd95de8858de95790a49a5138">&#9670;&#160;</a></span>ATOMIC_INIT</h2>
 
@@ -108,53 +146,296 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a2ee495fd93ad487d2cde52e889cfa832" name="a2ee495fd93ad487d2cde52e889cfa832"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ee495fd93ad487d2cde52e889cfa832">&#9670;&#160;</a></span>atomic_inc()</h2>
+<a id="a6fd32962403cae3312da3b43362ea5f2" name="a6fd32962403cae3312da3b43362ea5f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fd32962403cae3312da3b43362ea5f2">&#9670;&#160;</a></span>atomic_set</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void atomic_inc </td>
+          <td class="memname">#define atomic_set</td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structatomic__t.html">atomic_t</a> *</td>          <td class="paramname"><span class="paramname"><em>a</em></span></td><td>)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__v</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__i</em></span>&#160;)&#160;&#160;&#160;((__v)-&gt;counter = (__i))</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a869b928852b1d6dda3506f2eab37ff2b" name="a869b928852b1d6dda3506f2eab37ff2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a869b928852b1d6dda3506f2eab37ff2b">&#9670;&#160;</a></span>atomic_dec_and_test()</h2>
+<a id="a24da40783e753bfa81f1dca6568532da" name="a24da40783e753bfa81f1dca6568532da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24da40783e753bfa81f1dca6568532da">&#9670;&#160;</a></span>atomic_read</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int atomic_dec_and_test </td>
+          <td class="memname">#define atomic_read</td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structatomic__t.html">atomic_t</a> *</td>          <td class="paramname"><span class="paramname"><em>a</em></span></td><td>)</td>
-          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__v</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;((__v)-&gt;counter)</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac1836beca4eb7c23c8a2c5a31bc735af" name="ac1836beca4eb7c23c8a2c5a31bc735af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1836beca4eb7c23c8a2c5a31bc735af">&#9670;&#160;</a></span>atomic_add</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_add</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__v</em></span>&#160;)&#160;&#160;&#160;<a class="el" href="vsf__arch__abstraction_8h.html#a12a7a81a98a7a30f107cb5cb4f3f13fd">vsf_atom_add</a>(<a class="el" href="#a3767149341706fc68b37b68121c40a13">__VSF_LINUX_ATOM_BITLEN__</a>, &amp;(__v)-&gt;counter, (__i))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a836c43a403ff1ea8f46ca82b31cf7aad" name="a836c43a403ff1ea8f46ca82b31cf7aad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a836c43a403ff1ea8f46ca82b31cf7aad">&#9670;&#160;</a></span>atomic_sub</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_sub</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__v</em></span>&#160;)&#160;&#160;&#160;<a class="el" href="#ac1836beca4eb7c23c8a2c5a31bc735af">atomic_add</a>(- (__i), (__v))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0046a30d072f77bb9d8839f51f7daa8d" name="a0046a30d072f77bb9d8839f51f7daa8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0046a30d072f77bb9d8839f51f7daa8d">&#9670;&#160;</a></span>atomic_inc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_inc</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__v</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="#ac1836beca4eb7c23c8a2c5a31bc735af">atomic_add</a>(1, __v)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad326e41d48042dd94e98ccf81a22e8ea" name="ad326e41d48042dd94e98ccf81a22e8ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad326e41d48042dd94e98ccf81a22e8ea">&#9670;&#160;</a></span>atomic_dec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_dec</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__v</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="#a836c43a403ff1ea8f46ca82b31cf7aad">atomic_sub</a>(1, __v)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a89d1f19edf8f2b43d77db8f1204b7987" name="a89d1f19edf8f2b43d77db8f1204b7987"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89d1f19edf8f2b43d77db8f1204b7987">&#9670;&#160;</a></span>atomic_add_return</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_add_return</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__v</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    ({                                          \</div>
+<div class="line">    <span class="keywordtype">int</span> <a class="code hl_define" href="vsf__preprocessor_8h.html#a5fd32e93159a228f586c0e21900043ce">VSF_MACRO_SAFE_NAME</a>(<a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>) = (__i);                                         \</div>
+<div class="line">    vsf_atom_add(<a class="code hl_define" href="#a3767149341706fc68b37b68121c40a13">__VSF_LINUX_ATOM_BITLEN__</a>, &amp;(__v)-&gt;counter, <a class="code hl_define" href="vsf__preprocessor_8h.html#a5fd32e93159a228f586c0e21900043ce">VSF_MACRO_SAFE_NAME</a>(<a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>)) + <a class="code hl_define" href="vsf__preprocessor_8h.html#a5fd32e93159a228f586c0e21900043ce">VSF_MACRO_SAFE_NAME</a>(<a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>);\</div>
+<div class="line">})</div>
+<div class="ttc" id="alinux_2include_2linux_2atomic_8h_html_a3767149341706fc68b37b68121c40a13"><div class="ttname"><a href="#a3767149341706fc68b37b68121c40a13">__VSF_LINUX_ATOM_BITLEN__</a></div><div class="ttdeci">#define __VSF_LINUX_ATOM_BITLEN__</div><div class="ttdef"><b>Definition</b> atomic.h:20</div></div>
+<div class="ttc" id="avsf__audio_8h_html_ad5265e9eca2f756804584a9ac3335519"><div class="ttname"><a href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a></div><div class="ttdeci">vk_av_control_value_t value</div><div class="ttdef"><b>Definition</b> vsf_audio.h:171</div></div>
+<div class="ttc" id="avsf__preprocessor_8h_html_a5fd32e93159a228f586c0e21900043ce"><div class="ttname"><a href="vsf__preprocessor_8h.html#a5fd32e93159a228f586c0e21900043ce">VSF_MACRO_SAFE_NAME</a></div><div class="ttdeci">#define VSF_MACRO_SAFE_NAME(__NAME)</div><div class="ttdef"><b>Definition</b> vsf_preprocessor.h:32</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0af6bedd32cb143b381f274768d4caf8" name="a0af6bedd32cb143b381f274768d4caf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0af6bedd32cb143b381f274768d4caf8">&#9670;&#160;</a></span>atomic_sub_return</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_sub_return</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__v</em></span>&#160;)&#160;&#160;&#160;<a class="el" href="#a89d1f19edf8f2b43d77db8f1204b7987">atomic_add_return</a>(- (__i), (__v))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8dcd2c7457363ad222b7e78c7d101959" name="a8dcd2c7457363ad222b7e78c7d101959"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dcd2c7457363ad222b7e78c7d101959">&#9670;&#160;</a></span>atomic_inc_return</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_inc_return</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__v</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="#a89d1f19edf8f2b43d77db8f1204b7987">atomic_add_return</a>(1, (__v))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3957ccf27d7c434a0a086508249c869" name="ac3957ccf27d7c434a0a086508249c869"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3957ccf27d7c434a0a086508249c869">&#9670;&#160;</a></span>atomic_dec_return</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_dec_return</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__v</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="#a0af6bedd32cb143b381f274768d4caf8">atomic_sub_return</a>(1, (__v))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a3a13eac24922bcfc6678b32d077ff4" name="a9a3a13eac24922bcfc6678b32d077ff4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a3a13eac24922bcfc6678b32d077ff4">&#9670;&#160;</a></span>atomic_inc_and_test</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_inc_and_test</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__v</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;(!<a class="el" href="#a8dcd2c7457363ad222b7e78c7d101959">atomic_inc_return</a>(__v))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a813aa722576cd237f9e82909176b220a" name="a813aa722576cd237f9e82909176b220a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a813aa722576cd237f9e82909176b220a">&#9670;&#160;</a></span>atomic_dec_and_test</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_dec_and_test</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__v</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;(!<a class="el" href="#ac3957ccf27d7c434a0a086508249c869">atomic_dec_return</a>(__v))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4866c3b01dbf04f38d670df780e30137" name="a4866c3b01dbf04f38d670df780e30137"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4866c3b01dbf04f38d670df780e30137">&#9670;&#160;</a></span>atomic_sub_and_test</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_sub_and_test</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__v</em></span>&#160;)&#160;&#160;&#160;(!<a class="el" href="#a0af6bedd32cb143b381f274768d4caf8">atomic_sub_return</a>((__i), (__v)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a933cc712d7d35a76e3c40330916151af" name="a933cc712d7d35a76e3c40330916151af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a933cc712d7d35a76e3c40330916151af">&#9670;&#160;</a></span>atomic_add_negative</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_add_negative</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__v</em></span>&#160;)&#160;&#160;&#160;(<a class="el" href="#a0af6bedd32cb143b381f274768d4caf8">atomic_sub_return</a>((__i), (__v)) &lt; 0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeadc78151f9f32417362f0cbcedd05e2" name="aeadc78151f9f32417362f0cbcedd05e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeadc78151f9f32417362f0cbcedd05e2">&#9670;&#160;</a></span>atomic_xchg</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_xchg</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__v</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>__new</em></span>&#160;)&#160;&#160;&#160;<a class="el" href="vsf__arch__abstraction_8h.html#ad0cd8d06e2114e4e010d929aed0d2a8b">vsf_atom_xchg</a>(<a class="el" href="#a3767149341706fc68b37b68121c40a13">__VSF_LINUX_ATOM_BITLEN__</a>, &amp;(__v)-&gt;counter, (__new))</td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
