@@ -99,6 +99,8 @@ $(function(){ initResizable(false); });
 <dd>
 A local object will be generated from users' stack, the size is specified ! by i_code_region_t.chLocalSize. The address of this local object will ! be passed to your OnEnter and OnLeave functions. You can use it to ! store some local status. ! ! ! ! DEFAULT_CODE_REGION_ATOM_CODE //!&lt; interrupt-safe region ! DEFAULT_CODE_REGION_NONE //!&lt; do nothing ! </dd></dl>
 </td></tr>
+<tr class="memitem:a84c5016ed7bb789e96332c8741e1e765" id="r_a84c5016ed7bb789e96332c8741e1e765"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84c5016ed7bb789e96332c8741e1e765">COMPILER_PATCH_CODE_REGION_LOCAL_SIZE</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a84c5016ed7bb789e96332c8741e1e765"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab971a958e6ec93039aa760ed10bc5e30" id="r_ab971a958e6ec93039aa760ed10bc5e30"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab971a958e6ec93039aa760ed10bc5e30">__CODE_REGION_SIMPLE</a>(__REGION_ADDR,  __CODE)</td></tr>
 <tr class="separator:ab971a958e6ec93039aa760ed10bc5e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0274fc0f5e8594c74617424bf1e6641f" id="r_a0274fc0f5e8594c74617424bf1e6641f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0274fc0f5e8594c74617424bf1e6641f">__CODE_REGION_SIMPLE_START</a>(__REGION_ADDR)</td></tr>
@@ -129,6 +131,20 @@ A local object will be generated from users' stack, the size is specified ! by i
 <tr class="separator:a6464bd2cd1bf55dee92dcdbb745fe88e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">宏定义说明</h2>
+<a id="a84c5016ed7bb789e96332c8741e1e765" name="a84c5016ed7bb789e96332c8741e1e765"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84c5016ed7bb789e96332c8741e1e765">&#9670;&#160;</a></span>COMPILER_PATCH_CODE_REGION_LOCAL_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define COMPILER_PATCH_CODE_REGION_LOCAL_SIZE&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ab971a958e6ec93039aa760ed10bc5e30" name="ab971a958e6ec93039aa760ed10bc5e30"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab971a958e6ec93039aa760ed10bc5e30">&#9670;&#160;</a></span>__CODE_REGION_SIMPLE</h2>
 
@@ -149,13 +165,14 @@ A local object will be generated from users' stack, the size is specified ! by i
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {<span class="keywordflow">if</span> (<a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a> != (__REGION_ADDR)) {                                          \</div>
 <div class="line">        <a class="code hl_struct" href="structcode__region__t.html">code_region_t</a> *code_region_ptr = (<a class="code hl_struct" href="structcode__region__t.html">code_region_t</a> *)(__REGION_ADDR);      \</div>
-<div class="line">        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> local[COMPILER_PATCH_CODE_REGION_LOCAL_SIZE];                   \</div>
+<div class="line">        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> local[<a class="code hl_define" href="#a84c5016ed7bb789e96332c8741e1e765">COMPILER_PATCH_CODE_REGION_LOCAL_SIZE</a>];                   \</div>
 <div class="line">        code_region_ptr-&gt;<a class="code hl_variable" href="structcode__region__t.html#aa0dfde1b6515fed5b257e1b5bf95ef39">methods_ptr</a>-&gt;<a class="code hl_variable" href="structi__code__region__t.html#a9e7092d3ca236acecec202299932ea1c">OnEnter</a>(                                  \</div>
 <div class="line">            code_region_ptr-&gt;<a class="code hl_variable" href="structcode__region__t.html#a305b1f1d6e3db0e0e9482691af331a48">target_ptr</a>, local);                                \</div>
 <div class="line">        __CODE;                                                                 \</div>
 <div class="line">        code_region_ptr-&gt;<a class="code hl_variable" href="structcode__region__t.html#aa0dfde1b6515fed5b257e1b5bf95ef39">methods_ptr</a>-&gt;<a class="code hl_variable" href="structi__code__region__t.html#a521ca11d5b792bb125521daffcdbadb8">OnLeave</a>(                                  \</div>
 <div class="line">            code_region_ptr-&gt;<a class="code hl_variable" href="structcode__region__t.html#a305b1f1d6e3db0e0e9482691af331a48">target_ptr</a>, local);                                \</div>
 <div class="line">    } }<span class="keywordflow">while</span>(0);</div>
+<div class="ttc" id="acode__region_8h_html_a84c5016ed7bb789e96332c8741e1e765"><div class="ttname"><a href="#a84c5016ed7bb789e96332c8741e1e765">COMPILER_PATCH_CODE_REGION_LOCAL_SIZE</a></div><div class="ttdeci">#define COMPILER_PATCH_CODE_REGION_LOCAL_SIZE</div><div class="ttdef"><b>定义</b> code_region.h:107</div></div>
 <div class="ttc" id="alinux_2include_2simple__libc_2stddef_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>定义</b> stddef.h:49</div></div>
 <div class="ttc" id="astdint_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>定义</b> stdint.h:5</div></div>
 <div class="ttc" id="astructcode__region__t_html"><div class="ttname"><a href="structcode__region__t.html">code_region_t</a></div><div class="ttdef"><b>定义</b> code_region.h:268</div></div>
@@ -182,7 +199,7 @@ A local object will be generated from users' stack, the size is specified ! by i
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {<span class="keywordflow">if</span> (<a class="code hl_define" href="linux_2include_2simple__libc_2stddef_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a> != (__REGION_ADDR)) {                                          \</div>
 <div class="line">        <a class="code hl_struct" href="structcode__region__t.html">code_region_t</a> *code_region_ptr = (<a class="code hl_struct" href="structcode__region__t.html">code_region_t</a> *)(__REGION_ADDR);      \</div>
-<div class="line">        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> local[COMPILER_PATCH_CODE_REGION_LOCAL_SIZE];                   \</div>
+<div class="line">        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> local[<a class="code hl_define" href="#a84c5016ed7bb789e96332c8741e1e765">COMPILER_PATCH_CODE_REGION_LOCAL_SIZE</a>];                   \</div>
 <div class="line">        code_region_ptr-&gt;<a class="code hl_variable" href="structcode__region__t.html#aa0dfde1b6515fed5b257e1b5bf95ef39">methods_ptr</a>-&gt;<a class="code hl_variable" href="structi__code__region__t.html#a9e7092d3ca236acecec202299932ea1c">OnEnter</a>(code_region_ptr-&gt;<a class="code hl_variable" href="structcode__region__t.html#a305b1f1d6e3db0e0e9482691af331a48">target_ptr</a>, local);</div>
 </div><!-- fragment -->
 </div>
