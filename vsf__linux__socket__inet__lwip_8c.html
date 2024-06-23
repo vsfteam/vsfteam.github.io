@@ -86,6 +86,7 @@ $(function(){ initResizable(false); });
 <code>#include &quot;lwip/api.h&quot;</code><br />
 <code>#include &quot;lwip/ip.h&quot;</code><br />
 <code>#include &quot;lwip/tcp.h&quot;</code><br />
+<code>#include &quot;lwip/udp.h&quot;</code><br />
 <code>#include &quot;lwip/dns.h&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -105,6 +106,12 @@ Macros</h2></td></tr>
 <tr class="separator:a18682b5c788afb4868eed6f1fd00d746"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56bf24a74c400dfffdef33bfca636614" id="r_a56bf24a74c400dfffdef33bfca636614"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56bf24a74c400dfffdef33bfca636614">__VSF_LINUX_CLASS_INHERIT__</a></td></tr>
 <tr class="separator:a56bf24a74c400dfffdef33bfca636614"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3d5d1ae6748589a5e53ce2ac9e11a8f" id="r_ac3d5d1ae6748589a5e53ce2ac9e11a8f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3d5d1ae6748589a5e53ce2ac9e11a8f">inet_addr_from_ip4addr</a>(target_inaddr,  source_ipaddr)&#160;&#160;&#160;((target_inaddr)-&gt;s_addr = ip4_addr_get_u32(source_ipaddr))</td></tr>
+<tr class="separator:ac3d5d1ae6748589a5e53ce2ac9e11a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a117e40ebe0b31ccd5b0dcbffd512ce68" id="r_a117e40ebe0b31ccd5b0dcbffd512ce68"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a117e40ebe0b31ccd5b0dcbffd512ce68">inet_addr_to_ip4addr</a>(target_ipaddr,  source_inaddr)&#160;&#160;&#160;(ip4_addr_set_u32(target_ipaddr, (source_inaddr)-&gt;s_addr))</td></tr>
+<tr class="separator:a117e40ebe0b31ccd5b0dcbffd512ce68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5219eb52f1696de03c3cc0dbcc8bf384" id="r_a5219eb52f1696de03c3cc0dbcc8bf384"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5219eb52f1696de03c3cc0dbcc8bf384">inet_addr_to_ip4addr_p</a>(target_ip4addr_p,  source_inaddr)&#160;&#160;&#160;((target_ip4addr_p) = (ip4_addr_t*)&amp;((source_inaddr)-&gt;s_addr))</td></tr>
+<tr class="separator:a5219eb52f1696de03c3cc0dbcc8bf384"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -174,6 +181,69 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define __VSF_LINUX_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3d5d1ae6748589a5e53ce2ac9e11a8f" name="ac3d5d1ae6748589a5e53ce2ac9e11a8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3d5d1ae6748589a5e53ce2ac9e11a8f">&#9670;&#160;</a></span>inet_addr_from_ip4addr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define inet_addr_from_ip4addr</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>target_inaddr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>source_ipaddr</em></span>&#160;)&#160;&#160;&#160;((target_inaddr)-&gt;s_addr = ip4_addr_get_u32(source_ipaddr))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a117e40ebe0b31ccd5b0dcbffd512ce68" name="a117e40ebe0b31ccd5b0dcbffd512ce68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a117e40ebe0b31ccd5b0dcbffd512ce68">&#9670;&#160;</a></span>inet_addr_to_ip4addr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define inet_addr_to_ip4addr</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>target_ipaddr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>source_inaddr</em></span>&#160;)&#160;&#160;&#160;(ip4_addr_set_u32(target_ipaddr, (source_inaddr)-&gt;s_addr))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5219eb52f1696de03c3cc0dbcc8bf384" name="a5219eb52f1696de03c3cc0dbcc8bf384"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5219eb52f1696de03c3cc0dbcc8bf384">&#9670;&#160;</a></span>inet_addr_to_ip4addr_p</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define inet_addr_to_ip4addr_p</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>target_ip4addr_p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>source_inaddr</em></span>&#160;)&#160;&#160;&#160;((target_ip4addr_p) = (ip4_addr_t*)&amp;((source_inaddr)-&gt;s_addr))</td>
         </tr>
       </table>
 </div><div class="memdoc">
