@@ -82,53 +82,77 @@
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#define VSF_ARCH_PRI_BIT            4</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">// software interrupt provided by a dedicated device</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#define VSF_DEV_SWI_NUM             5</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#elif defined(__VSF_HAL_SHOW_VENDOR_INFO__)</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#define __VSF_HEADER_ONLY_SHOW_VENDOR_INFO__</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;../common/vendor/Include/gd32h7xx.h&quot;</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#ifndef VSF_DEV_SWI_NUM</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#   define VSF_DEV_SWI_NUM          5</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#if VSF_DEV_SWI_NUM &gt; VSF_ARCH_PRI_NUM</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#   warning too many VSF_DEV_SWI_NUM, max is VSF_ARCH_PRI_NUM</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#   undef VSF_DEV_SWI_NUM</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#   define VSF_DEV_SWI_NUM          VSF_ARCH_PRI_NUM</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#ifndef __HAL_DEVICE_GIGADEVICE_GD32H7XX_H__</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#define __HAL_DEVICE_GIGADEVICE_GD32H7XX_H__</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">// software interrupt provided by a dedicated device</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a72a9acfbbf88884029a855fc81e735f2">   44</a></span><span class="preprocessor">#define VSF_DEV_SWI_LIST            SWI0_IRQn,SWI1_IRQn,SWI2_IRQn,SWI3_IRQn,SWI4_IRQn</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">/*\note this is should be the only place where common.h is included.*/</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#include &quot;../common/common.h&quot;</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#aad9d8cfbf6ccc7844a8bce46b407aa06">   53</a></span><span class="preprocessor">#define USB_OTG_COUNT               1</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#aa51fb03dc64c56894f9628968480dd80">   54</a></span><span class="preprocessor">#define USB_OTG0_IRQHandler         USBFS_IRQHandler</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">// required by dwcotg, define the max ep number of dwcotg include ep0</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a5d235e08f9b28bfda233a4c0f218316b">   56</a></span><span class="preprocessor">#define USB_DWCOTG_MAX_EP_NUM       4</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a44f2e3c126f384e3472149c597777b12">   58</a></span><span class="preprocessor">#define USB_OTG0_CONFIG                                                         \</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">    .ep_num = 8,                                                                \</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">    .irq = USBFS_IRQn,                                                          \</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">    .reg = (void *)USBFS_BASE,                                                  \</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">    .buffer_word_size = 0x500 &gt;&gt; 2,                                             \</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">    .speed = USB_SPEED_FULL,                                                    \</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">    .dma_en = false,                                                            \</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">    .ulpi_en = false,                                                           \</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">    .utmi_en = false,                                                           \</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">    .vbus_en = false,</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#endif      </span><span class="comment">// __HAL_DEVICE_GIGADEVICE_GD32H7XX_H__</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_HEADER_ONLY_SHOW_ARCH_INFO__</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">/* EOF */</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#elif defined(__VSF_HAL_SHOW_VENDOR_INFO__)</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#define __VSF_HEADER_ONLY_SHOW_VENDOR_INFO__</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &quot;../common/vendor/Include/gd32h7xx.h&quot;</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#ifndef __HAL_DEVICE_GIGADEVICE_GD32H7XX_H__</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#aa9ee3dc6fc822013921a6ddd69e31b12">   48</a></span><span class="preprocessor">#define __HAL_DEVICE_GIGADEVICE_GD32H7XX_H__</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">// software interrupt provided by a dedicated device</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a2d5f1efcae233c50b4b0b0bf7ae91e2a">   51</a></span><span class="preprocessor">#define __VSF_DEF_SWI_LIST_DEF(__N, __PARAM)                                    \</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">                                    VSF_MCONNECT(SWI, __N, _IRQn),</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a72a9acfbbf88884029a855fc81e735f2">   53</a></span><span class="preprocessor">#define VSF_DEV_SWI_LIST            VSF_MREPEAT(VSF_DEV_SWI_NUM, __VSF_DEF_SWI_LIST_DEF, NULL)</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">/*\note this is should be the only place where common.h is included.*/</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#include &quot;../common/common.h&quot;</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#aad9d8cfbf6ccc7844a8bce46b407aa06">   62</a></span><span class="preprocessor">#define USB_OTG_COUNT               1</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#aa51fb03dc64c56894f9628968480dd80">   63</a></span><span class="preprocessor">#define USB_OTG0_IRQHandler         USBFS_IRQHandler</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">// required by dwcotg, define the max ep number of dwcotg include ep0</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a5d235e08f9b28bfda233a4c0f218316b">   65</a></span><span class="preprocessor">#define USB_DWCOTG_MAX_EP_NUM       4</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a44f2e3c126f384e3472149c597777b12">   67</a></span><span class="preprocessor">#define USB_OTG0_CONFIG                                                         \</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">    .ep_num = 8,                                                                \</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">    .irq = USBFS_IRQn,                                                          \</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">    .reg = (void *)USBFS_BASE,                                                  \</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">    .buffer_word_size = 0x500 &gt;&gt; 2,                                             \</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">    .speed = USB_SPEED_FULL,                                                    \</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">    .dma_en = false,                                                            \</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">    .ulpi_en = false,                                                           \</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">    .utmi_en = false,                                                           \</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">    .vbus_en = false,</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#ad004c238699e85816b218094a44f785b">   78</a></span><span class="preprocessor">#define VSF_HW_IO_PORT_COUNT            10</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a81d1d4b7394390047fb3a7afcbf10bd4">   79</a></span><span class="preprocessor">#define VSF_HW_IO_PORT_MASK             0x6FF       </span><span class="comment">// no GPIOI</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#ad167b27741c20e3503341a609544f427">   80</a></span><span class="preprocessor">#define VSF_HW_IO_PIN_COUNT             16</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a710a5a5c0e3d2a704b30ec3fca773717">   81</a></span><span class="preprocessor">#define VSF_HW_IO_FUNCTION_MAX          16</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a86a20348e69036d08c8b7a10b1f344d0">   82</a></span><span class="preprocessor">#define VSF_HW_IO_PORT0_REG_BASE        (0x58020000)</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a93d9a5b8e1a3ca15330200b804f6b08e">   83</a></span><span class="preprocessor">#define VSF_HW_IO_PORT1_REG_BASE        (0x58020400)</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a46c136426a1a5223cd25dd05cab900f0">   84</a></span><span class="preprocessor">#define VSF_HW_IO_PORT2_REG_BASE        (0x58020800)</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a551d47d3d797f00dcc8e396391f4f229">   85</a></span><span class="preprocessor">#define VSF_HW_IO_PORT3_REG_BASE        (0x58020C00)</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a7feda5824749119d78e78e97b34e8c63">   86</a></span><span class="preprocessor">#define VSF_HW_IO_PORT4_REG_BASE        (0x58021000)</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#aad548500b25fbb69cb8113e6a7f5bbed">   87</a></span><span class="preprocessor">#define VSF_HW_IO_PORT5_REG_BASE        (0x58021400)</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a5a41fcf1aa8771c957c9af630ceb49e7">   88</a></span><span class="preprocessor">#define VSF_HW_IO_PORT6_REG_BASE        (0x58021800)</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a4e8cfaf62de6beaccb40b5107841743e">   89</a></span><span class="preprocessor">#define VSF_HW_IO_PORT7_REG_BASE        (0x58021C00)</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#a1c7301d4391e601da1245461541a43ed">   90</a></span><span class="preprocessor">#define VSF_HW_IO_PORT9_REG_BASE        (0x58022400)</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="hal_2driver_2_giga_device_2_g_d32_h7_x_x_2_g_d32_h759_2device_8h.html#ab28e5f753374bbd36aa8148d30803821">   91</a></span><span class="preprocessor">#define VSF_HW_IO_PORT10_REG_BASE       (0x58022800)</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#endif      </span><span class="comment">// __HAL_DEVICE_GIGADEVICE_GD32H7XX_H__</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_HEADER_ONLY_SHOW_ARCH_INFO__</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">/* EOF */</span></div>
 <div class="ttc" id="avsf__hal__cfg_8h_html"><div class="ttname"><a href="vsf__hal__cfg_8h.html">vsf_hal_cfg.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
