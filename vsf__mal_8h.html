@@ -67,7 +67,7 @@
 <code>#include &quot;<a class="el" href="vsf__scsi__mal_8h_source.html">./driver/scsi_mal/vsf_scsi_mal.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__file__mal_8h_source.html">./driver/file_mal/vsf_file_mal.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__flash__mal_8h_source.html">./driver/flash_mal/vsf_flash_mal.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="vsf__mmc__mal_8h_source.html">./driver/mmc_mal/vsf_mmc_mal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__sdmmc__mal_8h_source.html">./driver/sdmmc_mal/vsf_sdmmc_mal.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__cached__mal_8h_source.html">./driver/cached_mal/vsf_cached_mal.h</a>&quot;</code><br />
 </div>
 <p><a href="vsf__mal_8h_source.html">Go to the source code of this file.</a></p>
@@ -171,7 +171,7 @@ Variables</h2></td></tr>
 
 <p>This module provides MAL(Memory Abstraction Layser) device class. ! </p>
 <dl class="section author"><dt>Author</dt><dd>SimonQian ! </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Supports read/write/erase operation in block granularity. ! Enabled by VSF_USE_MAL. Drivers: ! mim_mal(mim: mal in mal) by VSF_MAL_USE_MIM_MAL: ! Used to derive a mal device from partial of another mal device. ! fakefat32_mal by VSF_MAL_USE_FAKEFAT32_MAL, depends on VSF_USE_FS/VSF_FS_USE_MEMFS/VSF_FS_USE_FATFS: ! Generate a vitual fat32 mal device. ! file_mal by VSF_MAL_USE_FILE_MAL, depends on VSF_USE_FS: ! Generate a mal device from a file. ! flash_mal by VSF_MAL_USE_FLASH_MAL, depends on VSF_HAL_USE_FLASH: ! Generate a mal device from partial of the FLASH in HAL. ! mem_mal by VSF_MAL_USE_MEM_MAL: ! Generate a mal device from io-accessable memory. ! mmc_mal by VSF_MAL_USE_MMC_MAL: ! Mal device from a MMC card. ! scsi_mal by VSF_MAL_USE_SCSI_MAL, depnends on VSF_USE_SCSI: ! Mal device from a SCSI device. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Supports read/write/erase operation in block granularity. ! Enabled by VSF_USE_MAL. Drivers: ! mim_mal(mim: mal in mal) by VSF_MAL_USE_MIM_MAL: ! Used to derive a mal device from partial of another mal device. ! fakefat32_mal by VSF_MAL_USE_FAKEFAT32_MAL, depends on VSF_USE_FS/VSF_FS_USE_MEMFS/VSF_FS_USE_FATFS: ! Generate a vitual fat32 mal device. ! file_mal by VSF_MAL_USE_FILE_MAL, depends on VSF_USE_FS: ! Generate a mal device from a file. ! flash_mal by VSF_MAL_USE_FLASH_MAL, depends on VSF_HAL_USE_FLASH: ! Generate a mal device from partial of the FLASH in HAL. ! mem_mal by VSF_MAL_USE_MEM_MAL: ! Generate a mal device from io-accessable memory. ! sdmmc_mal by VSF_MAL_USE_SDMMC_MAL: ! Mal device from a SD/MMC card. ! scsi_mal by VSF_MAL_USE_SCSI_MAL, depnends on VSF_USE_SCSI: ! Mal device from a SCSI device. </dd></dl>
 
 </div>
 </div>
@@ -204,7 +204,7 @@ Variables</h2></td></tr>
 
 <p>This module provides MAL(Memory Abstraction Layser) device class. ! </p>
 <dl class="section author"><dt>Author</dt><dd>SimonQian ! </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Supports read/write/erase operation in block granularity. ! Enabled by VSF_USE_MAL. Drivers: ! mim_mal(mim: mal in mal) by VSF_MAL_USE_MIM_MAL: ! Used to derive a mal device from partial of another mal device. ! fakefat32_mal by VSF_MAL_USE_FAKEFAT32_MAL, depends on VSF_USE_FS/VSF_FS_USE_MEMFS/VSF_FS_USE_FATFS: ! Generate a vitual fat32 mal device. ! file_mal by VSF_MAL_USE_FILE_MAL, depends on VSF_USE_FS: ! Generate a mal device from a file. ! flash_mal by VSF_MAL_USE_FLASH_MAL, depends on VSF_HAL_USE_FLASH: ! Generate a mal device from partial of the FLASH in HAL. ! mem_mal by VSF_MAL_USE_MEM_MAL: ! Generate a mal device from io-accessable memory. ! mmc_mal by VSF_MAL_USE_MMC_MAL: ! Mal device from a MMC card. ! scsi_mal by VSF_MAL_USE_SCSI_MAL, depnends on VSF_USE_SCSI: ! Mal device from a SCSI device. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Supports read/write/erase operation in block granularity. ! Enabled by VSF_USE_MAL. Drivers: ! mim_mal(mim: mal in mal) by VSF_MAL_USE_MIM_MAL: ! Used to derive a mal device from partial of another mal device. ! fakefat32_mal by VSF_MAL_USE_FAKEFAT32_MAL, depends on VSF_USE_FS/VSF_FS_USE_MEMFS/VSF_FS_USE_FATFS: ! Generate a vitual fat32 mal device. ! file_mal by VSF_MAL_USE_FILE_MAL, depends on VSF_USE_FS: ! Generate a mal device from a file. ! flash_mal by VSF_MAL_USE_FLASH_MAL, depends on VSF_HAL_USE_FLASH: ! Generate a mal device from partial of the FLASH in HAL. ! mem_mal by VSF_MAL_USE_MEM_MAL: ! Generate a mal device from io-accessable memory. ! sdmmc_mal by VSF_MAL_USE_SDMMC_MAL: ! Mal device from a SD/MMC card. ! scsi_mal by VSF_MAL_USE_SCSI_MAL, depnends on VSF_USE_SCSI: ! Mal device from a SCSI device. </dd></dl>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a55a20e673ab2da2ecdf935884dfbc315a60d47ac4929df612136b57b705c987b8" name="a55a20e673ab2da2ecdf935884dfbc315a60d47ac4929df612136b57b705c987b8"></a>VSF_MAL_OP_ERASE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a55a20e673ab2da2ecdf935884dfbc315a2e9162c46c1f1b601e0b7f226d95972a" name="a55a20e673ab2da2ecdf935884dfbc315a2e9162c46c1f1b601e0b7f226d95972a"></a>VSF_MAL_OP_READ&#160;</td><td class="fielddoc"></td></tr>

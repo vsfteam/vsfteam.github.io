@@ -1,0 +1,488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/hal/driver/common/sdio/sdio_probe.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_e31421c8d11a714f997d94dfd878485b.html">hal</a></li><li class="navelem"><a class="el" href="dir_25d0b491454d9cd33ec551022795e759.html">driver</a></li><li class="navelem"><a class="el" href="dir_52e0e582b2ebd62d9dea55e42130034d.html">common</a></li><li class="navelem"><a class="el" href="dir_7a7e6361861e3f47010a719c728a5ff8.html">sdio</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#enum-members">枚举</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">sdio_probe.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__hal_8h_source.html">hal/vsf_hal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hal_2driver_2driver_8h_source.html">hal/driver/driver.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__template__sdio_8h_source.html">hal/driver/common/template/vsf_template_sdio.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sdio__probe_8h_source.html">./sdio_probe.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a1067d48e26194fa8e544e03fa8e28df7" id="r_a1067d48e26194fa8e544e03fa8e28df7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#a1067d48e26194fa8e544e03fa8e28df7">__VSF_SDIO_PROBE_CLASS_IMPLEMENT</a></td></tr>
+<tr class="separator:a1067d48e26194fa8e544e03fa8e28df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a999a5e402e5e3ef825d970fadd7aff3e" id="r_a999a5e402e5e3ef825d970fadd7aff3e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#a999a5e402e5e3ef825d970fadd7aff3e">SDIO_SEND_IF_COND_CHECK_PATTERN</a>&#160;&#160;&#160;0xAA</td></tr>
+<tr class="separator:a999a5e402e5e3ef825d970fadd7aff3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93ebdcb8aed0e53c05c4224ceef337be" id="r_a93ebdcb8aed0e53c05c4224ceef337be"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#a93ebdcb8aed0e53c05c4224ceef337be">SD_ACMD41_ARG_OCR_S18R</a>&#160;&#160;&#160;(0x01UL &lt;&lt; 24)</td></tr>
+<tr class="separator:a93ebdcb8aed0e53c05c4224ceef337be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0af0bda963cc4a147d95c4bb47b2260d" id="r_a0af0bda963cc4a147d95c4bb47b2260d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#a0af0bda963cc4a147d95c4bb47b2260d">SD_ACMD41_ARG_OCR_HCS</a>&#160;&#160;&#160;(0x01UL &lt;&lt; 30)</td></tr>
+<tr class="separator:a0af0bda963cc4a147d95c4bb47b2260d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b85aeb71cf28430e2c454e2d107b0f4" id="r_a5b85aeb71cf28430e2c454e2d107b0f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#a5b85aeb71cf28430e2c454e2d107b0f4">SD_ACMD41_RSP_OCR_S18A</a>&#160;&#160;&#160;(0x01UL &lt;&lt; 24)</td></tr>
+<tr class="separator:a5b85aeb71cf28430e2c454e2d107b0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa24013390770f5ed545c27b9ef95993e" id="r_aa24013390770f5ed545c27b9ef95993e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#aa24013390770f5ed545c27b9ef95993e">SD_ACMD41_RSP_OCR_CCS</a>&#160;&#160;&#160;(0x01UL &lt;&lt; 30)</td></tr>
+<tr class="separator:aa24013390770f5ed545c27b9ef95993e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e49dd5789de13b7a28d7cbe830cb788" id="r_a9e49dd5789de13b7a28d7cbe830cb788"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#a9e49dd5789de13b7a28d7cbe830cb788">SD_ACMD41_RSP_OCR_BUSY</a>&#160;&#160;&#160;(0x01UL &lt;&lt; 31)</td></tr>
+<tr class="separator:a9e49dd5789de13b7a28d7cbe830cb788"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a685d5f54a2d86c1c070a8a2d35310000" id="r_a685d5f54a2d86c1c070a8a2d35310000"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#a685d5f54a2d86c1c070a8a2d35310000">SDIO_CMD1_RSP_OCR_BUSY</a>&#160;&#160;&#160;(0x01UL &lt;&lt; 31)</td></tr>
+<tr class="separator:a685d5f54a2d86c1c070a8a2d35310000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4a50e660c6c5b84c304644ac25f5f52" id="r_ad4a50e660c6c5b84c304644ac25f5f52"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#ad4a50e660c6c5b84c304644ac25f5f52">SDIO_OCR_HVOLTAGE_MASK</a>&#160;&#160;&#160;0x00FF8000</td></tr>
+<tr class="separator:ad4a50e660c6c5b84c304644ac25f5f52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64250520d6e866e40fa3b0f69852b295" id="r_a64250520d6e866e40fa3b0f69852b295"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#a64250520d6e866e40fa3b0f69852b295">SDIO_OCR_LVOLTAGE_MASK</a>&#160;&#160;&#160;0x00007F80</td></tr>
+<tr class="separator:a64250520d6e866e40fa3b0f69852b295"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c51be30c22d2e0516131031bd5cb43b" id="r_a6c51be30c22d2e0516131031bd5cb43b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#a6c51be30c22d2e0516131031bd5cb43b">SDIO_OCR_DVOLTAGE_MASK</a>&#160;&#160;&#160;(<a class="el" href="sdio__probe_8c.html#ad4a50e660c6c5b84c304644ac25f5f52">SDIO_OCR_HVOLTAGE_MASK</a> | <a class="el" href="sdio__probe_8c.html#a64250520d6e866e40fa3b0f69852b295">SDIO_OCR_LVOLTAGE_MASK</a>)</td></tr>
+<tr class="separator:a6c51be30c22d2e0516131031bd5cb43b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d1a8999b07e46b532ae8e3ef7f4710b" id="r_a0d1a8999b07e46b532ae8e3ef7f4710b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#a0d1a8999b07e46b532ae8e3ef7f4710b">SDIO_OCR_SECTOR_MODE</a>&#160;&#160;&#160;0x40000000</td></tr>
+<tr class="separator:a0d1a8999b07e46b532ae8e3ef7f4710b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee041bf3749b263f608b1a275bedbbc7" id="r_aee041bf3749b263f608b1a275bedbbc7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#aee041bf3749b263f608b1a275bedbbc7">SDIO_OCR_ACCESS_MODE_MASK</a>&#160;&#160;&#160;0x60000000</td></tr>
+<tr class="separator:aee041bf3749b263f608b1a275bedbbc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:a4feff80f8532b677f1ca7e1cf1989df5" id="r_a4feff80f8532b677f1ca7e1cf1989df5"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490">vsf_sdio_probe_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#a4feff80f8532b677f1ca7e1cf1989df5">vsf_sdio_probe_state_t</a></td></tr>
+<tr class="separator:a4feff80f8532b677f1ca7e1cf1989df5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+枚举</h2></td></tr>
+<tr class="memitem:a8e7f1246b74fb9980eb00f8a38ad0490" id="r_a8e7f1246b74fb9980eb00f8a38ad0490"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490">vsf_sdio_probe_state_t</a> { <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490a2ce31e889945d5d64df688d805b7d487">VSF_SDIO_PROBE_STATE_APP_CMD</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490a51aa8e7b2fd0365d832d16b4165bac8f">VSF_SDIO_PROBE_STATE_GO_IDLE</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490a65726f8877e5c93e7b69ed6e97afdb39">VSF_SDIO_PROBE_STATE_SEND_IF_COND</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490a0dddf0cc4110b179d5b334e5af621277">VSF_SDIO_PROBE_STATE_SEND_OP_COND_APP</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490aeeee29368a622693f4a6c0c1119e5799">VSF_SDIO_PROBE_STATE_SEND_OP_COND</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490aca617b822219bbc49eb673e0fc8efb51">VSF_SDIO_PROBE_STATE_SEND_OP_COND_DONE</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490ab9352b76a74b28f330c3c396b7087ae3">VSF_SDIO_PROBE_STATE_SEND_OP_COND_GO_IDLE</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490aeeee29368a622693f4a6c0c1119e5799">VSF_SDIO_PROBE_STATE_SEND_OP_COND</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490aca617b822219bbc49eb673e0fc8efb51">VSF_SDIO_PROBE_STATE_SEND_OP_COND_DONE</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490acc06ec1d5badb6002f839c9cb8ae87fb">VSF_SDIO_PROBE_STATE_ALL_SEND_CID</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490aa2425df6a32763075d5b5c67fda4fe62">VSF_SDIO_PROBE_STATE_RELATIVE_ADDR</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490a9d9fc18f12173afcf21cd99a57ac8813">VSF_SDIO_PROBE_STATE_SEND_CSD</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490a4ca1214cf2e28d4823ddc7d60b0d755c">VSF_SDIO_PROBE_STATE_SET_DSR</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490a6aa1f218e71c0d5c8784ca3aca8b52b8">VSF_SDIO_PROBE_STATE_SELECT_CARD</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490a22feefa334727a78505381b0520e8296">VSF_SDIO_PROBE_STATE_SET_BUS_WIDTH</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490af537f33c07bb02c49744b93c8d80694c">VSF_SDIO_PROBE_STATE_SET_BUS_WIDTH_DONE</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490aaa0fc54bf618dd0f0a181034c9bb5bab">VSF_SDIO_PROBE_STATE_SET_BLOCK_LEN</a>
+, <br />
+&#160;&#160;<a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490aa48653cf7f80768a036a8d72d3b00dec">VSF_SDIO_PROBE_STATE_DONE</a>
+<br />
+ }</td></tr>
+<tr class="separator:a8e7f1246b74fb9980eb00f8a38ad0490"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a08c58098d607049c86c66650338410ed" id="r_a08c58098d607049c86c66650338410ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#a08c58098d607049c86c66650338410ed">vsf_sdio_probe_start</a> (<a class="el" href="structvsf__sdio__t.html">vsf_sdio_t</a> *sdio, <a class="el" href="classvsf__sdio__probe__t.html">vsf_sdio_probe_t</a> *probe)</td></tr>
+<tr class="memdesc:a08c58098d607049c86c66650338410ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">启动 sdio 外设检测, SDIO 必须已经经过 vsf_sdio_init 完成初始化。  <br /></td></tr>
+<tr class="separator:a08c58098d607049c86c66650338410ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2c8fb2579b4fb465b8d7e0fcca5e5fb" id="r_ad2c8fb2579b4fb465b8d7e0fcca5e5fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__probe_8c.html#ad2c8fb2579b4fb465b8d7e0fcca5e5fb">vsf_sdio_probe_irqhandler</a> (<a class="el" href="structvsf__sdio__t.html">vsf_sdio_t</a> *sdio, <a class="el" href="classvsf__sdio__probe__t.html">vsf_sdio_probe_t</a> *probe, <a class="el" href="_a_i_c_2_a_i_c8800_2sdio_2sdio_8h.html#a200365344d60186e08fce76a5913e4c4">vsf_sdio_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>, <a class="el" href="_a_i_c_2_a_i_c8800_2sdio_2sdio_8h.html#a6f07a0e3830ef573ff8cef66e48cd896">vsf_sdio_transact_status_t</a> <a class="el" href="vsf__tgui_8h.html#ade818037fd6c985038ff29656089758d">status</a>, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> resp[4])</td></tr>
+<tr class="memdesc:ad2c8fb2579b4fb465b8d7e0fcca5e5fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">检测 sdio 外设的时候，在 sdio 传输完成中断中调用的中断处理函数  <br /></td></tr>
+<tr class="separator:ad2c8fb2579b4fb465b8d7e0fcca5e5fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a1067d48e26194fa8e544e03fa8e28df7" name="a1067d48e26194fa8e544e03fa8e28df7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1067d48e26194fa8e544e03fa8e28df7">&#9670;&#160;</a></span>__VSF_SDIO_PROBE_CLASS_IMPLEMENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_SDIO_PROBE_CLASS_IMPLEMENT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a999a5e402e5e3ef825d970fadd7aff3e" name="a999a5e402e5e3ef825d970fadd7aff3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a999a5e402e5e3ef825d970fadd7aff3e">&#9670;&#160;</a></span>SDIO_SEND_IF_COND_CHECK_PATTERN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SDIO_SEND_IF_COND_CHECK_PATTERN&#160;&#160;&#160;0xAA</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a93ebdcb8aed0e53c05c4224ceef337be" name="a93ebdcb8aed0e53c05c4224ceef337be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93ebdcb8aed0e53c05c4224ceef337be">&#9670;&#160;</a></span>SD_ACMD41_ARG_OCR_S18R</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SD_ACMD41_ARG_OCR_S18R&#160;&#160;&#160;(0x01UL &lt;&lt; 24)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0af0bda963cc4a147d95c4bb47b2260d" name="a0af0bda963cc4a147d95c4bb47b2260d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0af0bda963cc4a147d95c4bb47b2260d">&#9670;&#160;</a></span>SD_ACMD41_ARG_OCR_HCS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SD_ACMD41_ARG_OCR_HCS&#160;&#160;&#160;(0x01UL &lt;&lt; 30)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b85aeb71cf28430e2c454e2d107b0f4" name="a5b85aeb71cf28430e2c454e2d107b0f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b85aeb71cf28430e2c454e2d107b0f4">&#9670;&#160;</a></span>SD_ACMD41_RSP_OCR_S18A</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SD_ACMD41_RSP_OCR_S18A&#160;&#160;&#160;(0x01UL &lt;&lt; 24)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa24013390770f5ed545c27b9ef95993e" name="aa24013390770f5ed545c27b9ef95993e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa24013390770f5ed545c27b9ef95993e">&#9670;&#160;</a></span>SD_ACMD41_RSP_OCR_CCS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SD_ACMD41_RSP_OCR_CCS&#160;&#160;&#160;(0x01UL &lt;&lt; 30)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9e49dd5789de13b7a28d7cbe830cb788" name="a9e49dd5789de13b7a28d7cbe830cb788"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e49dd5789de13b7a28d7cbe830cb788">&#9670;&#160;</a></span>SD_ACMD41_RSP_OCR_BUSY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SD_ACMD41_RSP_OCR_BUSY&#160;&#160;&#160;(0x01UL &lt;&lt; 31)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a685d5f54a2d86c1c070a8a2d35310000" name="a685d5f54a2d86c1c070a8a2d35310000"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a685d5f54a2d86c1c070a8a2d35310000">&#9670;&#160;</a></span>SDIO_CMD1_RSP_OCR_BUSY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SDIO_CMD1_RSP_OCR_BUSY&#160;&#160;&#160;(0x01UL &lt;&lt; 31)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad4a50e660c6c5b84c304644ac25f5f52" name="ad4a50e660c6c5b84c304644ac25f5f52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4a50e660c6c5b84c304644ac25f5f52">&#9670;&#160;</a></span>SDIO_OCR_HVOLTAGE_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SDIO_OCR_HVOLTAGE_MASK&#160;&#160;&#160;0x00FF8000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a64250520d6e866e40fa3b0f69852b295" name="a64250520d6e866e40fa3b0f69852b295"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64250520d6e866e40fa3b0f69852b295">&#9670;&#160;</a></span>SDIO_OCR_LVOLTAGE_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SDIO_OCR_LVOLTAGE_MASK&#160;&#160;&#160;0x00007F80</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6c51be30c22d2e0516131031bd5cb43b" name="a6c51be30c22d2e0516131031bd5cb43b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c51be30c22d2e0516131031bd5cb43b">&#9670;&#160;</a></span>SDIO_OCR_DVOLTAGE_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SDIO_OCR_DVOLTAGE_MASK&#160;&#160;&#160;(<a class="el" href="sdio__probe_8c.html#ad4a50e660c6c5b84c304644ac25f5f52">SDIO_OCR_HVOLTAGE_MASK</a> | <a class="el" href="sdio__probe_8c.html#a64250520d6e866e40fa3b0f69852b295">SDIO_OCR_LVOLTAGE_MASK</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d1a8999b07e46b532ae8e3ef7f4710b" name="a0d1a8999b07e46b532ae8e3ef7f4710b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d1a8999b07e46b532ae8e3ef7f4710b">&#9670;&#160;</a></span>SDIO_OCR_SECTOR_MODE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SDIO_OCR_SECTOR_MODE&#160;&#160;&#160;0x40000000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee041bf3749b263f608b1a275bedbbc7" name="aee041bf3749b263f608b1a275bedbbc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee041bf3749b263f608b1a275bedbbc7">&#9670;&#160;</a></span>SDIO_OCR_ACCESS_MODE_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SDIO_OCR_ACCESS_MODE_MASK&#160;&#160;&#160;0x60000000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类型定义说明</h2>
+<a id="a4feff80f8532b677f1ca7e1cf1989df5" name="a4feff80f8532b677f1ca7e1cf1989df5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4feff80f8532b677f1ca7e1cf1989df5">&#9670;&#160;</a></span>vsf_sdio_probe_state_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490">vsf_sdio_probe_state_t</a> <a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490">vsf_sdio_probe_state_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">枚举类型说明</h2>
+<a id="a8e7f1246b74fb9980eb00f8a38ad0490" name="a8e7f1246b74fb9980eb00f8a38ad0490"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e7f1246b74fb9980eb00f8a38ad0490">&#9670;&#160;</a></span>vsf_sdio_probe_state_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="sdio__probe_8c.html#a8e7f1246b74fb9980eb00f8a38ad0490">vsf_sdio_probe_state_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490a2ce31e889945d5d64df688d805b7d487" name="a8e7f1246b74fb9980eb00f8a38ad0490a2ce31e889945d5d64df688d805b7d487"></a>VSF_SDIO_PROBE_STATE_APP_CMD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490a51aa8e7b2fd0365d832d16b4165bac8f" name="a8e7f1246b74fb9980eb00f8a38ad0490a51aa8e7b2fd0365d832d16b4165bac8f"></a>VSF_SDIO_PROBE_STATE_GO_IDLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490a65726f8877e5c93e7b69ed6e97afdb39" name="a8e7f1246b74fb9980eb00f8a38ad0490a65726f8877e5c93e7b69ed6e97afdb39"></a>VSF_SDIO_PROBE_STATE_SEND_IF_COND&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490a0dddf0cc4110b179d5b334e5af621277" name="a8e7f1246b74fb9980eb00f8a38ad0490a0dddf0cc4110b179d5b334e5af621277"></a>VSF_SDIO_PROBE_STATE_SEND_OP_COND_APP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490aeeee29368a622693f4a6c0c1119e5799" name="a8e7f1246b74fb9980eb00f8a38ad0490aeeee29368a622693f4a6c0c1119e5799"></a>VSF_SDIO_PROBE_STATE_SEND_OP_COND&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490aca617b822219bbc49eb673e0fc8efb51" name="a8e7f1246b74fb9980eb00f8a38ad0490aca617b822219bbc49eb673e0fc8efb51"></a>VSF_SDIO_PROBE_STATE_SEND_OP_COND_DONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490ab9352b76a74b28f330c3c396b7087ae3" name="a8e7f1246b74fb9980eb00f8a38ad0490ab9352b76a74b28f330c3c396b7087ae3"></a>VSF_SDIO_PROBE_STATE_SEND_OP_COND_GO_IDLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490aeeee29368a622693f4a6c0c1119e5799" name="a8e7f1246b74fb9980eb00f8a38ad0490aeeee29368a622693f4a6c0c1119e5799"></a>VSF_SDIO_PROBE_STATE_SEND_OP_COND&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490aca617b822219bbc49eb673e0fc8efb51" name="a8e7f1246b74fb9980eb00f8a38ad0490aca617b822219bbc49eb673e0fc8efb51"></a>VSF_SDIO_PROBE_STATE_SEND_OP_COND_DONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490acc06ec1d5badb6002f839c9cb8ae87fb" name="a8e7f1246b74fb9980eb00f8a38ad0490acc06ec1d5badb6002f839c9cb8ae87fb"></a>VSF_SDIO_PROBE_STATE_ALL_SEND_CID&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490aa2425df6a32763075d5b5c67fda4fe62" name="a8e7f1246b74fb9980eb00f8a38ad0490aa2425df6a32763075d5b5c67fda4fe62"></a>VSF_SDIO_PROBE_STATE_RELATIVE_ADDR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490a9d9fc18f12173afcf21cd99a57ac8813" name="a8e7f1246b74fb9980eb00f8a38ad0490a9d9fc18f12173afcf21cd99a57ac8813"></a>VSF_SDIO_PROBE_STATE_SEND_CSD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490a4ca1214cf2e28d4823ddc7d60b0d755c" name="a8e7f1246b74fb9980eb00f8a38ad0490a4ca1214cf2e28d4823ddc7d60b0d755c"></a>VSF_SDIO_PROBE_STATE_SET_DSR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490a6aa1f218e71c0d5c8784ca3aca8b52b8" name="a8e7f1246b74fb9980eb00f8a38ad0490a6aa1f218e71c0d5c8784ca3aca8b52b8"></a>VSF_SDIO_PROBE_STATE_SELECT_CARD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490a22feefa334727a78505381b0520e8296" name="a8e7f1246b74fb9980eb00f8a38ad0490a22feefa334727a78505381b0520e8296"></a>VSF_SDIO_PROBE_STATE_SET_BUS_WIDTH&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490af537f33c07bb02c49744b93c8d80694c" name="a8e7f1246b74fb9980eb00f8a38ad0490af537f33c07bb02c49744b93c8d80694c"></a>VSF_SDIO_PROBE_STATE_SET_BUS_WIDTH_DONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490aaa0fc54bf618dd0f0a181034c9bb5bab" name="a8e7f1246b74fb9980eb00f8a38ad0490aaa0fc54bf618dd0f0a181034c9bb5bab"></a>VSF_SDIO_PROBE_STATE_SET_BLOCK_LEN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8e7f1246b74fb9980eb00f8a38ad0490aa48653cf7f80768a036a8d72d3b00dec" name="a8e7f1246b74fb9980eb00f8a38ad0490aa48653cf7f80768a036a8d72d3b00dec"></a>VSF_SDIO_PROBE_STATE_DONE&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a08c58098d607049c86c66650338410ed" name="a08c58098d607049c86c66650338410ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08c58098d607049c86c66650338410ed">&#9670;&#160;</a></span>vsf_sdio_probe_start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_sdio_probe_start </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__sdio__t.html">vsf_sdio_t</a> *&#160;</td>
+          <td class="paramname"><em>sdio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classvsf__sdio__probe__t.html">vsf_sdio_probe_t</a> *&#160;</td>
+          <td class="paramname"><em>probe</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>启动 sdio 外设检测, SDIO 必须已经经过 vsf_sdio_init 完成初始化。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">sdio_ptr</td><td>结构体 <a class="el" href="structvsf__sdio__t.html">vsf_sdio_t</a> 的指针, 参考 <a class="el" href="structvsf__sdio__t.html">vsf_sdio_t</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="classvsf__sdio__probe__t.html">vsf_sdio_probe_t</a></td><td>sdio 实例的指针 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 操作完成返回 <a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe" title="none error">VSF_ERR_NONE(0)</a>; 出错返回错误码 (&lt; 0)。 </dd></dl>
+
+</div>
+</div>
+<a id="ad2c8fb2579b4fb465b8d7e0fcca5e5fb" name="ad2c8fb2579b4fb465b8d7e0fcca5e5fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2c8fb2579b4fb465b8d7e0fcca5e5fb">&#9670;&#160;</a></span>vsf_sdio_probe_irqhandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_sdio_probe_irqhandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__sdio__t.html">vsf_sdio_t</a> *&#160;</td>
+          <td class="paramname"><em>sdio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classvsf__sdio__probe__t.html">vsf_sdio_probe_t</a> *&#160;</td>
+          <td class="paramname"><em>probe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_a_i_c_2_a_i_c8800_2sdio_2sdio_8h.html#a200365344d60186e08fce76a5913e4c4">vsf_sdio_irq_mask_t</a>&#160;</td>
+          <td class="paramname"><em>irq_mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_a_i_c_2_a_i_c8800_2sdio_2sdio_8h.html#a6f07a0e3830ef573ff8cef66e48cd896">vsf_sdio_transact_status_t</a>&#160;</td>
+          <td class="paramname"><em>status</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>resp</em>[4]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>检测 sdio 外设的时候，在 sdio 传输完成中断中调用的中断处理函数 </p>
+<dl class="section note"><dt>注解</dt><dd>如果调用返回 VSF_ERR_NOT_READY 后， probe-&gt;delay_ms 非零, 需要在 delay_ms 等待完成之后，再次调用 vsf_sdio_probe_irqhandler(irq_mask: 0, status: 0). </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">sdio_ptr</td><td>结构体 <a class="el" href="structvsf__sdio__t.html">vsf_sdio_t</a> 的指针, 参考 <a class="el" href="structvsf__sdio__t.html">vsf_sdio_t</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="classvsf__sdio__probe__t.html">vsf_sdio_probe_t</a></td><td>sdio_probe 实例的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">irq_mask</td><td>一个或者多个枚举 vsf_sdio_irq_mask_t 的值的按位或 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">status</td><td>传输状态 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">resp</td><td>应答 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 操作完成返回 <a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe" title="none error">VSF_ERR_NONE(0)</a>; 未完成返回 VSF_ERR_NOT_READY(&gt; 0); 出错返回错误码 (&lt; 0)。 </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
