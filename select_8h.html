@@ -50,7 +50,9 @@
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">select.h File Reference</div></div>
@@ -63,6 +65,13 @@
 </div>
 <p><a href="select_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfd__set.html">fd_set</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__sys__select__vplt__t.html">vsf_linux_sys_select_vplt_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a2b406456012f9f74aeb33de6f3df053c" id="r_a2b406456012f9f74aeb33de6f3df053c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#a2b406456012f9f74aeb33de6f3df053c">select</a>&#160;&#160;&#160;<a class="el" href="vsf__linux__cfg_8h.html#a6925d1139da34a78dfcc437ed355d9fe">VSF_LINUX_WRAPPER</a>(select)</td></tr>
@@ -71,29 +80,36 @@ Macros</h2></td></tr>
 <tr class="separator:aa111cefd220c66b3dcfa24fca3465b9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86c5dbf5a99358e288f573d6a1e0873f" id="r_a86c5dbf5a99358e288f573d6a1e0873f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#a86c5dbf5a99358e288f573d6a1e0873f">FD_SETSIZE</a>&#160;&#160;&#160;1024</td></tr>
 <tr class="separator:a86c5dbf5a99358e288f573d6a1e0873f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13ea72abe5159156453a8a957d8880cb" id="r_a13ea72abe5159156453a8a957d8880cb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#a13ea72abe5159156453a8a957d8880cb">FD_ZERO</a>(set)&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#a4ee9743fefff404122caf7527007364f">vsf_bitmap_reset</a>(*(set), <a class="el" href="select_8h.html#a86c5dbf5a99358e288f573d6a1e0873f">FD_SETSIZE</a>)</td></tr>
+<tr class="memitem:a13ea72abe5159156453a8a957d8880cb" id="r_a13ea72abe5159156453a8a957d8880cb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#a13ea72abe5159156453a8a957d8880cb">FD_ZERO</a>(set)&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#a4ee9743fefff404122caf7527007364f">vsf_bitmap_reset</a>((set)-&gt;fds_bits, <a class="el" href="select_8h.html#a86c5dbf5a99358e288f573d6a1e0873f">FD_SETSIZE</a>)</td></tr>
 <tr class="separator:a13ea72abe5159156453a8a957d8880cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9a6234e30e3cb64542eca6dab921a93" id="r_ac9a6234e30e3cb64542eca6dab921a93"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#ac9a6234e30e3cb64542eca6dab921a93">FD_SET</a>(fd,  set)&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#a20b59b7649d00f196c1376a3f140320a">vsf_bitmap_set</a>(*(set), (fd))</td></tr>
+<tr class="memitem:ac9a6234e30e3cb64542eca6dab921a93" id="r_ac9a6234e30e3cb64542eca6dab921a93"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#ac9a6234e30e3cb64542eca6dab921a93">FD_SET</a>(fd,  set)&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#a20b59b7649d00f196c1376a3f140320a">vsf_bitmap_set</a>((set)-&gt;fds_bits, (fd))</td></tr>
 <tr class="separator:ac9a6234e30e3cb64542eca6dab921a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad914a2f676490d92b1f509bb6e93b459" id="r_ad914a2f676490d92b1f509bb6e93b459"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#ad914a2f676490d92b1f509bb6e93b459">FD_CLR</a>(fd,  set)&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#a437f32ad9bccaf142fe8000a2f4b1008">vsf_bitmap_clear</a>(*(set), (fd))</td></tr>
+<tr class="memitem:ad914a2f676490d92b1f509bb6e93b459" id="r_ad914a2f676490d92b1f509bb6e93b459"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#ad914a2f676490d92b1f509bb6e93b459">FD_CLR</a>(fd,  set)&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#a437f32ad9bccaf142fe8000a2f4b1008">vsf_bitmap_clear</a>((set)-&gt;fds_bits, (fd))</td></tr>
 <tr class="separator:ad914a2f676490d92b1f509bb6e93b459"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d02a891286ee61c9e7ecd291c96567f" id="r_a0d02a891286ee61c9e7ecd291c96567f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#a0d02a891286ee61c9e7ecd291c96567f">FD_ISSET</a>(fd,  set)&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#af9aaf7e939f0beaee6f24cf808b463cd">vsf_bitmap_get</a>(*(set), (fd))</td></tr>
+<tr class="memitem:a0d02a891286ee61c9e7ecd291c96567f" id="r_a0d02a891286ee61c9e7ecd291c96567f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#a0d02a891286ee61c9e7ecd291c96567f">FD_ISSET</a>(fd,  set)&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#af9aaf7e939f0beaee6f24cf808b463cd">vsf_bitmap_get</a>((set)-&gt;fds_bits, (fd))</td></tr>
 <tr class="separator:a0d02a891286ee61c9e7ecd291c96567f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae469a6eb5d202973832adcb96074c20f" id="r_ae469a6eb5d202973832adcb96074c20f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#ae469a6eb5d202973832adcb96074c20f">NFDBITS</a>&#160;&#160;&#160;(sizeof(<a class="el" href="select_8h.html#a03f827a4d9b17c49e25814ec816f97a5">fd_mask</a>) &lt;&lt; 3)</td></tr>
+<tr class="separator:ae469a6eb5d202973832adcb96074c20f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a03f827a4d9b17c49e25814ec816f97a5" id="r_a03f827a4d9b17c49e25814ec816f97a5"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="arm_2type_8h.html#ac8e3d6f27cb089386219c1a817170c3d">uintalu_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#a03f827a4d9b17c49e25814ec816f97a5">fd_mask</a></td></tr>
+<tr class="separator:a03f827a4d9b17c49e25814ec816f97a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2b6a3c60069c6af6ff248409b81f5d7" id="r_ab2b6a3c60069c6af6ff248409b81f5d7"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structfd__set.html">fd_set</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#ab2b6a3c60069c6af6ff248409b81f5d7">fd_set</a></td></tr>
+<tr class="separator:ab2b6a3c60069c6af6ff248409b81f5d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acee71c53332bd6962b396fcc8aae3849" id="r_acee71c53332bd6962b396fcc8aae3849"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__sys__select__vplt__t.html">vsf_linux_sys_select_vplt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#acee71c53332bd6962b396fcc8aae3849">vsf_linux_sys_select_vplt_t</a></td></tr>
+<tr class="separator:acee71c53332bd6962b396fcc8aae3849"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a63c69200177dbc26cd84db149f91d470" id="r_a63c69200177dbc26cd84db149f91d470"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#a63c69200177dbc26cd84db149f91d470">__vsf_declare_bitmap_ex</a> (fd_set, <a class="el" href="select_8h.html#a86c5dbf5a99358e288f573d6a1e0873f">FD_SETSIZE</a>) typedef struct <a class="el" href="select_8h.html#a01b44afc2d36a5e35714ad104b84e1eb">vsf_linux_sys_select_vplt_t</a></td></tr>
-<tr class="separator:a63c69200177dbc26cd84db149f91d470"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add056a205aa6181762de87c1d8c9a210" id="r_add056a205aa6181762de87c1d8c9a210"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#add056a205aa6181762de87c1d8c9a210">select</a> (int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct <a class="el" href="structtimeval.html">timeval</a> *<a class="el" href="ieee80211_8h.html#a3234a50f2c5eabfb2aa2f4f982256750">timeout</a>)</td></tr>
+<tr class="memitem:add056a205aa6181762de87c1d8c9a210" id="r_add056a205aa6181762de87c1d8c9a210"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#add056a205aa6181762de87c1d8c9a210">select</a> (int nfds, <a class="el" href="structfd__set.html">fd_set</a> *readfds, <a class="el" href="structfd__set.html">fd_set</a> *writefds, <a class="el" href="structfd__set.html">fd_set</a> *exceptfds, struct <a class="el" href="structtimeval.html">timeval</a> *<a class="el" href="ieee80211_8h.html#a3234a50f2c5eabfb2aa2f4f982256750">timeout</a>)</td></tr>
 <tr class="separator:add056a205aa6181762de87c1d8c9a210"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec9c72b618d45dcd5202cf502d993495" id="r_aec9c72b618d45dcd5202cf502d993495"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#aec9c72b618d45dcd5202cf502d993495">pselect</a> (int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, const struct <a class="el" href="structtimespec.html">timespec</a> *timeout_ts, const <a class="el" href="structsigset__t.html">sigset_t</a> *sigmask)</td></tr>
+<tr class="memitem:aec9c72b618d45dcd5202cf502d993495" id="r_aec9c72b618d45dcd5202cf502d993495"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#aec9c72b618d45dcd5202cf502d993495">pselect</a> (int nfds, <a class="el" href="structfd__set.html">fd_set</a> *readfds, <a class="el" href="structfd__set.html">fd_set</a> *writefds, <a class="el" href="structfd__set.html">fd_set</a> *exceptfds, const struct <a class="el" href="structtimespec.html">timespec</a> *timeout_ts, const <a class="el" href="structsigset__t.html">sigset_t</a> *sigmask)</td></tr>
 <tr class="separator:aec9c72b618d45dcd5202cf502d993495"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a01b44afc2d36a5e35714ad104b84e1eb" id="r_a01b44afc2d36a5e35714ad104b84e1eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#a01b44afc2d36a5e35714ad104b84e1eb">vsf_linux_sys_select_vplt_t</a></td></tr>
-<tr class="separator:a01b44afc2d36a5e35714ad104b84e1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bc3b35a1d72ff73fa4666dcbdba7daa" id="r_a4bc3b35a1d72ff73fa4666dcbdba7daa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="el" href="select_8h.html#a01b44afc2d36a5e35714ad104b84e1eb">vsf_linux_sys_select_vplt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#a4bc3b35a1d72ff73fa4666dcbdba7daa">vsf_linux_sys_select_vplt</a></td></tr>
+<tr class="memitem:a4bc3b35a1d72ff73fa4666dcbdba7daa" id="r_a4bc3b35a1d72ff73fa4666dcbdba7daa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="el" href="structvsf__linux__sys__select__vplt__t.html">vsf_linux_sys_select_vplt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="select_8h.html#a4bc3b35a1d72ff73fa4666dcbdba7daa">vsf_linux_sys_select_vplt</a></td></tr>
 <tr class="separator:a4bc3b35a1d72ff73fa4666dcbdba7daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -150,7 +166,7 @@ Variables</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">set</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#a4ee9743fefff404122caf7527007364f">vsf_bitmap_reset</a>(*(set), <a class="el" href="select_8h.html#a86c5dbf5a99358e288f573d6a1e0873f">FD_SETSIZE</a>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#a4ee9743fefff404122caf7527007364f">vsf_bitmap_reset</a>((set)-&gt;fds_bits, <a class="el" href="select_8h.html#a86c5dbf5a99358e288f573d6a1e0873f">FD_SETSIZE</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -178,7 +194,7 @@ Variables</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#a20b59b7649d00f196c1376a3f140320a">vsf_bitmap_set</a>(*(set), (fd))</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#a20b59b7649d00f196c1376a3f140320a">vsf_bitmap_set</a>((set)-&gt;fds_bits, (fd))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -206,7 +222,7 @@ Variables</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#a437f32ad9bccaf142fe8000a2f4b1008">vsf_bitmap_clear</a>(*(set), (fd))</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#a437f32ad9bccaf142fe8000a2f4b1008">vsf_bitmap_clear</a>((set)-&gt;fds_bits, (fd))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -234,7 +250,64 @@ Variables</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#af9aaf7e939f0beaee6f24cf808b463cd">vsf_bitmap_get</a>(*(set), (fd))</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="vsf__bitmap_8h.html#af9aaf7e939f0beaee6f24cf808b463cd">vsf_bitmap_get</a>((set)-&gt;fds_bits, (fd))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae469a6eb5d202973832adcb96074c20f" name="ae469a6eb5d202973832adcb96074c20f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae469a6eb5d202973832adcb96074c20f">&#9670;&#160;</a></span>NFDBITS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NFDBITS&#160;&#160;&#160;(sizeof(<a class="el" href="select_8h.html#a03f827a4d9b17c49e25814ec816f97a5">fd_mask</a>) &lt;&lt; 3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a03f827a4d9b17c49e25814ec816f97a5" name="a03f827a4d9b17c49e25814ec816f97a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03f827a4d9b17c49e25814ec816f97a5">&#9670;&#160;</a></span>fd_mask</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="arm_2type_8h.html#ac8e3d6f27cb089386219c1a817170c3d">uintalu_t</a> <a class="el" href="select_8h.html#a03f827a4d9b17c49e25814ec816f97a5">fd_mask</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab2b6a3c60069c6af6ff248409b81f5d7" name="ab2b6a3c60069c6af6ff248409b81f5d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2b6a3c60069c6af6ff248409b81f5d7">&#9670;&#160;</a></span>fd_set</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structfd__set.html">fd_set</a> <a class="el" href="structfd__set.html">fd_set</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acee71c53332bd6962b396fcc8aae3849" name="acee71c53332bd6962b396fcc8aae3849"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acee71c53332bd6962b396fcc8aae3849">&#9670;&#160;</a></span>vsf_linux_sys_select_vplt_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__linux__sys__select__vplt__t.html">vsf_linux_sys_select_vplt_t</a> <a class="el" href="structvsf__linux__sys__select__vplt__t.html">vsf_linux_sys_select_vplt_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -242,34 +315,6 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a63c69200177dbc26cd84db149f91d470" name="a63c69200177dbc26cd84db149f91d470"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63c69200177dbc26cd84db149f91d470">&#9670;&#160;</a></span>__vsf_declare_bitmap_ex()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__vsf_declare_bitmap_ex </td>
-          <td>(</td>
-          <td class="paramtype">fd_set&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="select_8h.html#a86c5dbf5a99358e288f573d6a1e0873f">FD_SETSIZE</a>&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="add056a205aa6181762de87c1d8c9a210" name="add056a205aa6181762de87c1d8c9a210"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#add056a205aa6181762de87c1d8c9a210">&#9670;&#160;</a></span>select()</h2>
 
@@ -285,19 +330,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">fd_set *&#160;</td>
+          <td class="paramtype"><a class="el" href="structfd__set.html">fd_set</a> *&#160;</td>
           <td class="paramname"><em>readfds</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">fd_set *&#160;</td>
+          <td class="paramtype"><a class="el" href="structfd__set.html">fd_set</a> *&#160;</td>
           <td class="paramname"><em>writefds</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">fd_set *&#160;</td>
+          <td class="paramtype"><a class="el" href="structfd__set.html">fd_set</a> *&#160;</td>
           <td class="paramname"><em>exceptfds</em>, </td>
         </tr>
         <tr>
@@ -331,19 +376,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">fd_set *&#160;</td>
+          <td class="paramtype"><a class="el" href="structfd__set.html">fd_set</a> *&#160;</td>
           <td class="paramname"><em>readfds</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">fd_set *&#160;</td>
+          <td class="paramtype"><a class="el" href="structfd__set.html">fd_set</a> *&#160;</td>
           <td class="paramname"><em>writefds</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">fd_set *&#160;</td>
+          <td class="paramtype"><a class="el" href="structfd__set.html">fd_set</a> *&#160;</td>
           <td class="paramname"><em>exceptfds</em>, </td>
         </tr>
         <tr>
@@ -369,20 +414,6 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a01b44afc2d36a5e35714ad104b84e1eb" name="a01b44afc2d36a5e35714ad104b84e1eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01b44afc2d36a5e35714ad104b84e1eb">&#9670;&#160;</a></span>vsf_linux_sys_select_vplt_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">vsf_linux_sys_select_vplt_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a4bc3b35a1d72ff73fa4666dcbdba7daa" name="a4bc3b35a1d72ff73fa4666dcbdba7daa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4bc3b35a1d72ff73fa4666dcbdba7daa">&#9670;&#160;</a></span>vsf_linux_sys_select_vplt</h2>
 
@@ -393,7 +424,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="el" href="select_8h.html#a01b44afc2d36a5e35714ad104b84e1eb">vsf_linux_sys_select_vplt_t</a> vsf_linux_sys_select_vplt</td>
+          <td class="memname"><a class="el" href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a> <a class="el" href="structvsf__linux__sys__select__vplt__t.html">vsf_linux_sys_select_vplt_t</a> vsf_linux_sys_select_vplt</td>
         </tr>
       </table>
   </td>
