@@ -57,134 +57,970 @@
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__hal_8h_source.html">hal/vsf_hal.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="sthal_8h_source.html">sthal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sthal__uart__internal_8h_source.html">./sthal_uart_internal.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 宏定义</h2></td></tr>
-<tr class="memitem:a10b316803e04ce5c26cbf3fa554b523a" id="r_a10b316803e04ce5c26cbf3fa554b523a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a10b316803e04ce5c26cbf3fa554b523a">STHAL_USART_RX_ERR_IRQ_MASK</a></td></tr>
-<tr class="separator:a10b316803e04ce5c26cbf3fa554b523a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69c4aa0c561c4c39c621710fbbb0cb7b" id="r_a69c4aa0c561c4c39c621710fbbb0cb7b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a69c4aa0c561c4c39c621710fbbb0cb7b">IS_UART_HALFDUPLEX_INSTANCE</a>(INSTANCE)&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a69c4aa0c561c4c39c621710fbbb0cb7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbd2efab4cd39d4867c4dbeacb87e84b" id="r_acbd2efab4cd39d4867c4dbeacb87e84b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#acbd2efab4cd39d4867c4dbeacb87e84b">IS_UART_INSTANCE</a>(INSTANCE)&#160;&#160;&#160;1</td></tr>
+<tr class="separator:acbd2efab4cd39d4867c4dbeacb87e84b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9a11d0720f3efa780126414a4ac50ad" id="r_af9a11d0720f3efa780126414a4ac50ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#af9a11d0720f3efa780126414a4ac50ad">IS_UART_HWFLOW_INSTANCE</a>(INSTANCE)&#160;&#160;&#160;1</td></tr>
+<tr class="separator:af9a11d0720f3efa780126414a4ac50ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d2763df993c77cfa6e249ec7bc80482" id="r_a7d2763df993c77cfa6e249ec7bc80482"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a7d2763df993c77cfa6e249ec7bc80482">IS_UART_LIN_INSTANCE</a>(INSTANCE)&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a7d2763df993c77cfa6e249ec7bc80482"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fb6c975f14bd141ec282820823a2fff" id="r_a4fb6c975f14bd141ec282820823a2fff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a4fb6c975f14bd141ec282820823a2fff">IS_UART_WORD_LENGTH</a>(LENGTH)</td></tr>
+<tr class="separator:a4fb6c975f14bd141ec282820823a2fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12e732e82119829947fb0c97da82bd69" id="r_a12e732e82119829947fb0c97da82bd69"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a12e732e82119829947fb0c97da82bd69">IS_UART_LIN_WORD_LENGTH</a>(LENGTH)&#160;&#160;&#160;            (((LENGTH) == UART_WORDLENGTH_8B))</td></tr>
+<tr class="separator:a12e732e82119829947fb0c97da82bd69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c61795ef4affdddf3854c8f59568e41" id="r_a2c61795ef4affdddf3854c8f59568e41"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a2c61795ef4affdddf3854c8f59568e41">IS_UART_STOPBITS</a>(STOPBITS)&#160;&#160;&#160;            (((STOPBITS) == UART_STOPBITS_1) || ((STOPBITS) == UART_STOPBITS_2))</td></tr>
+<tr class="separator:a2c61795ef4affdddf3854c8f59568e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2f542d273738ee3cb4a93d169827744" id="r_af2f542d273738ee3cb4a93d169827744"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#af2f542d273738ee3cb4a93d169827744">IS_UART_PARITY</a>(PARITY)</td></tr>
+<tr class="separator:af2f542d273738ee3cb4a93d169827744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4da792d3bbb8e04d97dd45b963ac2464" id="r_a4da792d3bbb8e04d97dd45b963ac2464"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a4da792d3bbb8e04d97dd45b963ac2464">IS_UART_HARDWARE_FLOW_CONTROL</a>(CONTROL)</td></tr>
+<tr class="separator:a4da792d3bbb8e04d97dd45b963ac2464"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a748d45fbdc96c743bee170b749f961ba" id="r_a748d45fbdc96c743bee170b749f961ba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a748d45fbdc96c743bee170b749f961ba">IS_UART_MODE</a>(MODE)&#160;&#160;&#160;            ((((MODE) &amp; 0x0000FFF3U) == 0x00U) &amp;&amp; ((MODE) != 0x00U))</td></tr>
+<tr class="separator:a748d45fbdc96c743bee170b749f961ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a202315393e18f29b20eb49ad9f8934dd" id="r_a202315393e18f29b20eb49ad9f8934dd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a202315393e18f29b20eb49ad9f8934dd">IS_UART_STATE</a>(STATE)&#160;&#160;&#160;            (((STATE) == UART_STATE_DISABLE) || ((STATE) == UART_STATE_ENABLE))</td></tr>
+<tr class="separator:a202315393e18f29b20eb49ad9f8934dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8486e4a622ab62a11d82389d4aa0305d" id="r_a8486e4a622ab62a11d82389d4aa0305d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a8486e4a622ab62a11d82389d4aa0305d">IS_UART_OVERSAMPLING</a>(SAMPLING)</td></tr>
+<tr class="separator:a8486e4a622ab62a11d82389d4aa0305d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd5577cca731f8ef51badd665f6aa5e6" id="r_acd5577cca731f8ef51badd665f6aa5e6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#acd5577cca731f8ef51badd665f6aa5e6">IS_UART_LIN_OVERSAMPLING</a>(SAMPLING)&#160;&#160;&#160;            (((SAMPLING) == UART_OVERSAMPLING_16))</td></tr>
+<tr class="separator:acd5577cca731f8ef51badd665f6aa5e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f09f62c88629a872d9b6ebf1d068950" id="r_a5f09f62c88629a872d9b6ebf1d068950"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a5f09f62c88629a872d9b6ebf1d068950">IS_UART_LIN_BREAK_DETECT_LENGTH</a>(LENGTH)</td></tr>
+<tr class="separator:a5f09f62c88629a872d9b6ebf1d068950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fea268c66482e36fb38844b808cf695" id="r_a6fea268c66482e36fb38844b808cf695"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a6fea268c66482e36fb38844b808cf695">IS_UART_WAKEUPMETHOD</a>(WAKEUP)</td></tr>
+<tr class="separator:a6fea268c66482e36fb38844b808cf695"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d657d5c8e47b147a834e0018e9407c2" id="r_a5d657d5c8e47b147a834e0018e9407c2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a5d657d5c8e47b147a834e0018e9407c2">IS_UART_BAUDRATE</a>(BAUDRATE)&#160;&#160;&#160;((BAUDRATE) &lt;= 10500000U)</td></tr>
+<tr class="separator:a5d657d5c8e47b147a834e0018e9407c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c4dce8c60f202455e6f1481fc441f98" id="r_a2c4dce8c60f202455e6f1481fc441f98"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a2c4dce8c60f202455e6f1481fc441f98">IS_UART_ADDRESS</a>(ADDRESS)&#160;&#160;&#160;((ADDRESS) &lt;= 0x0FU)</td></tr>
+<tr class="separator:a2c4dce8c60f202455e6f1481fc441f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fb6c975f14bd141ec282820823a2fff" id="r_a4fb6c975f14bd141ec282820823a2fff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a4fb6c975f14bd141ec282820823a2fff">IS_UART_WORD_LENGTH</a>(LENGTH)</td></tr>
+<tr class="separator:a4fb6c975f14bd141ec282820823a2fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12e732e82119829947fb0c97da82bd69" id="r_a12e732e82119829947fb0c97da82bd69"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a12e732e82119829947fb0c97da82bd69">IS_UART_LIN_WORD_LENGTH</a>(LENGTH)&#160;&#160;&#160;            (((LENGTH) == UART_WORDLENGTH_8B))</td></tr>
+<tr class="separator:a12e732e82119829947fb0c97da82bd69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c61795ef4affdddf3854c8f59568e41" id="r_a2c61795ef4affdddf3854c8f59568e41"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a2c61795ef4affdddf3854c8f59568e41">IS_UART_STOPBITS</a>(STOPBITS)&#160;&#160;&#160;            (((STOPBITS) == UART_STOPBITS_1) || ((STOPBITS) == UART_STOPBITS_2))</td></tr>
+<tr class="separator:a2c61795ef4affdddf3854c8f59568e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2f542d273738ee3cb4a93d169827744" id="r_af2f542d273738ee3cb4a93d169827744"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#af2f542d273738ee3cb4a93d169827744">IS_UART_PARITY</a>(PARITY)</td></tr>
+<tr class="separator:af2f542d273738ee3cb4a93d169827744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4da792d3bbb8e04d97dd45b963ac2464" id="r_a4da792d3bbb8e04d97dd45b963ac2464"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a4da792d3bbb8e04d97dd45b963ac2464">IS_UART_HARDWARE_FLOW_CONTROL</a>(CONTROL)</td></tr>
+<tr class="separator:a4da792d3bbb8e04d97dd45b963ac2464"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a748d45fbdc96c743bee170b749f961ba" id="r_a748d45fbdc96c743bee170b749f961ba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a748d45fbdc96c743bee170b749f961ba">IS_UART_MODE</a>(MODE)&#160;&#160;&#160;            ((((MODE) &amp; 0x0000FFF3U) == 0x00U) &amp;&amp; ((MODE) != 0x00U))</td></tr>
+<tr class="separator:a748d45fbdc96c743bee170b749f961ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a202315393e18f29b20eb49ad9f8934dd" id="r_a202315393e18f29b20eb49ad9f8934dd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a202315393e18f29b20eb49ad9f8934dd">IS_UART_STATE</a>(STATE)&#160;&#160;&#160;            (((STATE) == UART_STATE_DISABLE) || ((STATE) == UART_STATE_ENABLE))</td></tr>
+<tr class="separator:a202315393e18f29b20eb49ad9f8934dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8486e4a622ab62a11d82389d4aa0305d" id="r_a8486e4a622ab62a11d82389d4aa0305d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a8486e4a622ab62a11d82389d4aa0305d">IS_UART_OVERSAMPLING</a>(SAMPLING)</td></tr>
+<tr class="separator:a8486e4a622ab62a11d82389d4aa0305d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd5577cca731f8ef51badd665f6aa5e6" id="r_acd5577cca731f8ef51badd665f6aa5e6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#acd5577cca731f8ef51badd665f6aa5e6">IS_UART_LIN_OVERSAMPLING</a>(SAMPLING)&#160;&#160;&#160;            (((SAMPLING) == UART_OVERSAMPLING_16))</td></tr>
+<tr class="separator:acd5577cca731f8ef51badd665f6aa5e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f09f62c88629a872d9b6ebf1d068950" id="r_a5f09f62c88629a872d9b6ebf1d068950"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a5f09f62c88629a872d9b6ebf1d068950">IS_UART_LIN_BREAK_DETECT_LENGTH</a>(LENGTH)</td></tr>
+<tr class="separator:a5f09f62c88629a872d9b6ebf1d068950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fea268c66482e36fb38844b808cf695" id="r_a6fea268c66482e36fb38844b808cf695"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a6fea268c66482e36fb38844b808cf695">IS_UART_WAKEUPMETHOD</a>(WAKEUP)</td></tr>
+<tr class="separator:a6fea268c66482e36fb38844b808cf695"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d657d5c8e47b147a834e0018e9407c2" id="r_a5d657d5c8e47b147a834e0018e9407c2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a5d657d5c8e47b147a834e0018e9407c2">IS_UART_BAUDRATE</a>(BAUDRATE)&#160;&#160;&#160;((BAUDRATE) &lt;= 10500000U)</td></tr>
+<tr class="separator:a5d657d5c8e47b147a834e0018e9407c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c4dce8c60f202455e6f1481fc441f98" id="r_a2c4dce8c60f202455e6f1481fc441f98"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a2c4dce8c60f202455e6f1481fc441f98">IS_UART_ADDRESS</a>(ADDRESS)&#160;&#160;&#160;((ADDRESS) &lt;= 0x0FU)</td></tr>
+<tr class="separator:a2c4dce8c60f202455e6f1481fc441f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 函数</h2></td></tr>
-<tr class="memitem:a8d98eaab25e61ae12e2e240c3388c57b" id="r_a8d98eaab25e61ae12e2e240c3388c57b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a8d98eaab25e61ae12e2e240c3388c57b">HAL_UART_DeInit</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a8d98eaab25e61ae12e2e240c3388c57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe47045024787099b0bfa82bbe7b0b6a" id="r_abe47045024787099b0bfa82bbe7b0b6a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#abe47045024787099b0bfa82bbe7b0b6a">HAL_UART_Init</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
+<tr class="memitem:abcdf9b59049eccbc87d54042f9235b1a" id="r_abcdf9b59049eccbc87d54042f9235b1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#abcdf9b59049eccbc87d54042f9235b1a">HAL_UART_TxCpltCallback</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:abcdf9b59049eccbc87d54042f9235b1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49b287e7de94cd0a38d333629298f7c4" id="r_a49b287e7de94cd0a38d333629298f7c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a49b287e7de94cd0a38d333629298f7c4">HAL_UART_TxHalfCpltCallback</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a49b287e7de94cd0a38d333629298f7c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae494a9643f29b87d6d81e5264e60e57b" id="r_ae494a9643f29b87d6d81e5264e60e57b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#ae494a9643f29b87d6d81e5264e60e57b">HAL_UART_RxCpltCallback</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:ae494a9643f29b87d6d81e5264e60e57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1884970cc493d8efba5aec28c0d526e7" id="r_a1884970cc493d8efba5aec28c0d526e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a1884970cc493d8efba5aec28c0d526e7">HAL_UART_RxHalfCpltCallback</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a1884970cc493d8efba5aec28c0d526e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e0456ea96d55db31de947fb3e954f18" id="r_a0e0456ea96d55db31de947fb3e954f18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a0e0456ea96d55db31de947fb3e954f18">HAL_UART_ErrorCallback</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a0e0456ea96d55db31de947fb3e954f18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdcb274a742093c45869f2cfbb0a8b09" id="r_acdcb274a742093c45869f2cfbb0a8b09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#acdcb274a742093c45869f2cfbb0a8b09">HAL_UART_AbortCpltCallback</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:acdcb274a742093c45869f2cfbb0a8b09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf94995fb9986930151f3c5586d37e5c" id="r_acf94995fb9986930151f3c5586d37e5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#acf94995fb9986930151f3c5586d37e5c">HAL_UART_AbortTransmitCpltCallback</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:acf94995fb9986930151f3c5586d37e5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f9d15c5ae7b69f09e0ee5f2461e7e7a" id="r_a0f9d15c5ae7b69f09e0ee5f2461e7e7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a0f9d15c5ae7b69f09e0ee5f2461e7e7a">HAL_UART_AbortReceiveCpltCallback</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a0f9d15c5ae7b69f09e0ee5f2461e7e7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a925534fb8bf7ca464fd05c982fe4bfa0" id="r_a925534fb8bf7ca464fd05c982fe4bfa0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a925534fb8bf7ca464fd05c982fe4bfa0">HAL_UARTEx_RxEventCallback</a> (UART_HandleTypeDef *huart, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a53b9b44ef14bc3bbaeddee9f58031df7">Size</a>)</td></tr>
+<tr class="separator:a925534fb8bf7ca464fd05c982fe4bfa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a272650a0cd805cca44320e4b99be88a9" id="r_a272650a0cd805cca44320e4b99be88a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a272650a0cd805cca44320e4b99be88a9">HAL_USART_TxRxCpltCallback</a> (USART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a272650a0cd805cca44320e4b99be88a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44d09cdf66fec468d956c64a23f61856" id="r_a44d09cdf66fec468d956c64a23f61856"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a44d09cdf66fec468d956c64a23f61856">HAL_UARTEx_WakeupCallback</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a44d09cdf66fec468d956c64a23f61856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e553b32211877322f949b14801bbfa7" id="r_a0e553b32211877322f949b14801bbfa7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a0e553b32211877322f949b14801bbfa7">HAL_UART_MspInit</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a0e553b32211877322f949b14801bbfa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a718f39804e3b910d738a0e1e46151188" id="r_a718f39804e3b910d738a0e1e46151188"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a718f39804e3b910d738a0e1e46151188">HAL_UART_MspDeInit</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a718f39804e3b910d738a0e1e46151188"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe47045024787099b0bfa82bbe7b0b6a" id="r_abe47045024787099b0bfa82bbe7b0b6a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#abe47045024787099b0bfa82bbe7b0b6a">HAL_UART_Init</a> (UART_HandleTypeDef *huart)</td></tr>
 <tr class="separator:abe47045024787099b0bfa82bbe7b0b6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a927245827265eff1f3580a0121efd424" id="r_a927245827265eff1f3580a0121efd424"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a927245827265eff1f3580a0121efd424">HAL_HalfDuplex_Init</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
+<tr class="memitem:a927245827265eff1f3580a0121efd424" id="r_a927245827265eff1f3580a0121efd424"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a927245827265eff1f3580a0121efd424">HAL_HalfDuplex_Init</a> (UART_HandleTypeDef *huart)</td></tr>
 <tr class="separator:a927245827265eff1f3580a0121efd424"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01a7a7ac3cf0a262814ba44ee7580ddb" id="r_a01a7a7ac3cf0a262814ba44ee7580ddb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a01a7a7ac3cf0a262814ba44ee7580ddb">HAL_UART_Transmit</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart, const <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a17f70747269f48340992a7ae14b35dde">Size</a>, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> Timeout)</td></tr>
-<tr class="separator:a01a7a7ac3cf0a262814ba44ee7580ddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab868edc590e3b827a14528a25c999e2f" id="r_ab868edc590e3b827a14528a25c999e2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#ab868edc590e3b827a14528a25c999e2f">HAL_UART_Receive</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a17f70747269f48340992a7ae14b35dde">Size</a>, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> Timeout)</td></tr>
-<tr class="separator:ab868edc590e3b827a14528a25c999e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a695812b114bd1eb4d9afd6831143b01b" id="r_a695812b114bd1eb4d9afd6831143b01b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a695812b114bd1eb4d9afd6831143b01b">HAL_UART_Transmit_IT</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart, const <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a17f70747269f48340992a7ae14b35dde">Size</a>)</td></tr>
-<tr class="separator:a695812b114bd1eb4d9afd6831143b01b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc0c3ef2109881d011601f0d41e70e40" id="r_adc0c3ef2109881d011601f0d41e70e40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#adc0c3ef2109881d011601f0d41e70e40">HAL_UART_Receive_IT</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a17f70747269f48340992a7ae14b35dde">Size</a>)</td></tr>
-<tr class="separator:adc0c3ef2109881d011601f0d41e70e40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af963b55e3b0da8d7fcc4bd978cb6c58d" id="r_af963b55e3b0da8d7fcc4bd978cb6c58d"><td class="memItemLeft" align="right" valign="top">__weak void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#af963b55e3b0da8d7fcc4bd978cb6c58d">HAL_UART_MspInit</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:af963b55e3b0da8d7fcc4bd978cb6c58d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fe5ae294b5122475f3e1cb5a04a71c3" id="r_a0fe5ae294b5122475f3e1cb5a04a71c3"><td class="memItemLeft" align="right" valign="top">__weak void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a0fe5ae294b5122475f3e1cb5a04a71c3">HAL_UART_MspDeInit</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a0fe5ae294b5122475f3e1cb5a04a71c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a821472e8c11e667d793b829a19c3e46c" id="r_a821472e8c11e667d793b829a19c3e46c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a821472e8c11e667d793b829a19c3e46c">HAL_UART_Transmit_DMA</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart, const <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a17f70747269f48340992a7ae14b35dde">Size</a>)</td></tr>
-<tr class="separator:a821472e8c11e667d793b829a19c3e46c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad674cce054e58927720cd689620ffa08" id="r_ad674cce054e58927720cd689620ffa08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#ad674cce054e58927720cd689620ffa08">HAL_UART_Receive_DMA</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a17f70747269f48340992a7ae14b35dde">Size</a>)</td></tr>
-<tr class="separator:ad674cce054e58927720cd689620ffa08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab21aa06cfbaa1665b1062a803fcb4217" id="r_ab21aa06cfbaa1665b1062a803fcb4217"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#ab21aa06cfbaa1665b1062a803fcb4217">HAL_UART_DMAStop</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:ab21aa06cfbaa1665b1062a803fcb4217"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d7be1f59fc810f49dadc580307a4862" id="r_a2d7be1f59fc810f49dadc580307a4862"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a2d7be1f59fc810f49dadc580307a4862">HAL_UART_Abort</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a2d7be1f59fc810f49dadc580307a4862"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a8858ffca45541416097961523d5fb2" id="r_a5a8858ffca45541416097961523d5fb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a5a8858ffca45541416097961523d5fb2">HAL_UART_AbortTransmit</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a5a8858ffca45541416097961523d5fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9732372cfae60c019bb41554ab12edd6" id="r_a9732372cfae60c019bb41554ab12edd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a9732372cfae60c019bb41554ab12edd6">HAL_UART_AbortReceive</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a9732372cfae60c019bb41554ab12edd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3183626ee21f103cbcb50241eca50e4d" id="r_a3183626ee21f103cbcb50241eca50e4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a3183626ee21f103cbcb50241eca50e4d">HAL_UART_Abort_IT</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a3183626ee21f103cbcb50241eca50e4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fba12f56413e2dbe8b96040ecf5aa7e" id="r_a0fba12f56413e2dbe8b96040ecf5aa7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a0fba12f56413e2dbe8b96040ecf5aa7e">HAL_UART_AbortTransmit_IT</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a0fba12f56413e2dbe8b96040ecf5aa7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad7bc5748b849abc29d18b2ddd02876f" id="r_aad7bc5748b849abc29d18b2ddd02876f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#aad7bc5748b849abc29d18b2ddd02876f">HAL_UART_AbortReceive_IT</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:aad7bc5748b849abc29d18b2ddd02876f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affbf11fb4929f709004a11675cd25fcf" id="r_affbf11fb4929f709004a11675cd25fcf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#affbf11fb4929f709004a11675cd25fcf">HAL_LIN_SendBreak</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:affbf11fb4929f709004a11675cd25fcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31c033bf82e6ec4ce88d7cd6083b2c16" id="r_a31c033bf82e6ec4ce88d7cd6083b2c16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__uart_8h.html#adddf3d5480235c945dc8eec58f961203">HAL_UART_RxEventTypeTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a31c033bf82e6ec4ce88d7cd6083b2c16">HAL_UARTEx_GetRxEventType</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a31c033bf82e6ec4ce88d7cd6083b2c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad01472c507ceee3c5f2274c775ff3bf" id="r_aad01472c507ceee3c5f2274c775ff3bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#aad01472c507ceee3c5f2274c775ff3bf">HAL_UART_IRQHandler</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:aad01472c507ceee3c5f2274c775ff3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36c53f9fb1eea223d2903430448aa316" id="r_a36c53f9fb1eea223d2903430448aa316"><td class="memItemLeft" align="right" valign="top">__weak void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a36c53f9fb1eea223d2903430448aa316">HAL_UART_TxCpltCallback</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a36c53f9fb1eea223d2903430448aa316"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd5833716d12f4528bc1c0683c96c3ad" id="r_afd5833716d12f4528bc1c0683c96c3ad"><td class="memItemLeft" align="right" valign="top">__weak void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#afd5833716d12f4528bc1c0683c96c3ad">HAL_UART_TxHalfCpltCallback</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:afd5833716d12f4528bc1c0683c96c3ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32780985c3713b115d62bb88c1d1bd35" id="r_a32780985c3713b115d62bb88c1d1bd35"><td class="memItemLeft" align="right" valign="top">__weak void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a32780985c3713b115d62bb88c1d1bd35">HAL_UART_RxCpltCallback</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a32780985c3713b115d62bb88c1d1bd35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8829b520c31fc587303998ad0b92177d" id="r_a8829b520c31fc587303998ad0b92177d"><td class="memItemLeft" align="right" valign="top">__weak void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a8829b520c31fc587303998ad0b92177d">HAL_UART_RxHalfCpltCallback</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a8829b520c31fc587303998ad0b92177d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89574a73e68dcf7dac0d6b6397dea4e0" id="r_a89574a73e68dcf7dac0d6b6397dea4e0"><td class="memItemLeft" align="right" valign="top">__weak void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a89574a73e68dcf7dac0d6b6397dea4e0">HAL_UART_ErrorCallback</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a89574a73e68dcf7dac0d6b6397dea4e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2df3f98d64b6f613711b1e65fb91621" id="r_af2df3f98d64b6f613711b1e65fb91621"><td class="memItemLeft" align="right" valign="top">__weak void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#af2df3f98d64b6f613711b1e65fb91621">HAL_UART_AbortCpltCallback</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:af2df3f98d64b6f613711b1e65fb91621"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3807ce538fc76c321194a939b3b7c258" id="r_a3807ce538fc76c321194a939b3b7c258"><td class="memItemLeft" align="right" valign="top">__weak void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a3807ce538fc76c321194a939b3b7c258">HAL_UART_AbortTransmitCpltCallback</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a3807ce538fc76c321194a939b3b7c258"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a509ce4887a389bc7a01e332286497a96" id="r_a509ce4887a389bc7a01e332286497a96"><td class="memItemLeft" align="right" valign="top">__weak void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a509ce4887a389bc7a01e332286497a96">HAL_UART_AbortReceiveCpltCallback</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a509ce4887a389bc7a01e332286497a96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac44d95ed4163a10ff44353100c81368d" id="r_ac44d95ed4163a10ff44353100c81368d"><td class="memItemLeft" align="right" valign="top">__weak void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#ac44d95ed4163a10ff44353100c81368d">HAL_UARTEx_RxEventCallback</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a17f70747269f48340992a7ae14b35dde">Size</a>)</td></tr>
-<tr class="separator:ac44d95ed4163a10ff44353100c81368d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58d73e260a5536fb9cb40d7d2fe2b4bb" id="r_a58d73e260a5536fb9cb40d7d2fe2b4bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a58d73e260a5536fb9cb40d7d2fe2b4bb">HAL_HalfDuplex_EnableTransmitter</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a58d73e260a5536fb9cb40d7d2fe2b4bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a396ebbcdbe352c3393ad3007614383ac" id="r_a396ebbcdbe352c3393ad3007614383ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a396ebbcdbe352c3393ad3007614383ac">HAL_HalfDuplex_EnableReceiver</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a396ebbcdbe352c3393ad3007614383ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2799699d4d4b3c9d7fac0c3523fe45e" id="r_ad2799699d4d4b3c9d7fac0c3523fe45e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__uart_8h.html#af55d844a35379c204c90be5d1e8e50ba">HAL_UART_StateTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#ad2799699d4d4b3c9d7fac0c3523fe45e">HAL_UART_GetState</a> (const <a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:ad2799699d4d4b3c9d7fac0c3523fe45e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7297bf8c1679501a19c34f737c2eeea7" id="r_a7297bf8c1679501a19c34f737c2eeea7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a7297bf8c1679501a19c34f737c2eeea7">HAL_UART_GetError</a> (const <a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a7297bf8c1679501a19c34f737c2eeea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a713fd976d8ef02b818ea6ff0d4e41a" id="r_a8a713fd976d8ef02b818ea6ff0d4e41a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a8a713fd976d8ef02b818ea6ff0d4e41a">HAL_UART_DMAPause</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:a8a713fd976d8ef02b818ea6ff0d4e41a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2b3e6004d0200857781809baa16072d" id="r_af2b3e6004d0200857781809baa16072d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#af2b3e6004d0200857781809baa16072d">HAL_UART_DMAResume</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
-<tr class="separator:af2b3e6004d0200857781809baa16072d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33da590bebd5fd13ce9020ac1fc05e15" id="r_a33da590bebd5fd13ce9020ac1fc05e15"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a33da590bebd5fd13ce9020ac1fc05e15">HAL_UARTEx_ReceiveToIdle</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a17f70747269f48340992a7ae14b35dde">Size</a>, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> *RxLen, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> Timeout)</td></tr>
-<tr class="separator:a33da590bebd5fd13ce9020ac1fc05e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae70c60d3f42f1c205ebc834de99342a7" id="r_ae70c60d3f42f1c205ebc834de99342a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#ae70c60d3f42f1c205ebc834de99342a7">HAL_UARTEx_ReceiveToIdle_IT</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a17f70747269f48340992a7ae14b35dde">Size</a>)</td></tr>
-<tr class="separator:ae70c60d3f42f1c205ebc834de99342a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af482a22a09d594e0aa687937aef17949" id="r_af482a22a09d594e0aa687937aef17949"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#af482a22a09d594e0aa687937aef17949">HAL_UARTEx_ReceiveToIdle_DMA</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a17f70747269f48340992a7ae14b35dde">Size</a>)</td></tr>
-<tr class="separator:af482a22a09d594e0aa687937aef17949"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27e4497270bd06434e3965e4b06f5516" id="r_a27e4497270bd06434e3965e4b06f5516"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a27e4497270bd06434e3965e4b06f5516">HAL_LIN_Init</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> BreakDetectLength)</td></tr>
-<tr class="separator:a27e4497270bd06434e3965e4b06f5516"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae1b49f0cb62235141807d8cbc61bc4d" id="r_aae1b49f0cb62235141807d8cbc61bc4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#aae1b49f0cb62235141807d8cbc61bc4d">HAL_MultiProcessor_Init</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> Address, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> WakeUpMethod)</td></tr>
+<tr class="memitem:aae1b49f0cb62235141807d8cbc61bc4d" id="r_aae1b49f0cb62235141807d8cbc61bc4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#aae1b49f0cb62235141807d8cbc61bc4d">HAL_MultiProcessor_Init</a> (UART_HandleTypeDef *huart, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> Address, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> WakeUpMethod)</td></tr>
 <tr class="separator:aae1b49f0cb62235141807d8cbc61bc4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a659637545299b91d2a77dadaf7266bf2" id="r_a659637545299b91d2a77dadaf7266bf2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a659637545299b91d2a77dadaf7266bf2">HAL_MultiProcessor_EnterMuteMode</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
+<tr class="memitem:a8d98eaab25e61ae12e2e240c3388c57b" id="r_a8d98eaab25e61ae12e2e240c3388c57b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a8d98eaab25e61ae12e2e240c3388c57b">HAL_UART_DeInit</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a8d98eaab25e61ae12e2e240c3388c57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01a7a7ac3cf0a262814ba44ee7580ddb" id="r_a01a7a7ac3cf0a262814ba44ee7580ddb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a01a7a7ac3cf0a262814ba44ee7580ddb">HAL_UART_Transmit</a> (UART_HandleTypeDef *huart, const <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a53b9b44ef14bc3bbaeddee9f58031df7">Size</a>, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> Timeout)</td></tr>
+<tr class="separator:a01a7a7ac3cf0a262814ba44ee7580ddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab868edc590e3b827a14528a25c999e2f" id="r_ab868edc590e3b827a14528a25c999e2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#ab868edc590e3b827a14528a25c999e2f">HAL_UART_Receive</a> (UART_HandleTypeDef *huart, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a53b9b44ef14bc3bbaeddee9f58031df7">Size</a>, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> Timeout)</td></tr>
+<tr class="separator:ab868edc590e3b827a14528a25c999e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a695812b114bd1eb4d9afd6831143b01b" id="r_a695812b114bd1eb4d9afd6831143b01b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a695812b114bd1eb4d9afd6831143b01b">HAL_UART_Transmit_IT</a> (UART_HandleTypeDef *huart, const <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a53b9b44ef14bc3bbaeddee9f58031df7">Size</a>)</td></tr>
+<tr class="separator:a695812b114bd1eb4d9afd6831143b01b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc0c3ef2109881d011601f0d41e70e40" id="r_adc0c3ef2109881d011601f0d41e70e40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#adc0c3ef2109881d011601f0d41e70e40">HAL_UART_Receive_IT</a> (UART_HandleTypeDef *huart, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a53b9b44ef14bc3bbaeddee9f58031df7">Size</a>)</td></tr>
+<tr class="separator:adc0c3ef2109881d011601f0d41e70e40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a821472e8c11e667d793b829a19c3e46c" id="r_a821472e8c11e667d793b829a19c3e46c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a821472e8c11e667d793b829a19c3e46c">HAL_UART_Transmit_DMA</a> (UART_HandleTypeDef *huart, const <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a53b9b44ef14bc3bbaeddee9f58031df7">Size</a>)</td></tr>
+<tr class="separator:a821472e8c11e667d793b829a19c3e46c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad674cce054e58927720cd689620ffa08" id="r_ad674cce054e58927720cd689620ffa08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#ad674cce054e58927720cd689620ffa08">HAL_UART_Receive_DMA</a> (UART_HandleTypeDef *huart, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a53b9b44ef14bc3bbaeddee9f58031df7">Size</a>)</td></tr>
+<tr class="separator:ad674cce054e58927720cd689620ffa08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab21aa06cfbaa1665b1062a803fcb4217" id="r_ab21aa06cfbaa1665b1062a803fcb4217"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#ab21aa06cfbaa1665b1062a803fcb4217">HAL_UART_DMAStop</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:ab21aa06cfbaa1665b1062a803fcb4217"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d7be1f59fc810f49dadc580307a4862" id="r_a2d7be1f59fc810f49dadc580307a4862"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a2d7be1f59fc810f49dadc580307a4862">HAL_UART_Abort</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a2d7be1f59fc810f49dadc580307a4862"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a8858ffca45541416097961523d5fb2" id="r_a5a8858ffca45541416097961523d5fb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a5a8858ffca45541416097961523d5fb2">HAL_UART_AbortTransmit</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a5a8858ffca45541416097961523d5fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9732372cfae60c019bb41554ab12edd6" id="r_a9732372cfae60c019bb41554ab12edd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a9732372cfae60c019bb41554ab12edd6">HAL_UART_AbortReceive</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a9732372cfae60c019bb41554ab12edd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3183626ee21f103cbcb50241eca50e4d" id="r_a3183626ee21f103cbcb50241eca50e4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a3183626ee21f103cbcb50241eca50e4d">HAL_UART_Abort_IT</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a3183626ee21f103cbcb50241eca50e4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fba12f56413e2dbe8b96040ecf5aa7e" id="r_a0fba12f56413e2dbe8b96040ecf5aa7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a0fba12f56413e2dbe8b96040ecf5aa7e">HAL_UART_AbortTransmit_IT</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a0fba12f56413e2dbe8b96040ecf5aa7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad7bc5748b849abc29d18b2ddd02876f" id="r_aad7bc5748b849abc29d18b2ddd02876f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#aad7bc5748b849abc29d18b2ddd02876f">HAL_UART_AbortReceive_IT</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:aad7bc5748b849abc29d18b2ddd02876f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affbf11fb4929f709004a11675cd25fcf" id="r_affbf11fb4929f709004a11675cd25fcf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#affbf11fb4929f709004a11675cd25fcf">HAL_LIN_SendBreak</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:affbf11fb4929f709004a11675cd25fcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31c033bf82e6ec4ce88d7cd6083b2c16" id="r_a31c033bf82e6ec4ce88d7cd6083b2c16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__uart__base_8h.html#adddf3d5480235c945dc8eec58f961203">HAL_UART_RxEventTypeTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a31c033bf82e6ec4ce88d7cd6083b2c16">HAL_UARTEx_GetRxEventType</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a31c033bf82e6ec4ce88d7cd6083b2c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad01472c507ceee3c5f2274c775ff3bf" id="r_aad01472c507ceee3c5f2274c775ff3bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#aad01472c507ceee3c5f2274c775ff3bf">HAL_UART_IRQHandler</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:aad01472c507ceee3c5f2274c775ff3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58d73e260a5536fb9cb40d7d2fe2b4bb" id="r_a58d73e260a5536fb9cb40d7d2fe2b4bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a58d73e260a5536fb9cb40d7d2fe2b4bb">HAL_HalfDuplex_EnableTransmitter</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a58d73e260a5536fb9cb40d7d2fe2b4bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a396ebbcdbe352c3393ad3007614383ac" id="r_a396ebbcdbe352c3393ad3007614383ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a396ebbcdbe352c3393ad3007614383ac">HAL_HalfDuplex_EnableReceiver</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a396ebbcdbe352c3393ad3007614383ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2799699d4d4b3c9d7fac0c3523fe45e" id="r_ad2799699d4d4b3c9d7fac0c3523fe45e"><td class="memItemLeft" align="right" valign="top">HAL_UART_StateTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#ad2799699d4d4b3c9d7fac0c3523fe45e">HAL_UART_GetState</a> (const UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:ad2799699d4d4b3c9d7fac0c3523fe45e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7297bf8c1679501a19c34f737c2eeea7" id="r_a7297bf8c1679501a19c34f737c2eeea7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a7297bf8c1679501a19c34f737c2eeea7">HAL_UART_GetError</a> (const UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a7297bf8c1679501a19c34f737c2eeea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33da590bebd5fd13ce9020ac1fc05e15" id="r_a33da590bebd5fd13ce9020ac1fc05e15"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a33da590bebd5fd13ce9020ac1fc05e15">HAL_UARTEx_ReceiveToIdle</a> (UART_HandleTypeDef *huart, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a53b9b44ef14bc3bbaeddee9f58031df7">Size</a>, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> *RxLen, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> Timeout)</td></tr>
+<tr class="separator:a33da590bebd5fd13ce9020ac1fc05e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae70c60d3f42f1c205ebc834de99342a7" id="r_ae70c60d3f42f1c205ebc834de99342a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#ae70c60d3f42f1c205ebc834de99342a7">HAL_UARTEx_ReceiveToIdle_IT</a> (UART_HandleTypeDef *huart, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a53b9b44ef14bc3bbaeddee9f58031df7">Size</a>)</td></tr>
+<tr class="separator:ae70c60d3f42f1c205ebc834de99342a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af482a22a09d594e0aa687937aef17949" id="r_af482a22a09d594e0aa687937aef17949"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#af482a22a09d594e0aa687937aef17949">HAL_UARTEx_ReceiveToIdle_DMA</a> (UART_HandleTypeDef *huart, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pData, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="el" href="vsf__pbuf_8h.html#a53b9b44ef14bc3bbaeddee9f58031df7">Size</a>)</td></tr>
+<tr class="separator:af482a22a09d594e0aa687937aef17949"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a713fd976d8ef02b818ea6ff0d4e41a" id="r_a8a713fd976d8ef02b818ea6ff0d4e41a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a8a713fd976d8ef02b818ea6ff0d4e41a">HAL_UART_DMAPause</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:a8a713fd976d8ef02b818ea6ff0d4e41a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2b3e6004d0200857781809baa16072d" id="r_af2b3e6004d0200857781809baa16072d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#af2b3e6004d0200857781809baa16072d">HAL_UART_DMAResume</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="separator:af2b3e6004d0200857781809baa16072d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27e4497270bd06434e3965e4b06f5516" id="r_a27e4497270bd06434e3965e4b06f5516"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a27e4497270bd06434e3965e4b06f5516">HAL_LIN_Init</a> (UART_HandleTypeDef *huart, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> BreakDetectLength)</td></tr>
+<tr class="separator:a27e4497270bd06434e3965e4b06f5516"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a659637545299b91d2a77dadaf7266bf2" id="r_a659637545299b91d2a77dadaf7266bf2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a659637545299b91d2a77dadaf7266bf2">HAL_MultiProcessor_EnterMuteMode</a> (UART_HandleTypeDef *huart)</td></tr>
 <tr class="separator:a659637545299b91d2a77dadaf7266bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81b90fb3a4d7a8601a92260edbd3422f" id="r_a81b90fb3a4d7a8601a92260edbd3422f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a81b90fb3a4d7a8601a92260edbd3422f">HAL_MultiProcessor_ExitMuteMode</a> (<a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *huart)</td></tr>
+<tr class="memitem:a81b90fb3a4d7a8601a92260edbd3422f" id="r_a81b90fb3a4d7a8601a92260edbd3422f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sthal__uart_8c.html#a81b90fb3a4d7a8601a92260edbd3422f">HAL_MultiProcessor_ExitMuteMode</a> (UART_HandleTypeDef *huart)</td></tr>
 <tr class="separator:a81b90fb3a4d7a8601a92260edbd3422f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">宏定义说明</h2>
-<a id="a10b316803e04ce5c26cbf3fa554b523a" name="a10b316803e04ce5c26cbf3fa554b523a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10b316803e04ce5c26cbf3fa554b523a">&#9670;&#160;</a></span>STHAL_USART_RX_ERR_IRQ_MASK</h2>
+<a id="a69c4aa0c561c4c39c621710fbbb0cb7b" name="a69c4aa0c561c4c39c621710fbbb0cb7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69c4aa0c561c4c39c621710fbbb0cb7b">&#9670;&#160;</a></span>IS_UART_HALFDUPLEX_INSTANCE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define STHAL_USART_RX_ERR_IRQ_MASK</td>
+          <td class="memname">#define IS_UART_HALFDUPLEX_INSTANCE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">INSTANCE</td><td>)</td>
+          <td>&#160;&#160;&#160;1</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">        (<a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a7ea42303582a88dd1899a85f9c76d052a1ff75c626aec46f55bbd1e527ec74ef1">VSF_USART_IRQ_MASK_OVERFLOW_ERR</a> |                                      \</div>
-<div class="line">         <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a7ea42303582a88dd1899a85f9c76d052afa1a04d842b35c32f7204779542c3588">VSF_USART_IRQ_MASK_FRAME_ERR</a> | <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a7ea42303582a88dd1899a85f9c76d052a711dcfc909a2d3008268387e5897d58c">VSF_USART_IRQ_MASK_BREAK_ERR</a> |         \</div>
-<div class="line">         <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a7ea42303582a88dd1899a85f9c76d052ac0e8e6ad1499e817d58b98c9eb1f505e">VSF_USART_IRQ_MASK_PARITY_ERR</a>)</div>
-<div class="ttc" id="a_a_i_c_2_a_i_c8800_2uart_2uart_8h_html_a7ea42303582a88dd1899a85f9c76d052a1ff75c626aec46f55bbd1e527ec74ef1"><div class="ttname"><a href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a7ea42303582a88dd1899a85f9c76d052a1ff75c626aec46f55bbd1e527ec74ef1">VSF_USART_IRQ_MASK_OVERFLOW_ERR</a></div><div class="ttdeci">@ VSF_USART_IRQ_MASK_OVERFLOW_ERR</div><div class="ttdef"><b>Definition</b> uart.h:127</div></div>
-<div class="ttc" id="a_a_i_c_2_a_i_c8800_2uart_2uart_8h_html_a7ea42303582a88dd1899a85f9c76d052a711dcfc909a2d3008268387e5897d58c"><div class="ttname"><a href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a7ea42303582a88dd1899a85f9c76d052a711dcfc909a2d3008268387e5897d58c">VSF_USART_IRQ_MASK_BREAK_ERR</a></div><div class="ttdeci">@ VSF_USART_IRQ_MASK_BREAK_ERR</div><div class="ttdef"><b>Definition</b> uart.h:126</div></div>
-<div class="ttc" id="a_a_i_c_2_a_i_c8800_2uart_2uart_8h_html_a7ea42303582a88dd1899a85f9c76d052ac0e8e6ad1499e817d58b98c9eb1f505e"><div class="ttname"><a href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a7ea42303582a88dd1899a85f9c76d052ac0e8e6ad1499e817d58b98c9eb1f505e">VSF_USART_IRQ_MASK_PARITY_ERR</a></div><div class="ttdeci">@ VSF_USART_IRQ_MASK_PARITY_ERR</div><div class="ttdef"><b>Definition</b> uart.h:125</div></div>
-<div class="ttc" id="a_a_i_c_2_a_i_c8800_2uart_2uart_8h_html_a7ea42303582a88dd1899a85f9c76d052afa1a04d842b35c32f7204779542c3588"><div class="ttname"><a href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a7ea42303582a88dd1899a85f9c76d052afa1a04d842b35c32f7204779542c3588">VSF_USART_IRQ_MASK_FRAME_ERR</a></div><div class="ttdeci">@ VSF_USART_IRQ_MASK_FRAME_ERR</div><div class="ttdef"><b>Definition</b> uart.h:124</div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
-<h2 class="groupheader">函数说明</h2>
-<a id="a8d98eaab25e61ae12e2e240c3388c57b" name="a8d98eaab25e61ae12e2e240c3388c57b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d98eaab25e61ae12e2e240c3388c57b">&#9670;&#160;</a></span>HAL_UART_DeInit()</h2>
+<a id="acbd2efab4cd39d4867c4dbeacb87e84b" name="acbd2efab4cd39d4867c4dbeacb87e84b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbd2efab4cd39d4867c4dbeacb87e84b">&#9670;&#160;</a></span>IS_UART_INSTANCE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_DeInit </td>
+          <td class="memname">#define IS_UART_INSTANCE</td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">INSTANCE</td><td>)</td>
+          <td>&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af9a11d0720f3efa780126414a4ac50ad" name="af9a11d0720f3efa780126414a4ac50ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9a11d0720f3efa780126414a4ac50ad">&#9670;&#160;</a></span>IS_UART_HWFLOW_INSTANCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_HWFLOW_INSTANCE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">INSTANCE</td><td>)</td>
+          <td>&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7d2763df993c77cfa6e249ec7bc80482" name="a7d2763df993c77cfa6e249ec7bc80482"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d2763df993c77cfa6e249ec7bc80482">&#9670;&#160;</a></span>IS_UART_LIN_INSTANCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_LIN_INSTANCE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">INSTANCE</td><td>)</td>
+          <td>&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4fb6c975f14bd141ec282820823a2fff" name="a4fb6c975f14bd141ec282820823a2fff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fb6c975f14bd141ec282820823a2fff">&#9670;&#160;</a></span>IS_UART_WORD_LENGTH <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_WORD_LENGTH</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">LENGTH</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            (((LENGTH) == UART_WORDLENGTH_8B) ||                               \</div>
+<div class="line">             ((LENGTH) == UART_WORDLENGTH_9B))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a12e732e82119829947fb0c97da82bd69" name="a12e732e82119829947fb0c97da82bd69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12e732e82119829947fb0c97da82bd69">&#9670;&#160;</a></span>IS_UART_LIN_WORD_LENGTH <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_LIN_WORD_LENGTH</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">LENGTH</td><td>)</td>
+          <td>&#160;&#160;&#160;            (((LENGTH) == UART_WORDLENGTH_8B))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c61795ef4affdddf3854c8f59568e41" name="a2c61795ef4affdddf3854c8f59568e41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c61795ef4affdddf3854c8f59568e41">&#9670;&#160;</a></span>IS_UART_STOPBITS <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_STOPBITS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">STOPBITS</td><td>)</td>
+          <td>&#160;&#160;&#160;            (((STOPBITS) == UART_STOPBITS_1) || ((STOPBITS) == UART_STOPBITS_2))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af2f542d273738ee3cb4a93d169827744" name="af2f542d273738ee3cb4a93d169827744"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2f542d273738ee3cb4a93d169827744">&#9670;&#160;</a></span>IS_UART_PARITY <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_PARITY</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">PARITY</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            (((PARITY) == UART_PARITY_NONE) ||                                 \</div>
+<div class="line">             ((PARITY) == UART_PARITY_EVEN) || ((PARITY) == UART_PARITY_ODD))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4da792d3bbb8e04d97dd45b963ac2464" name="a4da792d3bbb8e04d97dd45b963ac2464"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4da792d3bbb8e04d97dd45b963ac2464">&#9670;&#160;</a></span>IS_UART_HARDWARE_FLOW_CONTROL <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_HARDWARE_FLOW_CONTROL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">CONTROL</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            (((CONTROL) == UART_HWCONTROL_NONE) ||                             \</div>
+<div class="line">             ((CONTROL) == UART_HWCONTROL_RTS) ||                              \</div>
+<div class="line">             ((CONTROL) == UART_HWCONTROL_CTS) ||                              \</div>
+<div class="line">             ((CONTROL) == UART_HWCONTROL_RTS_CTS))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a748d45fbdc96c743bee170b749f961ba" name="a748d45fbdc96c743bee170b749f961ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a748d45fbdc96c743bee170b749f961ba">&#9670;&#160;</a></span>IS_UART_MODE <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_MODE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">MODE</td><td>)</td>
+          <td>&#160;&#160;&#160;            ((((MODE) &amp; 0x0000FFF3U) == 0x00U) &amp;&amp; ((MODE) != 0x00U))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a202315393e18f29b20eb49ad9f8934dd" name="a202315393e18f29b20eb49ad9f8934dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a202315393e18f29b20eb49ad9f8934dd">&#9670;&#160;</a></span>IS_UART_STATE <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_STATE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">STATE</td><td>)</td>
+          <td>&#160;&#160;&#160;            (((STATE) == UART_STATE_DISABLE) || ((STATE) == UART_STATE_ENABLE))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8486e4a622ab62a11d82389d4aa0305d" name="a8486e4a622ab62a11d82389d4aa0305d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8486e4a622ab62a11d82389d4aa0305d">&#9670;&#160;</a></span>IS_UART_OVERSAMPLING <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_OVERSAMPLING</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">SAMPLING</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            (((SAMPLING) == UART_OVERSAMPLING_16) ||                           \</div>
+<div class="line">             ((SAMPLING) == UART_OVERSAMPLING_8))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="acd5577cca731f8ef51badd665f6aa5e6" name="acd5577cca731f8ef51badd665f6aa5e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd5577cca731f8ef51badd665f6aa5e6">&#9670;&#160;</a></span>IS_UART_LIN_OVERSAMPLING <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_LIN_OVERSAMPLING</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">SAMPLING</td><td>)</td>
+          <td>&#160;&#160;&#160;            (((SAMPLING) == UART_OVERSAMPLING_16))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f09f62c88629a872d9b6ebf1d068950" name="a5f09f62c88629a872d9b6ebf1d068950"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f09f62c88629a872d9b6ebf1d068950">&#9670;&#160;</a></span>IS_UART_LIN_BREAK_DETECT_LENGTH <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_LIN_BREAK_DETECT_LENGTH</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">LENGTH</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            (((LENGTH) == UART_LINBREAKDETECTLENGTH_10B) ||                    \</div>
+<div class="line">             ((LENGTH) == UART_LINBREAKDETECTLENGTH_11B))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6fea268c66482e36fb38844b808cf695" name="a6fea268c66482e36fb38844b808cf695"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fea268c66482e36fb38844b808cf695">&#9670;&#160;</a></span>IS_UART_WAKEUPMETHOD <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_WAKEUPMETHOD</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">WAKEUP</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            (((WAKEUP) == UART_WAKEUPMETHOD_IDLELINE) ||                       \</div>
+<div class="line">             ((WAKEUP) == UART_WAKEUPMETHOD_ADDRESSMARK))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5d657d5c8e47b147a834e0018e9407c2" name="a5d657d5c8e47b147a834e0018e9407c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d657d5c8e47b147a834e0018e9407c2">&#9670;&#160;</a></span>IS_UART_BAUDRATE <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_BAUDRATE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">BAUDRATE</td><td>)</td>
+          <td>&#160;&#160;&#160;((BAUDRATE) &lt;= 10500000U)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c4dce8c60f202455e6f1481fc441f98" name="a2c4dce8c60f202455e6f1481fc441f98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c4dce8c60f202455e6f1481fc441f98">&#9670;&#160;</a></span>IS_UART_ADDRESS <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_ADDRESS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ADDRESS</td><td>)</td>
+          <td>&#160;&#160;&#160;((ADDRESS) &lt;= 0x0FU)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4fb6c975f14bd141ec282820823a2fff" name="a4fb6c975f14bd141ec282820823a2fff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fb6c975f14bd141ec282820823a2fff">&#9670;&#160;</a></span>IS_UART_WORD_LENGTH <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_WORD_LENGTH</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">LENGTH</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            (((LENGTH) == UART_WORDLENGTH_8B) ||                               \</div>
+<div class="line">             ((LENGTH) == UART_WORDLENGTH_9B))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a12e732e82119829947fb0c97da82bd69" name="a12e732e82119829947fb0c97da82bd69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12e732e82119829947fb0c97da82bd69">&#9670;&#160;</a></span>IS_UART_LIN_WORD_LENGTH <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_LIN_WORD_LENGTH</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">LENGTH</td><td>)</td>
+          <td>&#160;&#160;&#160;            (((LENGTH) == UART_WORDLENGTH_8B))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c61795ef4affdddf3854c8f59568e41" name="a2c61795ef4affdddf3854c8f59568e41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c61795ef4affdddf3854c8f59568e41">&#9670;&#160;</a></span>IS_UART_STOPBITS <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_STOPBITS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">STOPBITS</td><td>)</td>
+          <td>&#160;&#160;&#160;            (((STOPBITS) == UART_STOPBITS_1) || ((STOPBITS) == UART_STOPBITS_2))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af2f542d273738ee3cb4a93d169827744" name="af2f542d273738ee3cb4a93d169827744"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2f542d273738ee3cb4a93d169827744">&#9670;&#160;</a></span>IS_UART_PARITY <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_PARITY</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">PARITY</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            (((PARITY) == UART_PARITY_NONE) ||                                 \</div>
+<div class="line">             ((PARITY) == UART_PARITY_EVEN) || ((PARITY) == UART_PARITY_ODD))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4da792d3bbb8e04d97dd45b963ac2464" name="a4da792d3bbb8e04d97dd45b963ac2464"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4da792d3bbb8e04d97dd45b963ac2464">&#9670;&#160;</a></span>IS_UART_HARDWARE_FLOW_CONTROL <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_HARDWARE_FLOW_CONTROL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">CONTROL</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            (((CONTROL) == UART_HWCONTROL_NONE) ||                             \</div>
+<div class="line">             ((CONTROL) == UART_HWCONTROL_RTS) ||                              \</div>
+<div class="line">             ((CONTROL) == UART_HWCONTROL_CTS) ||                              \</div>
+<div class="line">             ((CONTROL) == UART_HWCONTROL_RTS_CTS))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a748d45fbdc96c743bee170b749f961ba" name="a748d45fbdc96c743bee170b749f961ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a748d45fbdc96c743bee170b749f961ba">&#9670;&#160;</a></span>IS_UART_MODE <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_MODE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">MODE</td><td>)</td>
+          <td>&#160;&#160;&#160;            ((((MODE) &amp; 0x0000FFF3U) == 0x00U) &amp;&amp; ((MODE) != 0x00U))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a202315393e18f29b20eb49ad9f8934dd" name="a202315393e18f29b20eb49ad9f8934dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a202315393e18f29b20eb49ad9f8934dd">&#9670;&#160;</a></span>IS_UART_STATE <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_STATE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">STATE</td><td>)</td>
+          <td>&#160;&#160;&#160;            (((STATE) == UART_STATE_DISABLE) || ((STATE) == UART_STATE_ENABLE))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8486e4a622ab62a11d82389d4aa0305d" name="a8486e4a622ab62a11d82389d4aa0305d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8486e4a622ab62a11d82389d4aa0305d">&#9670;&#160;</a></span>IS_UART_OVERSAMPLING <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_OVERSAMPLING</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">SAMPLING</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            (((SAMPLING) == UART_OVERSAMPLING_16) ||                           \</div>
+<div class="line">             ((SAMPLING) == UART_OVERSAMPLING_8))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="acd5577cca731f8ef51badd665f6aa5e6" name="acd5577cca731f8ef51badd665f6aa5e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd5577cca731f8ef51badd665f6aa5e6">&#9670;&#160;</a></span>IS_UART_LIN_OVERSAMPLING <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_LIN_OVERSAMPLING</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">SAMPLING</td><td>)</td>
+          <td>&#160;&#160;&#160;            (((SAMPLING) == UART_OVERSAMPLING_16))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f09f62c88629a872d9b6ebf1d068950" name="a5f09f62c88629a872d9b6ebf1d068950"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f09f62c88629a872d9b6ebf1d068950">&#9670;&#160;</a></span>IS_UART_LIN_BREAK_DETECT_LENGTH <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_LIN_BREAK_DETECT_LENGTH</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">LENGTH</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            (((LENGTH) == UART_LINBREAKDETECTLENGTH_10B) ||                    \</div>
+<div class="line">             ((LENGTH) == UART_LINBREAKDETECTLENGTH_11B))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6fea268c66482e36fb38844b808cf695" name="a6fea268c66482e36fb38844b808cf695"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fea268c66482e36fb38844b808cf695">&#9670;&#160;</a></span>IS_UART_WAKEUPMETHOD <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_WAKEUPMETHOD</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">WAKEUP</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">            (((WAKEUP) == UART_WAKEUPMETHOD_IDLELINE) ||                       \</div>
+<div class="line">             ((WAKEUP) == UART_WAKEUPMETHOD_ADDRESSMARK))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5d657d5c8e47b147a834e0018e9407c2" name="a5d657d5c8e47b147a834e0018e9407c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d657d5c8e47b147a834e0018e9407c2">&#9670;&#160;</a></span>IS_UART_BAUDRATE <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_BAUDRATE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">BAUDRATE</td><td>)</td>
+          <td>&#160;&#160;&#160;((BAUDRATE) &lt;= 10500000U)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c4dce8c60f202455e6f1481fc441f98" name="a2c4dce8c60f202455e6f1481fc441f98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c4dce8c60f202455e6f1481fc441f98">&#9670;&#160;</a></span>IS_UART_ADDRESS <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IS_UART_ADDRESS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ADDRESS</td><td>)</td>
+          <td>&#160;&#160;&#160;((ADDRESS) &lt;= 0x0FU)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="abcdf9b59049eccbc87d54042f9235b1a" name="abcdf9b59049eccbc87d54042f9235b1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcdf9b59049eccbc87d54042f9235b1a">&#9670;&#160;</a></span>HAL_UART_TxCpltCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_TxCpltCallback </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a49b287e7de94cd0a38d333629298f7c4" name="a49b287e7de94cd0a38d333629298f7c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49b287e7de94cd0a38d333629298f7c4">&#9670;&#160;</a></span>HAL_UART_TxHalfCpltCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_TxHalfCpltCallback </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae494a9643f29b87d6d81e5264e60e57b" name="ae494a9643f29b87d6d81e5264e60e57b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae494a9643f29b87d6d81e5264e60e57b">&#9670;&#160;</a></span>HAL_UART_RxCpltCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_RxCpltCallback </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1884970cc493d8efba5aec28c0d526e7" name="a1884970cc493d8efba5aec28c0d526e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1884970cc493d8efba5aec28c0d526e7">&#9670;&#160;</a></span>HAL_UART_RxHalfCpltCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_RxHalfCpltCallback </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e0456ea96d55db31de947fb3e954f18" name="a0e0456ea96d55db31de947fb3e954f18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e0456ea96d55db31de947fb3e954f18">&#9670;&#160;</a></span>HAL_UART_ErrorCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_ErrorCallback </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acdcb274a742093c45869f2cfbb0a8b09" name="acdcb274a742093c45869f2cfbb0a8b09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdcb274a742093c45869f2cfbb0a8b09">&#9670;&#160;</a></span>HAL_UART_AbortCpltCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_AbortCpltCallback </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf94995fb9986930151f3c5586d37e5c" name="acf94995fb9986930151f3c5586d37e5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf94995fb9986930151f3c5586d37e5c">&#9670;&#160;</a></span>HAL_UART_AbortTransmitCpltCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_AbortTransmitCpltCallback </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0f9d15c5ae7b69f09e0ee5f2461e7e7a" name="a0f9d15c5ae7b69f09e0ee5f2461e7e7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f9d15c5ae7b69f09e0ee5f2461e7e7a">&#9670;&#160;</a></span>HAL_UART_AbortReceiveCpltCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_AbortReceiveCpltCallback </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a925534fb8bf7ca464fd05c982fe4bfa0" name="a925534fb8bf7ca464fd05c982fe4bfa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a925534fb8bf7ca464fd05c982fe4bfa0">&#9670;&#160;</a></span>HAL_UARTEx_RxEventCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UARTEx_RxEventCallback </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>&#160;</td>
+          <td class="paramname"><em>Size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a272650a0cd805cca44320e4b99be88a9" name="a272650a0cd805cca44320e4b99be88a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a272650a0cd805cca44320e4b99be88a9">&#9670;&#160;</a></span>HAL_USART_TxRxCpltCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_USART_TxRxCpltCallback </td>
+          <td>(</td>
+          <td class="paramtype">USART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a44d09cdf66fec468d956c64a23f61856" name="a44d09cdf66fec468d956c64a23f61856"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44d09cdf66fec468d956c64a23f61856">&#9670;&#160;</a></span>HAL_UARTEx_WakeupCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UARTEx_WakeupCallback </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e553b32211877322f949b14801bbfa7" name="a0e553b32211877322f949b14801bbfa7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e553b32211877322f949b14801bbfa7">&#9670;&#160;</a></span>HAL_UART_MspInit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_MspInit </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a718f39804e3b910d738a0e1e46151188" name="a718f39804e3b910d738a0e1e46151188"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a718f39804e3b910d738a0e1e46151188">&#9670;&#160;</a></span>HAL_UART_MspDeInit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_MspDeInit </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -202,7 +1038,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_Init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -220,7 +1056,59 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_HalfDuplex_Init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aae1b49f0cb62235141807d8cbc61bc4d" name="aae1b49f0cb62235141807d8cbc61bc4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae1b49f0cb62235141807d8cbc61bc4d">&#9670;&#160;</a></span>HAL_MultiProcessor_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_MultiProcessor_Init </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
+          <td class="paramname"><em>Address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>WakeUpMethod</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8d98eaab25e61ae12e2e240c3388c57b" name="a8d98eaab25e61ae12e2e240c3388c57b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d98eaab25e61ae12e2e240c3388c57b">&#9670;&#160;</a></span>HAL_UART_DeInit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_DeInit </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -238,7 +1126,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_Transmit </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em>, </td>
         </tr>
         <tr>
@@ -278,7 +1166,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_Receive </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em>, </td>
         </tr>
         <tr>
@@ -318,7 +1206,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_Transmit_IT </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em>, </td>
         </tr>
         <tr>
@@ -352,7 +1240,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_Receive_IT </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em>, </td>
         </tr>
         <tr>
@@ -377,42 +1265,6 @@
 
 </div>
 </div>
-<a id="af963b55e3b0da8d7fcc4bd978cb6c58d" name="af963b55e3b0da8d7fcc4bd978cb6c58d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af963b55e3b0da8d7fcc4bd978cb6c58d">&#9670;&#160;</a></span>HAL_UART_MspInit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__weak void HAL_UART_MspInit </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
-          <td class="paramname"><em>huart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0fe5ae294b5122475f3e1cb5a04a71c3" name="a0fe5ae294b5122475f3e1cb5a04a71c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0fe5ae294b5122475f3e1cb5a04a71c3">&#9670;&#160;</a></span>HAL_UART_MspDeInit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__weak void HAL_UART_MspDeInit </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
-          <td class="paramname"><em>huart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a821472e8c11e667d793b829a19c3e46c" name="a821472e8c11e667d793b829a19c3e46c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a821472e8c11e667d793b829a19c3e46c">&#9670;&#160;</a></span>HAL_UART_Transmit_DMA()</h2>
 
@@ -422,7 +1274,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_Transmit_DMA </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em>, </td>
         </tr>
         <tr>
@@ -456,7 +1308,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_Receive_DMA </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em>, </td>
         </tr>
         <tr>
@@ -490,7 +1342,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_DMAStop </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -508,7 +1360,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_Abort </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -526,7 +1378,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_AbortTransmit </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -544,7 +1396,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_AbortReceive </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -562,7 +1414,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_Abort_IT </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -580,7 +1432,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_AbortTransmit_IT </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -598,7 +1450,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_AbortReceive_IT </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -616,7 +1468,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_LIN_SendBreak </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -632,9 +1484,9 @@
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="sthal__uart_8h.html#adddf3d5480235c945dc8eec58f961203">HAL_UART_RxEventTypeTypeDef</a> HAL_UARTEx_GetRxEventType </td>
+          <td class="memname"><a class="el" href="sthal__uart__base_8h.html#adddf3d5480235c945dc8eec58f961203">HAL_UART_RxEventTypeTypeDef</a> HAL_UARTEx_GetRxEventType </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -652,181 +1504,9 @@
         <tr>
           <td class="memname">void HAL_UART_IRQHandler </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a36c53f9fb1eea223d2903430448aa316" name="a36c53f9fb1eea223d2903430448aa316"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36c53f9fb1eea223d2903430448aa316">&#9670;&#160;</a></span>HAL_UART_TxCpltCallback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__weak void HAL_UART_TxCpltCallback </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
-          <td class="paramname"><em>huart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="afd5833716d12f4528bc1c0683c96c3ad" name="afd5833716d12f4528bc1c0683c96c3ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd5833716d12f4528bc1c0683c96c3ad">&#9670;&#160;</a></span>HAL_UART_TxHalfCpltCallback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__weak void HAL_UART_TxHalfCpltCallback </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
-          <td class="paramname"><em>huart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a32780985c3713b115d62bb88c1d1bd35" name="a32780985c3713b115d62bb88c1d1bd35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32780985c3713b115d62bb88c1d1bd35">&#9670;&#160;</a></span>HAL_UART_RxCpltCallback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__weak void HAL_UART_RxCpltCallback </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
-          <td class="paramname"><em>huart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8829b520c31fc587303998ad0b92177d" name="a8829b520c31fc587303998ad0b92177d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8829b520c31fc587303998ad0b92177d">&#9670;&#160;</a></span>HAL_UART_RxHalfCpltCallback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__weak void HAL_UART_RxHalfCpltCallback </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
-          <td class="paramname"><em>huart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a89574a73e68dcf7dac0d6b6397dea4e0" name="a89574a73e68dcf7dac0d6b6397dea4e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a89574a73e68dcf7dac0d6b6397dea4e0">&#9670;&#160;</a></span>HAL_UART_ErrorCallback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__weak void HAL_UART_ErrorCallback </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
-          <td class="paramname"><em>huart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af2df3f98d64b6f613711b1e65fb91621" name="af2df3f98d64b6f613711b1e65fb91621"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2df3f98d64b6f613711b1e65fb91621">&#9670;&#160;</a></span>HAL_UART_AbortCpltCallback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__weak void HAL_UART_AbortCpltCallback </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
-          <td class="paramname"><em>huart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3807ce538fc76c321194a939b3b7c258" name="a3807ce538fc76c321194a939b3b7c258"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3807ce538fc76c321194a939b3b7c258">&#9670;&#160;</a></span>HAL_UART_AbortTransmitCpltCallback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__weak void HAL_UART_AbortTransmitCpltCallback </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
-          <td class="paramname"><em>huart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a509ce4887a389bc7a01e332286497a96" name="a509ce4887a389bc7a01e332286497a96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a509ce4887a389bc7a01e332286497a96">&#9670;&#160;</a></span>HAL_UART_AbortReceiveCpltCallback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__weak void HAL_UART_AbortReceiveCpltCallback </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
-          <td class="paramname"><em>huart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac44d95ed4163a10ff44353100c81368d" name="ac44d95ed4163a10ff44353100c81368d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac44d95ed4163a10ff44353100c81368d">&#9670;&#160;</a></span>HAL_UARTEx_RxEventCallback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__weak void HAL_UARTEx_RxEventCallback </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
-          <td class="paramname"><em>huart</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>&#160;</td>
-          <td class="paramname"><em>Size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -842,7 +1522,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_HalfDuplex_EnableTransmitter </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -860,7 +1540,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_HalfDuplex_EnableReceiver </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -876,9 +1556,9 @@
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="sthal__uart_8h.html#af55d844a35379c204c90be5d1e8e50ba">HAL_UART_StateTypeDef</a> HAL_UART_GetState </td>
+          <td class="memname">HAL_UART_StateTypeDef HAL_UART_GetState </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">const UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -896,43 +1576,7 @@
         <tr>
           <td class="memname"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> HAL_UART_GetError </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
-          <td class="paramname"><em>huart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8a713fd976d8ef02b818ea6ff0d4e41a" name="a8a713fd976d8ef02b818ea6ff0d4e41a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a713fd976d8ef02b818ea6ff0d4e41a">&#9670;&#160;</a></span>HAL_UART_DMAPause()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_DMAPause </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
-          <td class="paramname"><em>huart</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af2b3e6004d0200857781809baa16072d" name="af2b3e6004d0200857781809baa16072d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2b3e6004d0200857781809baa16072d">&#9670;&#160;</a></span>HAL_UART_DMAResume()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_DMAResume </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">const UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -950,7 +1594,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UARTEx_ReceiveToIdle </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em>, </td>
         </tr>
         <tr>
@@ -996,7 +1640,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UARTEx_ReceiveToIdle_IT </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em>, </td>
         </tr>
         <tr>
@@ -1030,7 +1674,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UARTEx_ReceiveToIdle_DMA </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em>, </td>
         </tr>
         <tr>
@@ -1055,6 +1699,42 @@
 
 </div>
 </div>
+<a id="a8a713fd976d8ef02b818ea6ff0d4e41a" name="a8a713fd976d8ef02b818ea6ff0d4e41a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a713fd976d8ef02b818ea6ff0d4e41a">&#9670;&#160;</a></span>HAL_UART_DMAPause()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_DMAPause </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af2b3e6004d0200857781809baa16072d" name="af2b3e6004d0200857781809baa16072d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2b3e6004d0200857781809baa16072d">&#9670;&#160;</a></span>HAL_UART_DMAResume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_UART_DMAResume </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a27e4497270bd06434e3965e4b06f5516" name="a27e4497270bd06434e3965e4b06f5516"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27e4497270bd06434e3965e4b06f5516">&#9670;&#160;</a></span>HAL_LIN_Init()</h2>
 
@@ -1064,7 +1744,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_LIN_Init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em>, </td>
         </tr>
         <tr>
@@ -1072,40 +1752,6 @@
           <td></td>
           <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
           <td class="paramname"><em>BreakDetectLength</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aae1b49f0cb62235141807d8cbc61bc4d" name="aae1b49f0cb62235141807d8cbc61bc4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae1b49f0cb62235141807d8cbc61bc4d">&#9670;&#160;</a></span>HAL_MultiProcessor_Init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_MultiProcessor_Init </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
-          <td class="paramname"><em>huart</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
-          <td class="paramname"><em>Address</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
-          <td class="paramname"><em>WakeUpMethod</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1126,7 +1772,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_MultiProcessor_EnterMuteMode </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1144,7 +1790,7 @@
         <tr>
           <td class="memname"><a class="el" href="sthal__def_8h.html#a63c0679d1cb8b8c684fbb0632743478f">HAL_StatusTypeDef</a> HAL_MultiProcessor_ExitMuteMode </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="sthal__uart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
           <td class="paramname"><em>huart</em></td><td>)</td>
           <td></td>
         </tr>
