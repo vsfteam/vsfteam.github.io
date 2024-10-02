@@ -67,12 +67,15 @@
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="assert_8h.html#ad92c940e7f2ef0d078d9326e942518e5">   13</a></span><span class="preprocessor">#   define assert                       VSF_ASSERT</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="assert_8h.html#adddd1afab430901a15a9f41a12e16497">   16</a></span><span class="preprocessor">#define _Static_assert(__expr, ...)     VSF_STATIC_ASSERT(__expr)</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="assert_8h.html#a8a8f6bdc98a851b29a69b484cb1bad98">   17</a></span><span class="preprocessor">#define static_assert                   _Static_assert</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// Win SDK xkercheck.h will not be happy if static_assert is a MACRO in c++</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#if !defined(__WIN__) || !defined(__cplusplus)</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="assert_8h.html#adddd1afab430901a15a9f41a12e16497">   18</a></span><span class="preprocessor">#   define _Static_assert(__expr, ...)  VSF_STATIC_ASSERT(__expr)</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="assert_8h.html#a8a8f6bdc98a851b29a69b484cb1bad98">   19</a></span><span class="preprocessor">#   define static_assert                _Static_assert</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="autilities_2compiler_2compiler_8h_html"><div class="ttname"><a href="utilities_2compiler_2compiler_8h.html">compiler.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
