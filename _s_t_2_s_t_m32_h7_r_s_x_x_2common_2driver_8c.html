@@ -63,6 +63,7 @@
 <code>#include &quot;<a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2____device_8h_source.html">../__device.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2flash_2flash_8h_source.html">./flash/flash.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__swi__template_8inc_source.html">hal/driver/common/swi/arm/vsf_swi_template.inc</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__trace_8h_source.html">service/trace/vsf_trace.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
@@ -88,9 +89,9 @@ Typedefs</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:a5d09d975e6cbc18b76898da9d7bf642e" id="r_a5d09d975e6cbc18b76898da9d7bf642e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a5d09d975e6cbc18b76898da9d7bf642e">vsf_hw_peripheral_clksel_t</a> { <br />
-&#160;&#160;<a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a5d09d975e6cbc18b76898da9d7bf642ea661d554f13709071bc7378d647f22020">VSF_HW_CLKSEL_USART1</a> = VSF_HW_CLKRST_REGION(0x15, 0, 3)
+&#160;&#160;<a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a5d09d975e6cbc18b76898da9d7bf642ea661d554f13709071bc7378d647f22020">VSF_HW_CLKSEL_USART1</a> = VSF_HW_REG_REGION(0x15, 0, 3)
 , <br />
-&#160;&#160;<a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a5d09d975e6cbc18b76898da9d7bf642ea4479deba50992038b04c572f2dc1cdba">VSF_HW_CLKSEL_USART234578</a> = VSF_HW_CLKRST_REGION(0x14, 0, 3)
+&#160;&#160;<a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a5d09d975e6cbc18b76898da9d7bf642ea4479deba50992038b04c572f2dc1cdba">VSF_HW_CLKSEL_USART234578</a> = VSF_HW_REG_REGION(0x14, 0, 3)
 <br />
  }</td></tr>
 <tr class="separator:a5d09d975e6cbc18b76898da9d7bf642e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,11 +144,33 @@ Functions</h2></td></tr>
 <tr class="separator:a96fbbcc248d95456dcda26b8b005326e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a846fa080f72b2857220ba6628ec9fd18" id="r_a846fa080f72b2857220ba6628ec9fd18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a846fa080f72b2857220ba6628ec9fd18">vsf_hw_clk_config</a> (const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a> *clk, const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a> *clksrc, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> prescaler, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> freq_hz)</td></tr>
 <tr class="separator:a846fa080f72b2857220ba6628ec9fd18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04d7e858e79cbc46a18abb00b828ed2c" id="r_a04d7e858e79cbc46a18abb00b828ed2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a04d7e858e79cbc46a18abb00b828ed2c">vsf_hw_clk_config_secure</a> (const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a> *clk, const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a> *clksrc, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> prescaler, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> freq_hz)</td></tr>
+<tr class="separator:a04d7e858e79cbc46a18abb00b828ed2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a170e4601fc30083eeb605a5d972f775e" id="r_a170e4601fc30083eeb605a5d972f775e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a170e4601fc30083eeb605a5d972f775e">vsf_hw_pll_vco_config</a> (const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a> *clk, <a class="el" href="stdint_8h.html#a2d31063fef649c85396fb28130ef9795">uint_fast8_t</a> src_prescaler, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> vco_freq_hz)</td></tr>
 <tr class="memdesc:a170e4601fc30083eeb605a5d972f775e"><td class="mdescLeft">&#160;</td><td class="mdescRight">configure frequency range of pll input/output clocks  <br /></td></tr>
 <tr class="separator:a170e4601fc30083eeb605a5d972f775e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04d7e858e79cbc46a18abb00b828ed2c" id="r_a04d7e858e79cbc46a18abb00b828ed2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a04d7e858e79cbc46a18abb00b828ed2c">vsf_hw_clk_config_secure</a> (const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a> *clk, const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a> *clksrc, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> prescaler, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> freq_hz)</td></tr>
-<tr class="separator:a04d7e858e79cbc46a18abb00b828ed2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae29fc3ce48d5e5eff39cf75a017eb917" id="r_ae29fc3ce48d5e5eff39cf75a017eb917"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#ae29fc3ce48d5e5eff39cf75a017eb917">vsf_arch_req___systimer_freq___from_usr</a> (void)</td></tr>
+<tr class="separator:ae29fc3ce48d5e5eff39cf75a017eb917"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bffc10d5bd4106753b7c30e86903bea" id="r_a2bffc10d5bd4106753b7c30e86903bea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a2bffc10d5bd4106753b7c30e86903bea">HardFault_Handler</a> (void)</td></tr>
+<tr class="separator:a2bffc10d5bd4106753b7c30e86903bea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3150f74512510287a942624aa9b44cc5" id="r_a3150f74512510287a942624aa9b44cc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a3150f74512510287a942624aa9b44cc5">MemManage_Handler</a> (void)</td></tr>
+<tr class="separator:a3150f74512510287a942624aa9b44cc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a850cefb17a977292ae5eb4cafa9976c3" id="r_a850cefb17a977292ae5eb4cafa9976c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a850cefb17a977292ae5eb4cafa9976c3">BusFault_Handler</a> (void)</td></tr>
+<tr class="separator:a850cefb17a977292ae5eb4cafa9976c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4e8e6c4a52a05ce1f4c3ca476f6a013" id="r_ad4e8e6c4a52a05ce1f4c3ca476f6a013"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#ad4e8e6c4a52a05ce1f4c3ca476f6a013">vsf_hw_mpu_add_basic_resgions</a> (void)</td></tr>
+<tr class="separator:ad4e8e6c4a52a05ce1f4c3ca476f6a013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a297fa1fdf70bcf68de0c2b78be2d897d" id="r_a297fa1fdf70bcf68de0c2b78be2d897d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a297fa1fdf70bcf68de0c2b78be2d897d">vsf_hw_power_region_set_bit</a> (<a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> region)</td></tr>
+<tr class="separator:a297fa1fdf70bcf68de0c2b78be2d897d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a822d571f9df8d3d26df5d832cafa9c1f" id="r_a822d571f9df8d3d26df5d832cafa9c1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a822d571f9df8d3d26df5d832cafa9c1f">vsf_hw_power_region_clear_bit</a> (<a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> region)</td></tr>
+<tr class="separator:a822d571f9df8d3d26df5d832cafa9c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8f1808a9bf55199c10989d85c6d6b17" id="r_ac8f1808a9bf55199c10989d85c6d6b17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#ac8f1808a9bf55199c10989d85c6d6b17">vsf_hw_power_config_supply</a> (<a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#a4ae88b7ec9e9c4176dad4a696bcb69e0">vsf_hw_power_mode_t</a> mode)</td></tr>
+<tr class="separator:ac8f1808a9bf55199c10989d85c6d6b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfe36205eff98cd4362fc09e5baff020" id="r_abfe36205eff98cd4362fc09e5baff020"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#abfe36205eff98cd4362fc09e5baff020">vsf_hw_power_vcore_config</a> (<a class="el" href="stdint_8h.html#a2d31063fef649c85396fb28130ef9795">uint_fast8_t</a> mode)</td></tr>
+<tr class="memdesc:abfe36205eff98cd4362fc09e5baff020"><td class="mdescLeft">&#160;</td><td class="mdescRight">configure Vcore mode  <br /></td></tr>
+<tr class="separator:abfe36205eff98cd4362fc09e5baff020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad32acb275b69c0d3f734d8b9e7685aa6" id="r_ad32acb275b69c0d3f734d8b9e7685aa6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#ad32acb275b69c0d3f734d8b9e7685aa6">vsf_hw_hslv_enable</a> (<a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#acbe374ae726c151068c240c074e650b6">vsf_hw_hslv_t</a> hslv)</td></tr>
+<tr class="memdesc:ad32acb275b69c0d3f734d8b9e7685aa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable High Speed Low Voltage (HSLV) mode.  <br /></td></tr>
+<tr class="separator:ad32acb275b69c0d3f734d8b9e7685aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a296f1c0f089ef21af9c6f28bb9b6ea74" id="r_a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a296f1c0f089ef21af9c6f28bb9b6ea74">vsf_driver_init</a> (void)</td></tr>
 <tr class="memdesc:a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="mdescLeft">&#160;</td><td class="mdescRight">common hal drivers  <br /></td></tr>
 <tr class="separator:a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -224,6 +247,10 @@ Variables</h2></td></tr>
 <tr class="separator:a374bc2b4349e1215da8d7b895e2ac526"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae72617a3544f2980d66547c070b45bc" id="r_aae72617a3544f2980d66547c070b45bc"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#aae72617a3544f2980d66547c070b45bc">VSF_HW_CLK_PCLK5</a></td></tr>
 <tr class="separator:aae72617a3544f2980d66547c070b45bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e316c14051145bb79d3619e802d85ac" id="r_a8e316c14051145bb79d3619e802d85ac"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a8e316c14051145bb79d3619e802d85ac">VSF_HW_CLK_XSPI1</a></td></tr>
+<tr class="separator:a8e316c14051145bb79d3619e802d85ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68fff9df29062b57882b591af7cc2913" id="r_a68fff9df29062b57882b591af7cc2913"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a68fff9df29062b57882b591af7cc2913">VSF_HW_CLK_XSPI2</a></td></tr>
+<tr class="separator:a68fff9df29062b57882b591af7cc2913"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1589cdfda17a57d0105077922b5703e" id="r_ae1589cdfda17a57d0105077922b5703e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#ae1589cdfda17a57d0105077922b5703e">VSF_HW_CLK_USART1</a></td></tr>
 <tr class="separator:ae1589cdfda17a57d0105077922b5703e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a834f919d9eebeac5a2a9aa772a567ebb" id="r_a834f919d9eebeac5a2a9aa772a567ebb"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a834f919d9eebeac5a2a9aa772a567ebb">VSF_HW_CLK_USART234578</a></td></tr>
@@ -575,50 +602,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a170e4601fc30083eeb605a5d972f775e" name="a170e4601fc30083eeb605a5d972f775e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a170e4601fc30083eeb605a5d972f775e">&#9670;&#160;</a></span>vsf_hw_pll_vco_config()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_hw_pll_vco_config </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a> *&#160;</td>
-          <td class="paramname"><em>clk</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="stdint_8h.html#a2d31063fef649c85396fb28130ef9795">uint_fast8_t</a>&#160;</td>
-          <td class="paramname"><em>src_prescaler</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
-          <td class="paramname"><em>vco_freq_hz</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>configure frequency range of pll input/output clocks </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">clk</td><td>a pointer to PLL_VCO clock VSF_HW_CLK_PLL0_VCO VSF_HW_CLK_PLL1_VCO VSF_HW_CLK_PLL2_VCO </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">src_prescaler</td><td>prescaler of clock src, [1 .. 63] </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">vco_freq_hz</td><td>VCO frequency in Hz </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a04d7e858e79cbc46a18abb00b828ed2c" name="a04d7e858e79cbc46a18abb00b828ed2c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a04d7e858e79cbc46a18abb00b828ed2c">&#9670;&#160;</a></span>vsf_hw_clk_config_secure()</h2>
 
@@ -656,6 +639,247 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a170e4601fc30083eeb605a5d972f775e" name="a170e4601fc30083eeb605a5d972f775e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a170e4601fc30083eeb605a5d972f775e">&#9670;&#160;</a></span>vsf_hw_pll_vco_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_hw_pll_vco_config </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a> *&#160;</td>
+          <td class="paramname"><em>clk</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a2d31063fef649c85396fb28130ef9795">uint_fast8_t</a>&#160;</td>
+          <td class="paramname"><em>src_prescaler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>vco_freq_hz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>configure frequency range of pll input/output clocks </p>
+<p>configure VCO clock pll output</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">clk</td><td>a pointer to PLL_VCO clock VSF_HW_CLK_PLL0_VCO VSF_HW_CLK_PLL1_VCO VSF_HW_CLK_PLL2_VCO </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">src_prescaler</td><td>prescaler of clock src, [1 .. 63] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vco_freq_hz</td><td>VCO frequency in Hz </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae29fc3ce48d5e5eff39cf75a017eb917" name="ae29fc3ce48d5e5eff39cf75a017eb917"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae29fc3ce48d5e5eff39cf75a017eb917">&#9670;&#160;</a></span>vsf_arch_req___systimer_freq___from_usr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdint_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> vsf_arch_req___systimer_freq___from_usr </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2bffc10d5bd4106753b7c30e86903bea" name="a2bffc10d5bd4106753b7c30e86903bea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bffc10d5bd4106753b7c30e86903bea">&#9670;&#160;</a></span>HardFault_Handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HardFault_Handler </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3150f74512510287a942624aa9b44cc5" name="a3150f74512510287a942624aa9b44cc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3150f74512510287a942624aa9b44cc5">&#9670;&#160;</a></span>MemManage_Handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MemManage_Handler </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a850cefb17a977292ae5eb4cafa9976c3" name="a850cefb17a977292ae5eb4cafa9976c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a850cefb17a977292ae5eb4cafa9976c3">&#9670;&#160;</a></span>BusFault_Handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BusFault_Handler </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad4e8e6c4a52a05ce1f4c3ca476f6a013" name="ad4e8e6c4a52a05ce1f4c3ca476f6a013"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4e8e6c4a52a05ce1f4c3ca476f6a013">&#9670;&#160;</a></span>vsf_hw_mpu_add_basic_resgions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_hw_mpu_add_basic_resgions </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a297fa1fdf70bcf68de0c2b78be2d897d" name="a297fa1fdf70bcf68de0c2b78be2d897d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a297fa1fdf70bcf68de0c2b78be2d897d">&#9670;&#160;</a></span>vsf_hw_power_region_set_bit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_hw_power_region_set_bit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>region</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a822d571f9df8d3d26df5d832cafa9c1f" name="a822d571f9df8d3d26df5d832cafa9c1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a822d571f9df8d3d26df5d832cafa9c1f">&#9670;&#160;</a></span>vsf_hw_power_region_clear_bit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_hw_power_region_clear_bit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>region</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac8f1808a9bf55199c10989d85c6d6b17" name="ac8f1808a9bf55199c10989d85c6d6b17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8f1808a9bf55199c10989d85c6d6b17">&#9670;&#160;</a></span>vsf_hw_power_config_supply()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_hw_power_config_supply </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#a4ae88b7ec9e9c4176dad4a696bcb69e0">vsf_hw_power_mode_t</a>&#160;</td>
+          <td class="paramname"><em>mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abfe36205eff98cd4362fc09e5baff020" name="abfe36205eff98cd4362fc09e5baff020"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfe36205eff98cd4362fc09e5baff020">&#9670;&#160;</a></span>vsf_hw_power_vcore_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_hw_power_vcore_config </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a2d31063fef649c85396fb28130ef9795">uint_fast8_t</a>&#160;</td>
+          <td class="paramname"><em>mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>configure Vcore mode </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">mode</td><td>VCore mode 0: low power mode 1: performance mode </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad32acb275b69c0d3f734d8b9e7685aa6" name="ad32acb275b69c0d3f734d8b9e7685aa6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad32acb275b69c0d3f734d8b9e7685aa6">&#9670;&#160;</a></span>vsf_hw_hslv_enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_hw_hslv_enable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#acbe374ae726c151068c240c074e650b6">vsf_hw_hslv_t</a>&#160;</td>
+          <td class="paramname"><em>hslv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enable High Speed Low Voltage (HSLV) mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">hslv</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -711,21 +935,21 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 3,  2),</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 0,  1),</div>
-<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 2,  1),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 3,  2),   </div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 0,  1),   </div>
+<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 2,  1),   </div>
 <div class="line"> </div>
-<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#aaa8c76e274d0f6dd2cefb5d0b17fbc37">HSI_VALUE</a>,</div>
+<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#aaa8c76e274d0f6dd2cefb5d0b17fbc37">HSI_VALUE</a>,</div>
 <div class="line"> </div>
 <div class="line">    .clktype                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a2e92b492548901e3001713edf9b20f08">VSF_HW_CLK_TYPE_CONST</a>,</div>
 <div class="line">    .clkprescaler_type          = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#a3f676d286e71e953c88a0c249fcd53e9ad3ad6b2a2d5748186249eadafe2bd6a6">VSF_HW_CLK_PRESCALER_SFT</a>,</div>
 <div class="line">    .clkprescaler_min           = 0,</div>
 <div class="line">    .clkprescaler_max           = 3,</div>
 <div class="line">}</div>
-<div class="ttc" id="a_giga_device_2_g_d32_h7_x_x_2common_2common_8h_html_a3e05c26253b37f2fdceea202d8615319"><div class="ttname"><a href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a></div><div class="ttdeci">#define VSF_HW_CLKRST_REGION(__WORD_OFFSET, __BIT_OFFSET, __BIT_LENGTH)</div><div class="ttdef"><b>Definition</b> common.h:32</div></div>
 <div class="ttc" id="a_giga_device_2_g_d32_h7_x_x_2common_2driver_8c_html_a3f676d286e71e953c88a0c249fcd53e9ad3ad6b2a2d5748186249eadafe2bd6a6"><div class="ttname"><a href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#a3f676d286e71e953c88a0c249fcd53e9ad3ad6b2a2d5748186249eadafe2bd6a6">VSF_HW_CLK_PRESCALER_SFT</a></div><div class="ttdeci">@ VSF_HW_CLK_PRESCALER_SFT</div><div class="ttdef"><b>Definition</b> driver.c:70</div></div>
 <div class="ttc" id="a_giga_device_2_g_d32_h7_x_x_2common_2driver_8c_html_ad018fba5976065c6bd7e1e9dbefdc7e3a2e92b492548901e3001713edf9b20f08"><div class="ttname"><a href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a2e92b492548901e3001713edf9b20f08">VSF_HW_CLK_TYPE_CONST</a></div><div class="ttdeci">@ VSF_HW_CLK_TYPE_CONST</div><div class="ttdef"><b>Definition</b> driver.c:75</div></div>
-<div class="ttc" id="a_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c_html_aaa8c76e274d0f6dd2cefb5d0b17fbc37"><div class="ttname"><a href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#aaa8c76e274d0f6dd2cefb5d0b17fbc37">HSI_VALUE</a></div><div class="ttdeci">#define HSI_VALUE</div><div class="ttdef"><b>Definition</b> driver.c:41</div></div>
+<div class="ttc" id="a_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h_html_ad49a792075cabc41d5f78b8eb0fc2c9e"><div class="ttname"><a href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a></div><div class="ttdeci">#define VSF_HW_REG_REGION(__WORD_OFFSET, __BIT_OFFSET, __BIT_LENGTH)</div><div class="ttdef"><b>Definition</b> common.h:30</div></div>
+<div class="ttc" id="a_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c_html_aaa8c76e274d0f6dd2cefb5d0b17fbc37"><div class="ttname"><a href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#aaa8c76e274d0f6dd2cefb5d0b17fbc37">HSI_VALUE</a></div><div class="ttdeci">#define HSI_VALUE</div><div class="ttdef"><b>Definition</b> driver.c:38</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -741,10 +965,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 3,  2),</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 1,  1),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 3,  2),   </div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 1,  1),   </div>
 <div class="line"> </div>
-<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#aaa8c76e274d0f6dd2cefb5d0b17fbc37">HSI_VALUE</a>,</div>
+<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#aaa8c76e274d0f6dd2cefb5d0b17fbc37">HSI_VALUE</a>,</div>
 <div class="line">    .clktype                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a2e92b492548901e3001713edf9b20f08">VSF_HW_CLK_TYPE_CONST</a>,</div>
 <div class="line"> </div>
 <div class="line">    .clkprescaler_type          = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#a3f676d286e71e953c88a0c249fcd53e9ad3ad6b2a2d5748186249eadafe2bd6a6">VSF_HW_CLK_PRESCALER_SFT</a>,</div>
@@ -766,10 +990,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 1,  1),</div>
-<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 2,  1),</div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 1,  1),   </div>
+<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 2,  1),   </div>
 <div class="line"> </div>
-<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#aaa8c76e274d0f6dd2cefb5d0b17fbc37">HSI_VALUE</a>,</div>
+<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#aaa8c76e274d0f6dd2cefb5d0b17fbc37">HSI_VALUE</a>,</div>
 <div class="line">    .clktype                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a2e92b492548901e3001713edf9b20f08">VSF_HW_CLK_TYPE_CONST</a>,</div>
 <div class="line"> </div>
 <div class="line">    .clkprescaler_type          = <a class="code hl_enumvalue" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a9915ba6547d5112db7f4302a15536959a1d0710eef760290c85a575c10da2869f">VSF_HW_CLK_PRESCALER_CONST</a>,</div>
@@ -791,10 +1015,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 1,  1),</div>
-<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 2,  1),</div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 1,  1),   </div>
+<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 2,  1),   </div>
 <div class="line"> </div>
-<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#aaa8c76e274d0f6dd2cefb5d0b17fbc37">HSI_VALUE</a>,</div>
+<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#aaa8c76e274d0f6dd2cefb5d0b17fbc37">HSI_VALUE</a>,</div>
 <div class="line">    .clktype                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a2e92b492548901e3001713edf9b20f08">VSF_HW_CLK_TYPE_CONST</a>,</div>
 <div class="line"> </div>
 <div class="line">    .clkprescaler_type          = <a class="code hl_enumvalue" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a9915ba6547d5112db7f4302a15536959a1d0710eef760290c85a575c10da2869f">VSF_HW_CLK_PRESCALER_CONST</a>,</div>
@@ -815,8 +1039,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 12,  1),</div>
-<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 13,  1),</div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 12,  1),  </div>
+<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 13,  1),  </div>
 <div class="line"> </div>
 <div class="line">    .clk_freq_hz                = 48000000,</div>
 <div class="line">    .clktype                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a2e92b492548901e3001713edf9b20f08">VSF_HW_CLK_TYPE_CONST</a>,</div>
@@ -836,8 +1060,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x1D, 0,  1),</div>
-<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x1D, 1,  1),</div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x1D, 0,  1),   </div>
+<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x1D, 1,  1),   </div>
 <div class="line"> </div>
 <div class="line">    .clk_freq_hz                = 32000,</div>
 <div class="line">    .clktype                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a2e92b492548901e3001713edf9b20f08">VSF_HW_CLK_TYPE_CONST</a>,</div>
@@ -857,13 +1081,13 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 7,  1),</div>
-<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 8,  1),</div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 7,  1),   </div>
+<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 8,  1),   </div>
 <div class="line"> </div>
-<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a4dcbff36a4b1cfd045c01d59084255d0">CSI_VALUE</a>,</div>
+<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#a4dcbff36a4b1cfd045c01d59084255d0">CSI_VALUE</a>,</div>
 <div class="line">    .clktype                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a2e92b492548901e3001713edf9b20f08">VSF_HW_CLK_TYPE_CONST</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="a_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c_html_a4dcbff36a4b1cfd045c01d59084255d0"><div class="ttname"><a href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a4dcbff36a4b1cfd045c01d59084255d0">CSI_VALUE</a></div><div class="ttdeci">#define CSI_VALUE</div><div class="ttdef"><b>Definition</b> driver.c:37</div></div>
+<div class="ttc" id="a_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c_html_a4dcbff36a4b1cfd045c01d59084255d0"><div class="ttname"><a href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#a4dcbff36a4b1cfd045c01d59084255d0">CSI_VALUE</a></div><div class="ttdeci">#define CSI_VALUE</div><div class="ttdef"><b>Definition</b> driver.c:34</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -879,9 +1103,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 9,  1),</div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 9,  1),   </div>
 <div class="line"> </div>
-<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a4dcbff36a4b1cfd045c01d59084255d0">CSI_VALUE</a>,</div>
+<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#a4dcbff36a4b1cfd045c01d59084255d0">CSI_VALUE</a>,</div>
 <div class="line">    .clktype                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a2e92b492548901e3001713edf9b20f08">VSF_HW_CLK_TYPE_CONST</a>,</div>
 <div class="line">}</div>
 </div><!-- fragment -->
@@ -899,9 +1123,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 9,  1),</div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 9,  1),   </div>
 <div class="line"> </div>
-<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a4dcbff36a4b1cfd045c01d59084255d0">CSI_VALUE</a>,</div>
+<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#a4dcbff36a4b1cfd045c01d59084255d0">CSI_VALUE</a>,</div>
 <div class="line">    .clktype                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a2e92b492548901e3001713edf9b20f08">VSF_HW_CLK_TYPE_CONST</a>,</div>
 <div class="line"> </div>
 <div class="line">    .clkprescaler_type          = <a class="code hl_enumvalue" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a9915ba6547d5112db7f4302a15536959a1d0710eef760290c85a575c10da2869f">VSF_HW_CLK_PRESCALER_CONST</a>,</div>
@@ -922,13 +1146,13 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 16, 1),</div>
-<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 17, 1),</div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 16, 1),   </div>
+<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 17, 1),   </div>
 <div class="line"> </div>
-<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#aeafcff4f57440c60e64812dddd13e7cb">HSE_VALUE</a>,</div>
+<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#aeafcff4f57440c60e64812dddd13e7cb">HSE_VALUE</a>,</div>
 <div class="line">    .clktype                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a2e92b492548901e3001713edf9b20f08">VSF_HW_CLK_TYPE_CONST</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="a_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c_html_aeafcff4f57440c60e64812dddd13e7cb"><div class="ttname"><a href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#aeafcff4f57440c60e64812dddd13e7cb">HSE_VALUE</a></div><div class="ttdeci">#define HSE_VALUE</div><div class="ttdef"><b>Definition</b> driver.c:29</div></div>
+<div class="ttc" id="a_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c_html_aeafcff4f57440c60e64812dddd13e7cb"><div class="ttname"><a href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#aeafcff4f57440c60e64812dddd13e7cb">HSE_VALUE</a></div><div class="ttdeci">#define HSE_VALUE</div><div class="ttdef"><b>Definition</b> driver.c:26</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -944,13 +1168,13 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x1C, 0,  1),</div>
-<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x1C, 1,  1),</div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x1C, 0,  1),   </div>
+<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x1C, 1,  1),   </div>
 <div class="line"> </div>
-<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a7bbb9d19e5189a6ccd0fb6fa6177d20d">LSE_VALUE</a>,</div>
+<div class="line">    .clk_freq_hz                = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#a7bbb9d19e5189a6ccd0fb6fa6177d20d">LSE_VALUE</a>,</div>
 <div class="line">    .clktype                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a2e92b492548901e3001713edf9b20f08">VSF_HW_CLK_TYPE_CONST</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="a_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c_html_a7bbb9d19e5189a6ccd0fb6fa6177d20d"><div class="ttname"><a href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a7bbb9d19e5189a6ccd0fb6fa6177d20d">LSE_VALUE</a></div><div class="ttdeci">#define LSE_VALUE</div><div class="ttdef"><b>Definition</b> driver.c:33</div></div>
+<div class="ttc" id="a_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c_html_a7bbb9d19e5189a6ccd0fb6fa6177d20d"><div class="ttname"><a href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#a7bbb9d19e5189a6ccd0fb6fa6177d20d">LSE_VALUE</a></div><div class="ttdeci">#define LSE_VALUE</div><div class="ttdef"><b>Definition</b> driver.c:30</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -966,12 +1190,12 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clksel_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0A, 0,  2),</div>
+<div class="line">    .clksel_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0A, 0,  2),   </div>
 <div class="line"> </div>
 <div class="line">    .clksel_mapper              = __VSF_HW_CLK_PLL_CLKSEL_MAPPER,</div>
-<div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#ab3682c06c7f9a6e7c9457eaa1327a3a9a8e861a2ff6d57775e8104b48ae9a4eeb">VSF_HW_CLK_TYPE_SEL</a>,</div>
+<div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a8e861a2ff6d57775e8104b48ae9a4eeb">VSF_HW_CLK_TYPE_SEL</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="a_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c_html_ab3682c06c7f9a6e7c9457eaa1327a3a9a8e861a2ff6d57775e8104b48ae9a4eeb"><div class="ttname"><a href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#ab3682c06c7f9a6e7c9457eaa1327a3a9a8e861a2ff6d57775e8104b48ae9a4eeb">VSF_HW_CLK_TYPE_SEL</a></div><div class="ttdeci">@ VSF_HW_CLK_TYPE_SEL</div><div class="ttdef"><b>Definition</b> driver.c:64</div></div>
+<div class="ttc" id="a_giga_device_2_g_d32_h7_x_x_2common_2driver_8c_html_ad018fba5976065c6bd7e1e9dbefdc7e3a8e861a2ff6d57775e8104b48ae9a4eeb"><div class="ttname"><a href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a8e861a2ff6d57775e8104b48ae9a4eeb">VSF_HW_CLK_TYPE_SEL</a></div><div class="ttdeci">@ VSF_HW_CLK_TYPE_SEL</div><div class="ttdef"><b>Definition</b> driver.c:77</div></div>
 <div class="ttc" id="astructvsf__hw__clk__t_html_a58d1019896eb2517f2368eb3e9a01248"><div class="ttname"><a href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">vsf_hw_clk_t::clktype</a></div><div class="ttdeci">uint8_t clktype</div><div class="ttdef"><b>Definition</b> driver.c:97</div></div>
 </div><!-- fragment -->
 </div>
@@ -988,10 +1212,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 24, 1),</div>
-<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 25, 1),</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0A, 4,  6),</div>
-<div class="line">    .clksel_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0B, 0,  5),</div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 24, 1),   </div>
+<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 25, 1),   </div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0A, 4,  6),   </div>
+<div class="line">    .clksel_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0B, 0,  5),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a50aa057a539e134da6bac5e2d291d71a">VSF_HW_CLK_PLL_SRC</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1019,10 +1243,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 26, 1),</div>
-<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 27, 1),</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0A, 12, 6),</div>
-<div class="line">    .clksel_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0B, 11, 5),</div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 26, 1),   </div>
+<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 27, 1),   </div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0A, 12, 6),   </div>
+<div class="line">    .clksel_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0B, 11, 5),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a50aa057a539e134da6bac5e2d291d71a">VSF_HW_CLK_PLL_SRC</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1047,10 +1271,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 28, 1),</div>
-<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x00, 29, 1),</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0A, 20, 6),</div>
-<div class="line">    .clksel_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0B, 22, 5),</div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 28, 1),   </div>
+<div class="line">    .clkrdy_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x00, 29, 1),   </div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0A, 20, 6),   </div>
+<div class="line">    .clksel_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0B, 22, 5),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a50aa057a539e134da6bac5e2d291d71a">VSF_HW_CLK_PLL_SRC</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1075,8 +1299,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0C, 9,  7),</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0B, 5,  1),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0C, 9,  7),   </div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0B, 5,  1),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ae949a0cbf73ed5d8b5da3d10b90862a8">VSF_HW_CLK_PLL1_VCO</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1102,8 +1326,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0C, 16, 7),</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0B, 6,  1),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0C, 16, 7),   </div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0B, 6,  1),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ae949a0cbf73ed5d8b5da3d10b90862a8">VSF_HW_CLK_PLL1_VCO</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1127,8 +1351,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x30, 0,  3),</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0B, 8,  1),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x30, 0,  3),   </div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0B, 8,  1),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ae949a0cbf73ed5d8b5da3d10b90862a8">VSF_HW_CLK_PLL1_VCO</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1152,8 +1376,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0E, 9,  7),</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0B, 16, 1),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0E, 9,  7),   </div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0B, 16, 1),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ae030fb27df79e481ae448658f51d640e">VSF_HW_CLK_PLL2_VCO</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1178,8 +1402,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0E, 16, 7),</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0B, 17, 1),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0E, 16, 7),   </div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0B, 17, 1),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ae030fb27df79e481ae448658f51d640e">VSF_HW_CLK_PLL2_VCO</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1203,8 +1427,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0E, 24, 7),</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0B, 18, 1),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0E, 24, 7),   </div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0B, 18, 1),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ae030fb27df79e481ae448658f51d640e">VSF_HW_CLK_PLL2_VCO</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1228,8 +1452,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x31, 0,  3),</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0B, 19, 1),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x31, 0,  3),   </div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0B, 19, 1),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ae030fb27df79e481ae448658f51d640e">VSF_HW_CLK_PLL2_VCO</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1253,8 +1477,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x31, 8,  3),</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0B, 20, 1),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x31, 8,  3),   </div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0B, 20, 1),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ae030fb27df79e481ae448658f51d640e">VSF_HW_CLK_PLL2_VCO</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1278,8 +1502,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x10, 9, 7), </div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0B, 27, 1),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x10, 9,  7),   </div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0B, 27, 1),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a83d66c77f762d813daed526d38b7e985">VSF_HW_CLK_PLL3_VCO</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1304,8 +1528,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x10, 16, 7),</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0B, 28, 1),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x10, 16, 7),   </div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0B, 28, 1),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a83d66c77f762d813daed526d38b7e985">VSF_HW_CLK_PLL3_VCO</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1329,8 +1553,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x10, 24, 7),</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0B, 29, 1),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x10, 24, 7),   </div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0B, 29, 1),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a83d66c77f762d813daed526d38b7e985">VSF_HW_CLK_PLL3_VCO</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1354,8 +1578,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x32, 0,  3),</div>
-<div class="line">    .clken_region               = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x0B, 30, 1),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x32, 0,  3),   </div>
+<div class="line">    .clken_region               = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x0B, 30, 1),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a83d66c77f762d813daed526d38b7e985">VSF_HW_CLK_PLL3_VCO</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1379,10 +1603,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clksel_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x04, 0,  3),</div>
+<div class="line">    .clksel_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x04, 0,  3),   </div>
 <div class="line"> </div>
 <div class="line">    .clksel_mapper              = __VSF_HW_CLK_SYS_CLKSEL_MAPPER,</div>
-<div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#ab3682c06c7f9a6e7c9457eaa1327a3a9a8e861a2ff6d57775e8104b48ae9a4eeb">VSF_HW_CLK_TYPE_SEL</a>,</div>
+<div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a8e861a2ff6d57775e8104b48ae9a4eeb">VSF_HW_CLK_TYPE_SEL</a>,</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -1399,9 +1623,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x06, 0,  4),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x06, 0,  4),   </div>
 <div class="line"> </div>
-<div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#a03e2bc882448950d6326d04daaa5e719">VSF_HW_CLK_SYS</a>,</div>
+<div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#a03e2bc882448950d6326d04daaa5e719">VSF_HW_CLK_SYS</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
 <div class="line"> </div>
 <div class="line">    .clkprescaler_mapper        = __VSF_HW_CLK_SYSCPU_PRESCALER,</div>
@@ -1410,7 +1634,7 @@ Variables</h2></td></tr>
 <div class="line">    .clkprescaler_min           = 0,</div>
 <div class="line">    .clkprescaler_max           = 15,</div>
 <div class="line">}</div>
-<div class="ttc" id="a_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c_html_a03e2bc882448950d6326d04daaa5e719"><div class="ttname"><a href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#a03e2bc882448950d6326d04daaa5e719">VSF_HW_CLK_SYS</a></div><div class="ttdeci">const vsf_hw_clk_t VSF_HW_CLK_SYS</div><div class="ttdef"><b>Definition</b> driver.c:308</div></div>
+<div class="ttc" id="a_giga_device_2_g_d32_h7_x_x_2common_2driver_8c_html_a03e2bc882448950d6326d04daaa5e719"><div class="ttname"><a href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#a03e2bc882448950d6326d04daaa5e719">VSF_HW_CLK_SYS</a></div><div class="ttdeci">const vsf_hw_clk_t VSF_HW_CLK_SYS</div><div class="ttdef"><b>Definition</b> driver.c:326</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1426,7 +1650,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x07, 0,  4),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x07, 0,  4),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#a993e6e16374830f8ee637169c3c05b40">VSF_HW_CLK_SYS_CPU</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1453,10 +1677,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clksel_region              = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x13, 28, 2),</div>
+<div class="line">    .clksel_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x13, 28, 2),   </div>
 <div class="line"> </div>
 <div class="line">    .clksel_mapper              = __VSF_HW_CLK_PER_CLKSEL_MAPPER,</div>
-<div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#ab3682c06c7f9a6e7c9457eaa1327a3a9a8e861a2ff6d57775e8104b48ae9a4eeb">VSF_HW_CLK_TYPE_SEL</a>,</div>
+<div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a8e861a2ff6d57775e8104b48ae9a4eeb">VSF_HW_CLK_TYPE_SEL</a>,</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -1473,7 +1697,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x08, 0,  3),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x08, 0,  3),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#a6cdb57fb2c9974a8cfccfcfbe0fc4fea">VSF_HW_CLK_HCLK</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1500,7 +1724,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x08, 4,  3),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x08, 4,  3),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#a6cdb57fb2c9974a8cfccfcfbe0fc4fea">VSF_HW_CLK_HCLK</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1526,7 +1750,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x08, 8,  3),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x08, 8,  3),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#a6cdb57fb2c9974a8cfccfcfbe0fc4fea">VSF_HW_CLK_HCLK</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1552,7 +1776,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_giga_device_2_g_d32_h7_x_x_2common_2common_8h.html#a3e05c26253b37f2fdceea202d8615319">VSF_HW_CLKRST_REGION</a>(0x08, 12, 3),</div>
+<div class="line">    .clkprescaler_region        = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x08, 12, 3),   </div>
 <div class="line"> </div>
 <div class="line">    .clksrc                     = &amp;<a class="code hl_variable" href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#a6cdb57fb2c9974a8cfccfcfbe0fc4fea">VSF_HW_CLK_HCLK</a>,</div>
 <div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a98a993363667699e94b6646fb418d383">VSF_HW_CLK_TYPE_CLK</a>,</div>
@@ -1563,6 +1787,50 @@ Variables</h2></td></tr>
 <div class="line">    .clkprescaler_min           = 0,</div>
 <div class="line">    .clkprescaler_max           = 7,</div>
 <div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8e316c14051145bb79d3619e802d85ac" name="a8e316c14051145bb79d3619e802d85ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e316c14051145bb79d3619e802d85ac">&#9670;&#160;</a></span>VSF_HW_CLK_XSPI1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a> VSF_HW_CLK_XSPI1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .clken_region               = <a class="code hl_enumvalue" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#aa7cd305a45c6ec38e442d8eac3336b00a5d54ff7e41e7be6cf7c284be4c22f537">VSF_HW_EN_XSPI1</a>,</div>
+<div class="line">    .clksel_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x13, 4,  2),   </div>
+<div class="line"> </div>
+<div class="line">    .clksel_mapper              = __VSF_HW_CLK_XSPI_CLKSEL_MAPPER,</div>
+<div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a8e861a2ff6d57775e8104b48ae9a4eeb">VSF_HW_CLK_TYPE_SEL</a>,</div>
+<div class="line">}</div>
+<div class="ttc" id="a_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h_html_aa7cd305a45c6ec38e442d8eac3336b00a5d54ff7e41e7be6cf7c284be4c22f537"><div class="ttname"><a href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#aa7cd305a45c6ec38e442d8eac3336b00a5d54ff7e41e7be6cf7c284be4c22f537">VSF_HW_EN_XSPI1</a></div><div class="ttdeci">@ VSF_HW_EN_XSPI1</div><div class="ttdef"><b>Definition</b> common.h:211</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a68fff9df29062b57882b591af7cc2913" name="a68fff9df29062b57882b591af7cc2913"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68fff9df29062b57882b591af7cc2913">&#9670;&#160;</a></span>VSF_HW_CLK_XSPI2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structvsf__hw__clk__t.html">vsf_hw_clk_t</a> VSF_HW_CLK_XSPI2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .clken_region               = <a class="code hl_enumvalue" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#aa7cd305a45c6ec38e442d8eac3336b00ade739133a7c6cd25458f7b0875e5998a">VSF_HW_EN_XSPI2</a>,</div>
+<div class="line">    .clksel_region              = <a class="code hl_define" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#ad49a792075cabc41d5f78b8eb0fc2c9e">VSF_HW_REG_REGION</a>(0x13, 6,  2),   </div>
+<div class="line"> </div>
+<div class="line">    .clksel_mapper              = __VSF_HW_CLK_XSPI_CLKSEL_MAPPER,</div>
+<div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a8e861a2ff6d57775e8104b48ae9a4eeb">VSF_HW_CLK_TYPE_SEL</a>,</div>
+<div class="line">}</div>
+<div class="ttc" id="a_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h_html_aa7cd305a45c6ec38e442d8eac3336b00ade739133a7c6cd25458f7b0875e5998a"><div class="ttname"><a href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2common_8h.html#aa7cd305a45c6ec38e442d8eac3336b00ade739133a7c6cd25458f7b0875e5998a">VSF_HW_EN_XSPI2</a></div><div class="ttdeci">@ VSF_HW_EN_XSPI2</div><div class="ttdef"><b>Definition</b> common.h:209</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1580,7 +1848,7 @@ Variables</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .clksel_region              = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#a5d09d975e6cbc18b76898da9d7bf642ea661d554f13709071bc7378d647f22020">VSF_HW_CLKSEL_USART1</a>,</div>
 <div class="line">    .clksel_mapper              = __VSF_HW_CLK_USART_APB2_CLKSEL_MAPPER,</div>
-<div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#ab3682c06c7f9a6e7c9457eaa1327a3a9a8e861a2ff6d57775e8104b48ae9a4eeb">VSF_HW_CLK_TYPE_SEL</a>,</div>
+<div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a8e861a2ff6d57775e8104b48ae9a4eeb">VSF_HW_CLK_TYPE_SEL</a>,</div>
 <div class="line">}</div>
 <div class="ttc" id="a_giga_device_2_g_d32_h7_x_x_2common_2driver_8c_html_a5d09d975e6cbc18b76898da9d7bf642ea661d554f13709071bc7378d647f22020"><div class="ttname"><a href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#a5d09d975e6cbc18b76898da9d7bf642ea661d554f13709071bc7378d647f22020">VSF_HW_CLKSEL_USART1</a></div><div class="ttdeci">@ VSF_HW_CLKSEL_USART1</div><div class="ttdef"><b>Definition</b> driver.c:35</div></div>
 </div><!-- fragment -->
@@ -1600,7 +1868,7 @@ Variables</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .clksel_region              = <a class="code hl_enumvalue" href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#a5d09d975e6cbc18b76898da9d7bf642ea4479deba50992038b04c572f2dc1cdba">VSF_HW_CLKSEL_USART234578</a>,</div>
 <div class="line">    .clksel_mapper              = __VSF_HW_CLK_USART_APB1_CLKSEL_MAPPER,</div>
-<div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_s_t_2_s_t_m32_h7_r_s_x_x_2common_2driver_8c.html#ab3682c06c7f9a6e7c9457eaa1327a3a9a8e861a2ff6d57775e8104b48ae9a4eeb">VSF_HW_CLK_TYPE_SEL</a>,</div>
+<div class="line">    .<a class="code hl_variable" href="structvsf__hw__clk__t.html#a58d1019896eb2517f2368eb3e9a01248">clktype</a>                    = <a class="code hl_enumvalue" href="_giga_device_2_g_d32_h7_x_x_2common_2driver_8c.html#ad018fba5976065c6bd7e1e9dbefdc7e3a8e861a2ff6d57775e8104b48ae9a4eeb">VSF_HW_CLK_TYPE_SEL</a>,</div>
 <div class="line">}</div>
 <div class="ttc" id="a_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c_html_a5d09d975e6cbc18b76898da9d7bf642ea4479deba50992038b04c572f2dc1cdba"><div class="ttname"><a href="_s_t_2_s_t_m32_h7_x_x_2common_2driver_8c.html#a5d09d975e6cbc18b76898da9d7bf642ea4479deba50992038b04c572f2dc1cdba">VSF_HW_CLKSEL_USART234578</a></div><div class="ttdeci">@ VSF_HW_CLKSEL_USART234578</div><div class="ttdef"><b>Definition</b> driver.c:46</div></div>
 </div><!-- fragment -->
