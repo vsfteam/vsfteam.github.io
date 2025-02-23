@@ -60,6 +60,8 @@
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__hal__cfg_8h_source.html">hal/vsf_hal_cfg.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_si_fli_2_s_f32_l_b52_x_2____device_8h_source.html">../__device.h</a>&quot;</code><br />
 <code>#include &quot;bf0_hal.h&quot;</code><br />
+<code>#include &quot;sifli_bbm.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__kernel_8h_source.html">kernel/vsf_kernel.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__swi__template_8inc_source.html">hal/driver/common/swi/arm/vsf_swi_template.inc</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__trace_8h_source.html">service/trace/vsf_trace.h</a>&quot;</code><br />
 </div><table class="memberdecls">
@@ -84,10 +86,22 @@ Macros</h2></td></tr>
 <tr class="separator:af4a1598ed5be6657a2b0fc798d72daa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1fb4a3a0523a7c1973c0d0b1c103398" id="r_ac1fb4a3a0523a7c1973c0d0b1c103398"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#ac1fb4a3a0523a7c1973c0d0b1c103398">WAIT_US_LOOP_CYCLE</a>&#160;&#160;&#160;12</td></tr>
 <tr class="separator:ac1fb4a3a0523a7c1973c0d0b1c103398"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc467894de6721c09f2cedda07a55d2a" id="r_adc467894de6721c09f2cedda07a55d2a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#adc467894de6721c09f2cedda07a55d2a">BOOT_FLASH_PUYA</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:adc467894de6721c09f2cedda07a55d2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1107440b5fe9faae7c2cc820b57a12aa" id="r_a1107440b5fe9faae7c2cc820b57a12aa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#a1107440b5fe9faae7c2cc820b57a12aa">BOOT_FLASH_GD</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a1107440b5fe9faae7c2cc820b57a12aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6945f18eba88827e689f8d92ae35a562" id="r_a6945f18eba88827e689f8d92ae35a562"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#a6945f18eba88827e689f8d92ae35a562">BOOT_FROM_SIP_PUYA</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a6945f18eba88827e689f8d92ae35a562"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e1991584e91844821306790df56ab07" id="r_a4e1991584e91844821306790df56ab07"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#a4e1991584e91844821306790df56ab07">BOOT_FROM_SIP_GD</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a4e1991584e91844821306790df56ab07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaa3366797b2570fbeec0f10c7648450" id="r_afaa3366797b2570fbeec0f10c7648450"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#afaa3366797b2570fbeec0f10c7648450">BOOT_FROM_NOR</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:afaa3366797b2570fbeec0f10c7648450"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09164ff495586d4363d759e7b8338c2b" id="r_a09164ff495586d4363d759e7b8338c2b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#a09164ff495586d4363d759e7b8338c2b">BOOT_FROM_NAND</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a09164ff495586d4363d759e7b8338c2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f843853cbce88ad5ef81239b8ac620c" id="r_a4f843853cbce88ad5ef81239b8ac620c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#a4f843853cbce88ad5ef81239b8ac620c">BOOT_FROM_SD</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a4f843853cbce88ad5ef81239b8ac620c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60f4f385241049122dcff2adabbe02b2" id="r_a60f4f385241049122dcff2adabbe02b2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#a60f4f385241049122dcff2adabbe02b2">BOOT_FROM_EMMC</a>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:a60f4f385241049122dcff2adabbe02b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab10d021b6c2c46420be1607f87689010" id="r_ab10d021b6c2c46420be1607f87689010"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#ab10d021b6c2c46420be1607f87689010">BOOT_SIP_PUYA</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:ab10d021b6c2c46420be1607f87689010"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb4a1b5ca79d4840a6c8e7da07e19eae" id="r_abb4a1b5ca79d4840a6c8e7da07e19eae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#abb4a1b5ca79d4840a6c8e7da07e19eae">BOOT_SIP_GD</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:abb4a1b5ca79d4840a6c8e7da07e19eae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89dfe3cae66b991d7648487ba9bb7794" id="r_a89dfe3cae66b991d7648487ba9bb7794"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#a89dfe3cae66b991d7648487ba9bb7794">BOOT_PSRAM_APS_128P</a>&#160;&#160;&#160;2</td></tr>
 <tr class="separator:a89dfe3cae66b991d7648487ba9bb7794"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ac56aa93a7aa9a6ee96d47e901a574f" id="r_a0ac56aa93a7aa9a6ee96d47e901a574f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#a0ac56aa93a7aa9a6ee96d47e901a574f">BOOT_PSRAM_APS_64P</a>&#160;&#160;&#160;3</td></tr>
@@ -100,6 +114,8 @@ Macros</h2></td></tr>
 <tr class="separator:af88b2b9170e0d2f6a6ef4517b91bd284"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12b198511478e062e6decc4294d1c511" id="r_a12b198511478e062e6decc4294d1c511"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#a12b198511478e062e6decc4294d1c511">BOOT_SIP_NONE</a>&#160;&#160;&#160;7</td></tr>
 <tr class="separator:a12b198511478e062e6decc4294d1c511"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7069845358a6e5bc51ec4d7f38570d2f" id="r_a7069845358a6e5bc51ec4d7f38570d2f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#a7069845358a6e5bc51ec4d7f38570d2f">INIT_FLASH</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a7069845358a6e5bc51ec4d7f38570d2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -141,6 +157,10 @@ Functions</h2></td></tr>
 <tr class="separator:af1c208e1b0cbf673cd10eb0bd74a5d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0304dec8e33aca8c99e2836947b76d6" id="r_ad0304dec8e33aca8c99e2836947b76d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#ad0304dec8e33aca8c99e2836947b76d6">HAL_Delay</a> (<a class="el" href="_w_c_h_2_c_h32_f10_x_2common_2usb_2usbd_2usbd_8c.html#aec43007d9998a0a0e01faede4133d6be">__IO</a> <a class="el" href="lvgl_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> Delay)</td></tr>
 <tr class="separator:ad0304dec8e33aca8c99e2836947b76d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2c4f03d53e997a54e1fd5e80daa55c4" id="r_af2c4f03d53e997a54e1fd5e80daa55c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lvgl_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#af2c4f03d53e997a54e1fd5e80daa55c4">HAL_GetTick</a> (void)</td></tr>
+<tr class="separator:af2c4f03d53e997a54e1fd5e80daa55c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8d592919b0a12b767e92e918eff6511" id="r_af8d592919b0a12b767e92e918eff6511"><td class="memItemLeft" align="right" valign="top">__HAL_ROM_USED <a class="el" href="lvgl_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#af8d592919b0a12b767e92e918eff6511">HAL_Get_backup</a> (<a class="el" href="lvgl_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> idx)</td></tr>
+<tr class="separator:af8d592919b0a12b767e92e918eff6511"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a296f1c0f089ef21af9c6f28bb9b6ea74" id="r_a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_si_fli_2_s_f32_l_b52_x_2common_2driver_8c.html#a296f1c0f089ef21af9c6f28bb9b6ea74">vsf_driver_init</a> (void)</td></tr>
 <tr class="memdesc:a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="mdescLeft">&#160;</td><td class="mdescRight">common hal drivers  <br /></td></tr>
 <tr class="separator:a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -244,28 +264,112 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="adc467894de6721c09f2cedda07a55d2a" name="adc467894de6721c09f2cedda07a55d2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc467894de6721c09f2cedda07a55d2a">&#9670;&#160;</a></span>BOOT_FLASH_PUYA</h2>
+<a id="a6945f18eba88827e689f8d92ae35a562" name="a6945f18eba88827e689f8d92ae35a562"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6945f18eba88827e689f8d92ae35a562">&#9670;&#160;</a></span>BOOT_FROM_SIP_PUYA</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define BOOT_FLASH_PUYA&#160;&#160;&#160;0</td>
+          <td class="memname">#define BOOT_FROM_SIP_PUYA&#160;&#160;&#160;1</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a1107440b5fe9faae7c2cc820b57a12aa" name="a1107440b5fe9faae7c2cc820b57a12aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1107440b5fe9faae7c2cc820b57a12aa">&#9670;&#160;</a></span>BOOT_FLASH_GD</h2>
+<a id="a4e1991584e91844821306790df56ab07" name="a4e1991584e91844821306790df56ab07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e1991584e91844821306790df56ab07">&#9670;&#160;</a></span>BOOT_FROM_SIP_GD</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define BOOT_FLASH_GD&#160;&#160;&#160;1</td>
+          <td class="memname">#define BOOT_FROM_SIP_GD&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afaa3366797b2570fbeec0f10c7648450" name="afaa3366797b2570fbeec0f10c7648450"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaa3366797b2570fbeec0f10c7648450">&#9670;&#160;</a></span>BOOT_FROM_NOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOOT_FROM_NOR&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a09164ff495586d4363d759e7b8338c2b" name="a09164ff495586d4363d759e7b8338c2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09164ff495586d4363d759e7b8338c2b">&#9670;&#160;</a></span>BOOT_FROM_NAND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOOT_FROM_NAND&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f843853cbce88ad5ef81239b8ac620c" name="a4f843853cbce88ad5ef81239b8ac620c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f843853cbce88ad5ef81239b8ac620c">&#9670;&#160;</a></span>BOOT_FROM_SD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOOT_FROM_SD&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a60f4f385241049122dcff2adabbe02b2" name="a60f4f385241049122dcff2adabbe02b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60f4f385241049122dcff2adabbe02b2">&#9670;&#160;</a></span>BOOT_FROM_EMMC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOOT_FROM_EMMC&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab10d021b6c2c46420be1607f87689010" name="ab10d021b6c2c46420be1607f87689010"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab10d021b6c2c46420be1607f87689010">&#9670;&#160;</a></span>BOOT_SIP_PUYA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOOT_SIP_PUYA&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abb4a1b5ca79d4840a6c8e7da07e19eae" name="abb4a1b5ca79d4840a6c8e7da07e19eae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb4a1b5ca79d4840a6c8e7da07e19eae">&#9670;&#160;</a></span>BOOT_SIP_GD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOOT_SIP_GD&#160;&#160;&#160;1</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -350,6 +454,20 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define BOOT_SIP_NONE&#160;&#160;&#160;7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7069845358a6e5bc51ec4d7f38570d2f" name="a7069845358a6e5bc51ec4d7f38570d2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7069845358a6e5bc51ec4d7f38570d2f">&#9670;&#160;</a></span>INIT_FLASH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INIT_FLASH&#160;&#160;&#160;0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -570,6 +688,42 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_w_c_h_2_c_h32_f10_x_2common_2usb_2usbd_2usbd_8c.html#aec43007d9998a0a0e01faede4133d6be">__IO</a> <a class="el" href="lvgl_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td>
           <td class="paramname"><em>Delay</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af2c4f03d53e997a54e1fd5e80daa55c4" name="af2c4f03d53e997a54e1fd5e80daa55c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2c4f03d53e997a54e1fd5e80daa55c4">&#9670;&#160;</a></span>HAL_GetTick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lvgl_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> HAL_GetTick </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af8d592919b0a12b767e92e918eff6511" name="af8d592919b0a12b767e92e918eff6511"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8d592919b0a12b767e92e918eff6511">&#9670;&#160;</a></span>HAL_Get_backup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__HAL_ROM_USED <a class="el" href="lvgl_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> HAL_Get_backup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lvgl_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
+          <td class="paramname"><em>idx</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
