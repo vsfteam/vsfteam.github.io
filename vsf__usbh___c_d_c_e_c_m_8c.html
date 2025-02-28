@@ -65,6 +65,9 @@
 <code>#include &quot;<a class="el" href="vsf__usbh_8h_source.html">../../vsf_usbh.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__usbh___c_d_c_e_c_m_8h_source.html">./vsf_usbh_CDCECM.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__tcpip_8h_source.html">component/tcpip/vsf_tcpip.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usb___c_d_c_8h_source.html">component/usb/common/class/CDC/vsf_usb_CDC.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usb___c_d_c_e_c_m_8h_source.html">component/usb/common/class/CDC/vsf_usb_CDCECM.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usb___c_d_c_n_c_m_8h_source.html">component/usb/common/class/CDC/vsf_usb_CDCNCM.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
@@ -132,6 +135,10 @@ Variables</h2></td></tr>
 <tr class="separator:aafebabede8f70b9d1fe8c23766b62559"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af87db3769baa3e1241187d182f762733" id="r_af87db3769baa3e1241187d182f762733"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classvk__usbh__class__drv__t.html">vk_usbh_class_drv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh___c_d_c_e_c_m_8c.html#af87db3769baa3e1241187d182f762733">vk_usbh_ecm_block_libusb_drv</a></td></tr>
 <tr class="separator:af87db3769baa3e1241187d182f762733"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70bcdecfe8b97b0e59f2e7f03804effa" id="r_a70bcdecfe8b97b0e59f2e7f03804effa"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classvk__usbh__class__drv__t.html">vk_usbh_class_drv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh___c_d_c_e_c_m_8c.html#a70bcdecfe8b97b0e59f2e7f03804effa">vk_usbh_ncm_drv</a></td></tr>
+<tr class="separator:a70bcdecfe8b97b0e59f2e7f03804effa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04b718780a241de9a5532c960881f158" id="r_a04b718780a241de9a5532c960881f158"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classvk__usbh__class__drv__t.html">vk_usbh_class_drv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__usbh___c_d_c_e_c_m_8c.html#a04b718780a241de9a5532c960881f158">vk_usbh_ncm_block_libusb_drv</a></td></tr>
+<tr class="separator:a04b718780a241de9a5532c960881f158"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ae68af52b29d55a0d7474c656fd71d931" name="ae68af52b29d55a0d7474c656fd71d931"></a>
@@ -430,6 +437,47 @@ Variables</h2></td></tr>
 <div class="line">    .name       = <span class="stringliteral">&quot;cdc_ecm_block_libusb&quot;</span>,</div>
 <div class="line">    .dev_id_num = <a class="code hl_define" href="____type_8h.html#aa6debdf5e87694001cf011a03133c7a2">dimof</a>(__vk_usbh_ecm_block_libusb_dev_id),</div>
 <div class="line">    .dev_ids    = __vk_usbh_ecm_block_libusb_dev_id,</div>
+<div class="line">    .probe      = __vk_usbh_ecm_block_libusb_probe,</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a70bcdecfe8b97b0e59f2e7f03804effa" name="a70bcdecfe8b97b0e59f2e7f03804effa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70bcdecfe8b97b0e59f2e7f03804effa">&#9670;&#160;</a></span>vk_usbh_ncm_drv</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classvk__usbh__class__drv__t.html">vk_usbh_class_drv_t</a> vk_usbh_ncm_drv</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .name       = <span class="stringliteral">&quot;cdc_ncm&quot;</span>,</div>
+<div class="line">    .dev_id_num = <a class="code hl_define" href="____type_8h.html#aa6debdf5e87694001cf011a03133c7a2">dimof</a>(__vk_usbh_ncm_dev_id),</div>
+<div class="line">    .dev_ids    = __vk_usbh_ncm_dev_id,</div>
+<div class="line">    .probe      = __vk_usbh_ecm_probe,</div>
+<div class="line">    .disconnect = __vk_usbh_ecm_disconnect,</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a04b718780a241de9a5532c960881f158" name="a04b718780a241de9a5532c960881f158"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04b718780a241de9a5532c960881f158">&#9670;&#160;</a></span>vk_usbh_ncm_block_libusb_drv</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classvk__usbh__class__drv__t.html">vk_usbh_class_drv_t</a> vk_usbh_ncm_block_libusb_drv</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .name       = <span class="stringliteral">&quot;cdc_ncm_block_libusb&quot;</span>,</div>
+<div class="line">    .dev_id_num = <a class="code hl_define" href="____type_8h.html#aa6debdf5e87694001cf011a03133c7a2">dimof</a>(__vk_usbh_ncm_block_libusb_dev_id),</div>
+<div class="line">    .dev_ids    = __vk_usbh_ncm_block_libusb_dev_id,</div>
 <div class="line">    .probe      = __vk_usbh_ecm_block_libusb_probe,</div>
 <div class="line">}</div>
 </div><!-- fragment -->
