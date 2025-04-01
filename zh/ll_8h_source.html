@@ -79,16 +79,16 @@
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">    GLOBAL_INT_RESTORE();                                                                \</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">} while (0)</span></div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="ll_8h.html#a841b38448f97ceffa7291c829c31c638">   61</a></span>__STATIC_FORCEINLINE <a class="code hl_typedef" href="lvgl_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> <a class="code hl_function" href="ll_8h.html#a841b38448f97ceffa7291c829c31c638">global_irq_lock</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="ll_8h.html#a841b38448f97ceffa7291c829c31c638">   61</a></span>__STATIC_FORCEINLINE <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> <a class="code hl_function" href="ll_8h.html#a841b38448f97ceffa7291c829c31c638">global_irq_lock</a>(<span class="keywordtype">void</span>)</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>{</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <a class="code hl_typedef" href="lvgl_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> pmask = __get_PRIMASK();</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> pmask = __get_PRIMASK();</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordflow">if</span> ((pmask &amp; 0x1) == 0) {</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        __disable_irq();</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    }</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">return</span> pmask;</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="ll_8h.html#a0bda27a7b19438d64a0dfb9ea8a581c4">   70</a></span>__STATIC_FORCEINLINE <span class="keywordtype">void</span> <a class="code hl_function" href="ll_8h.html#a0bda27a7b19438d64a0dfb9ea8a581c4">global_irq_unlock</a>(<a class="code hl_typedef" href="lvgl_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> pmask)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="ll_8h.html#a0bda27a7b19438d64a0dfb9ea8a581c4">   70</a></span>__STATIC_FORCEINLINE <span class="keywordtype">void</span> <a class="code hl_function" href="ll_8h.html#a0bda27a7b19438d64a0dfb9ea8a581c4">global_irq_unlock</a>(<a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> pmask)</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>{</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">if</span> ((pmask &amp; 0x1) == 0) {</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        __enable_irq();</div>
@@ -105,7 +105,7 @@
 <div class="ttc" id="all_8h_html_a4fad2856c60cd1ca5809d831cc741fea"><div class="ttname"><a href="ll_8h.html#a4fad2856c60cd1ca5809d831cc741fea">critical_section_end</a></div><div class="ttdeci">void critical_section_end(void)</div><div class="ttdef"><b>Definition</b> ll.c:26</div></div>
 <div class="ttc" id="all_8h_html_a5ce3a5463714979bd52b13f883507825"><div class="ttname"><a href="ll_8h.html#a5ce3a5463714979bd52b13f883507825">critical_section_start</a></div><div class="ttdeci">void critical_section_start(void)</div><div class="ttdef"><b>Definition</b> ll.c:18</div></div>
 <div class="ttc" id="all_8h_html_a841b38448f97ceffa7291c829c31c638"><div class="ttname"><a href="ll_8h.html#a841b38448f97ceffa7291c829c31c638">global_irq_lock</a></div><div class="ttdeci">__STATIC_FORCEINLINE uint32_t global_irq_lock(void)</div><div class="ttdef"><b>Definition</b> ll.h:61</div></div>
-<div class="ttc" id="alvgl_8h_html_a435d1572bf3f880d55459d9805097f62"><div class="ttname"><a href="lvgl_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a></div><div class="ttdeci">unsigned int uint32_t</div><div class="ttdef"><b>Definition</b> lvgl.h:43</div></div>
+<div class="ttc" id="astdint_8h_html_a324c5d28c0d82f502a234ab99efac87a"><div class="ttname"><a href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a></div><div class="ttdeci">unsigned uint32_t</div><div class="ttdef"><b>Definition</b> stdint.h:9</div></div>
 <div class="ttc" id="avsf__arch_8h_html"><div class="ttname"><a href="vsf__arch_8h.html">vsf_arch.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
