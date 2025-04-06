@@ -52,11 +52,14 @@
   <div class="summary">
 <a href="#nested-classes">结构体</a> &#124;
 <a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#enum-members">枚举</a> &#124;
 <a href="#var-members">变量</a>  </div>
   <div class="headertitle"><div class="title">dac.h 文件参考</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__hal__cfg_8h_source.html">hal/vsf_hal_cfg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__template__hal__driver_8h_source.html">hal/driver/common/template/vsf_template_hal_driver.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="template_2____series__name__a_____2____device_8h_source.html">../../__device.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ooc__class_8h_source.html">utilities/ooc_class.h</a>&quot;</code><br />
 </div>
@@ -66,6 +69,18 @@
 结构体</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvsf___0b.html">vsf_$</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__dac__status__t.html">vsf_dac_status_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">可在具体 HAL 驱动中重新实现的 DAC 状态结构体  <a href="structvsf__dac__status__t.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__dac__isr__t.html">vsf_dac_isr_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">DAC 中断配置结构体  <a href="structvsf__dac__isr__t.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__dac__cfg__t.html">vsf_dac_cfg_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">DAC 配置结构体  <a href="structvsf__dac__cfg__t.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__dac__capability__t.html">vsf_dac_capability_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">可在具体 HAL 驱动中重新实现的 DAC 能力结构体  <a href="structvsf__dac__capability__t.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 宏定义</h2></td></tr>
@@ -73,6 +88,41 @@
 <tr class="separator:a644a6f27856cb67f7522c4962070ecec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea974690795d2741074fa7a4baa1583f" id="r_aea974690795d2741074fa7a4baa1583f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac_8h.html#aea974690795d2741074fa7a4baa1583f">VSF_</a>&#160;&#160;&#160;${DAC_IP}_DAC_CFG_MULTI_CLASS    <a class="el" href="vsf__template__dac_8h.html#af362fb2bfa80b555f8d15f1000a581b6">VSF_DAC_CFG_MULTI_CLASS</a></td></tr>
 <tr class="separator:aea974690795d2741074fa7a4baa1583f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d9b4db9f16d620ec28555b6cd3fe10d" id="r_a9d9b4db9f16d620ec28555b6cd3fe10d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac_8h.html#a9d9b4db9f16d620ec28555b6cd3fe10d">VSF_DAC_CFG_REIMPLEMENT_TYPE_STATUS</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td></tr>
+<tr class="separator:a9d9b4db9f16d620ec28555b6cd3fe10d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af48cb2374fb6f9bcf0244ae00997b88a" id="r_af48cb2374fb6f9bcf0244ae00997b88a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac_8h.html#af48cb2374fb6f9bcf0244ae00997b88a">VSF_DAC_CFG_REIMPLEMENT_TYPE_IRQ_MASK</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td></tr>
+<tr class="separator:af48cb2374fb6f9bcf0244ae00997b88a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3e8c1d933ff745e816c01f9310eee65" id="r_ad3e8c1d933ff745e816c01f9310eee65"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac_8h.html#ad3e8c1d933ff745e816c01f9310eee65">VSF_DAC_CFG_REIMPLEMENT_TYPE_CFG</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td></tr>
+<tr class="separator:ad3e8c1d933ff745e816c01f9310eee65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae55cb7e57cb3ae6794e7c4bac9921949" id="r_ae55cb7e57cb3ae6794e7c4bac9921949"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac_8h.html#ae55cb7e57cb3ae6794e7c4bac9921949">VSF_DAC_CFG_REIMPLEMENT_TYPE_CAPABILITY</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td></tr>
+<tr class="separator:ae55cb7e57cb3ae6794e7c4bac9921949"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:a46dcdba96e6c284c5dd9af19afc989dc" id="r_a46dcdba96e6c284c5dd9af19afc989dc"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="vsf__template__dac_8h.html#a5230e2878813835c4718e342c0d4f0a0">vsf_dac_irq_mask_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac_8h.html#a46dcdba96e6c284c5dd9af19afc989dc">vsf_dac_irq_mask_t</a></td></tr>
+<tr class="separator:a46dcdba96e6c284c5dd9af19afc989dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6a5f3afbf439d68c1a39799faabbadb" id="r_ac6a5f3afbf439d68c1a39799faabbadb"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__dac__status__t.html">vsf_dac_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac_8h.html#ac6a5f3afbf439d68c1a39799faabbadb">vsf_dac_status_t</a></td></tr>
+<tr class="separator:ac6a5f3afbf439d68c1a39799faabbadb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2477f2e49714996ed0f1db428dc84a6" id="r_ae2477f2e49714996ed0f1db428dc84a6"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__dac__t.html">vsf_dac_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac_8h.html#ae2477f2e49714996ed0f1db428dc84a6">vsf_dac_t</a></td></tr>
+<tr class="separator:ae2477f2e49714996ed0f1db428dc84a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12b0db18b0598b0a5f6ab773fb8c215e" id="r_a12b0db18b0598b0a5f6ab773fb8c215e"><td class="memItemLeft" align="right" valign="top">typedef void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac_8h.html#a12b0db18b0598b0a5f6ab773fb8c215e">vsf_dac_isr_handler_t</a>(void *target_ptr, <a class="el" href="structvsf__dac__t.html">vsf_dac_t</a> *dac_ptr, <a class="el" href="vsf__template__dac_8h.html#a5230e2878813835c4718e342c0d4f0a0">vsf_dac_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
+<tr class="separator:a12b0db18b0598b0a5f6ab773fb8c215e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49b9f2b6832036ce337a92d2d8eb5556" id="r_a49b9f2b6832036ce337a92d2d8eb5556"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__dac__isr__t.html">vsf_dac_isr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac_8h.html#a49b9f2b6832036ce337a92d2d8eb5556">vsf_dac_isr_t</a></td></tr>
+<tr class="separator:a49b9f2b6832036ce337a92d2d8eb5556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1da4e4762fdd444fde033311b775a27e" id="r_a1da4e4762fdd444fde033311b775a27e"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__dac__cfg__t.html">vsf_dac_cfg_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac_8h.html#a1da4e4762fdd444fde033311b775a27e">vsf_dac_cfg_t</a></td></tr>
+<tr class="separator:a1da4e4762fdd444fde033311b775a27e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7ec6798cdd8fa3d8f3776280c00ae01" id="r_ad7ec6798cdd8fa3d8f3776280c00ae01"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__dac__capability__t.html">vsf_dac_capability_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac_8h.html#ad7ec6798cdd8fa3d8f3776280c00ae01">vsf_dac_capability_t</a></td></tr>
+<tr class="separator:ad7ec6798cdd8fa3d8f3776280c00ae01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+枚举</h2></td></tr>
+<tr class="memitem:a5230e2878813835c4718e342c0d4f0a0" id="r_a5230e2878813835c4718e342c0d4f0a0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac_8h.html#a5230e2878813835c4718e342c0d4f0a0">vsf_dac_irq_mask_t</a> { <br />
+&#160;&#160;<a class="el" href="dac_8h.html#a5230e2878813835c4718e342c0d4f0a0a3d37ac61e93fc47dc2cb3061908ddeb3">VSF_DAC_IRQ_MASK_IDLE</a> = (0x01ul &lt;&lt; 0)
+, <br />
+&#160;&#160;<a class="el" href="dac_8h.html#a5230e2878813835c4718e342c0d4f0a0a6fad6f91d5177eafc7ffa7059b3599a2">VSF_DAC_IRQ_MASK_CPL</a> = (0x1ul &lt;&lt; 0)
+<br />
+ }</td></tr>
+<tr class="separator:a5230e2878813835c4718e342c0d4f0a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 变量</h2></td></tr>
@@ -107,6 +157,181 @@
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section note"><dt>注解</dt><dd>When <a class="el" href="structvsf__peripheral__status__t.html">vsf_peripheral_status_t</a> is inherited, <a class="el" href="vsf__template__hal__driver_8h.html">vsf_template_hal_driver.h</a> needs to be included </dd></dl>
+
+</div>
+</div>
+<a id="a9d9b4db9f16d620ec28555b6cd3fe10d" name="a9d9b4db9f16d620ec28555b6cd3fe10d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d9b4db9f16d620ec28555b6cd3fe10d">&#9670;&#160;</a></span>VSF_DAC_CFG_REIMPLEMENT_TYPE_STATUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_DAC_CFG_REIMPLEMENT_TYPE_STATUS&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af48cb2374fb6f9bcf0244ae00997b88a" name="af48cb2374fb6f9bcf0244ae00997b88a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af48cb2374fb6f9bcf0244ae00997b88a">&#9670;&#160;</a></span>VSF_DAC_CFG_REIMPLEMENT_TYPE_IRQ_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_DAC_CFG_REIMPLEMENT_TYPE_IRQ_MASK&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad3e8c1d933ff745e816c01f9310eee65" name="ad3e8c1d933ff745e816c01f9310eee65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3e8c1d933ff745e816c01f9310eee65">&#9670;&#160;</a></span>VSF_DAC_CFG_REIMPLEMENT_TYPE_CFG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_DAC_CFG_REIMPLEMENT_TYPE_CFG&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae55cb7e57cb3ae6794e7c4bac9921949" name="ae55cb7e57cb3ae6794e7c4bac9921949"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae55cb7e57cb3ae6794e7c4bac9921949">&#9670;&#160;</a></span>VSF_DAC_CFG_REIMPLEMENT_TYPE_CAPABILITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_DAC_CFG_REIMPLEMENT_TYPE_CAPABILITY&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类型定义说明</h2>
+<a id="a46dcdba96e6c284c5dd9af19afc989dc" name="a46dcdba96e6c284c5dd9af19afc989dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46dcdba96e6c284c5dd9af19afc989dc">&#9670;&#160;</a></span>vsf_dac_irq_mask_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="vsf__template__dac_8h.html#a5230e2878813835c4718e342c0d4f0a0">vsf_dac_irq_mask_t</a> <a class="el" href="vsf__template__dac_8h.html#a5230e2878813835c4718e342c0d4f0a0">vsf_dac_irq_mask_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac6a5f3afbf439d68c1a39799faabbadb" name="ac6a5f3afbf439d68c1a39799faabbadb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6a5f3afbf439d68c1a39799faabbadb">&#9670;&#160;</a></span>vsf_dac_status_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__dac__status__t.html">vsf_dac_status_t</a> <a class="el" href="structvsf__dac__status__t.html">vsf_dac_status_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae2477f2e49714996ed0f1db428dc84a6" name="ae2477f2e49714996ed0f1db428dc84a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2477f2e49714996ed0f1db428dc84a6">&#9670;&#160;</a></span>vsf_dac_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__dac__t.html">vsf_dac_t</a> <a class="el" href="structvsf__dac__t.html">vsf_dac_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a12b0db18b0598b0a5f6ab773fb8c215e" name="a12b0db18b0598b0a5f6ab773fb8c215e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12b0db18b0598b0a5f6ab773fb8c215e">&#9670;&#160;</a></span>vsf_dac_isr_handler_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void vsf_dac_isr_handler_t(void *target_ptr, <a class="el" href="structvsf__dac__t.html">vsf_dac_t</a> *dac_ptr, <a class="el" href="vsf__template__dac_8h.html#a5230e2878813835c4718e342c0d4f0a0">vsf_dac_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a49b9f2b6832036ce337a92d2d8eb5556" name="a49b9f2b6832036ce337a92d2d8eb5556"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49b9f2b6832036ce337a92d2d8eb5556">&#9670;&#160;</a></span>vsf_dac_isr_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__dac__isr__t.html">vsf_dac_isr_t</a> <a class="el" href="structvsf__dac__isr__t.html">vsf_dac_isr_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1da4e4762fdd444fde033311b775a27e" name="a1da4e4762fdd444fde033311b775a27e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1da4e4762fdd444fde033311b775a27e">&#9670;&#160;</a></span>vsf_dac_cfg_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__dac__cfg__t.html">vsf_dac_cfg_t</a> <a class="el" href="structvsf__dac__cfg__t.html">vsf_dac_cfg_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad7ec6798cdd8fa3d8f3776280c00ae01" name="ad7ec6798cdd8fa3d8f3776280c00ae01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7ec6798cdd8fa3d8f3776280c00ae01">&#9670;&#160;</a></span>vsf_dac_capability_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__dac__capability__t.html">vsf_dac_capability_t</a> <a class="el" href="structvsf__dac__capability__t.html">vsf_dac_capability_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">枚举类型说明</h2>
+<a id="a5230e2878813835c4718e342c0d4f0a0" name="a5230e2878813835c4718e342c0d4f0a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5230e2878813835c4718e342c0d4f0a0">&#9670;&#160;</a></span>vsf_dac_irq_mask_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="vsf__template__dac_8h.html#a5230e2878813835c4718e342c0d4f0a0">vsf_dac_irq_mask_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a5230e2878813835c4718e342c0d4f0a0a3d37ac61e93fc47dc2cb3061908ddeb3" name="a5230e2878813835c4718e342c0d4f0a0a3d37ac61e93fc47dc2cb3061908ddeb3"></a>VSF_DAC_IRQ_MASK_IDLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5230e2878813835c4718e342c0d4f0a0a6fad6f91d5177eafc7ffa7059b3599a2" name="a5230e2878813835c4718e342c0d4f0a0a6fad6f91d5177eafc7ffa7059b3599a2"></a>VSF_DAC_IRQ_MASK_CPL&#160;</td><td class="fielddoc"></td></tr>
+</table>
 
 </div>
 </div>

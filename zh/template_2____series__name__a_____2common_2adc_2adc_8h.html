@@ -52,11 +52,14 @@
   <div class="summary">
 <a href="#nested-classes">结构体</a> &#124;
 <a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#enum-members">枚举</a> &#124;
 <a href="#var-members">变量</a>  </div>
   <div class="headertitle"><div class="title">adc.h 文件参考</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__hal__cfg_8h_source.html">hal/vsf_hal_cfg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__template__hal__driver_8h_source.html">hal/driver/common/template/vsf_template_hal_driver.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="template_2____series__name__a_____2____device_8h_source.html">../../__device.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ooc__class_8h_source.html">utilities/ooc_class.h</a>&quot;</code><br />
 </div>
@@ -66,6 +69,18 @@
 结构体</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvsf___0b.html">vsf_$</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__adc__status__t.html">vsf_adc_status_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">预定义的 VSF ADC 状态，可以在特定的 HAL 驱动中重新实现。  <a href="structvsf__adc__status__t.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__adc__isr__t.html">vsf_adc_isr_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">adc isr for api  <a href="structvsf__adc__isr__t.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__adc__cfg__t.html">vsf_adc_cfg_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADC 的配置结构体。  <a href="structvsf__adc__cfg__t.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__adc__capability__t.html">vsf_adc_capability_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">预定义的 VSF ADC 能力，可以在特定的 HAL 驱动中重新实现。  <a href="structvsf__adc__capability__t.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 宏定义</h2></td></tr>
@@ -73,6 +88,66 @@
 <tr class="separator:a644a6f27856cb67f7522c4962070ecec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea974690795d2741074fa7a4baa1583f" id="r_aea974690795d2741074fa7a4baa1583f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#aea974690795d2741074fa7a4baa1583f">VSF_</a>&#160;&#160;&#160;${ADC_IP}_ADC_CFG_MULTI_CLASS    <a class="el" href="vsf__template__adc_8h.html#a6ea77b63824ad9898e23af15f6ad9618">VSF_ADC_CFG_MULTI_CLASS</a></td></tr>
 <tr class="separator:aea974690795d2741074fa7a4baa1583f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a239348eaf3c82d9ecf0bf6c50c33b858" id="r_a239348eaf3c82d9ecf0bf6c50c33b858"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a239348eaf3c82d9ecf0bf6c50c33b858">VSF_ADC_CFG_REIMPLEMENT_TYPE_MODE</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td></tr>
+<tr class="separator:a239348eaf3c82d9ecf0bf6c50c33b858"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfed6c40996298d78b2a880360943354" id="r_abfed6c40996298d78b2a880360943354"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#abfed6c40996298d78b2a880360943354">VSF_ADC_CFG_REIMPLEMENT_TYPE_STATUS</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td></tr>
+<tr class="separator:abfed6c40996298d78b2a880360943354"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0a0e10cf824d964583066e5cd44885c" id="r_aa0a0e10cf824d964583066e5cd44885c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#aa0a0e10cf824d964583066e5cd44885c">VSF_ADC_CFG_REIMPLEMENT_TYPE_IRQ_MASK</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td></tr>
+<tr class="separator:aa0a0e10cf824d964583066e5cd44885c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3deb99f5a145181578c7a1897758dbca" id="r_a3deb99f5a145181578c7a1897758dbca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a3deb99f5a145181578c7a1897758dbca">VSF_ADC_CFG_REIMPLEMENT_TYPE_CFG</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td></tr>
+<tr class="separator:a3deb99f5a145181578c7a1897758dbca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad928a13ef8012397c6339cf005733ba2" id="r_ad928a13ef8012397c6339cf005733ba2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#ad928a13ef8012397c6339cf005733ba2">VSF_ADC_CFG_REIMPLEMENT_TYPE_CAPABILITY</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td></tr>
+<tr class="separator:ad928a13ef8012397c6339cf005733ba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:a9eed16fce3c79fddafacb2f117d9a36e" id="r_a9eed16fce3c79fddafacb2f117d9a36e"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="vsf__template__adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293dd">vsf_adc_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a9eed16fce3c79fddafacb2f117d9a36e">vsf_adc_mode_t</a></td></tr>
+<tr class="separator:a9eed16fce3c79fddafacb2f117d9a36e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa26e15d7cc92a0a93b157b7423abcc77" id="r_aa26e15d7cc92a0a93b157b7423abcc77"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="vsf__template__adc_8h.html#a5639390cffe0c7b512fda4d8eed9871c">vsf_adc_irq_mask_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#aa26e15d7cc92a0a93b157b7423abcc77">vsf_adc_irq_mask_t</a></td></tr>
+<tr class="separator:aa26e15d7cc92a0a93b157b7423abcc77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28138d28d043d9c373940326c149b73c" id="r_a28138d28d043d9c373940326c149b73c"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__adc__status__t.html">vsf_adc_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a28138d28d043d9c373940326c149b73c">vsf_adc_status_t</a></td></tr>
+<tr class="separator:a28138d28d043d9c373940326c149b73c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c319485dcc7b256f797e8f254b10eb1" id="r_a1c319485dcc7b256f797e8f254b10eb1"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__adc__t.html">vsf_adc_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a1c319485dcc7b256f797e8f254b10eb1">vsf_adc_t</a></td></tr>
+<tr class="separator:a1c319485dcc7b256f797e8f254b10eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11acbcdb5b242cb952b44f69133cadbd" id="r_a11acbcdb5b242cb952b44f69133cadbd"><td class="memItemLeft" align="right" valign="top">typedef void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a11acbcdb5b242cb952b44f69133cadbd">vsf_adc_isr_handler_t</a>(void *target_ptr, <a class="el" href="structvsf__adc__t.html">vsf_adc_t</a> *adc_ptr, <a class="el" href="vsf__template__adc_8h.html#a5639390cffe0c7b512fda4d8eed9871c">vsf_adc_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
+<tr class="separator:a11acbcdb5b242cb952b44f69133cadbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3c987224210c273c704bdf54d65719a" id="r_ab3c987224210c273c704bdf54d65719a"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__adc__isr__t.html">vsf_adc_isr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#ab3c987224210c273c704bdf54d65719a">vsf_adc_isr_t</a></td></tr>
+<tr class="separator:ab3c987224210c273c704bdf54d65719a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeee07dec6d6fefd1128436c0d8d92d9b" id="r_aeee07dec6d6fefd1128436c0d8d92d9b"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__adc__cfg__t.html">vsf_adc_cfg_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#aeee07dec6d6fefd1128436c0d8d92d9b">vsf_adc_cfg_t</a></td></tr>
+<tr class="separator:aeee07dec6d6fefd1128436c0d8d92d9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24c287da61dbcb9af8166c6517249177" id="r_a24c287da61dbcb9af8166c6517249177"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__adc__capability__t.html">vsf_adc_capability_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a24c287da61dbcb9af8166c6517249177">vsf_adc_capability_t</a></td></tr>
+<tr class="separator:a24c287da61dbcb9af8166c6517249177"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+枚举</h2></td></tr>
+<tr class="memitem:a7c73ca8fe9c5ed6d115ce6884e1293dd" id="r_a7c73ca8fe9c5ed6d115ce6884e1293dd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293dd">vsf_adc_mode_t</a> { <br />
+&#160;&#160;<a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293ddae69226113201c92c814fccb2b3fd7ae2">VSF_ADC_REF_VDD_1</a> = (0 &lt;&lt; 0)
+, <br />
+&#160;&#160;<a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293dda5ce4299c6b04be3e870b74ebad503342">VSF_ADC_REF_VDD_1_2</a> = (1 &lt;&lt; 0)
+, <br />
+&#160;&#160;<a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293ddaa435a2a4505b3d74aef112a2e56e1834">VSF_ADC_REF_VDD_1_3</a> = (2 &lt;&lt; 0)
+, <br />
+&#160;&#160;<a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293dda77b1fa231e9dd8a939cc27f5895a604e">VSF_ADC_REF_VDD_1_4</a> = (3 &lt;&lt; 0)
+, <br />
+&#160;&#160;<a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293dda743d1fae950f07f445d72654fe0d4d2c">VSF_ADC_DATA_ALIGN_RIGHT</a> = (0 &lt;&lt; 2)
+, <br />
+&#160;&#160;<a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293dda44504c53313d45f0e97cbb04c4dcc2ec">VSF_ADC_DATA_ALIGN_LEFT</a> = (1 &lt;&lt; 2)
+, <br />
+&#160;&#160;<a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293ddac9b508081c8fb339603e8a9c06eacfe9">VSF_ADC_SCAN_CONV_SINGLE_MODE</a> = (0 &lt;&lt; 3)
+, <br />
+&#160;&#160;<a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293ddaccc14c65c9824fea8e9ce6c27836ce90">VSF_ADC_SCAN_CONV_SEQUENCE_MODE</a> = (1 &lt;&lt; 3)
+, <br />
+&#160;&#160;<a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293ddac56c26f8d133bad2ee05f0b3eaf69986">VSF_ADC_EXTERN_TRIGGER_0</a> = (0 &lt;&lt; 4)
+, <br />
+&#160;&#160;<a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293dda88832b8dff51631dcff063073a534211">VSF_ADC_EXTERN_TRIGGER_1</a> = (1 &lt;&lt; 4)
+, <br />
+&#160;&#160;<a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293dda12b5744100d7f1022ffdc3f372acb5bc">VSF_ADC_EXTERN_TRIGGER_2</a> = (2 &lt;&lt; 4)
+<br />
+ }</td></tr>
+<tr class="separator:a7c73ca8fe9c5ed6d115ce6884e1293dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5639390cffe0c7b512fda4d8eed9871c" id="r_a5639390cffe0c7b512fda4d8eed9871c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a5639390cffe0c7b512fda4d8eed9871c">vsf_adc_irq_mask_t</a> { <a class="el" href="template_2____series__name__a_____2common_2adc_2adc_8h.html#a5639390cffe0c7b512fda4d8eed9871ca3243627d4986ceb683d710062ac4d922">VSF_ADC_IRQ_MASK_CPL</a> = (0x1ul &lt;&lt; 0)
+ }</td></tr>
+<tr class="separator:a5639390cffe0c7b512fda4d8eed9871c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 变量</h2></td></tr>
@@ -107,6 +182,235 @@
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section note"><dt>注解</dt><dd>When <a class="el" href="structvsf__peripheral__status__t.html">vsf_peripheral_status_t</a> is inherited, <a class="el" href="vsf__template__hal__driver_8h.html">vsf_template_hal_driver.h</a> needs to be included </dd></dl>
+
+</div>
+</div>
+<a id="a239348eaf3c82d9ecf0bf6c50c33b858" name="a239348eaf3c82d9ecf0bf6c50c33b858"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a239348eaf3c82d9ecf0bf6c50c33b858">&#9670;&#160;</a></span>VSF_ADC_CFG_REIMPLEMENT_TYPE_MODE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_ADC_CFG_REIMPLEMENT_TYPE_MODE&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abfed6c40996298d78b2a880360943354" name="abfed6c40996298d78b2a880360943354"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfed6c40996298d78b2a880360943354">&#9670;&#160;</a></span>VSF_ADC_CFG_REIMPLEMENT_TYPE_STATUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_ADC_CFG_REIMPLEMENT_TYPE_STATUS&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa0a0e10cf824d964583066e5cd44885c" name="aa0a0e10cf824d964583066e5cd44885c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0a0e10cf824d964583066e5cd44885c">&#9670;&#160;</a></span>VSF_ADC_CFG_REIMPLEMENT_TYPE_IRQ_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_ADC_CFG_REIMPLEMENT_TYPE_IRQ_MASK&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3deb99f5a145181578c7a1897758dbca" name="a3deb99f5a145181578c7a1897758dbca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3deb99f5a145181578c7a1897758dbca">&#9670;&#160;</a></span>VSF_ADC_CFG_REIMPLEMENT_TYPE_CFG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_ADC_CFG_REIMPLEMENT_TYPE_CFG&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad928a13ef8012397c6339cf005733ba2" name="ad928a13ef8012397c6339cf005733ba2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad928a13ef8012397c6339cf005733ba2">&#9670;&#160;</a></span>VSF_ADC_CFG_REIMPLEMENT_TYPE_CAPABILITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_ADC_CFG_REIMPLEMENT_TYPE_CAPABILITY&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类型定义说明</h2>
+<a id="a9eed16fce3c79fddafacb2f117d9a36e" name="a9eed16fce3c79fddafacb2f117d9a36e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eed16fce3c79fddafacb2f117d9a36e">&#9670;&#160;</a></span>vsf_adc_mode_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="vsf__template__adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293dd">vsf_adc_mode_t</a> <a class="el" href="vsf__template__adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293dd">vsf_adc_mode_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa26e15d7cc92a0a93b157b7423abcc77" name="aa26e15d7cc92a0a93b157b7423abcc77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa26e15d7cc92a0a93b157b7423abcc77">&#9670;&#160;</a></span>vsf_adc_irq_mask_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="vsf__template__adc_8h.html#a5639390cffe0c7b512fda4d8eed9871c">vsf_adc_irq_mask_t</a> <a class="el" href="vsf__template__adc_8h.html#a5639390cffe0c7b512fda4d8eed9871c">vsf_adc_irq_mask_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a28138d28d043d9c373940326c149b73c" name="a28138d28d043d9c373940326c149b73c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28138d28d043d9c373940326c149b73c">&#9670;&#160;</a></span>vsf_adc_status_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__adc__status__t.html">vsf_adc_status_t</a> <a class="el" href="structvsf__adc__status__t.html">vsf_adc_status_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1c319485dcc7b256f797e8f254b10eb1" name="a1c319485dcc7b256f797e8f254b10eb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c319485dcc7b256f797e8f254b10eb1">&#9670;&#160;</a></span>vsf_adc_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__adc__t.html">vsf_adc_t</a> <a class="el" href="structvsf__adc__t.html">vsf_adc_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a11acbcdb5b242cb952b44f69133cadbd" name="a11acbcdb5b242cb952b44f69133cadbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11acbcdb5b242cb952b44f69133cadbd">&#9670;&#160;</a></span>vsf_adc_isr_handler_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void vsf_adc_isr_handler_t(void *target_ptr, <a class="el" href="structvsf__adc__t.html">vsf_adc_t</a> *adc_ptr, <a class="el" href="vsf__template__adc_8h.html#a5639390cffe0c7b512fda4d8eed9871c">vsf_adc_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3c987224210c273c704bdf54d65719a" name="ab3c987224210c273c704bdf54d65719a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3c987224210c273c704bdf54d65719a">&#9670;&#160;</a></span>vsf_adc_isr_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__adc__isr__t.html">vsf_adc_isr_t</a> <a class="el" href="structvsf__adc__isr__t.html">vsf_adc_isr_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeee07dec6d6fefd1128436c0d8d92d9b" name="aeee07dec6d6fefd1128436c0d8d92d9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeee07dec6d6fefd1128436c0d8d92d9b">&#9670;&#160;</a></span>vsf_adc_cfg_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__adc__cfg__t.html">vsf_adc_cfg_t</a> <a class="el" href="structvsf__adc__cfg__t.html">vsf_adc_cfg_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a24c287da61dbcb9af8166c6517249177" name="a24c287da61dbcb9af8166c6517249177"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24c287da61dbcb9af8166c6517249177">&#9670;&#160;</a></span>vsf_adc_capability_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__adc__capability__t.html">vsf_adc_capability_t</a> <a class="el" href="structvsf__adc__capability__t.html">vsf_adc_capability_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">枚举类型说明</h2>
+<a id="a7c73ca8fe9c5ed6d115ce6884e1293dd" name="a7c73ca8fe9c5ed6d115ce6884e1293dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c73ca8fe9c5ed6d115ce6884e1293dd">&#9670;&#160;</a></span>vsf_adc_mode_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="vsf__template__adc_8h.html#a7c73ca8fe9c5ed6d115ce6884e1293dd">vsf_adc_mode_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a7c73ca8fe9c5ed6d115ce6884e1293ddae69226113201c92c814fccb2b3fd7ae2" name="a7c73ca8fe9c5ed6d115ce6884e1293ddae69226113201c92c814fccb2b3fd7ae2"></a>VSF_ADC_REF_VDD_1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7c73ca8fe9c5ed6d115ce6884e1293dda5ce4299c6b04be3e870b74ebad503342" name="a7c73ca8fe9c5ed6d115ce6884e1293dda5ce4299c6b04be3e870b74ebad503342"></a>VSF_ADC_REF_VDD_1_2&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7c73ca8fe9c5ed6d115ce6884e1293ddaa435a2a4505b3d74aef112a2e56e1834" name="a7c73ca8fe9c5ed6d115ce6884e1293ddaa435a2a4505b3d74aef112a2e56e1834"></a>VSF_ADC_REF_VDD_1_3&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7c73ca8fe9c5ed6d115ce6884e1293dda77b1fa231e9dd8a939cc27f5895a604e" name="a7c73ca8fe9c5ed6d115ce6884e1293dda77b1fa231e9dd8a939cc27f5895a604e"></a>VSF_ADC_REF_VDD_1_4&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7c73ca8fe9c5ed6d115ce6884e1293dda743d1fae950f07f445d72654fe0d4d2c" name="a7c73ca8fe9c5ed6d115ce6884e1293dda743d1fae950f07f445d72654fe0d4d2c"></a>VSF_ADC_DATA_ALIGN_RIGHT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7c73ca8fe9c5ed6d115ce6884e1293dda44504c53313d45f0e97cbb04c4dcc2ec" name="a7c73ca8fe9c5ed6d115ce6884e1293dda44504c53313d45f0e97cbb04c4dcc2ec"></a>VSF_ADC_DATA_ALIGN_LEFT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7c73ca8fe9c5ed6d115ce6884e1293ddac9b508081c8fb339603e8a9c06eacfe9" name="a7c73ca8fe9c5ed6d115ce6884e1293ddac9b508081c8fb339603e8a9c06eacfe9"></a>VSF_ADC_SCAN_CONV_SINGLE_MODE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7c73ca8fe9c5ed6d115ce6884e1293ddaccc14c65c9824fea8e9ce6c27836ce90" name="a7c73ca8fe9c5ed6d115ce6884e1293ddaccc14c65c9824fea8e9ce6c27836ce90"></a>VSF_ADC_SCAN_CONV_SEQUENCE_MODE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7c73ca8fe9c5ed6d115ce6884e1293ddac56c26f8d133bad2ee05f0b3eaf69986" name="a7c73ca8fe9c5ed6d115ce6884e1293ddac56c26f8d133bad2ee05f0b3eaf69986"></a>VSF_ADC_EXTERN_TRIGGER_0&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7c73ca8fe9c5ed6d115ce6884e1293dda88832b8dff51631dcff063073a534211" name="a7c73ca8fe9c5ed6d115ce6884e1293dda88832b8dff51631dcff063073a534211"></a>VSF_ADC_EXTERN_TRIGGER_1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7c73ca8fe9c5ed6d115ce6884e1293dda12b5744100d7f1022ffdc3f372acb5bc" name="a7c73ca8fe9c5ed6d115ce6884e1293dda12b5744100d7f1022ffdc3f372acb5bc"></a>VSF_ADC_EXTERN_TRIGGER_2&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a5639390cffe0c7b512fda4d8eed9871c" name="a5639390cffe0c7b512fda4d8eed9871c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5639390cffe0c7b512fda4d8eed9871c">&#9670;&#160;</a></span>vsf_adc_irq_mask_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="vsf__template__adc_8h.html#a5639390cffe0c7b512fda4d8eed9871c">vsf_adc_irq_mask_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a5639390cffe0c7b512fda4d8eed9871ca3243627d4986ceb683d710062ac4d922" name="a5639390cffe0c7b512fda4d8eed9871ca3243627d4986ceb683d710062ac4d922"></a>VSF_ADC_IRQ_MASK_CPL&#160;</td><td class="fielddoc"></td></tr>
+</table>
 
 </div>
 </div>

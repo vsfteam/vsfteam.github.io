@@ -57,16 +57,19 @@
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:ab0ed0c5e1c71a49dfa3672409bfae32c" id="r_ab0ed0c5e1c71a49dfa3672409bfae32c"><td class="memItemLeft" align="right" valign="top">inherit(<a class="el" href="structvsf__peripheral__capability__t.html">vsf_peripheral_capability_t</a>) <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> is_async <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__gpio__capability__t.html#ab0ed0c5e1c71a49dfa3672409bfae32c">support_output_and_set</a>: 1</td></tr>
-<tr class="memdesc:ab0ed0c5e1c71a49dfa3672409bfae32c"><td class="mdescLeft">&#160;</td><td class="mdescRight">To avoid bumps when converting from input to output.  <br /></td></tr>
+<tr class="memdesc:ab0ed0c5e1c71a49dfa3672409bfae32c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating if GPIO operations are asynchronous. When set, operations are only guaranteed to be sequential when operating on the same port consecutively. When used with different ports, operations on pins may not be sequential.  <br /></td></tr>
 <tr class="separator:ab0ed0c5e1c71a49dfa3672409bfae32c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4742ddfb68ab2fb182b3a184a1322080" id="r_a4742ddfb68ab2fb182b3a184a1322080"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__gpio__capability__t.html#a4742ddfb68ab2fb182b3a184a1322080">support_output_and_clear</a>: 1</td></tr>
+<tr class="memdesc:a4742ddfb68ab2fb182b3a184a1322080"><td class="mdescLeft">&#160;</td><td class="mdescRight">Support for atomic output and clear operations. Prevents signal glitches when switching from input to output mode.  <br /></td></tr>
 <tr class="separator:a4742ddfb68ab2fb182b3a184a1322080"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ce654274730ae7da87a0debe1ab44d9" id="r_a4ce654274730ae7da87a0debe1ab44d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__gpio__capability__t.html#a4ce654274730ae7da87a0debe1ab44d9">support_interrupt</a>: 1</td></tr>
-<tr class="memdesc:a4ce654274730ae7da87a0debe1ab44d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">supports external interrupts  <br /></td></tr>
+<tr class="memdesc:a4ce654274730ae7da87a0debe1ab44d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Support for external interrupt functionality. When set, the GPIO pins can be configured to generate interrupts.  <br /></td></tr>
 <tr class="separator:a4ce654274730ae7da87a0debe1ab44d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49bb8a6236c405d34bfeb27dcbb2278b" id="r_a49bb8a6236c405d34bfeb27dcbb2278b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__gpio__capability__t.html#a49bb8a6236c405d34bfeb27dcbb2278b">pin_count</a></td></tr>
+<tr class="memdesc:a49bb8a6236c405d34bfeb27dcbb2278b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of pins in hardware. Includes all pins, even those that cannot be configured as GPIO. If some pins cannot be used as GPIO, the corresponding bit in pin_mask is 0.  <br /></td></tr>
 <tr class="separator:a49bb8a6236c405d34bfeb27dcbb2278b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91ca8e40c8908b7468684b64b3e3d5b1" id="r_a91ca8e40c8908b7468684b64b3e3d5b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__template__gpio_8h.html#a80ec0ca26ef106d2f3dad9a7aa9de8b5">vsf_gpio_pin_mask_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__gpio__capability__t.html#a91ca8e40c8908b7468684b64b3e3d5b1">pin_mask</a></td></tr>
+<tr class="memdesc:a91ca8e40c8908b7468684b64b3e3d5b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available pin mask indicating which pins can be used as GPIO. Common bit patterns include:  <br /></td></tr>
 <tr class="separator:a91ca8e40c8908b7468684b64b3e3d5b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Field Documentation</h2>
@@ -82,9 +85,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>To avoid bumps when converting from input to output. </p>
-<p>Asynchronous GPIO they are only guaranteed to be sequential when operating the current port consecutively.</p>
-<p>When they are used together with other ports, they are not guaranteed to be sequential for the operation of the pins of different ports. </p>
+<p>Flag indicating if GPIO operations are asynchronous. When set, operations are only guaranteed to be sequential when operating on the same port consecutively. When used with different ports, operations on pins may not be sequential. </p>
+<p>Support for atomic output and set operations. Prevents signal glitches when switching from input to output mode. </p>
 
 </div>
 </div>
@@ -100,6 +102,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Support for atomic output and clear operations. Prevents signal glitches when switching from input to output mode. </p>
+
 </div>
 </div>
 <a id="a4ce654274730ae7da87a0debe1ab44d9" name="a4ce654274730ae7da87a0debe1ab44d9"></a>
@@ -114,7 +118,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>supports external interrupts </p>
+<p>Support for external interrupt functionality. When set, the GPIO pins can be configured to generate interrupts. </p>
 
 </div>
 </div>
@@ -129,7 +133,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>total number of pins of hardware, even if some pins cannot be configured as GPIO. if some of the pins cannot be used as GPIO,the corresponding bit in pin_mask is 0, otherwise is 1. </p>
+
+<p>Total number of pins in hardware. Includes all pins, even those that cannot be configured as GPIO. If some pins cannot be used as GPIO, the corresponding bit in pin_mask is 0. </p>
 
 </div>
 </div>
@@ -144,7 +149,14 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>available pin mask may be: 0x000000FF (8 pins), 0x0000FFFF (16 pins), 0xFFFFFFFF (32 pins), 0xFFFFFFFE (31 pins, PIN0 is not available) </p>
+
+<p>Available pin mask indicating which pins can be used as GPIO. Common bit patterns include: </p>
+<ul>
+<li>0x000000FF: 8 pins available</li>
+<li>0x0000FFFF: 16 pins available</li>
+<li>0xFFFFFFFF: All 32 pins available</li>
+<li>0xFFFFFFFE: 31 pins available (PIN0 is not available) </li>
+</ul>
 
 </div>
 </div>

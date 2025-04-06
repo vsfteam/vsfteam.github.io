@@ -57,16 +57,19 @@
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 成员变量</h2></td></tr>
 <tr class="memitem:ab0ed0c5e1c71a49dfa3672409bfae32c" id="r_ab0ed0c5e1c71a49dfa3672409bfae32c"><td class="memItemLeft" align="right" valign="top">inherit(<a class="el" href="structvsf__peripheral__capability__t.html">vsf_peripheral_capability_t</a>) <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> is_async <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__gpio__capability__t.html#ab0ed0c5e1c71a49dfa3672409bfae32c">support_output_and_set</a>: 1</td></tr>
-<tr class="memdesc:ab0ed0c5e1c71a49dfa3672409bfae32c"><td class="mdescLeft">&#160;</td><td class="mdescRight">To avoid bumps when converting from input to output  <br /></td></tr>
+<tr class="memdesc:ab0ed0c5e1c71a49dfa3672409bfae32c"><td class="mdescLeft">&#160;</td><td class="mdescRight">指示 GPIO 操作是否为异步的标志。 当设置此标志时，仅在连续操作同一端口时才能保证操作的顺序性。 当与不同端口一起使用时，对引脚的操作可能不是顺序执行的。  <br /></td></tr>
 <tr class="separator:ab0ed0c5e1c71a49dfa3672409bfae32c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4742ddfb68ab2fb182b3a184a1322080" id="r_a4742ddfb68ab2fb182b3a184a1322080"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__gpio__capability__t.html#a4742ddfb68ab2fb182b3a184a1322080">support_output_and_clear</a>: 1</td></tr>
+<tr class="memdesc:a4742ddfb68ab2fb182b3a184a1322080"><td class="mdescLeft">&#160;</td><td class="mdescRight">支持原子输出和清除操作。 在从输入模式切换到输出模式时防止信号抖动。  <br /></td></tr>
 <tr class="separator:a4742ddfb68ab2fb182b3a184a1322080"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ce654274730ae7da87a0debe1ab44d9" id="r_a4ce654274730ae7da87a0debe1ab44d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__gpio__capability__t.html#a4ce654274730ae7da87a0debe1ab44d9">support_interrupt</a>: 1</td></tr>
-<tr class="memdesc:a4ce654274730ae7da87a0debe1ab44d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">supports external interrupts  <br /></td></tr>
+<tr class="memdesc:a4ce654274730ae7da87a0debe1ab44d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">支持外部中断功能。 当设置此标志时，GPIO 引脚可以配置为生成中断。  <br /></td></tr>
 <tr class="separator:a4ce654274730ae7da87a0debe1ab44d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49bb8a6236c405d34bfeb27dcbb2278b" id="r_a49bb8a6236c405d34bfeb27dcbb2278b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__gpio__capability__t.html#a49bb8a6236c405d34bfeb27dcbb2278b">pin_count</a></td></tr>
+<tr class="memdesc:a49bb8a6236c405d34bfeb27dcbb2278b"><td class="mdescLeft">&#160;</td><td class="mdescRight">硬件中引脚的总数。 包括所有引脚，即使有些引脚不能配置为 GPIO。 如果某些引脚不能用作 GPIO，则 pin_mask 中相应的位为 0。  <br /></td></tr>
 <tr class="separator:a49bb8a6236c405d34bfeb27dcbb2278b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91ca8e40c8908b7468684b64b3e3d5b1" id="r_a91ca8e40c8908b7468684b64b3e3d5b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__template__gpio_8h.html#a80ec0ca26ef106d2f3dad9a7aa9de8b5">vsf_gpio_pin_mask_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__gpio__capability__t.html#a91ca8e40c8908b7468684b64b3e3d5b1">pin_mask</a></td></tr>
+<tr class="memdesc:a91ca8e40c8908b7468684b64b3e3d5b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">可用引脚掩码，指示哪些引脚可用作 GPIO。 常见的位模式包括：  <br /></td></tr>
 <tr class="separator:a91ca8e40c8908b7468684b64b3e3d5b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">结构体成员变量说明</h2>
@@ -82,9 +85,8 @@
       </table>
 </div><div class="memdoc">
 
-<p>To avoid bumps when converting from input to output </p>
-<p>Asynchronous GPIO they are only guaranteed to be sequential when operating the current port consecutively.</p>
-<p>When they are used together with other ports, they are not guaranteed to be sequential for the operation of the pins of different ports. </p>
+<p>指示 GPIO 操作是否为异步的标志。 当设置此标志时，仅在连续操作同一端口时才能保证操作的顺序性。 当与不同端口一起使用时，对引脚的操作可能不是顺序执行的。 </p>
+<p>支持原子输出和设置操作。 在从输入模式切换到输出模式时防止信号抖动。 </p>
 
 </div>
 </div>
@@ -100,6 +102,8 @@
       </table>
 </div><div class="memdoc">
 
+<p>支持原子输出和清除操作。 在从输入模式切换到输出模式时防止信号抖动。 </p>
+
 </div>
 </div>
 <a id="a4ce654274730ae7da87a0debe1ab44d9" name="a4ce654274730ae7da87a0debe1ab44d9"></a>
@@ -114,7 +118,7 @@
       </table>
 </div><div class="memdoc">
 
-<p>supports external interrupts </p>
+<p>支持外部中断功能。 当设置此标志时，GPIO 引脚可以配置为生成中断。 </p>
 
 </div>
 </div>
@@ -129,7 +133,8 @@
         </tr>
       </table>
 </div><div class="memdoc">
-<p>total number of pins of hardware, even if some pins cannot be configured as GPIO. if some of the pins cannot be used as GPIO,the corresponding bit in pin_mask is 0, otherwise is 1. </p>
+
+<p>硬件中引脚的总数。 包括所有引脚，即使有些引脚不能配置为 GPIO。 如果某些引脚不能用作 GPIO，则 pin_mask 中相应的位为 0。 </p>
 
 </div>
 </div>
@@ -144,7 +149,14 @@
         </tr>
       </table>
 </div><div class="memdoc">
-<p>available pin mask may be: 0x000000FF (8 pins), 0x0000FFFF (16 pins), 0xFFFFFFFF (32 pins), 0xFFFFFFFE (31 pins, PIN0 is not available) </p>
+
+<p>可用引脚掩码，指示哪些引脚可用作 GPIO。 常见的位模式包括： </p>
+<ul>
+<li>0x000000FF：8 个可用引脚</li>
+<li>0x0000FFFF：16 个可用引脚</li>
+<li>0xFFFFFFFF：所有 32 个引脚都可用</li>
+<li>0xFFFFFFFE：31 个可用引脚（PIN0 不可用） </li>
+</ul>
 
 </div>
 </div>

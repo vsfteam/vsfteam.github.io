@@ -82,17 +82,17 @@
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#   define VSF_USART_CFG_REIMPLEMENT_API_CAPABILITY                 DISABLED</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#ifndef VSF_USART_CFG_REIMPLEMENT_API_CMD</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#   define VSF_USART_CFG_REIMPLEMENT_API_CMD                        DISABLED</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#ifndef VSF_USART_CFG_REIMPLEMENT_API_CTRL</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#   define VSF_USART_CFG_REIMPLEMENT_API_CTRL                       DISABLED</span></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#ifdef VSF_USART_CFG_IMP_REMAP_PREFIX</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#   undef VSF_USART_CFG_REIMPLEMENT_API_REQUEST</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#   undef VSF_USART_CFG_REIMPLEMENT_API_CAPABILITY</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#   undef VSF_USART_CFG_REIMPLEMENT_API_CMD</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#   undef VSF_USART_CFG_REIMPLEMENT_API_CTRL</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#   define VSF_USART_CFG_REIMPLEMENT_API_REQUEST                    ENABLED</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#   define VSF_USART_CFG_REIMPLEMENT_API_CAPABILITY                 ENABLED</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#   define VSF_USART_CFG_REIMPLEMENT_API_CMD                        ENABLED</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#   define VSF_USART_CFG_REIMPLEMENT_API_CTRL                       ENABLED</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#if VSF_USART_CFG_REIMPLEMENT_API_CAPABILITY == DISABLED</span></div>
@@ -136,7 +136,7 @@
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">#define vsf_real_usart_cancel_tx            VSF_MCONNECT(VSF_USART_CFG_IMP_PREFIX, _usart_cancel_tx)</span></div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#define vsf_real_usart_get_tx_count         VSF_MCONNECT(VSF_USART_CFG_IMP_PREFIX, _usart_get_tx_count)</span></div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#define vsf_real_usart_capability           VSF_MCONNECT(VSF_USART_CFG_IMP_PREFIX, _usart_capability)</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#define vsf_real_usart_cmd                  VSF_MCONNECT(VSF_USART_CFG_IMP_PREFIX, _usart_cmd)</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#define vsf_real_usart_ctrl                 VSF_MCONNECT(VSF_USART_CFG_IMP_PREFIX, _usart_ctrl)</span></div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#define vsf_real_usart_tx_send_break        VSF_MCONNECT(VSF_USART_CFG_IMP_PREFIX, _usart_tx_send_break)</span></div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">/*============================ IMPLEMENTATION ================================*/</span></div>
@@ -185,8 +185,8 @@
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><a class="code hl_struct" href="structvsf__usart__capability__t.html">vsf_usart_capability_t</a> vsf_real_usart_capability(vsf_real_usart_t *usart_ptr)</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>{</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <a class="code hl_struct" href="structvsf__usart__capability__t.html">vsf_usart_capability_t</a> usart_capability = {</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        .irq_mask                       = VSF_USART_CFG_CAPABILITY_IRQ_MASK,</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        .<a class="code hl_variable" href="structvsf__usart__capability__t.html#add44f8aff7f45cbce35a2f6572b2c6a2">max_baudrate</a>                   = VSF_USART_CFG_CAPABILITY_MAX_BAUDRATE,</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        .<a class="code hl_variable" href="structvsf__usart__capability__t.html#a49e430227039df6084da33b11137528c">irq_mask</a>                       = VSF_USART_CFG_CAPABILITY_IRQ_MASK,</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        .max_baudrate                   = VSF_USART_CFG_CAPABILITY_MAX_BAUDRATE,</div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        .min_baudrate                   = VSF_USART_CFG_CAPABILITY_MIN_BAUDRATE,</div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        .txfifo_depth                   = VSF_USART_CFG_CAPABILITY_TXFIFO_DEPTH,</div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        .rxfifo_depth                   = VSF_USART_CFG_CAPABILITY_RXFIFO_DEPTH,</div>
@@ -201,8 +201,8 @@
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>}</div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="preprocessor">#if VSF_USART_CFG_REIMPLEMENT_API_CMD == DISABLED</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_real_usart_cmd(vsf_real_usart_t *usart_ptr, <a class="code hl_enumeration" href="vsf__template__usart_8h.html#a61408b693aba8abe988747d41dd3ed76">vsf_usart_cmd_t</a> cmd, <span class="keywordtype">void</span> * param)</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="preprocessor">#if VSF_USART_CFG_REIMPLEMENT_API_CTRL == DISABLED</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_real_usart_ctrl(vsf_real_usart_t *usart_ptr, <a class="code hl_enumeration" href="vsf__template__usart_8h.html#aadf92f7ae462e0359c1aa85b229745ae">vsf_usart_ctrl_t</a> ctrl, <span class="keywordtype">void</span> * param)</div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>{</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <a class="code hl_define" href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a>(0);</div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
@@ -222,7 +222,7 @@
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="preprocessor">#undef VSF_USART_CFG_CAPABILITY_MIN_DATA_BITS</span></div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="preprocessor">#undef VSF_USART_CFG_CAPABILITY_SUPPORT_RX_TIMEOUT</span></div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="preprocessor">#undef VSF_USART_CFG_REIMPLEMENT_API_REQUEST</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="preprocessor">#undef VSF_USART_CFG_REIMPLEMENT_API_CMD</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="preprocessor">#undef VSF_USART_CFG_REIMPLEMENT_API_CTRL</span></div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="preprocessor">#undef vsf_real_usart_t</span></div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="preprocessor">#undef vsf_real_usart_init</span></div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="preprocessor">#undef vsf_real_usart_fini</span></div>
@@ -237,7 +237,7 @@
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="preprocessor">#undef vsf_real_usart_cancel_tx</span></div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="preprocessor">#undef vsf_real_usart_get_tx_count</span></div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="preprocessor">#undef vsf_real_usart_capability</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="preprocessor">#undef vsf_real_usart_cmd</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="preprocessor">#undef vsf_real_usart_ctrl</span></div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="preprocessor">#undef vsf_real_usart_tx_send_break</span></div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment">/*============================ IMPLEMENTATION ================================*/</span></div>
@@ -263,7 +263,7 @@
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="preprocessor">#   define vsf_imp_usart_cancel_tx                  VSF_MCONNECT(VSF_USART_CFG_IMP_PREFIX, _usart_cancel_tx)</span></div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="preprocessor">#   define vsf_imp_usart_get_rx_count               VSF_MCONNECT(VSF_USART_CFG_IMP_PREFIX, _usart_get_rx_count)</span></div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="preprocessor">#   define vsf_imp_usart_get_tx_count               VSF_MCONNECT(VSF_USART_CFG_IMP_PREFIX, _usart_get_tx_count)</span></div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="preprocessor">#   define vsf_imp_usart_cmd                        VSF_MCONNECT(VSF_USART_CFG_IMP_PREFIX, _usart_cmd)</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="preprocessor">#   define vsf_imp_usart_ctrl                       VSF_MCONNECT(VSF_USART_CFG_IMP_PREFIX, _usart_ctrl)</span></div>
 <div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="preprocessor">#   define vsf_remap_usart_t                        VSF_MCONNECT(VSF_USART_CFG_IMP_REMAP_PREFIX, _usart_t)</span></div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="preprocessor">#   define vsf_remap_usart_init                     VSF_MCONNECT(VSF_USART_CFG_IMP_REMAP_PREFIX, _usart_init)</span></div>
@@ -284,7 +284,7 @@
 <div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="preprocessor">#   define vsf_remap_usart_cancel_tx                VSF_MCONNECT(VSF_USART_CFG_IMP_REMAP_PREFIX, _usart_cancel_tx)</span></div>
 <div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="preprocessor">#   define vsf_remap_usart_get_rx_count             VSF_MCONNECT(VSF_USART_CFG_IMP_REMAP_PREFIX, _usart_get_rx_count)</span></div>
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="preprocessor">#   define vsf_remap_usart_get_tx_count             VSF_MCONNECT(VSF_USART_CFG_IMP_REMAP_PREFIX, _usart_get_tx_count)</span></div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="preprocessor">#   define vsf_remap_usart_cmd                      VSF_MCONNECT(VSF_USART_CFG_IMP_REMAP_PREFIX, _usart_cmd)</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="preprocessor">#   define vsf_remap_usart_ctrl                     VSF_MCONNECT(VSF_USART_CFG_IMP_REMAP_PREFIX, _usart_ctrl)</span></div>
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="preprocessor">#   define VSF_USART_CFG_IMP_REMAP_FUNCTIONS                                                                        \</span></div>
 <div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="preprocessor">        vsf_err_t vsf_imp_usart_init(vsf_imp_usart_t *usart_ptr, vsf_usart_cfg_t *cfg_ptr)                          \</span></div>
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="preprocessor">        {                                                                                                           \</span></div>
@@ -376,10 +376,10 @@
 <div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="preprocessor">            VSF_HAL_ASSERT(usart_ptr != NULL);                                                                      \</span></div>
 <div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span><span class="preprocessor">            return vsf_remap_usart_get_tx_count(usart_ptr);                                                         \</span></div>
 <div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span><span class="preprocessor">        }                                                                                                           \</span></div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span><span class="preprocessor">        vsf_err_t vsf_imp_usart_cmd(vsf_imp_usart_t *usart_ptr, vsf_usart_cmd_t cmd, void *param)                   \</span></div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span><span class="preprocessor">        vsf_err_t vsf_imp_usart_ctrl(vsf_imp_usart_t *usart_ptr, vsf_usart_ctrl_t ctrl, void *param)                \</span></div>
 <div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span><span class="preprocessor">        {                                                                                                           \</span></div>
 <div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span><span class="preprocessor">            VSF_HAL_ASSERT(usart_ptr != NULL);                                                                      \</span></div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span><span class="preprocessor">            return vsf_remap_usart_cmd(usart_ptr, cmd, param);                                                      \</span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span><span class="preprocessor">            return vsf_remap_usart_ctrl(usart_ptr, ctrl, param);                                                    \</span></div>
 <div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span><span class="preprocessor">        }</span></div>
 <div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
@@ -434,7 +434,7 @@
 <div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span><span class="preprocessor">#undef vsf_imp_usart_cancel_tx</span></div>
 <div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span><span class="preprocessor">#undef vsf_imp_usart_get_rx_count</span></div>
 <div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span><span class="preprocessor">#undef vsf_imp_usart_get_tx_count</span></div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span><span class="preprocessor">#undef vsf_imp_usart_cmd</span></div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span><span class="preprocessor">#undef vsf_imp_usart_ctrl</span></div>
 <div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span><span class="preprocessor">#undef vsf_imp_usart_tx_send_break</span></div>
 <div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span> </div>
 <div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span><span class="preprocessor">#undef vsf_remap_usart_t</span></div>
@@ -456,7 +456,7 @@
 <div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span><span class="preprocessor">#undef vsf_remap_usart_cancel_tx</span></div>
 <div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span><span class="preprocessor">#undef vsf_remap_usart_get_rx_count</span></div>
 <div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span><span class="preprocessor">#undef vsf_remap_usart_get_tx_count</span></div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span><span class="preprocessor">#undef vsf_remap_usart_cmd</span></div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span><span class="preprocessor">#undef vsf_remap_usart_ctrl</span></div>
 <div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span><span class="preprocessor">#undef vsf_remap_usart_tx_send_break</span></div>
 <div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span> </div>
 <div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_HAL_USE_USART */</span><span class="preprocessor"></span></div>
@@ -465,11 +465,11 @@
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4ad38dface0088c102a859739a5d071a4d"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4ad38dface0088c102a859739a5d071a4d">VSF_ERR_FAIL</a></div><div class="ttdeci">@ VSF_ERR_FAIL</div><div class="ttdoc">failed</div><div class="ttdef"><b>Definition</b> __type.h:51</div></div>
 <div class="ttc" id="astdint_8h_html_a633264eb9df8f0520acccbbfb406f806"><div class="ttname"><a href="stdint_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a></div><div class="ttdeci">unsigned int uint_fast32_t</div><div class="ttdef"><b>Definition</b> stdint.h:27</div></div>
 <div class="ttc" id="astdint_8h_html_a9db34f43e43298cb4db12999aec7c4be"><div class="ttname"><a href="stdint_8h.html#a9db34f43e43298cb4db12999aec7c4be">int_fast32_t</a></div><div class="ttdeci">int int_fast32_t</div><div class="ttdef"><b>Definition</b> stdint.h:26</div></div>
-<div class="ttc" id="astructvsf__usart__capability__t_html"><div class="ttname"><a href="structvsf__usart__capability__t.html">vsf_usart_capability_t</a></div><div class="ttdef"><b>Definition</b> vsf_template_usart.h:695</div></div>
-<div class="ttc" id="astructvsf__usart__capability__t_html_add44f8aff7f45cbce35a2f6572b2c6a2"><div class="ttname"><a href="structvsf__usart__capability__t.html#add44f8aff7f45cbce35a2f6572b2c6a2">vsf_usart_capability_t::max_baudrate</a></div><div class="ttdeci">uint32_t max_baudrate</div><div class="ttdef"><b>Definition</b> vsf_template_usart.h:702</div></div>
+<div class="ttc" id="astructvsf__usart__capability__t_html"><div class="ttname"><a href="structvsf__usart__capability__t.html">vsf_usart_capability_t</a></div><div class="ttdoc">USART capability structure Defines the hardware capabilities and limitations of the USART interface.</div><div class="ttdef"><b>Definition</b> vsf_template_usart.h:729</div></div>
+<div class="ttc" id="astructvsf__usart__capability__t_html_a49e430227039df6084da33b11137528c"><div class="ttname"><a href="structvsf__usart__capability__t.html#a49e430227039df6084da33b11137528c">vsf_usart_capability_t::irq_mask</a></div><div class="ttdeci">vsf_usart_irq_mask_t irq_mask</div><div class="ttdef"><b>Definition</b> usart.h:256</div></div>
 <div class="ttc" id="avsf__hal__cfg_8h_html_ac53e084d43f6705ad3cb2687eb7a986c"><div class="ttname"><a href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a></div><div class="ttdeci">#define VSF_HAL_ASSERT(__CON)</div><div class="ttdoc">all hal modules use this configuration file</div><div class="ttdef"><b>Definition</b> vsf_hal_cfg.h:36</div></div>
 <div class="ttc" id="avsf__template__instance__implementation_8h_html"><div class="ttname"><a href="vsf__template__instance__implementation_8h.html">vsf_template_instance_implementation.h</a></div></div>
-<div class="ttc" id="avsf__template__usart_8h_html_a61408b693aba8abe988747d41dd3ed76"><div class="ttname"><a href="vsf__template__usart_8h.html#a61408b693aba8abe988747d41dd3ed76">vsf_usart_cmd_t</a></div><div class="ttdeci">vsf_usart_cmd_t</div><div class="ttdoc">Predefined VSF USART command that can be reimplemented in specific hal drivers.</div><div class="ttdef"><b>Definition</b> vsf_template_usart.h:647</div></div>
+<div class="ttc" id="avsf__template__usart_8h_html_aadf92f7ae462e0359c1aa85b229745ae"><div class="ttname"><a href="vsf__template__usart_8h.html#aadf92f7ae462e0359c1aa85b229745ae">vsf_usart_ctrl_t</a></div><div class="ttdeci">vsf_usart_ctrl_t</div><div class="ttdoc">USART control commands Defines the available control operations for USART instances.</div><div class="ttdef"><b>Definition</b> vsf_template_usart.h:645</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -71,10 +71,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a15fc89b7ccfe60caae54cfabde4b62ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">&zwj;**  <br /></td></tr>
 <tr class="separator:a15fc89b7ccfe60caae54cfabde4b62ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb5d8fc58160cb80dd89b85a5c308614" id="r_acb5d8fc58160cb80dd89b85a5c308614"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__template__gpio_8h.html#a80ec0ca26ef106d2f3dad9a7aa9de8b5">vsf_gpio_pin_mask_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gpio__common_8c.html#acb5d8fc58160cb80dd89b85a5c308614">vsf_gpio_get_direction</a> (<a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> *gpio_ptr, <a class="el" href="vsf__template__gpio_8h.html#a80ec0ca26ef106d2f3dad9a7aa9de8b5">vsf_gpio_pin_mask_t</a> pin_mask)</td></tr>
-<tr class="memdesc:acb5d8fc58160cb80dd89b85a5c308614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the orientation of one or more pins of the gpio instance.  <br /></td></tr>
+<tr class="memdesc:acb5d8fc58160cb80dd89b85a5c308614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get GPIO port pin direction.  <br /></td></tr>
 <tr class="separator:acb5d8fc58160cb80dd89b85a5c308614"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5b5c53271e11d9d2992a1a5e8a6c493" id="r_ae5b5c53271e11d9d2992a1a5e8a6c493"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gpio__common_8c.html#ae5b5c53271e11d9d2992a1a5e8a6c493">vsf_gpio_set_input</a> (<a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> *gpio_ptr, <a class="el" href="vsf__template__gpio_8h.html#a80ec0ca26ef106d2f3dad9a7aa9de8b5">vsf_gpio_pin_mask_t</a> pin_mask)</td></tr>
-<tr class="memdesc:ae5b5c53271e11d9d2992a1a5e8a6c493"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the direction of one or more pins of the gpio instance to input.  <br /></td></tr>
+<tr class="memdesc:ae5b5c53271e11d9d2992a1a5e8a6c493"><td class="mdescLeft">&#160;</td><td class="mdescRight">set specified pins to input mode  <br /></td></tr>
 <tr class="separator:ae5b5c53271e11d9d2992a1a5e8a6c493"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a1839faa869f34a1887a13ffcf98a56" id="r_a2a1839faa869f34a1887a13ffcf98a56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gpio__common_8c.html#a2a1839faa869f34a1887a13ffcf98a56">vsf_gpio_set_output</a> (<a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> *gpio_ptr, <a class="el" href="vsf__template__gpio_8h.html#a80ec0ca26ef106d2f3dad9a7aa9de8b5">vsf_gpio_pin_mask_t</a> pin_mask)</td></tr>
 <tr class="memdesc:a2a1839faa869f34a1887a13ffcf98a56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the direction of one or more pins of the gpio instance to output.  <br /></td></tr>
@@ -154,7 +154,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structvsf__gpio__cfg__t.html">vsf_gpio_cfg_t</a> *&#160;</td>
-          <td class="paramname"><em>cfg</em>&#160;</td>
+          <td class="paramname"><em>cfg_ptr</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -169,7 +169,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>a pointer to structure <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>pin mask, each pin corresponds to one bit, the value of this bit 1 means configuration is required </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cfg</td><td>a pointer to structure <a class="el" href="structvsf__gpio__cfg__t.html">vsf_gpio_cfg_t</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cfg_ptr</td><td>a pointer to structure <a class="el" href="structvsf__gpio__cfg__t.html">vsf_gpio_cfg_t</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -211,11 +211,11 @@ Functions</h2></td></tr>
 
 <p>&zwj;** </p>
 <p>&zwj;**</p>
-<p>Set the orientation of one or more pins of the gpio instance </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Set GPIO port pin direction </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>a pointer to structure <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">direction_mask</td><td>direction mask, 1 for output, 0 for input </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>pin mask, each pin corresponds to one bit, the value of this bit 1 means configuration is required </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>a pin mask, each pin corresponds to a bit, value 1 of the bit to change, 0 means unchanged </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">direction_mask</td><td>a direction mask, each pin corresponds to a bit, value 1 for output, 0 for input </td></tr>
   </table>
   </dd>
 </dl>
@@ -248,15 +248,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the orientation of one or more pins of the gpio instance. </p>
+<p>Get GPIO port pin direction. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>a pointer to structure <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>pin mask, each pin corresponds to one bit, the value of this bit 1 means configuration is required </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>a pin mask, each pin corresponds to a bit. direction of all pins in pin_mask will be returned. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vsf_gpio_pin_mask_t: The value of all pin_mask directions, 1 for output, 0 for input </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_gpio_pin_mask_t: the direction of all pins, value 1 for output, 0 for input </dd></dl>
 
 </div>
 </div>
@@ -286,11 +286,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the direction of one or more pins of the gpio instance to input. </p>
+<p>set specified pins to input mode </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>a pointer to structure <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">Pin</td><td>mask, each pin corresponds to one bit, the value of the bit 1 indicates the need to set to input </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>a pin mask, each pin corresponds to a bit, value 1 to set as input </td></tr>
   </table>
   </dd>
 </dl>
@@ -327,7 +327,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>a pointer to structure <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">Pin</td><td>mask, each pin corresponds to one bit, the value of the bit 1 indicates the need to set to output </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>pin mask, each pin corresponds to one bit, the value of the bit 1 indicates the need to set to output </td></tr>
   </table>
   </dd>
 </dl>
@@ -364,7 +364,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>a pointer to structure <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">Pin</td><td>mask, each pin corresponds to one bit, the value of the bit 1 indicates the need to set to output </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>pin mask, each pin corresponds to one bit, the value of the bit 1 indicates the need to set to output </td></tr>
   </table>
   </dd>
 </dl>
@@ -434,7 +434,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>pointer to the structure <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a>, refer to <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>value of the pin, each pin corresponds to a bit, 1 means high, 0 means high </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>value of the pin, each pin corresponds to a bit, 1 means high, 0 means low </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>pin mask, each pin corresponds to one bit, 1 means the bit needs to be written, 0 means the bit does not need to be updated </td></tr>
   </table>
   </dd>
@@ -587,7 +587,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>This API can be used when modifying the IO direction to output and set to high in order to avoid possible pulses. Note that it is not supported by all hardware. You can get if this mode is supported with <a class="el" href="vsf__template__gpio_8h.html#acd1902b543eb1ca36cf7ebaf21c51ee2">vsf_gpio_capability()</a> (is_support_output_and_set) </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This API can be used when modifying the IO direction to output and set to high in order to avoid possible pulses. Note that it is not supported by all hardware. You can get if this mode is supported with <a class="el" href="vsf__template__gpio_8h.html#a74596d63d42b4dd9e8807c1649b8f3c1" title="Get the capability of gpio instance.">vsf_gpio_capability()</a> (support_output_and_set) </dd></dl>
 
 </div>
 </div>
@@ -625,7 +625,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>This API can be used when modifying the IO direction to output and set to low in order to avoid possible pulses. Note that it is not supported by all hardware. You can get if this mode is supported with <a class="el" href="vsf__template__gpio_8h.html#acd1902b543eb1ca36cf7ebaf21c51ee2">vsf_gpio_capability()</a> (is_support_output_and_set) </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This API can be used when modifying the IO direction to output and set to low in order to avoid possible pulses. Note that it is not supported by all hardware. You can get if this mode is supported with <a class="el" href="vsf__template__gpio_8h.html#a74596d63d42b4dd9e8807c1649b8f3c1" title="Get the capability of gpio instance.">vsf_gpio_capability()</a> (support_output_and_clear) </dd></dl>
 
 </div>
 </div>
@@ -685,10 +685,11 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>a pointer to structure <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cfg</td><td>a pointer to structure <a class="el" href="structvsf__gpio__exti__irq__cfg__t.html">vsf_gpio_exti_irq_cfg_t</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cfg_ptr</td><td>a pointer to structure <a class="el" href="structvsf__gpio__exti__irq__cfg__t.html">vsf_gpio_exti_irq_cfg_t</a> </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if successful, or a negative error code </dd></dl>
 
 </div>
 </div>
@@ -722,12 +723,12 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>a pointer to structure <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>pin mask, each pin corresponds to one bit, 1 means the bit </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">prio</td><td>priority of the interrupt or vsf_arch_prio_invalid for disable </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>pin mask, each pin corresponds to one bit, 1 means the bit needs to be enabled, 0 means the bit does not need to be enabled </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>For some devices, prio parameter maybe shared between pins on the gpio. </dd>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if successful, or a negative error code </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>For some devices, the interrupt priority may be shared between pins on the gpio. </dd>
 <dd>
 All pending interrupts should be cleared before interrupts are enabled. </dd></dl>
 
@@ -763,11 +764,12 @@ All pending interrupts should be cleared before interrupts are enabled. </dd></d
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>a pointer to structure <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>pin mask, each pin corresponds to one bit, 1 means the bit </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>pin mask, each pin corresponds to one bit, 1 means the bit needs to be disabled, 0 means the bit does not need to be disabled </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>For some devices, prio parameter maybe shared between pins on the gpio. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if successful, or a negative error code </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>For some devices, the interrupt settings may be shared between pins on the gpio. </dd></dl>
 
 </div>
 </div>

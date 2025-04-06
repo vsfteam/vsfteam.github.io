@@ -87,10 +87,10 @@
 <tr class="memdesc:a2f009838990797311c6f53b458c695c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">&zwj;**  <br /></td></tr>
 <tr class="separator:a2f009838990797311c6f53b458c695c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e8d9ccc6777f4e6a73685e0c9ff9a31" id="r_a8e8d9ccc6777f4e6a73685e0c9ff9a31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="io__lv0_8c.html#a8e8d9ccc6777f4e6a73685e0c9ff9a31">vsf_gpio_get_direction</a> (<a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> *pthis, <a class="el" href="vsf__template__gpio_8h.html#a80ec0ca26ef106d2f3dad9a7aa9de8b5">vsf_gpio_pin_mask_t</a> pin_mask)</td></tr>
-<tr class="memdesc:a8e8d9ccc6777f4e6a73685e0c9ff9a31"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取 gpio 实例的一个或者多个引脚的方向  <br /></td></tr>
+<tr class="memdesc:a8e8d9ccc6777f4e6a73685e0c9ff9a31"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取 GPIO 引脚方向  <br /></td></tr>
 <tr class="separator:a8e8d9ccc6777f4e6a73685e0c9ff9a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2715a56c8fb7c434fbf543c88b5c9a7" id="r_ac2715a56c8fb7c434fbf543c88b5c9a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="io__lv0_8c.html#ac2715a56c8fb7c434fbf543c88b5c9a7">vsf_gpio_set_input</a> (<a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> *pthis, <a class="el" href="vsf__template__gpio_8h.html#a80ec0ca26ef106d2f3dad9a7aa9de8b5">vsf_gpio_pin_mask_t</a> pin_mask)</td></tr>
-<tr class="memdesc:ac2715a56c8fb7c434fbf543c88b5c9a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置 gpio 实例的一个或者多个引脚的方向为输入  <br /></td></tr>
+<tr class="memdesc:ac2715a56c8fb7c434fbf543c88b5c9a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置指定引脚为输入模式  <br /></td></tr>
 <tr class="separator:ac2715a56c8fb7c434fbf543c88b5c9a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77272c001efcf87dc1998ced393717d4" id="r_a77272c001efcf87dc1998ced393717d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="io__lv0_8c.html#a77272c001efcf87dc1998ced393717d4">vsf_gpio_set_output</a> (<a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> *pthis, <a class="el" href="vsf__template__gpio_8h.html#a80ec0ca26ef106d2f3dad9a7aa9de8b5">vsf_gpio_pin_mask_t</a> pin_mask)</td></tr>
 <tr class="memdesc:a77272c001efcf87dc1998ced393717d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置 gpio 实例的一个或者多个引脚的方向为输出  <br /></td></tr>
@@ -237,11 +237,11 @@
 
 <p>&zwj;** </p>
 <p>&zwj;**</p>
-<p>设置 gpio 实例的一个或者多个引脚的方向 </p><dl class="params"><dt>参数</dt><dd>
+<p>设置 GPIO 引脚方向 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针，参考 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，该bit的值位1表示需要配置 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">direction_mask</td><td>方向掩码，1 表示输出，0 表示输入 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>指向结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，该位的值为 1 表示修改，0 表示不变 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">direction_mask</td><td>方向掩码，每一个引脚对应一个位，1 表示输出，0 表示输入 </td></tr>
   </table>
   </dd>
 </dl>
@@ -274,15 +274,15 @@
       </table>
 </div><div class="memdoc">
 
-<p>获取 gpio 实例的一个或者多个引脚的方向 </p>
+<p>获取 GPIO 引脚方向 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针，参考 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，该bit的值位1表示需要获取 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>指向结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，返回 pin_mask 中所有引脚的方向 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>vsf_gpio_pin_mask_t: 所有pin_mask的方向的值，1 表示输出，0 表示输入 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_gpio_pin_mask_t: 所有引脚的方向，1 表示输出，0 表示输入 </dd></dl>
 
 </div>
 </div>
@@ -312,11 +312,11 @@
       </table>
 </div><div class="memdoc">
 
-<p>设置 gpio 实例的一个或者多个引脚的方向为输入 </p>
+<p>设置指定引脚为输入模式 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针，参考 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，该bit的值位1表示需要设置成输入 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>指向结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，该 bit 的值位 1 表示需要设置成输入 </td></tr>
   </table>
   </dd>
 </dl>
@@ -352,8 +352,8 @@
 <p>设置 gpio 实例的一个或者多个引脚的方向为输出 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针，参考 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，该bit的值位1表示需要设置成输出 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>指向结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，该 bit 的值位 1 表示需要设置成输出 </td></tr>
   </table>
   </dd>
 </dl>
@@ -389,8 +389,8 @@
 <p>反转 gpio 实例的一个或者多个引脚的方向 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针，参考 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，该bit的值位1表示需要反转 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>指向结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，该 bit 的值位 1 表示需要反转 </td></tr>
   </table>
   </dd>
 </dl>
@@ -450,9 +450,9 @@
 <p>设置 gpio 实例的一个或者多个的值 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针，参考 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，1表示该位需要写入，0表示该位不需要更新 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>引脚的值，每一个引脚对应一个位，1 表示高电平，0 表示高电平 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>指向结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，1 表示该位需要写入，0 表示该位不需要更新 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>引脚的值，每一个引脚对应一个位，1 表示高电平，0 表示低电平 </td></tr>
   </table>
   </dd>
 </dl>
@@ -488,8 +488,8 @@
 <p>设置 gpio 实例的一个或者多个引脚的值为高电平 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针，参考 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，1表示该位需要写入，0表示该位不需要更新 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>指向结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，1 表示该位需要写入，0 表示该位不需要更新 </td></tr>
   </table>
   </dd>
 </dl>
@@ -525,8 +525,8 @@
 <p>设置 gpio 实例的一个或者多个引脚的值为低电平 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针，参考 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，1表示该位需要写入，0表示该位不需要更新 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>指向结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，1 表示该位需要写入，0 表示该位不需要更新 </td></tr>
   </table>
   </dd>
 </dl>
@@ -562,8 +562,8 @@
 <p>反转 gpio 实例的一个或者多个引脚的值 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针，参考 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，1表示该位需要写入，0表示该位不需要更新 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_ptr</td><td>指向结构体 <a class="el" href="structvsf__gpio__t.html">vsf_gpio_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin_mask</td><td>引脚掩码，每一个引脚对应一个位，1 表示该位需要写入，0 表示该位不需要更新 </td></tr>
   </table>
   </dd>
 </dl>
