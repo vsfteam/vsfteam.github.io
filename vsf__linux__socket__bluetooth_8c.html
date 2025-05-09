@@ -65,6 +65,7 @@
 <code>#include &quot;<a class="el" href="poll_8h_source.html">../../../include/poll.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="bluetooth_8h_source.html">../../../include/bluetooth/bluetooth.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__linux__socket_8h_source.html">../vsf_linux_socket.h</a>&quot;</code><br />
+<code>#include &lt;btstack.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
@@ -85,14 +86,12 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a526950a5a9c7c71c90e5dd50010bc688" id="r_a526950a5a9c7c71c90e5dd50010bc688"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__socket__bluetooth_8c.html#a526950a5a9c7c71c90e5dd50010bc688">vsf_linux_open</a> (int dirfd, const char *pathname, int flags, <a class="el" href="linux_2include_2sys_2types_8h.html#adb8322e115035a284aab704909e63d00">mode_t</a> mode)</td></tr>
-<tr class="separator:a526950a5a9c7c71c90e5dd50010bc688"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adacb5bc501340b64e0d8479d1d159a49" id="r_adacb5bc501340b64e0d8479d1d159a49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__socket__bluetooth_8c.html#adacb5bc501340b64e0d8479d1d159a49">__vsf_linux_fd_close_ex</a> (<a class="el" href="classvsf__linux__process__t.html">vsf_linux_process_t</a> *process, int fd)</td></tr>
-<tr class="separator:adacb5bc501340b64e0d8479d1d159a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7739082bd0450bfb4f998e78bb7e833" id="r_ae7739082bd0450bfb4f998e78bb7e833"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__socket__bluetooth_8c.html#ae7739082bd0450bfb4f998e78bb7e833">__vsf_linux_pipe_fcntl</a> (<a class="el" href="classvsf__linux__fd__t.html">vsf_linux_fd_t</a> *sfd, int cmd, <a class="el" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> arg)</td></tr>
 <tr class="separator:ae7739082bd0450bfb4f998e78bb7e833"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa817f521d30e110f073a1cfbb8e4d8d7" id="r_aa817f521d30e110f073a1cfbb8e4d8d7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__socket__bluetooth_8c.html#aa817f521d30e110f073a1cfbb8e4d8d7">__vsf_linux_socket_stat</a> (<a class="el" href="classvsf__linux__fd__t.html">vsf_linux_fd_t</a> *sfd, struct <a class="el" href="structstat.html">stat</a> *buf)</td></tr>
 <tr class="separator:aa817f521d30e110f073a1cfbb8e4d8d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a8ffda2f7b2f655edb2d1f83cb2b179" id="r_a7a8ffda2f7b2f655edb2d1f83cb2b179"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__socket__bluetooth_8c.html#a7a8ffda2f7b2f655edb2d1f83cb2b179">__vsf_linux_bthci_on_events</a> (<a class="el" href="classvsf__linux__fd__priv__t.html">vsf_linux_fd_priv_t</a> *priv, void *param, short <a class="el" href="vsf__xboot_8c.html#a4e90600ee75b9c550c33f3aeda1fdabf">events</a>, <a class="el" href="vsf__arch__abstraction_8h.html#a1b0d8a7ae206accc2a7e6f5c4e3d78e3">vsf_protect_t</a> orig)</td></tr>
+<tr class="separator:a7a8ffda2f7b2f655edb2d1f83cb2b179"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -144,90 +143,6 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a526950a5a9c7c71c90e5dd50010bc688" name="a526950a5a9c7c71c90e5dd50010bc688"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a526950a5a9c7c71c90e5dd50010bc688">&#9670;&#160;</a></span>vsf_linux_open()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int vsf_linux_open </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>dirfd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>pathname</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>flags</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#adb8322e115035a284aab704909e63d00">mode_t</a>&#160;</td>
-          <td class="paramname"><em>mode</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="adacb5bc501340b64e0d8479d1d159a49" name="adacb5bc501340b64e0d8479d1d159a49"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adacb5bc501340b64e0d8479d1d159a49">&#9670;&#160;</a></span>__vsf_linux_fd_close_ex()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int __vsf_linux_fd_close_ex </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classvsf__linux__process__t.html">vsf_linux_process_t</a> *&#160;</td>
-          <td class="paramname"><em>process</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>fd</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ae7739082bd0450bfb4f998e78bb7e833" name="ae7739082bd0450bfb4f998e78bb7e833"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae7739082bd0450bfb4f998e78bb7e833">&#9670;&#160;</a></span>__vsf_linux_pipe_fcntl()</h2>
 
@@ -306,6 +221,46 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a7a8ffda2f7b2f655edb2d1f83cb2b179" name="a7a8ffda2f7b2f655edb2d1f83cb2b179"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a8ffda2f7b2f655edb2d1f83cb2b179">&#9670;&#160;</a></span>__vsf_linux_bthci_on_events()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void __vsf_linux_bthci_on_events </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__linux__fd__priv__t.html">vsf_linux_fd_priv_t</a> *&#160;</td>
+          <td class="paramname"><em>priv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>events</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__arch__abstraction_8h.html#a1b0d8a7ae206accc2a7e6f5c4e3d78e3">vsf_protect_t</a>&#160;</td>
+          <td class="paramname"><em>orig</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="aad2567a2eb02503fc3a1d59b48c002c5" name="aad2567a2eb02503fc3a1d59b48c002c5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aad2567a2eb02503fc3a1d59b48c002c5">&#9670;&#160;</a></span>vsf_linux_socket_bluetooth_op</h2>
@@ -328,11 +283,9 @@ Variables</h2></td></tr>
 <div class="line">        .fn_stat        = <a class="code hl_function" href="vsf__linux__socket__bluetooth_8c.html#aa817f521d30e110f073a1cfbb8e4d8d7">__vsf_linux_socket_stat</a>,</div>
 <div class="line">    },</div>
 <div class="line"> </div>
-<div class="line">    .fn_init            = __vsf_linux_socket_bluetooth_init,</div>
-<div class="line">    .fn_fini            = __vsf_linux_socket_bluetooth_fini,</div>
 <div class="line">    .fn_bind            = __vsf_linux_socket_bluetooth_bind,</div>
 <div class="line">}</div>
-<div class="ttc" id="astructvsf__linux__socket__bluetooth__priv__t_html"><div class="ttname"><a href="structvsf__linux__socket__bluetooth__priv__t.html">vsf_linux_socket_bluetooth_priv_t</a></div><div class="ttdef"><b>Definition</b> vsf_linux_socket_bluetooth.c:46</div></div>
+<div class="ttc" id="astructvsf__linux__socket__bluetooth__priv__t_html"><div class="ttname"><a href="structvsf__linux__socket__bluetooth__priv__t.html">vsf_linux_socket_bluetooth_priv_t</a></div><div class="ttdef"><b>Definition</b> vsf_linux_socket_bluetooth.c:49</div></div>
 <div class="ttc" id="avsf__linux__socket__bluetooth_8c_html_aa817f521d30e110f073a1cfbb8e4d8d7"><div class="ttname"><a href="vsf__linux__socket__bluetooth_8c.html#aa817f521d30e110f073a1cfbb8e4d8d7">__vsf_linux_socket_stat</a></div><div class="ttdeci">int __vsf_linux_socket_stat(vsf_linux_fd_t *sfd, struct stat *buf)</div><div class="ttdef"><b>Definition</b> vsf_linux_socket.c:77</div></div>
 </div><!-- fragment -->
 </div>
@@ -340,5 +293,5 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/b2bffdfb4f0db1d8db44315fdea8a17343d79c59" target="_blank">vsfteam/vsf@b2bffdf</a>
+  <a href="https://github.com/vsfteam/vsf/commit/7976da5262c3cc60acacd3518a4578c6f09f6ef8" target="_blank">vsfteam/vsf@7976da5</a>
 </div>
