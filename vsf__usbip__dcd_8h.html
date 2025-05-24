@@ -418,11 +418,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">        <span class="keywordflow">do</span> {                                                                    \</div>
-<div class="line">            __vk_usbip_server_trace(<span class="stringliteral">&quot;done urb%d %s%d &quot;</span> <a class="code hl_define" href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a>,   \</div>
+<div class="line">            <a class="code hl_typedef" href="stdint_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> actual_length = <a class="code hl_define" href="vsf__arch__abstraction_8h.html#ab24127d080994cbeede35a5f74ce37c3">be32_to_cpu</a>((__urb)-&gt;rep.actual_length);\</div>
+<div class="line">            __vk_usbip_server_trace(<span class="stringliteral">&quot;done urb%d %s%d %d bytes&quot;</span> <a class="code hl_define" href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a>,\</div>
 <div class="line">                                    (__urb)-&gt;req.seqnum,                        \</div>
 <div class="line">                                    (__urb)-&gt;req.direction ? <span class="stringliteral">&quot;IN&quot;</span> : <span class="stringliteral">&quot;OUT&quot;</span>,      \</div>
-<div class="line">                                    (__urb)-&gt;req.ep);                           \</div>
-<div class="line">            <a class="code hl_typedef" href="stdint_8h.html#a633264eb9df8f0520acccbbfb406f806">uint_fast32_t</a> actual_length = <a class="code hl_define" href="vsf__arch__abstraction_8h.html#ab24127d080994cbeede35a5f74ce37c3">be32_to_cpu</a>((__urb)-&gt;rep.actual_length);\</div>
+<div class="line">                                    (__urb)-&gt;req.ep,                            \</div>
+<div class="line">                                    actual_length);                             \</div>
 <div class="line">            if ((__urb)-&gt;req.direction &amp;&amp; actual_length) {                      \</div>
 <div class="line">                __vk_usbip_server_trace_buffer((__urb)-&gt;dynmem.buffer, actual_length);\</div>
 <div class="line">            }                                                                   \</div>
@@ -1423,5 +1424,5 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/adc10c49066e1f27d4a8df65815d6fc01edadef2" target="_blank">vsfteam/vsf@adc10c4</a>
+  <a href="https://github.com/vsfteam/vsf/commit/ee95940ceda5a1820d74214efcb6435ca4738c2d" target="_blank">vsfteam/vsf@ee95940</a>
 </div>
