@@ -451,35 +451,36 @@
 <div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>            <a class="code hl_define" href="vsf__timq__dlist_8h.html#a798dad7a0b2186d32c5e4ecc6a95363d">vsf_timq_remove</a>(&amp;__vsf_eda.timer.timq, this_ptr);</div>
 <div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>            this_ptr-&gt;use_as__vsf_eda_t.flag.state.is_timed = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>        }</div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>    <a class="code hl_define" href="vsf__os_8h.html#ae9a1ef1a05f21db937560b964cd9c49a">vsf_unprotect_sched</a>(lock_status);</div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a>;</div>
-<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>}</div>
-<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span> </div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span><a class="code hl_define" href="____compiler_8h.html#a7a070e67ad5fc20d5df303390dfb97cb">VSF_CAL_SECTION</a>(<span class="stringliteral">&quot;.text.vsf.kernel.vsf_teda_cancel_timer&quot;</span>)</div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span><a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code hl_function" href="vsf__eda_8h.html#a1d3461225844528e614f734d0f45cad8">vsf_teda_cancel_timer</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>{</div>
-<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>    <a class="code hl_function" href="vsf__eda_8h.html#ae72f7e9bc1a706b73986d834cb4a82f2">__vsf_teda_cancel_timer</a>(<a class="code hl_define" href="lvgl_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>);</div>
-<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span><span class="preprocessor">#if VSF_KERNEL_CFG_ALLOW_KERNEL_BEING_PREEMPTED == ENABLED</span></div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>    <a class="code hl_function" href="vsf__evtq_8h.html#aae2b42edaa7e48a85463f279f9855952">vsf_evtq_clean_evt</a>(<a class="code hl_enumvalue" href="vsf__eda_8h.html#a6225ae76d17f366ac80739a63a375ab4ad7eb13d50b7a330a530d9053fe6399e7">VSF_EVT_TIMER</a>);</div>
-<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a>;</div>
-<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>}</div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span> </div>
-<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span><span class="preprocessor">#if __IS_COMPILER_ARM_COMPILER_6__</span></div>
-<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span><span class="preprocessor">#   pragma clang diagnostic pop</span></div>
-<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span> </div>
-<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span><span class="preprocessor">#if __IS_COMPILER_GCC__</span></div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span><span class="preprocessor">#   pragma GCC diagnostic pop</span></div>
-<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span> </div>
-<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_KERNEL_CFG_EDA_SUPPORT_TIMER</span></div>
-<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span> </div>
-<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span><span class="preprocessor">#if __IS_COMPILER_IAR__</span></div>
-<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span><span class="preprocessor">#   pragma diag_warning=pe111</span></div>
-<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span> </div>
-<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_KERNEL &amp;&amp; __EDA_GADGET__</span></div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>        this_ptr-&gt;use_as__vsf_eda_t.flag.state.is_to_set_due = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>    <a class="code hl_define" href="vsf__os_8h.html#ae9a1ef1a05f21db937560b964cd9c49a">vsf_unprotect_sched</a>(lock_status);</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a>;</div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>}</div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span> </div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span><a class="code hl_define" href="____compiler_8h.html#a7a070e67ad5fc20d5df303390dfb97cb">VSF_CAL_SECTION</a>(<span class="stringliteral">&quot;.text.vsf.kernel.vsf_teda_cancel_timer&quot;</span>)</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span><a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code hl_function" href="vsf__eda_8h.html#a1d3461225844528e614f734d0f45cad8">vsf_teda_cancel_timer</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>{</div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>    <a class="code hl_function" href="vsf__eda_8h.html#ae72f7e9bc1a706b73986d834cb4a82f2">__vsf_teda_cancel_timer</a>(<a class="code hl_define" href="lvgl_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>);</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span><span class="preprocessor">#if VSF_KERNEL_CFG_ALLOW_KERNEL_BEING_PREEMPTED == ENABLED</span></div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>    <a class="code hl_function" href="vsf__evtq_8h.html#aae2b42edaa7e48a85463f279f9855952">vsf_evtq_clean_evt</a>(<a class="code hl_enumvalue" href="vsf__eda_8h.html#a6225ae76d17f366ac80739a63a375ab4ad7eb13d50b7a330a530d9053fe6399e7">VSF_EVT_TIMER</a>);</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a>;</div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>}</div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span> </div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span><span class="preprocessor">#if __IS_COMPILER_ARM_COMPILER_6__</span></div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span><span class="preprocessor">#   pragma clang diagnostic pop</span></div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span> </div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span><span class="preprocessor">#if __IS_COMPILER_GCC__</span></div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span><span class="preprocessor">#   pragma GCC diagnostic pop</span></div>
+<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span> </div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_KERNEL_CFG_EDA_SUPPORT_TIMER</span></div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span> </div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span><span class="preprocessor">#if __IS_COMPILER_IAR__</span></div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span><span class="preprocessor">#   pragma diag_warning=pe111</span></div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span> </div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_KERNEL &amp;&amp; __EDA_GADGET__</span></div>
 <div class="ttc" id="a____compiler_8h_html_a7a070e67ad5fc20d5df303390dfb97cb"><div class="ttname"><a href="____compiler_8h.html#a7a070e67ad5fc20d5df303390dfb97cb">VSF_CAL_SECTION</a></div><div class="ttdeci">#define VSF_CAL_SECTION(__SEC_STR)</div><div class="ttdef"><b>Definition</b> __compiler.h:186</div></div>
 <div class="ttc" id="a____type_8h_html_a6885b194de594173e9e976ee7bada865"><div class="ttname"><a href="____type_8h.html#a6885b194de594173e9e976ee7bada865">VSF_UNUSED_PARAM</a></div><div class="ttdeci">#define VSF_UNUSED_PARAM(__VAL)</div><div class="ttdef"><b>Definition</b> __type.h:190</div></div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition</b> __type.h:42</div></div>
@@ -547,6 +548,6 @@
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/e6852bb24a8870fd2baaf6c53ea0e2d8c438b8a6" target="_blank">vsfteam/vsf@e6852bb</a>
+  <a href="https://github.com/vsfteam/vsf/commit/cb6d1fbac1d9183ad977c5e4f3dfc82ab5b429e7" target="_blank">vsfteam/vsf@cb6d1fb</a>
   生成
 </div>
