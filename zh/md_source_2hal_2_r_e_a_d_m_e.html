@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: 硬件抽象层 (HAL) 文档</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">硬件抽象层 (HAL) 文档</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="toc"><h3>目录</h3>
+<ul><li class="level1"><a href="#autotoc_md12">概述</a></li>
+<li class="level1"><a href="#autotoc_md13">硬件抽象层 (HAL) 目录</a><ul><li class="level2"><a href="#autotoc_md14">架构 (arch) 目录</a></li>
+<li class="level2"><a href="#autotoc_md15">驱动 (driver) 目录</a><ul><li class="level3"><a href="#autotoc_md16">驱动模板 (template) 目录</a><ul><li class="level4"><a href="#autotoc_md17">设备配置目录 (&lt;strong&gt;device_name_a&lt;/strong&gt;)</a></li>
+<li class="level4"><a href="#autotoc_md18">使用驱动模板的步骤（以USART为例）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level2"><a href="#autotoc_md19">实用工具 (utilities) 目录</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="textblock"><p><a class="anchor" id="autotoc_md11"></a></p>
+<h1><a class="anchor" id="autotoc_md12"></a>
+概述</h1>
+<p>硬件抽象层 (Hardware Abstraction Layer，简称 HAL) 是一种软件层，用于隐藏硬件的具体实现细节，为上层应用提供统一的接口。这使得应用程序能够在不同的硬件平台上运行，而不需要修改代码。</p>
+<h1><a class="anchor" id="autotoc_md13"></a>
+硬件抽象层 (HAL) 目录</h1>
+<p>HAL 目录包含 VSF 的硬件抽象层实现代码。该目录采用模块化设计，将不同硬件功能分类到对应子目录中，便于代码维护和扩展。通过标准化接口，上层应用可以用统一方式访问不同硬件平台的功能，减少平台依赖性。</p>
+<div class="fragment"><div class="line">hal/</div>
+<div class="line">├── arch/                  # 架构相关实现</div>
+<div class="line">├── driver/                # 设备驱动</div>
+<div class="line">├── utilities/             # 实用工具库</div>
+<div class="line">├── vsf_hal.c              # VSF HAL 层实现文件，提供 vsf_hal_init() 等 API</div>
+<div class="line">├── vsf_hal.h              # VSF HAL 层主头文件，定义公共接口</div>
+<div class="line">├── vsf_hal_cfg.h          # VSF HAL 配置文件</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
+架构 (arch) 目录</h2>
+<p>架构目录包含针对不同处理器架构的底层实现，为 HAL 提供基础功能支持。<code>template</code> 目录提供了新架构移植的参考模板，用于简化将 VSF 移植到新的处理器架构的过程。这些模板文件包含了实现新架构所需的基本框架和关键函数。</p>
+<div class="fragment"><div class="line">arch/</div>
+<div class="line">├── arm/                   # ARM 架构实现</div>
+<div class="line">│   ├── cortex-m/          # Cortex-M 系列处理器实现</div>
+<div class="line">│   ├── cortex-a/          # Cortex-A 系列处理器实现</div>
+<div class="line">│   ├── cortex-r/          # Cortex-R 系列处理器实现</div>
+<div class="line">│   └── arm9/              # ARM9 处理器实现</div>
+<div class="line">├── rv/                    # RISC-V 架构实现</div>
+<div class="line">├── mcs51/                 # MCS51 架构实现</div>
+<div class="line">├── generic/               # 通用平台实现（如 Linux、macOS 等）</div>
+<div class="line">│   ├── linux/             # Linux 平台实现</div>
+<div class="line">│   └── macos/             # macOS 平台实现</div>
+<div class="line">├── common/                # 跨架构共享代码</div>
+<div class="line">├── template/              # 新架构移植参考模板</div>
+<div class="line">│   ├── template_generic.h # 模板头文件</div>
+<div class="line">│   └── template_generic.c # 模板实现文件</div>
+<div class="line">└── ...                    # 其他架构相关文件</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
+驱动 (driver) 目录</h2>
+<p>驱动目录主要包含各芯片厂商（如ST、Allwinner、RaspberryPi等）的特定驱动实现，按照厂商和芯片系列进行组织。这些驱动实现了HAL接口，为特定硬件平台提供标准化的访问方式。此外，该目录还包含一些通用支持模块，用于简化驱动开发和提供跨平台功能。</p>
+<div class="fragment"><div class="line">driver/</div>
+<div class="line">├── Allwinner/             # 全志芯片驱动</div>
+<div class="line">│   └── F1CX00S/           # F1C100S 系列芯片驱动</div>
+<div class="line">├── RaspberryPi/           # 树莓派芯片驱动</div>
+<div class="line">│   └── RP2040/            # RP2040 系列芯片驱动</div>
+<div class="line">├── ST/                    # ST 芯片驱动</div>
+<div class="line">│   ├── STM32F103/         # STM32F103 系列芯片驱动</div>
+<div class="line">│   ├── STM32F730/         # STM32F730 系列芯片驱动</div>
+<div class="line">│   └── STM32H7XX/         # STM32H7 系列芯片驱动</div>
+<div class="line">├── arm/                   # ARM 通用驱动</div>
+<div class="line">│   └── mps2/              # MPS2 开发板驱动</div>
+<div class="line">├── generic/               # 通用平台驱动</div>
+<div class="line">│   └── linux/             # Linux 平台驱动</div>
+<div class="line">├── vsf/                   # 软件模拟和通用驱动</div>
+<div class="line">│   ├── distbus/           # 分布式总线驱动</div>
+<div class="line">│   ├── 74HC165_GPIO/      # 74HC165 GPIO 扩展芯片驱动</div>
+<div class="line">│   ├── 74HC595_GPIO/      # 74HC595 GPIO 扩展芯片驱动</div>
+<div class="line">│   ├── GPIO_I2C/          # GPIO 模拟 I2C 驱动</div>
+<div class="line">│   └── TIMER_GPIO_PWM/    # 定时器 GPIO PWM 驱动</div>
+<div class="line">├── x86/                   # x86 架构驱动</div>
+<div class="line">│   └── win/               # Windows 平台驱动</div>
+<div class="line">├── common/                # 通用外设驱动实现</div>
+<div class="line">│   ├── gpio/              # 通用 GPIO 驱动接口</div>
+<div class="line">│   ├── uart/              # 通用 UART 驱动接口</div>
+<div class="line">│   ├── usb/               # 通用 USB 驱动接口</div>
+<div class="line">│   ├── flash/             # 通用闪存驱动接口</div>
+<div class="line">│   ├── sdio/              # 通用 SDIO 驱动接口</div>
+<div class="line">│   └── template/          # 通用驱动模板接口</div>
+<div class="line">│── template/              # 驱动移植模板</div>
+<div class="line">└── ...                    # 其他架构相关文件</div>
+</div><!-- fragment --><p>以下是几个关键通用支持模块：</p><ul>
+<li>**template 目录**：提供驱动移植模板，确保所有驱动实现遵循统一的设计规范，更多使用可以参考 <a class="el" href="md_source_2hal_2driver_2template_2_r_e_a_d_m_e.html">template</a></li>
+<li>**common 目录**：为 HAL 层提供模板和多平台类型支持，包含通用外设驱动接口，使不同芯片厂商的驱动可以采用一致的接口规范。<ul>
+<li>**common/template 目录**：包含各种外设接口的标准化模板，定义了统一的参数结构、功能接口和行为规范。这些模板提供了各类外设（如 GPIO、UART、I2C、SPI 等）的标准接口定义，确保不同厂商实现的驱动具有一致的调用方式和行为特性。每个模板通常包含完整的函数原型、数据结构、枚举类型和宏定义，为驱动开发提供全面的指导。</li>
+</ul>
+</li>
+<li>**vsf 目录**：提供了一系列通用的外设实现，主要是软件模拟和通用驱动，例如使用 GPIO 模拟 I2C、定时器 GPIO PWM 驱动等，无需特定硬件支持即可实现标准接口功能。</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md16"></a>
+驱动模板 (template) 目录</h3>
+<p>驱动模板目录提供了标准化的框架，可用于以下三种场景：</p>
+<ol type="1">
+<li>**硬件外设驱动开发**：为特定芯片厂商 (VENDOR) 的特定系列 (SERIES) 中的设备 (DEVICE) 添加外设驱动。<ul>
+<li>这些驱动在 VSF 中被称为 HW 驱动</li>
+<li>代码中使用 "HW" - "HW end" 注释段标记相关实现</li>
+<li>VSF_XXXX_CFG_REIMPLEMENT_XXXX 是提供给 HW 驱动根据情况重定义</li>
+</ul>
+</li>
+<li>**IP 核驱动实现**：为特定 IP 核 (XXX_IP) 实现驱动。<ul>
+<li>IP 核驱动的用户是外设驱动</li>
+<li>代码中使用 "IPCore" - "IPCore end" 注释段标记相关实现</li>
+</ul>
+</li>
+<li>**模拟驱动实现**：实现使用标准外设接口的模拟驱动。<ul>
+<li>模拟驱动的用户是应用开发者</li>
+<li>与 IP 核驱动类似，但不需要 REIMPLEMENT（无寄存器）</li>
+<li>实际应用案例：GPIO 模拟 I2C</li>
+</ul>
+</li>
+</ol>
+<div class="fragment"><div class="line">driver/template/</div>
+<div class="line">├── __series_name_a__/     # 示例系列名称目录</div>
+<div class="line">│   ├── common/            # 系列通用实现</div>
+<div class="line">│   │   ├── i2c/           # I2C 总线驱动</div>
+<div class="line">│   │   │   ├── i2c.h      # I2C 驱动头文件</div>
+<div class="line">│   │   │   └── i2c.c      # I2C 驱动实现文件</div>
+<div class="line">│   │   ├── spi/           # SPI 总线驱动</div>
+<div class="line">│   │   │   └── spi.h      # SPI 驱动头文件</div>
+<div class="line">│   │   ├── usart/         # 通用同步异步收发器</div>
+<div class="line">│   │   │   ├── usart.h    # USART 驱动头文件</div>
+<div class="line">│   │   │   └── usart.c    # USART 驱动实现文件</div>
+<div class="line">│   │   └── ...            # 其他外设驱动</div>
+<div class="line">│   └── __device_name_a__/ # 具体设备配置目录</div>
+<div class="line">│       ├── device.h       # 设备硬件配置文件</div>
+<div class="line">│       ├── driver.h       # 设备驱动接口文件</div>
+<div class="line">│       └── driver.c       # 设备驱动实现文件</div>
+<div class="line">├── README.md              # 驱动开发指南和使用说明</div>
+<div class="line">└── ...                    # 其他模板文件</div>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md17"></a>
+设备配置目录 (&lt;strong&gt;device_name_a&lt;/strong&gt;)</h4>
+<p><code>__device_name_a__</code> 目录是实现特定设备驱动的核心配置部分，包含以下关键文件：</p>
+<ol type="1">
+<li><b>device.h</b> - 设备配置文件<ul>
+<li>定义设备的硬件参数（中断优先级、外设数量等）</li>
+<li>配置具体外设的中断号、寄存器基地址等硬件信息</li>
+<li>通过宏定义映射具体硬件资源到驱动层</li>
+</ul>
+</li>
+<li><b>driver.h</b> - 驱动接口文件<ul>
+<li>包含所有启用的外设驱动头文件</li>
+<li>设置驱动名称前缀和命名规则</li>
+<li>通过条件编译决定包含哪些驱动模块</li>
+</ul>
+</li>
+<li><b>driver.c</b> - 驱动实现文件<ul>
+<li>实现 <code><a class="el" href="_a_i_c_2_a_i_c8800_2driver_8c.html#a296f1c0f089ef21af9c6f28bb9b6ea74" title="common hal drivers">vsf_driver_init()</a></code> 函数用于硬件初始化</li>
+</ul>
+</li>
+</ol>
+<p>开发者使用<code>template</code> 目录时，需要将 <code>${VENDOR}</code>、<code>${SERIES}</code>、<code>${DEVICE}</code> 等模板标记替换为实际的厂商、系列和设备名称。 例如，对于 ST 公司的 STM32H750 设备，这些标记应分别替换为 "ST"、"STM32H7XX" 和 "STM32H750"。</p>
+<p>device.h 文件中的 <code>VSF_HW_XXX_COUNT</code> 和 <code>VSF_HW_XXX_MASK</code> 宏用于配置外设实例（其中XXX代表具体外设名称，如USART、SPI、I2C等）：</p><ul>
+<li><code>VSF_HW_XXX_COUNT</code>：用于定义从0开始的连续外设实例数量</li>
+<li><code>VSF_HW_XXX_MASK</code>：用于定义不连续的外设实例掩码</li>
+</ul>
+<p>提供这两个宏可以确保驱动层的实例与实际硬件一一对应。 每个外设还需要配置相应的中断号、中断处理函数和寄存器基地址等信息，这些信息将被驱动层使用以生成正确的外设实例。驱动层使用 <code>VSF_XXX_CFG_IMP_LV0</code> 宏来生成具体的实例。</p>
+<p>以 USART（通用同步异步收发器）为例，<code>VSF_USART_CFG_IMP_LV0</code> 宏需要配置多项硬件资源信息，可能包括：</p><ul>
+<li>寄存器基地址：控制 USART 外设的各项功能</li>
+<li>中断配置：定义接收、发送、错误等中断处理机制</li>
+<li>DMA 通道：支持高效数据传输的直接内存访问配置</li>
+</ul>
+<p>因此，在 <code>device.h</code> 配置文件中，需要为每个 USART 实例提供相应的硬件资源定义：</p><ul>
+<li>USART 寄存器基地址：<code>VSF_HW_USART0_REG</code>、<code>VSF_HW_USART1_REG</code></li>
+<li>USART 中断号：<code>VSF_HW_USART0_IRQ</code>、<code>VSF_HW_USART1_IRQ</code></li>
+<li>USART DMA 发送通道：<code>VSF_HW_USART0_DMA_TX</code>、<code>VSF_HW_USART1_DMA_TX</code></li>
+<li>USART DMA 接收通道：<code>VSF_HW_USART0_DMA_RX</code>、<code>VSF_HW_USART1_DMA_RX</code></li>
+</ul>
+<p>这些定义将映射到实际的硬件资源，使 <code>VSF_USART_CFG_IMP_LV0</code> 能够正确生成 USART 外设。具体实现机制如下：</p>
+<ol type="1">
+<li>驱动文件通过 <code>#include "hal/driver/common/usart/usart_template.inc"</code> 引入模板文件</li>
+<li>模板文件会根据不同的宏配置，从 <code>VSF_HW_USART_COUNT</code> 和 <code>VSF_HW_USART_MASK</code> 获取实例数量</li>
+<li>然后根据这些配置自动展开 <code>VSF_USART_CFG_IMP_LV0</code>，生成相应的外设驱动实例</li>
+</ol>
+<h4><a class="anchor" id="autotoc_md18"></a>
+使用驱动模板的步骤（以USART为例）</h4>
+<ol type="1">
+<li>**复制模板文件**：根据要实现的外设类型，从 template 目录中复制相应的模板文件到新的芯片目录下。 <div class="fragment"><div class="line"># 例如，为 STM32H750 实现 USART 驱动</div>
+<div class="line">cp -r driver/template/__series_name_a__/common/usart driver/ST/STM32H7XX/common/</div>
+</div><!-- fragment --></li>
+<li>**修改接口定义**：根据芯片手册，调整头文件中的接口定义以匹配芯片的特性。 <div class="fragment"><div class="line"><span class="preprocessor">#define VSF_USART_CFG_REIMPLEMENT_TYPE_MODE         ENABLED</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a1f2d660d8a26f8478ba0b98200bc87d2">vsf_usart_mode_t</a> {</div>
+<div class="line">   ...</div>
+<div class="line">} <a class="code hl_enumeration" href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a1f2d660d8a26f8478ba0b98200bc87d2">vsf_usart_mode_t</a>;</div>
+<div class="line"> </div>
+<div class="line">...</div>
+<div class="ttc" id="a_a_i_c_2_a_i_c8800_2uart_2uart_8h_html_a1f2d660d8a26f8478ba0b98200bc87d2"><div class="ttname"><a href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a1f2d660d8a26f8478ba0b98200bc87d2">vsf_usart_mode_t</a></div><div class="ttdeci">vsf_usart_mode_t</div><div class="ttdef"><b>Definition</b> uart.h:32</div></div>
+</div><!-- fragment --></li>
+<li>**实现硬件功能**：在源文件中实现具体的硬件操作函数。 <div class="fragment"><div class="line"><a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(<a class="code hl_define" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a1719ca4fc288d03f3a1c87f29ba17daa">VSF_USART_CFG_IMP_PREFIX</a>, _usart_init)(</div>
+<div class="line">   <a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(<a class="code hl_define" href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a1719ca4fc288d03f3a1c87f29ba17daa">VSF_USART_CFG_IMP_PREFIX</a>, _usart_t) *usart_ptr,</div>
+<div class="line">   <a class="code hl_struct" href="structvsf__usart__cfg__t.html">vsf_usart_cfg_t</a> *cfg_ptr</div>
+<div class="line">) {</div>
+<div class="line">   <a class="code hl_define" href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a>(<a class="code hl_define" href="lvgl_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a> != usart_ptr);</div>
+<div class="line">   <a class="code hl_define" href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a>(<a class="code hl_define" href="lvgl_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a> != cfg_ptr);</div>
+<div class="line"> </div>
+<div class="line">   ...</div>
+<div class="line"> </div>
+<div class="line">   <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a>;</div>
+<div class="line">}</div>
+<div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition</b> __type.h:42</div></div>
+<div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a></div><div class="ttdeci">@ VSF_ERR_NONE</div><div class="ttdoc">none error</div><div class="ttdef"><b>Definition</b> __type.h:44</div></div>
+<div class="ttc" id="a_a_i_c_2_a_i_c8800_2uart_2uart_8c_html_a1719ca4fc288d03f3a1c87f29ba17daa"><div class="ttname"><a href="_a_i_c_2_a_i_c8800_2uart_2uart_8c.html#a1719ca4fc288d03f3a1c87f29ba17daa">VSF_USART_CFG_IMP_PREFIX</a></div><div class="ttdeci">#define VSF_USART_CFG_IMP_PREFIX</div><div class="ttdef"><b>Definition</b> uart.c:290</div></div>
+<div class="ttc" id="a_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c_html_a19af509fb2e09eb1505bd15a569fba92"><div class="ttname"><a href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a></div><div class="ttdeci">struct VSF_MCONNECT(VSF_FLASH_CFG_IMP_PREFIX, _flash_t)</div><div class="ttdef"><b>Definition</b> flash.c:53</div></div>
+<div class="ttc" id="alvgl_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="lvgl_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition</b> lvgl.h:26</div></div>
+<div class="ttc" id="astructvsf__usart__cfg__t_html"><div class="ttname"><a href="structvsf__usart__cfg__t.html">vsf_usart_cfg_t</a></div><div class="ttdoc">USART 配置结构体 包含初始化和配置 USART 实例所需的所有参数</div><div class="ttdef"><b>Definition</b> vsf_template_usart.h:628</div></div>
+<div class="ttc" id="avsf__hal__cfg_8h_html_ac53e084d43f6705ad3cb2687eb7a986c"><div class="ttname"><a href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a></div><div class="ttdeci">#define VSF_HAL_ASSERT(__CON)</div><div class="ttdoc">all hal modules use this configuration file</div><div class="ttdef"><b>Definition</b> vsf_hal_cfg.h:36</div></div>
+</div><!-- fragment --></li>
+</ol>
+<h2><a class="anchor" id="autotoc_md19"></a>
+实用工具 (utilities) 目录</h2>
+<p>utilities 目录包含各种辅助工具和库函数，为 HAL 和应用层提供通用功能支持。这些工具能够简化驱动开发，提高代码复用性和可维护性。</p>
+<div class="fragment"><div class="line">utilities/</div>
+<div class="line">├── i2c_util/              # I2C 设备访问工具</div>
+<div class="line">├── io_mapper/             # IO 映射器工具</div>
+<div class="line">├── remap/                 # 外设重映射工具</div>
+<div class="line">│   ├── i2c/               # I2C 重映射</div>
+<div class="line">│   ├── spi/               # SPI 重映射</div>
+<div class="line">│   ├── usart/             # USART 重映射</div>
+<div class="line">|   └── ...                # 其他外设重映射</div>
+<div class="line">└── stream/                # 流操作工具</div>
+<div class="line">    └── usart/             # USART 流操作</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/28cc90eb1ee3e7bc056a89d920973b7faa7872e2" target="_blank">vsfteam/vsf@28cc90e</a>
+  生成
+</div>
