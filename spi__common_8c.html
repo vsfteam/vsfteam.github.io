@@ -494,7 +494,7 @@ Multiple interrupts can be enabled by OR-ing the masks </dd></dl>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">out_offset_ptr</td><td>Pointer to transmit buffer offset </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">in_buffer_ptr</td><td>Pointer to receive data buffer (can be NULL for transmit-only) </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">in_offset_ptr</td><td>Pointer to receive buffer offset </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>Number of data units to transfer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>Number of data units to transfer (can be 0 for QSPI operations with only command/address phases) </td></tr>
   </table>
   </dd>
 </dl>
@@ -502,7 +502,9 @@ Multiple interrupts can be enabled by OR-ing the masks </dd></dl>
 <dd>
 In master mode, out_buffer_ptr data is sent through MOSI pin, in_buffer_ptr receives from MISO pin </dd>
 <dd>
-In slave mode, out_buffer_ptr data is sent through MISO pin, in_buffer_ptr receives from MOSI pin </dd></dl>
+In slave mode, out_buffer_ptr data is sent through MISO pin, in_buffer_ptr receives from MOSI pin </dd>
+<dd>
+When using QSPI after configuring with <a class="el" href="vsf__template__spi_8h.html#a894ed08c82529144effeb963d8f0e82c" title="Execute a control command on the SPI instance.">vsf_spi_ctrl()</a>, the count parameter refers to data phase units only </dd></dl>
 
 </div>
 </div>
@@ -550,7 +552,7 @@ In slave mode, out_buffer_ptr data is sent through MISO pin, in_buffer_ptr recei
     <tr><td class="paramdir">[in,out]</td><td class="paramname">spi_ptr</td><td>Pointer to SPI instance structure <a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">out_buffer_ptr</td><td>Pointer to output data buffer (NULL for receive-only) </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">in_buffer_ptr</td><td>Pointer to input data buffer (NULL for transmit-only) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>Number of data units to transfer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>Number of data units to transfer (can be 0 for QSPI operations with only command/address phases) </td></tr>
   </table>
   </dd>
 </dl>
@@ -561,7 +563,9 @@ If both out_buffer_ptr and in_buffer_ptr are not NULL, data is exchanged in full
 <dd>
 In master mode, out_buffer_ptr data is sent through MOSI pin, in_buffer_ptr receives from MISO pin </dd>
 <dd>
-In slave mode, out_buffer_ptr data is sent through MISO pin, in_buffer_ptr receives from MOSI pin </dd></dl>
+In slave mode, out_buffer_ptr data is sent through MISO pin, in_buffer_ptr receives from MOSI pin </dd>
+<dd>
+For QSPI operations after calling <a class="el" href="vsf__template__spi_8h.html#a894ed08c82529144effeb963d8f0e82c" title="Execute a control command on the SPI instance.">vsf_spi_ctrl()</a>, this function will execute all configured phases (command, address, dummy, data). Count parameter refers only to data phase units. </dd></dl>
 
 </div>
 </div>
@@ -719,5 +723,5 @@ Some commands may not be supported on all hardware platforms </dd></dl>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/5ed3c420dcbea23ab5f22d6390cd5e7dbf110c46" target="_blank">vsfteam/vsf@5ed3c42</a>
+  <a href="https://github.com/vsfteam/vsf/commit/e72b44512d60e1297bf6465ae22019f35e6b26fb" target="_blank">vsfteam/vsf@e72b445</a>
 </div>
