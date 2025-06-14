@@ -314,11 +314,11 @@
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="preprocessor">#define VSF_HAL_TEMPLATE_IMP_NAME                   _rtc</span></div>
 <div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="preprocessor">#define VSF_HAL_TEMPLATE_IMP_UPCASE_NAME            _RTC</span></div>
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="preprocessor">#ifndef VSF_RTC_CFG_IMP_PREFIX</span></div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="preprocessor">#if !defined(VSF_RTC_CFG_IMP_PREFIX) &amp;&amp; !defined(VSF_RTC_CFG_IMP_DEVICE_PREFIX)</span></div>
 <div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="preprocessor">#   error &quot;Please define VSF_RTC_CFG_IMP_PREFIX in rtc driver&quot;</span></div>
 <div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="preprocessor">#ifndef VSF_RTC_CFG_IMP_UPCASE_PREFIX</span></div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="preprocessor">#if !defined(VSF_RTC_CFG_IMP_UPCASE_PREFIX) &amp;&amp; !defined(VSF_RTC_CFG_IMP_DEVICE_UPCASE_PREFIX)</span></div>
 <div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="preprocessor">#   error &quot;Please define VSF_RTC_CFG_IMP_UPCASE_PREFIX in rtc driver&quot;</span></div>
 <div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
@@ -335,33 +335,35 @@
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span><span class="preprocessor">#undef VSF_RTC_CFG_IMP_PREFIX</span></div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span><span class="preprocessor">#undef VSF_RTC_CFG_IMP_COUNT_MASK_PREFIX</span></div>
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span><span class="preprocessor">#undef VSF_RTC_CFG_IMP_UPCASE_PREFIX</span></div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span><span class="preprocessor">#undef VSF_RTC_CFG_IMP_LV0</span></div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span><span class="preprocessor">#undef VSF_RTC_CFG_IMP_REMAP_FUNCTIONS</span></div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span><span class="preprocessor">#undef VSF_RTC_CFG_IMP_HAS_OP</span></div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="preprocessor">#undef VSF_RTC_CFG_IMP_EXTERN_OP</span></div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span><span class="preprocessor">#undef vsf_imp_rtc_t</span></div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="preprocessor">#undef vsf_imp_rtc_init</span></div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="preprocessor">#undef vsf_imp_rtc_enable</span></div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span><span class="preprocessor">#undef vsf_imp_rtc_disable</span></div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span><span class="preprocessor">#undef vsf_imp_rtc_capability</span></div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span><span class="preprocessor">#undef vsf_imp_rtc_get</span></div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span><span class="preprocessor">#undef vsf_imp_rtc_set</span></div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="preprocessor">#undef vsf_imp_rtc_get_time</span></div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><span class="preprocessor">#undef vsf_imp_rtc_set_time</span></div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="preprocessor">#undef vsf_remap_rtc_t</span></div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="preprocessor">#undef vsf_remap_rtc_init</span></div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span><span class="preprocessor">#undef vsf_remap_rtc_enable</span></div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="preprocessor">#undef vsf_remap_rtc_disable</span></div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="preprocessor">#undef vsf_remap_rtc_capability</span></div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="preprocessor">#undef vsf_remap_rtc_get</span></div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="preprocessor">#undef vsf_remap_rtc_set</span></div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span><span class="preprocessor">#undef vsf_remap_rtc_get_time</span></div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="preprocessor">#undef vsf_remap_rtc_set_time</span></div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_HAL_USE_RTC */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span><span class="preprocessor">#undef VSF_RTC_CFG_IMP_DEVICE_PREFIX</span></div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span><span class="preprocessor">#undef VSF_RTC_CFG_IMP_DEVICE_UPCASE_PREFIX</span></div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span><span class="preprocessor">#undef VSF_RTC_CFG_IMP_LV0</span></div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="preprocessor">#undef VSF_RTC_CFG_IMP_REMAP_FUNCTIONS</span></div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span><span class="preprocessor">#undef VSF_RTC_CFG_IMP_HAS_OP</span></div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span><span class="preprocessor">#undef VSF_RTC_CFG_IMP_EXTERN_OP</span></div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span> </div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="preprocessor">#undef vsf_imp_rtc_t</span></div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span><span class="preprocessor">#undef vsf_imp_rtc_init</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span><span class="preprocessor">#undef vsf_imp_rtc_enable</span></div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span><span class="preprocessor">#undef vsf_imp_rtc_disable</span></div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span><span class="preprocessor">#undef vsf_imp_rtc_capability</span></div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="preprocessor">#undef vsf_imp_rtc_get</span></div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><span class="preprocessor">#undef vsf_imp_rtc_set</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="preprocessor">#undef vsf_imp_rtc_get_time</span></div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="preprocessor">#undef vsf_imp_rtc_set_time</span></div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span><span class="preprocessor">#undef vsf_remap_rtc_t</span></div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="preprocessor">#undef vsf_remap_rtc_init</span></div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="preprocessor">#undef vsf_remap_rtc_enable</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="preprocessor">#undef vsf_remap_rtc_disable</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="preprocessor">#undef vsf_remap_rtc_capability</span></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span><span class="preprocessor">#undef vsf_remap_rtc_get</span></div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="preprocessor">#undef vsf_remap_rtc_set</span></div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><span class="preprocessor">#undef vsf_remap_rtc_get_time</span></div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span><span class="preprocessor">#undef vsf_remap_rtc_set_time</span></div>
 <div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span> </div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_HAL_USE_RTC */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition</b> __type.h:42</div></div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a></div><div class="ttdeci">@ VSF_ERR_NONE</div><div class="ttdoc">none error</div><div class="ttdef"><b>Definition</b> __type.h:44</div></div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4ad38dface0088c102a859739a5d071a4d"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4ad38dface0088c102a859739a5d071a4d">VSF_ERR_FAIL</a></div><div class="ttdeci">@ VSF_ERR_FAIL</div><div class="ttdoc">failed</div><div class="ttdef"><b>Definition</b> __type.h:51</div></div>
@@ -395,5 +397,5 @@
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/dc6d7845c04ed0199bb4f466fafef34baddd6e8c" target="_blank">vsfteam/vsf@dc6d784</a>
+  <a href="https://github.com/vsfteam/vsf/commit/26f17c3fe17613816cff8be278b46baf15f660c4" target="_blank">vsfteam/vsf@26f17c3</a>
 </div>

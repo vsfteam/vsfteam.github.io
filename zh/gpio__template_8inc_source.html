@@ -549,11 +549,11 @@
 <div class="line"><a id="l00495" name="l00495"></a><span class="lineno">  495</span><span class="preprocessor">#   define VSF_HAL_TEMPLATE_IMP_MASK_SUFFIX         _PORT_MASK</span></div>
 <div class="line"><a id="l00496" name="l00496"></a><span class="lineno">  496</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00497" name="l00497"></a><span class="lineno">  497</span> </div>
-<div class="line"><a id="l00498" name="l00498"></a><span class="lineno">  498</span><span class="preprocessor">#ifndef VSF_GPIO_CFG_IMP_PREFIX</span></div>
+<div class="line"><a id="l00498" name="l00498"></a><span class="lineno">  498</span><span class="preprocessor">#if !defined(VSF_GPIO_CFG_IMP_PREFIX) &amp;&amp; !defined(VSF_GPIO_CFG_IMP_DEVICE_PREFIX)</span></div>
 <div class="line"><a id="l00499" name="l00499"></a><span class="lineno">  499</span><span class="preprocessor">#   error &quot;Please define VSF_GPIO_CFG_IMP_PREFIX in gpio driver&quot;</span></div>
 <div class="line"><a id="l00500" name="l00500"></a><span class="lineno">  500</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00501" name="l00501"></a><span class="lineno">  501</span> </div>
-<div class="line"><a id="l00502" name="l00502"></a><span class="lineno">  502</span><span class="preprocessor">#ifndef VSF_GPIO_CFG_IMP_UPCASE_PREFIX</span></div>
+<div class="line"><a id="l00502" name="l00502"></a><span class="lineno">  502</span><span class="preprocessor">#if !defined(VSF_GPIO_CFG_IMP_UPCASE_PREFIX) &amp;&amp; !defined(VSF_GPIO_CFG_IMP_DEVICE_UPCASE_PREFIX)</span></div>
 <div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span><span class="preprocessor">#   error &quot;Please define VSF_GPIO_CFG_IMP_UPCASE_PREFIX in gpio driver&quot;</span></div>
 <div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span> </div>
@@ -570,57 +570,59 @@
 <div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span><span class="preprocessor">#if VSF_GPIO_CFG_RETAIN_DEFINED_PREFIX == DISABLED</span></div>
 <div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span><span class="preprocessor">#   undef VSF_GPIO_CFG_IMP_PREFIX</span></div>
 <div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span><span class="preprocessor">#   undef VSF_GPIO_CFG_IMP_UPCASE_PREFIX</span></div>
-<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span> </div>
-<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span><span class="preprocessor">#undef VSF_GPIO_CFG_REAL_PREFIX</span></div>
-<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span><span class="preprocessor">#undef VSF_GPIO_CFG_ORIGIN_PREFIX</span></div>
-<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span> </div>
-<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span><span class="preprocessor">#undef VSF_GPIO_CFG_IMP_COUNT_MASK_PREFIX</span></div>
-<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span><span class="preprocessor">#undef VSF_GPIO_CFG_IMP_LV0</span></div>
-<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span><span class="preprocessor">#undef VSF_GPIO_CFG_IMP_REMAP_FUNCTIONS</span></div>
-<div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span><span class="preprocessor">#undef VSF_GPIO_CFG_IMP_HAS_OP</span></div>
-<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span><span class="preprocessor">#undef VSF_GPIO_CFG_IMP_EXTERN_OP</span></div>
-<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span><span class="preprocessor">#undef VSF_GPIO_CFG_IMP_REMAP_PREFIX</span></div>
-<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span> </div>
-<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span><span class="preprocessor">#undef vsf_origin_gpio_t</span></div>
-<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span><span class="preprocessor">#undef vsf_origin_gpio_capability</span></div>
-<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span><span class="preprocessor">#undef vsf_origin_gpio_port_config_pins</span></div>
-<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span><span class="preprocessor">#undef vsf_origin_gpio_set_direction</span></div>
-<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span><span class="preprocessor">#undef vsf_origin_gpio_get_direction</span></div>
-<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span><span class="preprocessor">#undef vsf_origin_gpio_set_input</span></div>
-<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span><span class="preprocessor">#undef vsf_origin_gpio_set_output</span></div>
-<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span><span class="preprocessor">#undef vsf_origin_gpio_switch_direction</span></div>
-<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span><span class="preprocessor">#undef vsf_origin_gpio_read</span></div>
-<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span><span class="preprocessor">#undef vsf_origin_gpio_write</span></div>
-<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span><span class="preprocessor">#undef vsf_origin_gpio_set</span></div>
-<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span><span class="preprocessor">#undef vsf_origin_gpio_clear</span></div>
-<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span><span class="preprocessor">#undef vsf_origin_gpio_output_and_set</span></div>
-<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span><span class="preprocessor">#undef vsf_origin_gpio_output_and_clear</span></div>
-<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span><span class="preprocessor">#undef vsf_origin_gpio_toggle</span></div>
-<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span><span class="preprocessor">#undef vsf_origin_gpio_exti_irq_config</span></div>
-<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span><span class="preprocessor">#undef vsf_origin_gpio_exti_irq_enable</span></div>
-<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span><span class="preprocessor">#undef vsf_origin_gpio_exti_irq_disable</span></div>
-<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span> </div>
-<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span><span class="preprocessor">#undef vsf_remap_gpio_t</span></div>
-<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span><span class="preprocessor">#undef vsf_remap_gpio_capability</span></div>
-<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span><span class="preprocessor">#undef vsf_remap_gpio_port_config_pins</span></div>
-<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span><span class="preprocessor">#undef vsf_remap_gpio_set_direction</span></div>
-<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span><span class="preprocessor">#undef vsf_remap_gpio_get_direction</span></div>
-<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span><span class="preprocessor">#undef vsf_remap_gpio_set_input</span></div>
-<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span><span class="preprocessor">#undef vsf_remap_gpio_set_output</span></div>
-<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span><span class="preprocessor">#undef vsf_remap_gpio_switch_direction</span></div>
-<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span><span class="preprocessor">#undef vsf_remap_gpio_read</span></div>
-<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span><span class="preprocessor">#undef vsf_remap_gpio_write</span></div>
-<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span><span class="preprocessor">#undef vsf_remap_gpio_set</span></div>
-<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span><span class="preprocessor">#undef vsf_remap_gpio_clear</span></div>
-<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span><span class="preprocessor">#undef vsf_remap_gpio_output_and_set</span></div>
-<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span><span class="preprocessor">#undef vsf_remap_gpio_output_and_clear</span></div>
-<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span><span class="preprocessor">#undef vsf_remap_gpio_toggle</span></div>
-<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span><span class="preprocessor">#undef vsf_remap_gpio_exti_irq_config</span></div>
-<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span><span class="preprocessor">#undef vsf_remap_gpio_exti_irq_enable</span></div>
-<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span><span class="preprocessor">#undef vsf_remap_gpio_exti_irq_disable</span></div>
-<div class="line"><a id="l00568" name="l00568"></a><span class="lineno">  568</span> </div>
-<div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_HAL_USE_GPIO */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span><span class="preprocessor">#   undef VSF_GPIO_CFG_IMP_DEVICE_PREFIX</span></div>
+<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span><span class="preprocessor">#   undef VSF_GPIO_CFG_IMP_DEVICE_UPCASE_PREFIX</span></div>
+<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span> </div>
+<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span><span class="preprocessor">#undef VSF_GPIO_CFG_REAL_PREFIX</span></div>
+<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span><span class="preprocessor">#undef VSF_GPIO_CFG_ORIGIN_PREFIX</span></div>
+<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span> </div>
+<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span><span class="preprocessor">#undef VSF_GPIO_CFG_IMP_COUNT_MASK_PREFIX</span></div>
+<div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span><span class="preprocessor">#undef VSF_GPIO_CFG_IMP_LV0</span></div>
+<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span><span class="preprocessor">#undef VSF_GPIO_CFG_IMP_REMAP_FUNCTIONS</span></div>
+<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span><span class="preprocessor">#undef VSF_GPIO_CFG_IMP_HAS_OP</span></div>
+<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span><span class="preprocessor">#undef VSF_GPIO_CFG_IMP_EXTERN_OP</span></div>
+<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span><span class="preprocessor">#undef VSF_GPIO_CFG_IMP_REMAP_PREFIX</span></div>
+<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span> </div>
+<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span><span class="preprocessor">#undef vsf_origin_gpio_t</span></div>
+<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span><span class="preprocessor">#undef vsf_origin_gpio_capability</span></div>
+<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span><span class="preprocessor">#undef vsf_origin_gpio_port_config_pins</span></div>
+<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span><span class="preprocessor">#undef vsf_origin_gpio_set_direction</span></div>
+<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span><span class="preprocessor">#undef vsf_origin_gpio_get_direction</span></div>
+<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span><span class="preprocessor">#undef vsf_origin_gpio_set_input</span></div>
+<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span><span class="preprocessor">#undef vsf_origin_gpio_set_output</span></div>
+<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span><span class="preprocessor">#undef vsf_origin_gpio_switch_direction</span></div>
+<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span><span class="preprocessor">#undef vsf_origin_gpio_read</span></div>
+<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span><span class="preprocessor">#undef vsf_origin_gpio_write</span></div>
+<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span><span class="preprocessor">#undef vsf_origin_gpio_set</span></div>
+<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span><span class="preprocessor">#undef vsf_origin_gpio_clear</span></div>
+<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span><span class="preprocessor">#undef vsf_origin_gpio_output_and_set</span></div>
+<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span><span class="preprocessor">#undef vsf_origin_gpio_output_and_clear</span></div>
+<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span><span class="preprocessor">#undef vsf_origin_gpio_toggle</span></div>
+<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span><span class="preprocessor">#undef vsf_origin_gpio_exti_irq_config</span></div>
+<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span><span class="preprocessor">#undef vsf_origin_gpio_exti_irq_enable</span></div>
+<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span><span class="preprocessor">#undef vsf_origin_gpio_exti_irq_disable</span></div>
+<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span> </div>
+<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span><span class="preprocessor">#undef vsf_remap_gpio_t</span></div>
+<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span><span class="preprocessor">#undef vsf_remap_gpio_capability</span></div>
+<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span><span class="preprocessor">#undef vsf_remap_gpio_port_config_pins</span></div>
+<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span><span class="preprocessor">#undef vsf_remap_gpio_set_direction</span></div>
+<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span><span class="preprocessor">#undef vsf_remap_gpio_get_direction</span></div>
+<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span><span class="preprocessor">#undef vsf_remap_gpio_set_input</span></div>
+<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span><span class="preprocessor">#undef vsf_remap_gpio_set_output</span></div>
+<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span><span class="preprocessor">#undef vsf_remap_gpio_switch_direction</span></div>
+<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span><span class="preprocessor">#undef vsf_remap_gpio_read</span></div>
+<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span><span class="preprocessor">#undef vsf_remap_gpio_write</span></div>
+<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span><span class="preprocessor">#undef vsf_remap_gpio_set</span></div>
+<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span><span class="preprocessor">#undef vsf_remap_gpio_clear</span></div>
+<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span><span class="preprocessor">#undef vsf_remap_gpio_output_and_set</span></div>
+<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span><span class="preprocessor">#undef vsf_remap_gpio_output_and_clear</span></div>
+<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span><span class="preprocessor">#undef vsf_remap_gpio_toggle</span></div>
+<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span><span class="preprocessor">#undef vsf_remap_gpio_exti_irq_config</span></div>
+<div class="line"><a id="l00568" name="l00568"></a><span class="lineno">  568</span><span class="preprocessor">#undef vsf_remap_gpio_exti_irq_enable</span></div>
+<div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span><span class="preprocessor">#undef vsf_remap_gpio_exti_irq_disable</span></div>
+<div class="line"><a id="l00570" name="l00570"></a><span class="lineno">  570</span> </div>
+<div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_HAL_USE_GPIO */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition</b> __type.h:42</div></div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a></div><div class="ttdeci">@ VSF_ERR_NONE</div><div class="ttdoc">none error</div><div class="ttdef"><b>Definition</b> __type.h:44</div></div>
 <div class="ttc" id="a_a_i_c_2_a_i_c8800_2gpio_2gpio_8c_html_ac3dd32ff356551694beb1eb801c787db"><div class="ttname"><a href="_a_i_c_2_a_i_c8800_2gpio_2gpio_8c.html#ac3dd32ff356551694beb1eb801c787db">VSF_GPIO_CFG_CAPABILITY_SUPPORT_OUTPUT_AND_SET</a></div><div class="ttdeci">#define VSF_GPIO_CFG_CAPABILITY_SUPPORT_OUTPUT_AND_SET</div><div class="ttdef"><b>Definition</b> gpio.c:33</div></div>
@@ -642,6 +644,6 @@
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/dc6d7845c04ed0199bb4f466fafef34baddd6e8c" target="_blank">vsfteam/vsf@dc6d784</a>
+  <a href="https://github.com/vsfteam/vsf/commit/26f17c3fe17613816cff8be278b46baf15f660c4" target="_blank">vsfteam/vsf@26f17c3</a>
   生成
 </div>

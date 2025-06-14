@@ -249,11 +249,11 @@
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="preprocessor">#define VSF_HAL_TEMPLATE_IMP_NAME                   _eth</span></div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="preprocessor">#define VSF_HAL_TEMPLATE_IMP_UPCASE_NAME            _ETH</span></div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="preprocessor">#ifndef VSF_ETH_CFG_IMP_PREFIX</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="preprocessor">#if !defined(VSF_ETH_CFG_IMP_PREFIX) &amp;&amp; !defined(VSF_ETH_CFG_IMP_DEVICE_PREFIX)</span></div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="preprocessor">#   error &quot;Please define VSF_ETH_CFG_IMP_PREFIX in eth driver&quot;</span></div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="preprocessor">#ifndef VSF_ETH_CFG_IMP_UPCASE_PREFIX</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="preprocessor">#if !defined(VSF_ETH_CFG_IMP_UPCASE_PREFIX) &amp;&amp; !defined(VSF_ETH_CFG_IMP_DEVICE_UPCASE_PREFIX)</span></div>
 <div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="preprocessor">#   error &quot;Please define VSF_ETH_CFG_IMP_UPCASE_PREFIX in eth driver&quot;</span></div>
 <div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
@@ -270,50 +270,52 @@
 <div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="preprocessor">#undef VSF_ETH_CFG_IMP_PREFIX</span></div>
 <div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="preprocessor">#undef VSF_ETH_CFG_IMP_COUNT_MASK_PREFIX</span></div>
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="preprocessor">#undef VSF_ETH_CFG_IMP_UPCASE_PREFIX</span></div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="preprocessor">#undef VSF_ETH_CFG_IMP_LV0</span></div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="preprocessor">#undef VSF_ETH_CFG_IMP_REMAP_FUNCTIONS</span></div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="preprocessor">#undef VSF_ETH_CFG_IMP_HAS_OP</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="preprocessor">#undef VSF_ETH_CFG_IMP_EXTERN_OP</span></div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="preprocessor">#undef vsf_imp_eth_t</span></div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="preprocessor">#undef vsf_imp_eth_init</span></div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="preprocessor">#undef vsf_imp_eth_fini</span></div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="preprocessor">#undef vsf_imp_eth_enable</span></div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="preprocessor">#undef vsf_imp_eth_disable</span></div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="preprocessor">#undef vsf_imp_eth_status</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="preprocessor">#undef vsf_imp_eth_capability</span></div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="preprocessor">#undef vsf_imp_eth_send_request</span></div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="preprocessor">#undef vsf_imp_eth_recv_request</span></div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="preprocessor">#undef vsf_imp_eth_send_sg_request</span></div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="preprocessor">#undef vsf_imp_eth_recv_sg_request</span></div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="preprocessor">#undef vsf_imp_eth_ctrl</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="preprocessor">#undef vsf_imp_eth_phy_read_reg</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="preprocessor">#undef vsf_imp_eth_phy_write_reg</span></div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="preprocessor">#undef vsf_imp_eth_phy_set_mode</span></div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="preprocessor">#undef vsf_imp_eth_phy_get_link_status</span></div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="preprocessor">#undef vsf_remap_eth_t</span></div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="preprocessor">#undef vsf_remap_eth_init</span></div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="preprocessor">#undef vsf_remap_eth_fini</span></div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="preprocessor">#undef vsf_remap_eth_enable</span></div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="preprocessor">#undef vsf_remap_eth_disable</span></div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="preprocessor">#undef vsf_remap_eth_status</span></div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="preprocessor">#undef vsf_remap_eth_capability</span></div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="preprocessor">#undef vsf_remap_eth_send_request</span></div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="preprocessor">#undef vsf_remap_eth_recv_request</span></div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="preprocessor">#undef vsf_remap_eth_send_sg_request</span></div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="preprocessor">#undef vsf_remap_eth_recv_sg_request</span></div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="preprocessor">#undef vsf_remap_eth_ctrl</span></div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="preprocessor">#undef vsf_remap_eth_phy_read_reg</span></div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="preprocessor">#undef vsf_remap_eth_phy_write_reg</span></div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="preprocessor">#undef vsf_remap_eth_phy_set_mode</span></div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="preprocessor">#undef vsf_remap_eth_phy_get_link_status</span></div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_HAL_USE_ETH */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="preprocessor">#undef VSF_ETH_CFG_IMP_DEVICE_PREFIX</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="preprocessor">#undef VSF_ETH_CFG_IMP_DEVICE_UPCASE_PREFIX</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="preprocessor">#undef VSF_ETH_CFG_IMP_LV0</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="preprocessor">#undef VSF_ETH_CFG_IMP_REMAP_FUNCTIONS</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="preprocessor">#undef VSF_ETH_CFG_IMP_HAS_OP</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="preprocessor">#undef VSF_ETH_CFG_IMP_EXTERN_OP</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="preprocessor">#undef vsf_imp_eth_t</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="preprocessor">#undef vsf_imp_eth_init</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="preprocessor">#undef vsf_imp_eth_fini</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="preprocessor">#undef vsf_imp_eth_enable</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="preprocessor">#undef vsf_imp_eth_disable</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="preprocessor">#undef vsf_imp_eth_status</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="preprocessor">#undef vsf_imp_eth_capability</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="preprocessor">#undef vsf_imp_eth_send_request</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="preprocessor">#undef vsf_imp_eth_recv_request</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="preprocessor">#undef vsf_imp_eth_send_sg_request</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="preprocessor">#undef vsf_imp_eth_recv_sg_request</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="preprocessor">#undef vsf_imp_eth_ctrl</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="preprocessor">#undef vsf_imp_eth_phy_read_reg</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="preprocessor">#undef vsf_imp_eth_phy_write_reg</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="preprocessor">#undef vsf_imp_eth_phy_set_mode</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="preprocessor">#undef vsf_imp_eth_phy_get_link_status</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="preprocessor">#undef vsf_remap_eth_t</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="preprocessor">#undef vsf_remap_eth_init</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="preprocessor">#undef vsf_remap_eth_fini</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="preprocessor">#undef vsf_remap_eth_enable</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="preprocessor">#undef vsf_remap_eth_disable</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="preprocessor">#undef vsf_remap_eth_status</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="preprocessor">#undef vsf_remap_eth_capability</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="preprocessor">#undef vsf_remap_eth_send_request</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="preprocessor">#undef vsf_remap_eth_recv_request</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="preprocessor">#undef vsf_remap_eth_send_sg_request</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="preprocessor">#undef vsf_remap_eth_recv_sg_request</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="preprocessor">#undef vsf_remap_eth_ctrl</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="preprocessor">#undef vsf_remap_eth_phy_read_reg</span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="preprocessor">#undef vsf_remap_eth_phy_write_reg</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="preprocessor">#undef vsf_remap_eth_phy_set_mode</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="preprocessor">#undef vsf_remap_eth_phy_get_link_status</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_HAL_USE_ETH */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="astructvsf__eth__capability__t_html"><div class="ttname"><a href="structvsf__eth__capability__t.html">vsf_eth_capability_t</a></div><div class="ttdoc">Predefined VSF ETH capability that can be reimplemented in specific hal drivers. The vsf_eth_capabili...</div><div class="ttdef"><b>Definition</b> vsf_template_eth.h:596</div></div>
 <div class="ttc" id="avsf__template__instance__implementation_8h_html"><div class="ttname"><a href="vsf__template__instance__implementation_8h.html">vsf_template_instance_implementation.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/dc6d7845c04ed0199bb4f466fafef34baddd6e8c" target="_blank">vsfteam/vsf@dc6d784</a>
+  <a href="https://github.com/vsfteam/vsf/commit/26f17c3fe17613816cff8be278b46baf15f660c4" target="_blank">vsfteam/vsf@26f17c3</a>
 </div>
