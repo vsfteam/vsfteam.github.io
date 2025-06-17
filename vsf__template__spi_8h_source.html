@@ -933,31 +933,47 @@
 <div class="line"><a id="l01617" name="l01617"></a><span class="lineno"> 1617</span><span class="preprocessor">#   define vsf_qspi_isr_t                               vsf_spi_isr_t</span></div>
 <div class="line"><a id="l01618" name="l01618"></a><span class="lineno"> 1618</span><span class="preprocessor">#   define vsf_qspi_cfg_t                               vsf_spi_cfg_t</span></div>
 <div class="line"><a id="l01619" name="l01619"></a><span class="lineno"> 1619</span><span class="preprocessor">#   define vsf_qspi_ctrl_t                              vsf_spi_ctrl_t</span></div>
-<div class="line"><a id="l01620" name="l01620"></a><span class="lineno"> 1620</span><span class="preprocessor">#   define vsf_qspi_init(__SPI, ...)                    vsf_spi_init((__vsf_spi_t *)(__SPI), ##__VA_ARGS__)</span></div>
-<div class="line"><a id="l01621" name="l01621"></a><span class="lineno"> 1621</span><span class="preprocessor">#   define vsf_qspi_fini(__SPI)                         vsf_spi_fini((__vsf_spi_t *)(__SPI))</span></div>
-<div class="line"><a id="l01622" name="l01622"></a><span class="lineno"> 1622</span><span class="preprocessor">#   define vsf_qspi_enable(__SPI)                       vsf_spi_enable((__vsf_spi_t *)(__SPI))</span></div>
-<div class="line"><a id="l01623" name="l01623"></a><span class="lineno"> 1623</span><span class="preprocessor">#   define vsf_qspi_disable(__SPI)                      vsf_spi_disable((__vsf_spi_t *)(__SPI))</span></div>
-<div class="line"><a id="l01624" name="l01624"></a><span class="lineno"> 1624</span><span class="preprocessor">#   define vsf_qspi_irq_enable(__SPI, ...)              vsf_spi_irq_enable((__vsf_spi_t *)(__SPI), ##__VA_ARGS__)</span></div>
-<div class="line"><a id="l01625" name="l01625"></a><span class="lineno"> 1625</span><span class="preprocessor">#   define vsf_qspi_irq_disable(__SPI, ...)             vsf_spi_irq_disable((__vsf_spi_t *)(__SPI), ##__VA_ARGS__)</span></div>
-<div class="line"><a id="l01626" name="l01626"></a><span class="lineno"> 1626</span><span class="preprocessor">#   define vsf_qspi_status(__SPI)                       vsf_spi_status((__vsf_spi_t *)(__SPI))</span></div>
-<div class="line"><a id="l01627" name="l01627"></a><span class="lineno"> 1627</span><span class="preprocessor">#   define vsf_qspi_capability(__SPI)                   vsf_spi_capability((__vsf_spi_t *)(__SPI))</span></div>
-<div class="line"><a id="l01628" name="l01628"></a><span class="lineno"> 1628</span><span class="preprocessor">#   define vsf_qspi_cs_active(__SPI, ...)               vsf_spi_cs_active((__vsf_spi_t *)(__SPI), ##__VA_ARGS__)</span></div>
-<div class="line"><a id="l01629" name="l01629"></a><span class="lineno"> 1629</span><span class="preprocessor">#   define vsf_qspi_cs_inactive(__SPI, ...)             vsf_spi_cs_inactive((__vsf_spi_t *)(__SPI), ##__VA_ARGS__)</span></div>
-<div class="line"><a id="l01630" name="l01630"></a><span class="lineno"> 1630</span><span class="preprocessor">#   define vsf_qspi_fifo_write(__SPI, ...)              vsf_spi_fifo_transfer((__vsf_spi_t *)(__SPI), ##__VA_ARGS__)</span></div>
-<div class="line"><a id="l01631" name="l01631"></a><span class="lineno"> 1631</span><span class="preprocessor">#   define vsf_qspi_fifo_read(__SPI, ...)               vsf_spi_fifo_transfer((__vsf_spi_t *)(__SPI), ##__VA_ARGS__)</span></div>
-<div class="line"><a id="l01632" name="l01632"></a><span class="lineno"> 1632</span><span class="preprocessor">#   define vsf_qspi_request_tx(__SPI, __OUT_BUF, __CNT) vsf_spi_request_transfer((__vsf_spi_t *)(__SPI), __OUT_BUF, NULL, __CNT)</span></div>
-<div class="line"><a id="l01633" name="l01633"></a><span class="lineno"> 1633</span><span class="preprocessor">#   define vsf_qspi_request_rx(__SPI, __IN_BUF, __CNT)  vsf_spi_request_transfer((__vsf_spi_t *)(__SPI), NULL, __IN_BUF, __CNT)</span></div>
-<div class="line"><a id="l01634" name="l01634"></a><span class="lineno"> 1634</span><span class="preprocessor">#   define vsf_qspi_cancel_transfer(__SPI)              vsf_spi_cancel_transfer((__vsf_spi_t *)(__SPI))</span></div>
-<div class="line"><a id="l01635" name="l01635"></a><span class="lineno"> 1635</span><span class="preprocessor">#   define vsf_qspi_get_transferred_count(__SPI, ...)   vsf_spi_get_transferred_count((__vsf_spi_t *)(__SPI), ##__VA_ARGS__)</span></div>
-<div class="line"><a id="l01636" name="l01636"></a><span class="lineno"> 1636</span><span class="preprocessor">#   define vsf_qspi_ctrl(__SPI, ...)                    vsf_spi_ctrl((__vsf_spi_t *)(__SPI), ##__VA_ARGS__)</span></div>
-<div class="line"><a id="l01637" name="l01637"></a><span class="lineno"> 1637</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l01639" name="l01639"></a><span class="lineno"> 1639</span> </div>
-<div class="line"><a id="l01640" name="l01640"></a><span class="lineno"> 1640</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l01641" name="l01641"></a><span class="lineno"> 1641</span>}</div>
-<div class="line"><a id="l01642" name="l01642"></a><span class="lineno"> 1642</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l01643" name="l01643"></a><span class="lineno"> 1643</span> </div>
-<div class="line"><a id="l01644" name="l01644"></a><span class="lineno"> 1644</span><span class="preprocessor">#endif  </span><span class="comment">/*__VSF_TEMPLATE_SPI_H__*/</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l01645" name="l01645"></a><span class="lineno"> 1645</span> </div>
+<div class="line"><a id="l01620" name="l01620"></a><span class="lineno"> 1620</span> </div>
+<div class="line"><a id="l01635" name="l01635"></a><span class="lineno"> 1635</span><span class="preprocessor">#   define vsf_qspi_init(__SPI, __CFG_PTR)                   vsf_spi_init((__vsf_spi_t *)(__SPI), (__CFG_PTR))</span></div>
+<div class="line"><a id="l01636" name="l01636"></a><span class="lineno"> 1636</span> </div>
+<div class="line"><a id="l01649" name="l01649"></a><span class="lineno"> 1649</span><span class="preprocessor">#   define vsf_qspi_fini(__SPI)                              vsf_spi_fini((__vsf_spi_t *)(__SPI))</span></div>
+<div class="line"><a id="l01650" name="l01650"></a><span class="lineno"> 1650</span> </div>
+<div class="line"><a id="l01663" name="l01663"></a><span class="lineno"> 1663</span><span class="preprocessor">#   define vsf_qspi_enable(__SPI)                            vsf_spi_enable((__vsf_spi_t *)(__SPI))</span></div>
+<div class="line"><a id="l01664" name="l01664"></a><span class="lineno"> 1664</span> </div>
+<div class="line"><a id="l01677" name="l01677"></a><span class="lineno"> 1677</span><span class="preprocessor">#   define vsf_qspi_disable(__SPI)                           vsf_spi_disable((__vsf_spi_t *)(__SPI))</span></div>
+<div class="line"><a id="l01678" name="l01678"></a><span class="lineno"> 1678</span> </div>
+<div class="line"><a id="l01693" name="l01693"></a><span class="lineno"> 1693</span><span class="preprocessor">#   define vsf_qspi_irq_enable(__SPI, __IRQ_MASK)            vsf_spi_irq_enable((__vsf_spi_t *)(__SPI), (__IRQ_MASK))</span></div>
+<div class="line"><a id="l01694" name="l01694"></a><span class="lineno"> 1694</span> </div>
+<div class="line"><a id="l01709" name="l01709"></a><span class="lineno"> 1709</span><span class="preprocessor">#   define vsf_qspi_irq_disable(__SPI, __IRQ_MASK)           vsf_spi_irq_disable((__vsf_spi_t *)(__SPI), (__IRQ_MASK))</span></div>
+<div class="line"><a id="l01710" name="l01710"></a><span class="lineno"> 1710</span> </div>
+<div class="line"><a id="l01723" name="l01723"></a><span class="lineno"> 1723</span><span class="preprocessor">#   define vsf_qspi_status(__SPI)                            vsf_spi_status((__vsf_spi_t *)(__SPI))</span></div>
+<div class="line"><a id="l01724" name="l01724"></a><span class="lineno"> 1724</span> </div>
+<div class="line"><a id="l01737" name="l01737"></a><span class="lineno"> 1737</span><span class="preprocessor">#   define vsf_qspi_capability(__SPI)                        vsf_spi_capability((__vsf_spi_t *)(__SPI))</span></div>
+<div class="line"><a id="l01738" name="l01738"></a><span class="lineno"> 1738</span> </div>
+<div class="line"><a id="l01759" name="l01759"></a><span class="lineno"> 1759</span><span class="preprocessor">#   define vsf_qspi_fifo_write(__SPI, __OUT_BUFFER_PTR, __OUT_OFFSET_PTR, __COUNT) \</span></div>
+<div class="line"><a id="l01760" name="l01760"></a><span class="lineno"> 1760</span><span class="preprocessor">                                                             vsf_spi_fifo_transfer((__vsf_spi_t *)(__SPI), (__OUT_BUFFER_PTR), (__OUT_OFFSET_PTR), NULL, NULL, (__COUNT))</span></div>
+<div class="line"><a id="l01761" name="l01761"></a><span class="lineno"> 1761</span> </div>
+<div class="line"><a id="l01782" name="l01782"></a><span class="lineno"> 1782</span><span class="preprocessor">#   define vsf_qspi_fifo_read(__SPI, __IN_BUFFER_PTR, __IN_OFFSET_PTR, __COUNT) \</span></div>
+<div class="line"><a id="l01783" name="l01783"></a><span class="lineno"> 1783</span><span class="preprocessor">                                                             vsf_spi_fifo_transfer((__vsf_spi_t *)(__SPI), NULL, NULL, (__IN_BUFFER_PTR), (__IN_OFFSET_PTR), (__COUNT))</span></div>
+<div class="line"><a id="l01784" name="l01784"></a><span class="lineno"> 1784</span> </div>
+<div class="line"><a id="l01803" name="l01803"></a><span class="lineno"> 1803</span><span class="preprocessor">#   define vsf_qspi_request_tx(__SPI, __OUT_BUF, __CNT)      vsf_spi_request_transfer((__vsf_spi_t *)(__SPI), (__OUT_BUF), NULL, (__CNT))</span></div>
+<div class="line"><a id="l01804" name="l01804"></a><span class="lineno"> 1804</span> </div>
+<div class="line"><a id="l01823" name="l01823"></a><span class="lineno"> 1823</span><span class="preprocessor">#   define vsf_qspi_request_rx(__SPI, __IN_BUF, __CNT)       vsf_spi_request_transfer((__vsf_spi_t *)(__SPI), NULL, (__IN_BUF), (__CNT))</span></div>
+<div class="line"><a id="l01824" name="l01824"></a><span class="lineno"> 1824</span> </div>
+<div class="line"><a id="l01837" name="l01837"></a><span class="lineno"> 1837</span><span class="preprocessor">#   define vsf_qspi_cancel_transfer(__SPI)                   vsf_spi_cancel_transfer((__vsf_spi_t *)(__SPI))</span></div>
+<div class="line"><a id="l01838" name="l01838"></a><span class="lineno"> 1838</span> </div>
+<div class="line"><a id="l01855" name="l01855"></a><span class="lineno"> 1855</span><span class="preprocessor">#   define vsf_qspi_get_transferred_count(__SPI, __TX_CNT, __RX_CNT) \</span></div>
+<div class="line"><a id="l01856" name="l01856"></a><span class="lineno"> 1856</span><span class="preprocessor">                                                             vsf_spi_get_transferred_count((__vsf_spi_t *)(__SPI), (__TX_CNT), (__RX_CNT))</span></div>
+<div class="line"><a id="l01857" name="l01857"></a><span class="lineno"> 1857</span> </div>
+<div class="line"><a id="l01874" name="l01874"></a><span class="lineno"> 1874</span><span class="preprocessor">#   define vsf_qspi_ctrl(__SPI, __CTRL, __PARAM)             vsf_spi_ctrl((__vsf_spi_t *)(__SPI), (__CTRL), (__PARAM))</span></div>
+<div class="line"><a id="l01875" name="l01875"></a><span class="lineno"> 1875</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l01877" name="l01877"></a><span class="lineno"> 1877</span> </div>
+<div class="line"><a id="l01878" name="l01878"></a><span class="lineno"> 1878</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l01879" name="l01879"></a><span class="lineno"> 1879</span>}</div>
+<div class="line"><a id="l01880" name="l01880"></a><span class="lineno"> 1880</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l01881" name="l01881"></a><span class="lineno"> 1881</span> </div>
+<div class="line"><a id="l01882" name="l01882"></a><span class="lineno"> 1882</span><span class="preprocessor">#endif  </span><span class="comment">/*__VSF_TEMPLATE_SPI_H__*/</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l01883" name="l01883"></a><span class="lineno"> 1883</span> </div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition</b> __type.h:42</div></div>
 <div class="ttc" id="a_a_i_c_2_a_i_c8800_2spi_2spi_8h_html_ab21578569e5e21a2748d2fa14bbbe3a0"><div class="ttname"><a href="_a_i_c_2_a_i_c8800_2spi_2spi_8h.html#ab21578569e5e21a2748d2fa14bbbe3a0">vsf_spi_mode_t</a></div><div class="ttdeci">vsf_spi_mode_t</div><div class="ttdef"><b>Definition</b> spi.h:33</div></div>
 <div class="ttc" id="a_a_i_c_2_a_i_c8800_2spi_2spi_8h_html_ab21578569e5e21a2748d2fa14bbbe3a0a05401309f0d5ab10f118901bd1b63cac"><div class="ttname"><a href="_a_i_c_2_a_i_c8800_2spi_2spi_8h.html#ab21578569e5e21a2748d2fa14bbbe3a0a05401309f0d5ab10f118901bd1b63cac">VSF_SPI_DATASIZE_31</a></div><div class="ttdeci">@ VSF_SPI_DATASIZE_31</div><div class="ttdef"><b>Definition</b> spi.h:67</div></div>
@@ -1085,5 +1101,5 @@
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/26f17c3fe17613816cff8be278b46baf15f660c4" target="_blank">vsfteam/vsf@26f17c3</a>
+  <a href="https://github.com/vsfteam/vsf/commit/16699dd3be50e63aa05f59cbec5acc37bd3bff12" target="_blank">vsfteam/vsf@16699dd</a>
 </div>
