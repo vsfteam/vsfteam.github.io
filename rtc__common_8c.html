@@ -92,6 +92,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a96ae69e98bf09e0476d82fe6849de782" id="r_a96ae69e98bf09e0476d82fe6849de782"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvsf__rtc__capability__t.html">vsf_rtc_capability_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtc__common_8c.html#a96ae69e98bf09e0476d82fe6849de782">vsf_rtc_capability</a> (<a class="el" href="structvsf__rtc__t.html">vsf_rtc_t</a> *rtc_ptr)</td></tr>
 <tr class="memdesc:a96ae69e98bf09e0476d82fe6849de782"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the capability of RTC instance.  <br /></td></tr>
 <tr class="separator:a96ae69e98bf09e0476d82fe6849de782"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb9155cf2b40699712bea0a438b440be" id="r_abb9155cf2b40699712bea0a438b440be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtc__common_8c.html#abb9155cf2b40699712bea0a438b440be">vsf_rtc_get_configuration</a> (<a class="el" href="structvsf__rtc__t.html">vsf_rtc_t</a> *rtc_ptr, <a class="el" href="structvsf__rtc__cfg__t.html">vsf_rtc_cfg_t</a> *cfg_ptr)</td></tr>
+<tr class="memdesc:abb9155cf2b40699712bea0a438b440be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current configuration of an RTC instance.  <br /></td></tr>
+<tr class="separator:abb9155cf2b40699712bea0a438b440be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87586eaf8f59ceb1d7fd5c4b665658ef" id="r_a87586eaf8f59ceb1d7fd5c4b665658ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtc__common_8c.html#a87586eaf8f59ceb1d7fd5c4b665658ef">vsf_rtc_tm_is_valid</a> (const <a class="el" href="structvsf__rtc__tm__t.html">vsf_rtc_tm_t</a> *rtc_tm)</td></tr>
 <tr class="separator:a87586eaf8f59ceb1d7fd5c4b665658ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3c654408a1a5453ba0ec396e974a13c" id="r_ad3c654408a1a5453ba0ec396e974a13c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtc__common_8c.html#ad3c654408a1a5453ba0ec396e974a13c">vsf_rtc_tm_is_epoch_time</a> (const <a class="el" href="structvsf__rtc__tm__t.html">vsf_rtc_tm_t</a> *rtc_tm)</td></tr>
@@ -426,6 +429,45 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="abb9155cf2b40699712bea0a438b440be" name="abb9155cf2b40699712bea0a438b440be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb9155cf2b40699712bea0a438b440be">&#9670;&#160;</a></span>vsf_rtc_get_configuration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_rtc_get_configuration </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__rtc__t.html">vsf_rtc_t</a> *&#160;</td>
+          <td class="paramname"><em>rtc_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvsf__rtc__cfg__t.html">vsf_rtc_cfg_t</a> *&#160;</td>
+          <td class="paramname"><em>cfg_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the current configuration of an RTC instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">rtc_ptr</td><td>pointer to structure <a class="el" href="structvsf__rtc__t.html">vsf_rtc_t</a> </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">cfg_ptr</td><td>pointer to configuration structure <a class="el" href="structvsf__rtc__cfg__t.html">vsf_rtc_cfg_t</a> to store the current configuration </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if successful, otherwise return error code</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function retrieves the current RTC configuration including interrupt settings and other parameters. The RTC instance should be initialized before calling this function. </dd></dl>
+
+</div>
+</div>
 <a id="a87586eaf8f59ceb1d7fd5c4b665658ef" name="a87586eaf8f59ceb1d7fd5c4b665658ef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a87586eaf8f59ceb1d7fd5c4b665658ef">&#9670;&#160;</a></span>vsf_rtc_tm_is_valid()</h2>
 
@@ -465,5 +507,5 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/d17ff2401de83d9982c66846264e4a189a46d357" target="_blank">vsfteam/vsf@d17ff24</a>
+  <a href="https://github.com/vsfteam/vsf/commit/3a576403615b75fd023d405df4ea4d78c8936a40" target="_blank">vsfteam/vsf@3a57640</a>
 </div>

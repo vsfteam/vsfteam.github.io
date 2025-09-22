@@ -70,6 +70,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae1dab11f5596d5878f7bdd8d0534f5b0" id="r_ae1dab11f5596d5878f7bdd8d0534f5b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spi__common_8c.html#ae1dab11f5596d5878f7bdd8d0534f5b0">vsf_spi_fini</a> (<a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> *spi_ptr)</td></tr>
 <tr class="memdesc:ae1dab11f5596d5878f7bdd8d0534f5b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize (deinitialize) a SPI instance.  <br /></td></tr>
 <tr class="separator:ae1dab11f5596d5878f7bdd8d0534f5b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a599de2da185e6d427eed4cca1afd1945" id="r_a599de2da185e6d427eed4cca1afd1945"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spi__common_8c.html#a599de2da185e6d427eed4cca1afd1945">vsf_spi_get_configuration</a> (<a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> *spi_ptr, <a class="el" href="structvsf__spi__cfg__t.html">vsf_spi_cfg_t</a> *cfg_ptr)</td></tr>
+<tr class="memdesc:a599de2da185e6d427eed4cca1afd1945"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current configuration of a SPI instance.  <br /></td></tr>
+<tr class="separator:a599de2da185e6d427eed4cca1afd1945"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b0709298a7f11e22b7248ed1ffa50e3" id="r_a9b0709298a7f11e22b7248ed1ffa50e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spi__common_8c.html#a9b0709298a7f11e22b7248ed1ffa50e3">vsf_spi_enable</a> (<a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> *spi_ptr)</td></tr>
 <tr class="memdesc:a9b0709298a7f11e22b7248ed1ffa50e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable a SPI instance for operation.  <br /></td></tr>
 <tr class="separator:a9b0709298a7f11e22b7248ed1ffa50e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,6 +199,45 @@ Ensure all transfers are complete before calling this function </dd></dl>
 
 </div>
 </div>
+<a id="a599de2da185e6d427eed4cca1afd1945" name="a599de2da185e6d427eed4cca1afd1945"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a599de2da185e6d427eed4cca1afd1945">&#9670;&#160;</a></span>vsf_spi_get_configuration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_spi_get_configuration </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> *&#160;</td>
+          <td class="paramname"><em>spi_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvsf__spi__cfg__t.html">vsf_spi_cfg_t</a> *&#160;</td>
+          <td class="paramname"><em>cfg_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get current configuration of a SPI instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">spi_ptr</td><td>Pointer to SPI instance </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">cfg_ptr</td><td>Pointer to SPI configuration structure to store current settings </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t VSF_ERR_NONE if successful, otherwise an error code</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function retrieves the current configuration of the SPI instance </dd></dl>
+
+</div>
+</div>
 <a id="a9b0709298a7f11e22b7248ed1ffa50e3" name="a9b0709298a7f11e22b7248ed1ffa50e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9b0709298a7f11e22b7248ed1ffa50e3">&#9670;&#160;</a></span>vsf_spi_enable()</h2>
 
@@ -282,10 +324,7 @@ Ensure all transfers are complete before calling this function </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">spi_ptr</td><td>Pointer to SPI instance structure <a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">irq_mask</td><td>Interrupt mask(s) to enable from <a class="el" href="vsf__template__spi_8h.html#a7f49b5c17656fbf30f8cc62ae181b4ca">vsf_spi_irq_mask_t</a><ul>
-<li></li>
-</ul>
-</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">irq_mask</td><td>Interrupt mask(s) to enable from <a class="el" href="vsf__template__spi_8h.html#a7f49b5c17656fbf30f8cc62ae181b4ca">vsf_spi_irq_mask_t</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -493,9 +532,9 @@ Multiple interrupts can be enabled by OR-ing the masks </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">spi_ptr</td><td>Pointer to SPI instance structure <a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">out_buffer_ptr</td><td>Pointer to transmit data buffer (can be NULL for receive-only) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">out_buffer_ptr</td><td>Pointer to data to transmit (can be NULL for receive-only) </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">out_offset_ptr</td><td>Pointer to transmit buffer offset </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">in_buffer_ptr</td><td>Pointer to receive data buffer (can be NULL for transmit-only) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">in_buffer_ptr</td><td>Pointer to buffer for received data (can be NULL for transmit-only) </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">in_offset_ptr</td><td>Pointer to receive buffer offset </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>Number of data units to transfer (can be 0 for QSPI operations with only command/address phases) </td></tr>
   </table>
@@ -507,7 +546,17 @@ In master mode, out_buffer_ptr data is sent through MOSI pin, in_buffer_ptr rece
 <dd>
 In slave mode, out_buffer_ptr data is sent through MISO pin, in_buffer_ptr receives from MOSI pin </dd>
 <dd>
-When using QSPI after configuring with <a class="el" href="vsf__template__spi_8h.html#a894ed08c82529144effeb963d8f0e82c" title="Execute a control command on the SPI instance.">vsf_spi_ctrl()</a>, the count parameter refers to data phase units only </dd></dl>
+When using QSPI after configuring with <a class="el" href="vsf__template__spi_8h.html#a894ed08c82529144effeb963d8f0e82c" title="Execute a control command on the SPI instance.">vsf_spi_ctrl()</a>, the count parameter refers to data phase units only </dd>
+<dd>
+Nullability rules: At least one of out_buffer_ptr or in_buffer_ptr must be non-NULL.<ul>
+<li>If out_buffer_ptr is NULL (receive-only), out_offset_ptr must be NULL.</li>
+<li>If in_buffer_ptr is NULL (transmit-only), in_offset_ptr must be NULL.</li>
+<li>If a buffer pointer is non-NULL, its corresponding offset pointer must also be non-NULL.</li>
+<li>It is invalid for both out_buffer_ptr and in_buffer_ptr to be NULL simultaneously. </li>
+</ul>
+</dd>
+<dd>
+Driver implementers should validate the parameters and use an assertion (e.g., VSF_HAL_ASSERT) to handle invalid arguments. </dd></dl>
 
 </div>
 </div>
@@ -553,8 +602,8 @@ When using QSPI after configuring with <a class="el" href="vsf__template__spi_8h
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">spi_ptr</td><td>Pointer to SPI instance structure <a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">out_buffer_ptr</td><td>Pointer to output data buffer (NULL for receive-only) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">in_buffer_ptr</td><td>Pointer to input data buffer (NULL for transmit-only) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">out_buffer_ptr</td><td>Pointer to data to transmit (NULL for receive-only) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">in_buffer_ptr</td><td>Pointer to buffer for received data (NULL for transmit-only) </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>Number of data units to transfer (can be 0 for QSPI operations with only command/address phases) </td></tr>
   </table>
   </dd>
@@ -568,7 +617,9 @@ In master mode, out_buffer_ptr data is sent through MOSI pin, in_buffer_ptr rece
 <dd>
 In slave mode, out_buffer_ptr data is sent through MISO pin, in_buffer_ptr receives from MOSI pin </dd>
 <dd>
-For QSPI operations after calling <a class="el" href="vsf__template__spi_8h.html#a894ed08c82529144effeb963d8f0e82c" title="Execute a control command on the SPI instance.">vsf_spi_ctrl()</a>, this function will execute all configured phases (command, address, dummy, data). Count parameter refers only to data phase units. </dd></dl>
+For QSPI operations after calling <a class="el" href="vsf__template__spi_8h.html#a894ed08c82529144effeb963d8f0e82c" title="Execute a control command on the SPI instance.">vsf_spi_ctrl()</a>, this function will execute all configured phases (command, address, dummy, data). Count parameter refers only to data phase units. </dd>
+<dd>
+Nullability rules: out_buffer_ptr and in_buffer_ptr must not be both NULL; if a buffer pointer is NULL, its corresponding offset pointer (if any in related APIs) must also be NULL; if a buffer pointer is non-NULL, its corresponding offset pointer must be non-NULL. </dd></dl>
 
 </div>
 </div>
@@ -716,7 +767,7 @@ For ongoing transfers, returns the current progress; for completed transfers, re
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if command executed successfully, VSF_ERR_NOT_SUPPORT if command is not supported, other negative error codes for specific failures </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if command executed successfully, VSF_ERR_NOT_SUPPORT if command is not supported, other error codes defined by vsf_err_t for specific failures </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Available commands and their parameters are hardware-dependent </dd>
 <dd>
 Some commands may not be supported on all hardware platforms </dd></dl>
@@ -726,5 +777,5 @@ Some commands may not be supported on all hardware platforms </dd></dl>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/d17ff2401de83d9982c66846264e4a189a46d357" target="_blank">vsfteam/vsf@d17ff24</a>
+  <a href="https://github.com/vsfteam/vsf/commit/3a576403615b75fd023d405df4ea4d78c8936a40" target="_blank">vsfteam/vsf@3a57640</a>
 </div>
