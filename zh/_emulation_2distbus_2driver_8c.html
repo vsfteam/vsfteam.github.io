@@ -1,0 +1,551 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/hal/driver/Emulation/distbus/driver.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_e31421c8d11a714f997d94dfd878485b.html">hal</a></li><li class="navelem"><a class="el" href="dir_25d0b491454d9cd33ec551022795e759.html">driver</a></li><li class="navelem"><a class="el" href="dir_60a725a0521262a3b88b1c1aec70d9a2.html">Emulation</a></li><li class="navelem"><a class="el" href="dir_daf947f35e4cf82dd80b3ca2e163af9a.html">distbus</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle"><div class="title">driver.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__hal__cfg_8h_source.html">hal/vsf_hal_cfg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hal_2driver_2_emulation_2distbus_2device_8h_source.html">./device.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vendor__driver_8h_source.html">hal/driver/vendor_driver.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__usart__stream_8h_source.html">hal/utilities/stream/usart/vsf_usart_stream.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__service_8h_source.html">service/vsf_service.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__hal__distbus__enum__with__peripheral__count_8inc_source.html">./vsf_hal_distbus_enum_with_peripheral_count.inc</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a3b3df8a7a12aae810287356903851256" id="r_a3b3df8a7a12aae810287356903851256"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#a3b3df8a7a12aae810287356903851256">VSF_HAL_DISTBUS_MSGPOLL_SIZE</a>&#160;&#160;&#160;64</td></tr>
+<tr class="separator:a3b3df8a7a12aae810287356903851256"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06673bcdbf957b86763e44d71182c51a" id="r_a06673bcdbf957b86763e44d71182c51a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#a06673bcdbf957b86763e44d71182c51a">VSF_HAL_DISTBUS_DEFINE</a>(__TYPE)</td></tr>
+<tr class="separator:a06673bcdbf957b86763e44d71182c51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a499c8b509408c830eb28669713cadcfa" id="r_a499c8b509408c830eb28669713cadcfa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#a499c8b509408c830eb28669713cadcfa">__VSF_HAL_DISTBUS_ENUM</a>&#160;&#160;&#160;<a class="el" href="_emulation_2distbus_2driver_8c.html#a06673bcdbf957b86763e44d71182c51a">VSF_HAL_DISTBUS_DEFINE</a></td></tr>
+<tr class="separator:a499c8b509408c830eb28669713cadcfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a241149ecf4955762ff4b8d70fa3de097" id="r_a241149ecf4955762ff4b8d70fa3de097"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#a241149ecf4955762ff4b8d70fa3de097">VSF_HAL_DISTBUS_PERIPHERAL_TYPE_DEF</a>(__TYPE)</td></tr>
+<tr class="separator:a241149ecf4955762ff4b8d70fa3de097"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a499c8b509408c830eb28669713cadcfa" id="r_a499c8b509408c830eb28669713cadcfa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#a499c8b509408c830eb28669713cadcfa">__VSF_HAL_DISTBUS_ENUM</a>&#160;&#160;&#160;<a class="el" href="_emulation_2distbus_2driver_8c.html#a241149ecf4955762ff4b8d70fa3de097">VSF_HAL_DISTBUS_PERIPHERAL_TYPE_DEF</a></td></tr>
+<tr class="separator:a499c8b509408c830eb28669713cadcfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8d7c23b8539fed54a91e06daf7a41ed" id="r_ab8d7c23b8539fed54a91e06daf7a41ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#ab8d7c23b8539fed54a91e06daf7a41ed">VSF_HAL_HW_IMPLEMENT</a>(__N,  __VALUE)</td></tr>
+<tr class="separator:ab8d7c23b8539fed54a91e06daf7a41ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35d1aea7176e89daa2c6d5d7d30e1c4d" id="r_a35d1aea7176e89daa2c6d5d7d30e1c4d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#a35d1aea7176e89daa2c6d5d7d30e1c4d">VSF_HAL_HW_IMPLEMENT_ARRAY</a>(__N,  __VALUE)&#160;&#160;&#160;        &amp;<a class="el" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_hw_, VSF_HAL_CFG_IMP_TYPE, __N),</td></tr>
+<tr class="separator:a35d1aea7176e89daa2c6d5d7d30e1c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5497f463a9ed187db45b75dcce6c9ce5" id="r_a5497f463a9ed187db45b75dcce6c9ce5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#a5497f463a9ed187db45b75dcce6c9ce5">VSF_HAL_HW_IMPLEMENT_MULTI</a>()</td></tr>
+<tr class="separator:a5497f463a9ed187db45b75dcce6c9ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a741d97ff6d34ec4ab228b1ffb6c1145e" id="r_a741d97ff6d34ec4ab228b1ffb6c1145e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#a741d97ff6d34ec4ab228b1ffb6c1145e">VSF_HAL_DISTBUS_DEFINE_DEVS</a>(__TYPE)&#160;&#160;&#160;        <a class="el" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_hal_distbus_, __TYPE, _t) *__TYPE;</td></tr>
+<tr class="separator:a741d97ff6d34ec4ab228b1ffb6c1145e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a499c8b509408c830eb28669713cadcfa" id="r_a499c8b509408c830eb28669713cadcfa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#a499c8b509408c830eb28669713cadcfa">__VSF_HAL_DISTBUS_ENUM</a>&#160;&#160;&#160;<a class="el" href="_emulation_2distbus_2driver_8c.html#a741d97ff6d34ec4ab228b1ffb6c1145e">VSF_HAL_DISTBUS_DEFINE_DEVS</a></td></tr>
+<tr class="separator:a499c8b509408c830eb28669713cadcfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1ac5197938b7e98b3b805a7c3fc8beb" id="r_aa1ac5197938b7e98b3b805a7c3fc8beb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#aa1ac5197938b7e98b3b805a7c3fc8beb">VSF_HAL_DISTBUS_ENUM</a>(__TYPE)</td></tr>
+<tr class="separator:aa1ac5197938b7e98b3b805a7c3fc8beb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a499c8b509408c830eb28669713cadcfa" id="r_a499c8b509408c830eb28669713cadcfa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#a499c8b509408c830eb28669713cadcfa">__VSF_HAL_DISTBUS_ENUM</a>&#160;&#160;&#160;<a class="el" href="_emulation_2distbus_2driver_8c.html#aa1ac5197938b7e98b3b805a7c3fc8beb">VSF_HAL_DISTBUS_ENUM</a></td></tr>
+<tr class="separator:a499c8b509408c830eb28669713cadcfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:aa7ce9aec6c7695cbab15196cc652dda5" id="r_aa7ce9aec6c7695cbab15196cc652dda5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#aa7ce9aec6c7695cbab15196cc652dda5">describe_mem_stream</a> (vsf_distbus_transport_stream_rx, 1024)</td></tr>
+<tr class="separator:aa7ce9aec6c7695cbab15196cc652dda5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61f68a3c6e680c31f075c486fd61b5fa" id="r_a61f68a3c6e680c31f075c486fd61b5fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#a61f68a3c6e680c31f075c486fd61b5fa">dcl_vsf_pool</a> (<a class="el" href="vsf__pool_8h.html#afbbf74b4d90c64200523564f766f7b63">def_vsf_pool</a>(__vsf_hal_distbus_msg_pool)</td></tr>
+<tr class="separator:a61f68a3c6e680c31f075c486fd61b5fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c6b25939666415fca50d5cc7f54e39d" id="r_a2c6b25939666415fca50d5cc7f54e39d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#a2c6b25939666415fca50d5cc7f54e39d">imp_vsf_pool</a> (__vsf_hal_distbus_msg_pool, <a class="el" href="_emulation_2distbus_2driver_8c.html#adfbbc38ed98a8e85bb29dcd8af312e74">__vsf_hal_distbus_msg_t</a>)</td></tr>
+<tr class="separator:a2c6b25939666415fca50d5cc7f54e39d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee6c3db4e792224eeab2975cfac1e03d" id="r_aee6c3db4e792224eeab2975cfac1e03d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#aee6c3db4e792224eeab2975cfac1e03d">vsf_hal_distbus_on_new</a> (<a class="el" href="classvsf__hal__distbus__t.html">vsf_hal_distbus_t</a> *hal_distbus, <a class="el" href="hal_2driver_2vsf_2distbus_2driver_8h.html#a3b272e9d75a4e8098a1e43fe6fec7ef8">vsf_hal_distbus_type_t</a> <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> num, void *devs)</td></tr>
+<tr class="separator:aee6c3db4e792224eeab2975cfac1e03d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a296f1c0f089ef21af9c6f28bb9b6ea74" id="r_a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#a296f1c0f089ef21af9c6f28bb9b6ea74">vsf_driver_init</a> (void)</td></tr>
+<tr class="memdesc:a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="mdescLeft">&#160;</td><td class="mdescRight">common hal drivers  <br /></td></tr>
+<tr class="separator:a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:adfbbc38ed98a8e85bb29dcd8af312e74" id="r_adfbbc38ed98a8e85bb29dcd8af312e74"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#adfbbc38ed98a8e85bb29dcd8af312e74">__vsf_hal_distbus_msg_t</a></td></tr>
+<tr class="separator:adfbbc38ed98a8e85bb29dcd8af312e74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cd79c63e528dd3bd2932d5d0597a368" id="r_a2cd79c63e528dd3bd2932d5d0597a368"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_emulation_2distbus_2driver_8c.html#a2cd79c63e528dd3bd2932d5d0597a368">vsf_hal_distbus_ctx_t</a></td></tr>
+<tr class="separator:a2cd79c63e528dd3bd2932d5d0597a368"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a3b3df8a7a12aae810287356903851256" name="a3b3df8a7a12aae810287356903851256"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b3df8a7a12aae810287356903851256">&#9670;&#160;</a></span>VSF_HAL_DISTBUS_MSGPOLL_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_HAL_DISTBUS_MSGPOLL_SIZE&#160;&#160;&#160;64</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06673bcdbf957b86763e44d71182c51a" name="a06673bcdbf957b86763e44d71182c51a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06673bcdbf957b86763e44d71182c51a">&#9670;&#160;</a></span>VSF_HAL_DISTBUS_DEFINE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_HAL_DISTBUS_DEFINE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__TYPE</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">        <span class="keyword">struct </span>{                                                                \</div>
+<div class="line">            <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> dev_num;                                                    \</div>
+<div class="line">            VSF_MCONNECT(vsf_, __TYPE, _t) *dev[32];                            \</div>
+<div class="line">        } __TYPE;</div>
+<div class="ttc" id="astdint_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition</b> stdint.h:5</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a499c8b509408c830eb28669713cadcfa" name="a499c8b509408c830eb28669713cadcfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a499c8b509408c830eb28669713cadcfa">&#9670;&#160;</a></span>__VSF_HAL_DISTBUS_ENUM <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_HAL_DISTBUS_ENUM&#160;&#160;&#160;<a class="el" href="_emulation_2distbus_2driver_8c.html#a06673bcdbf957b86763e44d71182c51a">VSF_HAL_DISTBUS_DEFINE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a241149ecf4955762ff4b8d70fa3de097" name="a241149ecf4955762ff4b8d70fa3de097"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a241149ecf4955762ff4b8d70fa3de097">&#9670;&#160;</a></span>VSF_HAL_DISTBUS_PERIPHERAL_TYPE_DEF</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_HAL_DISTBUS_PERIPHERAL_TYPE_DEF</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__TYPE</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">        <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_hw_, __TYPE, _t) {                      \</div>
+<div class="line">            VSF_MCONNECT(vsf_remapped_, __TYPE, _t) <a class="code hl_variable" href="vsf__msg__tree_8h.html#ace9ca1e1f60a7fd19c4e6cb56d890ee5">_</a>;                          \</div>
+<div class="line">        } <a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_hw_, __TYPE, _t);</div>
+<div class="ttc" id="a_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c_html_a19af509fb2e09eb1505bd15a569fba92"><div class="ttname"><a href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a></div><div class="ttdeci">struct VSF_MCONNECT(VSF_FLASH_CFG_IMP_PREFIX, _flash_t)</div><div class="ttdef"><b>Definition</b> flash.c:53</div></div>
+<div class="ttc" id="avsf__msg__tree_8h_html_ace9ca1e1f60a7fd19c4e6cb56d890ee5"><div class="ttname"><a href="vsf__msg__tree_8h.html#ace9ca1e1f60a7fd19c4e6cb56d890ee5">_</a></div><div class="ttdeci">struct @861::@869 _</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a499c8b509408c830eb28669713cadcfa" name="a499c8b509408c830eb28669713cadcfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a499c8b509408c830eb28669713cadcfa">&#9670;&#160;</a></span>__VSF_HAL_DISTBUS_ENUM <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_HAL_DISTBUS_ENUM&#160;&#160;&#160;<a class="el" href="_emulation_2distbus_2driver_8c.html#a241149ecf4955762ff4b8d70fa3de097">VSF_HAL_DISTBUS_PERIPHERAL_TYPE_DEF</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8d7c23b8539fed54a91e06daf7a41ed" name="ab8d7c23b8539fed54a91e06daf7a41ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8d7c23b8539fed54a91e06daf7a41ed">&#9670;&#160;</a></span>VSF_HAL_HW_IMPLEMENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_HAL_HW_IMPLEMENT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__N, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__VALUE&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">        <a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_hw_, VSF_HAL_CFG_IMP_TYPE, _t) <a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_hw_, VSF_HAL_CFG_IMP_TYPE, __N) = {\</div>
+<div class="line">            ._                  = {                                             \</div>
+<div class="line">                .op             = &amp;<a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_remapped_, VSF_HAL_CFG_IMP_TYPE, _op),\</div>
+<div class="line">            },                                                                  \</div>
+<div class="line">        };</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a35d1aea7176e89daa2c6d5d7d30e1c4d" name="a35d1aea7176e89daa2c6d5d7d30e1c4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35d1aea7176e89daa2c6d5d7d30e1c4d">&#9670;&#160;</a></span>VSF_HAL_HW_IMPLEMENT_ARRAY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_HAL_HW_IMPLEMENT_ARRAY</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__N, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__VALUE&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;        &amp;<a class="el" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_hw_, VSF_HAL_CFG_IMP_TYPE, __N),</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5497f463a9ed187db45b75dcce6c9ce5" name="a5497f463a9ed187db45b75dcce6c9ce5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5497f463a9ed187db45b75dcce6c9ce5">&#9670;&#160;</a></span>VSF_HAL_HW_IMPLEMENT_MULTI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_HAL_HW_IMPLEMENT_MULTI</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">        <a class="code hl_define" href="vsf__repeat__macro_8h.html#ad673e52e05fc2a65590c1d4d9252acda">VSF_MREPEAT</a>(<a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(VSF_HW_, VSF_HAL_CFG_IMP_UPCASE_TYPE, _COUNT), <a class="code hl_define" href="_emulation_2distbus_2driver_8c.html#ab8d7c23b8539fed54a91e06daf7a41ed">VSF_HAL_HW_IMPLEMENT</a>, <a class="code hl_define" href="lvgl_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)\</div>
+<div class="line">        VSF_MCONNECT(vsf_hw_, VSF_HAL_CFG_IMP_TYPE, _t) *<span class="keyword">const</span> <a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_hw_, VSF_HAL_CFG_IMP_TYPE, s)[<a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(VSF_HW_, VSF_HAL_CFG_IMP_UPCASE_TYPE, _COUNT)] = {\</div>
+<div class="line">            VSF_MREPEAT(<a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(VSF_HW_, VSF_HAL_CFG_IMP_UPCASE_TYPE, _COUNT), <a class="code hl_define" href="_emulation_2distbus_2driver_8c.html#a35d1aea7176e89daa2c6d5d7d30e1c4d">VSF_HAL_HW_IMPLEMENT_ARRAY</a>, <a class="code hl_define" href="lvgl_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)\</div>
+<div class="line">        };</div>
+<div class="ttc" id="a_emulation_2distbus_2driver_8c_html_a35d1aea7176e89daa2c6d5d7d30e1c4d"><div class="ttname"><a href="_emulation_2distbus_2driver_8c.html#a35d1aea7176e89daa2c6d5d7d30e1c4d">VSF_HAL_HW_IMPLEMENT_ARRAY</a></div><div class="ttdeci">#define VSF_HAL_HW_IMPLEMENT_ARRAY(__N, __VALUE)</div><div class="ttdef"><b>Definition</b> driver.c:121</div></div>
+<div class="ttc" id="a_emulation_2distbus_2driver_8c_html_ab8d7c23b8539fed54a91e06daf7a41ed"><div class="ttname"><a href="_emulation_2distbus_2driver_8c.html#ab8d7c23b8539fed54a91e06daf7a41ed">VSF_HAL_HW_IMPLEMENT</a></div><div class="ttdeci">#define VSF_HAL_HW_IMPLEMENT(__N, __VALUE)</div><div class="ttdef"><b>Definition</b> driver.c:115</div></div>
+<div class="ttc" id="alvgl_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="lvgl_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition</b> lvgl.h:26</div></div>
+<div class="ttc" id="avsf__repeat__macro_8h_html_ad673e52e05fc2a65590c1d4d9252acda"><div class="ttname"><a href="vsf__repeat__macro_8h.html#ad673e52e05fc2a65590c1d4d9252acda">VSF_MREPEAT</a></div><div class="ttdeci">#define VSF_MREPEAT(__COUNT, __MACRO, __PARAM)</div><div class="ttdef"><b>Definition</b> vsf_repeat_macro.h:51</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a741d97ff6d34ec4ab228b1ffb6c1145e" name="a741d97ff6d34ec4ab228b1ffb6c1145e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a741d97ff6d34ec4ab228b1ffb6c1145e">&#9670;&#160;</a></span>VSF_HAL_DISTBUS_DEFINE_DEVS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_HAL_DISTBUS_DEFINE_DEVS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__TYPE</td><td>)</td>
+          <td>&#160;&#160;&#160;        <a class="el" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_hal_distbus_, __TYPE, _t) *__TYPE;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a499c8b509408c830eb28669713cadcfa" name="a499c8b509408c830eb28669713cadcfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a499c8b509408c830eb28669713cadcfa">&#9670;&#160;</a></span>__VSF_HAL_DISTBUS_ENUM <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_HAL_DISTBUS_ENUM&#160;&#160;&#160;<a class="el" href="_emulation_2distbus_2driver_8c.html#a741d97ff6d34ec4ab228b1ffb6c1145e">VSF_HAL_DISTBUS_DEFINE_DEVS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa1ac5197938b7e98b3b805a7c3fc8beb" name="aa1ac5197938b7e98b3b805a7c3fc8beb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1ac5197938b7e98b3b805a7c3fc8beb">&#9670;&#160;</a></span>VSF_HAL_DISTBUS_ENUM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_HAL_DISTBUS_ENUM</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__TYPE</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">case</span> <a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(VSF_HAL_DISTBUS_, __TYPE):                                \</div>
+<div class="line">        if (!__vsf_hal_distbus_ctx.chip.__TYPE.dev_num) {                       \</div>
+<div class="line">            __vsf_hal_distbus_ctx.chip.__TYPE.dev_num = <a class="code hl_define" href="____type_8h.html#a706e6f5c5a4dc76d1a0063eb7efbff85">vsf_min</a>(num, <a class="code hl_define" href="____type_8h.html#aa6debdf5e87694001cf011a03133c7a2">dimof</a>(__vsf_hal_distbus_ctx.chip.__TYPE.dev));\</div>
+<div class="line">            for (<a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> i = 0; i &lt; __vsf_hal_distbus_ctx.chip.__TYPE.dev_num; i++) {\</div>
+<div class="line">                __vsf_hal_distbus_ctx.chip.__TYPE.dev[i] = (<a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_, __TYPE, _t) *)&amp;u_devs.__TYPE[i];\</div>
+<div class="line">                VSF_MCONNECT(vsf_hw_, __TYPE, s)[i]-&gt;_.target = (<a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_, __TYPE, _t) *)__vsf_hal_distbus_ctx.chip.__TYPE.dev[i];\</div>
+<div class="line">                __vsf_arch_trace(0, <span class="stringliteral">&quot;[hal_distbus] new &quot;</span> <a class="code hl_define" href="____type_8h.html#a55a14cc5e73754473f4c0160fd3704c2">VSF_STR</a>(__TYPE) <span class="stringliteral">&quot;%d %p&quot;</span> <a class="code hl_define" href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a>, i, __vsf_hal_distbus_ctx.chip.__TYPE.dev[i]);\</div>
+<div class="line">            }                                                                   \</div>
+<div class="line">        }                                                                       \</div>
+<div class="line">        <span class="keywordflow">break</span>;</div>
+<div class="ttc" id="a____type_8h_html_a55a14cc5e73754473f4c0160fd3704c2"><div class="ttname"><a href="____type_8h.html#a55a14cc5e73754473f4c0160fd3704c2">VSF_STR</a></div><div class="ttdeci">#define VSF_STR(__STRING)</div><div class="ttdef"><b>Definition</b> __type.h:140</div></div>
+<div class="ttc" id="a____type_8h_html_a706e6f5c5a4dc76d1a0063eb7efbff85"><div class="ttname"><a href="____type_8h.html#a706e6f5c5a4dc76d1a0063eb7efbff85">vsf_min</a></div><div class="ttdeci">#define vsf_min(__a, __b)</div><div class="ttdef"><b>Definition</b> __type.h:152</div></div>
+<div class="ttc" id="a____type_8h_html_aa6debdf5e87694001cf011a03133c7a2"><div class="ttname"><a href="____type_8h.html#aa6debdf5e87694001cf011a03133c7a2">dimof</a></div><div class="ttdeci">#define dimof(__arr)</div><div class="ttdef"><b>Definition</b> __type.h:155</div></div>
+<div class="ttc" id="avsf__trace_8h_html_a2d4ff51789ad484c6a3bb465687810f0"><div class="ttname"><a href="vsf__trace_8h.html#a2d4ff51789ad484c6a3bb465687810f0">VSF_TRACE_CFG_LINEEND</a></div><div class="ttdeci">#define VSF_TRACE_CFG_LINEEND</div><div class="ttdef"><b>Definition</b> vsf_trace.h:47</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a499c8b509408c830eb28669713cadcfa" name="a499c8b509408c830eb28669713cadcfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a499c8b509408c830eb28669713cadcfa">&#9670;&#160;</a></span>__VSF_HAL_DISTBUS_ENUM <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_HAL_DISTBUS_ENUM&#160;&#160;&#160;<a class="el" href="_emulation_2distbus_2driver_8c.html#aa1ac5197938b7e98b3b805a7c3fc8beb">VSF_HAL_DISTBUS_ENUM</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="aa7ce9aec6c7695cbab15196cc652dda5" name="aa7ce9aec6c7695cbab15196cc652dda5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7ce9aec6c7695cbab15196cc652dda5">&#9670;&#160;</a></span>describe_mem_stream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">describe_mem_stream </td>
+          <td>(</td>
+          <td class="paramtype">vsf_distbus_transport_stream_rx&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">1024&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a61f68a3c6e680c31f075c486fd61b5fa" name="a61f68a3c6e680c31f075c486fd61b5fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61f68a3c6e680c31f075c486fd61b5fa">&#9670;&#160;</a></span>dcl_vsf_pool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dcl_vsf_pool </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vsf__pool_8h.html#afbbf74b4d90c64200523564f766f7b63">def_vsf_pool</a>(&#160;</td>
+          <td class="paramname"><em>__vsf_hal_distbus_msg_pool</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c6b25939666415fca50d5cc7f54e39d" name="a2c6b25939666415fca50d5cc7f54e39d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c6b25939666415fca50d5cc7f54e39d">&#9670;&#160;</a></span>imp_vsf_pool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">imp_vsf_pool </td>
+          <td>(</td>
+          <td class="paramtype">__vsf_hal_distbus_msg_pool&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_emulation_2distbus_2driver_8c.html#adfbbc38ed98a8e85bb29dcd8af312e74">__vsf_hal_distbus_msg_t</a>&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee6c3db4e792224eeab2975cfac1e03d" name="aee6c3db4e792224eeab2975cfac1e03d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee6c3db4e792224eeab2975cfac1e03d">&#9670;&#160;</a></span>vsf_hal_distbus_on_new()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_hal_distbus_on_new </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__hal__distbus__t.html">vsf_hal_distbus_t</a> *&#160;</td>
+          <td class="paramname"><em>hal_distbus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="hal_2driver_2vsf_2distbus_2driver_8h.html#a3b272e9d75a4e8098a1e43fe6fec7ef8">vsf_hal_distbus_type_t</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>devs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a296f1c0f089ef21af9c6f28bb9b6ea74" name="a296f1c0f089ef21af9c6f28bb9b6ea74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a296f1c0f089ef21af9c6f28bb9b6ea74">&#9670;&#160;</a></span>vsf_driver_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> vsf_driver_init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>common hal drivers </p>
+<dl class="section note"><dt>注解</dt><dd>initialize device driver </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">none</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>initialization succeeded. </td></tr>
+    <tr><td class="paramname">false</td><td>initialization failed </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>initialise interrupt controller;</p>
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a id="adfbbc38ed98a8e85bb29dcd8af312e74" name="adfbbc38ed98a8e85bb29dcd8af312e74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfbbc38ed98a8e85bb29dcd8af312e74">&#9670;&#160;</a></span>__vsf_hal_distbus_msg_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__vsf_hal_distbus_msg_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2cd79c63e528dd3bd2932d5d0597a368" name="a2cd79c63e528dd3bd2932d5d0597a368"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cd79c63e528dd3bd2932d5d0597a368">&#9670;&#160;</a></span>vsf_hal_distbus_ctx_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vsf_hal_distbus_ctx_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/89134f8c395a3ea0191a447d3efd5d9fd347df48" target="_blank">vsfteam/vsf@89134f8</a>
+  生成
+</div>
