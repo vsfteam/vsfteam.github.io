@@ -85,6 +85,9 @@
 <tr class="memitem:ac249e15128dabd024bdfe272aba977ba" id="r_ac249e15128dabd024bdfe272aba977ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spi__common_8c.html#ac249e15128dabd024bdfe272aba977ba">vsf_spi_irq_disable</a> (<a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> *spi_ptr, <a class="el" href="vsf__template__spi_8h.html#a7f49b5c17656fbf30f8cc62ae181b4ca">vsf_spi_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
 <tr class="memdesc:ac249e15128dabd024bdfe272aba977ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">禁用 SPI 实例的特定中断  <br /></td></tr>
 <tr class="separator:ac249e15128dabd024bdfe272aba977ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ca0a15940017be1b033fdd313ee802f" id="r_a9ca0a15940017be1b033fdd313ee802f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__template__spi_8h.html#a7f49b5c17656fbf30f8cc62ae181b4ca">vsf_spi_irq_mask_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spi__common_8c.html#a9ca0a15940017be1b033fdd313ee802f">vsf_spi_irq_clear</a> (<a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> *spi_ptr, <a class="el" href="vsf__template__spi_8h.html#a7f49b5c17656fbf30f8cc62ae181b4ca">vsf_spi_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
+<tr class="memdesc:a9ca0a15940017be1b033fdd313ee802f"><td class="mdescLeft">&#160;</td><td class="mdescRight">清除 SPI 实例的中断标志并返回之前的状态  <br /></td></tr>
+<tr class="separator:a9ca0a15940017be1b033fdd313ee802f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a359d34570663f33ddb36248223127f8f" id="r_a359d34570663f33ddb36248223127f8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvsf__spi__status__t.html">vsf_spi_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spi__common_8c.html#a359d34570663f33ddb36248223127f8f">vsf_spi_status</a> (<a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> *spi_ptr)</td></tr>
 <tr class="memdesc:a359d34570663f33ddb36248223127f8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取 SPI 实例的当前状态  <br /></td></tr>
 <tr class="separator:a359d34570663f33ddb36248223127f8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -372,6 +375,45 @@
 
 </div>
 </div>
+<a id="a9ca0a15940017be1b033fdd313ee802f" name="a9ca0a15940017be1b033fdd313ee802f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ca0a15940017be1b033fdd313ee802f">&#9670;&#160;</a></span>vsf_spi_irq_clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vsf__template__spi_8h.html#a7f49b5c17656fbf30f8cc62ae181b4ca">vsf_spi_irq_mask_t</a> vsf_spi_irq_clear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> *&#160;</td>
+          <td class="paramname"><em>spi_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__template__spi_8h.html#a7f49b5c17656fbf30f8cc62ae181b4ca">vsf_spi_irq_mask_t</a>&#160;</td>
+          <td class="paramname"><em>irq_mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>清除 SPI 实例的中断标志并返回之前的状态 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">spi_ptr</td><td>指向结构体 <a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">irq_mask</td><td>要清除的一个或多个枚举 vsf_spi_irq_mask_t 值的按位或 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_spi_irq_mask_t: 清除前的中断掩码状态（如果没有标志被设置则返回0）</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>此函数尝试清除指定的中断标志（如果它们已设置），并返回清除前这些标志的状态。 这对于轮询操作和确定是否发生了中断很有用。 注意：如果中断已启用且中断处理函数处于活动状态，中断处理函数可能会自动清除中断标志。 在这种情况下，即使发生了中断，此函数也会返回0。 </dd></dl>
+
+</div>
+</div>
 <a id="a359d34570663f33ddb36248223127f8f" name="a359d34570663f33ddb36248223127f8f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a359d34570663f33ddb36248223127f8f">&#9670;&#160;</a></span>vsf_spi_status()</h2>
 
@@ -544,7 +586,9 @@
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>注解</dt><dd>数据单元大小由 SPI 模式中配置的数据大小决定 </dd>
+<dl class="section note"><dt>注解</dt><dd>数据单元大小由 SPI 模式中配置的数据大小决定（vsf_spi_mode_t） </dd>
+<dd>
+缓冲区大小要求：4-8 位 = 1 字节，9-16 位 = 2 字节，17-32 位 = 4 字节每个数据单元 </dd>
 <dd>
 在主机模式下，out_buffer_ptr 数据通过 MOSI 引脚发送，in_buffer_ptr 从 MISO 引脚接收 </dd>
 <dd>
@@ -613,6 +657,10 @@
 </dl>
 <dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果传输成功启动则返回 VSF_ERR_NONE，否则返回错误码 </dd></dl>
 <dl class="section note"><dt>注解</dt><dd>这是一个异步操作，注册完成中断以获得通知 </dd>
+<dd>
+数据单元大小由 SPI 模式中配置的数据大小决定（vsf_spi_mode_t） </dd>
+<dd>
+缓冲区大小要求：4-8 位 = 1 字节，9-16 位 = 2 字节，17-32 位 = 4 字节每个数据单元 </dd>
 <dd>
 如果 out_buffer_ptr 和 in_buffer_ptr 都不为 NULL，则以全双工模式交换数据 </dd>
 <dd>
@@ -695,7 +743,9 @@
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>注解</dt><dd>数据单元计数基于配置的数据大小（例如，对于 16 位数据大小，计数以 16 位为单位） </dd>
+<dl class="section note"><dt>注解</dt><dd>数据单元计数基于 SPI 模式中配置的数据大小（vsf_spi_mode_t） </dd>
+<dd>
+缓冲区大小要求：4-8 位 = 1 字节，9-16 位 = 2 字节，17-32 位 = 4 字节每个数据单元 </dd>
 <dd>
 对于正在进行的传输，返回当前进度；对于已完成的传输，返回最终计数 </dd></dl>
 
@@ -780,6 +830,6 @@
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/3b555580886dd24afa00e94d0812dc30f8497821" target="_blank">vsfteam/vsf@3b55558</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1431568240dffc92e36bbe5f7563dca8860ebd85" target="_blank">vsfteam/vsf@1431568</a>
   生成
 </div>

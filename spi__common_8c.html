@@ -85,6 +85,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ac249e15128dabd024bdfe272aba977ba" id="r_ac249e15128dabd024bdfe272aba977ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spi__common_8c.html#ac249e15128dabd024bdfe272aba977ba">vsf_spi_irq_disable</a> (<a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> *spi_ptr, <a class="el" href="vsf__template__spi_8h.html#a7f49b5c17656fbf30f8cc62ae181b4ca">vsf_spi_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
 <tr class="memdesc:ac249e15128dabd024bdfe272aba977ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable specific interrupts for a SPI instance.  <br /></td></tr>
 <tr class="separator:ac249e15128dabd024bdfe272aba977ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ca0a15940017be1b033fdd313ee802f" id="r_a9ca0a15940017be1b033fdd313ee802f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__template__spi_8h.html#a7f49b5c17656fbf30f8cc62ae181b4ca">vsf_spi_irq_mask_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spi__common_8c.html#a9ca0a15940017be1b033fdd313ee802f">vsf_spi_irq_clear</a> (<a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> *spi_ptr, <a class="el" href="vsf__template__spi_8h.html#a7f49b5c17656fbf30f8cc62ae181b4ca">vsf_spi_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
+<tr class="memdesc:a9ca0a15940017be1b033fdd313ee802f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear interrupt flags of SPI instance and return previous state.  <br /></td></tr>
+<tr class="separator:a9ca0a15940017be1b033fdd313ee802f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a359d34570663f33ddb36248223127f8f" id="r_a359d34570663f33ddb36248223127f8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvsf__spi__status__t.html">vsf_spi_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spi__common_8c.html#a359d34570663f33ddb36248223127f8f">vsf_spi_status</a> (<a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> *spi_ptr)</td></tr>
 <tr class="memdesc:a359d34570663f33ddb36248223127f8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current status of a SPI instance.  <br /></td></tr>
 <tr class="separator:a359d34570663f33ddb36248223127f8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -372,6 +375,45 @@ Multiple interrupts can be enabled by OR-ing the masks </dd></dl>
 
 </div>
 </div>
+<a id="a9ca0a15940017be1b033fdd313ee802f" name="a9ca0a15940017be1b033fdd313ee802f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ca0a15940017be1b033fdd313ee802f">&#9670;&#160;</a></span>vsf_spi_irq_clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vsf__template__spi_8h.html#a7f49b5c17656fbf30f8cc62ae181b4ca">vsf_spi_irq_mask_t</a> vsf_spi_irq_clear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> *&#160;</td>
+          <td class="paramname"><em>spi_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__template__spi_8h.html#a7f49b5c17656fbf30f8cc62ae181b4ca">vsf_spi_irq_mask_t</a>&#160;</td>
+          <td class="paramname"><em>irq_mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clear interrupt flags of SPI instance and return previous state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">spi_ptr</td><td>a pointer to structure <a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">irq_mask</td><td>one or more values of enum <a class="el" href="vsf__template__spi_8h.html#a7f49b5c17656fbf30f8cc62ae181b4ca">vsf_spi_irq_mask_t</a> to clear </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_spi_irq_mask_t: the interrupt mask state before clearing (0 if no flags were set)</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function attempts to clear the specified interrupt flags if they are set, and returns the state of those flags before clearing. This is useful for polling operations and determining if interrupts occurred. Note that if interrupts are enabled and an interrupt handler is active, the interrupt handler may clear the interrupt flags automatically. In such cases, this function will return 0 even if interrupts occurred. </dd></dl>
+
+</div>
+</div>
 <a id="a359d34570663f33ddb36248223127f8f" name="a359d34570663f33ddb36248223127f8f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a359d34570663f33ddb36248223127f8f">&#9670;&#160;</a></span>vsf_spi_status()</h2>
 
@@ -540,7 +582,9 @@ Multiple interrupts can be enabled by OR-ing the masks </dd></dl>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>Data unit size is determined by the configured data size in SPI mode </dd>
+<dl class="section note"><dt>Note</dt><dd>Data unit size is determined by the configured data size in SPI mode (<a class="el" href="_a_i_c_2_a_i_c8800_2spi_2spi_8h.html#ab21578569e5e21a2748d2fa14bbbe3a0">vsf_spi_mode_t</a>) </dd>
+<dd>
+Buffer size requirements: 4-8 bits = 1 byte, 9-16 bits = 2 bytes, 17-32 bits = 4 bytes per data unit </dd>
 <dd>
 In master mode, out_buffer_ptr data is sent through MOSI pin, in_buffer_ptr receives from MISO pin </dd>
 <dd>
@@ -610,6 +654,10 @@ Driver implementers should validate the parameters and use an assertion (e.g., V
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if transfer started successfully, or error code </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>This is an asynchronous operation, register for completion interrupts to be notified </dd>
+<dd>
+Data unit size is determined by the configured data size in SPI mode (<a class="el" href="_a_i_c_2_a_i_c8800_2spi_2spi_8h.html#ab21578569e5e21a2748d2fa14bbbe3a0">vsf_spi_mode_t</a>) </dd>
+<dd>
+Buffer size requirements: 4-8 bits = 1 byte, 9-16 bits = 2 bytes, 17-32 bits = 4 bytes per data unit </dd>
 <dd>
 If both out_buffer_ptr and in_buffer_ptr are not NULL, data is exchanged in full-duplex mode </dd>
 <dd>
@@ -692,7 +740,9 @@ Nullability rules: out_buffer_ptr and in_buffer_ptr must not be both NULL; if a 
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>Data unit count is based on the configured data size (e.g., for 16-bit data size, count is in 16-bit units) </dd>
+<dl class="section note"><dt>Note</dt><dd>Data unit count is based on the configured data size in SPI mode (<a class="el" href="_a_i_c_2_a_i_c8800_2spi_2spi_8h.html#ab21578569e5e21a2748d2fa14bbbe3a0">vsf_spi_mode_t</a>) </dd>
+<dd>
+Buffer size requirements: 4-8 bits = 1 byte, 9-16 bits = 2 bytes, 17-32 bits = 4 bytes per data unit </dd>
 <dd>
 For ongoing transfers, returns the current progress; for completed transfers, returns final counts </dd></dl>
 
@@ -777,5 +827,5 @@ Some commands may not be supported on all hardware platforms </dd></dl>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/3b555580886dd24afa00e94d0812dc30f8497821" target="_blank">vsfteam/vsf@3b55558</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1431568240dffc92e36bbe5f7563dca8860ebd85" target="_blank">vsfteam/vsf@1431568</a>
 </div>

@@ -85,6 +85,9 @@
 <tr class="memitem:a84ab8f22ddafb55dbf683e7b4574cecc" id="r_a84ab8f22ddafb55dbf683e7b4574cecc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usart__common_8c.html#a84ab8f22ddafb55dbf683e7b4574cecc">vsf_usart_irq_disable</a> (<a class="el" href="structvsf__usart__t.html">vsf_usart_t</a> *usart_ptr, <a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a7ea42303582a88dd1899a85f9c76d052">vsf_usart_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
 <tr class="memdesc:a84ab8f22ddafb55dbf683e7b4574cecc"><td class="mdescLeft">&#160;</td><td class="mdescRight">禁用 USART 实例的中断  <br /></td></tr>
 <tr class="separator:a84ab8f22ddafb55dbf683e7b4574cecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fdc232d8b99d0cd67b156fe56a4dd50" id="r_a5fdc232d8b99d0cd67b156fe56a4dd50"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a7ea42303582a88dd1899a85f9c76d052">vsf_usart_irq_mask_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usart__common_8c.html#a5fdc232d8b99d0cd67b156fe56a4dd50">vsf_usart_irq_clear</a> (<a class="el" href="structvsf__usart__t.html">vsf_usart_t</a> *usart_ptr, <a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a7ea42303582a88dd1899a85f9c76d052">vsf_usart_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
+<tr class="memdesc:a5fdc232d8b99d0cd67b156fe56a4dd50"><td class="mdescLeft">&#160;</td><td class="mdescRight">清除 USART 实例的中断标志并返回之前的状态  <br /></td></tr>
+<tr class="separator:a5fdc232d8b99d0cd67b156fe56a4dd50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a110982fce4841a581c8b06fcd28f68b1" id="r_a110982fce4841a581c8b06fcd28f68b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvsf__usart__status__t.html">vsf_usart_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usart__common_8c.html#a110982fce4841a581c8b06fcd28f68b1">vsf_usart_status</a> (<a class="el" href="structvsf__usart__t.html">vsf_usart_t</a> *usart_ptr)</td></tr>
 <tr class="memdesc:a110982fce4841a581c8b06fcd28f68b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取 USART 实例的状态  <br /></td></tr>
 <tr class="separator:a110982fce4841a581c8b06fcd28f68b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -372,6 +375,45 @@
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>无 </dd></dl>
+
+</div>
+</div>
+<a id="a5fdc232d8b99d0cd67b156fe56a4dd50" name="a5fdc232d8b99d0cd67b156fe56a4dd50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fdc232d8b99d0cd67b156fe56a4dd50">&#9670;&#160;</a></span>vsf_usart_irq_clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a7ea42303582a88dd1899a85f9c76d052">vsf_usart_irq_mask_t</a> vsf_usart_irq_clear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__usart__t.html">vsf_usart_t</a> *&#160;</td>
+          <td class="paramname"><em>usart_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_a_i_c_2_a_i_c8800_2uart_2uart_8h.html#a7ea42303582a88dd1899a85f9c76d052">vsf_usart_irq_mask_t</a>&#160;</td>
+          <td class="paramname"><em>irq_mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>清除 USART 实例的中断标志并返回之前的状态 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">usart_ptr</td><td>指向结构体 <a class="el" href="structvsf__usart__t.html">vsf_usart_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">irq_mask</td><td>要清除的一个或多个枚举 vsf_usart_irq_mask_t 值的按位或 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_usart_irq_mask_t: 清除前的中断掩码状态（如果没有标志被设置则返回0）</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>此函数尝试清除指定的中断标志（如果它们已设置），并返回清除前这些标志的状态。 这对于轮询操作和确定是否发生了中断很有用。 注意：如果中断已启用且中断处理函数处于活动状态，中断处理函数可能会自动清除中断标志。 在这种情况下，即使发生了中断，此函数也会返回0。 </dd></dl>
 
 </div>
 </div>
@@ -802,6 +844,6 @@
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/3b555580886dd24afa00e94d0812dc30f8497821" target="_blank">vsfteam/vsf@3b55558</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1431568240dffc92e36bbe5f7563dca8860ebd85" target="_blank">vsfteam/vsf@1431568</a>
   生成
 </div>
