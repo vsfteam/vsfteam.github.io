@@ -299,10 +299,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">        <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_hw_, __TYPE, _t) {                      \</div>
-<div class="line">            VSF_MCONNECT(vsf_remapped_, __TYPE, _t) <a class="code hl_variable" href="vsf__msg__tree_8h.html#a0ba3f54b21d284afd26b23f664cd7229">_</a>;                          \</div>
+<div class="line">            VSF_MCONNECT(vsf_remapped_, __TYPE, _t) <a class="code hl_variable" href="vsf__msg__tree_8h.html#a6659c522e2a5d758fce8b0f6db8af736">_</a>;                          \</div>
 <div class="line">        } <a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_hw_, __TYPE, _t);</div>
 <div class="ttc" id="a_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c_html_a19af509fb2e09eb1505bd15a569fba92"><div class="ttname"><a href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a></div><div class="ttdeci">struct VSF_MCONNECT(VSF_FLASH_CFG_IMP_PREFIX, _flash_t)</div><div class="ttdef"><b>Definition</b> flash.c:53</div></div>
-<div class="ttc" id="avsf__msg__tree_8h_html_a0ba3f54b21d284afd26b23f664cd7229"><div class="ttname"><a href="vsf__msg__tree_8h.html#a0ba3f54b21d284afd26b23f664cd7229">_</a></div><div class="ttdeci">struct @853::@870 _</div></div>
+<div class="ttc" id="avsf__msg__tree_8h_html_a6659c522e2a5d758fce8b0f6db8af736"><div class="ttname"><a href="vsf__msg__tree_8h.html#a6659c522e2a5d758fce8b0f6db8af736">_</a></div><div class="ttdeci">struct @854::@870 _</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -433,8 +433,14 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">        <span class="keywordtype">void</span> <a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(VSF_HAL_CFG_IMP_UPCASE_TYPE, __N, _IRQHandler)(void)  \</div>
 <div class="line">        {                                                                       \</div>
-<div class="line">            VSF_MCONNECT(vsf_hal_distbus_, VSF_HAL_CFG_IMP_TYPE, _irqhandler)(  \</div>
-<div class="line">                    VSF_MCONNECT(vsf_hw_, VSF_HAL_CFG_IMP_TYPE, __N)._.target); \</div>
+<div class="line">            VSF_MCONNECT(vsf_hal_distbus_, VSF_HAL_CFG_IMP_TYPE, _t) *target =  \</div>
+<div class="line">                    (<a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_hal_distbus_, VSF_HAL_CFG_IMP_TYPE, _t) *)\</div>
+<div class="line">                    <a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_hw_, VSF_HAL_CFG_IMP_TYPE, __N)._.target;  \</div>
+<div class="line">            if (target-&gt;irq.handler != <a class="code hl_define" href="lvgl_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) {                                  \</div>
+<div class="line">                target-&gt;irq.handler(target-&gt;irq.target,                         \</div>
+<div class="line">                    (<a class="code hl_function" href="_giga_device_2_g_d32_h7_x_x_2common_2flash_2flash_8c.html#a19af509fb2e09eb1505bd15a569fba92">VSF_MCONNECT</a>(vsf_, VSF_HAL_CFG_IMP_TYPE, _t) *)target,     \</div>
+<div class="line">                    target-&gt;irq.triggered_mask);                                \</div>
+<div class="line">            }                                                                   \</div>
 <div class="line">        }</div>
 </div><!-- fragment -->
 </div>
@@ -917,5 +923,5 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/db38cbd8594e4633586bf5fcbdb0f23ac0997b64" target="_blank">vsfteam/vsf@db38cbd</a>
+  <a href="https://github.com/vsfteam/vsf/commit/70836af7cb19c16e078dcdbdb37d2e51de20e34c" target="_blank">vsfteam/vsf@70836af</a>
 </div>
