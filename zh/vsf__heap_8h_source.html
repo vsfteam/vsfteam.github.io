@@ -122,28 +122,28 @@
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#if VSF_HEAP_CFG_TRACE == ENABLED</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="vsf__heap_8h.html#aa5d0b5d2b76a8dc0150a7a287a01be15">   76</a></span><span class="preprocessor">#   define vsf_heap_malloc_aligned(...)                                         \</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="vsf__heap_8h.html#ab075cd5b3bc24f16af22ca6345ba7225">   76</a></span><span class="preprocessor">#   define vsf_heap_malloc_aligned(__size, __alignment)                         \</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">    ({                                                                          \</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">        void * ptr = vsf_heap_malloc_aligned_imp(__VA_ARGS__);                  \</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">        vsf_trace_debug(&quot;%s: malloc_align 0x%p&quot; VSF_TRACE_CFG_LINEEND, __FUNCTION__, ptr);\</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">        void * ptr = vsf_heap_malloc_aligned_imp(__size, __alignment);          \</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">        vsf_trace_debug(&quot;%s: malloc_align 0x%p %d&quot; VSF_TRACE_CFG_LINEEND, __FUNCTION__, ptr, __size);\</span></div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">        ptr;                                                                    \</span></div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">    })</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="vsf__heap_8h.html#afc5c9f8b537c78379ac83450c333fea4">   82</a></span><span class="preprocessor">#   define vsf_heap_malloc(...)                                                 \</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="vsf__heap_8h.html#aed1ba84cca7cc606a1670a4de71e28bd">   82</a></span><span class="preprocessor">#   define vsf_heap_malloc(__size)                                              \</span></div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">    ({                                                                          \</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">        void * ptr = vsf_heap_malloc_imp(__VA_ARGS__);                          \</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">        vsf_trace_debug(&quot;%s: malloc 0x%p&quot; VSF_TRACE_CFG_LINEEND, __FUNCTION__, ptr);\</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">        void * ptr = vsf_heap_malloc_imp(__size);                               \</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">        vsf_trace_debug(&quot;%s: malloc 0x%p %d&quot; VSF_TRACE_CFG_LINEEND, __FUNCTION__, ptr, __size);\</span></div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">        ptr;                                                                    \</span></div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">    })</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="vsf__heap_8h.html#aae94a11884b036fd798ba1ef2ffb108d">   88</a></span><span class="preprocessor">#   define vsf_heap_realloc_aligned(...)                                        \</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="vsf__heap_8h.html#ada16bf43451c3ba4f98ec6f546191d6c">   88</a></span><span class="preprocessor">#   define vsf_heap_realloc_aligned(__buffer, __size, __alignment)              \</span></div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">    ({                                                                          \</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">        void * ptr = vsf_heap_realloc_aligned_imp(__VA_ARGS__);                 \</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">        vsf_trace_debug(&quot;%s: realloc_align 0x%p&quot; VSF_TRACE_CFG_LINEEND, __FUNCTION__, ptr);\</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">        void * ptr = vsf_heap_realloc_aligned_imp(__buffer, __size, __alignment);\</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">        vsf_trace_debug(&quot;%s: realloc_align 0x%p --&gt; 0x%p %d&quot; VSF_TRACE_CFG_LINEEND, __FUNCTION__, __buffer, ptr, __size);\</span></div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">        ptr;                                                                    \</span></div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">    })</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="vsf__heap_8h.html#aa14cbc9f3bd15ed9a18eb4f3558ff5e1">   94</a></span><span class="preprocessor">#   define vsf_heap_realloc(...)                                                \</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="vsf__heap_8h.html#a5c42f3141f246ba3d203922a9063b2d2">   94</a></span><span class="preprocessor">#   define vsf_heap_realloc(__buffer, __size)                                   \</span></div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">    ({                                                                          \</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">        void * ptr = vsf_heap_realloc_imp(__VA_ARGS__);                         \</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">        vsf_trace_debug(&quot;%s: realloc 0x%p&quot; VSF_TRACE_CFG_LINEEND, __FUNCTION__, ptr);\</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">        void * ptr = vsf_heap_realloc_imp(__buffer, __size);                    \</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">        vsf_trace_debug(&quot;%s: realloc 0x%p --&gt; 0x%p %d&quot; VSF_TRACE_CFG_LINEEND, __FUNCTION__, __buffer, ptr, __size);\</span></div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">        ptr;                                                                    \</span></div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">    })</span></div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="vsf__heap_8h.html#a211b2d7b0156ae996582be9ada66dfd0">  100</a></span><span class="preprocessor">#   define vsf_heap_free(__ptr)                                                 \</span></div>
@@ -292,6 +292,6 @@
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/2e083a2b1584bcf8d178c12695897df3c1fa2365" target="_blank">vsfteam/vsf@2e083a2</a>
+  <a href="https://github.com/vsfteam/vsf/commit/16f175f23ee4e13696d3f884db9503724b213a98" target="_blank">vsfteam/vsf@16f175f</a>
   生成
 </div>
