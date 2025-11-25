@@ -113,11 +113,17 @@
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_APPLET__ &amp;&amp; VSF_LINUX_APPLET_USE_SYS_RANDOM</span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> get_random_bytes(<span class="keywordtype">void</span> *buf, <span class="keywordtype">int</span> nbytes)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>{</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <a class="code hl_typedef" href="linux_2include_2sys_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a> ret = <a class="code hl_define" href="sys_2random_8h.html#aeb2e96f5c19bda71e800c06b80ed09dc">getrandom</a>(buf, nbytes, 0);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <a class="code hl_define" href="vsf__linux__cfg_8h.html#ad93e4ec1f90781e61349f791e567badc">VSF_LINUX_ASSERT</a>(ret == nbytes);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>}</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="alinux_2include_2sys_2types_8h_html"><div class="ttname"><a href="linux_2include_2sys_2types_8h.html">types.h</a></div></div>
 <div class="ttc" id="alinux_2include_2sys_2types_8h_html_af629ed855824cf5955b54529adf78ad6"><div class="ttname"><a href="linux_2include_2sys_2types_8h.html#af629ed855824cf5955b54529adf78ad6">ssize_t</a></div><div class="ttdeci">int ssize_t</div><div class="ttdef"><b>Definition</b> types.h:71</div></div>
 <div class="ttc" id="astructvsf__linux__sys__random__vplt__t_html"><div class="ttname"><a href="structvsf__linux__sys__random__vplt__t.html">vsf_linux_sys_random_vplt_t</a></div><div class="ttdef"><b>Definition</b> random.h:23</div></div>
@@ -129,9 +135,10 @@
 <div class="ttc" id="avsf__cfg_8h_html_aacdf4fc28d5a0268a4eec91b2f551293"><div class="ttname"><a href="vsf__cfg_8h.html#aacdf4fc28d5a0268a4eec91b2f551293">__VSF_VPLT_DECORATOR__</a></div><div class="ttdeci">#define __VSF_VPLT_DECORATOR__</div><div class="ttdef"><b>Definition</b> vsf_cfg.h:93</div></div>
 <div class="ttc" id="avsf__cfg_8h_html_aae1996c61284e2bfa39228b82c8f862f"><div class="ttname"><a href="vsf__cfg_8h.html#aae1996c61284e2bfa39228b82c8f862f">VSF_APPLET_VPLT_ENTRY_FUNC_TRACE</a></div><div class="ttdeci">#define VSF_APPLET_VPLT_ENTRY_FUNC_TRACE()</div><div class="ttdef"><b>Definition</b> vsf_cfg.h:165</div></div>
 <div class="ttc" id="avsf__linux__cfg_8h_html"><div class="ttname"><a href="vsf__linux__cfg_8h.html">vsf_linux_cfg.h</a></div></div>
+<div class="ttc" id="avsf__linux__cfg_8h_html_ad93e4ec1f90781e61349f791e567badc"><div class="ttname"><a href="vsf__linux__cfg_8h.html#ad93e4ec1f90781e61349f791e567badc">VSF_LINUX_ASSERT</a></div><div class="ttdeci">#define VSF_LINUX_ASSERT</div><div class="ttdef"><b>Definition</b> vsf_linux_cfg.h:31</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/7402a29d0dc2a42cdabae0a3a83fb81bd0b8a53a" target="_blank">vsfteam/vsf@7402a29</a>
+  <a href="https://github.com/vsfteam/vsf/commit/f4f0a2b553a7bc02e684b1c1cebebcee00cad76b" target="_blank">vsfteam/vsf@f4f0a2b</a>
   生成
 </div>
