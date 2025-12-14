@@ -35,6 +35,7 @@
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
     </ul>
   </div>
   <div id="navrow2" class="tabs2">
@@ -79,6 +80,8 @@ Data Fields</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>dma configuration </p>
 <p>DMA channel configuration structure for transfer setup </p><dl class="section note"><dt>Note</dt><dd>This structure contains all configuration needed for DMA transfer operations, including transfer mode, interrupt settings, and peripheral indices. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#_a81">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a8afb67f544ce33ac6699d0b69866fd7a" name="a8afb67f544ce33ac6699d0b69866fd7a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8afb67f544ce33ac6699d0b69866fd7a">&#9670;&#160;</a></span>mode</h2>
@@ -92,6 +95,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>DMA channel mode, including transfer direction, address increment mode, data width, burst length, priority, etc. Use VSF_DMA_XXX macros to configure (e.g. VSF_DMA_MEMORY_TO_PERIPHERAL | VSF_DMA_SRC_ADDR_INCREMENT | VSF_DMA_DST_WIDTH_BYTES_4) </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a82">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -107,6 +112,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Interrupt service routine configuration, including handler function and target pointer </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a83">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -122,6 +129,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Interrupt mask, indicating which interrupts to enable (e.g. VSF_DMA_IRQ_MASK_CPL | VSF_DMA_IRQ_MASK_ERROR) Multiple interrupt types can be combined using bitwise OR operation </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a84">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -136,7 +145,12 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Interrupt priority for this channel. Use vsf_arch_prio_invalid to use default priority from <a class="el" href="structvsf__dma__cfg__t.html" title="Configuration structure for DMA.">vsf_dma_cfg_t</a>. Only effective when hardware supports per-channel or per-group interrupt priority configuration. </p>
+<p>Interrupt priority for this channel. Use vsf_arch_prio_invalid to use default priority from <a class="el" href="structvsf__dma__cfg__t.html" title="Configuration structure for DMA.">vsf_dma_cfg_t</a>. This field is only effective when hardware supports per-channel independent interrupt priority configuration. For chips where multiple channels share the same interrupt, modifying priority in channel_config may affect other channels sharing the same interrupt, and the behavior is implementation-defined. If priority was set during channel_acquire, this field can be used to dynamically adjust priority at runtime (only for per-channel independent interrupt scenarios). For static allocation (channels fixed to peripherals, channel_acquire() is not needed):</p><ul>
+<li>Priority can be configured via channel_config() at runtime (if hardware supports dynamic priority adjustment).</li>
+<li>If priority is not configured via channel_config(), the default priority from <a class="el" href="structvsf__dma__cfg__t.html" title="Configuration structure for DMA.">vsf_dma_cfg_t</a> will be used. </li>
+</ul>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a85">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -152,6 +166,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>DMA peripheral request signal index for source side This is the hardware-specific request signal ID used for DMA handshaking Only effective when source is a peripheral (ignored for memory source) </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a86">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -167,6 +183,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>DMA peripheral request signal index for destination side This is the hardware-specific request signal ID used for DMA handshaking Only effective when destination is a peripheral (ignored for memory destination) </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a87">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -201,5 +219,5 @@ Data Fields</h2></td></tr>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/fbf600ea5e5329e52b279723d22f5d1fd6545c2c" target="_blank">vsfteam/vsf@fbf600e</a>
+  <a href="https://github.com/vsfteam/vsf/commit/a5c1a011ae85a699e6223014b37436a3f6ec7faf" target="_blank">vsfteam/vsf@a5c1a01</a>
 </div>

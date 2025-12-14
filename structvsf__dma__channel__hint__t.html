@@ -35,6 +35,7 @@
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
     </ul>
   </div>
   <div id="navrow2" class="tabs2">
@@ -63,10 +64,14 @@ Data Fields</h2></td></tr>
 <tr class="separator:a312b5c169045e85bd121d57e182ae6a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa84b2e0190bae8ba51c0131279a72ec9" id="r_aa84b2e0190bae8ba51c0131279a72ec9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__dma__channel__hint__t.html#aa84b2e0190bae8ba51c0131279a72ec9">request_line</a></td></tr>
 <tr class="separator:aa84b2e0190bae8ba51c0131279a72ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addce70f25a1a4ea2d5e43d3f1040ba95" id="r_addce70f25a1a4ea2d5e43d3f1040ba95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cortex__a__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633f">vsf_arch_prio_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__dma__channel__hint__t.html#addce70f25a1a4ea2d5e43d3f1040ba95">prio</a></td></tr>
+<tr class="separator:addce70f25a1a4ea2d5e43d3f1040ba95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>DMA channel hint structure for channel allocation. </p>
 <dl class="section note"><dt>Note</dt><dd>This structure is used only during channel acquire phase to provide hints for channel allocation. It contains only information needed for channel selection. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#_a70">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a312b5c169045e85bd121d57e182ae6a7" name="a312b5c169045e85bd121d57e182ae6a7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a312b5c169045e85bd121d57e182ae6a7">&#9670;&#160;</a></span>channel</h2>
@@ -79,7 +84,12 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Specify the DMA channel number. Use negative value (e.g., -1) for automatic allocation. (Some chips have fixed functionality configurations for DMA channels) </p>
+<p>Specify the DMA channel number. Use negative value (e.g., -1) for automatic allocation. (Some chips have fixed functionality configurations for DMA channels) Channel allocation modes:</p><ul>
+<li>Dynamic allocation: Call <a class="el" href="dma__common_8c.html#a3d972941b79e8af774aad70007ac351f" title="DMA acquire a new channel.">vsf_dma_channel_acquire()</a> to acquire a channel. Use <a class="el" href="dma__common_8c.html#a63bdc0c15b5d38364fe40e3b32b478af" title="Release a DMA channel.">vsf_dma_channel_release()</a> to free it.</li>
+<li>Static allocation: For chips where channels are fixed to peripherals, <a class="el" href="dma__common_8c.html#a3d972941b79e8af774aad70007ac351f" title="DMA acquire a new channel.">vsf_dma_channel_acquire()</a> is not needed. Channel information (channel number, request line, etc.) is defined in device.h, and priority can be configured via <a class="el" href="dma__common_8c.html#ab7e1f29af09bde4313085bdbe17b296f" title="Configure a DMA channel.">vsf_dma_channel_config()</a>. </li>
+</ul>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a71">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -95,11 +105,34 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Peripheral request line number, specifying the peripheral request source using DMA service. (Some chips provide a mapping table between peripherals and request lines, refer to chip manual to select the correct request line number). </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a72">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="addce70f25a1a4ea2d5e43d3f1040ba95" name="addce70f25a1a4ea2d5e43d3f1040ba95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addce70f25a1a4ea2d5e43d3f1040ba95">&#9670;&#160;</a></span>prio</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="cortex__a__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633f">vsf_arch_prio_t</a> vsf_dma_channel_hint_t::prio</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Optional interrupt priority for channel allocation. Priority handling behavior:</p><ul>
+<li>If prio is vsf_arch_prio_invalid: Use default priority from <a class="el" href="structvsf__dma__cfg__t.html" title="Configuration structure for DMA.">vsf_dma_cfg_t</a> (set during <a class="el" href="dma__common_8c.html#a7251f63f738afde2fb18be9b7ed61b90" title="Initialize a DMA instance.">vsf_dma_init()</a>).</li>
+<li>If prio is valid and DMA supports per-channel independent interrupts: Configure this priority during channel allocation.</li>
+<li>If prio is valid and multiple channels share the same interrupt: Driver should check if the requested priority matches the existing shared interrupt priority. If matched, allocate a channel from the shared interrupt group. If not matched and no compatible channel is available, return VSF_ERR_NOT_AVAILABLE. </li>
+</ul>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a73">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/fbf600ea5e5329e52b279723d22f5d1fd6545c2c" target="_blank">vsfteam/vsf@fbf600e</a>
+  <a href="https://github.com/vsfteam/vsf/commit/a5c1a011ae85a699e6223014b37436a3f6ec7faf" target="_blank">vsfteam/vsf@a5c1a01</a>
 </div>

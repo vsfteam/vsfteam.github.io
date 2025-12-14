@@ -35,6 +35,7 @@
       <li><a href="namespaces.html"><span>命名空间</span></a></li>
       <li class="current"><a href="annotated.html"><span>结构体</span></a></li>
       <li><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
     </ul>
   </div>
   <div id="navrow2" class="tabs2">
@@ -63,10 +64,14 @@
 <tr class="separator:a312b5c169045e85bd121d57e182ae6a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa84b2e0190bae8ba51c0131279a72ec9" id="r_aa84b2e0190bae8ba51c0131279a72ec9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__dma__channel__hint__t.html#aa84b2e0190bae8ba51c0131279a72ec9">request_line</a></td></tr>
 <tr class="separator:aa84b2e0190bae8ba51c0131279a72ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addce70f25a1a4ea2d5e43d3f1040ba95" id="r_addce70f25a1a4ea2d5e43d3f1040ba95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cortex__a__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633f">vsf_arch_prio_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__dma__channel__hint__t.html#addce70f25a1a4ea2d5e43d3f1040ba95">prio</a></td></tr>
+<tr class="separator:addce70f25a1a4ea2d5e43d3f1040ba95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>DMA 通道分配提示结构体 </p>
 <dl class="section note"><dt>注解</dt><dd>此结构体仅在通道请求阶段使用，用于提供通道分配提示。 它仅包含通道选择所需的信息。 </dd></dl>
+<dl class="section examples"><dt>示例</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#_a70">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 </div><h2 class="groupheader">结构体成员变量说明</h2>
 <a id="a312b5c169045e85bd121d57e182ae6a7" name="a312b5c169045e85bd121d57e182ae6a7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a312b5c169045e85bd121d57e182ae6a7">&#9670;&#160;</a></span>channel</h2>
@@ -79,7 +84,12 @@
         </tr>
       </table>
 </div><div class="memdoc">
-<p>指定具体的DMA通道号。使用负值（如 -1）表示自动分配。 （部分芯片中DMA通道具有固定的功能配置） </p>
+<p>指定具体的DMA通道号。使用负值（如 -1）表示自动分配。 （部分芯片中DMA通道具有固定的功能配置） 通道分配模式：</p><ul>
+<li>动态分配：调用 <a class="el" href="dma__common_8c.html#a3d972941b79e8af774aad70007ac351f" title="DMA 获取一个新的通道">vsf_dma_channel_acquire()</a> 获取通道。使用 <a class="el" href="dma__common_8c.html#a63bdc0c15b5d38364fe40e3b32b478af" title="DMA 释放一个通道">vsf_dma_channel_release()</a> 释放通道。</li>
+<li>静态分配：对于通道固定绑定到外设的芯片，不需要调用 <a class="el" href="dma__common_8c.html#a3d972941b79e8af774aad70007ac351f" title="DMA 获取一个新的通道">vsf_dma_channel_acquire()</a>。 通道信息（通道号、请求线等）在 device.h 中定义，优先级可以通过 <a class="el" href="dma__common_8c.html#ab7e1f29af09bde4313085bdbe17b296f" title="DMA 通道配置">vsf_dma_channel_config()</a> 配置。 </li>
+</ul>
+<dl class="section examples"><dt>示例</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a71">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -95,12 +105,35 @@
       </table>
 </div><div class="memdoc">
 <p>外设请求线编号，指定使用DMA服务的外设请求源。 （部分芯片会提供外设和请求线的对应表，需根据芯片手册选择正确的请求线编号）。 </p>
+<dl class="section examples"><dt>示例</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a72">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="addce70f25a1a4ea2d5e43d3f1040ba95" name="addce70f25a1a4ea2d5e43d3f1040ba95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addce70f25a1a4ea2d5e43d3f1040ba95">&#9670;&#160;</a></span>prio</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="cortex__a__generic_8h.html#a0f1041ab7f9d152f2f0c932b3529633f">vsf_arch_prio_t</a> vsf_dma_channel_hint_t::prio</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>通道分配的可选中断优先级。 优先级处理行为：</p><ul>
+<li>如果 prio 是 vsf_arch_prio_invalid：使用 <a class="el" href="structvsf__dma__cfg__t.html" title="DMA 的配置结构体。">vsf_dma_cfg_t</a> 中的默认优先级（在 <a class="el" href="dma__common_8c.html#a7251f63f738afde2fb18be9b7ed61b90" title="初始化一个 DMA 实例">vsf_dma_init()</a> 时设置）。</li>
+<li>如果 prio 有效且 DMA 支持每通道独立中断：在通道分配时配置此优先级。</li>
+<li>如果 prio 有效且多个通道共享同一中断：驱动应检查请求的优先级是否与现有共享中断的优先级匹配。 如果匹配，从共享中断组中分配通道；如果不匹配且没有兼容的通道可用，返回 VSF_ERR_NOT_AVAILABLE。 </li>
+</ul>
+<dl class="section examples"><dt>示例</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a73">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/fbf600ea5e5329e52b279723d22f5d1fd6545c2c" target="_blank">vsfteam/vsf@fbf600e</a>
+  <a href="https://github.com/vsfteam/vsf/commit/a5c1a011ae85a699e6223014b37436a3f6ec7faf" target="_blank">vsfteam/vsf@a5c1a01</a>
   生成
 </div>

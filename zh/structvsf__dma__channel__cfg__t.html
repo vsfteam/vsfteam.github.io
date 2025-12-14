@@ -35,6 +35,7 @@
       <li><a href="namespaces.html"><span>命名空间</span></a></li>
       <li class="current"><a href="annotated.html"><span>结构体</span></a></li>
       <li><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
     </ul>
   </div>
   <div id="navrow2" class="tabs2">
@@ -79,6 +80,8 @@
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>dma configuration </p>
 <p>DMA 通道传输配置结构体 </p><dl class="section note"><dt>注解</dt><dd>此结构体包含 DMA 传输操作所需的所有配置， 包括传输模式、中断设置和外设索引。 </dd></dl>
+<dl class="section examples"><dt>示例</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#_a81">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 </div><h2 class="groupheader">结构体成员变量说明</h2>
 <a id="a8afb67f544ce33ac6699d0b69866fd7a" name="a8afb67f544ce33ac6699d0b69866fd7a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8afb67f544ce33ac6699d0b69866fd7a">&#9670;&#160;</a></span>mode</h2>
@@ -92,6 +95,8 @@
       </table>
 </div><div class="memdoc">
 <p>DMA 通道模式，包括传输方向、地址增量模式、数据宽度、突发长度、优先级等 使用 VSF_DMA_XXX 宏进行配置（例如 VSF_DMA_MEMORY_TO_PERIPHERAL | VSF_DMA_SRC_ADDR_INCREMENT | VSF_DMA_DST_WIDTH_BYTES_4） </p>
+<dl class="section examples"><dt>示例</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a82">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -107,6 +112,8 @@
       </table>
 </div><div class="memdoc">
 <p>中断服务例程配置，包括处理函数和目标指针 </p>
+<dl class="section examples"><dt>示例</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a83">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -122,6 +129,8 @@
       </table>
 </div><div class="memdoc">
 <p>中断掩码，指定需要启用的中断（例如 VSF_DMA_IRQ_MASK_CPL | VSF_DMA_IRQ_MASK_ERROR） 可以使用按位或操作组合多个中断类型 </p>
+<dl class="section examples"><dt>示例</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a84">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -136,7 +145,12 @@
         </tr>
       </table>
 </div><div class="memdoc">
-<p>此通道的中断优先级。使用 vsf_arch_prio_invalid 表示使用 <a class="el" href="structvsf__dma__cfg__t.html" title="DMA 的配置结构体。">vsf_dma_cfg_t</a> 中的默认优先级。 仅在硬件支持每通道或每组中断独立优先级配置时生效。 </p>
+<p>此通道的中断优先级。使用 vsf_arch_prio_invalid 表示使用 <a class="el" href="structvsf__dma__cfg__t.html" title="DMA 的配置结构体。">vsf_dma_cfg_t</a> 中的默认优先级。 此字段仅在硬件支持每通道独立中断优先级配置时生效。 对于多个通道共享同一中断的芯片，在 channel_config 中修改优先级可能会影响共享同一中断的其他通道， 具体行为由实现定义。 如果优先级在 channel_acquire 时已设置，此字段可用于在运行时动态调整优先级 （仅适用于每通道独立中断的场景）。 对于静态分配（通道固定绑定到外设，不需要调用 channel_acquire()）：</p><ul>
+<li>优先级可以通过 channel_config() 在运行时配置（如果硬件支持动态优先级调整）。</li>
+<li>如果未通过 channel_config() 配置优先级，将使用 <a class="el" href="structvsf__dma__cfg__t.html" title="DMA 的配置结构体。">vsf_dma_cfg_t</a> 中的默认优先级。 </li>
+</ul>
+<dl class="section examples"><dt>示例</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a85">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -152,6 +166,8 @@
       </table>
 </div><div class="memdoc">
 <p>DMA 源端外设请求信号索引 这是用于 DMA 硬件握手的特定请求信号 ID 仅当源端为外设时有效（内存源时忽略） </p>
+<dl class="section examples"><dt>示例</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a86">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -167,6 +183,8 @@
       </table>
 </div><div class="memdoc">
 <p>DMA 目标端外设请求信号索引 这是用于 DMA 硬件握手的特定请求信号 ID 仅当目标端为外设时有效（内存目标时忽略） </p>
+<dl class="section examples"><dt>示例</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a87">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -201,6 +219,6 @@
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/fbf600ea5e5329e52b279723d22f5d1fd6545c2c" target="_blank">vsfteam/vsf@fbf600e</a>
+  <a href="https://github.com/vsfteam/vsf/commit/a5c1a011ae85a699e6223014b37436a3f6ec7faf" target="_blank">vsfteam/vsf@a5c1a01</a>
   生成
 </div>
