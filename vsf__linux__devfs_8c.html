@@ -54,8 +54,7 @@
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">vsf_linux_devfs.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -78,9 +77,9 @@
 <code>#include &quot;<a class="el" href="i2c-dev_8h_source.html">shell/sys/linux/include/linux/i2c-dev.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="spidev_8h_source.html">shell/sys/linux/include/linux/spi/spidev.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="keyboard_8h_source.html">shell/sys/linux/include/linux/keyboard.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="joystick_8h_source.html">shell/sys/linux/include/linux/joystick.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="sys_2linux_2include_2simple__libc_2stdio_8h_source.html">shell/sys/linux/include/simple_libc/stdio.h</a>&quot;</code><br />
 <code>#include &lt;btstack.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="impl__vsf__pool_8inc_source.html">service/pool/impl_vsf_pool.inc</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
@@ -96,7 +95,7 @@ Data Structures</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__mal__priv__t.html">vsf_linux_mal_priv_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__input__event__t.html">vsf_linux_input_event_t</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__input__priv__t.html">vsf_linux_input_priv_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__fb__priv__t.html">vsf_linux_fb_priv_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,10 +126,6 @@ Macros</h2></td></tr>
 <tr class="separator:a42b5a75c55bebc6b90ca1e20629a868c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a171b989bdf4603cc0628e5fa8b658862" id="r_a171b989bdf4603cc0628e5fa8b658862"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a171b989bdf4603cc0628e5fa8b658862">VSF_LINUX_DEVFS_INPUT_CFG_EVENT_POLL_SIZE</a>&#160;&#160;&#160;64</td></tr>
 <tr class="separator:a171b989bdf4603cc0628e5fa8b658862"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f565b52ec477e9c0c235e88b9355558" id="r_a7f565b52ec477e9c0c235e88b9355558"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>&#160;&#160;&#160;vsf_linux_input_event_pool</td></tr>
-<tr class="separator:a7f565b52ec477e9c0c235e88b9355558"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f7d95c0f307a99513fed3e50368d4aa" id="r_a3f7d95c0f307a99513fed3e50368d4aa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a3f7d95c0f307a99513fed3e50368d4aa">__type</a>&#160;&#160;&#160;<a class="el" href="structvsf__linux__input__event__t.html">vsf_linux_input_event_t</a></td></tr>
-<tr class="separator:a3f7d95c0f307a99513fed3e50368d4aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -146,8 +141,8 @@ Typedefs</h2></td></tr>
 <tr class="separator:a521b033f4b050f3c76ef0073170710da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8e99c06bf4532577b07b9b43c04ebcf" id="r_aa8e99c06bf4532577b07b9b43c04ebcf"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__mal__priv__t.html">vsf_linux_mal_priv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#aa8e99c06bf4532577b07b9b43c04ebcf">vsf_linux_mal_priv_t</a></td></tr>
 <tr class="separator:aa8e99c06bf4532577b07b9b43c04ebcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a133c1110bb46ac29d1ed0cbe76dc9393" id="r_a133c1110bb46ac29d1ed0cbe76dc9393"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__input__event__t.html">vsf_linux_input_event_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a133c1110bb46ac29d1ed0cbe76dc9393">vsf_linux_input_event_t</a></td></tr>
-<tr class="separator:a133c1110bb46ac29d1ed0cbe76dc9393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f24ce9ac4d459255b404039aedd5fdd" id="r_a5f24ce9ac4d459255b404039aedd5fdd"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__input__priv__t.html">vsf_linux_input_priv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a5f24ce9ac4d459255b404039aedd5fdd">vsf_linux_input_priv_t</a></td></tr>
+<tr class="separator:a5f24ce9ac4d459255b404039aedd5fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7934e9d59f7baf15d48fd08a4789982d" id="r_a7934e9d59f7baf15d48fd08a4789982d"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__fb__priv__t.html">vsf_linux_fb_priv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a7934e9d59f7baf15d48fd08a4789982d">vsf_linux_fb_priv_t</a></td></tr>
 <tr class="separator:a7934e9d59f7baf15d48fd08a4789982d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e204bfe0391fe0045dd42671f5fe109" id="r_a9e204bfe0391fe0045dd42671f5fe109"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__gpio__priv__t.html">vsf_linux_gpio_priv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a9e204bfe0391fe0045dd42671f5fe109">vsf_linux_gpio_priv_t</a></td></tr>
@@ -179,8 +174,6 @@ Functions</h2></td></tr>
 <tr class="separator:a15408a1871c883b6ef38ec06e8dea817"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33a5170418be530baa3030bbff954a22" id="r_a33a5170418be530baa3030bbff954a22"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a33a5170418be530baa3030bbff954a22">vsf_linux_fs_bind_mal</a> (char *path, <a class="el" href="classvk__mal__t.html">vk_mal_t</a> *mal)</td></tr>
 <tr class="separator:a33a5170418be530baa3030bbff954a22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88d4ef42ef4013ff06f776e7d9c2aa09" id="r_a88d4ef42ef4013ff06f776e7d9c2aa09"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a88d4ef42ef4013ff06f776e7d9c2aa09">dcl_vsf_pool</a> (<a class="el" href="vsf__pool_8h.html#afbbf74b4d90c64200523564f766f7b63">def_vsf_pool</a>(vsf_linux_input_event_pool)</td></tr>
-<tr class="separator:a88d4ef42ef4013ff06f776e7d9c2aa09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53a3e08a5f79c3a42c74cf26ab9583fa" id="r_a53a3e08a5f79c3a42c74cf26ab9583fa"><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a53a3e08a5f79c3a42c74cf26ab9583fa">vsf_linux_terminal_keyboard_value_user</a> (<a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> modifier, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> keycode)</td></tr>
 <tr class="separator:a53a3e08a5f79c3a42c74cf26ab9583fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b814918125f77133ca5efe1afd75488" id="r_a1b814918125f77133ca5efe1afd75488"><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a1b814918125f77133ca5efe1afd75488">__vsf_linux_terminal_keyboard_value</a> (<a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> modifier, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> keycode)</td></tr>
@@ -189,6 +182,8 @@ Functions</h2></td></tr>
 <tr class="separator:acadbaf0fc64d885ea559e3419c7a8cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ab95da0d20bbacdde02d72a030eb98f" id="r_a5ab95da0d20bbacdde02d72a030eb98f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a5ab95da0d20bbacdde02d72a030eb98f">vsf_linux_fs_bind_mouse</a> (char *path, <a class="el" href="structvsf__linux__mouse__t.html">vsf_linux_mouse_t</a> *mouse)</td></tr>
 <tr class="separator:a5ab95da0d20bbacdde02d72a030eb98f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af64ab14b19ed449d80930d9e03d1a8f4" id="r_af64ab14b19ed449d80930d9e03d1a8f4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#af64ab14b19ed449d80930d9e03d1a8f4">vsf_linux_fs_bind_joystick</a> (char *path, <a class="el" href="structvsf__linux__joystick__t.html">vsf_linux_joystick_t</a> *joystick)</td></tr>
+<tr class="separator:af64ab14b19ed449d80930d9e03d1a8f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3eefc70597b45052ee3879a41768e58c" id="r_a3eefc70597b45052ee3879a41768e58c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a3eefc70597b45052ee3879a41768e58c">vsf_linux_fs_bind_terminal_keyboard</a> (char *path, <a class="el" href="structvsf__linux__terminal__keyboard__t.html">vsf_linux_terminal_keyboard_t</a> *keyboard)</td></tr>
 <tr class="separator:a3eefc70597b45052ee3879a41768e58c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4da35807f87f75cf89b9078c1b15188" id="r_ad4da35807f87f75cf89b9078c1b15188"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#ad4da35807f87f75cf89b9078c1b15188">vsf_linux_fs_bind_disp</a> (char *path, <a class="el" href="classvk__disp__t.html">vk_disp_t</a> *disp)</td></tr>
@@ -197,11 +192,6 @@ Functions</h2></td></tr>
 <tr class="separator:a780edbe16ce0382bf3bea1d9ae5d5435"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51c4844c29c55103410d1b03bb8379e5" id="r_a51c4844c29c55103410d1b03bb8379e5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a51c4844c29c55103410d1b03bb8379e5">vsf_linux_devfs_init</a> (void)</td></tr>
 <tr class="separator:a51c4844c29c55103410d1b03bb8379e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a80ac9f0296988f89437ca392a0a240fc" id="r_a80ac9f0296988f89437ca392a0a240fc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__devfs_8c.html#a80ac9f0296988f89437ca392a0a240fc">vsf_linux_input_priv_t</a></td></tr>
-<tr class="separator:a80ac9f0296988f89437ca392a0a240fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a56bf24a74c400dfffdef33bfca636614" name="a56bf24a74c400dfffdef33bfca636614"></a>
@@ -362,34 +352,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a7f565b52ec477e9c0c235e88b9355558" name="a7f565b52ec477e9c0c235e88b9355558"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f565b52ec477e9c0c235e88b9355558">&#9670;&#160;</a></span>__name</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define __name&#160;&#160;&#160;vsf_linux_input_event_pool</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3f7d95c0f307a99513fed3e50368d4aa" name="a3f7d95c0f307a99513fed3e50368d4aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f7d95c0f307a99513fed3e50368d4aa">&#9670;&#160;</a></span>__type</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define __type&#160;&#160;&#160;<a class="el" href="structvsf__linux__input__event__t.html">vsf_linux_input_event_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="acad7c0f216945b32717c768bff2c8dfd" name="acad7c0f216945b32717c768bff2c8dfd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acad7c0f216945b32717c768bff2c8dfd">&#9670;&#160;</a></span>vsf_linux_uart_stream_priv_t</h2>
@@ -475,14 +437,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a133c1110bb46ac29d1ed0cbe76dc9393" name="a133c1110bb46ac29d1ed0cbe76dc9393"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a133c1110bb46ac29d1ed0cbe76dc9393">&#9670;&#160;</a></span>vsf_linux_input_event_t</h2>
+<a id="a5f24ce9ac4d459255b404039aedd5fdd" name="a5f24ce9ac4d459255b404039aedd5fdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f24ce9ac4d459255b404039aedd5fdd">&#9670;&#160;</a></span>vsf_linux_input_priv_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct <a class="el" href="structvsf__linux__input__event__t.html">vsf_linux_input_event_t</a> <a class="el" href="structvsf__linux__input__event__t.html">vsf_linux_input_event_t</a></td>
+          <td class="memname">typedef struct <a class="el" href="structvsf__linux__input__priv__t.html">vsf_linux_input_priv_t</a> <a class="el" href="structvsf__linux__input__priv__t.html">vsf_linux_input_priv_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -892,24 +854,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a88d4ef42ef4013ff06f776e7d9c2aa09" name="a88d4ef42ef4013ff06f776e7d9c2aa09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88d4ef42ef4013ff06f776e7d9c2aa09">&#9670;&#160;</a></span>dcl_vsf_pool()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">dcl_vsf_pool </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="vsf__pool_8h.html#afbbf74b4d90c64200523564f766f7b63">def_vsf_pool</a>(&#160;</td>
-          <td class="paramname"><em>vsf_linux_input_event_pool</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a53a3e08a5f79c3a42c74cf26ab9583fa" name="a53a3e08a5f79c3a42c74cf26ab9583fa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a53a3e08a5f79c3a42c74cf26ab9583fa">&#9670;&#160;</a></span>vsf_linux_terminal_keyboard_value_user()</h2>
 
@@ -1011,6 +955,34 @@ Variables</h2></td></tr>
           <td></td>
           <td class="paramtype"><a class="el" href="structvsf__linux__mouse__t.html">vsf_linux_mouse_t</a> *&#160;</td>
           <td class="paramname"><em>mouse</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af64ab14b19ed449d80930d9e03d1a8f4" name="af64ab14b19ed449d80930d9e03d1a8f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af64ab14b19ed449d80930d9e03d1a8f4">&#9670;&#160;</a></span>vsf_linux_fs_bind_joystick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int vsf_linux_fs_bind_joystick </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvsf__linux__joystick__t.html">vsf_linux_joystick_t</a> *&#160;</td>
+          <td class="paramname"><em>joystick</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1124,23 +1096,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a80ac9f0296988f89437ca392a0a240fc" name="a80ac9f0296988f89437ca392a0a240fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80ac9f0296988f89437ca392a0a240fc">&#9670;&#160;</a></span>vsf_linux_input_priv_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">vsf_linux_input_priv_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/09ebc2b29302fbba527532902fb373216d94dd7c" target="_blank">vsfteam/vsf@09ebc2b</a>
+  <a href="https://github.com/vsfteam/vsf/commit/b200d1a1837474690b9582fb817cf284c7b8fe1d" target="_blank">vsfteam/vsf@b200d1a</a>
 </div>
