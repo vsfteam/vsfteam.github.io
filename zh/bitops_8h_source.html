@@ -63,22 +63,25 @@
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="bitops_8h.html#a1172f47c0e2343a65fbdf247ff256400">    8</a></span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="bitops_8h.html#a1172f47c0e2343a65fbdf247ff256400">set_bit</a>(<span class="keywordtype">int</span> nr, <span class="keyword">volatile</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> *addr);</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="bitops_8h.html#a844c326eea034de3ec9d4b2f7ff6e62f">    9</a></span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="bitops_8h.html#a844c326eea034de3ec9d4b2f7ff6e62f">clear_bit</a>(<span class="keywordtype">int</span> nr, <span class="keyword">volatile</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> *addr);</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> test_bit(<span class="keywordtype">int</span> nr, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> *addr)</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    addr = &amp;addr[nr / (<span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> long) * 8)];</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordflow">return</span> !!(*addr &amp; (1ULL &lt;&lt; (nr &amp; (<span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> long) * 8 - 1))));</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>}</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">// if test_bit is defined as a macro, do not implement test_bit here</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef test_bit</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> test_bit(<span class="keywordtype">int</span> nr, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> *addr)</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    addr = &amp;addr[nr / (<span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> long) * 8)];</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordflow">return</span> !!(*addr &amp; (1ULL &lt;&lt; (nr &amp; (<span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> long) * 8 - 1))));</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abitops_8h_html_a1172f47c0e2343a65fbdf247ff256400"><div class="ttname"><a href="bitops_8h.html#a1172f47c0e2343a65fbdf247ff256400">set_bit</a></div><div class="ttdeci">void set_bit(int nr, volatile unsigned long *addr)</div></div>
 <div class="ttc" id="abitops_8h_html_a844c326eea034de3ec9d4b2f7ff6e62f"><div class="ttname"><a href="bitops_8h.html#a844c326eea034de3ec9d4b2f7ff6e62f">clear_bit</a></div><div class="ttdeci">void clear_bit(int nr, volatile unsigned long *addr)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/a5c1a011ae85a699e6223014b37436a3f6ec7faf" target="_blank">vsfteam/vsf@a5c1a01</a>
+  <a href="https://github.com/vsfteam/vsf/commit/377eb249e63b8b4f633d458723ffcf0ab4daa780" target="_blank">vsfteam/vsf@377eb24</a>
   生成
 </div>
