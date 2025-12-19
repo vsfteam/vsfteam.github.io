@@ -124,7 +124,12 @@ Data Fields</h2></td></tr>
 <p>Optional interrupt priority for channel allocation. Priority handling behavior:</p><ul>
 <li>If prio is vsf_arch_prio_invalid: Use default priority from <a class="el" href="structvsf__dma__cfg__t.html" title="Configuration structure for DMA.">vsf_dma_cfg_t</a> (set during <a class="el" href="dma__common_8c.html#a7251f63f738afde2fb18be9b7ed61b90" title="Initialize a DMA instance.">vsf_dma_init()</a>).</li>
 <li>If prio is valid and DMA supports per-channel independent interrupts: Configure this priority during channel allocation.</li>
-<li>If prio is valid and multiple channels share the same interrupt: Driver should check if the requested priority matches the existing shared interrupt priority. If matched, allocate a channel from the shared interrupt group. If not matched and no compatible channel is available, return VSF_ERR_NOT_AVAILABLE. </li>
+<li>If prio is valid and multiple channels share the same interrupt: Driver should check if the requested priority matches the existing shared interrupt priority. If matched, allocate a channel from the shared interrupt group. If not matched and no compatible channel is available, return VSF_ERR_NOT_AVAILABLE. Priority override order (from highest to lowest priority):<ol type="1">
+<li>Priority specified in channel_config() (highest priority, overrides all others)</li>
+<li>Priority specified in channel_acquire() (medium priority)</li>
+<li>Default priority from <a class="el" href="structvsf__dma__cfg__t.html" title="Configuration structure for DMA.">vsf_dma_cfg_t</a> (lowest priority, used as fallback) Note: For static allocation (channels fixed to peripherals), channel_acquire() is not called, so only options 1 and 3 apply. </li>
+</ol>
+</li>
 </ul>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a73">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
 </dl>
@@ -134,5 +139,5 @@ Data Fields</h2></td></tr>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/5ba5714c1b66f71c11868e9209bebb2f890e5be8" target="_blank">vsfteam/vsf@5ba5714</a>
+  <a href="https://github.com/vsfteam/vsf/commit/50fe5b41ba1c8b32b8b99e5c9c0c09197996a410" target="_blank">vsfteam/vsf@50fe5b4</a>
 </div>

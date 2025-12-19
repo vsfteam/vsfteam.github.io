@@ -391,7 +391,13 @@ Functions</h2></td></tr>
 <li>If cfg_ptr-&gt;prio is vsf_arch_prio_invalid, the default priority from <a class="el" href="structvsf__dma__cfg__t.html" title="Configuration structure for DMA.">vsf_dma_cfg_t</a> (or the priority set during channel_acquire) will be used.</li>
 <li>For chips where multiple channels share the same interrupt, modifying priority in channel_config may affect other channels sharing the same interrupt. The behavior in this case is implementation-defined (driver-specific).</li>
 <li>For per-channel independent interrupt scenarios, this allows dynamic priority adjustment at runtime.</li>
-<li>For static allocation (channels fixed to peripherals): a) Priority can be configured via channel_config() at runtime (if hardware supports dynamic priority adjustment). b) If priority is not configured via channel_config(), the default priority from <a class="el" href="structvsf__dma__cfg__t.html" title="Configuration structure for DMA.">vsf_dma_cfg_t</a> will be used. </li>
+<li>For static allocation (channels fixed to peripherals): a) Priority can be configured via channel_config() at runtime (if hardware supports dynamic priority adjustment). b) If priority is not configured via channel_config(), the default priority from <a class="el" href="structvsf__dma__cfg__t.html" title="Configuration structure for DMA.">vsf_dma_cfg_t</a> will be used.</li>
+<li>Priority override order (from highest to lowest priority):<ol type="1">
+<li>Priority specified in channel_config() (overrides all previous settings)</li>
+<li>Priority specified in channel_acquire() (preserved if config uses vsf_arch_prio_invalid)</li>
+<li>Default priority from <a class="el" href="structvsf__dma__cfg__t.html" title="Configuration structure for DMA.">vsf_dma_cfg_t</a> (used as fallback) </li>
+</ol>
+</li>
 </ul>
 </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a114">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
@@ -776,5 +782,5 @@ Scatter-Gather semantics:<ul>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/5ba5714c1b66f71c11868e9209bebb2f890e5be8" target="_blank">vsfteam/vsf@5ba5714</a>
+  <a href="https://github.com/vsfteam/vsf/commit/50fe5b41ba1c8b32b8b99e5c9c0c09197996a410" target="_blank">vsfteam/vsf@50fe5b4</a>
 </div>

@@ -391,7 +391,15 @@
 <li>如果 cfg_ptr-&gt;prio 是 vsf_arch_prio_invalid，将使用 <a class="el" href="structvsf__dma__cfg__t.html" title="DMA 的配置结构体。">vsf_dma_cfg_t</a> 中的默认优先级 （或在 channel_acquire 时设置的优先级）。</li>
 <li>对于多个通道共享同一中断的芯片，在 channel_config 中修改优先级 可能会影响共享同一中断的其他通道。此情况下的行为由实现定义（驱动特定）。</li>
 <li>对于每通道独立中断的场景，这允许在运行时动态调整优先级。</li>
-<li>对于静态分配（通道固定绑定到外设）： a) 优先级可以通过 channel_config() 在运行时配置（如果硬件支持动态优先级调整）。 b) 如果未通过 channel_config() 配置优先级，将使用 <a class="el" href="structvsf__dma__cfg__t.html" title="DMA 的配置结构体。">vsf_dma_cfg_t</a> 中的默认优先级。 </li>
+<li>对于静态分配（通道固定绑定到外设）： a) 优先级可以通过 channel_config() 在运行时配置（如果硬件支持动态优先级调整）。 b) 如果未通过 channel_config() 配置优先级，将使用 <a class="el" href="structvsf__dma__cfg__t.html" title="DMA 的配置结构体。">vsf_dma_cfg_t</a> 中的默认优先级。</li>
+<li>优先级覆盖顺序（从高到低）：<ol type="1">
+<li>在 channel_config() 中指定的优先级（覆盖所有之前的设置）</li>
+<li>在 channel_acquire() 中指定的优先级（如果 config 使用 vsf_arch_prio_invalid 则保留）</li>
+<li><a class="el" href="structvsf__dma__cfg__t.html" title="DMA 的配置结构体。">vsf_dma_cfg_t</a> 中的默认优先级（作为回退选项）</li>
+</ol>
+</li>
+<li>对于共享中断场景，优先级更改可能会影响多个通道。 驱动实现应清楚地记录此行为。</li>
+<li>对于静态/动态分配混合系统，静态通道遵循规则 1 和 3， 而动态通道遵循所有规则。 </li>
 </ul>
 </dd>
 <dd>
@@ -787,6 +795,6 @@ Scatter-Gather 语义:<ul>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/5ba5714c1b66f71c11868e9209bebb2f890e5be8" target="_blank">vsfteam/vsf@5ba5714</a>
+  <a href="https://github.com/vsfteam/vsf/commit/50fe5b41ba1c8b32b8b99e5c9c0c09197996a410" target="_blank">vsfteam/vsf@50fe5b4</a>
   生成
 </div>

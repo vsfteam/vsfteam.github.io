@@ -145,9 +145,15 @@
         </tr>
       </table>
 </div><div class="memdoc">
-<p>此通道的中断优先级。使用 vsf_arch_prio_invalid 表示使用 <a class="el" href="structvsf__dma__cfg__t.html" title="DMA 的配置结构体。">vsf_dma_cfg_t</a> 中的默认优先级。 此字段仅在硬件支持每通道独立中断优先级配置时生效。 对于多个通道共享同一中断的芯片，在 channel_config 中修改优先级可能会影响共享同一中断的其他通道， 具体行为由实现定义。 如果优先级在 channel_acquire 时已设置，此字段可用于在运行时动态调整优先级 （仅适用于每通道独立中断的场景）。 对于静态分配（通道固定绑定到外设，不需要调用 channel_acquire()）：</p><ul>
+<p>此通道的中断优先级。使用 vsf_arch_prio_invalid 表示使用 <a class="el" href="structvsf__dma__cfg__t.html" title="DMA 的配置结构体。">vsf_dma_cfg_t</a> 中的默认优先级。 此字段的行为取决于硬件支持情况：</p><ul>
+<li>对于支持每通道独立中断优先级配置的硬件，字段完全有效，可以独立配置每个通道的优先级。</li>
+<li>对于多个通道共享同一中断的芯片，字段可能有效（取决于驱动实现）， 但在 channel_config 中修改优先级可能会影响共享同一中断的其他通道，具体行为由实现定义。 如果优先级在 channel_acquire 时已设置，此字段可用于在运行时动态调整优先级 （仅适用于每通道独立中断的场景）。 对于静态分配（通道固定绑定到外设，不需要调用 channel_acquire()）：</li>
 <li>优先级可以通过 channel_config() 在运行时配置（如果硬件支持动态优先级调整）。</li>
-<li>如果未通过 channel_config() 配置优先级，将使用 <a class="el" href="structvsf__dma__cfg__t.html" title="DMA 的配置结构体。">vsf_dma_cfg_t</a> 中的默认优先级。 </li>
+<li>如果未通过 channel_config() 配置优先级，将使用 <a class="el" href="structvsf__dma__cfg__t.html" title="DMA 的配置结构体。">vsf_dma_cfg_t</a> 中的默认优先级。 <a class="el" href="structvsf__dma__channel__cfg__t.html" title="dma configuration">vsf_dma_channel_cfg_t</a> 的优先级覆盖场景：</li>
+<li>动态分配且在 acquire 和 config 中都指定了优先级：config 优先级覆盖 acquire 优先级</li>
+<li>动态分配且仅在 acquire 中指定了优先级：config 中使用 vsf_arch_prio_invalid 会保留 acquire 优先级</li>
+<li>动态分配且仅在 config 中指定了优先级：使用 config 优先级（如果硬件支持每通道独立中断）</li>
+<li>静态分配：只有 config 优先级适用（不调用 channel_acquire） </li>
 </ul>
 <dl class="section examples"><dt>示例</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a85">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
 </dl>
@@ -219,6 +225,6 @@
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/5ba5714c1b66f71c11868e9209bebb2f890e5be8" target="_blank">vsfteam/vsf@5ba5714</a>
+  <a href="https://github.com/vsfteam/vsf/commit/50fe5b41ba1c8b32b8b99e5c9c0c09197996a410" target="_blank">vsfteam/vsf@50fe5b4</a>
   生成
 </div>

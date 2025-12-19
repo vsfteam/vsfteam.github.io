@@ -145,9 +145,15 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Interrupt priority for this channel. Use vsf_arch_prio_invalid to use default priority from <a class="el" href="structvsf__dma__cfg__t.html" title="Configuration structure for DMA.">vsf_dma_cfg_t</a>. This field is only effective when hardware supports per-channel independent interrupt priority configuration. For chips where multiple channels share the same interrupt, modifying priority in channel_config may affect other channels sharing the same interrupt, and the behavior is implementation-defined. If priority was set during channel_acquire, this field can be used to dynamically adjust priority at runtime (only for per-channel independent interrupt scenarios). For static allocation (channels fixed to peripherals, channel_acquire() is not needed):</p><ul>
+<p>Interrupt priority for this channel. Use vsf_arch_prio_invalid to use default priority from <a class="el" href="structvsf__dma__cfg__t.html" title="Configuration structure for DMA.">vsf_dma_cfg_t</a>. The behavior of this field depends on hardware support:</p><ul>
+<li>For hardware supporting per-channel independent interrupt priority configuration, the field is fully effective and allows independent priority configuration for each channel.</li>
+<li>For chips where multiple channels share the same interrupt, the field may be effective (driver-dependent), but modifying priority in channel_config may affect other channels sharing the same interrupt, and the behavior is implementation-defined. If priority was set during channel_acquire, this field can be used to dynamically adjust priority at runtime (only for per-channel independent interrupt scenarios). For static allocation (channels fixed to peripherals, channel_acquire() is not needed):</li>
 <li>Priority can be configured via channel_config() at runtime (if hardware supports dynamic priority adjustment).</li>
-<li>If priority is not configured via channel_config(), the default priority from <a class="el" href="structvsf__dma__cfg__t.html" title="Configuration structure for DMA.">vsf_dma_cfg_t</a> will be used. </li>
+<li>If priority is not configured via channel_config(), the default priority from <a class="el" href="structvsf__dma__cfg__t.html" title="Configuration structure for DMA.">vsf_dma_cfg_t</a> will be used. Priority override scenarios for <a class="el" href="structvsf__dma__channel__cfg__t.html" title="dma configuration">vsf_dma_channel_cfg_t</a>:</li>
+<li>Dynamic allocation with priority in acquire and config: config priority overrides acquire priority</li>
+<li>Dynamic allocation with priority only in acquire: config with vsf_arch_prio_invalid keeps acquire priority</li>
+<li>Dynamic allocation with priority only in config: uses config priority (if hardware supports per-channel interrupts)</li>
+<li>Static allocation: only config priority applies (channel_acquire is not called) </li>
 </ul>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2github_2workspace_2source_2hal_2driver_2common_2template_2vsf_template_dma_8h-example.html#a85">/github/workspace/source/hal/driver/common/template/vsf_template_dma.h</a>.</dd>
 </dl>
@@ -219,5 +225,5 @@ Data Fields</h2></td></tr>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/5ba5714c1b66f71c11868e9209bebb2f890e5be8" target="_blank">vsfteam/vsf@5ba5714</a>
+  <a href="https://github.com/vsfteam/vsf/commit/50fe5b41ba1c8b32b8b99e5c9c0c09197996a410" target="_blank">vsfteam/vsf@50fe5b4</a>
 </div>
