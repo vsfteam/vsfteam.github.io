@@ -355,140 +355,180 @@
 <div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span><span class="preprocessor">#   define VSF_HW_SPI1_EN               VSF_HW_EN_SPI1</span></div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="preprocessor">#   define VSF_HW_SPI1_RST              VSF_HW_RST_SPI1</span></div>
 <div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="preprocessor">#   define VSF_HW_SPI1_IRQN             35      </span><span class="comment">// SPI1_IRQn</span></div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="preprocessor">#if VSF_HW_SPI_MASK &amp; (1 &lt;&lt; 2)</span></div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span><span class="preprocessor">#   define VSF_HW_SPI2_REG              SPI2</span></div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="preprocessor">#   define VSF_HW_SPI2_CLK              VSF_HW_CLK_SPI2</span></div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><span class="preprocessor">#   define VSF_HW_SPI2_EN               VSF_HW_EN_SPI2</span></div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span><span class="preprocessor">#   define VSF_HW_SPI2_RST              VSF_HW_RST_SPI2</span></div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="preprocessor">#   define VSF_HW_SPI2_IRQN             36      </span><span class="comment">// SPI2_IRQn</span></div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span><span class="preprocessor">#if VSF_HW_SPI_MASK &amp; (1 &lt;&lt; 3)</span></div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span><span class="preprocessor">#   define VSF_HW_SPI3_REG              SPI3</span></div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="preprocessor">#   define VSF_HW_SPI3_CLK              VSF_HW_CLK_SPI3</span></div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span><span class="preprocessor">#   define VSF_HW_SPI3_EN               VSF_HW_EN_SPI3</span></div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span><span class="preprocessor">#   define VSF_HW_SPI3_RST              VSF_HW_RST_SPI3</span></div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span><span class="preprocessor">#   define VSF_HW_SPI3_IRQN             51      </span><span class="comment">// SPI3_IRQn</span></div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span> </div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span><span class="comment">// I2C: I2C1..I2C3</span></div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span> </div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="preprocessor">#ifndef VSF_HW_I2C_MASK</span></div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span><span class="preprocessor">#   ifdef VSF_HW_I2C_COUNT</span></div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span><span class="preprocessor">#       define VSF_HW_I2C_MASK          ((1 &lt;&lt; VSF_HW_I2C_COUNT) - 1)</span></div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span><span class="preprocessor">#   else</span></div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno"><a class="line" href="hal_2driver_2_artery_2_a_t32_f402__405_2common_2device_8h.html#a0279114a374546fdfd799d86164867fa">  326</a></span><span class="preprocessor">#       define VSF_HW_I2C_MASK          0x0E</span></div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span><span class="preprocessor">#if VSF_HW_I2C_MASK &amp; ~0x0E</span></div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span><span class="preprocessor">#   error invalid VSF_HW_I2C_MASK</span></div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span> </div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span><span class="preprocessor">#if VSF_HW_I2C_MASK &amp; (1 &lt;&lt; 1)</span></div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span><span class="preprocessor">#   define VSF_HW_I2C1_REG              I2C1</span></div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span><span class="preprocessor">#   define VSF_HW_I2C1_CLK              VSF_HW_CLK_I2C1</span></div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span><span class="preprocessor">#   define VSF_HW_I2C1_EN               VSF_HW_EN_I2C1</span></div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span><span class="preprocessor">#   define VSF_HW_I2C1_RST              VSF_HW_RST_I2C1</span></div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span><span class="preprocessor">#   define VSF_HW_I2C1_EVENT_IRQN       31      </span><span class="comment">// I2C1_EVT_IRQn</span></div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span><span class="preprocessor">#   define VSF_HW_I2C1_ERROR_IRQN       32      </span><span class="comment">// I2C1_ERR_IRQn</span></div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span><span class="preprocessor">#if VSF_HW_I2C_MASK &amp; (1 &lt;&lt; 2)</span></div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="preprocessor">#   define VSF_HW_I2C2_REG              I2C2</span></div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span><span class="preprocessor">#   define VSF_HW_I2C2_CLK              VSF_HW_CLK_I2C2</span></div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span><span class="preprocessor">#   define VSF_HW_I2C2_EN               VSF_HW_EN_I2C2</span></div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span><span class="preprocessor">#   define VSF_HW_I2C2_RST              VSF_HW_RST_I2C2</span></div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span><span class="preprocessor">#   define VSF_HW_I2C2_EVENT_IRQN       33      </span><span class="comment">// I2C2_EVT_IRQn</span></div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span><span class="preprocessor">#   define VSF_HW_I2C2_ERROR_IRQN       34      </span><span class="comment">// I2C2_ERR_IRQn</span></div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span><span class="preprocessor">#if VSF_HW_I2C_MASK &amp; (1 &lt;&lt; 3)</span></div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span><span class="preprocessor">#   define VSF_HW_I2C3_REG              I2C3</span></div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span><span class="preprocessor">#   define VSF_HW_I2C3_CLK              VSF_HW_CLK_I2C3</span></div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span><span class="preprocessor">#   define VSF_HW_I2C3_EN               VSF_HW_EN_I2C3</span></div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span><span class="preprocessor">#   define VSF_HW_I2C3_RST              VSF_HW_RST_I2C3</span></div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span><span class="preprocessor">#   define VSF_HW_I2C3_EVENT_IRQN       72      </span><span class="comment">// I2C3_EVT_IRQn</span></div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span><span class="preprocessor">#   define VSF_HW_I2C3_ERROR_IRQN       73      </span><span class="comment">// I2C3_ERR_IRQn</span></div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span> </div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span><span class="comment">// USB OTG</span></div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span> </div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span><span class="preprocessor">#ifndef VSF_HW_USB_OTG_MASK</span></div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span><span class="preprocessor">#   ifdef VSF_HW_USB_OTG_COUNT</span></div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span><span class="preprocessor">#       define VSF_HW_USB_OTG_MASK      ((1 &lt;&lt; VSF_HW_USB_OTG_COUNT) - 1)</span></div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span><span class="preprocessor">#   else</span></div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno"><a class="line" href="hal_2driver_2_artery_2_a_t32_f402__405_2common_2device_8h.html#aefb00f6417557e5eeb61b14b4d99b640">  364</a></span><span class="preprocessor">#       define VSF_HW_USB_OTG_MASK      0x03</span></div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span> </div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span><span class="comment">// required by dwcotg, define the max ep number of dwcotg include ep0</span></div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span><span class="preprocessor">#ifndef USB_DWCOTG_MAX_EP_NUM</span></div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno"><a class="line" href="hal_2driver_2_artery_2_a_t32_f402__405_2common_2device_8h.html#a5d235e08f9b28bfda233a4c0f218316b">  370</a></span><span class="preprocessor">#   define USB_DWCOTG_MAX_EP_NUM        16</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="preprocessor">#   define VSF_HW_SPI1_TX_DMA_REQUEST   0x0B    </span><span class="comment">// DMAMUX_DMAREQ_ID_SPI1_TX</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="preprocessor">#   define VSF_HW_SPI1_RX_DMA_REQUEST   0x0A    </span><span class="comment">// DMAMUX_DMAREQ_ID_SPI1_RX</span></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="preprocessor">#if VSF_HW_SPI_MASK &amp; (1 &lt;&lt; 2)</span></div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><span class="preprocessor">#   define VSF_HW_SPI2_REG              SPI2</span></div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span><span class="preprocessor">#   define VSF_HW_SPI2_CLK              VSF_HW_CLK_SPI2</span></div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="preprocessor">#   define VSF_HW_SPI2_EN               VSF_HW_EN_SPI2</span></div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span><span class="preprocessor">#   define VSF_HW_SPI2_RST              VSF_HW_RST_SPI2</span></div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span><span class="preprocessor">#   define VSF_HW_SPI2_IRQN             36      </span><span class="comment">// SPI2_IRQn</span></div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span><span class="preprocessor">#   define VSF_HW_SPI2_TX_DMA_REQUEST   0x0D    </span><span class="comment">// DMAMUX_DMAREQ_ID_SPI2_TX</span></div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="preprocessor">#   define VSF_HW_SPI2_RX_DMA_REQUEST   0x0C    </span><span class="comment">// DMAMUX_DMAREQ_ID_SPI2_RX</span></div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span><span class="preprocessor">#if VSF_HW_SPI_MASK &amp; (1 &lt;&lt; 3)</span></div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span><span class="preprocessor">#   define VSF_HW_SPI3_REG              SPI3</span></div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><span class="preprocessor">#   define VSF_HW_SPI3_CLK              VSF_HW_CLK_SPI3</span></div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span><span class="preprocessor">#   define VSF_HW_SPI3_EN               VSF_HW_EN_SPI3</span></div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span><span class="preprocessor">#   define VSF_HW_SPI3_RST              VSF_HW_RST_SPI3</span></div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span><span class="preprocessor">#   define VSF_HW_SPI3_IRQN             51      </span><span class="comment">// SPI3_IRQn</span></div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="preprocessor">#   define VSF_HW_SPI3_TX_DMA_REQUEST   0x0F    </span><span class="comment">// DMAMUX_DMAREQ_ID_SPI3_TX</span></div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span><span class="preprocessor">#   define VSF_HW_SPI3_RX_DMA_REQUEST   0x0E    </span><span class="comment">// DMAMUX_DMAREQ_ID_SPI3_RX</span></div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span> </div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span><span class="comment">// I2C: I2C1..I2C3</span></div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span> </div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span><span class="preprocessor">#ifndef VSF_HW_I2C_MASK</span></div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span><span class="preprocessor">#   ifdef VSF_HW_I2C_COUNT</span></div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span><span class="preprocessor">#       define VSF_HW_I2C_MASK          ((1 &lt;&lt; VSF_HW_I2C_COUNT) - 1)</span></div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span><span class="preprocessor">#   else</span></div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno"><a class="line" href="hal_2driver_2_artery_2_a_t32_f402__405_2common_2device_8h.html#a0279114a374546fdfd799d86164867fa">  332</a></span><span class="preprocessor">#       define VSF_HW_I2C_MASK          0x0E</span></div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span><span class="preprocessor">#if VSF_HW_I2C_MASK &amp; ~0x0E</span></div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span><span class="preprocessor">#   error invalid VSF_HW_I2C_MASK</span></div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span><span class="preprocessor">#if VSF_HW_I2C_MASK &amp; (1 &lt;&lt; 1)</span></div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span><span class="preprocessor">#   define VSF_HW_I2C1_REG              I2C1</span></div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span><span class="preprocessor">#   define VSF_HW_I2C1_CLK              VSF_HW_CLK_I2C1</span></div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="preprocessor">#   define VSF_HW_I2C1_EN               VSF_HW_EN_I2C1</span></div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span><span class="preprocessor">#   define VSF_HW_I2C1_RST              VSF_HW_RST_I2C1</span></div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span><span class="preprocessor">#   define VSF_HW_I2C1_EVENT_IRQN       31      </span><span class="comment">// I2C1_EVT_IRQn</span></div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span><span class="preprocessor">#   define VSF_HW_I2C1_ERROR_IRQN       32      </span><span class="comment">// I2C1_ERR_IRQn</span></div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span><span class="preprocessor">#if VSF_HW_I2C_MASK &amp; (1 &lt;&lt; 2)</span></div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span><span class="preprocessor">#   define VSF_HW_I2C2_REG              I2C2</span></div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span><span class="preprocessor">#   define VSF_HW_I2C2_CLK              VSF_HW_CLK_I2C2</span></div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span><span class="preprocessor">#   define VSF_HW_I2C2_EN               VSF_HW_EN_I2C2</span></div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span><span class="preprocessor">#   define VSF_HW_I2C2_RST              VSF_HW_RST_I2C2</span></div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span><span class="preprocessor">#   define VSF_HW_I2C2_EVENT_IRQN       33      </span><span class="comment">// I2C2_EVT_IRQn</span></div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span><span class="preprocessor">#   define VSF_HW_I2C2_ERROR_IRQN       34      </span><span class="comment">// I2C2_ERR_IRQn</span></div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span><span class="preprocessor">#if VSF_HW_I2C_MASK &amp; (1 &lt;&lt; 3)</span></div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span><span class="preprocessor">#   define VSF_HW_I2C3_REG              I2C3</span></div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span><span class="preprocessor">#   define VSF_HW_I2C3_CLK              VSF_HW_CLK_I2C3</span></div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span><span class="preprocessor">#   define VSF_HW_I2C3_EN               VSF_HW_EN_I2C3</span></div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span><span class="preprocessor">#   define VSF_HW_I2C3_RST              VSF_HW_RST_I2C3</span></div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span><span class="preprocessor">#   define VSF_HW_I2C3_EVENT_IRQN       72      </span><span class="comment">// I2C3_EVT_IRQn</span></div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span><span class="preprocessor">#   define VSF_HW_I2C3_ERROR_IRQN       73      </span><span class="comment">// I2C3_ERR_IRQn</span></div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span> </div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span><span class="comment">// WDT: Independent Watchdog</span></div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span> </div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span><span class="preprocessor">#ifndef VSF_HW_WDT_COUNT</span></div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno"><a class="line" href="hal_2driver_2_artery_2_a_t32_f402__405_2common_2device_8h.html#a4acfc2c4c3fa816f44bee33e79f905cc">  367</a></span><span class="preprocessor">#   define VSF_HW_WDT_COUNT             1</span></div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span><span class="preprocessor">#ifndef VSF_HW_WDT_MASK</span></div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno"><a class="line" href="hal_2driver_2_artery_2_a_t32_f402__405_2common_2device_8h.html#a1ed80901189d36fec6c16acea2b902b0">  370</a></span><span class="preprocessor">#   define VSF_HW_WDT_MASK              0x1</span></div>
 <div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span> </div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span><span class="preprocessor">#if VSF_HW_USB_OTG_MASK &amp; (1 &lt;&lt; 0)</span></div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span><span class="preprocessor">#   define VSF_HW_USB_OTG0_IRQN         67      </span><span class="comment">// OTGFS1_IRQn</span></div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span><span class="preprocessor">#   define VSF_HW_USB_OTG0_CONFIG                                               \</span></div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span><span class="preprocessor">            .dc_ep_num                  = 8 &lt;&lt; 1,                               \</span></div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span><span class="preprocessor">            .hc_ep_num                  = 16,                                   \</span></div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span><span class="preprocessor">            .reg                        = (void *)OTGFS1_BASE,                  \</span></div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span><span class="preprocessor">            .irq                        = VSF_HW_USB_OTG0_IRQN,                 \</span></div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span><span class="preprocessor">            .en                         = VSF_HW_EN_OTGFS1,                     \</span></div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span><span class="preprocessor">            .phyclk                     = &amp;VSF_HW_CLK_HICK,                     \</span></div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span><span class="preprocessor">            .phyclk_freq_required       = 48 * 1000 * 1000,                     \</span></div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span><span class="preprocessor">            </span><span class="comment">/* vk_dwcotg_hw_info_t */</span><span class="preprocessor">                                           \</span></div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span><span class="preprocessor">                .buffer_word_size       = 320,                                  \</span></div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span><span class="preprocessor">                .speed                  = USB_SPEED_FULL,                       \</span></div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span><span class="preprocessor">                .dma_en                 = false,                                \</span></div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span><span class="preprocessor">                .ulpi_en                = false,                                \</span></div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span><span class="preprocessor">                .utmi_en                = false,                                \</span></div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span><span class="preprocessor">                .vbus_en                = false,</span></div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span> </div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span><span class="preprocessor">#if VSF_HW_USB_OTG_MASK &amp; (1 &lt;&lt; 1)</span></div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span><span class="comment">// TODO: 修复DMA模式BUG， 修复高速模式的BUG</span></div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span><span class="preprocessor">#   define VSF_HW_USB_OTG1_IRQN         77      </span><span class="comment">// OTGHS_IRQn</span></div>
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span><span class="preprocessor">#   define VSF_HW_USB_OTG1_CONFIG                                               \</span></div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span><span class="preprocessor">            .dc_ep_num                  = 8 &lt;&lt; 1,                               \</span></div>
-<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span><span class="preprocessor">            .hc_ep_num                  = 16,                                   \</span></div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span><span class="preprocessor">            .reg                        = (void *)OTGHS_BASE,                   \</span></div>
-<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span><span class="preprocessor">            .irq                        = VSF_HW_USB_OTG1_IRQN,                 \</span></div>
-<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span><span class="preprocessor">            .en                         = VSF_HW_EN_OTGHS,                      \</span></div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span><span class="preprocessor">            .phyclk                     = &amp;VSF_HW_CLK_HEXT,                     \</span></div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span><span class="preprocessor">            .phyclk_freq_required       = 12 * 1000 * 1000,                     \</span></div>
-<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span><span class="preprocessor">            </span><span class="comment">/* vk_dwcotg_hw_info_t */</span><span class="preprocessor">                                           \</span></div>
-<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span><span class="preprocessor">                .buffer_word_size       = 1024,                                 \</span></div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span><span class="preprocessor">                .speed                  = USB_SPEED_HIGH,                       \</span></div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span><span class="preprocessor">                .dma_en                 = false,                                \</span></div>
-<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span><span class="preprocessor">                .ulpi_en                = false,                                \</span></div>
-<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span><span class="preprocessor">                .utmi_en                = false,                                \</span></div>
-<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span><span class="preprocessor">                .vbus_en                = false,</span></div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span> </div>
-<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
-<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span> </div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span><span class="comment">// Include common irq and af headers after peripherals are defined, so that</span></div>
-<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span><span class="comment">//  irq and af can be adjusted according to the dedicated device configuration.</span></div>
-<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span> </div>
-<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span><span class="preprocessor">#include &quot;<a class="code" href="_winner_micro_2_w60_x_2common_2common_8h.html">./common.h</a>&quot;</span></div>
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span><span class="preprocessor">#include &quot;<a class="code" href="_nations_2_n32_h76_x__78_x_2common_2device__irq_8h.html">./device_irq.h</a>&quot;</span></div>
-<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span><span class="preprocessor">#include &quot;<a class="code" href="_nations_2_n32_h76_x__78_x_2common_2device__af_8h.html">./device_af.h</a>&quot;</span></div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span> </div>
-<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
-<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
-<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
-<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span> </div>
-<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span><span class="preprocessor">#endif      </span><span class="comment">// __HAL_DEVICE_COMMON_ARTERY_AT32F402_405_H__</span></div>
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_HEADER_ONLY_SHOW_ARCH_INFO__</span></div>
-<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span> </div>
-<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span><span class="comment">/* EOF */</span></div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span><span class="preprocessor">#if VSF_HW_WDT_MASK &amp; (1 &lt;&lt; 0)</span></div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span><span class="preprocessor">#   define VSF_HW_WDT0_REG              WDT</span></div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span><span class="preprocessor">#   define VSF_HW_WDT0_TYPE             0   </span><span class="comment">// WDT (Independent Watchdog)</span></div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span><span class="preprocessor">#   define VSF_HW_WDT0_CLK              VSF_HW_CLK_LICK  </span><span class="comment">// WDT uses LICK (40kHz)</span></div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span><span class="preprocessor">#   define VSF_HW_WDT0_CLK_FREQ_HZ      40000</span></div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span> </div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span><span class="comment">// WWDT: Window Watchdog (as separate device with device prefix)</span></div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span> </div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span><span class="preprocessor">#ifndef VSF_HW_WWDT_COUNT</span></div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno"><a class="line" href="hal_2driver_2_artery_2_a_t32_f402__405_2common_2device_8h.html#a28a02fa19dda00f2ef5ccc1f52615b20">  383</a></span><span class="preprocessor">#   define VSF_HW_WWDT_COUNT            1</span></div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span><span class="preprocessor">#ifndef VSF_HW_WWDT_MASK</span></div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno"><a class="line" href="hal_2driver_2_artery_2_a_t32_f402__405_2common_2device_8h.html#a966ce1cc242258233898585cd48ef0cb">  386</a></span><span class="preprocessor">#   define VSF_HW_WWDT_MASK             0x1</span></div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span> </div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span><span class="preprocessor">#if VSF_HW_WWDT_MASK &amp; (1 &lt;&lt; 0)</span></div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span><span class="preprocessor">#   define VSF_HW_WWDT0_REG             WWDT</span></div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span><span class="preprocessor">#   define VSF_HW_WWDT0_TYPE            1   </span><span class="comment">// WWDT (Window Watchdog)</span></div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span><span class="preprocessor">#   define VSF_HW_WWDT0_CLK             VSF_HW_CLK_APB1  </span><span class="comment">// WWDT uses APB1 (PCLK1)</span></div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span><span class="preprocessor">#   define VSF_HW_WWDT0_EN              VSF_HW_EN_WWDT</span></div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span><span class="preprocessor">#   define VSF_HW_WWDT0_RST             VSF_HW_RST_WWDT</span></div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span><span class="preprocessor">#   define VSF_HW_WWDT0_IRQN            0   </span><span class="comment">// WWDT has no dedicated IRQ, uses early wakeup interrupt</span></div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span> </div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span><span class="comment">// USB OTG</span></div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span> </div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span><span class="preprocessor">#ifndef VSF_HW_USB_OTG_MASK</span></div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span><span class="preprocessor">#   ifdef VSF_HW_USB_OTG_COUNT</span></div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span><span class="preprocessor">#       define VSF_HW_USB_OTG_MASK      ((1 &lt;&lt; VSF_HW_USB_OTG_COUNT) - 1)</span></div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span><span class="preprocessor">#   else</span></div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno"><a class="line" href="hal_2driver_2_artery_2_a_t32_f402__405_2common_2device_8h.html#aefb00f6417557e5eeb61b14b4d99b640">  404</a></span><span class="preprocessor">#       define VSF_HW_USB_OTG_MASK      0x03</span></div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span> </div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span><span class="comment">// required by dwcotg, define the max ep number of dwcotg include ep0</span></div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span><span class="preprocessor">#ifndef USB_DWCOTG_MAX_EP_NUM</span></div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno"><a class="line" href="hal_2driver_2_artery_2_a_t32_f402__405_2common_2device_8h.html#a5d235e08f9b28bfda233a4c0f218316b">  410</a></span><span class="preprocessor">#   define USB_DWCOTG_MAX_EP_NUM        16</span></div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span> </div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span><span class="preprocessor">#if VSF_HW_USB_OTG_MASK &amp; (1 &lt;&lt; 0)</span></div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span><span class="preprocessor">#   define VSF_HW_USB_OTG0_IRQN         67      </span><span class="comment">// OTGFS1_IRQn</span></div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span><span class="preprocessor">#   define VSF_HW_USB_OTG0_CONFIG                                               \</span></div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span><span class="preprocessor">            .dc_ep_num                  = 8 &lt;&lt; 1,                               \</span></div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span><span class="preprocessor">            .hc_ep_num                  = 16,                                   \</span></div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span><span class="preprocessor">            .reg                        = (void *)OTGFS1_BASE,                  \</span></div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span><span class="preprocessor">            .irq                        = VSF_HW_USB_OTG0_IRQN,                 \</span></div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span><span class="preprocessor">            .en                         = VSF_HW_EN_OTGFS1,                     \</span></div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span><span class="preprocessor">            .phyclk                     = &amp;VSF_HW_CLK_HICK,                     \</span></div>
+<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span><span class="preprocessor">            .phyclk_freq_required       = 48 * 1000 * 1000,                     \</span></div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span><span class="preprocessor">            </span><span class="comment">/* vk_dwcotg_hw_info_t */</span><span class="preprocessor">                                           \</span></div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span><span class="preprocessor">                .buffer_word_size       = 320,                                  \</span></div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span><span class="preprocessor">                .speed                  = USB_SPEED_FULL,                       \</span></div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span><span class="preprocessor">                .dma_en                 = false,                                \</span></div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span><span class="preprocessor">                .ulpi_en                = false,                                \</span></div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span><span class="preprocessor">                .utmi_en                = false,                                \</span></div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span><span class="preprocessor">                .vbus_en                = false,</span></div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span> </div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span><span class="preprocessor">#if VSF_HW_USB_OTG_MASK &amp; (1 &lt;&lt; 1)</span></div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span><span class="comment">// TODO: 修复DMA模式BUG， 修复高速模式的BUG</span></div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span><span class="preprocessor">#   define VSF_HW_USB_OTG1_IRQN         77      </span><span class="comment">// OTGHS_IRQn</span></div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span><span class="preprocessor">#   define VSF_HW_USB_OTG1_CONFIG                                               \</span></div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span><span class="preprocessor">            .dc_ep_num                  = 8 &lt;&lt; 1,                               \</span></div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span><span class="preprocessor">            .hc_ep_num                  = 16,                                   \</span></div>
+<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span><span class="preprocessor">            .reg                        = (void *)OTGHS_BASE,                   \</span></div>
+<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span><span class="preprocessor">            .irq                        = VSF_HW_USB_OTG1_IRQN,                 \</span></div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span><span class="preprocessor">            .en                         = VSF_HW_EN_OTGHS,                      \</span></div>
+<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span><span class="preprocessor">            .phyclk                     = &amp;VSF_HW_CLK_HEXT,                     \</span></div>
+<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span><span class="preprocessor">            .phyclk_freq_required       = 12 * 1000 * 1000,                     \</span></div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span><span class="preprocessor">            </span><span class="comment">/* vk_dwcotg_hw_info_t */</span><span class="preprocessor">                                           \</span></div>
+<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span><span class="preprocessor">                .buffer_word_size       = 1024,                                 \</span></div>
+<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span><span class="preprocessor">                .speed                  = USB_SPEED_HIGH,                       \</span></div>
+<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span><span class="preprocessor">                .dma_en                 = false,                                \</span></div>
+<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span><span class="preprocessor">                .ulpi_en                = false,                                \</span></div>
+<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span><span class="preprocessor">                .utmi_en                = false,                                \</span></div>
+<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span><span class="preprocessor">                .vbus_en                = false,</span></div>
+<div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span> </div>
+<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span> </div>
+<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span><span class="comment">// Include common irq and af headers after peripherals are defined, so that</span></div>
+<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span><span class="comment">//  irq and af can be adjusted according to the dedicated device configuration.</span></div>
+<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span> </div>
+<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span><span class="preprocessor">#include &quot;<a class="code" href="_winner_micro_2_w60_x_2common_2common_8h.html">./common.h</a>&quot;</span></div>
+<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span><span class="preprocessor">#include &quot;<a class="code" href="_nations_2_n32_h76_x__78_x_2common_2device__irq_8h.html">./device_irq.h</a>&quot;</span></div>
+<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span><span class="preprocessor">#include &quot;<a class="code" href="_nations_2_n32_h76_x__78_x_2common_2device__af_8h.html">./device_af.h</a>&quot;</span></div>
+<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span> </div>
+<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
+<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span> </div>
+<div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span><span class="preprocessor">#endif      </span><span class="comment">// __HAL_DEVICE_COMMON_ARTERY_AT32F402_405_H__</span></div>
+<div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_HEADER_ONLY_SHOW_ARCH_INFO__</span></div>
+<div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span> </div>
+<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span><span class="comment">/* EOF */</span></div>
 <div class="ttc" id="a_nations_2_n32_h76_x__78_x_2common_2device__af_8h_html"><div class="ttname"><a href="_nations_2_n32_h76_x__78_x_2common_2device__af_8h.html">device_af.h</a></div></div>
 <div class="ttc" id="a_nations_2_n32_h76_x__78_x_2common_2device__irq_8h_html"><div class="ttname"><a href="_nations_2_n32_h76_x__78_x_2common_2device__irq_8h.html">device_irq.h</a></div></div>
 <div class="ttc" id="a_winner_micro_2_w60_x_2common_2common_8h_html"><div class="ttname"><a href="_winner_micro_2_w60_x_2common_2common_8h.html">common.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/3a2f1ef1532e96878f3cb1faf3693e1bcb39ad13" target="_blank">vsfteam/vsf@3a2f1ef</a>
+  <a href="https://github.com/vsfteam/vsf/commit/9388752da8e9eacab8727289eada077fa812cd24" target="_blank">vsfteam/vsf@9388752</a>
   生成
 </div>

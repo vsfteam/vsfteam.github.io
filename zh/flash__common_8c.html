@@ -83,6 +83,9 @@
 <tr class="memitem:ae8a28a1a3253ce336f66f0d75040bfec" id="r_ae8a28a1a3253ce336f66f0d75040bfec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="flash__common_8c.html#ae8a28a1a3253ce336f66f0d75040bfec">vsf_flash_irq_disable</a> (<a class="el" href="structvsf__flash__t.html">vsf_flash_t</a> *flash_ptr, <a class="el" href="_artery_2_a_t32_f402__405_2common_2flash_2flash_8h.html#a1922ed218c6eec24adc9b74c6320d75a">vsf_flash_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
 <tr class="memdesc:ae8a28a1a3253ce336f66f0d75040bfec"><td class="mdescLeft">&#160;</td><td class="mdescRight">禁用 FLASH 实例的中断  <br /></td></tr>
 <tr class="separator:ae8a28a1a3253ce336f66f0d75040bfec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b971ca231273b00faa09c37588920dc" id="r_a3b971ca231273b00faa09c37588920dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_artery_2_a_t32_f402__405_2common_2flash_2flash_8h.html#a1922ed218c6eec24adc9b74c6320d75a">vsf_flash_irq_mask_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="flash__common_8c.html#a3b971ca231273b00faa09c37588920dc">vsf_flash_irq_clear</a> (<a class="el" href="structvsf__flash__t.html">vsf_flash_t</a> *flash_ptr, <a class="el" href="_artery_2_a_t32_f402__405_2common_2flash_2flash_8h.html#a1922ed218c6eec24adc9b74c6320d75a">vsf_flash_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
+<tr class="memdesc:a3b971ca231273b00faa09c37588920dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">清除 FLASH 实例的中断标志并返回之前的状态  <br /></td></tr>
+<tr class="separator:a3b971ca231273b00faa09c37588920dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3aa84ace8fd41782dc9eccec47e884c9" id="r_a3aa84ace8fd41782dc9eccec47e884c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvsf__flash__status__t.html">vsf_flash_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="flash__common_8c.html#a3aa84ace8fd41782dc9eccec47e884c9">vsf_flash_status</a> (<a class="el" href="structvsf__flash__t.html">vsf_flash_t</a> *flash_ptr)</td></tr>
 <tr class="memdesc:a3aa84ace8fd41782dc9eccec47e884c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取 FLASH 实例的状态  <br /></td></tr>
 <tr class="separator:a3aa84ace8fd41782dc9eccec47e884c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -329,6 +332,45 @@
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>无 </dd></dl>
+
+</div>
+</div>
+<a id="a3b971ca231273b00faa09c37588920dc" name="a3b971ca231273b00faa09c37588920dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b971ca231273b00faa09c37588920dc">&#9670;&#160;</a></span>vsf_flash_irq_clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_artery_2_a_t32_f402__405_2common_2flash_2flash_8h.html#a1922ed218c6eec24adc9b74c6320d75a">vsf_flash_irq_mask_t</a> vsf_flash_irq_clear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__flash__t.html">vsf_flash_t</a> *&#160;</td>
+          <td class="paramname"><em>flash_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_artery_2_a_t32_f402__405_2common_2flash_2flash_8h.html#a1922ed218c6eec24adc9b74c6320d75a">vsf_flash_irq_mask_t</a>&#160;</td>
+          <td class="paramname"><em>irq_mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>清除 FLASH 实例的中断标志并返回之前的状态 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">flash_ptr</td><td>指向结构体 <a class="el" href="structvsf__flash__t.html">vsf_flash_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">irq_mask</td><td>要清除的一个或多个枚举 vsf_flash_irq_mask_t 值的按位或 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_flash_irq_mask_t: 清除前的中断掩码状态（如果没有标志被设置则返回0）</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>此函数尝试清除指定的中断标志（如果它们已设置），并返回清除前这些标志的状态。 这对于轮询操作和确定是否发生了中断很有用。 注意：如果中断已启用且中断处理函数处于活动状态，中断处理函数可能会自动清除中断标志。 在这种情况下，即使发生了中断，此函数也会返回0。 </dd></dl>
 
 </div>
 </div>
@@ -794,6 +836,6 @@
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/3a2f1ef1532e96878f3cb1faf3693e1bcb39ad13" target="_blank">vsfteam/vsf@3a2f1ef</a>
+  <a href="https://github.com/vsfteam/vsf/commit/9388752da8e9eacab8727289eada077fa812cd24" target="_blank">vsfteam/vsf@9388752</a>
   生成
 </div>

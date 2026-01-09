@@ -576,14 +576,16 @@ Multiple interrupts can be enabled by OR-ing the masks </dd></dl>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">spi_ptr</td><td>Pointer to SPI instance structure <a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">out_buffer_ptr</td><td>Pointer to data to transmit (can be NULL for receive-only) </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">out_offset_ptr</td><td>Pointer to transmit buffer offset </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">out_offset_ptr</td><td>Pointer to transmit buffer offset. Must be initialized to 0 before first call if not NULL. The function updates this value to indicate the number of data units that have been transferred. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">in_buffer_ptr</td><td>Pointer to buffer for received data (can be NULL for transmit-only) </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">in_offset_ptr</td><td>Pointer to receive buffer offset </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">in_offset_ptr</td><td>Pointer to receive buffer offset. Must be initialized to 0 before first call if not NULL. The function updates this value to indicate the number of data units that have been transferred. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>Number of data units to transfer (can be 0 for QSPI operations with only command/address phases) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>Data unit size is determined by the configured data size in SPI mode (<a class="el" href="_a_i_c_2_a_i_c8800_2spi_2spi_8h.html#ab21578569e5e21a2748d2fa14bbbe3a0">vsf_spi_mode_t</a>) </dd>
+<dl class="section note"><dt>Note</dt><dd>This is a non-blocking API. To complete the full data transfer, this function must be called repeatedly in a loop until both out_offset_ptr and in_offset_ptr reach the count value. </dd>
+<dd>
+Data unit size is determined by the configured data size in SPI mode (<a class="el" href="_a_i_c_2_a_i_c8800_2spi_2spi_8h.html#ab21578569e5e21a2748d2fa14bbbe3a0">vsf_spi_mode_t</a>) </dd>
 <dd>
 Buffer size requirements: 4-8 bits = 1 byte, 9-16 bits = 2 bytes, 17-32 bits = 4 bytes per data unit </dd>
 <dd>
@@ -828,5 +830,5 @@ Some commands may not be supported on all hardware platforms </dd></dl>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/3a2f1ef1532e96878f3cb1faf3693e1bcb39ad13" target="_blank">vsfteam/vsf@3a2f1ef</a>
+  <a href="https://github.com/vsfteam/vsf/commit/9388752da8e9eacab8727289eada077fa812cd24" target="_blank">vsfteam/vsf@9388752</a>
 </div>

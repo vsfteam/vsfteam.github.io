@@ -580,14 +580,16 @@
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">spi_ptr</td><td>指向结构体 <a class="el" href="structvsf__spi__t.html">vsf_spi_t</a> 的指针 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">out_buffer_ptr</td><td>指向要发送数据的缓冲区指针（仅接收时可为 NULL） </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">out_offset_ptr</td><td>指向发送缓冲区偏移的指针 </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">out_offset_ptr</td><td>指向发送缓冲区偏移的指针。如果非 NULL，必须在首次调用前初始化为 0。 函数会更新此值以指示已传输的数据单元数。 </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">in_buffer_ptr</td><td>指向用于接收数据的缓冲区指针（仅发送时可为 NULL） </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">in_offset_ptr</td><td>指向接收缓冲区偏移的指针 </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">in_offset_ptr</td><td>指向接收缓冲区偏移的指针。如果非 NULL，必须在首次调用前初始化为 0。 函数会更新此值以指示已传输的数据单元数。 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>要传输的数据单元数（对于仅有命令/地址阶段的 QSPI 操作可以为 0） </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>注解</dt><dd>数据单元大小由 SPI 模式中配置的数据大小决定（vsf_spi_mode_t） </dd>
+<dl class="section note"><dt>注解</dt><dd>这是一个非阻塞 API。要完成全部数据传输，必须在循环中持续调用此函数， 直到 out_offset_ptr 和 in_offset_ptr 都达到 count 值。 </dd>
+<dd>
+数据单元大小由 SPI 模式中配置的数据大小决定（vsf_spi_mode_t） </dd>
 <dd>
 缓冲区大小要求：4-8 位 = 1 字节，9-16 位 = 2 字节，17-32 位 = 4 字节每个数据单元 </dd>
 <dd>
@@ -831,6 +833,6 @@
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/3a2f1ef1532e96878f3cb1faf3693e1bcb39ad13" target="_blank">vsfteam/vsf@3a2f1ef</a>
+  <a href="https://github.com/vsfteam/vsf/commit/9388752da8e9eacab8727289eada077fa812cd24" target="_blank">vsfteam/vsf@9388752</a>
   生成
 </div>

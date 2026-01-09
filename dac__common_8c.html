@@ -86,6 +86,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a978dd5d39d76ed444e65f83b46a91a1d" id="r_a978dd5d39d76ed444e65f83b46a91a1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac__common_8c.html#a978dd5d39d76ed444e65f83b46a91a1d">vsf_dac_irq_disable</a> (<a class="el" href="structvsf__dac__t.html">vsf_dac_t</a> *dac_ptr, <a class="el" href="vsf__template__dac_8h.html#a5230e2878813835c4718e342c0d4f0a0">vsf_dac_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
 <tr class="memdesc:a978dd5d39d76ed444e65f83b46a91a1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable interrupt masks of DAC instance.  <br /></td></tr>
 <tr class="separator:a978dd5d39d76ed444e65f83b46a91a1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8048b67d5fc380a445ba4996024525cf" id="r_a8048b67d5fc380a445ba4996024525cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__template__dac_8h.html#a5230e2878813835c4718e342c0d4f0a0">vsf_dac_irq_mask_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac__common_8c.html#a8048b67d5fc380a445ba4996024525cf">vsf_dac_irq_clear</a> (<a class="el" href="structvsf__dac__t.html">vsf_dac_t</a> *dac_ptr, <a class="el" href="vsf__template__dac_8h.html#a5230e2878813835c4718e342c0d4f0a0">vsf_dac_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
+<tr class="memdesc:a8048b67d5fc380a445ba4996024525cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear interrupt flags of DAC instance and return previous state.  <br /></td></tr>
+<tr class="separator:a8048b67d5fc380a445ba4996024525cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a707451d30615e21bd28d26f604a66fee" id="r_a707451d30615e21bd28d26f604a66fee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvsf__dac__status__t.html">vsf_dac_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dac__common_8c.html#a707451d30615e21bd28d26f604a66fee">vsf_dac_status</a> (<a class="el" href="structvsf__dac__t.html">vsf_dac_t</a> *dac_ptr)</td></tr>
 <tr class="memdesc:a707451d30615e21bd28d26f604a66fee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the status of DAC instance.  <br /></td></tr>
 <tr class="separator:a707451d30615e21bd28d26f604a66fee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -354,6 +357,45 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a8048b67d5fc380a445ba4996024525cf" name="a8048b67d5fc380a445ba4996024525cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8048b67d5fc380a445ba4996024525cf">&#9670;&#160;</a></span>vsf_dac_irq_clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vsf__template__dac_8h.html#a5230e2878813835c4718e342c0d4f0a0">vsf_dac_irq_mask_t</a> vsf_dac_irq_clear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__dac__t.html">vsf_dac_t</a> *&#160;</td>
+          <td class="paramname"><em>dac_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__template__dac_8h.html#a5230e2878813835c4718e342c0d4f0a0">vsf_dac_irq_mask_t</a>&#160;</td>
+          <td class="paramname"><em>irq_mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clear interrupt flags of DAC instance and return previous state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dac_ptr</td><td>a pointer to structure <a class="el" href="structvsf__dac__t.html">vsf_dac_t</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">irq_mask</td><td>one or more values of enum <a class="el" href="vsf__template__dac_8h.html#a5230e2878813835c4718e342c0d4f0a0">vsf_dac_irq_mask_t</a> to clear </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_dac_irq_mask_t: the interrupt mask state before clearing (0 if no flags were set)</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function attempts to clear the specified interrupt flags if they are set, and returns the state of those flags before clearing. This is useful for polling operations and determining if interrupts occurred. Note that if interrupts are enabled and an interrupt handler is active, the interrupt handler may clear the interrupt flags automatically. In such cases, this function will return 0 even if interrupts occurred. </dd></dl>
+
+</div>
+</div>
 <a id="a707451d30615e21bd28d26f604a66fee" name="a707451d30615e21bd28d26f604a66fee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a707451d30615e21bd28d26f604a66fee">&#9670;&#160;</a></span>vsf_dac_status()</h2>
 
@@ -546,5 +588,5 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/3a2f1ef1532e96878f3cb1faf3693e1bcb39ad13" target="_blank">vsfteam/vsf@3a2f1ef</a>
+  <a href="https://github.com/vsfteam/vsf/commit/9388752da8e9eacab8727289eada077fa812cd24" target="_blank">vsfteam/vsf@9388752</a>
 </div>
