@@ -98,6 +98,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a7dcde19561530b644547cec2bf02a656" id="r_a7dcde19561530b644547cec2bf02a656"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__common_8c.html#a7dcde19561530b644547cec2bf02a656">vsf_sdio_get_configuration</a> (<a class="el" href="structvsf__sdio__t.html">vsf_sdio_t</a> *sdio_ptr, <a class="el" href="structvsf__sdio__cfg__t.html">vsf_sdio_cfg_t</a> *cfg_ptr)</td></tr>
 <tr class="memdesc:a7dcde19561530b644547cec2bf02a656"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current configuration of an SDIO instance.  <br /></td></tr>
 <tr class="separator:a7dcde19561530b644547cec2bf02a656"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ba74e83d89937acedaec4275f717fbb" id="r_a3ba74e83d89937acedaec4275f717fbb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdio__common_8c.html#a3ba74e83d89937acedaec4275f717fbb">vsf_sdio_ctrl</a> (<a class="el" href="structvsf__sdio__t.html">vsf_sdio_t</a> *sdio_ptr, <a class="el" href="vsf__template__sdio_8h.html#ab8736f74529769a4ede28ea44e4f063d">vsf_sdio_ctrl_t</a> ctrl, void *param)</td></tr>
+<tr class="memdesc:a3ba74e83d89937acedaec4275f717fbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a control command on an SDIO instance.  <br /></td></tr>
+<tr class="separator:a3ba74e83d89937acedaec4275f717fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a24cdb632cad33c09d8ff06f5dd7578df" name="a24cdb632cad33c09d8ff06f5dd7578df"></a>
@@ -511,8 +514,56 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a3ba74e83d89937acedaec4275f717fbb" name="a3ba74e83d89937acedaec4275f717fbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ba74e83d89937acedaec4275f717fbb">&#9670;&#160;</a></span>vsf_sdio_ctrl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_sdio_ctrl </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__sdio__t.html">vsf_sdio_t</a> *&#160;</td>
+          <td class="paramname"><em>sdio_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__template__sdio_8h.html#ab8736f74529769a4ede28ea44e4f063d">vsf_sdio_ctrl_t</a>&#160;</td>
+          <td class="paramname"><em>ctrl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>param</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Execute a control command on an SDIO instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">sdio_ptr</td><td>pointer to SDIO instance structure <a class="el" href="structvsf__sdio__t.html">vsf_sdio_t</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ctrl</td><td>Control command from <a class="el" href="vsf__template__sdio_8h.html#ab8736f74529769a4ede28ea44e4f063d">vsf_sdio_ctrl_t</a> enumeration </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">param</td><td>Command-specific parameter (can be NULL depending on command) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if command executed successfully, VSF_ERR_NOT_SUPPORT if command is not supported, other error codes defined by vsf_err_t for specific failures </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Available commands and their parameters are hardware-dependent </dd>
+<dd>
+Some commands may not be supported on all hardware platforms </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/9388752da8e9eacab8727289eada077fa812cd24" target="_blank">vsfteam/vsf@9388752</a>
+  <a href="https://github.com/vsfteam/vsf/commit/9f48a282e7866db9a5b8e9a028ef1d37b43e7834" target="_blank">vsfteam/vsf@9f48a28</a>
 </div>
