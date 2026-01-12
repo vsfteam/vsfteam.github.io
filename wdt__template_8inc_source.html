@@ -294,111 +294,112 @@
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="preprocessor">#undef VSF_WDT_CFG_IMP_REMAP_FUNCTIONS</span></div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="preprocessor">#undef VSF_WDT_CFG_IMP_HAS_OP</span></div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="preprocessor">#undef VSF_WDT_CFG_IMP_EXTERN_OP</span></div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="preprocessor">#undef vsf_imp_wdt_t</span></div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="preprocessor">#undef vsf_imp_wdt_init</span></div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="preprocessor">#undef vsf_imp_wdt_fini</span></div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="preprocessor">#undef vsf_imp_wdt_enable</span></div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="preprocessor">#undef vsf_imp_wdt_disable</span></div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="preprocessor">#undef vsf_imp_wdt_capability</span></div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="preprocessor">#undef vsf_imp_wdt_feed</span></div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="preprocessor">#undef vsf_imp_wdt_get_configuration</span></div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="preprocessor">#undef vsf_imp_wdt_ctrl</span></div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span> </div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="preprocessor">#undef vsf_remap_wdt_t</span></div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="preprocessor">#undef vsf_remap_wdt_init</span></div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="preprocessor">#undef vsf_remap_wdt_fini</span></div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="preprocessor">#undef vsf_remap_wdt_enable</span></div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="preprocessor">#undef vsf_remap_wdt_disable</span></div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="preprocessor">#undef vsf_remap_wdt_capability</span></div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="preprocessor">#undef vsf_remap_wdt_feed</span></div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="preprocessor">#undef vsf_remap_wdt_get_configuration</span></div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="preprocessor">#undef vsf_remap_wdt_ctrl</span></div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="preprocessor">#undef VSF_HAL_TEMPLATE_IMP_NAME</span></div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="preprocessor">#undef VSF_HAL_TEMPLATE_IMP_UPCASE_NAME</span></div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span><span class="comment">/*============================ STATIC ASSERTIONS ==============================*/</span></div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span> </div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="comment">/* User-extensible macros for custom mode and IRQ mask values</span></div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="comment"> * Users can define these macros before including this template to append</span></div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="comment"> * their custom enum values to the uniqueness checks.</span></div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="comment"> * Check modes for custom values:</span></div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><span class="comment"> *   VSF_WDT_CFG_MODE_CHECK_UNIQUE - Check mode for custom mode values</span></div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="comment"> *     Default: VSF_HAL_CHECK_MODE_LOOSE (loose mode, no overlapping bits)</span></div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="comment"> *     Can be set to: VSF_HAL_CHECK_MODE_STRICT (strict mode, no overlapping bits)</span></div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="comment"> *   VSF_WDT_CFG_IRQ_MASK_CHECK_UNIQUE - Check mode for custom IRQ mask values</span></div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span><span class="comment"> *     Default: VSF_HAL_CHECK_MODE_STRICT (strict mode, no overlapping bits)</span></div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span><span class="comment"> *     Can be set to: VSF_HAL_CHECK_MODE_LOOSE (loose mode, no overlapping bits)</span></div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span><span class="comment"> * Example usage in vendor driver:</span></div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span><span class="comment"> *   #define VSF_WDT_CUSTOM_MODE_VALUES           MY_CUSTOM_MODE1, MY_CUSTOM_MODE2</span></div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span><span class="comment"> *   #define VSF_WDT_CFG_MODE_CHECK_UNIQUE        VSF_HAL_CHECK_MODE_LOOSE</span></div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span><span class="comment"> *   #define VSF_WDT_CUSTOM_IRQ_MASK_VALUES       MY_CUSTOM_IRQ1, MY_CUSTOM_IRQ2</span></div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span><span class="comment"> *   #define VSF_WDT_CFG_IRQ_MASK_CHECK_UNIQUE    VSF_HAL_CHECK_MODE_STRICT</span></div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span><span class="comment"> *   #include &quot;hal/driver/common/wdt/wdt_template.inc&quot;</span></div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span> </div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="preprocessor">#undef VSF_WDT_CFG_IMP_RENAME_DEVICE_PREFIX</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="preprocessor">#undef vsf_imp_wdt_t</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="preprocessor">#undef vsf_imp_wdt_init</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="preprocessor">#undef vsf_imp_wdt_fini</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="preprocessor">#undef vsf_imp_wdt_enable</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="preprocessor">#undef vsf_imp_wdt_disable</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="preprocessor">#undef vsf_imp_wdt_capability</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="preprocessor">#undef vsf_imp_wdt_feed</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="preprocessor">#undef vsf_imp_wdt_get_configuration</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="preprocessor">#undef vsf_imp_wdt_ctrl</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="preprocessor">#undef vsf_remap_wdt_t</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="preprocessor">#undef vsf_remap_wdt_init</span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="preprocessor">#undef vsf_remap_wdt_fini</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="preprocessor">#undef vsf_remap_wdt_enable</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="preprocessor">#undef vsf_remap_wdt_disable</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="preprocessor">#undef vsf_remap_wdt_capability</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="preprocessor">#undef vsf_remap_wdt_feed</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="preprocessor">#undef vsf_remap_wdt_get_configuration</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="preprocessor">#undef vsf_remap_wdt_ctrl</span></div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="preprocessor">#undef VSF_HAL_TEMPLATE_IMP_NAME</span></div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="preprocessor">#undef VSF_HAL_TEMPLATE_IMP_UPCASE_NAME</span></div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="comment">/*============================ STATIC ASSERTIONS ==============================*/</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="comment">/* User-extensible macros for custom mode and IRQ mask values</span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="comment"> * Users can define these macros before including this template to append</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span><span class="comment"> * their custom enum values to the uniqueness checks.</span></div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><span class="comment"> * Check modes for custom values:</span></div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="comment"> *   VSF_WDT_CFG_MODE_CHECK_UNIQUE - Check mode for custom mode values</span></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="comment"> *     Default: VSF_HAL_CHECK_MODE_LOOSE (loose mode, no overlapping bits)</span></div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="comment"> *     Can be set to: VSF_HAL_CHECK_MODE_STRICT (strict mode, no overlapping bits)</span></div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span><span class="comment"> *   VSF_WDT_CFG_IRQ_MASK_CHECK_UNIQUE - Check mode for custom IRQ mask values</span></div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span><span class="comment"> *     Default: VSF_HAL_CHECK_MODE_STRICT (strict mode, no overlapping bits)</span></div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span><span class="comment"> *     Can be set to: VSF_HAL_CHECK_MODE_LOOSE (loose mode, no overlapping bits)</span></div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span><span class="comment"> * Example usage in vendor driver:</span></div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span><span class="comment"> *   #define VSF_WDT_CUSTOM_MODE_VALUES           MY_CUSTOM_MODE1, MY_CUSTOM_MODE2</span></div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span><span class="comment"> *   #define VSF_WDT_CFG_MODE_CHECK_UNIQUE        VSF_HAL_CHECK_MODE_LOOSE</span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span><span class="comment"> *   #define VSF_WDT_CUSTOM_IRQ_MASK_VALUES       MY_CUSTOM_IRQ1, MY_CUSTOM_IRQ2</span></div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span><span class="comment"> *   #define VSF_WDT_CFG_IRQ_MASK_CHECK_UNIQUE    VSF_HAL_CHECK_MODE_STRICT</span></div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span><span class="comment"> *   #include &quot;hal/driver/common/wdt/wdt_template.inc&quot;</span></div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span><span class="preprocessor">#ifdef VSF_WDT_CFG_MODE_CHECK_UNIQUE</span></div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="comment">/* ==================== GROUP INTERNAL UNIQUENESS CHECKS ==================== */</span></div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="comment">/* Check uniqueness within each functional group */</span></div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span><span class="comment">/* Check early wakeup mode uniqueness - all early wakeup modes should have different values</span></div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span><span class="comment"> * Mandatory: VSF_WDT_MODE_NO_EARLY_WAKEUP, VSF_WDT_MODE_EARLY_WAKEUP</span></div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><a class="code hl_define" href="vsf__template__static__assert__unique_8h.html#ae5cc401f86777269acc1a29349179a1a">VSF_HAL_CHECK_UNIQUE_CUSTOM</a>(</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    <a class="code hl_define" href="template_2____series__name__a_____2common_2wdt_2wdt_8c.html#a5a02bb1ebed429b3855efbf753fdd0f6">VSF_WDT_CFG_MODE_CHECK_UNIQUE</a>,</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a5103efb1aebfa55e8d4ffd7529bd848d">VSF_WDT_MODE_NO_EARLY_WAKEUP</a>,</div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8af12bd37ba19eaddb2bc65172c6ad91f3">VSF_WDT_MODE_EARLY_WAKEUP</a></div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>);</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="comment">/* Check reset mode uniqueness - all reset modes should have different values</span></div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="comment"> * Mandatory: VSF_WDT_MODE_RESET_NONE, VSF_WDT_MODE_RESET_CPU, VSF_WDT_MODE_RESET_SOC</span></div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><a class="code hl_define" href="vsf__template__static__assert__unique_8h.html#ae5cc401f86777269acc1a29349179a1a">VSF_HAL_CHECK_UNIQUE_CUSTOM</a>(</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    <a class="code hl_define" href="template_2____series__name__a_____2common_2wdt_2wdt_8c.html#a5a02bb1ebed429b3855efbf753fdd0f6">VSF_WDT_CFG_MODE_CHECK_UNIQUE</a>,</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a891dce9f8236c3a30ebc92c55d207ed8">VSF_WDT_MODE_RESET_NONE</a>,</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a55bec3d8e41df9cd9241ebf4bdf52469">VSF_WDT_MODE_RESET_CPU</a>,</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a317869ee630bbb8ed196fa06806bbfb3">VSF_WDT_MODE_RESET_SOC</a></div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>);</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span> </div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span><span class="preprocessor">#ifdef VSF_WDT_CUSTOM_MODE_VALUES</span></div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span><span class="comment">/* Check uniqueness among custom mode values using user-specified check mode */</span></div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><a class="code hl_define" href="vsf__template__static__assert__unique_8h.html#ae5cc401f86777269acc1a29349179a1a">VSF_HAL_CHECK_UNIQUE_CUSTOM</a>(<a class="code hl_define" href="template_2____series__name__a_____2common_2wdt_2wdt_8c.html#a5a02bb1ebed429b3855efbf753fdd0f6">VSF_WDT_CFG_MODE_CHECK_UNIQUE</a>, VSF_WDT_CUSTOM_MODE_VALUES);</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span> </div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span><a class="code hl_define" href="vsf__template__static__assert__unique_8h.html#ae5cc401f86777269acc1a29349179a1a">VSF_HAL_CHECK_UNIQUE_CUSTOM</a>(</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    <a class="code hl_define" href="template_2____series__name__a_____2common_2wdt_2wdt_8c.html#a5a02bb1ebed429b3855efbf753fdd0f6">VSF_WDT_CFG_MODE_CHECK_UNIQUE</a>,</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    <span class="comment">/* Mandatory modes - always included */</span></div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a5103efb1aebfa55e8d4ffd7529bd848d">VSF_WDT_MODE_NO_EARLY_WAKEUP</a>, <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8af12bd37ba19eaddb2bc65172c6ad91f3">VSF_WDT_MODE_EARLY_WAKEUP</a>,</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a891dce9f8236c3a30ebc92c55d207ed8">VSF_WDT_MODE_RESET_NONE</a>, <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a55bec3d8e41df9cd9241ebf4bdf52469">VSF_WDT_MODE_RESET_CPU</a>, <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a317869ee630bbb8ed196fa06806bbfb3">VSF_WDT_MODE_RESET_SOC</a></div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    <span class="comment">/* User-defined modes - appended by user configuration */</span></div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>#ifdef VSF_WDT_CUSTOM_MODE_VALUES</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    , VSF_WDT_CUSTOM_MODE_VALUES</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>#endif</div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>);</div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_WDT_CFG_MODE_CHECK_UNIQUE */</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span><span class="comment">/* ==================== IRQ MASK UNIQUENESS CHECKS ==================== */</span></div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span><span class="preprocessor">#ifdef VSF_WDT_CFG_IRQ_MASK_CHECK_UNIQUE</span></div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span> </div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span><span class="preprocessor">#ifdef VSF_WDT_CUSTOM_IRQ_MASK_VALUES</span></div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span><span class="comment">/* Check uniqueness among custom IRQ mask values using user-specified check mode */</span></div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span><a class="code hl_define" href="vsf__template__static__assert__unique_8h.html#ae5cc401f86777269acc1a29349179a1a">VSF_HAL_CHECK_UNIQUE_CUSTOM</a>(<a class="code hl_define" href="template_2____series__name__a_____2common_2wdt_2wdt_8c.html#a3acf550ac6cb90dfc23012aa1c3382c7">VSF_WDT_CFG_IRQ_MASK_CHECK_UNIQUE</a>, VSF_WDT_CUSTOM_IRQ_MASK_VALUES);</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span> </div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span><span class="comment">/* Note: WDT typically doesn&#39;t have a standard IRQ mask enum, but custom IRQ masks can be added */</span></div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_WDT_CFG_IRQ_MASK_CHECK_UNIQUE */</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span> </div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span><span class="preprocessor">#undef VSF_WDT_CFG_MODE_CHECK_UNIQUE</span></div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="preprocessor">#undef VSF_WDT_CFG_IRQ_MASK_CHECK_UNIQUE</span></div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span><span class="preprocessor">#undef VSF_WDT_CUSTOM_MODE_VALUES</span></div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span><span class="preprocessor">#undef VSF_WDT_CUSTOM_IRQ_MASK_VALUES</span></div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_HAL_USE_WDT */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="preprocessor">#ifdef VSF_WDT_CFG_MODE_CHECK_UNIQUE</span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="comment">/* ==================== GROUP INTERNAL UNIQUENESS CHECKS ==================== */</span></div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span><span class="comment">/* Check uniqueness within each functional group */</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span><span class="comment">/* Check early wakeup mode uniqueness - all early wakeup modes should have different values</span></div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span><span class="comment"> * Mandatory: VSF_WDT_MODE_NO_EARLY_WAKEUP, VSF_WDT_MODE_EARLY_WAKEUP</span></div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><a class="code hl_define" href="vsf__template__static__assert__unique_8h.html#ae5cc401f86777269acc1a29349179a1a">VSF_HAL_CHECK_UNIQUE_CUSTOM</a>(</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    <a class="code hl_define" href="template_2____series__name__a_____2common_2wdt_2wdt_8c.html#a5a02bb1ebed429b3855efbf753fdd0f6">VSF_WDT_CFG_MODE_CHECK_UNIQUE</a>,</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a5103efb1aebfa55e8d4ffd7529bd848d">VSF_WDT_MODE_NO_EARLY_WAKEUP</a>,</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8af12bd37ba19eaddb2bc65172c6ad91f3">VSF_WDT_MODE_EARLY_WAKEUP</a></div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>);</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="comment">/* Check reset mode uniqueness - all reset modes should have different values</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="comment"> * Mandatory: VSF_WDT_MODE_RESET_NONE, VSF_WDT_MODE_RESET_CPU, VSF_WDT_MODE_RESET_SOC</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span><a class="code hl_define" href="vsf__template__static__assert__unique_8h.html#ae5cc401f86777269acc1a29349179a1a">VSF_HAL_CHECK_UNIQUE_CUSTOM</a>(</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    <a class="code hl_define" href="template_2____series__name__a_____2common_2wdt_2wdt_8c.html#a5a02bb1ebed429b3855efbf753fdd0f6">VSF_WDT_CFG_MODE_CHECK_UNIQUE</a>,</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a891dce9f8236c3a30ebc92c55d207ed8">VSF_WDT_MODE_RESET_NONE</a>,</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a55bec3d8e41df9cd9241ebf4bdf52469">VSF_WDT_MODE_RESET_CPU</a>,</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a317869ee630bbb8ed196fa06806bbfb3">VSF_WDT_MODE_RESET_SOC</a></div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>);</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span><span class="preprocessor">#ifdef VSF_WDT_CUSTOM_MODE_VALUES</span></div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="comment">/* Check uniqueness among custom mode values using user-specified check mode */</span></div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span><a class="code hl_define" href="vsf__template__static__assert__unique_8h.html#ae5cc401f86777269acc1a29349179a1a">VSF_HAL_CHECK_UNIQUE_CUSTOM</a>(<a class="code hl_define" href="template_2____series__name__a_____2common_2wdt_2wdt_8c.html#a5a02bb1ebed429b3855efbf753fdd0f6">VSF_WDT_CFG_MODE_CHECK_UNIQUE</a>, VSF_WDT_CUSTOM_MODE_VALUES);</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><a class="code hl_define" href="vsf__template__static__assert__unique_8h.html#ae5cc401f86777269acc1a29349179a1a">VSF_HAL_CHECK_UNIQUE_CUSTOM</a>(</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    <a class="code hl_define" href="template_2____series__name__a_____2common_2wdt_2wdt_8c.html#a5a02bb1ebed429b3855efbf753fdd0f6">VSF_WDT_CFG_MODE_CHECK_UNIQUE</a>,</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    <span class="comment">/* Mandatory modes - always included */</span></div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a5103efb1aebfa55e8d4ffd7529bd848d">VSF_WDT_MODE_NO_EARLY_WAKEUP</a>, <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8af12bd37ba19eaddb2bc65172c6ad91f3">VSF_WDT_MODE_EARLY_WAKEUP</a>,</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a891dce9f8236c3a30ebc92c55d207ed8">VSF_WDT_MODE_RESET_NONE</a>, <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a55bec3d8e41df9cd9241ebf4bdf52469">VSF_WDT_MODE_RESET_CPU</a>, <a class="code hl_enumvalue" href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a317869ee630bbb8ed196fa06806bbfb3">VSF_WDT_MODE_RESET_SOC</a></div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    <span class="comment">/* User-defined modes - appended by user configuration */</span></div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>#ifdef VSF_WDT_CUSTOM_MODE_VALUES</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>    , VSF_WDT_CUSTOM_MODE_VALUES</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>#endif</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>);</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_WDT_CFG_MODE_CHECK_UNIQUE */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span> </div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span><span class="comment">/* ==================== IRQ MASK UNIQUENESS CHECKS ==================== */</span></div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span><span class="preprocessor">#ifdef VSF_WDT_CFG_IRQ_MASK_CHECK_UNIQUE</span></div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span> </div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span><span class="preprocessor">#ifdef VSF_WDT_CUSTOM_IRQ_MASK_VALUES</span></div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span><span class="comment">/* Check uniqueness among custom IRQ mask values using user-specified check mode */</span></div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span><a class="code hl_define" href="vsf__template__static__assert__unique_8h.html#ae5cc401f86777269acc1a29349179a1a">VSF_HAL_CHECK_UNIQUE_CUSTOM</a>(<a class="code hl_define" href="template_2____series__name__a_____2common_2wdt_2wdt_8c.html#a3acf550ac6cb90dfc23012aa1c3382c7">VSF_WDT_CFG_IRQ_MASK_CHECK_UNIQUE</a>, VSF_WDT_CUSTOM_IRQ_MASK_VALUES);</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span><span class="comment">/* Note: WDT typically doesn&#39;t have a standard IRQ mask enum, but custom IRQ masks can be added */</span></div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_WDT_CFG_IRQ_MASK_CHECK_UNIQUE */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span> </div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="preprocessor">#undef VSF_WDT_CFG_MODE_CHECK_UNIQUE</span></div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span><span class="preprocessor">#undef VSF_WDT_CFG_IRQ_MASK_CHECK_UNIQUE</span></div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span><span class="preprocessor">#undef VSF_WDT_CUSTOM_MODE_VALUES</span></div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span><span class="preprocessor">#undef VSF_WDT_CUSTOM_IRQ_MASK_VALUES</span></div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span> </div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_HAL_USE_WDT */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition</b> __type.h:42</div></div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4a06cce05efa80070c1d1b0451d59e86a2"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a06cce05efa80070c1d1b0451d59e86a2">VSF_ERR_NOT_SUPPORT</a></div><div class="ttdeci">@ VSF_ERR_NOT_SUPPORT</div><div class="ttdoc">function not supported</div><div class="ttdef"><b>Definition</b> __type.h:46</div></div>
 <div class="ttc" id="a_a_i_c_2_a_i_c8800_2wdt_2wdt_8h_html_a540adec527f60d806477a3e8aa3c5fb8a317869ee630bbb8ed196fa06806bbfb3"><div class="ttname"><a href="_a_i_c_2_a_i_c8800_2wdt_2wdt_8h.html#a540adec527f60d806477a3e8aa3c5fb8a317869ee630bbb8ed196fa06806bbfb3">VSF_WDT_MODE_RESET_SOC</a></div><div class="ttdeci">@ VSF_WDT_MODE_RESET_SOC</div><div class="ttdef"><b>Definition</b> wdt.h:36</div></div>
@@ -419,5 +420,5 @@
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/45cae1dda9abee9ddcafe0428cf54565aa938218" target="_blank">vsfteam/vsf@45cae1d</a>
+  <a href="https://github.com/vsfteam/vsf/commit/463f0488849f3cb665b6918e1f77bf3050eefbe4" target="_blank">vsfteam/vsf@463f048</a>
 </div>

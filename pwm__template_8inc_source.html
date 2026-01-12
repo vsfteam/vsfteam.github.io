@@ -289,83 +289,84 @@
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="preprocessor">#undef VSF_PWM_CFG_IMP_REMAP_FUNCTIONS</span></div>
 <div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="preprocessor">#undef VSF_PWM_CFG_IMP_HAS_OP</span></div>
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="preprocessor">#undef VSF_PWM_CFG_IMP_EXTERN_OP</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="preprocessor">#undef vsf_imp_pwm_t</span></div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="preprocessor">#undef vsf_imp_pwm_init</span></div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="preprocessor">#undef vsf_imp_pwm_fini</span></div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="preprocessor">#undef vsf_imp_pwm_enable</span></div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="preprocessor">#undef vsf_imp_pwm_disable</span></div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="preprocessor">#undef vsf_imp_pwm_capability</span></div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="preprocessor">#undef vsf_imp_pwm_set</span></div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="preprocessor">#undef vsf_imp_pwm_get_freq</span></div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="preprocessor">#undef vsf_imp_pwm_get_configuration</span></div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="preprocessor">#undef vsf_imp_pwm_ctrl</span></div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="preprocessor">#undef vsf_remap_pwm_t</span></div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="preprocessor">#undef vsf_remap_pwm_init</span></div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="preprocessor">#undef vsf_remap_pwm_fini</span></div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="preprocessor">#undef vsf_remap_pwm_enable</span></div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="preprocessor">#undef vsf_remap_pwm_disable</span></div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="preprocessor">#undef vsf_remap_pwm_capability</span></div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="preprocessor">#undef vsf_remap_pwm_set</span></div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="preprocessor">#undef vsf_remap_pwm_get_freq</span></div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="preprocessor">#undef vsf_remap_pwm_get_configuration</span></div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="preprocessor">#undef vsf_remap_pwm_ctrl</span></div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="preprocessor">#undef VSF_HAL_TEMPLATE_IMP_NAME</span></div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="preprocessor">#undef VSF_HAL_TEMPLATE_IMP_UPCASE_NAME</span></div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="comment">/*============================ STATIC ASSERTIONS ==============================*/</span></div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span> </div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="comment">/* User-extensible macros for custom mode and IRQ mask values</span></div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span><span class="comment"> * Users can define these macros before including this template to append</span></div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="comment"> * their custom enum values to the uniqueness checks.</span></div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="comment"> * Check modes for custom values:</span></div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="comment"> *   VSF_PWM_CFG_MODE_CHECK_UNIQUE - Check mode for custom mode values</span></div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span><span class="comment"> *     Default: VSF_HAL_CHECK_MODE_LOOSE (loose mode, no overlapping bits)</span></div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="comment"> *     Can be set to: VSF_HAL_CHECK_MODE_STRICT (strict mode, no overlapping bits)</span></div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><span class="comment"> *   VSF_PWM_CFG_IRQ_MASK_CHECK_UNIQUE - Check mode for custom IRQ mask values</span></div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="comment"> *     Default: VSF_HAL_CHECK_MODE_STRICT (strict mode, no overlapping bits)</span></div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="comment"> *     Can be set to: VSF_HAL_CHECK_MODE_LOOSE (loose mode, no overlapping bits)</span></div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span><span class="comment"> * Example usage in vendor driver:</span></div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span><span class="comment"> *   #define VSF_PWM_CUSTOM_MODE_VALUES           MY_CUSTOM_MODE1, MY_CUSTOM_MODE2</span></div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span><span class="comment"> *   #define VSF_PWM_CFG_MODE_CHECK_UNIQUE        VSF_HAL_CHECK_MODE_LOOSE</span></div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span><span class="comment"> *   #define VSF_PWM_CUSTOM_IRQ_MASK_VALUES       MY_CUSTOM_IRQ1, MY_CUSTOM_IRQ2</span></div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span><span class="comment"> *   #define VSF_PWM_CFG_IRQ_MASK_CHECK_UNIQUE    VSF_HAL_CHECK_MODE_STRICT</span></div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span><span class="comment"> *   #include &quot;hal/driver/common/pwm/pwm_template.inc&quot;</span></div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="preprocessor">#undef VSF_PWM_CFG_IMP_RENAME_DEVICE_PREFIX</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="preprocessor">#undef vsf_imp_pwm_t</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="preprocessor">#undef vsf_imp_pwm_init</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="preprocessor">#undef vsf_imp_pwm_fini</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="preprocessor">#undef vsf_imp_pwm_enable</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="preprocessor">#undef vsf_imp_pwm_disable</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="preprocessor">#undef vsf_imp_pwm_capability</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="preprocessor">#undef vsf_imp_pwm_set</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="preprocessor">#undef vsf_imp_pwm_get_freq</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="preprocessor">#undef vsf_imp_pwm_get_configuration</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="preprocessor">#undef vsf_imp_pwm_ctrl</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="preprocessor">#undef vsf_remap_pwm_t</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="preprocessor">#undef vsf_remap_pwm_init</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="preprocessor">#undef vsf_remap_pwm_fini</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="preprocessor">#undef vsf_remap_pwm_enable</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="preprocessor">#undef vsf_remap_pwm_disable</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="preprocessor">#undef vsf_remap_pwm_capability</span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="preprocessor">#undef vsf_remap_pwm_set</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="preprocessor">#undef vsf_remap_pwm_get_freq</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="preprocessor">#undef vsf_remap_pwm_get_configuration</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="preprocessor">#undef vsf_remap_pwm_ctrl</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span> </div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="preprocessor">#undef VSF_HAL_TEMPLATE_IMP_NAME</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="preprocessor">#undef VSF_HAL_TEMPLATE_IMP_UPCASE_NAME</span></div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="comment">/*============================ STATIC ASSERTIONS ==============================*/</span></div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span><span class="comment">/* User-extensible macros for custom mode and IRQ mask values</span></div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="comment"> * Users can define these macros before including this template to append</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="comment"> * their custom enum values to the uniqueness checks.</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="comment"> * Check modes for custom values:</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span><span class="comment"> *   VSF_PWM_CFG_MODE_CHECK_UNIQUE - Check mode for custom mode values</span></div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="comment"> *     Default: VSF_HAL_CHECK_MODE_LOOSE (loose mode, no overlapping bits)</span></div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><span class="comment"> *     Can be set to: VSF_HAL_CHECK_MODE_STRICT (strict mode, no overlapping bits)</span></div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="comment"> *   VSF_PWM_CFG_IRQ_MASK_CHECK_UNIQUE - Check mode for custom IRQ mask values</span></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="comment"> *     Default: VSF_HAL_CHECK_MODE_STRICT (strict mode, no overlapping bits)</span></div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="comment"> *     Can be set to: VSF_HAL_CHECK_MODE_LOOSE (loose mode, no overlapping bits)</span></div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span><span class="comment"> * Example usage in vendor driver:</span></div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span><span class="comment"> *   #define VSF_PWM_CUSTOM_MODE_VALUES           MY_CUSTOM_MODE1, MY_CUSTOM_MODE2</span></div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span><span class="comment"> *   #define VSF_PWM_CFG_MODE_CHECK_UNIQUE        VSF_HAL_CHECK_MODE_LOOSE</span></div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span><span class="comment"> *   #define VSF_PWM_CUSTOM_IRQ_MASK_VALUES       MY_CUSTOM_IRQ1, MY_CUSTOM_IRQ2</span></div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span><span class="comment"> *   #define VSF_PWM_CFG_IRQ_MASK_CHECK_UNIQUE    VSF_HAL_CHECK_MODE_STRICT</span></div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span><span class="comment"> *   #include &quot;hal/driver/common/pwm/pwm_template.inc&quot;</span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span><span class="preprocessor">#ifdef VSF_PWM_CFG_MODE_CHECK_UNIQUE</span></div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="comment">/* Default mode lists - can be redefined by users before including this file */</span></div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span><span class="comment">/* Note: PWM typically doesn&#39;t have mode enums, but custom modes can be added */</span></div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="preprocessor">#ifdef VSF_PWM_CUSTOM_MODE_VALUES</span></div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="comment">/* Check uniqueness among custom mode values using user-specified check mode */</span></div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span><a class="code hl_define" href="vsf__template__static__assert__unique_8h.html#ae5cc401f86777269acc1a29349179a1a">VSF_HAL_CHECK_UNIQUE_CUSTOM</a>(<a class="code hl_define" href="template_2____series__name__a_____2common_2pwm_2pwm_8c.html#a63886721ba57043f0731cf10525a15f4">VSF_PWM_CFG_MODE_CHECK_UNIQUE</a>, VSF_PWM_CUSTOM_MODE_VALUES);</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_PWM_CFG_MODE_CHECK_UNIQUE */</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="comment">/* ==================== IRQ MASK UNIQUENESS CHECKS ==================== */</span></div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span> </div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="preprocessor">#ifdef VSF_PWM_CFG_IRQ_MASK_CHECK_UNIQUE</span></div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span> </div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="preprocessor">#ifdef VSF_PWM_CUSTOM_IRQ_MASK_VALUES</span></div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span><span class="comment">/* Check uniqueness among custom IRQ mask values using user-specified check mode */</span></div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><a class="code hl_define" href="vsf__template__static__assert__unique_8h.html#ae5cc401f86777269acc1a29349179a1a">VSF_HAL_CHECK_UNIQUE_CUSTOM</a>(<a class="code hl_define" href="template_2____series__name__a_____2common_2pwm_2pwm_8c.html#a3602b92bbe3f6469cb86afd3aa5ae4b8">VSF_PWM_CFG_IRQ_MASK_CHECK_UNIQUE</a>, VSF_PWM_CUSTOM_IRQ_MASK_VALUES);</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="comment">/* Note: PWM typically doesn&#39;t have a standard IRQ mask enum, but custom IRQ masks can be added */</span></div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_PWM_CFG_IRQ_MASK_CHECK_UNIQUE */</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><span class="preprocessor">#undef VSF_PWM_CFG_MODE_CHECK_UNIQUE</span></div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span><span class="preprocessor">#undef VSF_PWM_CFG_IRQ_MASK_CHECK_UNIQUE</span></div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="preprocessor">#undef VSF_PWM_CUSTOM_MODE_VALUES</span></div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span><span class="preprocessor">#undef VSF_PWM_CUSTOM_IRQ_MASK_VALUES</span></div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_HAL_USE_PWM */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="preprocessor">#ifdef VSF_PWM_CFG_MODE_CHECK_UNIQUE</span></div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span><span class="comment">/* Default mode lists - can be redefined by users before including this file */</span></div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span><span class="comment">/* Note: PWM typically doesn&#39;t have mode enums, but custom modes can be added */</span></div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span> </div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="preprocessor">#ifdef VSF_PWM_CUSTOM_MODE_VALUES</span></div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span><span class="comment">/* Check uniqueness among custom mode values using user-specified check mode */</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span><a class="code hl_define" href="vsf__template__static__assert__unique_8h.html#ae5cc401f86777269acc1a29349179a1a">VSF_HAL_CHECK_UNIQUE_CUSTOM</a>(<a class="code hl_define" href="template_2____series__name__a_____2common_2pwm_2pwm_8c.html#a63886721ba57043f0731cf10525a15f4">VSF_PWM_CFG_MODE_CHECK_UNIQUE</a>, VSF_PWM_CUSTOM_MODE_VALUES);</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_PWM_CFG_MODE_CHECK_UNIQUE */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><span class="comment">/* ==================== IRQ MASK UNIQUENESS CHECKS ==================== */</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="preprocessor">#ifdef VSF_PWM_CFG_IRQ_MASK_CHECK_UNIQUE</span></div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span><span class="preprocessor">#ifdef VSF_PWM_CUSTOM_IRQ_MASK_VALUES</span></div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="comment">/* Check uniqueness among custom IRQ mask values using user-specified check mode */</span></div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><a class="code hl_define" href="vsf__template__static__assert__unique_8h.html#ae5cc401f86777269acc1a29349179a1a">VSF_HAL_CHECK_UNIQUE_CUSTOM</a>(<a class="code hl_define" href="template_2____series__name__a_____2common_2pwm_2pwm_8c.html#a3602b92bbe3f6469cb86afd3aa5ae4b8">VSF_PWM_CFG_IRQ_MASK_CHECK_UNIQUE</a>, VSF_PWM_CUSTOM_IRQ_MASK_VALUES);</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span> </div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span><span class="comment">/* Note: PWM typically doesn&#39;t have a standard IRQ mask enum, but custom IRQ masks can be added */</span></div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_PWM_CFG_IRQ_MASK_CHECK_UNIQUE */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span><span class="preprocessor">#undef VSF_PWM_CFG_MODE_CHECK_UNIQUE</span></div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="preprocessor">#undef VSF_PWM_CFG_IRQ_MASK_CHECK_UNIQUE</span></div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span><span class="preprocessor">#undef VSF_PWM_CUSTOM_MODE_VALUES</span></div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span><span class="preprocessor">#undef VSF_PWM_CUSTOM_IRQ_MASK_VALUES</span></div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span> </div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="preprocessor">#endif  </span><span class="comment">/* VSF_HAL_USE_PWM */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition</b> __type.h:42</div></div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4a06cce05efa80070c1d1b0451d59e86a2"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a06cce05efa80070c1d1b0451d59e86a2">VSF_ERR_NOT_SUPPORT</a></div><div class="ttdeci">@ VSF_ERR_NOT_SUPPORT</div><div class="ttdoc">function not supported</div><div class="ttdef"><b>Definition</b> __type.h:46</div></div>
 <div class="ttc" id="aaic__pwm_8c_html_a1a0de1e59edebaa07d01286490d300a6"><div class="ttname"><a href="aic__pwm_8c.html#a1a0de1e59edebaa07d01286490d300a6">VSF_PWM_CFG_CAPABILITY_MIN_FREQ</a></div><div class="ttdeci">#define VSF_PWM_CFG_CAPABILITY_MIN_FREQ</div><div class="ttdef"><b>Definition</b> aic_pwm.c:139</div></div>
@@ -383,5 +384,5 @@
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/45cae1dda9abee9ddcafe0428cf54565aa938218" target="_blank">vsfteam/vsf@45cae1d</a>
+  <a href="https://github.com/vsfteam/vsf/commit/463f0488849f3cb665b6918e1f77bf3050eefbe4" target="_blank">vsfteam/vsf@463f048</a>
 </div>
