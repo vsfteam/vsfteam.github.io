@@ -57,6 +57,7 @@
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="stdint_8h_source.html">stdint.h</a>&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
 </div>
 <p><a href="futex_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -94,7 +95,9 @@ Macros</h2></td></tr>
 <tr class="separator:a993b0543d7c22733ece35256b8122375"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82267c4d611c8cd06ac5871f92f80c67" id="r_a82267c4d611c8cd06ac5871f92f80c67"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="futex_8h.html#a82267c4d611c8cd06ac5871f92f80c67">FUTEX_CMD_MASK</a>&#160;&#160;&#160;~(<a class="el" href="futex_8h.html#ae09f198bed9a0954caf736196ea468ec">FUTEX_PRIVATE_FLAG</a> | <a class="el" href="futex_8h.html#a993b0543d7c22733ece35256b8122375">FUTEX_CLOCK_REALTIME</a>)</td></tr>
 <tr class="separator:a82267c4d611c8cd06ac5871f92f80c67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff738aecb256a2fd50f66cef4bbc5075" id="r_aff738aecb256a2fd50f66cef4bbc5075"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="futex_8h.html#aff738aecb256a2fd50f66cef4bbc5075">__NR_futex</a>(__p0,  __p1,  __p2,  __p3,  __p4,  __p5)&#160;&#160;&#160;            <a class="el" href="futex_8h.html#af92085c1ce397d4d71e8178be00a9bbe">sys_futex</a>((<a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *)(__p0), (__p1), (__p2), (__p3), (<a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *)(__p4), (__p5))</td></tr>
+<tr class="memitem:a2781c8bc86df515d5a1691ef43adae48" id="r_a2781c8bc86df515d5a1691ef43adae48"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="futex_8h.html#a2781c8bc86df515d5a1691ef43adae48">FUTEX_BITSET_MATCH_ANY</a>&#160;&#160;&#160;0xffffffff</td></tr>
+<tr class="separator:a2781c8bc86df515d5a1691ef43adae48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff738aecb256a2fd50f66cef4bbc5075" id="r_aff738aecb256a2fd50f66cef4bbc5075"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="futex_8h.html#aff738aecb256a2fd50f66cef4bbc5075">__NR_futex</a>(__p0,  __p1,  __p2,  __p3,  __p4,  __p5)&#160;&#160;&#160;            <a class="el" href="futex_8h.html#ab395138fb1bbddd5f6a73619e36bd12c">vsf_linux_sys_futex</a>((<a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *)(__p0), (__p1), (__p2), (__p3), (<a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *)(__p4), (__p5))</td></tr>
 <tr class="separator:aff738aecb256a2fd50f66cef4bbc5075"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2be9d07ab06138ccf626f961ba9e17b3" id="r_a2be9d07ab06138ccf626f961ba9e17b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="futex_8h.html#a2be9d07ab06138ccf626f961ba9e17b3">__NR_futex_time64</a>&#160;&#160;&#160;<a class="el" href="futex_8h.html#aff738aecb256a2fd50f66cef4bbc5075">__NR_futex</a></td></tr>
 <tr class="separator:a2be9d07ab06138ccf626f961ba9e17b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -103,8 +106,8 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af92085c1ce397d4d71e8178be00a9bbe" id="r_af92085c1ce397d4d71e8178be00a9bbe"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="futex_8h.html#af92085c1ce397d4d71e8178be00a9bbe">sys_futex</a> (<a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *futex, int futex_op, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> val, <a class="el" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> val2, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *futex2, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> val3)</td></tr>
-<tr class="separator:af92085c1ce397d4d71e8178be00a9bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab395138fb1bbddd5f6a73619e36bd12c" id="r_ab395138fb1bbddd5f6a73619e36bd12c"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="futex_8h.html#ab395138fb1bbddd5f6a73619e36bd12c">vsf_linux_sys_futex</a> (<a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *futex, int futex_op, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> val, const struct <a class="el" href="structtimespec.html">timespec</a> *spec, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *futex2, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> val3)</td></tr>
+<tr class="separator:ab395138fb1bbddd5f6a73619e36bd12c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a4d9dd0962be215fe1d3e861c8bb4815b" name="a4d9dd0962be215fe1d3e861c8bb4815b"></a>
@@ -331,6 +334,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a2781c8bc86df515d5a1691ef43adae48" name="a2781c8bc86df515d5a1691ef43adae48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2781c8bc86df515d5a1691ef43adae48">&#9670;&#160;</a></span>FUTEX_BITSET_MATCH_ANY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FUTEX_BITSET_MATCH_ANY&#160;&#160;&#160;0xffffffff</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aff738aecb256a2fd50f66cef4bbc5075" name="aff738aecb256a2fd50f66cef4bbc5075"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aff738aecb256a2fd50f66cef4bbc5075">&#9670;&#160;</a></span>__NR_futex</h2>
 
@@ -376,7 +393,7 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;            <a class="el" href="futex_8h.html#af92085c1ce397d4d71e8178be00a9bbe">sys_futex</a>((<a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *)(__p0), (__p1), (__p2), (__p3), (<a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *)(__p4), (__p5))</td>
+          <td></td><td>&#160;&#160;&#160;            <a class="el" href="futex_8h.html#ab395138fb1bbddd5f6a73619e36bd12c">vsf_linux_sys_futex</a>((<a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *)(__p0), (__p1), (__p2), (__p3), (<a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *)(__p4), (__p5))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -412,14 +429,14 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="af92085c1ce397d4d71e8178be00a9bbe" name="af92085c1ce397d4d71e8178be00a9bbe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af92085c1ce397d4d71e8178be00a9bbe">&#9670;&#160;</a></span>sys_futex()</h2>
+<a id="ab395138fb1bbddd5f6a73619e36bd12c" name="ab395138fb1bbddd5f6a73619e36bd12c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab395138fb1bbddd5f6a73619e36bd12c">&#9670;&#160;</a></span>vsf_linux_sys_futex()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">long sys_futex </td>
+          <td class="memname">long vsf_linux_sys_futex </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *&#160;</td>
           <td class="paramname"><em>futex</em>, </td>
@@ -439,8 +456,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>&#160;</td>
-          <td class="paramname"><em>val2</em>, </td>
+          <td class="paramtype">const struct <a class="el" href="structtimespec.html">timespec</a> *&#160;</td>
+          <td class="paramname"><em>spec</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -467,5 +484,5 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/798608e111bea1246d095bc39e43e653bef8c7bf" target="_blank">vsfteam/vsf@798608e</a>
+  <a href="https://github.com/vsfteam/vsf/commit/c665119012fb9a5a371413f974a5b01d358ba29e" target="_blank">vsfteam/vsf@c665119</a>
 </div>
