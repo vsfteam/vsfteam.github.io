@@ -118,7 +118,7 @@
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="stdatomic_8h.html#a17c2de5ae768960284c047a320f17d1ba2d21914d1edd227a890107e7878a3752">   63</a></span>    <a class="code hl_enumvalue" href="stdatomic_8h.html#a17c2de5ae768960284c047a320f17d1ba2d21914d1edd227a890107e7878a3752">memory_order_seq_cst</a>,</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>};</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="stdatomic_8h.html#aa40bb557380f1b96afed61ed4c33e8cc">   66</a></span><span class="preprocessor">#define ATOMIC_VAR_INIT(__VALUE)            (__VALUE)</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="stdatomic_8h.html#aa40bb557380f1b96afed61ed4c33e8cc">   66</a></span><span class="preprocessor">#define ATOMIC_VAR_INIT(__VALUE)    (__VALUE)</span></div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="stdatomic_8h.html#a9c8eedaa937c56c7eced04f2e3fa8fb8">   68</a></span><span class="preprocessor">#define atomic_init(object, value)                                              \</span></div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">            atomic_store_explicit(object, value, memory_order_relaxed)</span></div>
@@ -241,11 +241,27 @@
 <div class="line"><a id="l00186" name="l00186"></a><span class="lineno"><a class="line" href="stdatomic_8h.html#adb8eef1235f98b5b418480b474f0fa16">  186</a></span><span class="preprocessor">#define atomic_fetch_and(object, operand)                                       \</span></div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="preprocessor">            atomic_fetch_and_explicit(object, operand, memory_order_seq_cst)</span></div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>}</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno"><a class="line" href="structatomic__flag.html">  189</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno"><a class="line" href="structatomic__flag.html#a6af8816b1b99cb3329c4ca645069639b">  190</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structatomic__flag.html#a6af8816b1b99cb3329c4ca645069639b">value</a>;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>} <a class="code hl_struct" href="structatomic__flag.html">atomic_flag</a>;</div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno"><a class="line" href="stdatomic_8h.html#a3cf6ded3b463faf0cedce1718caaa695">  193</a></span><span class="preprocessor">#define ATOMIC_FLAG_INIT            { 0 }</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno"><a class="line" href="stdatomic_8h.html#af8339964ca8b3bf3cae93f43fe5d5ceb">  195</a></span><span class="preprocessor">#define atomic_flag_test_and_set_explicit(__ptr, __mode)                        \</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="preprocessor">            atomic_exchange_explicit((__ptr), true, __mode)</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno"><a class="line" href="stdatomic_8h.html#ab64f56b3be53b9b327b9113331b45562">  197</a></span><span class="preprocessor">#define atomic_flag_test_and_set(__ptr)                                         \</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="preprocessor">            atomic_flag_test_and_set_explicit((__ptr), memory_order_seq_cst)</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno"><a class="line" href="stdatomic_8h.html#a3e6e8fd53b48acf434329405b1469971">  200</a></span><span class="preprocessor">#define atomic_flag_clear_explicit(__ptr, __mode)                               \</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="preprocessor">            atomic_store_explicit(__ptr, false, __mode)</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno"><a class="line" href="stdatomic_8h.html#a7d742d1b4b9639cee3a55ff476bad6b3">  202</a></span><span class="preprocessor">#define atomic_flag_clear(__ptr)                                                \</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="preprocessor">            atomic_flag_clear_explicit(__ptr, memory_order_seq_cst)</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>}</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="alinux_2include_2simple__libc_2stddef_8h_html_a23cb93d05cba169da99f4d11a2a62ff2"><div class="ttname"><a href="linux_2include_2simple__libc_2stddef_8h.html#a23cb93d05cba169da99f4d11a2a62ff2">ptrdiff_t</a></div><div class="ttdeci">long int ptrdiff_t</div><div class="ttdef"><b>Definition</b> stddef.h:132</div></div>
 <div class="ttc" id="alinux_2include_2sys_2types_8h_html"><div class="ttname"><a href="linux_2include_2sys_2types_8h.html">types.h</a></div></div>
 <div class="ttc" id="astdatomic_8h_html_a0d8cdbd2b5724f89470dc8f378f1aa1b"><div class="ttname"><a href="stdatomic_8h.html#a0d8cdbd2b5724f89470dc8f378f1aa1b">atomic_int_fast8_t</a></div><div class="ttdeci">int_fast8_t atomic_int_fast8_t</div><div class="ttdef"><b>Definition</b> stdatomic.h:42</div></div>
@@ -312,10 +328,12 @@
 <div class="ttc" id="astdint_8h_html_ae04fa5ea5ad475bfe428842a986fbf28"><div class="ttname"><a href="stdint_8h.html#ae04fa5ea5ad475bfe428842a986fbf28">int_least8_t</a></div><div class="ttdeci">signed char int_least8_t</div><div class="ttdef"><b>Definition</b> stdint.h:13</div></div>
 <div class="ttc" id="astdint_8h_html_aefaadc520bc58a35d14b556b4fd60c9e"><div class="ttname"><a href="stdint_8h.html#aefaadc520bc58a35d14b556b4fd60c9e">int_fast8_t</a></div><div class="ttdeci">char int_fast8_t</div><div class="ttdef"><b>Definition</b> stdint.h:22</div></div>
 <div class="ttc" id="astdint_8h_html_afa61a916f722928e8a750a4e7c7b8e2d"><div class="ttname"><a href="stdint_8h.html#afa61a916f722928e8a750a4e7c7b8e2d">int_fast16_t</a></div><div class="ttdeci">short int_fast16_t</div><div class="ttdef"><b>Definition</b> stdint.h:24</div></div>
+<div class="ttc" id="astructatomic__flag_html"><div class="ttname"><a href="structatomic__flag.html">atomic_flag</a></div><div class="ttdef"><b>Definition</b> stdatomic.h:189</div></div>
+<div class="ttc" id="astructatomic__flag_html_a6af8816b1b99cb3329c4ca645069639b"><div class="ttname"><a href="structatomic__flag.html#a6af8816b1b99cb3329c4ca645069639b">atomic_flag::value</a></div><div class="ttdeci">bool value</div><div class="ttdef"><b>Definition</b> stdatomic.h:190</div></div>
 <div class="ttc" id="avsf__arch_8h_html"><div class="ttname"><a href="vsf__arch_8h.html">vsf_arch.h</a></div></div>
 <div class="ttc" id="avsf__linux__cfg_8h_html"><div class="ttname"><a href="vsf__linux__cfg_8h.html">vsf_linux_cfg.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/b21c5831af459cb85f2f4fd89424b01148ec901e" target="_blank">vsfteam/vsf@b21c583</a>
+  <a href="https://github.com/vsfteam/vsf/commit/256e43791427e20dcfe2a46c12d6e479f3067f08" target="_blank">vsfteam/vsf@256e437</a>
 </div>
