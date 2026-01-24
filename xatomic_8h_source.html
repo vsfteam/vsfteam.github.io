@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>VSF Documented: source/shell/sys/linux/include/simple_libc/win/xatomic.h Source File</title>
+<title>VSF Documented: source/shell/sys/linux/include/simple_libc/arch/win/xatomic.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -46,14 +46,14 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_c98904b1f88b31edbcb0e1f386351ea2.html">linux</a></li><li class="navelem"><a class="el" href="dir_c5f371835c56cee84ac86c4f8def27c0.html">include</a></li><li class="navelem"><a class="el" href="dir_cfa2369bc5ce1687d2795d01bcb37039.html">simple_libc</a></li><li class="navelem"><a class="el" href="dir_479aee3554b6406e700f06d75288d4bc.html">win</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_c98904b1f88b31edbcb0e1f386351ea2.html">linux</a></li><li class="navelem"><a class="el" href="dir_c5f371835c56cee84ac86c4f8def27c0.html">include</a></li><li class="navelem"><a class="el" href="dir_cfa2369bc5ce1687d2795d01bcb37039.html">simple_libc</a></li><li class="navelem"><a class="el" href="dir_a53740d6a3a062830eede1ce508b12eb.html">arch</a></li><li class="navelem"><a class="el" href="dir_956ce7c10b952ccff81bb6d302e1b154.html">win</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">xatomic.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="win_2xatomic_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;../atomic&quot;</span></div>
+<a href="xatomic_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;../../atomic&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// Interlocked intrinsic mapping for _nf/_acq/_rel</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#if defined(_M_CEE_PURE) || (defined(_M_IX86) &amp;&amp; !defined(_M_HYBRID_X86_ARM64)) \</span></div>
@@ -81,16 +81,16 @@
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#error Unsupported hardware</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#endif </span><span class="comment">// hardware</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="win_2xatomic_8h.html#ae1b20a93101a93b0657d4ccb07878ac4">   29</a></span><span class="preprocessor">#define _MT_INCR(x) _INTRIN_RELAXED(_InterlockedIncrement)(reinterpret_cast&lt;volatile long*&gt;(&amp;x))</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="win_2xatomic_8h.html#a88d12d7a794de035436391aa3da5f4a9">   30</a></span><span class="preprocessor">#define _MT_DECR(x) _INTRIN_ACQ_REL(_InterlockedDecrement)(reinterpret_cast&lt;volatile long*&gt;(&amp;x))</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="xatomic_8h.html#ae1b20a93101a93b0657d4ccb07878ac4">   29</a></span><span class="preprocessor">#define _MT_INCR(x) _INTRIN_RELAXED(_InterlockedIncrement)(reinterpret_cast&lt;volatile long*&gt;(&amp;x))</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="xatomic_8h.html#a88d12d7a794de035436391aa3da5f4a9">   30</a></span><span class="preprocessor">#define _MT_DECR(x) _INTRIN_ACQ_REL(_InterlockedDecrement)(reinterpret_cast&lt;volatile long*&gt;(&amp;x))</span></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacestd.html">std</a> {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespacestd.html#a20c5ae1810220edd2f216ed0a9052fe7">_Atomic_counter_t</a> = <span class="keywordtype">unsigned</span> long;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="namespacestd.html">   32</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacestd.html">std</a> {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="namespacestd.html#a7f4028a8304874b783c02421eadcce4b">   33</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespacestd.html#a7f4028a8304874b783c02421eadcce4b">_Atomic_counter_t</a> = <span class="keywordtype">unsigned</span> long;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
 <div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition</b> xatomic.h:32</div></div>
-<div class="ttc" id="anamespacestd_html_a20c5ae1810220edd2f216ed0a9052fe7"><div class="ttname"><a href="namespacestd.html#a20c5ae1810220edd2f216ed0a9052fe7">std::_Atomic_counter_t</a></div><div class="ttdeci">unsigned long _Atomic_counter_t</div><div class="ttdef"><b>Definition</b> xatomic.h:33</div></div>
+<div class="ttc" id="anamespacestd_html_a7f4028a8304874b783c02421eadcce4b"><div class="ttname"><a href="namespacestd.html#a7f4028a8304874b783c02421eadcce4b">std::_Atomic_counter_t</a></div><div class="ttdeci">unsigned long _Atomic_counter_t</div><div class="ttdef"><b>Definition</b> xatomic.h:33</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/f173c1d2d842f878476fd3876455cc99b5fdf423" target="_blank">vsfteam/vsf@f173c1d</a>
+  <a href="https://github.com/vsfteam/vsf/commit/399f6382f61a0e2b7a24ca2a527e44432e902861" target="_blank">vsfteam/vsf@399f638</a>
 </div>
