@@ -1,0 +1,462 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/linux/kernel/fs/vfs/devfs/drm/vsf_linux_drm.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_c98904b1f88b31edbcb0e1f386351ea2.html">linux</a></li><li class="navelem"><a class="el" href="dir_9eeee8fd69f97cac935b886e64b06a2c.html">kernel</a></li><li class="navelem"><a class="el" href="dir_fdf41e5de71a5a9ecb2e5e087288452a.html">fs</a></li><li class="navelem"><a class="el" href="dir_4bb98551d37fb022b3e30b5f4fe592b2.html">vfs</a></li><li class="navelem"><a class="el" href="dir_90c8d0cb51e52817feb5c8cadeb78f3b.html">devfs</a></li><li class="navelem"><a class="el" href="dir_24e078a8fb69fcc338f1506a13333bf4.html">drm</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">vsf_linux_drm.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__linux__cfg_8h_source.html">shell/sys/linux/vsf_linux_cfg.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="vsf_8h_source.html">vsf.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="unistd_8h_source.html">shell/sys/linux/include/unistd.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="errno_8h_source.html">shell/sys/linux/include/errno.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="poll_8h_source.html">shell/sys/linux/include/poll.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sys_2ioctl_8h_source.html">shell/sys/linux/include/sys/ioctl.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stat_8h_source.html">shell/sys/linux/include/sys/stat.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mman_8h_source.html">shell/sys/linux/include/sys/mman.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="drm_8h_source.html">shell/sys/linux/include/drm/drm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="drm__mode_8h_source.html">shell/sys/linux/include/drm/drm_mode.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__drm__fb.html">vsf_linux_drm_fb</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__drm__dumb.html">vsf_linux_drm_dumb</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__linux__drm__priv.html">vsf_linux_drm_priv</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a56bf24a74c400dfffdef33bfca636614" id="r_a56bf24a74c400dfffdef33bfca636614"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#a56bf24a74c400dfffdef33bfca636614">__VSF_LINUX_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:a56bf24a74c400dfffdef33bfca636614"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a795b77210031b6e7565dbc7e1bd71393" id="r_a795b77210031b6e7565dbc7e1bd71393"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#a795b77210031b6e7565dbc7e1bd71393">__VSF_LINUX_FS_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:a795b77210031b6e7565dbc7e1bd71393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae68af52b29d55a0d7474c656fd71d931" id="r_ae68af52b29d55a0d7474c656fd71d931"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#ae68af52b29d55a0d7474c656fd71d931">__VSF_EDA_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:ae68af52b29d55a0d7474c656fd71d931"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07fd8b6998b0f48113526bc4112b0354" id="r_a07fd8b6998b0f48113526bc4112b0354"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#a07fd8b6998b0f48113526bc4112b0354">__VSF_FS_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:a07fd8b6998b0f48113526bc4112b0354"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af99b8578fffc21cf409b8a2b4de350f5" id="r_af99b8578fffc21cf409b8a2b4de350f5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#af99b8578fffc21cf409b8a2b4de350f5">__VSF_DISP_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:af99b8578fffc21cf409b8a2b4de350f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a123c96254b3c95ae378b1bfdc5468bc4" id="r_a123c96254b3c95ae378b1bfdc5468bc4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#a123c96254b3c95ae378b1bfdc5468bc4">VSF_LINUX_DRM_CFG_MAX_FB</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a123c96254b3c95ae378b1bfdc5468bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a577b5d4a214c0856949632cf935730dc" id="r_a577b5d4a214c0856949632cf935730dc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#a577b5d4a214c0856949632cf935730dc">VSF_LINUX_DRM_CFG_MAX_CRTC</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a577b5d4a214c0856949632cf935730dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbb619d1661bed72695c4e08860b8cf3" id="r_acbb619d1661bed72695c4e08860b8cf3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#acbb619d1661bed72695c4e08860b8cf3">VSF_LINUX_DRM_CFG_MAX_CONNECTOR</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:acbb619d1661bed72695c4e08860b8cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0da9fe4d0383fba1eba232cfe51168b7" id="r_a0da9fe4d0383fba1eba232cfe51168b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#a0da9fe4d0383fba1eba232cfe51168b7">VSF_LINUX_DRM_CFG_MAX_ENCODER</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a0da9fe4d0383fba1eba232cfe51168b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd5ecb4f6ad2ea1a6cc0c3948b77ded2" id="r_abd5ecb4f6ad2ea1a6cc0c3948b77ded2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#abd5ecb4f6ad2ea1a6cc0c3948b77ded2">crtc_enabled</a>&#160;&#160;&#160;user_bits0</td></tr>
+<tr class="separator:abd5ecb4f6ad2ea1a6cc0c3948b77ded2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bd2f6d5330cf3484187b71537399f06" id="r_a3bd2f6d5330cf3484187b71537399f06"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#a3bd2f6d5330cf3484187b71537399f06">is_master</a>&#160;&#160;&#160;user_bits1</td></tr>
+<tr class="separator:a3bd2f6d5330cf3484187b71537399f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:aaffc63e22e1973138f3c5e5af95615d1" id="r_aaffc63e22e1973138f3c5e5af95615d1"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__drm__fb.html">vsf_linux_drm_fb</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#aaffc63e22e1973138f3c5e5af95615d1">vsf_linux_drm_fb_t</a></td></tr>
+<tr class="separator:aaffc63e22e1973138f3c5e5af95615d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cd1cf08a3745f86147dadd876243f11" id="r_a4cd1cf08a3745f86147dadd876243f11"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__drm__dumb.html">vsf_linux_drm_dumb</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#a4cd1cf08a3745f86147dadd876243f11">vsf_linux_drm_dumb_t</a></td></tr>
+<tr class="separator:a4cd1cf08a3745f86147dadd876243f11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84823aad7fd20bd29ccde52e5f050c24" id="r_a84823aad7fd20bd29ccde52e5f050c24"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__linux__drm__priv.html">vsf_linux_drm_priv</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#a84823aad7fd20bd29ccde52e5f050c24">vsf_linux_drm_priv_t</a></td></tr>
+<tr class="separator:a84823aad7fd20bd29ccde52e5f050c24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a4df8c01d3dbe55afcbee7e2a5a6bf363" id="r_a4df8c01d3dbe55afcbee7e2a5a6bf363"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#a4df8c01d3dbe55afcbee7e2a5a6bf363">__vsf_linux_default_fcntl</a> (<a class="el" href="classvsf__linux__fd__t.html">vsf_linux_fd_t</a> *sfd, int cmd, <a class="el" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> arg)</td></tr>
+<tr class="separator:a4df8c01d3dbe55afcbee7e2a5a6bf363"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cfa5c07e8e66197568d253b18b77c2f" id="r_a7cfa5c07e8e66197568d253b18b77c2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#a7cfa5c07e8e66197568d253b18b77c2f">__vsf_linux_disp_on_ready</a> (<a class="el" href="classvk__disp__t.html">vk_disp_t</a> *disp)</td></tr>
+<tr class="separator:a7cfa5c07e8e66197568d253b18b77c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1941e7796950a470b8bdba0077d40b68" id="r_a1941e7796950a470b8bdba0077d40b68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#a1941e7796950a470b8bdba0077d40b68">__vsf_linux_disp_fresh_task</a> (<a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *eda, <a class="el" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> evt)</td></tr>
+<tr class="separator:a1941e7796950a470b8bdba0077d40b68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a969cf1d9df52fb4e9298b02a6e2abcf7" id="r_a969cf1d9df52fb4e9298b02a6e2abcf7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__linux__drm_8c.html#a969cf1d9df52fb4e9298b02a6e2abcf7">vsf_linux_fs_bind_drm</a> (char *path, <a class="el" href="classvk__disp__t.html">vk_disp_t</a> *disp)</td></tr>
+<tr class="separator:a969cf1d9df52fb4e9298b02a6e2abcf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a56bf24a74c400dfffdef33bfca636614" name="a56bf24a74c400dfffdef33bfca636614"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56bf24a74c400dfffdef33bfca636614">&#9670;&#160;</a></span>__VSF_LINUX_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_LINUX_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a795b77210031b6e7565dbc7e1bd71393" name="a795b77210031b6e7565dbc7e1bd71393"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a795b77210031b6e7565dbc7e1bd71393">&#9670;&#160;</a></span>__VSF_LINUX_FS_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_LINUX_FS_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae68af52b29d55a0d7474c656fd71d931" name="ae68af52b29d55a0d7474c656fd71d931"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae68af52b29d55a0d7474c656fd71d931">&#9670;&#160;</a></span>__VSF_EDA_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_EDA_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a07fd8b6998b0f48113526bc4112b0354" name="a07fd8b6998b0f48113526bc4112b0354"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07fd8b6998b0f48113526bc4112b0354">&#9670;&#160;</a></span>__VSF_FS_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_FS_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af99b8578fffc21cf409b8a2b4de350f5" name="af99b8578fffc21cf409b8a2b4de350f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af99b8578fffc21cf409b8a2b4de350f5">&#9670;&#160;</a></span>__VSF_DISP_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_DISP_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a123c96254b3c95ae378b1bfdc5468bc4" name="a123c96254b3c95ae378b1bfdc5468bc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a123c96254b3c95ae378b1bfdc5468bc4">&#9670;&#160;</a></span>VSF_LINUX_DRM_CFG_MAX_FB</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_LINUX_DRM_CFG_MAX_FB&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a577b5d4a214c0856949632cf935730dc" name="a577b5d4a214c0856949632cf935730dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a577b5d4a214c0856949632cf935730dc">&#9670;&#160;</a></span>VSF_LINUX_DRM_CFG_MAX_CRTC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_LINUX_DRM_CFG_MAX_CRTC&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acbb619d1661bed72695c4e08860b8cf3" name="acbb619d1661bed72695c4e08860b8cf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbb619d1661bed72695c4e08860b8cf3">&#9670;&#160;</a></span>VSF_LINUX_DRM_CFG_MAX_CONNECTOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_LINUX_DRM_CFG_MAX_CONNECTOR&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0da9fe4d0383fba1eba232cfe51168b7" name="a0da9fe4d0383fba1eba232cfe51168b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0da9fe4d0383fba1eba232cfe51168b7">&#9670;&#160;</a></span>VSF_LINUX_DRM_CFG_MAX_ENCODER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_LINUX_DRM_CFG_MAX_ENCODER&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd5ecb4f6ad2ea1a6cc0c3948b77ded2" name="abd5ecb4f6ad2ea1a6cc0c3948b77ded2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd5ecb4f6ad2ea1a6cc0c3948b77ded2">&#9670;&#160;</a></span>crtc_enabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define crtc_enabled&#160;&#160;&#160;user_bits0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3bd2f6d5330cf3484187b71537399f06" name="a3bd2f6d5330cf3484187b71537399f06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bd2f6d5330cf3484187b71537399f06">&#9670;&#160;</a></span>is_master</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define is_master&#160;&#160;&#160;user_bits1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类型定义说明</h2>
+<a id="aaffc63e22e1973138f3c5e5af95615d1" name="aaffc63e22e1973138f3c5e5af95615d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaffc63e22e1973138f3c5e5af95615d1">&#9670;&#160;</a></span>vsf_linux_drm_fb_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__linux__drm__fb.html">vsf_linux_drm_fb</a> <a class="el" href="vsf__linux__drm_8c.html#aaffc63e22e1973138f3c5e5af95615d1">vsf_linux_drm_fb_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4cd1cf08a3745f86147dadd876243f11" name="a4cd1cf08a3745f86147dadd876243f11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cd1cf08a3745f86147dadd876243f11">&#9670;&#160;</a></span>vsf_linux_drm_dumb_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__linux__drm__dumb.html">vsf_linux_drm_dumb</a> <a class="el" href="vsf__linux__drm_8c.html#a4cd1cf08a3745f86147dadd876243f11">vsf_linux_drm_dumb_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a84823aad7fd20bd29ccde52e5f050c24" name="a84823aad7fd20bd29ccde52e5f050c24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84823aad7fd20bd29ccde52e5f050c24">&#9670;&#160;</a></span>vsf_linux_drm_priv_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__linux__drm__priv.html">vsf_linux_drm_priv</a> <a class="el" href="vsf__linux__drm_8c.html#a84823aad7fd20bd29ccde52e5f050c24">vsf_linux_drm_priv_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a4df8c01d3dbe55afcbee7e2a5a6bf363" name="a4df8c01d3dbe55afcbee7e2a5a6bf363"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4df8c01d3dbe55afcbee7e2a5a6bf363">&#9670;&#160;</a></span>__vsf_linux_default_fcntl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int __vsf_linux_default_fcntl </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__linux__fd__t.html">vsf_linux_fd_t</a> *&#160;</td>
+          <td class="paramname"><em>sfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cmd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7cfa5c07e8e66197568d253b18b77c2f" name="a7cfa5c07e8e66197568d253b18b77c2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cfa5c07e8e66197568d253b18b77c2f">&#9670;&#160;</a></span>__vsf_linux_disp_on_ready()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void __vsf_linux_disp_on_ready </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvk__disp__t.html">vk_disp_t</a> *&#160;</td>
+          <td class="paramname"><em>disp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1941e7796950a470b8bdba0077d40b68" name="a1941e7796950a470b8bdba0077d40b68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1941e7796950a470b8bdba0077d40b68">&#9670;&#160;</a></span>__vsf_linux_disp_fresh_task()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void __vsf_linux_disp_fresh_task </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *&#160;</td>
+          <td class="paramname"><em>eda</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a>&#160;</td>
+          <td class="paramname"><em>evt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a969cf1d9df52fb4e9298b02a6e2abcf7" name="a969cf1d9df52fb4e9298b02a6e2abcf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a969cf1d9df52fb4e9298b02a6e2abcf7">&#9670;&#160;</a></span>vsf_linux_fs_bind_drm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int vsf_linux_fs_bind_drm </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classvk__disp__t.html">vk_disp_t</a> *&#160;</td>
+          <td class="paramname"><em>disp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/82d2d868d923d9b649e45f6487bed028ea709768" target="_blank">vsfteam/vsf@82d2d86</a>
+  生成
+</div>
