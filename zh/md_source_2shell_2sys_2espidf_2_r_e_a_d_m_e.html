@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: vsf_espidf — ESP-IDF compatibility sub-system for VSF</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">vsf_espidf — ESP-IDF compatibility sub-system for VSF</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md40"></a> A sibling of <code>shell/sys/linux/</code> (vsf_linux). Provides an ESP-IDF-shaped public API on top of VSF kernel / service / component / HAL layers so that applications written against ESP-IDF can be compiled and run on VSF-hosted targets.</p>
+<h1><a class="anchor" id="autotoc_md41"></a>
+Scope</h1>
+<p>This sub-system does <b>not</b> embed any ESP-IDF source code. All public headers under <code>include/</code> are clean-room re-implementations of the ESP-IDF public API. Implementations live under <code>port/</code> and are thin bridges onto existing VSF facilities.</p>
+<h1><a class="anchor" id="autotoc_md42"></a>
+Layout</h1>
+<div class="fragment"><div class="line">espidf/</div>
+<div class="line">├── CMakeLists.txt             # sub-system build entry, gated by VSF_USE_ESPIDF</div>
+<div class="line">├── vsf_espidf.h               # internal sub-system header</div>
+<div class="line">├── vsf_espidf_cfg.h           # feature switches + IDF baseline version</div>
+<div class="line">├── vsf_espidf.c               # sub-system init + per-module init chain</div>
+<div class="line">├── include/                   # clean-room ESP-IDF public headers</div>
+<div class="line">│   ├── README.md</div>
+<div class="line">│   ├── driver/                # driver/*.h</div>
+<div class="line">│   ├── freertos/              # FreeRTOS.h etc. (forwarders)</div>
+<div class="line">│   └── hal/                   # hal/*_types.h</div>
+<div class="line">└── port/                      # ESP-IDF-API -&gt; VSF-internal glue</div>
+<div class="line">    └── CMakeLists.txt</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md43"></a>
+Backend mapping (implementation guide)</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">ESP-IDF API   </th><th class="markdownTableHeadNone">VSF backend    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>esp_log.h</code> (ESP_LOGx)   </td><td class="markdownTableBodyNone"><code>service/trace</code> + <code>vsf_trace</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__err_8h.html">esp_err.h</a></code> / <code>esp_check.h</code>   </td><td class="markdownTableBodyNone">header-only    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>esp_event.h</code>   </td><td class="markdownTableBodyNone"><code>kernel/vsf_eda</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>esp_timer.h</code>   </td><td class="markdownTableBodyNone"><code>kernel/vsf_timq</code> + <code>vsf_callback_timer</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>esp_system.h</code> (restart/reset_reason/random)   </td><td class="markdownTableBodyNone">VSF reset + entropy    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">xRingbuffer (<code>esp_ringbuf.h</code>)   </td><td class="markdownTableBodyNone"><code>service/fifo</code>, <code>service/pbuf</code>, <code>service/simple_stream</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>esp_heap_caps.h</code>   </td><td class="markdownTableBodyNone"><code>service/heap</code> + <code>service/pool</code> (caps collapsed)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>esp_partition.h</code>   </td><td class="markdownTableBodyNone"><code>component/mal</code> (<code>vsf_mal</code>)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>nvs_flash.h</code> / <code>nvs.h</code>   </td><td class="markdownTableBodyNone">KV layered on partition or littlefs; to be written    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>esp_vfs.h</code> + POSIX I/O   </td><td class="markdownTableBodyNone"><code>component/fs</code> + <code>shell/sys/linux</code> VFS    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">FatFs / LittleFS / RomFS   </td><td class="markdownTableBodyNone"><code>component/fs/driver/{fatfs,littlefs,romfs}</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">lwIP + BSD sockets   </td><td class="markdownTableBodyNone"><code>component/3rd-party/lwip</code> + <code>component/tcpip/socket</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">mbedtls   </td><td class="markdownTableBodyNone"><code>component/3rd-party/mbedtls</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>esp_http_client.h</code> / <code>esp_http_server.h</code>   </td><td class="markdownTableBodyNone"><code>component/tcpip/protocol/http</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">cJSON / esp_json   </td><td class="markdownTableBodyNone"><code>service/json</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">pthread   </td><td class="markdownTableBodyNone"><code>shell/sys/linux</code> pthread    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">FreeRTOS FreeRTOS.h, queue, event_groups   </td><td class="markdownTableBodyNone">VSF FreeRTOS compat layer    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>esp_netif.h</code>   </td><td class="markdownTableBodyNone"><code>component/tcpip/netdrv</code> + lwIP glue   </td></tr>
+</table>
+<p>| <code>driver/gpio|uart|i2c|spi_master|ledc|gptimer|adc</code> | <code>hal/driver/common/template/vsf_template_*</code> | | <code>esp_wifi.h</code> | external Wi-Fi module semantic shim (stage C) | | <code>esp_bt.h</code> | external HCI via VSF BTHCI (stage C) | | <code>mqtt_client.h</code> | upstream Paho Embedded C (not ESP-MQTT) |</p>
+<h1><a class="anchor" id="autotoc_md44"></a>
+Enablement</h1>
+<p>Master switch <code>VSF_USE_ESPIDF</code> plus per-component <code>VSF_ESPIDF_CFG_USE_*</code> switches in <code><a class="el" href="vsf__espidf__cfg_8h.html">vsf_espidf_cfg.h</a></code>. All disabled by default; opt in per module as it becomes implemented.</p>
+<h1><a class="anchor" id="autotoc_md45"></a>
+Roadmap</h1>
+<p>Stage 1 (pure-software core, no HW dependency): <code>esp_err</code> → <code>esp_log</code> → <code>esp_event</code> → <code>esp_timer</code> → <code>esp_system</code> → <code>esp_ringbuf</code> → <code>esp_heap_caps</code>.</p>
+<p>Stage 2 (storage &amp; fs): <code>esp_partition</code> → <code>nvs_flash</code> → <code>esp_vfs</code>.</p>
+<p>Stage 3 (network): <code>esp_netif</code> → <code>esp_http_client</code> / <code>esp_http_server</code> → (optional) MQTT via upstream Paho.</p>
+<p>Stage 4 (peripheral drivers): <code>driver/gpio</code> → <code>driver/uart</code> → <code>driver/i2c</code> → <code>driver/spi_master</code> → <code>driver/ledc</code> → <code>driver/gptimer</code> → <code>driver/adc</code>.</p>
+<p>Stage 5 (radio, optional): external Wi-Fi module <code>esp_wifi</code> semantic shim.</p>
+<h1><a class="anchor" id="autotoc_md46"></a>
+Validation</h1>
+<p>Each stage validated by compiling and running matching <code>esp-idf/examples/</code> trees built against this sub-system's headers (no ESP-IDF source in the build). </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/c19d80c6534fe3e477002203f2dac1f5aba82e1a" target="_blank">vsfteam/vsf@c19d80c</a>
+  生成
+</div>
