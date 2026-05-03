@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/espidf/include/esp_timer.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_67078002197479e597ae23208194ae3e.html">espidf</a></li><li class="navelem"><a class="el" href="dir_368c75ff2ea44ed7d865b13e1d69fdba.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">esp_timer.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="esp__timer_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2026 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * Clean-room re-implementation of ESP-IDF public API &quot;esp_timer.h&quot;.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * Authored from ESP-IDF v5.x public API only. No code copied from the</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * ESP-IDF source tree. The VSF port bridges to vsf_callback_timer.</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#ifndef __VSF_ESPIDF_ESP_TIMER_H__</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#define __VSF_ESPIDF_ESP_TIMER_H__</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;<a class="code" href="stdint_8h.html">stdint.h</a>&gt;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="esp__err_8h.html">esp_err.h</a>&quot;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">struct </span><a class="code hl_struct" href="structesp__timer.html">esp_timer</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="esp__timer_8h.html#a946e475d8cd1667fccdaab52c94c45bb">   41</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structesp__timer.html">esp_timer</a> * <a class="code hl_typedef" href="esp__timer_8h.html#a946e475d8cd1667fccdaab52c94c45bb">esp_timer_handle_t</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="esp__timer_8h.html#a5482b9e4b1838dfc76cfe076c390fcaa">   43</a></span><span class="keyword">typedef</span> void (*<a class="code hl_typedef" href="esp__timer_8h.html#a5482b9e4b1838dfc76cfe076c390fcaa">esp_timer_cb_t</a>)(<span class="keywordtype">void</span> *<a class="code hl_variable" href="structesp__timer.html#a8c3b73ed3d5bfb59d48258241216d396">arg</a>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="esp__timer_8h.html#adfa3461062412704963cbb0274b5117c">   45</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="esp__timer_8h.html#adfa3461062412704963cbb0274b5117ca2a1b9bba35bac0d0bfe57ae4e2851aa6">   46</a></span>    <a class="code hl_enumvalue" href="esp__timer_8h.html#adfa3461062412704963cbb0274b5117ca2a1b9bba35bac0d0bfe57ae4e2851aa6">ESP_TIMER_TASK</a>  = 0,    </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">/* ISR dispatch is not modeled on VSF host; falls back to TASK. */</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="esp__timer_8h.html#adfa3461062412704963cbb0274b5117ca4b789c43d60fb0686da8acaa26d9e6f8">   48</a></span>    <a class="code hl_enumvalue" href="esp__timer_8h.html#adfa3461062412704963cbb0274b5117ca4b789c43d60fb0686da8acaa26d9e6f8">ESP_TIMER_ISR</a>   = 1,</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>} <a class="code hl_enumeration" href="esp__timer_8h.html#adfa3461062412704963cbb0274b5117c">esp_timer_dispatch_t</a>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structesp__timer__create__args__t.html">   51</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structesp__timer__create__args__t.html#ad3310759baf90dd68e74475d341cb496">   52</a></span>    <a class="code hl_typedef" href="esp__timer_8h.html#a5482b9e4b1838dfc76cfe076c390fcaa">esp_timer_cb_t</a>          <a class="code hl_variable" href="structesp__timer__create__args__t.html#ad3310759baf90dd68e74475d341cb496">callback</a>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="structesp__timer__create__args__t.html#af71d6a46c7b77a019ab96fb17ec5fdd3">   53</a></span>    <span class="keywordtype">void</span> *                  <a class="code hl_variable" href="structesp__timer__create__args__t.html#af71d6a46c7b77a019ab96fb17ec5fdd3">arg</a>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structesp__timer__create__args__t.html#a65b38dd3f911631d5682b5c07affc654">   54</a></span>    <a class="code hl_enumeration" href="esp__timer_8h.html#adfa3461062412704963cbb0274b5117c">esp_timer_dispatch_t</a>    <a class="code hl_variable" href="structesp__timer__create__args__t.html#a65b38dd3f911631d5682b5c07affc654">dispatch_method</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="structesp__timer__create__args__t.html#a02146c48bb4a0cb37a3879fdec1c96b1">   55</a></span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *            <a class="code hl_variable" href="structesp__timer__create__args__t.html#a02146c48bb4a0cb37a3879fdec1c96b1">name</a>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structesp__timer__create__args__t.html#a31a7b7ee58ea66bbbbbd034980a03c21">   56</a></span>    <span class="keywordtype">bool</span>                    <a class="code hl_variable" href="structesp__timer__create__args__t.html#a31a7b7ee58ea66bbbbbd034980a03c21">skip_unhandled_events</a>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>} <a class="code hl_struct" href="structesp__timer__create__args__t.html">esp_timer_create_args_t</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">/* Lifecycle. On VSF both are no-ops because the timer backbone comes up as</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"> * part of vsf_start(); kept for API compatibility. */</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__timer_8h.html#a42969ce85c4da7a83e6be1da1c4ce12e">esp_timer_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__timer_8h.html#a00d3d28d6efe5337c863bcc957cadcce">esp_timer_deinit</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">/* Microseconds elapsed since the systimer started. Equivalent to</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment"> * vsf_systimer_tick_to_us(vsf_systimer_get_tick()). */</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><a class="code hl_typedef" href="stdint_8h.html#a996e72f71b11a5bb8b3b7b6936b1516d">int64_t</a> <a class="code hl_function" href="esp__timer_8h.html#ab38881d22858adab666843cee4ba6589">esp_timer_get_time</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">/* Time remaining until the next scheduled alarm, in microseconds. Returns</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"> * INT64_MAX if no timer is armed. VSF does not expose a soonest-due query</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment"> * cheaply; this is a best-effort scan over the active timer list. */</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><a class="code hl_typedef" href="stdint_8h.html#a996e72f71b11a5bb8b3b7b6936b1516d">int64_t</a> <a class="code hl_function" href="esp__timer_8h.html#a7d841bf7010449014062cb46b71731e7">esp_timer_get_next_alarm</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">/* Create a one-shot or periodic timer. Stored in VSF heap; caller must</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment"> * release via esp_timer_delete(). */</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__timer_8h.html#a74e9327734f0b5a209863df5a21d43a1">esp_timer_create</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structesp__timer__create__args__t.html">esp_timer_create_args_t</a> *create_args,</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                            <a class="code hl_struct" href="structesp__timer.html">esp_timer_handle_t</a> *out_handle);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">/* Arm the timer for a single shot after timeout_us microseconds. */</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__timer_8h.html#a9b7c15d78638b13ad515d9471aa4c68f">esp_timer_start_once</a>(<a class="code hl_struct" href="structesp__timer.html">esp_timer_handle_t</a> timer, <a class="code hl_typedef" href="stdint_8h.html#aaa5d1cd013383c889537491c3cfd9aad">uint64_t</a> timeout_us);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">/* Arm the timer to fire every period_us microseconds. */</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__timer_8h.html#a11265654b0a3168c474583d2a52a34ac">esp_timer_start_periodic</a>(<a class="code hl_struct" href="structesp__timer.html">esp_timer_handle_t</a> timer, <a class="code hl_typedef" href="stdint_8h.html#aaa5d1cd013383c889537491c3cfd9aad">uint64_t</a> period_us);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">/* Cancel a running timer. Safe to call on an unstarted timer. */</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__timer_8h.html#ac590077ed12c097ce62cd75dec10fa46">esp_timer_stop</a>(<a class="code hl_struct" href="structesp__timer.html">esp_timer_handle_t</a> timer);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">/* Stop (if running) then destroy the timer. */</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__timer_8h.html#a2f8afce187cdaf5f91f1b713ec12617f">esp_timer_delete</a>(<a class="code hl_struct" href="structesp__timer.html">esp_timer_handle_t</a> timer);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">/* Query whether the timer is currently armed. */</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keywordtype">bool</span> <a class="code hl_function" href="esp__timer_8h.html#a8bacacd656c2bae4ece55eace4c76b28">esp_timer_is_active</a>(<a class="code hl_struct" href="structesp__timer.html">esp_timer_handle_t</a> timer);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_ESPIDF_ESP_TIMER_H__</span></div>
+<div class="ttc" id="aesp__err_8h_html"><div class="ttname"><a href="esp__err_8h.html">esp_err.h</a></div></div>
+<div class="ttc" id="aesp__err_8h_html_a8bc4f6626a2d4ebd67533c56064ccda8"><div class="ttname"><a href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a></div><div class="ttdeci">int esp_err_t</div><div class="ttdef"><b>Definition</b> esp_err.h:41</div></div>
+<div class="ttc" id="aesp__timer_8h_html_a00d3d28d6efe5337c863bcc957cadcce"><div class="ttname"><a href="esp__timer_8h.html#a00d3d28d6efe5337c863bcc957cadcce">esp_timer_deinit</a></div><div class="ttdeci">esp_err_t esp_timer_deinit(void)</div><div class="ttdef"><b>Definition</b> esp_timer_port.c:86</div></div>
+<div class="ttc" id="aesp__timer_8h_html_a11265654b0a3168c474583d2a52a34ac"><div class="ttname"><a href="esp__timer_8h.html#a11265654b0a3168c474583d2a52a34ac">esp_timer_start_periodic</a></div><div class="ttdeci">esp_err_t esp_timer_start_periodic(esp_timer_handle_t timer, uint64_t period_us)</div><div class="ttdef"><b>Definition</b> esp_timer_port.c:146</div></div>
+<div class="ttc" id="aesp__timer_8h_html_a2f8afce187cdaf5f91f1b713ec12617f"><div class="ttname"><a href="esp__timer_8h.html#a2f8afce187cdaf5f91f1b713ec12617f">esp_timer_delete</a></div><div class="ttdeci">esp_err_t esp_timer_delete(esp_timer_handle_t timer)</div><div class="ttdef"><b>Definition</b> esp_timer_port.c:180</div></div>
+<div class="ttc" id="aesp__timer_8h_html_a42969ce85c4da7a83e6be1da1c4ce12e"><div class="ttname"><a href="esp__timer_8h.html#a42969ce85c4da7a83e6be1da1c4ce12e">esp_timer_init</a></div><div class="ttdeci">esp_err_t esp_timer_init(void)</div><div class="ttdef"><b>Definition</b> esp_timer_port.c:80</div></div>
+<div class="ttc" id="aesp__timer_8h_html_a5482b9e4b1838dfc76cfe076c390fcaa"><div class="ttname"><a href="esp__timer_8h.html#a5482b9e4b1838dfc76cfe076c390fcaa">esp_timer_cb_t</a></div><div class="ttdeci">void(* esp_timer_cb_t)(void *arg)</div><div class="ttdef"><b>Definition</b> esp_timer.h:43</div></div>
+<div class="ttc" id="aesp__timer_8h_html_a74e9327734f0b5a209863df5a21d43a1"><div class="ttname"><a href="esp__timer_8h.html#a74e9327734f0b5a209863df5a21d43a1">esp_timer_create</a></div><div class="ttdeci">esp_err_t esp_timer_create(const esp_timer_create_args_t *create_args, esp_timer_handle_t *out_handle)</div><div class="ttdef"><b>Definition</b> esp_timer_port.c:103</div></div>
+<div class="ttc" id="aesp__timer_8h_html_a7d841bf7010449014062cb46b71731e7"><div class="ttname"><a href="esp__timer_8h.html#a7d841bf7010449014062cb46b71731e7">esp_timer_get_next_alarm</a></div><div class="ttdeci">int64_t esp_timer_get_next_alarm(void)</div><div class="ttdef"><b>Definition</b> esp_timer_port.c:96</div></div>
+<div class="ttc" id="aesp__timer_8h_html_a8bacacd656c2bae4ece55eace4c76b28"><div class="ttname"><a href="esp__timer_8h.html#a8bacacd656c2bae4ece55eace4c76b28">esp_timer_is_active</a></div><div class="ttdeci">bool esp_timer_is_active(esp_timer_handle_t timer)</div><div class="ttdef"><b>Definition</b> esp_timer_port.c:193</div></div>
+<div class="ttc" id="aesp__timer_8h_html_a946e475d8cd1667fccdaab52c94c45bb"><div class="ttname"><a href="esp__timer_8h.html#a946e475d8cd1667fccdaab52c94c45bb">esp_timer_handle_t</a></div><div class="ttdeci">struct esp_timer * esp_timer_handle_t</div><div class="ttdef"><b>Definition</b> esp_timer.h:41</div></div>
+<div class="ttc" id="aesp__timer_8h_html_a9b7c15d78638b13ad515d9471aa4c68f"><div class="ttname"><a href="esp__timer_8h.html#a9b7c15d78638b13ad515d9471aa4c68f">esp_timer_start_once</a></div><div class="ttdeci">esp_err_t esp_timer_start_once(esp_timer_handle_t timer, uint64_t timeout_us)</div><div class="ttdef"><b>Definition</b> esp_timer_port.c:128</div></div>
+<div class="ttc" id="aesp__timer_8h_html_ab38881d22858adab666843cee4ba6589"><div class="ttname"><a href="esp__timer_8h.html#ab38881d22858adab666843cee4ba6589">esp_timer_get_time</a></div><div class="ttdeci">int64_t esp_timer_get_time(void)</div><div class="ttdef"><b>Definition</b> esp_timer_port.c:91</div></div>
+<div class="ttc" id="aesp__timer_8h_html_ac590077ed12c097ce62cd75dec10fa46"><div class="ttname"><a href="esp__timer_8h.html#ac590077ed12c097ce62cd75dec10fa46">esp_timer_stop</a></div><div class="ttdeci">esp_err_t esp_timer_stop(esp_timer_handle_t timer)</div><div class="ttdef"><b>Definition</b> esp_timer_port.c:165</div></div>
+<div class="ttc" id="aesp__timer_8h_html_adfa3461062412704963cbb0274b5117c"><div class="ttname"><a href="esp__timer_8h.html#adfa3461062412704963cbb0274b5117c">esp_timer_dispatch_t</a></div><div class="ttdeci">esp_timer_dispatch_t</div><div class="ttdef"><b>Definition</b> esp_timer.h:45</div></div>
+<div class="ttc" id="aesp__timer_8h_html_adfa3461062412704963cbb0274b5117ca2a1b9bba35bac0d0bfe57ae4e2851aa6"><div class="ttname"><a href="esp__timer_8h.html#adfa3461062412704963cbb0274b5117ca2a1b9bba35bac0d0bfe57ae4e2851aa6">ESP_TIMER_TASK</a></div><div class="ttdeci">@ ESP_TIMER_TASK</div><div class="ttdef"><b>Definition</b> esp_timer.h:46</div></div>
+<div class="ttc" id="aesp__timer_8h_html_adfa3461062412704963cbb0274b5117ca4b789c43d60fb0686da8acaa26d9e6f8"><div class="ttname"><a href="esp__timer_8h.html#adfa3461062412704963cbb0274b5117ca4b789c43d60fb0686da8acaa26d9e6f8">ESP_TIMER_ISR</a></div><div class="ttdeci">@ ESP_TIMER_ISR</div><div class="ttdef"><b>Definition</b> esp_timer.h:48</div></div>
+<div class="ttc" id="astdint_8h_html"><div class="ttname"><a href="stdint_8h.html">stdint.h</a></div></div>
+<div class="ttc" id="astdint_8h_html_a996e72f71b11a5bb8b3b7b6936b1516d"><div class="ttname"><a href="stdint_8h.html#a996e72f71b11a5bb8b3b7b6936b1516d">int64_t</a></div><div class="ttdeci">long long int64_t</div><div class="ttdef"><b>Definition</b> stdint.h:10</div></div>
+<div class="ttc" id="astdint_8h_html_aaa5d1cd013383c889537491c3cfd9aad"><div class="ttname"><a href="stdint_8h.html#aaa5d1cd013383c889537491c3cfd9aad">uint64_t</a></div><div class="ttdeci">unsigned long long uint64_t</div><div class="ttdef"><b>Definition</b> stdint.h:11</div></div>
+<div class="ttc" id="astructesp__timer__create__args__t_html"><div class="ttname"><a href="structesp__timer__create__args__t.html">esp_timer_create_args_t</a></div><div class="ttdef"><b>Definition</b> esp_timer.h:51</div></div>
+<div class="ttc" id="astructesp__timer__create__args__t_html_a02146c48bb4a0cb37a3879fdec1c96b1"><div class="ttname"><a href="structesp__timer__create__args__t.html#a02146c48bb4a0cb37a3879fdec1c96b1">esp_timer_create_args_t::name</a></div><div class="ttdeci">const char * name</div><div class="ttdef"><b>Definition</b> esp_timer.h:55</div></div>
+<div class="ttc" id="astructesp__timer__create__args__t_html_a31a7b7ee58ea66bbbbbd034980a03c21"><div class="ttname"><a href="structesp__timer__create__args__t.html#a31a7b7ee58ea66bbbbbd034980a03c21">esp_timer_create_args_t::skip_unhandled_events</a></div><div class="ttdeci">bool skip_unhandled_events</div><div class="ttdef"><b>Definition</b> esp_timer.h:56</div></div>
+<div class="ttc" id="astructesp__timer__create__args__t_html_a65b38dd3f911631d5682b5c07affc654"><div class="ttname"><a href="structesp__timer__create__args__t.html#a65b38dd3f911631d5682b5c07affc654">esp_timer_create_args_t::dispatch_method</a></div><div class="ttdeci">esp_timer_dispatch_t dispatch_method</div><div class="ttdef"><b>Definition</b> esp_timer.h:54</div></div>
+<div class="ttc" id="astructesp__timer__create__args__t_html_ad3310759baf90dd68e74475d341cb496"><div class="ttname"><a href="structesp__timer__create__args__t.html#ad3310759baf90dd68e74475d341cb496">esp_timer_create_args_t::callback</a></div><div class="ttdeci">esp_timer_cb_t callback</div><div class="ttdef"><b>Definition</b> esp_timer.h:52</div></div>
+<div class="ttc" id="astructesp__timer__create__args__t_html_af71d6a46c7b77a019ab96fb17ec5fdd3"><div class="ttname"><a href="structesp__timer__create__args__t.html#af71d6a46c7b77a019ab96fb17ec5fdd3">esp_timer_create_args_t::arg</a></div><div class="ttdeci">void * arg</div><div class="ttdef"><b>Definition</b> esp_timer.h:53</div></div>
+<div class="ttc" id="astructesp__timer_html"><div class="ttname"><a href="structesp__timer.html">esp_timer</a></div><div class="ttdef"><b>Definition</b> esp_timer_port.c:51</div></div>
+<div class="ttc" id="astructesp__timer_html_a8c3b73ed3d5bfb59d48258241216d396"><div class="ttname"><a href="structesp__timer.html#a8c3b73ed3d5bfb59d48258241216d396">esp_timer::arg</a></div><div class="ttdeci">void * arg</div><div class="ttdef"><b>Definition</b> esp_timer_port.c:54</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/bf470617881ba7a1806f5439a0acf7c2922a0105" target="_blank">vsfteam/vsf@bf47061</a>
+  生成
+</div>

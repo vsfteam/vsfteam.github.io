@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/freertos/include/task.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_499d593e95596adda73bf8f1cc6c0b36.html">freertos</a></li><li class="navelem"><a class="el" href="dir_c702e7d5cdfe28df370cfbc3b4d6ac75.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">task.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="task_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2026 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// Clean-room FreeRTOS task.h shim for VSF.</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">//</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">// Scope of the initial MVP:</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">//  - vTaskDelay / vTaskDelayUntil      (cooperative sleep via vsf_thread)</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">//  - xTaskGetTickCount                 (vsf_systimer_get_ms)</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">//  - taskYIELD                         (vsf_thread_yield)</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">//  - xTaskCreate / xTaskCreateStatic   (spawn a vsf_thread worker)</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">//  - vTaskDelete                       (self-termination / best-effort)</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">//</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">// Suspend/Resume/Notify and the full task API surface are deferred; they</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">// will be layered on top of the same vsf_thread worker model.</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#ifndef __VSF_FREERTOS_TASK_H__</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#define __VSF_FREERTOS_TASK_H__</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="freertos_2_free_r_t_o_s_8h.html">FreeRTOS.h</a>&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#if defined(__VSF_FREERTOS_TASK_CLASS_IMPLEMENT)</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#   undef __VSF_FREERTOS_TASK_CLASS_IMPLEMENT</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#   define __VSF_CLASS_IMPLEMENT__</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><a class="code hl_define" href="ooc__class_8h.html#a226f6a53efbee32ec33e32995b0ab6c9">vsf_dcl_class</a>(<a class="code hl_class" href="class_static_task__t.html">StaticTask_t</a>)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="task_8h.html#a521a971636ba95453b662f8da39b2149">   48</a></span>typedef <a class="code hl_class" href="class_static_task__t.html">StaticTask_t</a> *          <a class="code hl_class" href="class_static_task__t.html">TaskHandle_t</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="task_8h.html#a9b32502ff92c255c686dacde53c1cba0">   49</a></span>typedef <span class="keywordtype">void</span> (*<a class="code hl_typedef" href="task_8h.html#a9b32502ff92c255c686dacde53c1cba0">TaskFunction_t</a>)(<span class="keywordtype">void</span> *);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">// Conditional field helpers. vsf_class(...) { private_member(...) } is a</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">// single macro invocation, so we cannot place #if inside its argument list</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">// portably; these stage the optional members into empty / non-empty text.</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#if VSF_KERNEL_CFG_EDA_SUPPORT_SUB_CALL == ENABLED</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="task_8h.html#afa381fa243edfe0fa4366f53c86550fa">   55</a></span><span class="preprocessor">#   define __VSF_FREERTOS_TASK_THREAD_CB_FIELD   vsf_thread_cb_t     thread_cb;</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#   define __VSF_FREERTOS_TASK_THREAD_CB_FIELD</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#if VSF_FREERTOS_CFG_USE_NOTIFY == ENABLED</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="task_8h.html#aee5088ba27cdf290673b9921eed9fab8">   60</a></span><span class="preprocessor">#   define __VSF_FREERTOS_TASK_NOTIFY_FIELDS                                   \</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">        vsf_sem_t           notify_sem;                                        \</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">        uint32_t            notify_value;                                      \</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">        bool                notify_pending;</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#   define __VSF_FREERTOS_TASK_NOTIFY_FIELDS</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">// Task control block exposed to both the task port and the notify port.</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">// The vsf_thread_t MUST remain the FIRST member: xTaskGetCurrentTaskHandle</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">// returns (TaskHandle_t)vsf_thread_get_cur() and the notify port casts</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">// that back to StaticTask_t * -- the offset-0 upcast is what makes this</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">// round-trip sound.</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="class_static_task__t.html">   73</a></span><a class="code hl_define" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code hl_class" href="class_static_task__t.html">StaticTask_t</a>) {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    private_member(</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        vsf_thread_t        thread;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_define" href="task_8h.html#afa381fa243edfe0fa4366f53c86550fa">__VSF_FREERTOS_TASK_THREAD_CB_FIELD</a></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        void              (*entry)(<span class="keywordtype">void</span> *);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordtype">void</span> *              arg;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordtype">void</span> *              stack;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>            stack_bytes;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="comment">// Ownership flags for zero-heap xTaskCreateStatic: when set, the</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="comment">// corresponding storage was supplied by the caller and must NOT</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="comment">// be released to the heap.</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordtype">bool</span>                is_static;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordtype">bool</span>                is_stack_static;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <a class="code hl_define" href="task_8h.html#aee5088ba27cdf290673b9921eed9fab8">__VSF_FREERTOS_TASK_NOTIFY_FIELDS</a></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    )</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>};</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">/*============================ API ===========================================*/</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">// Delay the calling task by xTicksToDelay ticks. In this shim, 1 tick equals</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">// 1 ms (see pdMS_TO_TICKS); the underlying sleep uses vsf_thread_delay.</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">// MUST be called from a vsf_thread context.</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="task_8h.html#a9917b05abb77e75e959151ae67065dce">vTaskDelay</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a> xTicksToDelay);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">// Absolute-deadline variant. pxPreviousWakeTime is updated on return.</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="task_8h.html#abbc32467f223c78ba36f577b56a32897">vTaskDelayUntil</a>(<a class="code hl_typedef" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a> * <span class="keyword">const</span> pxPreviousWakeTime,</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                            <span class="keyword">const</span> <a class="code hl_typedef" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a> xTimeIncrement);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">// Returns the current kernel tick count. Mapped to vsf_systimer milliseconds</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">// to keep pdMS_TO_TICKS(ms) semantics consistent.</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="keyword">extern</span> <a class="code hl_typedef" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a> <a class="code hl_function" href="task_8h.html#a5fa24e36d5e1eeb57f5b73b72ea048e7">xTaskGetTickCount</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keyword">extern</span> <a class="code hl_typedef" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a> <a class="code hl_function" href="task_8h.html#ad58fd766b8f438b5703276f585738762">xTaskGetTickCountFromISR</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">// Yield the CPU to any equal-priority ready task.</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="task_8h.html#a767e474430db1e60056e9678763f9202">  107</a></span><span class="preprocessor">#define taskYIELD()             vTaskYield()</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="task_8h.html#ad014ceb3b03295dc3fb6fd9f0028162c">vTaskYield</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">// Creates a FreeRTOS task backed by a vsf_thread worker. pvParameters is</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">// passed to pxTaskCode. usStackDepth is interpreted as bytes (see StackType_t</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">// typedef). uxPriority is mapped to VSF_FREERTOS_CFG_DEFAULT_VSF_PRIO in the</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment">// MVP; board overrides can refine the mapping.</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">// Returns pdPASS on success, pdFAIL on error.</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> <a class="code hl_function" href="task_8h.html#a1c14ca28b96fd951de38b98bd7e21561">xTaskCreate</a>(<a class="code hl_typedef" href="task_8h.html#a9b32502ff92c255c686dacde53c1cba0">TaskFunction_t</a> pxTaskCode,</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                              <span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> pcName,</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                              <span class="keyword">const</span> <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> usStackDepth,</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                              <span class="keywordtype">void</span> * <span class="keyword">const</span> pvParameters,</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                              <a class="code hl_typedef" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> uxPriority,</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                              <a class="code hl_class" href="class_static_task__t.html">TaskHandle_t</a> * <span class="keyword">const</span> pxCreatedTask);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">// Deletes a task. xTaskToDelete == NULL means self-delete.</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">// NOTE: self-delete from inside the task body is the only supported form in</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">// the MVP; deleting another task is best-effort and may leak the stack.</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="task_8h.html#af9cf8dedc1248f4351d3cb5910e33d7a">vTaskDelete</a>(<a class="code hl_class" href="class_static_task__t.html">TaskHandle_t</a> xTaskToDelete);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">// Static allocation variant. The caller supplies BOTH the stack buffer</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">// (ulStackDepth bytes -- the shim defines StackType_t as uint8_t so the</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">// unit is always bytes) and the task control block storage. Neither is</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment">// ever passed to the heap; vTaskDelete(NULL) self-exits the thread but</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment">// the caller-owned storage is NOT freed.</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">//</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">// Requirements on the caller:</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment">//   - puxStackBuffer must be 8-byte aligned (StackType_t is uint8_t so</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment">//     this is the caller&#39;s responsibility on declaration).</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment">//   - ulStackDepth must cover the VSF page + guardian size minimum.</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment">// Returns the task handle on success, NULL on argument errors.</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="keyword">extern</span> <a class="code hl_class" href="class_static_task__t.html">TaskHandle_t</a> <a class="code hl_function" href="task_8h.html#af3b46cbbeb634374c166a61b23dff331">xTaskCreateStatic</a>(<a class="code hl_typedef" href="task_8h.html#a9b32502ff92c255c686dacde53c1cba0">TaskFunction_t</a> pxTaskCode,</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                                      <span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> pcName,</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>                                      <span class="keyword">const</span> <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> ulStackDepth,</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                                      <span class="keywordtype">void</span> * <span class="keyword">const</span> pvParameters,</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>                                      <a class="code hl_typedef" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> uxPriority,</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                                      <a class="code hl_typedef" href="portmacro_8h.html#a0653e870c10f40dbbc69a6d4227cdc4b">StackType_t</a> * <span class="keyword">const</span> puxStackBuffer,</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                                      <a class="code hl_class" href="class_static_task__t.html">StaticTask_t</a> * <span class="keyword">const</span> pxTaskBuffer);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">// Returns the handle of the calling task, or NULL if called from outside a</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">// vsf_thread context.</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="keyword">extern</span> <a class="code hl_class" href="class_static_task__t.html">TaskHandle_t</a> <a class="code hl_function" href="task_8h.html#a28aaeed93d0de14da726f3a1a8c33251">xTaskGetCurrentTaskHandle</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="comment">/*============================ SCHEDULER / CRITICAL ==========================*/</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">// Disable / re-enable preemptive task switching. Unlike the critical</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment">// section pair, these do NOT mask interrupts; they only prevent the</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">// scheduler from picking a different task until the matching resume.</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">// Nesting is permitted; only the outermost pair actually engages the</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">// underlying vsf_sched_lock.</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment">//</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment">// xTaskResumeAll returns pdTRUE if a context switch was forced on the</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment">// way out and pdFALSE otherwise. The shim always returns pdFALSE --</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">// callers that drive their own yield based on the return value will</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="comment">// still work because the very next cooperative yield point will pick</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment">// up any newly-ready tasks.</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="keyword">extern</span> <span class="keywordtype">void</span>       <a class="code hl_function" href="task_8h.html#a084d232640bd1d04bcac0b8784417015">vTaskSuspendAll</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> <a class="code hl_function" href="task_8h.html#adf830ea0f150fcdfdaa944667137f080">xTaskResumeAll</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">// Scheduler-level critical section. Nestable. The FromISR variants</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">// return / accept the saved scheduler state so that the caller can</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">// keep it on the local stack -- matching FreeRTOS semantics on</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">// architectures where the state is a pushed PRIMASK.</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="keyword">extern</span> <span class="keywordtype">void</span>        <a class="code hl_function" href="task_8h.html#af7496ea503bc46ef98e35db9ce9d747f">vTaskEnterCritical</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="keyword">extern</span> <span class="keywordtype">void</span>        <a class="code hl_function" href="task_8h.html#ab2026aedc871bc29b9ef3f88c08e2e85">vTaskExitCritical</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="keyword">extern</span> <a class="code hl_typedef" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> <a class="code hl_function" href="task_8h.html#a22767685731df10c42b260e36bd64981">vTaskEnterCriticalFromISR</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="keyword">extern</span> <span class="keywordtype">void</span>        <a class="code hl_function" href="task_8h.html#af534cbe325966b53355f1a5439fac632">vTaskExitCriticalFromISR</a>(<a class="code hl_typedef" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> uxSavedInterruptState);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="comment">/*============================ NOTIFICATIONS =================================*/</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="comment">// FreeRTOS task notifications. The shim implements a single-slot model:</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="comment">// every task owns a (sem, value, pending) triple and xTaskNotify updates</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment">// value according to eNotifyAction before signalling the sem.</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233">  181</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233abac2b17ab15444724b6f35d47cd0a64a">  182</a></span>    <a class="code hl_enumvalue" href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233abac2b17ab15444724b6f35d47cd0a64a">eNoAction</a> = 0,</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233ab7b1af2eeee53ae78eeff37c1cb6f79b">  183</a></span>    <a class="code hl_enumvalue" href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233ab7b1af2eeee53ae78eeff37c1cb6f79b">eSetBits</a>,</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno"><a class="line" href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233a04fb0e98d2400e4cd28f1593bc868822">  184</a></span>    <a class="code hl_enumvalue" href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233a04fb0e98d2400e4cd28f1593bc868822">eIncrement</a>,</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno"><a class="line" href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233ab61fc296ef909186b5824c823b33e130">  185</a></span>    <a class="code hl_enumvalue" href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233ab61fc296ef909186b5824c823b33e130">eSetValueWithOverwrite</a>,</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno"><a class="line" href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233acc4dd3fe71b62c751187a2c4c515abac">  186</a></span>    <a class="code hl_enumvalue" href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233acc4dd3fe71b62c751187a2c4c515abac">eSetValueWithoutOverwrite</a>,</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>} <a class="code hl_enumeration" href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233">eNotifyAction</a>;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment">// Update a task&#39;s notification value and wake it. Returns pdPASS, or</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment">// pdFAIL when eSetValueWithoutOverwrite is used on a task that already</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment">// has a pending unclaimed notification.</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> <a class="code hl_function" href="task_8h.html#af765b8c28d01be648c56efe92d544b44">xTaskNotify</a>(<a class="code hl_class" href="class_static_task__t.html">TaskHandle_t</a> xTaskToNotify,</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                              <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> ulValue,</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                              <a class="code hl_enumeration" href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233">eNotifyAction</a> eAction);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment">// ISR-context variant. pxHigherPriorityTaskWoken is informational.</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> <a class="code hl_function" href="task_8h.html#a2c7892a9835d67e7b080eddafc6ce0e7">xTaskNotifyFromISR</a>(<a class="code hl_class" href="class_static_task__t.html">TaskHandle_t</a> xTaskToNotify,</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                                     <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> ulValue,</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                                     <a class="code hl_enumeration" href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233">eNotifyAction</a> eAction,</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                                     <a class="code hl_typedef" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *pxHigherPriorityTaskWoken);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="comment">// Convenience shortcuts: xTaskNotify(task, 0, eIncrement).</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> <a class="code hl_function" href="task_8h.html#a7e004738395a6605e117f52fd38e4ba7">xTaskNotifyGive</a>(<a class="code hl_class" href="class_static_task__t.html">TaskHandle_t</a> xTaskToNotify);</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="keyword">extern</span> <span class="keywordtype">void</span>       <a class="code hl_function" href="task_8h.html#a0c31cb4be76285f05909de23ede05331">vTaskNotifyGiveFromISR</a>(<a class="code hl_class" href="class_static_task__t.html">TaskHandle_t</a> xTaskToNotify,</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>                                         <a class="code hl_typedef" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *pxHigherPriorityTaskWoken);</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="comment">// Block the calling task until a notification arrives. Returns the value</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="comment">// of the notification at the point the wait completed; if</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="comment">// xClearCountOnExit == pdTRUE the value is zeroed on successful exit,</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment">// otherwise it is decremented by one (counting semaphore semantics).</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="keyword">extern</span> <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>   <a class="code hl_function" href="task_8h.html#a1dd29cf3d25f9968ac86b0ca35af8ada">ulTaskNotifyTake</a>(<a class="code hl_typedef" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> xClearCountOnExit,</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>                                   <a class="code hl_typedef" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a> xTicksToWait);</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="comment">// Block with bitmask semantics. On entry the bits in</span></div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="comment">// ulBitsToClearOnEntry are cleared; on successful return the bits in</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="comment">// ulBitsToClearOnExit are cleared. pulNotificationValue receives the</span></div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="comment">// value observed at wait completion (may be NULL).</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="comment">// Returns pdPASS on success, pdFAIL on timeout / invalid context.</span></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> <a class="code hl_function" href="task_8h.html#a7cab914767933dc732f2c36e3915f6b0">xTaskNotifyWait</a>(<a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> ulBitsToClearOnEntry,</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>                                  <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> ulBitsToClearOnExit,</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>                                  <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *pulNotificationValue,</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>                                  <a class="code hl_typedef" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a> xTicksToWait);</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>}</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_FREERTOS_TASK_H__</span></div>
+<div class="ttc" id="aclass_static_task__t_html"><div class="ttname"><a href="class_static_task__t.html">StaticTask_t</a></div><div class="ttdef"><b>Definition</b> task.h:73</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_a46fb21e00ae0729d7515c0fbf2269796"><div class="ttname"><a href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a></div><div class="ttdeci">long BaseType_t</div><div class="ttdef"><b>Definition</b> esp_ringbuf.h:50</div></div>
+<div class="ttc" id="afreertos_2_free_r_t_o_s_8h_html"><div class="ttname"><a href="freertos_2_free_r_t_o_s_8h.html">FreeRTOS.h</a></div></div>
+<div class="ttc" id="aooc__class_8h_html"><div class="ttname"><a href="ooc__class_8h.html">ooc_class.h</a></div></div>
+<div class="ttc" id="aooc__class_8h_html_a226f6a53efbee32ec33e32995b0ab6c9"><div class="ttname"><a href="ooc__class_8h.html#a226f6a53efbee32ec33e32995b0ab6c9">vsf_dcl_class</a></div><div class="ttdeci">#define vsf_dcl_class</div><div class="ttdef"><b>Definition</b> ooc_class.h:50</div></div>
+<div class="ttc" id="aooc__class_8h_html_a62f3fe6fb9699483707f5352d777f2f0"><div class="ttname"><a href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a></div><div class="ttdeci">#define vsf_class(__name)</div><div class="ttdef"><b>Definition</b> ooc_class.h:52</div></div>
+<div class="ttc" id="aportmacro_8h_html_a0653e870c10f40dbbc69a6d4227cdc4b"><div class="ttname"><a href="portmacro_8h.html#a0653e870c10f40dbbc69a6d4227cdc4b">StackType_t</a></div><div class="ttdeci">uint8_t StackType_t</div><div class="ttdef"><b>Definition</b> portmacro.h:53</div></div>
+<div class="ttc" id="artos__al_8h_html_aa69c48c6e902ce54f70886e6573c92a9"><div class="ttname"><a href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a></div><div class="ttdeci">uint32_t TickType_t</div><div class="ttdef"><b>Definition</b> rtos_al.h:59</div></div>
+<div class="ttc" id="artos__al_8h_html_ac2664ea79933f581cfee14e03e458bbd"><div class="ttname"><a href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a></div><div class="ttdeci">uint32_t UBaseType_t</div><div class="ttdef"><b>Definition</b> rtos_al.h:60</div></div>
+<div class="ttc" id="astdint_8h_html_a324c5d28c0d82f502a234ab99efac87a"><div class="ttname"><a href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a></div><div class="ttdeci">unsigned uint32_t</div><div class="ttdef"><b>Definition</b> stdint.h:9</div></div>
+<div class="ttc" id="atask_8h_html_a084d232640bd1d04bcac0b8784417015"><div class="ttname"><a href="task_8h.html#a084d232640bd1d04bcac0b8784417015">vTaskSuspendAll</a></div><div class="ttdeci">void vTaskSuspendAll(void)</div><div class="ttdef"><b>Definition</b> freertos_critical_port.c:158</div></div>
+<div class="ttc" id="atask_8h_html_a0c31cb4be76285f05909de23ede05331"><div class="ttname"><a href="task_8h.html#a0c31cb4be76285f05909de23ede05331">vTaskNotifyGiveFromISR</a></div><div class="ttdeci">void vTaskNotifyGiveFromISR(TaskHandle_t xTaskToNotify, BaseType_t *pxHigherPriorityTaskWoken)</div><div class="ttdef"><b>Definition</b> freertos_notify_port.c:180</div></div>
+<div class="ttc" id="atask_8h_html_a1c14ca28b96fd951de38b98bd7e21561"><div class="ttname"><a href="task_8h.html#a1c14ca28b96fd951de38b98bd7e21561">xTaskCreate</a></div><div class="ttdeci">BaseType_t xTaskCreate(TaskFunction_t pxTaskCode, const char *const pcName, const uint32_t usStackDepth, void *const pvParameters, UBaseType_t uxPriority, TaskHandle_t *const pxCreatedTask)</div><div class="ttdef"><b>Definition</b> freertos_task_port.c:176</div></div>
+<div class="ttc" id="atask_8h_html_a1dd29cf3d25f9968ac86b0ca35af8ada"><div class="ttname"><a href="task_8h.html#a1dd29cf3d25f9968ac86b0ca35af8ada">ulTaskNotifyTake</a></div><div class="ttdeci">uint32_t ulTaskNotifyTake(BaseType_t xClearCountOnExit, TickType_t xTicksToWait)</div><div class="ttdef"><b>Definition</b> freertos_notify_port.c:187</div></div>
+<div class="ttc" id="atask_8h_html_a22767685731df10c42b260e36bd64981"><div class="ttname"><a href="task_8h.html#a22767685731df10c42b260e36bd64981">vTaskEnterCriticalFromISR</a></div><div class="ttdeci">UBaseType_t vTaskEnterCriticalFromISR(void)</div><div class="ttdef"><b>Definition</b> freertos_critical_port.c:134</div></div>
+<div class="ttc" id="atask_8h_html_a28aaeed93d0de14da726f3a1a8c33251"><div class="ttname"><a href="task_8h.html#a28aaeed93d0de14da726f3a1a8c33251">xTaskGetCurrentTaskHandle</a></div><div class="ttdeci">TaskHandle_t xTaskGetCurrentTaskHandle(void)</div><div class="ttdef"><b>Definition</b> freertos_task_port.c:292</div></div>
+<div class="ttc" id="atask_8h_html_a2c7892a9835d67e7b080eddafc6ce0e7"><div class="ttname"><a href="task_8h.html#a2c7892a9835d67e7b080eddafc6ce0e7">xTaskNotifyFromISR</a></div><div class="ttdeci">BaseType_t xTaskNotifyFromISR(TaskHandle_t xTaskToNotify, uint32_t ulValue, eNotifyAction eAction, BaseType_t *pxHigherPriorityTaskWoken)</div><div class="ttdef"><b>Definition</b> freertos_notify_port.c:147</div></div>
+<div class="ttc" id="atask_8h_html_a5fa24e36d5e1eeb57f5b73b72ea048e7"><div class="ttname"><a href="task_8h.html#a5fa24e36d5e1eeb57f5b73b72ea048e7">xTaskGetTickCount</a></div><div class="ttdeci">TickType_t xTaskGetTickCount(void)</div><div class="ttdef"><b>Definition</b> freertos_task_port.c:113</div></div>
+<div class="ttc" id="atask_8h_html_a7cab914767933dc732f2c36e3915f6b0"><div class="ttname"><a href="task_8h.html#a7cab914767933dc732f2c36e3915f6b0">xTaskNotifyWait</a></div><div class="ttdeci">BaseType_t xTaskNotifyWait(uint32_t ulBitsToClearOnEntry, uint32_t ulBitsToClearOnExit, uint32_t *pulNotificationValue, TickType_t xTicksToWait)</div><div class="ttdef"><b>Definition</b> freertos_notify_port.c:236</div></div>
+<div class="ttc" id="atask_8h_html_a7e004738395a6605e117f52fd38e4ba7"><div class="ttname"><a href="task_8h.html#a7e004738395a6605e117f52fd38e4ba7">xTaskNotifyGive</a></div><div class="ttdeci">BaseType_t xTaskNotifyGive(TaskHandle_t xTaskToNotify)</div><div class="ttdef"><b>Definition</b> freertos_notify_port.c:175</div></div>
+<div class="ttc" id="atask_8h_html_a9917b05abb77e75e959151ae67065dce"><div class="ttname"><a href="task_8h.html#a9917b05abb77e75e959151ae67065dce">vTaskDelay</a></div><div class="ttdeci">void vTaskDelay(const TickType_t xTicksToDelay)</div><div class="ttdef"><b>Definition</b> freertos_task_port.c:91</div></div>
+<div class="ttc" id="atask_8h_html_a9b32502ff92c255c686dacde53c1cba0"><div class="ttname"><a href="task_8h.html#a9b32502ff92c255c686dacde53c1cba0">TaskFunction_t</a></div><div class="ttdeci">void(* TaskFunction_t)(void *)</div><div class="ttdef"><b>Definition</b> task.h:49</div></div>
+<div class="ttc" id="atask_8h_html_ab2026aedc871bc29b9ef3f88c08e2e85"><div class="ttname"><a href="task_8h.html#ab2026aedc871bc29b9ef3f88c08e2e85">vTaskExitCritical</a></div><div class="ttdeci">void vTaskExitCritical(void)</div><div class="ttdef"><b>Definition</b> freertos_critical_port.c:95</div></div>
+<div class="ttc" id="atask_8h_html_abbc32467f223c78ba36f577b56a32897"><div class="ttname"><a href="task_8h.html#abbc32467f223c78ba36f577b56a32897">vTaskDelayUntil</a></div><div class="ttdeci">void vTaskDelayUntil(TickType_t *const pxPreviousWakeTime, const TickType_t xTimeIncrement)</div><div class="ttdef"><b>Definition</b> freertos_task_port.c:97</div></div>
+<div class="ttc" id="atask_8h_html_ad014ceb3b03295dc3fb6fd9f0028162c"><div class="ttname"><a href="task_8h.html#ad014ceb3b03295dc3fb6fd9f0028162c">vTaskYield</a></div><div class="ttdeci">void vTaskYield(void)</div><div class="ttdef"><b>Definition</b> freertos_task_port.c:123</div></div>
+<div class="ttc" id="atask_8h_html_ad58fd766b8f438b5703276f585738762"><div class="ttname"><a href="task_8h.html#ad58fd766b8f438b5703276f585738762">xTaskGetTickCountFromISR</a></div><div class="ttdeci">TickType_t xTaskGetTickCountFromISR(void)</div><div class="ttdef"><b>Definition</b> freertos_task_port.c:118</div></div>
+<div class="ttc" id="atask_8h_html_adf830ea0f150fcdfdaa944667137f080"><div class="ttname"><a href="task_8h.html#adf830ea0f150fcdfdaa944667137f080">xTaskResumeAll</a></div><div class="ttdeci">BaseType_t xTaskResumeAll(void)</div><div class="ttdef"><b>Definition</b> freertos_critical_port.c:167</div></div>
+<div class="ttc" id="atask_8h_html_ae8abc4f7da5b6880467daafbf19cd233"><div class="ttname"><a href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233">eNotifyAction</a></div><div class="ttdeci">eNotifyAction</div><div class="ttdef"><b>Definition</b> task.h:181</div></div>
+<div class="ttc" id="atask_8h_html_ae8abc4f7da5b6880467daafbf19cd233a04fb0e98d2400e4cd28f1593bc868822"><div class="ttname"><a href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233a04fb0e98d2400e4cd28f1593bc868822">eIncrement</a></div><div class="ttdeci">@ eIncrement</div><div class="ttdef"><b>Definition</b> task.h:184</div></div>
+<div class="ttc" id="atask_8h_html_ae8abc4f7da5b6880467daafbf19cd233ab61fc296ef909186b5824c823b33e130"><div class="ttname"><a href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233ab61fc296ef909186b5824c823b33e130">eSetValueWithOverwrite</a></div><div class="ttdeci">@ eSetValueWithOverwrite</div><div class="ttdef"><b>Definition</b> task.h:185</div></div>
+<div class="ttc" id="atask_8h_html_ae8abc4f7da5b6880467daafbf19cd233ab7b1af2eeee53ae78eeff37c1cb6f79b"><div class="ttname"><a href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233ab7b1af2eeee53ae78eeff37c1cb6f79b">eSetBits</a></div><div class="ttdeci">@ eSetBits</div><div class="ttdef"><b>Definition</b> task.h:183</div></div>
+<div class="ttc" id="atask_8h_html_ae8abc4f7da5b6880467daafbf19cd233abac2b17ab15444724b6f35d47cd0a64a"><div class="ttname"><a href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233abac2b17ab15444724b6f35d47cd0a64a">eNoAction</a></div><div class="ttdeci">@ eNoAction</div><div class="ttdef"><b>Definition</b> task.h:182</div></div>
+<div class="ttc" id="atask_8h_html_ae8abc4f7da5b6880467daafbf19cd233acc4dd3fe71b62c751187a2c4c515abac"><div class="ttname"><a href="task_8h.html#ae8abc4f7da5b6880467daafbf19cd233acc4dd3fe71b62c751187a2c4c515abac">eSetValueWithoutOverwrite</a></div><div class="ttdeci">@ eSetValueWithoutOverwrite</div><div class="ttdef"><b>Definition</b> task.h:186</div></div>
+<div class="ttc" id="atask_8h_html_aee5088ba27cdf290673b9921eed9fab8"><div class="ttname"><a href="task_8h.html#aee5088ba27cdf290673b9921eed9fab8">__VSF_FREERTOS_TASK_NOTIFY_FIELDS</a></div><div class="ttdeci">#define __VSF_FREERTOS_TASK_NOTIFY_FIELDS</div><div class="ttdef"><b>Definition</b> task.h:60</div></div>
+<div class="ttc" id="atask_8h_html_af3b46cbbeb634374c166a61b23dff331"><div class="ttname"><a href="task_8h.html#af3b46cbbeb634374c166a61b23dff331">xTaskCreateStatic</a></div><div class="ttdeci">TaskHandle_t xTaskCreateStatic(TaskFunction_t pxTaskCode, const char *const pcName, const uint32_t ulStackDepth, void *const pvParameters, UBaseType_t uxPriority, StackType_t *const puxStackBuffer, StaticTask_t *const pxTaskBuffer)</div><div class="ttdef"><b>Definition</b> freertos_task_port.c:225</div></div>
+<div class="ttc" id="atask_8h_html_af534cbe325966b53355f1a5439fac632"><div class="ttname"><a href="task_8h.html#af534cbe325966b53355f1a5439fac632">vTaskExitCriticalFromISR</a></div><div class="ttdeci">void vTaskExitCriticalFromISR(UBaseType_t uxSavedInterruptState)</div><div class="ttdef"><b>Definition</b> freertos_critical_port.c:139</div></div>
+<div class="ttc" id="atask_8h_html_af7496ea503bc46ef98e35db9ce9d747f"><div class="ttname"><a href="task_8h.html#af7496ea503bc46ef98e35db9ce9d747f">vTaskEnterCritical</a></div><div class="ttdeci">void vTaskEnterCritical(void)</div><div class="ttdef"><b>Definition</b> freertos_critical_port.c:84</div></div>
+<div class="ttc" id="atask_8h_html_af765b8c28d01be648c56efe92d544b44"><div class="ttname"><a href="task_8h.html#af765b8c28d01be648c56efe92d544b44">xTaskNotify</a></div><div class="ttdeci">BaseType_t xTaskNotify(TaskHandle_t xTaskToNotify, uint32_t ulValue, eNotifyAction eAction)</div><div class="ttdef"><b>Definition</b> freertos_notify_port.c:127</div></div>
+<div class="ttc" id="atask_8h_html_af9cf8dedc1248f4351d3cb5910e33d7a"><div class="ttname"><a href="task_8h.html#af9cf8dedc1248f4351d3cb5910e33d7a">vTaskDelete</a></div><div class="ttdeci">void vTaskDelete(TaskHandle_t xTaskToDelete)</div><div class="ttdef"><b>Definition</b> freertos_task_port.c:280</div></div>
+<div class="ttc" id="atask_8h_html_afa381fa243edfe0fa4366f53c86550fa"><div class="ttname"><a href="task_8h.html#afa381fa243edfe0fa4366f53c86550fa">__VSF_FREERTOS_TASK_THREAD_CB_FIELD</a></div><div class="ttdeci">#define __VSF_FREERTOS_TASK_THREAD_CB_FIELD</div><div class="ttdef"><b>Definition</b> task.h:55</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/bf470617881ba7a1806f5439a0acf7c2922a0105" target="_blank">vsfteam/vsf@bf47061</a>
+  生成
+</div>

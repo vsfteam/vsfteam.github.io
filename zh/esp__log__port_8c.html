@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/espidf/port/esp_log_port.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_67078002197479e597ae23208194ae3e.html">espidf</a></li><li class="navelem"><a class="el" href="dir_d14dc8466d44ad1adba1031dafa98f07.html">port</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">esp_log_port.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__espidf__cfg_8h_source.html">../vsf_espidf_cfg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="esp__log_8h_source.html">esp_log.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__espidf_8h_source.html">../vsf_espidf.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__kernel_8h_source.html">kernel/vsf_kernel.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__trace_8h_source.html">service/trace/vsf_trace.h</a>&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____vsf__espidf__log__tag__t.html">__vsf_espidf_log_tag_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:acfff6bc1d3a9bf250900e8192fd43913" id="r_acfff6bc1d3a9bf250900e8192fd43913"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__log__port_8c.html#acfff6bc1d3a9bf250900e8192fd43913">VSF_ESPIDF_CFG_LOG_TAG_TABLE_SIZE</a>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:acfff6bc1d3a9bf250900e8192fd43913"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14840d186098ee185b1645d47442d07e" id="r_a14840d186098ee185b1645d47442d07e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__log__port_8c.html#a14840d186098ee185b1645d47442d07e">VSF_ESPIDF_CFG_LOG_DEFAULT_LEVEL</a>&#160;&#160;&#160;<a class="el" href="esp__log_8h.html#a28900c8f111c325f656d19c30b1d62adabf5442d9cb533e5a21b1942be4bd69ca">ESP_LOG_INFO</a></td></tr>
+<tr class="separator:a14840d186098ee185b1645d47442d07e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36036ce75e7556ed9bfb85a880a45353" id="r_a36036ce75e7556ed9bfb85a880a45353"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__log__port_8c.html#a36036ce75e7556ed9bfb85a880a45353">VSF_ESPIDF_CFG_LOG_LINE_BUF_SIZE</a>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:a36036ce75e7556ed9bfb85a880a45353"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a7fad1451d9dd6f1d1ed1497b9fe04007" id="r_a7fad1451d9dd6f1d1ed1497b9fe04007"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__log__port_8c.html#a7fad1451d9dd6f1d1ed1497b9fe04007">esp_log_level_set</a> (const char *tag, <a class="el" href="esp__log_8h.html#a28900c8f111c325f656d19c30b1d62ad">esp_log_level_t</a> level)</td></tr>
+<tr class="separator:a7fad1451d9dd6f1d1ed1497b9fe04007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25048effa39c928eae02c50cc9151205" id="r_a25048effa39c928eae02c50cc9151205"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__log_8h.html#a28900c8f111c325f656d19c30b1d62ad">esp_log_level_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__log__port_8c.html#a25048effa39c928eae02c50cc9151205">esp_log_level_get</a> (const char *tag)</td></tr>
+<tr class="separator:a25048effa39c928eae02c50cc9151205"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a087fd1c2e310257cf86ec827c8691000" id="r_a087fd1c2e310257cf86ec827c8691000"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__log_8h.html#a6d96e60b13bda9ffe1c27d850be4ae54">vprintf_like_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__log__port_8c.html#a087fd1c2e310257cf86ec827c8691000">esp_log_set_vprintf</a> (<a class="el" href="esp__log_8h.html#a6d96e60b13bda9ffe1c27d850be4ae54">vprintf_like_t</a> func)</td></tr>
+<tr class="separator:a087fd1c2e310257cf86ec827c8691000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a806e516960a25bc218b55ee70387776e" id="r_a806e516960a25bc218b55ee70387776e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__log__port_8c.html#a806e516960a25bc218b55ee70387776e">esp_log_timestamp</a> (void)</td></tr>
+<tr class="separator:a806e516960a25bc218b55ee70387776e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21711e7e18ee31a65ab135f70a9fbfb1" id="r_a21711e7e18ee31a65ab135f70a9fbfb1"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__log__port_8c.html#a21711e7e18ee31a65ab135f70a9fbfb1">esp_log_system_timestamp</a> (void)</td></tr>
+<tr class="separator:a21711e7e18ee31a65ab135f70a9fbfb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab64cdc17c3894e1d703a6fdebff13147" id="r_ab64cdc17c3894e1d703a6fdebff13147"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__log__port_8c.html#ab64cdc17c3894e1d703a6fdebff13147">esp_log_writev</a> (<a class="el" href="esp__log_8h.html#a28900c8f111c325f656d19c30b1d62ad">esp_log_level_t</a> level, const char *tag, const char *<a class="el" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>, va_list args)</td></tr>
+<tr class="separator:ab64cdc17c3894e1d703a6fdebff13147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee0ff0441723f0b5cde34529c0aa603f" id="r_aee0ff0441723f0b5cde34529c0aa603f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__log__port_8c.html#aee0ff0441723f0b5cde34529c0aa603f">esp_log_write</a> (<a class="el" href="esp__log_8h.html#a28900c8f111c325f656d19c30b1d62ad">esp_log_level_t</a> level, const char *tag, const char *<a class="el" href="vsf__sdl2__pixelformat_8c.html#a4be577502bbbb32a53837492421f2369">format</a>,...)</td></tr>
+<tr class="separator:aee0ff0441723f0b5cde34529c0aa603f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="acfff6bc1d3a9bf250900e8192fd43913" name="acfff6bc1d3a9bf250900e8192fd43913"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfff6bc1d3a9bf250900e8192fd43913">&#9670;&#160;</a></span>VSF_ESPIDF_CFG_LOG_TAG_TABLE_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_ESPIDF_CFG_LOG_TAG_TABLE_SIZE&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a14840d186098ee185b1645d47442d07e" name="a14840d186098ee185b1645d47442d07e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14840d186098ee185b1645d47442d07e">&#9670;&#160;</a></span>VSF_ESPIDF_CFG_LOG_DEFAULT_LEVEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_ESPIDF_CFG_LOG_DEFAULT_LEVEL&#160;&#160;&#160;<a class="el" href="esp__log_8h.html#a28900c8f111c325f656d19c30b1d62adabf5442d9cb533e5a21b1942be4bd69ca">ESP_LOG_INFO</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a36036ce75e7556ed9bfb85a880a45353" name="a36036ce75e7556ed9bfb85a880a45353"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36036ce75e7556ed9bfb85a880a45353">&#9670;&#160;</a></span>VSF_ESPIDF_CFG_LOG_LINE_BUF_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_ESPIDF_CFG_LOG_LINE_BUF_SIZE&#160;&#160;&#160;256</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a7fad1451d9dd6f1d1ed1497b9fe04007" name="a7fad1451d9dd6f1d1ed1497b9fe04007"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fad1451d9dd6f1d1ed1497b9fe04007">&#9670;&#160;</a></span>esp_log_level_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void esp_log_level_set </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__log_8h.html#a28900c8f111c325f656d19c30b1d62ad">esp_log_level_t</a>&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a25048effa39c928eae02c50cc9151205" name="a25048effa39c928eae02c50cc9151205"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25048effa39c928eae02c50cc9151205">&#9670;&#160;</a></span>esp_log_level_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__log_8h.html#a28900c8f111c325f656d19c30b1d62ad">esp_log_level_t</a> esp_log_level_get </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>tag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a087fd1c2e310257cf86ec827c8691000" name="a087fd1c2e310257cf86ec827c8691000"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a087fd1c2e310257cf86ec827c8691000">&#9670;&#160;</a></span>esp_log_set_vprintf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__log_8h.html#a6d96e60b13bda9ffe1c27d850be4ae54">vprintf_like_t</a> esp_log_set_vprintf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__log_8h.html#a6d96e60b13bda9ffe1c27d850be4ae54">vprintf_like_t</a>&#160;</td>
+          <td class="paramname"><em>func</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a806e516960a25bc218b55ee70387776e" name="a806e516960a25bc218b55ee70387776e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a806e516960a25bc218b55ee70387776e">&#9670;&#160;</a></span>esp_log_timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> esp_log_timestamp </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a21711e7e18ee31a65ab135f70a9fbfb1" name="a21711e7e18ee31a65ab135f70a9fbfb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21711e7e18ee31a65ab135f70a9fbfb1">&#9670;&#160;</a></span>esp_log_system_timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * esp_log_system_timestamp </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab64cdc17c3894e1d703a6fdebff13147" name="ab64cdc17c3894e1d703a6fdebff13147"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab64cdc17c3894e1d703a6fdebff13147">&#9670;&#160;</a></span>esp_log_writev()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void esp_log_writev </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__log_8h.html#a28900c8f111c325f656d19c30b1d62ad">esp_log_level_t</a>&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee0ff0441723f0b5cde34529c0aa603f" name="aee0ff0441723f0b5cde34529c0aa603f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee0ff0441723f0b5cde34529c0aa603f">&#9670;&#160;</a></span>esp_log_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void esp_log_write </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__log_8h.html#a28900c8f111c325f656d19c30b1d62ad">esp_log_level_t</a>&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/bf470617881ba7a1806f5439a0acf7c2922a0105" target="_blank">vsfteam/vsf@bf47061</a>
+  生成
+</div>

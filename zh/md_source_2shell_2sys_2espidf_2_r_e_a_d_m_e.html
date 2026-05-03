@@ -67,19 +67,19 @@ Backend mapping (implementation guide)</h1>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">ESP-IDF API   </th><th class="markdownTableHeadNone">VSF backend    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>esp_log.h</code> (ESP_LOGx)   </td><td class="markdownTableBodyNone"><code>service/trace</code> + <code>vsf_trace</code>    </td></tr>
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__log_8h.html">esp_log.h</a></code> (ESP_LOGx)   </td><td class="markdownTableBodyNone"><code>service/trace</code> + <code>vsf_trace</code>    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__err_8h.html">esp_err.h</a></code> / <code>esp_check.h</code>   </td><td class="markdownTableBodyNone">header-only    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>esp_event.h</code>   </td><td class="markdownTableBodyNone"><code>kernel/vsf_eda</code>    </td></tr>
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__event_8h.html">esp_event.h</a></code>   </td><td class="markdownTableBodyNone"><code>kernel/vsf_eda</code>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>esp_timer.h</code>   </td><td class="markdownTableBodyNone"><code>kernel/vsf_timq</code> + <code>vsf_callback_timer</code>    </td></tr>
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__timer_8h.html">esp_timer.h</a></code>   </td><td class="markdownTableBodyNone"><code>kernel/vsf_timq</code> + <code>vsf_callback_timer</code>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>esp_system.h</code> (restart/reset_reason/random)   </td><td class="markdownTableBodyNone">VSF reset + entropy    </td></tr>
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__system_8h.html">esp_system.h</a></code> (restart/reset_reason/random)   </td><td class="markdownTableBodyNone">VSF reset + entropy    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">xRingbuffer (<code>esp_ringbuf.h</code>)   </td><td class="markdownTableBodyNone"><code>service/fifo</code>, <code>service/pbuf</code>, <code>service/simple_stream</code>    </td></tr>
+<td class="markdownTableBodyNone">xRingbuffer (<code><a class="el" href="esp__ringbuf_8h.html">esp_ringbuf.h</a></code>)   </td><td class="markdownTableBodyNone"><code>service/fifo</code>, <code>service/pbuf</code>, <code>service/simple_stream</code>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>esp_heap_caps.h</code>   </td><td class="markdownTableBodyNone"><code>service/heap</code> + <code>service/pool</code> (caps collapsed)    </td></tr>
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__heap__caps_8h.html">esp_heap_caps.h</a></code>   </td><td class="markdownTableBodyNone"><code>service/heap</code> + <code>service/pool</code> (caps collapsed)    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>esp_partition.h</code>   </td><td class="markdownTableBodyNone"><code>component/mal</code> (<code>vsf_mal</code>)    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -109,7 +109,7 @@ Enablement</h1>
 <p>Master switch <code>VSF_USE_ESPIDF</code> plus per-component <code>VSF_ESPIDF_CFG_USE_*</code> switches in <code><a class="el" href="vsf__espidf__cfg_8h.html">vsf_espidf_cfg.h</a></code>. All disabled by default; opt in per module as it becomes implemented.</p>
 <h1><a class="anchor" id="autotoc_md45"></a>
 Roadmap</h1>
-<p>Stage 1 (pure-software core, no HW dependency): <code>esp_err</code> → <code>esp_log</code> → <code>esp_event</code> → <code>esp_timer</code> → <code>esp_system</code> → <code>esp_ringbuf</code> → <code>esp_heap_caps</code>.</p>
+<p>Stage 1 (pure-software core, no HW dependency): <code>esp_err</code> → <code>esp_log</code> → <code>esp_event</code> → <code><a class="el" href="structesp__timer.html">esp_timer</a></code> → <code>esp_system</code> → <code>esp_ringbuf</code> → <code>esp_heap_caps</code>.</p>
 <p>Stage 2 (storage &amp; fs): <code>esp_partition</code> → <code>nvs_flash</code> → <code>esp_vfs</code>.</p>
 <p>Stage 3 (network): <code>esp_netif</code> → <code>esp_http_client</code> / <code>esp_http_server</code> → (optional) MQTT via upstream Paho.</p>
 <p>Stage 4 (peripheral drivers): <code>driver/gpio</code> → <code>driver/uart</code> → <code>driver/i2c</code> → <code>driver/spi_master</code> → <code>driver/ledc</code> → <code>driver/gptimer</code> → <code>driver/adc</code>.</p>
@@ -121,6 +121,6 @@ Validation</h1>
 </div><!-- PageDoc -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/42d5f301652f2bc8bb8777fd0fdabcfa4f145996" target="_blank">vsfteam/vsf@42d5f30</a>
+  <a href="https://github.com/vsfteam/vsf/commit/bf470617881ba7a1806f5439a0acf7c2922a0105" target="_blank">vsfteam/vsf@bf47061</a>
   生成
 </div>

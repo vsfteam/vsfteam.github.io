@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/freertos/port/freertos_queue_port.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_499d593e95596adda73bf8f1cc6c0b36.html">freertos</a></li><li class="navelem"><a class="el" href="dir_50ab9fc6422c4f25ec4bdb0227881cee.html">port</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">freertos_queue_port.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__freertos__cfg_8h_source.html">../vsf_freertos_cfg.h</a>&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;FreeRTOS.h&quot;</code><br />
+<code>#include &quot;queue.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__heap_8h_source.html">service/heap/vsf_heap.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__kernel_8h_source.html">kernel/vsf_kernel.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:aa8bb9b75f145cde48a782a8aa6ee16c7" id="r_aa8bb9b75f145cde48a782a8aa6ee16c7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="freertos__queue__port_8c.html#aa8bb9b75f145cde48a782a8aa6ee16c7">__VSF_FREERTOS_QUEUE_CLASS_IMPLEMENT</a></td></tr>
+<tr class="separator:aa8bb9b75f145cde48a782a8aa6ee16c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a19859c00ba03a55f08fdb1858c865310" id="r_a19859c00ba03a55f08fdb1858c865310"><td class="memItemLeft" align="right" valign="top"><a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="freertos__queue__port_8c.html#a19859c00ba03a55f08fdb1858c865310">xQueueCreate</a> (<a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> uxQueueLength, <a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> uxItemSize)</td></tr>
+<tr class="separator:a19859c00ba03a55f08fdb1858c865310"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20df6a36158ec377c0127975aa5d5e78" id="r_a20df6a36158ec377c0127975aa5d5e78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="freertos__queue__port_8c.html#a20df6a36158ec377c0127975aa5d5e78">xQueueCreateStatic</a> (<a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> uxQueueLength, <a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> uxItemSize, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pucQueueStorage, <a class="el" href="class_static_queue__t.html">StaticQueue_t</a> *pxQueueBuffer)</td></tr>
+<tr class="separator:a20df6a36158ec377c0127975aa5d5e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35c0b4f9a0e940cb3a86ca4c5e84c41c" id="r_a35c0b4f9a0e940cb3a86ca4c5e84c41c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="freertos__queue__port_8c.html#a35c0b4f9a0e940cb3a86ca4c5e84c41c">vQueueDelete</a> (<a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a> xQueue)</td></tr>
+<tr class="separator:a35c0b4f9a0e940cb3a86ca4c5e84c41c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa09562efffa31bcae937e6efe2c401e4" id="r_aa09562efffa31bcae937e6efe2c401e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="freertos__queue__port_8c.html#aa09562efffa31bcae937e6efe2c401e4">xQueueSend</a> (<a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a> xQueue, const void *pvItemToQueue, <a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a> xTicksToWait)</td></tr>
+<tr class="separator:aa09562efffa31bcae937e6efe2c401e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a611d4a742a626d7063a798bbbb494da5" id="r_a611d4a742a626d7063a798bbbb494da5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="freertos__queue__port_8c.html#a611d4a742a626d7063a798bbbb494da5">xQueueSendFromISR</a> (<a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a> xQueue, const void *pvItemToQueue, <a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *pxHigherPriorityTaskWoken)</td></tr>
+<tr class="separator:a611d4a742a626d7063a798bbbb494da5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af84212fe957b65bdb7b4bdcbb95122bd" id="r_af84212fe957b65bdb7b4bdcbb95122bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="freertos__queue__port_8c.html#af84212fe957b65bdb7b4bdcbb95122bd">xQueueReceive</a> (<a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a> xQueue, void *pvBuffer, <a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a> xTicksToWait)</td></tr>
+<tr class="separator:af84212fe957b65bdb7b4bdcbb95122bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4111d049d704e6dafc1140a3a24b8a9f" id="r_a4111d049d704e6dafc1140a3a24b8a9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="freertos__queue__port_8c.html#a4111d049d704e6dafc1140a3a24b8a9f">xQueueReceiveFromISR</a> (<a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a> xQueue, void *pvBuffer, <a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *pxHigherPriorityTaskWoken)</td></tr>
+<tr class="separator:a4111d049d704e6dafc1140a3a24b8a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ddc41261c1afa501a97ba79f65aeb8d" id="r_a9ddc41261c1afa501a97ba79f65aeb8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="freertos__queue__port_8c.html#a9ddc41261c1afa501a97ba79f65aeb8d">uxQueueMessagesWaiting</a> (<a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a> xQueue)</td></tr>
+<tr class="separator:a9ddc41261c1afa501a97ba79f65aeb8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5941ed1fc53b75ab2ba75acbf41bbae7" id="r_a5941ed1fc53b75ab2ba75acbf41bbae7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="freertos__queue__port_8c.html#a5941ed1fc53b75ab2ba75acbf41bbae7">uxQueueSpacesAvailable</a> (<a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a> xQueue)</td></tr>
+<tr class="separator:a5941ed1fc53b75ab2ba75acbf41bbae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8a9aa700548b1e693f5fb1da239eadf" id="r_aa8a9aa700548b1e693f5fb1da239eadf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="freertos__queue__port_8c.html#aa8a9aa700548b1e693f5fb1da239eadf">xQueueReset</a> (<a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a> xQueue)</td></tr>
+<tr class="separator:aa8a9aa700548b1e693f5fb1da239eadf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="aa8bb9b75f145cde48a782a8aa6ee16c7" name="aa8bb9b75f145cde48a782a8aa6ee16c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8bb9b75f145cde48a782a8aa6ee16c7">&#9670;&#160;</a></span>__VSF_FREERTOS_QUEUE_CLASS_IMPLEMENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_FREERTOS_QUEUE_CLASS_IMPLEMENT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a19859c00ba03a55f08fdb1858c865310" name="a19859c00ba03a55f08fdb1858c865310"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19859c00ba03a55f08fdb1858c865310">&#9670;&#160;</a></span>xQueueCreate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a> xQueueCreate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a>&#160;</td>
+          <td class="paramname"><em>uxQueueLength</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a>&#160;</td>
+          <td class="paramname"><em>uxItemSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a20df6a36158ec377c0127975aa5d5e78" name="a20df6a36158ec377c0127975aa5d5e78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20df6a36158ec377c0127975aa5d5e78">&#9670;&#160;</a></span>xQueueCreateStatic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a> xQueueCreateStatic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a>&#160;</td>
+          <td class="paramname"><em>uxQueueLength</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a>&#160;</td>
+          <td class="paramname"><em>uxItemSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *&#160;</td>
+          <td class="paramname"><em>pucQueueStorage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_static_queue__t.html">StaticQueue_t</a> *&#160;</td>
+          <td class="paramname"><em>pxQueueBuffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35c0b4f9a0e940cb3a86ca4c5e84c41c" name="a35c0b4f9a0e940cb3a86ca4c5e84c41c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35c0b4f9a0e940cb3a86ca4c5e84c41c">&#9670;&#160;</a></span>vQueueDelete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vQueueDelete </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a>&#160;</td>
+          <td class="paramname"><em>xQueue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa09562efffa31bcae937e6efe2c401e4" name="aa09562efffa31bcae937e6efe2c401e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa09562efffa31bcae937e6efe2c401e4">&#9670;&#160;</a></span>xQueueSend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> xQueueSend </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a>&#160;</td>
+          <td class="paramname"><em>xQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>pvItemToQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a>&#160;</td>
+          <td class="paramname"><em>xTicksToWait</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a611d4a742a626d7063a798bbbb494da5" name="a611d4a742a626d7063a798bbbb494da5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a611d4a742a626d7063a798bbbb494da5">&#9670;&#160;</a></span>xQueueSendFromISR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> xQueueSendFromISR </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a>&#160;</td>
+          <td class="paramname"><em>xQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>pvItemToQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *&#160;</td>
+          <td class="paramname"><em>pxHigherPriorityTaskWoken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af84212fe957b65bdb7b4bdcbb95122bd" name="af84212fe957b65bdb7b4bdcbb95122bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af84212fe957b65bdb7b4bdcbb95122bd">&#9670;&#160;</a></span>xQueueReceive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> xQueueReceive </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a>&#160;</td>
+          <td class="paramname"><em>xQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pvBuffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a>&#160;</td>
+          <td class="paramname"><em>xTicksToWait</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4111d049d704e6dafc1140a3a24b8a9f" name="a4111d049d704e6dafc1140a3a24b8a9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4111d049d704e6dafc1140a3a24b8a9f">&#9670;&#160;</a></span>xQueueReceiveFromISR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> xQueueReceiveFromISR </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a>&#160;</td>
+          <td class="paramname"><em>xQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pvBuffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *&#160;</td>
+          <td class="paramname"><em>pxHigherPriorityTaskWoken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9ddc41261c1afa501a97ba79f65aeb8d" name="a9ddc41261c1afa501a97ba79f65aeb8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ddc41261c1afa501a97ba79f65aeb8d">&#9670;&#160;</a></span>uxQueueMessagesWaiting()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> uxQueueMessagesWaiting </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a>&#160;</td>
+          <td class="paramname"><em>xQueue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5941ed1fc53b75ab2ba75acbf41bbae7" name="a5941ed1fc53b75ab2ba75acbf41bbae7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5941ed1fc53b75ab2ba75acbf41bbae7">&#9670;&#160;</a></span>uxQueueSpacesAvailable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> uxQueueSpacesAvailable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a>&#160;</td>
+          <td class="paramname"><em>xQueue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa8a9aa700548b1e693f5fb1da239eadf" name="aa8a9aa700548b1e693f5fb1da239eadf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8a9aa700548b1e693f5fb1da239eadf">&#9670;&#160;</a></span>xQueueReset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> xQueueReset </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="queue_8h.html#a4ce685cf72a0f03cb96ee2bde49dcfb4">QueueHandle_t</a>&#160;</td>
+          <td class="paramname"><em>xQueue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/bf470617881ba7a1806f5439a0acf7c2922a0105" target="_blank">vsfteam/vsf@bf47061</a>
+  生成
+</div>

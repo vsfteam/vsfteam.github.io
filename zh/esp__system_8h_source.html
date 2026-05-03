@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/espidf/include/esp_system.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_67078002197479e597ae23208194ae3e.html">espidf</a></li><li class="navelem"><a class="el" href="dir_368c75ff2ea44ed7d865b13e1d69fdba.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">esp_system.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="esp__system_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2026 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * Clean-room re-implementation of ESP-IDF public API &quot;esp_system.h&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * (including the stripped-down chip info / reset surface exposed via</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * esp_chip_info.h, esp_mac.h and esp_random.h).</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * Authored from ESP-IDF v5.x public API only. No code or data copied from</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * the ESP-IDF source tree.</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#ifndef __VSF_ESPIDF_ESP_SYSTEM_H__</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#define __VSF_ESPIDF_ESP_SYSTEM_H__</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;<a class="code" href="stdint_8h.html">stdint.h</a>&gt;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="esp__err_8h.html">esp_err.h</a>&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10">   41</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a109289a9e33f568651671321bc469afe">   42</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a109289a9e33f568651671321bc469afe">ESP_RST_UNKNOWN</a>     = 0,    </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10ad64b6cd44ca212283add154474128893">   43</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10ad64b6cd44ca212283add154474128893">ESP_RST_POWERON</a>     = 1,    </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10ac6a2042fefb067e2dd366dddcc0c784e">   44</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10ac6a2042fefb067e2dd366dddcc0c784e">ESP_RST_EXT</a>         = 2,    </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a7a3045157f8f107632cd18383387d8f0">   45</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a7a3045157f8f107632cd18383387d8f0">ESP_RST_SW</a>          = 3,    </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10ae7c638ccdd39d5777817fd7f846092f1">   46</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10ae7c638ccdd39d5777817fd7f846092f1">ESP_RST_PANIC</a>       = 4,    </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10af37bcad18da73d0665ff58dd3f12e3eb">   47</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10af37bcad18da73d0665ff58dd3f12e3eb">ESP_RST_INT_WDT</a>     = 5,    </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10aa3ab694abd3f7e5be3f4aaabf30604d3">   48</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10aa3ab694abd3f7e5be3f4aaabf30604d3">ESP_RST_TASK_WDT</a>    = 6,    </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10abe1d6251cbee6a229906f1be6ba239b8">   49</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10abe1d6251cbee6a229906f1be6ba239b8">ESP_RST_WDT</a>         = 7,    </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a6b435b39081797f1f6ac0f7f9db40395">   50</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a6b435b39081797f1f6ac0f7f9db40395">ESP_RST_DEEPSLEEP</a>   = 8,    </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a2c7d03d598a7ce5348ee07c0840f05b8">   51</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a2c7d03d598a7ce5348ee07c0840f05b8">ESP_RST_BROWNOUT</a>    = 9,    </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a821865db35502a2b6bbcc3376bcae7f1">   52</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a821865db35502a2b6bbcc3376bcae7f1">ESP_RST_SDIO</a>        = 10,   </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a88fb2a37dcb43de2001768ad955493db">   53</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a88fb2a37dcb43de2001768ad955493db">ESP_RST_USB</a>         = 11,   </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10aeb483f57ec6a01728b8500afbf66aa8b">   54</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10aeb483f57ec6a01728b8500afbf66aa8b">ESP_RST_JTAG</a>        = 12,   </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a1aad2dbdcda05937be6dd26917d005b8">   55</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a1aad2dbdcda05937be6dd26917d005b8">ESP_RST_EFUSE</a>       = 13,   </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a86babd73d4d4ffec0eeead198d39ae2d">   56</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a86babd73d4d4ffec0eeead198d39ae2d">ESP_RST_PWR_GLITCH</a>  = 14,   </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a8926ba91d267df98857255137818c969">   57</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a8926ba91d267df98857255137818c969">ESP_RST_CPU_LOCKUP</a>  = 15,   </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>} <a class="code hl_enumeration" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10">esp_reset_reason_t</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586">   60</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586ac4b444c1418b829bf0c498a5ea0b6e87">   61</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586ac4b444c1418b829bf0c498a5ea0b6e87">CHIP_ESP32</a>      = 1,</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586aa626a43f27717526078e2d3c362a60dc">   62</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586aa626a43f27717526078e2d3c362a60dc">CHIP_ESP32S2</a>    = 2,</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586a54a8283d971807e2020ff27a8aaee808">   63</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586a54a8283d971807e2020ff27a8aaee808">CHIP_ESP32S3</a>    = 9,</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586a0123c320eca191dd64850427b16779a5">   64</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586a0123c320eca191dd64850427b16779a5">CHIP_ESP32C3</a>    = 5,</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586a1fbe50a134eef0a4c54dcffa96d21335">   65</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586a1fbe50a134eef0a4c54dcffa96d21335">CHIP_ESP32C2</a>    = 12,</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586ae91332ab7e71254e8f054a53f0053679">   66</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586ae91332ab7e71254e8f054a53f0053679">CHIP_ESP32C6</a>    = 13,</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586ab4884f9f7c1d62b743d584482c1f79ff">   67</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586ab4884f9f7c1d62b743d584482c1f79ff">CHIP_ESP32H2</a>    = 16,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">/* VSF host: a synthetic &quot;not a chip&quot; id so downstream code can branch. */</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586a35beafe49cd5f41e832caf8dd68e1bba">   69</a></span>    <a class="code hl_enumvalue" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586a35beafe49cd5f41e832caf8dd68e1bba">CHIP_VSF_HOST</a>   = 0xFF,</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>} <a class="code hl_enumeration" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586">esp_chip_model_t</a>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">/* Bitmask features exposed through esp_chip_info_t::features. */</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a48d99a0933c67f80575abdb66fcbc534">   73</a></span><span class="preprocessor">#define CHIP_FEATURE_EMB_FLASH      (1 &lt;&lt; 0)</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a6210ae10513fd7ef66707d5a8f708985">   74</a></span><span class="preprocessor">#define CHIP_FEATURE_WIFI_BGN       (1 &lt;&lt; 1)</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="esp__system_8h.html#acb0fd901f2ff66b80b85e32c897f0469">   75</a></span><span class="preprocessor">#define CHIP_FEATURE_BLE            (1 &lt;&lt; 4)</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a6f8c8ef8957a594d11c667bee3c6e5fc">   76</a></span><span class="preprocessor">#define CHIP_FEATURE_BT             (1 &lt;&lt; 5)</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a25a948e12ca8eb6b8e18a6a0aeb2bda0">   77</a></span><span class="preprocessor">#define CHIP_FEATURE_IEEE802154     (1 &lt;&lt; 6)</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="esp__system_8h.html#a63536e4665ee728f1696d67cadfaec12">   78</a></span><span class="preprocessor">#define CHIP_FEATURE_EMB_PSRAM      (1 &lt;&lt; 7)</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="structesp__chip__info__t.html">   80</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="structesp__chip__info__t.html#a5ce98cb74724fcfc72133cca0495634b">   81</a></span>    <a class="code hl_enumeration" href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586">esp_chip_model_t</a>    <a class="code hl_variable" href="structesp__chip__info__t.html#a5ce98cb74724fcfc72133cca0495634b">model</a>;          </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="structesp__chip__info__t.html#af5897f7d636d0e3209eafa283c7a97f3">   82</a></span>    <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>            <a class="code hl_variable" href="structesp__chip__info__t.html#af5897f7d636d0e3209eafa283c7a97f3">features</a>;       </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="structesp__chip__info__t.html#a180baac873efbe2c0cb75bb83826faa4">   83</a></span>    <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>            <a class="code hl_variable" href="structesp__chip__info__t.html#a180baac873efbe2c0cb75bb83826faa4">revision</a>;       </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="structesp__chip__info__t.html#a1b1fe23f010d78e0cd979d93d688141d">   84</a></span>    <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>             <a class="code hl_variable" href="structesp__chip__info__t.html#a1b1fe23f010d78e0cd979d93d688141d">cores</a>;          </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>} <a class="code hl_struct" href="structesp__chip__info__t.html">esp_chip_info_t</a>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">/* Reboot via vsf_arch_reset(). Never returns. */</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">#if defined(__GNUC__) || defined(__clang__)</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keywordtype">void</span> <a class="code hl_function" href="esp__system_8h.html#ac3281457992f07eeed58fb0ef6fec4f6">esp_restart</a>(<span class="keywordtype">void</span>) <a class="code hl_function" href="handlers_8c.html#af9aace1b44b73111e15aa39f06f43456">__attribute__</a>((noreturn));</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">#elif defined(_MSC_VER)</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>__declspec(noreturn) <span class="keywordtype">void</span> <a class="code hl_function" href="esp__system_8h.html#ac3281457992f07eeed58fb0ef6fec4f6">esp_restart</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="keywordtype">void</span> <a class="code hl_function" href="esp__system_8h.html#ac3281457992f07eeed58fb0ef6fec4f6">esp_restart</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">/* Last reset reason. The VSF port records ESP_RST_SW when a reboot is</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment"> * initiated via esp_restart(); otherwise returns ESP_RST_POWERON. */</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><a class="code hl_enumeration" href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10">esp_reset_reason_t</a> <a class="code hl_function" href="esp__system_8h.html#ab52bc4d5c8c6e03786e974f9e6f19a70">esp_reset_reason</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">/* Best-effort free heap size reported by vsf_heap_statistics(). Returns 0</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment"> * if statistics are disabled at VSF build time. */</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> <a class="code hl_function" href="esp__system_8h.html#a072add67f3a169b9d618af2bdd06c33c">esp_get_free_heap_size</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">/* On VSF there is no dedicated low-water tracking; returns the same value</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment"> * as esp_get_free_heap_size(). */</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> <a class="code hl_function" href="esp__system_8h.html#a0a5f8fd2e5771de45ef53a27194a87b6">esp_get_minimum_free_heap_size</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">/* LCG-based PRNG. Not cryptographically secure - ESP-IDF public contract</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment"> * also does not promise CS quality here, it merely requires uniformity. */</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> <a class="code hl_function" href="esp__system_8h.html#a93effc946eee727e9c14497c1b9a34da">esp_random</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">/* Fill an arbitrary buffer with pseudo-random bytes. */</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="keywordtype">void</span> <a class="code hl_function" href="esp__system_8h.html#acb32cd5d8a0b914efbc20b1c608bc0f0">esp_fill_random</a>(<span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> len);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment">/* Version string compatible with ESP-IDF semantics: &quot;v&lt;M&gt;.&lt;m&gt;.&lt;p&gt;-vsf&quot;. */</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code hl_function" href="esp__system_8h.html#af831797156e6e8a87a9a07b0a6389180">esp_get_idf_version</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">/* Lightweight clone of esp_chip_info(). The VSF port declares itself as</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment"> * CHIP_VSF_HOST with single core and no wireless features. */</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="keywordtype">void</span> <a class="code hl_function" href="esp__system_8h.html#a30e14111fadb127c0ddffce515728104">esp_chip_info</a>(<a class="code hl_struct" href="structesp__chip__info__t.html">esp_chip_info_t</a> *out_info);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>}</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_ESPIDF_ESP_SYSTEM_H__</span></div>
+<div class="ttc" id="aesp__err_8h_html"><div class="ttname"><a href="esp__err_8h.html">esp_err.h</a></div></div>
+<div class="ttc" id="aesp__system_8h_html_a072add67f3a169b9d618af2bdd06c33c"><div class="ttname"><a href="esp__system_8h.html#a072add67f3a169b9d618af2bdd06c33c">esp_get_free_heap_size</a></div><div class="ttdeci">uint32_t esp_get_free_heap_size(void)</div><div class="ttdef"><b>Definition</b> esp_system_port.c:89</div></div>
+<div class="ttc" id="aesp__system_8h_html_a0a5f8fd2e5771de45ef53a27194a87b6"><div class="ttname"><a href="esp__system_8h.html#a0a5f8fd2e5771de45ef53a27194a87b6">esp_get_minimum_free_heap_size</a></div><div class="ttdeci">uint32_t esp_get_minimum_free_heap_size(void)</div><div class="ttdef"><b>Definition</b> esp_system_port.c:103</div></div>
+<div class="ttc" id="aesp__system_8h_html_a30e14111fadb127c0ddffce515728104"><div class="ttname"><a href="esp__system_8h.html#a30e14111fadb127c0ddffce515728104">esp_chip_info</a></div><div class="ttdeci">void esp_chip_info(esp_chip_info_t *out_info)</div><div class="ttdef"><b>Definition</b> esp_system_port.c:241</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10">esp_reset_reason_t</a></div><div class="ttdeci">esp_reset_reason_t</div><div class="ttdef"><b>Definition</b> esp_system.h:41</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10a109289a9e33f568651671321bc469afe"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a109289a9e33f568651671321bc469afe">ESP_RST_UNKNOWN</a></div><div class="ttdeci">@ ESP_RST_UNKNOWN</div><div class="ttdef"><b>Definition</b> esp_system.h:42</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10a1aad2dbdcda05937be6dd26917d005b8"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a1aad2dbdcda05937be6dd26917d005b8">ESP_RST_EFUSE</a></div><div class="ttdeci">@ ESP_RST_EFUSE</div><div class="ttdef"><b>Definition</b> esp_system.h:55</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10a2c7d03d598a7ce5348ee07c0840f05b8"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a2c7d03d598a7ce5348ee07c0840f05b8">ESP_RST_BROWNOUT</a></div><div class="ttdeci">@ ESP_RST_BROWNOUT</div><div class="ttdef"><b>Definition</b> esp_system.h:51</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10a6b435b39081797f1f6ac0f7f9db40395"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a6b435b39081797f1f6ac0f7f9db40395">ESP_RST_DEEPSLEEP</a></div><div class="ttdeci">@ ESP_RST_DEEPSLEEP</div><div class="ttdef"><b>Definition</b> esp_system.h:50</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10a7a3045157f8f107632cd18383387d8f0"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a7a3045157f8f107632cd18383387d8f0">ESP_RST_SW</a></div><div class="ttdeci">@ ESP_RST_SW</div><div class="ttdef"><b>Definition</b> esp_system.h:45</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10a821865db35502a2b6bbcc3376bcae7f1"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a821865db35502a2b6bbcc3376bcae7f1">ESP_RST_SDIO</a></div><div class="ttdeci">@ ESP_RST_SDIO</div><div class="ttdef"><b>Definition</b> esp_system.h:52</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10a86babd73d4d4ffec0eeead198d39ae2d"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a86babd73d4d4ffec0eeead198d39ae2d">ESP_RST_PWR_GLITCH</a></div><div class="ttdeci">@ ESP_RST_PWR_GLITCH</div><div class="ttdef"><b>Definition</b> esp_system.h:56</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10a88fb2a37dcb43de2001768ad955493db"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a88fb2a37dcb43de2001768ad955493db">ESP_RST_USB</a></div><div class="ttdeci">@ ESP_RST_USB</div><div class="ttdef"><b>Definition</b> esp_system.h:53</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10a8926ba91d267df98857255137818c969"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10a8926ba91d267df98857255137818c969">ESP_RST_CPU_LOCKUP</a></div><div class="ttdeci">@ ESP_RST_CPU_LOCKUP</div><div class="ttdef"><b>Definition</b> esp_system.h:57</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10aa3ab694abd3f7e5be3f4aaabf30604d3"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10aa3ab694abd3f7e5be3f4aaabf30604d3">ESP_RST_TASK_WDT</a></div><div class="ttdeci">@ ESP_RST_TASK_WDT</div><div class="ttdef"><b>Definition</b> esp_system.h:48</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10abe1d6251cbee6a229906f1be6ba239b8"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10abe1d6251cbee6a229906f1be6ba239b8">ESP_RST_WDT</a></div><div class="ttdeci">@ ESP_RST_WDT</div><div class="ttdef"><b>Definition</b> esp_system.h:49</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10ac6a2042fefb067e2dd366dddcc0c784e"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10ac6a2042fefb067e2dd366dddcc0c784e">ESP_RST_EXT</a></div><div class="ttdeci">@ ESP_RST_EXT</div><div class="ttdef"><b>Definition</b> esp_system.h:44</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10ad64b6cd44ca212283add154474128893"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10ad64b6cd44ca212283add154474128893">ESP_RST_POWERON</a></div><div class="ttdeci">@ ESP_RST_POWERON</div><div class="ttdef"><b>Definition</b> esp_system.h:43</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10ae7c638ccdd39d5777817fd7f846092f1"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10ae7c638ccdd39d5777817fd7f846092f1">ESP_RST_PANIC</a></div><div class="ttdeci">@ ESP_RST_PANIC</div><div class="ttdef"><b>Definition</b> esp_system.h:46</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10aeb483f57ec6a01728b8500afbf66aa8b"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10aeb483f57ec6a01728b8500afbf66aa8b">ESP_RST_JTAG</a></div><div class="ttdeci">@ ESP_RST_JTAG</div><div class="ttdef"><b>Definition</b> esp_system.h:54</div></div>
+<div class="ttc" id="aesp__system_8h_html_a8ccd4ec09cf2b94765692f57ead84c10af37bcad18da73d0665ff58dd3f12e3eb"><div class="ttname"><a href="esp__system_8h.html#a8ccd4ec09cf2b94765692f57ead84c10af37bcad18da73d0665ff58dd3f12e3eb">ESP_RST_INT_WDT</a></div><div class="ttdeci">@ ESP_RST_INT_WDT</div><div class="ttdef"><b>Definition</b> esp_system.h:47</div></div>
+<div class="ttc" id="aesp__system_8h_html_a93effc946eee727e9c14497c1b9a34da"><div class="ttname"><a href="esp__system_8h.html#a93effc946eee727e9c14497c1b9a34da">esp_random</a></div><div class="ttdeci">uint32_t esp_random(void)</div><div class="ttdef"><b>Definition</b> esp_system_port.c:166</div></div>
+<div class="ttc" id="aesp__system_8h_html_ab52bc4d5c8c6e03786e974f9e6f19a70"><div class="ttname"><a href="esp__system_8h.html#ab52bc4d5c8c6e03786e974f9e6f19a70">esp_reset_reason</a></div><div class="ttdeci">esp_reset_reason_t esp_reset_reason(void)</div><div class="ttdef"><b>Definition</b> esp_system_port.c:84</div></div>
+<div class="ttc" id="aesp__system_8h_html_ac3281457992f07eeed58fb0ef6fec4f6"><div class="ttname"><a href="esp__system_8h.html#ac3281457992f07eeed58fb0ef6fec4f6">esp_restart</a></div><div class="ttdeci">void esp_restart(void)</div><div class="ttdef"><b>Definition</b> esp_system_port.c:75</div></div>
+<div class="ttc" id="aesp__system_8h_html_aca30211d36cdd2912ec86126d541a586"><div class="ttname"><a href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586">esp_chip_model_t</a></div><div class="ttdeci">esp_chip_model_t</div><div class="ttdef"><b>Definition</b> esp_system.h:60</div></div>
+<div class="ttc" id="aesp__system_8h_html_aca30211d36cdd2912ec86126d541a586a0123c320eca191dd64850427b16779a5"><div class="ttname"><a href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586a0123c320eca191dd64850427b16779a5">CHIP_ESP32C3</a></div><div class="ttdeci">@ CHIP_ESP32C3</div><div class="ttdef"><b>Definition</b> esp_system.h:64</div></div>
+<div class="ttc" id="aesp__system_8h_html_aca30211d36cdd2912ec86126d541a586a1fbe50a134eef0a4c54dcffa96d21335"><div class="ttname"><a href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586a1fbe50a134eef0a4c54dcffa96d21335">CHIP_ESP32C2</a></div><div class="ttdeci">@ CHIP_ESP32C2</div><div class="ttdef"><b>Definition</b> esp_system.h:65</div></div>
+<div class="ttc" id="aesp__system_8h_html_aca30211d36cdd2912ec86126d541a586a35beafe49cd5f41e832caf8dd68e1bba"><div class="ttname"><a href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586a35beafe49cd5f41e832caf8dd68e1bba">CHIP_VSF_HOST</a></div><div class="ttdeci">@ CHIP_VSF_HOST</div><div class="ttdef"><b>Definition</b> esp_system.h:69</div></div>
+<div class="ttc" id="aesp__system_8h_html_aca30211d36cdd2912ec86126d541a586a54a8283d971807e2020ff27a8aaee808"><div class="ttname"><a href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586a54a8283d971807e2020ff27a8aaee808">CHIP_ESP32S3</a></div><div class="ttdeci">@ CHIP_ESP32S3</div><div class="ttdef"><b>Definition</b> esp_system.h:63</div></div>
+<div class="ttc" id="aesp__system_8h_html_aca30211d36cdd2912ec86126d541a586aa626a43f27717526078e2d3c362a60dc"><div class="ttname"><a href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586aa626a43f27717526078e2d3c362a60dc">CHIP_ESP32S2</a></div><div class="ttdeci">@ CHIP_ESP32S2</div><div class="ttdef"><b>Definition</b> esp_system.h:62</div></div>
+<div class="ttc" id="aesp__system_8h_html_aca30211d36cdd2912ec86126d541a586ab4884f9f7c1d62b743d584482c1f79ff"><div class="ttname"><a href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586ab4884f9f7c1d62b743d584482c1f79ff">CHIP_ESP32H2</a></div><div class="ttdeci">@ CHIP_ESP32H2</div><div class="ttdef"><b>Definition</b> esp_system.h:67</div></div>
+<div class="ttc" id="aesp__system_8h_html_aca30211d36cdd2912ec86126d541a586ac4b444c1418b829bf0c498a5ea0b6e87"><div class="ttname"><a href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586ac4b444c1418b829bf0c498a5ea0b6e87">CHIP_ESP32</a></div><div class="ttdeci">@ CHIP_ESP32</div><div class="ttdef"><b>Definition</b> esp_system.h:61</div></div>
+<div class="ttc" id="aesp__system_8h_html_aca30211d36cdd2912ec86126d541a586ae91332ab7e71254e8f054a53f0053679"><div class="ttname"><a href="esp__system_8h.html#aca30211d36cdd2912ec86126d541a586ae91332ab7e71254e8f054a53f0053679">CHIP_ESP32C6</a></div><div class="ttdeci">@ CHIP_ESP32C6</div><div class="ttdef"><b>Definition</b> esp_system.h:66</div></div>
+<div class="ttc" id="aesp__system_8h_html_acb32cd5d8a0b914efbc20b1c608bc0f0"><div class="ttname"><a href="esp__system_8h.html#acb32cd5d8a0b914efbc20b1c608bc0f0">esp_fill_random</a></div><div class="ttdeci">void esp_fill_random(void *buf, size_t len)</div><div class="ttdef"><b>Definition</b> esp_system_port.c:180</div></div>
+<div class="ttc" id="aesp__system_8h_html_af831797156e6e8a87a9a07b0a6389180"><div class="ttname"><a href="esp__system_8h.html#af831797156e6e8a87a9a07b0a6389180">esp_get_idf_version</a></div><div class="ttdeci">const char * esp_get_idf_version(void)</div><div class="ttdef"><b>Definition</b> esp_system_port.c:236</div></div>
+<div class="ttc" id="ahandlers_8c_html_af9aace1b44b73111e15aa39f06f43456"><div class="ttname"><a href="handlers_8c.html#af9aace1b44b73111e15aa39f06f43456">__attribute__</a></div><div class="ttdeci">__attribute__((weak))</div><div class="ttdef"><b>Definition</b> handlers.c:10</div></div>
+<div class="ttc" id="astdint_8h_html"><div class="ttname"><a href="stdint_8h.html">stdint.h</a></div></div>
+<div class="ttc" id="astdint_8h_html_a273cf69d639a59973b6019625df33e30"><div class="ttname"><a href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a></div><div class="ttdeci">unsigned short uint16_t</div><div class="ttdef"><b>Definition</b> stdint.h:7</div></div>
+<div class="ttc" id="astdint_8h_html_a324c5d28c0d82f502a234ab99efac87a"><div class="ttname"><a href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a></div><div class="ttdeci">unsigned uint32_t</div><div class="ttdef"><b>Definition</b> stdint.h:9</div></div>
+<div class="ttc" id="astdint_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition</b> stdint.h:5</div></div>
+<div class="ttc" id="astructesp__chip__info__t_html"><div class="ttname"><a href="structesp__chip__info__t.html">esp_chip_info_t</a></div><div class="ttdef"><b>Definition</b> esp_system.h:80</div></div>
+<div class="ttc" id="astructesp__chip__info__t_html_a180baac873efbe2c0cb75bb83826faa4"><div class="ttname"><a href="structesp__chip__info__t.html#a180baac873efbe2c0cb75bb83826faa4">esp_chip_info_t::revision</a></div><div class="ttdeci">uint16_t revision</div><div class="ttdef"><b>Definition</b> esp_system.h:83</div></div>
+<div class="ttc" id="astructesp__chip__info__t_html_a1b1fe23f010d78e0cd979d93d688141d"><div class="ttname"><a href="structesp__chip__info__t.html#a1b1fe23f010d78e0cd979d93d688141d">esp_chip_info_t::cores</a></div><div class="ttdeci">uint8_t cores</div><div class="ttdef"><b>Definition</b> esp_system.h:84</div></div>
+<div class="ttc" id="astructesp__chip__info__t_html_a5ce98cb74724fcfc72133cca0495634b"><div class="ttname"><a href="structesp__chip__info__t.html#a5ce98cb74724fcfc72133cca0495634b">esp_chip_info_t::model</a></div><div class="ttdeci">esp_chip_model_t model</div><div class="ttdef"><b>Definition</b> esp_system.h:81</div></div>
+<div class="ttc" id="astructesp__chip__info__t_html_af5897f7d636d0e3209eafa283c7a97f3"><div class="ttname"><a href="structesp__chip__info__t.html#af5897f7d636d0e3209eafa283c7a97f3">esp_chip_info_t::features</a></div><div class="ttdeci">uint32_t features</div><div class="ttdef"><b>Definition</b> esp_system.h:82</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/bf470617881ba7a1806f5439a0acf7c2922a0105" target="_blank">vsfteam/vsf@bf47061</a>
+  生成
+</div>

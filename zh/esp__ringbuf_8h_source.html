@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/espidf/include/esp_ringbuf.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_67078002197479e597ae23208194ae3e.html">espidf</a></li><li class="navelem"><a class="el" href="dir_368c75ff2ea44ed7d865b13e1d69fdba.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">esp_ringbuf.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="esp__ringbuf_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2026 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * Clean-room re-implementation of ESP-IDF public API &quot;freertos/ringbuf.h&quot;.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * Authored from the ESP-IDF v5.x public API reference only. No ESP-IDF /</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * FreeRTOS source code or data is copied.</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * This initial drop supports RINGBUF_TYPE_BYTEBUF end-to-end. The split /</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * no-split item-oriented modes are accepted by xRingbufferCreate() but</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> * currently fall back to byte-buffer behavior; their item framing contract</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> * will be honored in a follow-up as tests are added.</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"> * Because VSF&#39;s ESP-IDF port does not include a full FreeRTOS layer, this</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"> * header exposes a minimal subset of the FreeRTOS value types that the</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment"> * ring buffer API signature references. The guards allow code that does</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"> * include real FreeRTOS headers to compile side-by-side.</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#ifndef __VSF_ESPIDF_ESP_RINGBUF_H__</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#define __VSF_ESPIDF_ESP_RINGBUF_H__</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &lt;<a class="code" href="stdint_8h.html">stdint.h</a>&gt;</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#ifndef __VSF_ESPIDF_FREERTOS_TYPES_DEFINED__</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="esp__ringbuf_8h.html#a6c7f1e0d6f24622ba2a20e4d69314cfc">   49</a></span><span class="preprocessor">#define __VSF_ESPIDF_FREERTOS_TYPES_DEFINED__</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">   50</a></span><span class="keyword">typedef</span> <span class="keywordtype">long</span>            <a class="code hl_typedef" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a>;     </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="esp__ringbuf_8h.html#aa69c48c6e902ce54f70886e6573c92a9">   51</a></span><span class="keyword">typedef</span> <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>        <a class="code hl_typedef" href="esp__ringbuf_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a>;     </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#   ifndef pdTRUE</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="esp__ringbuf_8h.html#af268cf937960eb029256bd9c4d949fbe">   53</a></span><span class="preprocessor">#       define pdTRUE       ((BaseType_t)1)</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#   ifndef pdFALSE</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="esp__ringbuf_8h.html#aa56260e937e7e203026707e5ba944273">   56</a></span><span class="preprocessor">#       define pdFALSE      ((BaseType_t)0)</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#   ifndef pdPASS</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="esp__ringbuf_8h.html#a07848d3078849bd32353c69d30a479b3">   59</a></span><span class="preprocessor">#       define pdPASS       pdTRUE</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#   ifndef pdFAIL</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="esp__ringbuf_8h.html#a99e2866c8cf4fe86db87dab62e7d6aa6">   62</a></span><span class="preprocessor">#       define pdFAIL       pdFALSE</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#   ifndef portMAX_DELAY</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="esp__ringbuf_8h.html#a72723ba1e4a85ca14f25c2b9e066613d">   65</a></span><span class="preprocessor">#       define portMAX_DELAY    ((TickType_t)0xFFFFFFFFu)</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_ESPIDF_FREERTOS_TYPES_DEFINED__</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601">   69</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601a4700d6ba21034ff3879696f6dac47b20">   70</a></span>    <a class="code hl_enumvalue" href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601a4700d6ba21034ff3879696f6dac47b20">RINGBUF_TYPE_NOSPLIT</a>    = 0,    </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601a7b750ce25a4aac338048d6fbd21d8aa3">   71</a></span>    <a class="code hl_enumvalue" href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601a7b750ce25a4aac338048d6fbd21d8aa3">RINGBUF_TYPE_ALLOWSPLIT</a> = 1,    </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601aba9f519440156ddcc5c0188baaf04978">   72</a></span>    <a class="code hl_enumvalue" href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601aba9f519440156ddcc5c0188baaf04978">RINGBUF_TYPE_BYTEBUF</a>    = 2,    </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>} <a class="code hl_enumeration" href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601">RingbufferType_t</a>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">struct </span><a class="code hl_struct" href="struct____vsf__espidf__ringbuf.html">__vsf_espidf_ringbuf</a>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">   76</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct____vsf__espidf__ringbuf.html">__vsf_espidf_ringbuf</a> * <a class="code hl_typedef" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">/* Allocate a ring buffer of the requested byte capacity. Returns NULL on</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment"> * allocation failure. The returned handle must be released via</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment"> * vRingbufferDelete(). */</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><a class="code hl_struct" href="struct____vsf__espidf__ringbuf.html">RingbufHandle_t</a> <a class="code hl_function" href="esp__ringbuf_8h.html#ac776171dd5ceb64ec3ddd7d76aab747a">xRingbufferCreate</a>(<span class="keywordtype">size_t</span> buffer_size, <a class="code hl_enumeration" href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601">RingbufferType_t</a> <a class="code hl_variable" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">/* Release a previously created ring buffer. Passing NULL is a no-op. */</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keywordtype">void</span> <a class="code hl_function" href="esp__ringbuf_8h.html#a229bb4a00e4ba7b9bbcd8aa967f388d7">vRingbufferDelete</a>(<a class="code hl_struct" href="struct____vsf__espidf__ringbuf.html">RingbufHandle_t</a> handle);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">/* Enqueue `data_size` bytes. Returns pdTRUE on success, pdFALSE if there</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment"> * is not enough free space. The VSF port&#39;s timeout semantics are poll-only</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment"> * on the host (no task blocking); any non-zero ticks value is treated as</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment"> * a single in-place retry. */</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><a class="code hl_typedef" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> <a class="code hl_function" href="esp__ringbuf_8h.html#a947dfef412a0c5b361ab52b0c9acbcf4">xRingbufferSend</a>(<a class="code hl_struct" href="struct____vsf__espidf__ringbuf.html">RingbufHandle_t</a> handle, <span class="keyword">const</span> <span class="keywordtype">void</span> *<a class="code hl_variable" href="ieee80211_8h.html#a0523b4597a0b055eae49bfe42a58b918">data</a>,</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                            <span class="keywordtype">size_t</span> data_size, <a class="code hl_typedef" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a> ticks_to_wait);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">/* Pull up to `max_size` bytes from the buffer, copying internally so the</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment"> * caller does not need to invoke vRingbufferReturnItem(). Returns NULL if</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment"> * nothing is available. On success sets *item_size to the number of bytes</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment"> * copied. The returned pointer must be released via vPortFree()-compatible</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment"> * means; in this port it is allocated from the VSF heap and must be freed</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment"> * with vRingbufferReturnItem(). */</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="keywordtype">void</span> * <a class="code hl_function" href="esp__ringbuf_8h.html#af3ae109bb1add9a2b3cdb69908f42f3c">xRingbufferReceive</a>(<a class="code hl_struct" href="struct____vsf__espidf__ringbuf.html">RingbufHandle_t</a> handle, <span class="keywordtype">size_t</span> *<a class="code hl_variable" href="vsf__pool_8h.html#ad27d25a00990c74c7bf1cc2bca27b745">item_size</a>,</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                            <a class="code hl_typedef" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a> ticks_to_wait);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">/* Same as xRingbufferReceive() but caps the number of bytes returned. */</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="keywordtype">void</span> * <a class="code hl_function" href="esp__ringbuf_8h.html#a52acb2558811da05fb0211fb984c5ff0">xRingbufferReceiveUpTo</a>(<a class="code hl_struct" href="struct____vsf__espidf__ringbuf.html">RingbufHandle_t</a> handle, <span class="keywordtype">size_t</span> *<a class="code hl_variable" href="vsf__pool_8h.html#ad27d25a00990c74c7bf1cc2bca27b745">item_size</a>,</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                                <a class="code hl_typedef" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a> ticks_to_wait, <span class="keywordtype">size_t</span> wanted_size);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">/* Release a buffer previously returned by xRingbufferReceive(). */</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keywordtype">void</span> <a class="code hl_function" href="esp__ringbuf_8h.html#a10c60afcd21e0fcb1d02ba41ca3c6d53">vRingbufferReturnItem</a>(<a class="code hl_struct" href="struct____vsf__espidf__ringbuf.html">RingbufHandle_t</a> handle, <span class="keywordtype">void</span> *item);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">/* Bytes currently free for writing. */</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="esp__ringbuf_8h.html#af571008dcc20541521fff10afd58e5c5">xRingbufferGetCurFreeSize</a>(<a class="code hl_struct" href="struct____vsf__espidf__ringbuf.html">RingbufHandle_t</a> handle);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">/* Bytes currently queued for reading. */</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="esp__ringbuf_8h.html#ae9569631354c191a6db0c6f9a742ef98">xRingbufferGetCurFilledSize</a>(<a class="code hl_struct" href="struct____vsf__espidf__ringbuf.html">RingbufHandle_t</a> handle);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment">/* Total buffer capacity in bytes as passed to xRingbufferCreate(). */</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="esp__ringbuf_8h.html#a0b63137b217b0b20a86778221686327a">xRingbufferGetMaxItemSize</a>(<a class="code hl_struct" href="struct____vsf__espidf__ringbuf.html">RingbufHandle_t</a> handle);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>}</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_ESPIDF_ESP_RINGBUF_H__</span></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_a0ae59667ee2aa17a43dfd9eaec033e63"><div class="ttname"><a href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a></div><div class="ttdeci">struct __vsf_espidf_ringbuf * RingbufHandle_t</div><div class="ttdef"><b>Definition</b> esp_ringbuf.h:76</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_a0b63137b217b0b20a86778221686327a"><div class="ttname"><a href="esp__ringbuf_8h.html#a0b63137b217b0b20a86778221686327a">xRingbufferGetMaxItemSize</a></div><div class="ttdeci">size_t xRingbufferGetMaxItemSize(RingbufHandle_t handle)</div><div class="ttdef"><b>Definition</b> esp_ringbuf_port.c:240</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_a10c60afcd21e0fcb1d02ba41ca3c6d53"><div class="ttname"><a href="esp__ringbuf_8h.html#a10c60afcd21e0fcb1d02ba41ca3c6d53">vRingbufferReturnItem</a></div><div class="ttdeci">void vRingbufferReturnItem(RingbufHandle_t handle, void *item)</div><div class="ttdef"><b>Definition</b> esp_ringbuf_port.c:199</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_a229bb4a00e4ba7b9bbcd8aa967f388d7"><div class="ttname"><a href="esp__ringbuf_8h.html#a229bb4a00e4ba7b9bbcd8aa967f388d7">vRingbufferDelete</a></div><div class="ttdeci">void vRingbufferDelete(RingbufHandle_t handle)</div><div class="ttdef"><b>Definition</b> esp_ringbuf_port.c:96</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_a46fb21e00ae0729d7515c0fbf2269796"><div class="ttname"><a href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a></div><div class="ttdeci">long BaseType_t</div><div class="ttdef"><b>Definition</b> esp_ringbuf.h:50</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_a52acb2558811da05fb0211fb984c5ff0"><div class="ttname"><a href="esp__ringbuf_8h.html#a52acb2558811da05fb0211fb984c5ff0">xRingbufferReceiveUpTo</a></div><div class="ttdeci">void * xRingbufferReceiveUpTo(RingbufHandle_t handle, size_t *item_size, TickType_t ticks_to_wait, size_t wanted_size)</div><div class="ttdef"><b>Definition</b> esp_ringbuf_port.c:192</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_a947dfef412a0c5b361ab52b0c9acbcf4"><div class="ttname"><a href="esp__ringbuf_8h.html#a947dfef412a0c5b361ab52b0c9acbcf4">xRingbufferSend</a></div><div class="ttdeci">BaseType_t xRingbufferSend(RingbufHandle_t handle, const void *data, size_t data_size, TickType_t ticks_to_wait)</div><div class="ttdef"><b>Definition</b> esp_ringbuf_port.c:107</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_a9b67bb7faec2a6c56a77dad316713601"><div class="ttname"><a href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601">RingbufferType_t</a></div><div class="ttdeci">RingbufferType_t</div><div class="ttdef"><b>Definition</b> esp_ringbuf.h:69</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_a9b67bb7faec2a6c56a77dad316713601a4700d6ba21034ff3879696f6dac47b20"><div class="ttname"><a href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601a4700d6ba21034ff3879696f6dac47b20">RINGBUF_TYPE_NOSPLIT</a></div><div class="ttdeci">@ RINGBUF_TYPE_NOSPLIT</div><div class="ttdef"><b>Definition</b> esp_ringbuf.h:70</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_a9b67bb7faec2a6c56a77dad316713601a7b750ce25a4aac338048d6fbd21d8aa3"><div class="ttname"><a href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601a7b750ce25a4aac338048d6fbd21d8aa3">RINGBUF_TYPE_ALLOWSPLIT</a></div><div class="ttdeci">@ RINGBUF_TYPE_ALLOWSPLIT</div><div class="ttdef"><b>Definition</b> esp_ringbuf.h:71</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_a9b67bb7faec2a6c56a77dad316713601aba9f519440156ddcc5c0188baaf04978"><div class="ttname"><a href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601aba9f519440156ddcc5c0188baaf04978">RINGBUF_TYPE_BYTEBUF</a></div><div class="ttdeci">@ RINGBUF_TYPE_BYTEBUF</div><div class="ttdef"><b>Definition</b> esp_ringbuf.h:72</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_aa69c48c6e902ce54f70886e6573c92a9"><div class="ttname"><a href="esp__ringbuf_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a></div><div class="ttdeci">uint32_t TickType_t</div><div class="ttdef"><b>Definition</b> esp_ringbuf.h:51</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_ac776171dd5ceb64ec3ddd7d76aab747a"><div class="ttname"><a href="esp__ringbuf_8h.html#ac776171dd5ceb64ec3ddd7d76aab747a">xRingbufferCreate</a></div><div class="ttdeci">RingbufHandle_t xRingbufferCreate(size_t buffer_size, RingbufferType_t type)</div><div class="ttdef"><b>Definition</b> esp_ringbuf_port.c:76</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_ae9569631354c191a6db0c6f9a742ef98"><div class="ttname"><a href="esp__ringbuf_8h.html#ae9569631354c191a6db0c6f9a742ef98">xRingbufferGetCurFilledSize</a></div><div class="ttdeci">size_t xRingbufferGetCurFilledSize(RingbufHandle_t handle)</div><div class="ttdef"><b>Definition</b> esp_ringbuf_port.c:229</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_af3ae109bb1add9a2b3cdb69908f42f3c"><div class="ttname"><a href="esp__ringbuf_8h.html#af3ae109bb1add9a2b3cdb69908f42f3c">xRingbufferReceive</a></div><div class="ttdeci">void * xRingbufferReceive(RingbufHandle_t handle, size_t *item_size, TickType_t ticks_to_wait)</div><div class="ttdef"><b>Definition</b> esp_ringbuf_port.c:182</div></div>
+<div class="ttc" id="aesp__ringbuf_8h_html_af571008dcc20541521fff10afd58e5c5"><div class="ttname"><a href="esp__ringbuf_8h.html#af571008dcc20541521fff10afd58e5c5">xRingbufferGetCurFreeSize</a></div><div class="ttdeci">size_t xRingbufferGetCurFreeSize(RingbufHandle_t handle)</div><div class="ttdef"><b>Definition</b> esp_ringbuf_port.c:218</div></div>
+<div class="ttc" id="aieee80211_8h_html_a0523b4597a0b055eae49bfe42a58b918"><div class="ttname"><a href="ieee80211_8h.html#a0523b4597a0b055eae49bfe42a58b918">data</a></div><div class="ttdeci">struct ieee80211_ext_chansw_ie data</div><div class="ttdef"><b>Definition</b> ieee80211.h:80</div></div>
+<div class="ttc" id="artos__al_8h_html_aa69c48c6e902ce54f70886e6573c92a9"><div class="ttname"><a href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a></div><div class="ttdeci">uint32_t TickType_t</div><div class="ttdef"><b>Definition</b> rtos_al.h:59</div></div>
+<div class="ttc" id="astdint_8h_html"><div class="ttname"><a href="stdint_8h.html">stdint.h</a></div></div>
+<div class="ttc" id="astdint_8h_html_a324c5d28c0d82f502a234ab99efac87a"><div class="ttname"><a href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a></div><div class="ttdeci">unsigned uint32_t</div><div class="ttdef"><b>Definition</b> stdint.h:9</div></div>
+<div class="ttc" id="astruct____vsf__espidf__ringbuf_html"><div class="ttname"><a href="struct____vsf__espidf__ringbuf.html">__vsf_espidf_ringbuf</a></div><div class="ttdef"><b>Definition</b> esp_ringbuf_port.c:55</div></div>
+<div class="ttc" id="avsf__audio_8h_html_ad64e18f867699b8e854388de816016af"><div class="ttname"><a href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a></div><div class="ttdeci">vk_av_control_type_t type</div><div class="ttdef"><b>Definition</b> vsf_audio.h:170</div></div>
+<div class="ttc" id="avsf__pool_8h_html_ad27d25a00990c74c7bf1cc2bca27b745"><div class="ttname"><a href="vsf__pool_8h.html#ad27d25a00990c74c7bf1cc2bca27b745">item_size</a></div><div class="ttdeci">uintptr_t uint_fast32_t item_size</div><div class="ttdef"><b>Definition</b> vsf_pool.h:477</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/bf470617881ba7a1806f5439a0acf7c2922a0105" target="_blank">vsfteam/vsf@bf47061</a>
+  生成
+</div>
