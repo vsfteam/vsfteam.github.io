@@ -81,11 +81,11 @@ Backend mapping (implementation guide)</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__heap__caps_8h.html">esp_heap_caps.h</a></code>   </td><td class="markdownTableBodyNone"><code>service/heap</code> + <code>service/pool</code> (caps collapsed)    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>esp_partition.h</code>   </td><td class="markdownTableBodyNone"><code>component/mal</code> (<code>vsf_mal</code>)    </td></tr>
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__partition_8h.html">esp_partition.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/mal</code> (<code>vsf_mal</code>)    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>nvs_flash.h</code> / <code>nvs.h</code>   </td><td class="markdownTableBodyNone">KV layered on partition or littlefs; to be written    </td></tr>
+<td class="markdownTableBodyNone"><code><a class="el" href="nvs__flash_8h.html">nvs_flash.h</a></code> / <code><a class="el" href="nvs_8h.html">nvs.h</a></code>   </td><td class="markdownTableBodyNone">KV layered on partition or littlefs; to be written    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>esp_vfs.h</code> + POSIX I/O   </td><td class="markdownTableBodyNone"><code>component/fs</code> + <code>shell/sys/linux</code> VFS    </td></tr>
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__vfs_8h.html">esp_vfs.h</a></code> + POSIX I/O   </td><td class="markdownTableBodyNone"><code>component/fs</code> + <code>shell/sys/linux</code> VFS    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">FatFs / LittleFS / RomFS   </td><td class="markdownTableBodyNone"><code>component/fs/driver/{fatfs,littlefs,romfs}</code>    </td></tr>
 <tr class="markdownTableRowEven">
@@ -95,15 +95,28 @@ Backend mapping (implementation guide)</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>esp_http_client.h</code> / <code>esp_http_server.h</code>   </td><td class="markdownTableBodyNone"><code>component/tcpip/protocol/http</code>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">cJSON / esp_json   </td><td class="markdownTableBodyNone"><code>service/json</code>    </td></tr>
+<td class="markdownTableBodyNone">cJSON / esp_json   </td><td class="markdownTableBodyNone">not shimmed &ndash; applications include cJSON directly    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">pthread   </td><td class="markdownTableBodyNone"><code>shell/sys/linux</code> pthread    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">FreeRTOS FreeRTOS.h, queue, event_groups   </td><td class="markdownTableBodyNone">VSF FreeRTOS compat layer    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>esp_netif.h</code>   </td><td class="markdownTableBodyNone"><code>component/tcpip/netdrv</code> + lwIP glue   </td></tr>
+<td class="markdownTableBodyNone"><code>esp_netif.h</code>   </td><td class="markdownTableBodyNone"><code>component/tcpip/netdrv</code> + lwIP glue    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>driver/gptimer</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="vsf__template__timer_8h.html">hal/driver/common/template/vsf_template_timer.h</a></code> (pool injected via <code><a class="el" href="structvsf__espidf__cfg__t.html#adfeb1111b634c6c8685f944695420702">vsf_espidf_cfg_t::gptimer</a></code>)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>driver/gpio</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="vsf__template__gpio_8h.html">hal/driver/common/template/vsf_template_gpio.h</a></code> (global <code>vsf_hw_io_mapper</code>, no cfg injection)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>driver/uart</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="vsf__template__usart_8h.html">hal/driver/common/template/vsf_template_usart.h</a></code> (pool injected via <code><a class="el" href="structvsf__espidf__cfg__t.html#ae56a76e698188ba35134327f067896a8">vsf_espidf_cfg_t::uart</a></code>)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>driver/i2c</code> / <code>driver/spi_master</code> / <code>driver/ledc</code> / <code>driver/adc</code>   </td><td class="markdownTableBodyNone"><code>hal/driver/common/template/vsf_template_*</code> (code landed; on-target pending, see Stage 4 table)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>esp_wifi.h</code>   </td><td class="markdownTableBodyNone">external Wi-Fi module semantic shim (stage C)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>esp_bt.h</code>   </td><td class="markdownTableBodyNone">external HCI via VSF BTHCI (stage C)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>mqtt_client.h</code>   </td><td class="markdownTableBodyNone">upstream Paho Embedded C (not ESP-MQTT)   </td></tr>
 </table>
-<p>| <code>driver/gpio|uart|i2c|spi_master|ledc|gptimer|adc</code> | <code>hal/driver/common/template/vsf_template_*</code> | | <code>esp_wifi.h</code> | external Wi-Fi module semantic shim (stage C) | | <code>esp_bt.h</code> | external HCI via VSF BTHCI (stage C) | | <code>mqtt_client.h</code> | upstream Paho Embedded C (not ESP-MQTT) |</p>
 <h1><a class="anchor" id="autotoc_md44"></a>
 Enablement</h1>
 <p>Master switch <code>VSF_USE_ESPIDF</code> plus per-component <code>VSF_ESPIDF_CFG_USE_*</code> switches in <code><a class="el" href="vsf__espidf__cfg_8h.html">vsf_espidf_cfg.h</a></code>. All disabled by default; opt in per module as it becomes implemented.</p>
@@ -112,7 +125,26 @@ Roadmap</h1>
 <p>Stage 1 (pure-software core, no HW dependency): <code>esp_err</code> → <code>esp_log</code> → <code>esp_event</code> → <code><a class="el" href="structesp__timer.html">esp_timer</a></code> → <code>esp_system</code> → <code>esp_ringbuf</code> → <code>esp_heap_caps</code>.</p>
 <p>Stage 2 (storage &amp; fs): <code>esp_partition</code> → <code>nvs_flash</code> → <code>esp_vfs</code>.</p>
 <p>Stage 3 (network): <code>esp_netif</code> → <code>esp_http_client</code> / <code>esp_http_server</code> → (optional) MQTT via upstream Paho.</p>
-<p>Stage 4 (peripheral drivers): <code>driver/gpio</code> → <code>driver/uart</code> → <code>driver/i2c</code> → <code>driver/spi_master</code> → <code>driver/ledc</code> → <code>driver/gptimer</code> → <code>driver/adc</code>.</p>
+<p>Stage 4 (peripheral drivers). Status is tracked on two independent axes: <b>code</b> (shim landed in tree) and <b>on-target</b> (verified on real MCU hardware such as at32f405). Host build under <code>project/vc.espidf/</code> does <b>not</b> satisfy on-target verification.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Driver   </th><th class="markdownTableHeadNone">Code   </th><th class="markdownTableHeadNone">On-target   </th><th class="markdownTableHeadNone">Notes    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>driver/gptimer</code>   </td><td class="markdownTableBodyNone">✅   </td><td class="markdownTableBodyNone">⬜   </td><td class="markdownTableBodyNone">pool-injected via <code><a class="el" href="structvsf__espidf__cfg__t.html#adfeb1111b634c6c8685f944695420702">vsf_espidf_cfg_t::gptimer</a></code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>driver/gpio</code>   </td><td class="markdownTableBodyNone">✅   </td><td class="markdownTableBodyNone">⬜   </td><td class="markdownTableBodyNone">global <code>vsf_hw_io_mapper</code>, no cfg injection    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>driver/uart</code>   </td><td class="markdownTableBodyNone">✅   </td><td class="markdownTableBodyNone">⬜   </td><td class="markdownTableBodyNone">pool-injected; <code>usart_stream</code> ring-buffer backend    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>driver/i2c</code>   </td><td class="markdownTableBodyNone">✅   </td><td class="markdownTableBodyNone">⬜   </td><td class="markdownTableBodyNone">v5.2 new API only; legacy <code>driver/i2c.h</code> deferred    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>driver/spi_master</code>   </td><td class="markdownTableBodyNone">✅   </td><td class="markdownTableBodyNone">⬜   </td><td class="markdownTableBodyNone">pool-injected    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>driver/ledc</code>   </td><td class="markdownTableBodyNone">✅   </td><td class="markdownTableBodyNone">⬜   </td><td class="markdownTableBodyNone">—    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>driver/adc</code>   </td><td class="markdownTableBodyNone">✅   </td><td class="markdownTableBodyNone">⬜   </td><td class="markdownTableBodyNone">oneshot only   </td></tr>
+</table>
+<p>A driver is considered fully <b>done</b> only when both axes are ✅.</p>
 <p>Stage 5 (radio, optional): external Wi-Fi module <code>esp_wifi</code> semantic shim.</p>
 <h1><a class="anchor" id="autotoc_md46"></a>
 Validation</h1>
@@ -121,5 +153,5 @@ Validation</h1>
 </div><!-- PageDoc -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/bf470617881ba7a1806f5439a0acf7c2922a0105" target="_blank">vsfteam/vsf@bf47061</a>
+  <a href="https://github.com/vsfteam/vsf/commit/9cfc618e0694b26bce50396b3411e66608f4acc3" target="_blank">vsfteam/vsf@9cfc618</a>
 </div>

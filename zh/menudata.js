@@ -235,11 +235,13 @@ var menudata={children:[
 {text:"x",url:"globals_type_x.html#index_x"}]},
 {text:"枚举",url:"globals_enum.html",children:[
 {text:"_",url:"globals_enum.html#index__5F"},
+{text:"a",url:"globals_enum_a.html#index_a"},
 {text:"b",url:"globals_enum_b.html#index_b"},
 {text:"c",url:"globals_enum_c.html#index_c"},
 {text:"d",url:"globals_enum_d.html#index_d"},
 {text:"e",url:"globals_enum_e.html#index_e"},
 {text:"f",url:"globals_enum_f.html#index_f"},
+{text:"g",url:"globals_enum_g.html#index_g"},
 {text:"h",url:"globals_enum_h.html#index_h"},
 {text:"i",url:"globals_enum_i.html#index_i"},
 {text:"l",url:"globals_enum_l.html#index_l"},

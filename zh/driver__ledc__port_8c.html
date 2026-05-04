@@ -1,0 +1,749 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/espidf/port/driver_ledc_port.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_67078002197479e597ae23208194ae3e.html">espidf</a></li><li class="navelem"><a class="el" href="dir_d14dc8466d44ad1adba1031dafa98f07.html">port</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">driver_ledc_port.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__espidf__cfg_8h_source.html">../vsf_espidf_cfg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ledc_8h_source.html">driver/ledc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__espidf_8h_source.html">../vsf_espidf.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__kernel_8h_source.html">kernel/vsf_kernel.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hal_2driver_2driver_8h_source.html">hal/driver/driver.h</a>&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____ledc__timer__state__t.html">__ledc_timer_state_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____ledc__channel__state__t.html">__ledc_channel_state_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____ledc__mode__state__t.html">__ledc_mode_state_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:aa858387e3e9837403416b2ec69480619" id="r_aa858387e3e9837403416b2ec69480619"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct____ledc__timer__state__t.html">__ledc_timer_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#aa858387e3e9837403416b2ec69480619">__ledc_timer_state_t</a></td></tr>
+<tr class="separator:aa858387e3e9837403416b2ec69480619"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a779b5138fccc406bacb967f9a72b3bee" id="r_a779b5138fccc406bacb967f9a72b3bee"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct____ledc__channel__state__t.html">__ledc_channel_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#a779b5138fccc406bacb967f9a72b3bee">__ledc_channel_state_t</a></td></tr>
+<tr class="separator:a779b5138fccc406bacb967f9a72b3bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65c34bd07646711c2773fb76cb37b173" id="r_a65c34bd07646711c2773fb76cb37b173"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct____ledc__mode__state__t.html">__ledc_mode_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#a65c34bd07646711c2773fb76cb37b173">__ledc_mode_state_t</a></td></tr>
+<tr class="separator:a65c34bd07646711c2773fb76cb37b173"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a3b666ed0a3559879a2ca9ab5f4a854c8" id="r_a3b666ed0a3559879a2ca9ab5f4a854c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#a3b666ed0a3559879a2ca9ab5f4a854c8">vsf_espidf_ledc_init</a> (const <a class="el" href="structvsf__espidf__ledc__cfg__t.html">vsf_espidf_ledc_cfg_t</a> *cfg)</td></tr>
+<tr class="separator:a3b666ed0a3559879a2ca9ab5f4a854c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac03b21c3f48674c5017d09808a7eaf7b" id="r_ac03b21c3f48674c5017d09808a7eaf7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#ac03b21c3f48674c5017d09808a7eaf7b">ledc_timer_config</a> (const <a class="el" href="structledc__timer__config__t.html">ledc_timer_config_t</a> *timer_conf)</td></tr>
+<tr class="memdesc:ac03b21c3f48674c5017d09808a7eaf7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure an LEDC timer (counter frequency + resolution).  <br /></td></tr>
+<tr class="separator:ac03b21c3f48674c5017d09808a7eaf7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f64acaab8033c9de1dde3f4c111fb6d" id="r_a1f64acaab8033c9de1dde3f4c111fb6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#a1f64acaab8033c9de1dde3f4c111fb6d">ledc_channel_config</a> (const <a class="el" href="structledc__channel__config__t.html">ledc_channel_config_t</a> *ledc_conf)</td></tr>
+<tr class="memdesc:a1f64acaab8033c9de1dde3f4c111fb6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure an LEDC channel (duty + timer binding).  <br /></td></tr>
+<tr class="separator:a1f64acaab8033c9de1dde3f4c111fb6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a4d1fbfae9233199a2d463c58551235" id="r_a1a4d1fbfae9233199a2d463c58551235"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#a1a4d1fbfae9233199a2d463c58551235">ledc_set_duty</a> (<a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a> speed_mode, <a class="el" href="ledc_8h.html#af6237b463971a06592035a2970d556ea">ledc_channel_t</a> channel, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> duty)</td></tr>
+<tr class="memdesc:a1a4d1fbfae9233199a2d463c58551235"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set duty cycle value for a channel.  <br /></td></tr>
+<tr class="separator:a1a4d1fbfae9233199a2d463c58551235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a919a48a0b2456c07be9cac72fc6c8b4a" id="r_a919a48a0b2456c07be9cac72fc6c8b4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#a919a48a0b2456c07be9cac72fc6c8b4a">ledc_update_duty</a> (<a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a> speed_mode, <a class="el" href="ledc_8h.html#af6237b463971a06592035a2970d556ea">ledc_channel_t</a> channel)</td></tr>
+<tr class="memdesc:a919a48a0b2456c07be9cac72fc6c8b4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply the previously cached duty of a channel to hardware.  <br /></td></tr>
+<tr class="separator:a919a48a0b2456c07be9cac72fc6c8b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35eec67317e9705769124947de72c55a" id="r_a35eec67317e9705769124947de72c55a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#a35eec67317e9705769124947de72c55a">ledc_set_duty_with_hpoint</a> (<a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a> speed_mode, <a class="el" href="ledc_8h.html#af6237b463971a06592035a2970d556ea">ledc_channel_t</a> channel, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> duty, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> hpoint)</td></tr>
+<tr class="memdesc:a35eec67317e9705769124947de72c55a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set duty + hpoint and apply in one call (ESP-IDF v5.x helper).  <br /></td></tr>
+<tr class="separator:a35eec67317e9705769124947de72c55a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d4c556bf272b09dd0be1e23612dabb1" id="r_a8d4c556bf272b09dd0be1e23612dabb1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#a8d4c556bf272b09dd0be1e23612dabb1">ledc_get_duty</a> (<a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a> speed_mode, <a class="el" href="ledc_8h.html#af6237b463971a06592035a2970d556ea">ledc_channel_t</a> channel)</td></tr>
+<tr class="memdesc:a8d4c556bf272b09dd0be1e23612dabb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current duty cycle of a channel.  <br /></td></tr>
+<tr class="separator:a8d4c556bf272b09dd0be1e23612dabb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e1a594ff94b73a0490e7f473cd70e15" id="r_a5e1a594ff94b73a0490e7f473cd70e15"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#a5e1a594ff94b73a0490e7f473cd70e15">ledc_get_hpoint</a> (<a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a> speed_mode, <a class="el" href="ledc_8h.html#af6237b463971a06592035a2970d556ea">ledc_channel_t</a> channel)</td></tr>
+<tr class="memdesc:a5e1a594ff94b73a0490e7f473cd70e15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get hpoint of a channel. Always returns 0 on this shim.  <br /></td></tr>
+<tr class="separator:a5e1a594ff94b73a0490e7f473cd70e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bdc64f3f9050c0b2e6f5f4775688185" id="r_a7bdc64f3f9050c0b2e6f5f4775688185"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#a7bdc64f3f9050c0b2e6f5f4775688185">ledc_set_freq</a> (<a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a> speed_mode, <a class="el" href="ledc_8h.html#a6f9e3fd6afdb8694fb154649350d0df1">ledc_timer_t</a> timer_num, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> freq_hz)</td></tr>
+<tr class="memdesc:a7bdc64f3f9050c0b2e6f5f4775688185"><td class="mdescLeft">&#160;</td><td class="mdescRight">Re-program the timer frequency.  <br /></td></tr>
+<tr class="separator:a7bdc64f3f9050c0b2e6f5f4775688185"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f7858d4dc181b403cc53925510c2885" id="r_a6f7858d4dc181b403cc53925510c2885"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#a6f7858d4dc181b403cc53925510c2885">ledc_get_freq</a> (<a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a> speed_mode, <a class="el" href="ledc_8h.html#a6f9e3fd6afdb8694fb154649350d0df1">ledc_timer_t</a> timer_num)</td></tr>
+<tr class="memdesc:a6f7858d4dc181b403cc53925510c2885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the configured frequency of a timer.  <br /></td></tr>
+<tr class="separator:a6f7858d4dc181b403cc53925510c2885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02fb746e2bf7d82f6f898c5c994905bb" id="r_a02fb746e2bf7d82f6f898c5c994905bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#a02fb746e2bf7d82f6f898c5c994905bb">ledc_stop</a> (<a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a> speed_mode, <a class="el" href="ledc_8h.html#af6237b463971a06592035a2970d556ea">ledc_channel_t</a> channel, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> idle_level)</td></tr>
+<tr class="memdesc:a02fb746e2bf7d82f6f898c5c994905bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop a channel's output and hold it at the given idle level.  <br /></td></tr>
+<tr class="separator:a02fb746e2bf7d82f6f898c5c994905bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bf6dd816fb68173dc568093908a99fb" id="r_a0bf6dd816fb68173dc568093908a99fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#a0bf6dd816fb68173dc568093908a99fb">ledc_timer_pause</a> (<a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a> speed_mode, <a class="el" href="ledc_8h.html#a6f9e3fd6afdb8694fb154649350d0df1">ledc_timer_t</a> timer_num)</td></tr>
+<tr class="memdesc:a0bf6dd816fb68173dc568093908a99fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pause a timer. Accepted but reduces to a channel-level stop on this shim.  <br /></td></tr>
+<tr class="separator:a0bf6dd816fb68173dc568093908a99fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae621061884f23ffadfb9942f25cc0905" id="r_ae621061884f23ffadfb9942f25cc0905"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#ae621061884f23ffadfb9942f25cc0905">ledc_timer_resume</a> (<a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a> speed_mode, <a class="el" href="ledc_8h.html#a6f9e3fd6afdb8694fb154649350d0df1">ledc_timer_t</a> timer_num)</td></tr>
+<tr class="memdesc:ae621061884f23ffadfb9942f25cc0905"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resume a timer. Accepted but reduces to an internal re-enable on this shim.  <br /></td></tr>
+<tr class="separator:ae621061884f23ffadfb9942f25cc0905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84cb02479e9c40bddbdcac6ae3ad6903" id="r_a84cb02479e9c40bddbdcac6ae3ad6903"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#a84cb02479e9c40bddbdcac6ae3ad6903">ledc_timer_rst</a> (<a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a> speed_mode, <a class="el" href="ledc_8h.html#a6f9e3fd6afdb8694fb154649350d0df1">ledc_timer_t</a> timer_num)</td></tr>
+<tr class="memdesc:a84cb02479e9c40bddbdcac6ae3ad6903"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset a timer. Accepted but no-op on this shim.  <br /></td></tr>
+<tr class="separator:a84cb02479e9c40bddbdcac6ae3ad6903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07e567e69b9c5c77823f30fa53852e71" id="r_a07e567e69b9c5c77823f30fa53852e71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#a07e567e69b9c5c77823f30fa53852e71">ledc_bind_channel_timer</a> (<a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a> speed_mode, <a class="el" href="ledc_8h.html#af6237b463971a06592035a2970d556ea">ledc_channel_t</a> channel, <a class="el" href="ledc_8h.html#a6f9e3fd6afdb8694fb154649350d0df1">ledc_timer_t</a> timer_sel)</td></tr>
+<tr class="memdesc:a07e567e69b9c5c77823f30fa53852e71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind a channel to a timer.  <br /></td></tr>
+<tr class="separator:a07e567e69b9c5c77823f30fa53852e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae96eee7a81d019cfc0f2c3d74c047004" id="r_ae96eee7a81d019cfc0f2c3d74c047004"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#ae96eee7a81d019cfc0f2c3d74c047004">ledc_fade_func_install</a> (int intr_alloc_flags)</td></tr>
+<tr class="memdesc:ae96eee7a81d019cfc0f2c3d74c047004"><td class="mdescLeft">&#160;</td><td class="mdescRight">Install the fade service. Returns ESP_ERR_NOT_SUPPORTED.  <br /></td></tr>
+<tr class="separator:ae96eee7a81d019cfc0f2c3d74c047004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9f8062a6f0c065d855925021722f1f9" id="r_ae9f8062a6f0c065d855925021722f1f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__ledc__port_8c.html#ae9f8062a6f0c065d855925021722f1f9">ledc_fade_func_uninstall</a> (void)</td></tr>
+<tr class="memdesc:ae9f8062a6f0c065d855925021722f1f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uninstall the fade service. No-op on this shim.  <br /></td></tr>
+<tr class="separator:ae9f8062a6f0c065d855925021722f1f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">类型定义说明</h2>
+<a id="aa858387e3e9837403416b2ec69480619" name="aa858387e3e9837403416b2ec69480619"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa858387e3e9837403416b2ec69480619">&#9670;&#160;</a></span>__ledc_timer_state_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct____ledc__timer__state__t.html">__ledc_timer_state_t</a> <a class="el" href="struct____ledc__timer__state__t.html">__ledc_timer_state_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a779b5138fccc406bacb967f9a72b3bee" name="a779b5138fccc406bacb967f9a72b3bee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a779b5138fccc406bacb967f9a72b3bee">&#9670;&#160;</a></span>__ledc_channel_state_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct____ledc__channel__state__t.html">__ledc_channel_state_t</a> <a class="el" href="struct____ledc__channel__state__t.html">__ledc_channel_state_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a65c34bd07646711c2773fb76cb37b173" name="a65c34bd07646711c2773fb76cb37b173"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65c34bd07646711c2773fb76cb37b173">&#9670;&#160;</a></span>__ledc_mode_state_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct____ledc__mode__state__t.html">__ledc_mode_state_t</a> <a class="el" href="struct____ledc__mode__state__t.html">__ledc_mode_state_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a3b666ed0a3559879a2ca9ab5f4a854c8" name="a3b666ed0a3559879a2ca9ab5f4a854c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b666ed0a3559879a2ca9ab5f4a854c8">&#9670;&#160;</a></span>vsf_espidf_ledc_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_espidf_ledc_init </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structvsf__espidf__ledc__cfg__t.html">vsf_espidf_ledc_cfg_t</a> *&#160;</td>
+          <td class="paramname"><em>cfg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac03b21c3f48674c5017d09808a7eaf7b" name="ac03b21c3f48674c5017d09808a7eaf7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac03b21c3f48674c5017d09808a7eaf7b">&#9670;&#160;</a></span>ledc_timer_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> ledc_timer_config </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structledc__timer__config__t.html">ledc_timer_config_t</a> *&#160;</td>
+          <td class="paramname"><em>timer_conf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configure an LEDC timer (counter frequency + resolution). </p>
+
+</div>
+</div>
+<a id="a1f64acaab8033c9de1dde3f4c111fb6d" name="a1f64acaab8033c9de1dde3f4c111fb6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f64acaab8033c9de1dde3f4c111fb6d">&#9670;&#160;</a></span>ledc_channel_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> ledc_channel_config </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structledc__channel__config__t.html">ledc_channel_config_t</a> *&#160;</td>
+          <td class="paramname"><em>ledc_conf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configure an LEDC channel (duty + timer binding). </p>
+
+</div>
+</div>
+<a id="a1a4d1fbfae9233199a2d463c58551235" name="a1a4d1fbfae9233199a2d463c58551235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a4d1fbfae9233199a2d463c58551235">&#9670;&#160;</a></span>ledc_set_duty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> ledc_set_duty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a>&#160;</td>
+          <td class="paramname"><em>speed_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#af6237b463971a06592035a2970d556ea">ledc_channel_t</a>&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>duty</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set duty cycle value for a channel. </p>
+<dl class="section note"><dt>注解</dt><dd>Call <a class="el" href="ledc_8h.html#a919a48a0b2456c07be9cac72fc6c8b4a" title="Apply the previously cached duty of a channel to hardware.">ledc_update_duty()</a> to apply. </dd></dl>
+
+</div>
+</div>
+<a id="a919a48a0b2456c07be9cac72fc6c8b4a" name="a919a48a0b2456c07be9cac72fc6c8b4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a919a48a0b2456c07be9cac72fc6c8b4a">&#9670;&#160;</a></span>ledc_update_duty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> ledc_update_duty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a>&#160;</td>
+          <td class="paramname"><em>speed_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#af6237b463971a06592035a2970d556ea">ledc_channel_t</a>&#160;</td>
+          <td class="paramname"><em>channel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Apply the previously cached duty of a channel to hardware. </p>
+
+</div>
+</div>
+<a id="a35eec67317e9705769124947de72c55a" name="a35eec67317e9705769124947de72c55a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35eec67317e9705769124947de72c55a">&#9670;&#160;</a></span>ledc_set_duty_with_hpoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> ledc_set_duty_with_hpoint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a>&#160;</td>
+          <td class="paramname"><em>speed_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#af6237b463971a06592035a2970d556ea">ledc_channel_t</a>&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>duty</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>hpoint</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set duty + hpoint and apply in one call (ESP-IDF v5.x helper). </p>
+
+</div>
+</div>
+<a id="a8d4c556bf272b09dd0be1e23612dabb1" name="a8d4c556bf272b09dd0be1e23612dabb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d4c556bf272b09dd0be1e23612dabb1">&#9670;&#160;</a></span>ledc_get_duty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> ledc_get_duty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a>&#160;</td>
+          <td class="paramname"><em>speed_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#af6237b463971a06592035a2970d556ea">ledc_channel_t</a>&#160;</td>
+          <td class="paramname"><em>channel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get current duty cycle of a channel. </p>
+<dl class="section return"><dt>返回</dt><dd>duty value, or -1 on invalid argument. </dd></dl>
+
+</div>
+</div>
+<a id="a5e1a594ff94b73a0490e7f473cd70e15" name="a5e1a594ff94b73a0490e7f473cd70e15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e1a594ff94b73a0490e7f473cd70e15">&#9670;&#160;</a></span>ledc_get_hpoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ledc_get_hpoint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a>&#160;</td>
+          <td class="paramname"><em>speed_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#af6237b463971a06592035a2970d556ea">ledc_channel_t</a>&#160;</td>
+          <td class="paramname"><em>channel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get hpoint of a channel. Always returns 0 on this shim. </p>
+
+</div>
+</div>
+<a id="a7bdc64f3f9050c0b2e6f5f4775688185" name="a7bdc64f3f9050c0b2e6f5f4775688185"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bdc64f3f9050c0b2e6f5f4775688185">&#9670;&#160;</a></span>ledc_set_freq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> ledc_set_freq </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a>&#160;</td>
+          <td class="paramname"><em>speed_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#a6f9e3fd6afdb8694fb154649350d0df1">ledc_timer_t</a>&#160;</td>
+          <td class="paramname"><em>timer_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>freq_hz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Re-program the timer frequency. </p>
+
+</div>
+</div>
+<a id="a6f7858d4dc181b403cc53925510c2885" name="a6f7858d4dc181b403cc53925510c2885"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f7858d4dc181b403cc53925510c2885">&#9670;&#160;</a></span>ledc_get_freq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> ledc_get_freq </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a>&#160;</td>
+          <td class="paramname"><em>speed_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#a6f9e3fd6afdb8694fb154649350d0df1">ledc_timer_t</a>&#160;</td>
+          <td class="paramname"><em>timer_num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the configured frequency of a timer. </p>
+<dl class="section return"><dt>返回</dt><dd>frequency in Hz, or 0 if not configured. </dd></dl>
+
+</div>
+</div>
+<a id="a02fb746e2bf7d82f6f898c5c994905bb" name="a02fb746e2bf7d82f6f898c5c994905bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02fb746e2bf7d82f6f898c5c994905bb">&#9670;&#160;</a></span>ledc_stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> ledc_stop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a>&#160;</td>
+          <td class="paramname"><em>speed_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#af6237b463971a06592035a2970d556ea">ledc_channel_t</a>&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>idle_level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stop a channel's output and hold it at the given idle level. </p>
+
+</div>
+</div>
+<a id="a0bf6dd816fb68173dc568093908a99fb" name="a0bf6dd816fb68173dc568093908a99fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bf6dd816fb68173dc568093908a99fb">&#9670;&#160;</a></span>ledc_timer_pause()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> ledc_timer_pause </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a>&#160;</td>
+          <td class="paramname"><em>speed_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#a6f9e3fd6afdb8694fb154649350d0df1">ledc_timer_t</a>&#160;</td>
+          <td class="paramname"><em>timer_num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pause a timer. Accepted but reduces to a channel-level stop on this shim. </p>
+
+</div>
+</div>
+<a id="ae621061884f23ffadfb9942f25cc0905" name="ae621061884f23ffadfb9942f25cc0905"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae621061884f23ffadfb9942f25cc0905">&#9670;&#160;</a></span>ledc_timer_resume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> ledc_timer_resume </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a>&#160;</td>
+          <td class="paramname"><em>speed_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#a6f9e3fd6afdb8694fb154649350d0df1">ledc_timer_t</a>&#160;</td>
+          <td class="paramname"><em>timer_num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resume a timer. Accepted but reduces to an internal re-enable on this shim. </p>
+
+</div>
+</div>
+<a id="a84cb02479e9c40bddbdcac6ae3ad6903" name="a84cb02479e9c40bddbdcac6ae3ad6903"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84cb02479e9c40bddbdcac6ae3ad6903">&#9670;&#160;</a></span>ledc_timer_rst()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> ledc_timer_rst </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a>&#160;</td>
+          <td class="paramname"><em>speed_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#a6f9e3fd6afdb8694fb154649350d0df1">ledc_timer_t</a>&#160;</td>
+          <td class="paramname"><em>timer_num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reset a timer. Accepted but no-op on this shim. </p>
+
+</div>
+</div>
+<a id="a07e567e69b9c5c77823f30fa53852e71" name="a07e567e69b9c5c77823f30fa53852e71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07e567e69b9c5c77823f30fa53852e71">&#9670;&#160;</a></span>ledc_bind_channel_timer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> ledc_bind_channel_timer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eb">ledc_mode_t</a>&#160;</td>
+          <td class="paramname"><em>speed_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#af6237b463971a06592035a2970d556ea">ledc_channel_t</a>&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ledc_8h.html#a6f9e3fd6afdb8694fb154649350d0df1">ledc_timer_t</a>&#160;</td>
+          <td class="paramname"><em>timer_sel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bind a channel to a timer. </p>
+
+</div>
+</div>
+<a id="ae96eee7a81d019cfc0f2c3d74c047004" name="ae96eee7a81d019cfc0f2c3d74c047004"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae96eee7a81d019cfc0f2c3d74c047004">&#9670;&#160;</a></span>ledc_fade_func_install()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> ledc_fade_func_install </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>intr_alloc_flags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Install the fade service. Returns ESP_ERR_NOT_SUPPORTED. </p>
+
+</div>
+</div>
+<a id="ae9f8062a6f0c065d855925021722f1f9" name="ae9f8062a6f0c065d855925021722f1f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9f8062a6f0c065d855925021722f1f9">&#9670;&#160;</a></span>ledc_fade_func_uninstall()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ledc_fade_func_uninstall </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Uninstall the fade service. No-op on this shim. </p>
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a id="aa69d891b714c986144d7f6e72ad73578" name="aa69d891b714c986144d7f6e72ad73578"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa69d891b714c986144d7f6e72ad73578">&#9670;&#160;</a></span>inited</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> inited</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a91c23b0d7b97904ff1e7d1b7f79a943d" name="a91c23b0d7b97904ff1e7d1b7f79a943d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91c23b0d7b97904ff1e7d1b7f79a943d">&#9670;&#160;</a></span>pool_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> pool_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b064d07d23f4ea80fb745f2fd14e669" name="a8b064d07d23f4ea80fb745f2fd14e669"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b064d07d23f4ea80fb745f2fd14e669">&#9670;&#160;</a></span>pool</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a>* const* pool</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a72ef1f6846e2789debfc2fb466a3c2e4" name="a72ef1f6846e2789debfc2fb466a3c2e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72ef1f6846e2789debfc2fb466a3c2e4">&#9670;&#160;</a></span>modes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct____ledc__mode__state__t.html">__ledc_mode_state_t</a> modes[<a class="el" href="ledc_8h.html#ae616b8a24f8435adc6de4a58137ac2eba191093a6fb2a83230b35791a6e0e27d3">LEDC_SPEED_MODE_MAX</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/9cfc618e0694b26bce50396b3411e66608f4acc3" target="_blank">vsfteam/vsf@9cfc618</a>
+  生成
+</div>

@@ -1,0 +1,720 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/espidf/port/driver_spi_master_port.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_67078002197479e597ae23208194ae3e.html">espidf</a></li><li class="navelem"><a class="el" href="dir_d14dc8466d44ad1adba1031dafa98f07.html">port</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">driver_spi_master_port.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__espidf__cfg_8h_source.html">../vsf_espidf_cfg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spi__master_8h_source.html">driver/spi_master.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__espidf_8h_source.html">../vsf_espidf.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__kernel_8h_source.html">kernel/vsf_kernel.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hal_2driver_2driver_8h_source.html">hal/driver/driver.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__heap_8h_source.html">service/heap/vsf_heap.h</a>&quot;</code><br />
+<code>#include &quot;FreeRTOS.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="semphr_8h_source.html">semphr.h</a>&quot;</code><br />
+<code>#include &quot;task.h&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structspi__device__t.html">spi_device_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structspi__host__state__t.html">spi_host_state_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:afacc9d8588819d8143a0b90c6fb9ac91" id="r_afacc9d8588819d8143a0b90c6fb9ac91"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#afacc9d8588819d8143a0b90c6fb9ac91">__SPI_MAX_DEVS_PER_HOST</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:afacc9d8588819d8143a0b90c6fb9ac91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d27a1883966d8a20152f14beaf9e7e5" id="r_a9d27a1883966d8a20152f14beaf9e7e5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#a9d27a1883966d8a20152f14beaf9e7e5">__SPI_PREFIX_SCRATCH_MAX</a>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:a9d27a1883966d8a20152f14beaf9e7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae41e4d6041be88b9aeb061467db63c8" id="r_aae41e4d6041be88b9aeb061467db63c8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#aae41e4d6041be88b9aeb061467db63c8">__SPI_IRQ_ALL</a>&#160;&#160;&#160;(<a class="el" href="vsf__template__spi_8h.html#a30b25246d30d760bde6b77ba78166ec0a4a8955c48943819de4e36df912aab336">VSF_SPI_IRQ_MASK_CPL</a> | <a class="el" href="vsf__template__spi_8h.html#a30b25246d30d760bde6b77ba78166ec0ad8f516e6b99330adf0f18d45e4e742e3">VSF_SPI_IRQ_MASK_ERR</a>)</td></tr>
+<tr class="separator:aae41e4d6041be88b9aeb061467db63c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74d9e2ed769f4866e33ef1fe5254db02" id="r_a74d9e2ed769f4866e33ef1fe5254db02"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#a74d9e2ed769f4866e33ef1fe5254db02">__SPI_IRQ_ERR</a>&#160;&#160;&#160;(<a class="el" href="vsf__template__spi_8h.html#a30b25246d30d760bde6b77ba78166ec0ad8f516e6b99330adf0f18d45e4e742e3">VSF_SPI_IRQ_MASK_ERR</a>)</td></tr>
+<tr class="separator:a74d9e2ed769f4866e33ef1fe5254db02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:a4b49937bd1825311d4462a2fe2ab91f4" id="r_a4b49937bd1825311d4462a2fe2ab91f4"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structspi__host__state__t.html">spi_host_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#a4b49937bd1825311d4462a2fe2ab91f4">spi_host_state_t</a></td></tr>
+<tr class="separator:a4b49937bd1825311d4462a2fe2ab91f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d1b00db8200772706e16b5eabe39d3e" id="r_a9d1b00db8200772706e16b5eabe39d3e"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structspi__device__t.html">spi_device_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#a9d1b00db8200772706e16b5eabe39d3e">spi_device_t</a></td></tr>
+<tr class="separator:a9d1b00db8200772706e16b5eabe39d3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a4dc2eda43f1e5b5d025bef5700e59a80" id="r_a4dc2eda43f1e5b5d025bef5700e59a80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#a4dc2eda43f1e5b5d025bef5700e59a80">vsf_espidf_spi_init</a> (const <a class="el" href="structvsf__espidf__spi__cfg__t.html">vsf_espidf_spi_cfg_t</a> *cfg)</td></tr>
+<tr class="separator:a4dc2eda43f1e5b5d025bef5700e59a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac96f98e471785f7850dfabdbddef418f" id="r_ac96f98e471785f7850dfabdbddef418f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#ac96f98e471785f7850dfabdbddef418f">spi_bus_initialize</a> (<a class="el" href="spi__master_8h.html#aa196928ee9779318e49d008c00277957">spi_host_device_t</a> host_id, const <a class="el" href="structspi__bus__config__t.html">spi_bus_config_t</a> *bus_config, <a class="el" href="spi__master_8h.html#ae13ba981bbf5c6addf39022371092925">spi_common_dma_t</a> dma_chan)</td></tr>
+<tr class="memdesc:ac96f98e471785f7850dfabdbddef418f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise an SPI bus.  <br /></td></tr>
+<tr class="separator:ac96f98e471785f7850dfabdbddef418f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00aff593aec59b26ba0da3072d9f99a0" id="r_a00aff593aec59b26ba0da3072d9f99a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#a00aff593aec59b26ba0da3072d9f99a0">spi_bus_free</a> (<a class="el" href="spi__master_8h.html#aa196928ee9779318e49d008c00277957">spi_host_device_t</a> host_id)</td></tr>
+<tr class="memdesc:a00aff593aec59b26ba0da3072d9f99a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release an SPI bus.  <br /></td></tr>
+<tr class="separator:a00aff593aec59b26ba0da3072d9f99a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a217b2873b936017d83efc5d056ad1efb" id="r_a217b2873b936017d83efc5d056ad1efb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#a217b2873b936017d83efc5d056ad1efb">spi_bus_add_device</a> (<a class="el" href="spi__master_8h.html#aa196928ee9779318e49d008c00277957">spi_host_device_t</a> host_id, const <a class="el" href="structspi__device__interface__config__t.html">spi_device_interface_config_t</a> *dev_config, <a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a> *handle)</td></tr>
+<tr class="memdesc:a217b2873b936017d83efc5d056ad1efb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attach a device to an initialised bus.  <br /></td></tr>
+<tr class="separator:a217b2873b936017d83efc5d056ad1efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab069df1bd29bed4bb240db25b47b245d" id="r_ab069df1bd29bed4bb240db25b47b245d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#ab069df1bd29bed4bb240db25b47b245d">spi_bus_remove_device</a> (<a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a> handle)</td></tr>
+<tr class="memdesc:ab069df1bd29bed4bb240db25b47b245d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detach a device from its bus.  <br /></td></tr>
+<tr class="separator:ab069df1bd29bed4bb240db25b47b245d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14588d8a89c0b7331d89e154cb865722" id="r_a14588d8a89c0b7331d89e154cb865722"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#a14588d8a89c0b7331d89e154cb865722">spi_device_transmit</a> (<a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a> handle, <a class="el" href="structspi__transaction__t.html">spi_transaction_t</a> *trans_desc)</td></tr>
+<tr class="memdesc:a14588d8a89c0b7331d89e154cb865722"><td class="mdescLeft">&#160;</td><td class="mdescRight">Blocking, interrupt-backed transaction.  <br /></td></tr>
+<tr class="separator:a14588d8a89c0b7331d89e154cb865722"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a426bbc2907eb2da390f25d5889dbc0a5" id="r_a426bbc2907eb2da390f25d5889dbc0a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#a426bbc2907eb2da390f25d5889dbc0a5">spi_device_polling_transmit</a> (<a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a> handle, <a class="el" href="structspi__transaction__t.html">spi_transaction_t</a> *trans_desc)</td></tr>
+<tr class="memdesc:a426bbc2907eb2da390f25d5889dbc0a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Blocking polling transaction (shim: same as spi_device_transmit).  <br /></td></tr>
+<tr class="separator:a426bbc2907eb2da390f25d5889dbc0a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25e771fe917a7c08fb5b26c27e5a5075" id="r_a25e771fe917a7c08fb5b26c27e5a5075"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#a25e771fe917a7c08fb5b26c27e5a5075">spi_device_queue_trans</a> (<a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a> handle, <a class="el" href="structspi__transaction__t.html">spi_transaction_t</a> *trans_desc, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> ticks_to_wait)</td></tr>
+<tr class="memdesc:a25e771fe917a7c08fb5b26c27e5a5075"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queue a transaction for later completion.  <br /></td></tr>
+<tr class="separator:a25e771fe917a7c08fb5b26c27e5a5075"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8afe7d509cf7adfe9a58fb4ef79c7cfa" id="r_a8afe7d509cf7adfe9a58fb4ef79c7cfa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#a8afe7d509cf7adfe9a58fb4ef79c7cfa">spi_device_get_trans_result</a> (<a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a> handle, <a class="el" href="structspi__transaction__t.html">spi_transaction_t</a> **trans_desc, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> ticks_to_wait)</td></tr>
+<tr class="memdesc:a8afe7d509cf7adfe9a58fb4ef79c7cfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a previously queued transaction.  <br /></td></tr>
+<tr class="separator:a8afe7d509cf7adfe9a58fb4ef79c7cfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc5c7652feb2947c7dff83b2e04cdc2f" id="r_abc5c7652feb2947c7dff83b2e04cdc2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#abc5c7652feb2947c7dff83b2e04cdc2f">spi_device_polling_start</a> (<a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a> handle, <a class="el" href="structspi__transaction__t.html">spi_transaction_t</a> *trans_desc, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> ticks_to_wait)</td></tr>
+<tr class="memdesc:abc5c7652feb2947c7dff83b2e04cdc2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a polling transaction without blocking.  <br /></td></tr>
+<tr class="separator:abc5c7652feb2947c7dff83b2e04cdc2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add3cd44a0b23800e6bd2c0b771575949" id="r_add3cd44a0b23800e6bd2c0b771575949"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#add3cd44a0b23800e6bd2c0b771575949">spi_device_polling_end</a> (<a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a> handle, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> ticks_to_wait)</td></tr>
+<tr class="memdesc:add3cd44a0b23800e6bd2c0b771575949"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for a previously started polling transaction.  <br /></td></tr>
+<tr class="separator:add3cd44a0b23800e6bd2c0b771575949"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0688caf18dc37e23b9529607b845533" id="r_ae0688caf18dc37e23b9529607b845533"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#ae0688caf18dc37e23b9529607b845533">spi_device_acquire_bus</a> (<a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a> <a class="el" href="structdevice.html">device</a>, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> <a class="el" href="sys_2wait_8h.html#abf2fbcf6df59fd5234e9eed4db1a1804">wait</a>)</td></tr>
+<tr class="memdesc:ae0688caf18dc37e23b9529607b845533"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acquire the bus for a series of back-to-back transactions.  <br /></td></tr>
+<tr class="separator:ae0688caf18dc37e23b9529607b845533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7921cf4e7e6c347eb3f76d1beda63293" id="r_a7921cf4e7e6c347eb3f76d1beda63293"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#a7921cf4e7e6c347eb3f76d1beda63293">spi_device_release_bus</a> (<a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a> dev)</td></tr>
+<tr class="memdesc:a7921cf4e7e6c347eb3f76d1beda63293"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release a previously acquired bus.  <br /></td></tr>
+<tr class="separator:a7921cf4e7e6c347eb3f76d1beda63293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c4eca523167981b263ab3430dfaa2c3" id="r_a5c4eca523167981b263ab3430dfaa2c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__spi__master__port_8c.html#a5c4eca523167981b263ab3430dfaa2c3">spi_device_get_actual_freq</a> (<a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a> handle, int *freq_khz)</td></tr>
+<tr class="memdesc:a5c4eca523167981b263ab3430dfaa2c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the actual clock frequency used for a device.  <br /></td></tr>
+<tr class="separator:a5c4eca523167981b263ab3430dfaa2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="afacc9d8588819d8143a0b90c6fb9ac91" name="afacc9d8588819d8143a0b90c6fb9ac91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afacc9d8588819d8143a0b90c6fb9ac91">&#9670;&#160;</a></span>__SPI_MAX_DEVS_PER_HOST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __SPI_MAX_DEVS_PER_HOST&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d27a1883966d8a20152f14beaf9e7e5" name="a9d27a1883966d8a20152f14beaf9e7e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d27a1883966d8a20152f14beaf9e7e5">&#9670;&#160;</a></span>__SPI_PREFIX_SCRATCH_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __SPI_PREFIX_SCRATCH_MAX&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aae41e4d6041be88b9aeb061467db63c8" name="aae41e4d6041be88b9aeb061467db63c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae41e4d6041be88b9aeb061467db63c8">&#9670;&#160;</a></span>__SPI_IRQ_ALL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __SPI_IRQ_ALL&#160;&#160;&#160;(<a class="el" href="vsf__template__spi_8h.html#a30b25246d30d760bde6b77ba78166ec0a4a8955c48943819de4e36df912aab336">VSF_SPI_IRQ_MASK_CPL</a> | <a class="el" href="vsf__template__spi_8h.html#a30b25246d30d760bde6b77ba78166ec0ad8f516e6b99330adf0f18d45e4e742e3">VSF_SPI_IRQ_MASK_ERR</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a74d9e2ed769f4866e33ef1fe5254db02" name="a74d9e2ed769f4866e33ef1fe5254db02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74d9e2ed769f4866e33ef1fe5254db02">&#9670;&#160;</a></span>__SPI_IRQ_ERR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __SPI_IRQ_ERR&#160;&#160;&#160;(<a class="el" href="vsf__template__spi_8h.html#a30b25246d30d760bde6b77ba78166ec0ad8f516e6b99330adf0f18d45e4e742e3">VSF_SPI_IRQ_MASK_ERR</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类型定义说明</h2>
+<a id="a4b49937bd1825311d4462a2fe2ab91f4" name="a4b49937bd1825311d4462a2fe2ab91f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b49937bd1825311d4462a2fe2ab91f4">&#9670;&#160;</a></span>spi_host_state_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structspi__host__state__t.html">spi_host_state_t</a> <a class="el" href="structspi__host__state__t.html">spi_host_state_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d1b00db8200772706e16b5eabe39d3e" name="a9d1b00db8200772706e16b5eabe39d3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d1b00db8200772706e16b5eabe39d3e">&#9670;&#160;</a></span>spi_device_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structspi__device__t.html">spi_device_t</a> <a class="el" href="structspi__device__t.html">spi_device_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a4dc2eda43f1e5b5d025bef5700e59a80" name="a4dc2eda43f1e5b5d025bef5700e59a80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dc2eda43f1e5b5d025bef5700e59a80">&#9670;&#160;</a></span>vsf_espidf_spi_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_espidf_spi_init </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structvsf__espidf__spi__cfg__t.html">vsf_espidf_spi_cfg_t</a> *&#160;</td>
+          <td class="paramname"><em>cfg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac96f98e471785f7850dfabdbddef418f" name="ac96f98e471785f7850dfabdbddef418f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac96f98e471785f7850dfabdbddef418f">&#9670;&#160;</a></span>spi_bus_initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> spi_bus_initialize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="spi__master_8h.html#aa196928ee9779318e49d008c00277957">spi_host_device_t</a>&#160;</td>
+          <td class="paramname"><em>host_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structspi__bus__config__t.html">spi_bus_config_t</a> *&#160;</td>
+          <td class="paramname"><em>bus_config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="spi__master_8h.html#ae13ba981bbf5c6addf39022371092925">spi_common_dma_t</a>&#160;</td>
+          <td class="paramname"><em>dma_chan</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise an SPI bus. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">host_id</td><td>SPI host (index into the injected <a class="el" href="structvsf__spi__t.html" title="SPI 实例结构体，用于 SPI Multi Class 支持，在非 Multi Class 模式下不需要">vsf_spi_t</a> pool). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bus_config</td><td>Bus configuration (pin fields ignored). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dma_chan</td><td>DMA channel hint (accepted, ignored).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>ESP_OK / ESP_ERR_INVALID_ARG / ESP_ERR_NOT_FOUND / ESP_ERR_INVALID_STATE (already initialised). </dd></dl>
+
+</div>
+</div>
+<a id="a00aff593aec59b26ba0da3072d9f99a0" name="a00aff593aec59b26ba0da3072d9f99a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00aff593aec59b26ba0da3072d9f99a0">&#9670;&#160;</a></span>spi_bus_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> spi_bus_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="spi__master_8h.html#aa196928ee9779318e49d008c00277957">spi_host_device_t</a>&#160;</td>
+          <td class="paramname"><em>host_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Release an SPI bus. </p>
+<p>All devices attached to the host must be removed first. </p>
+
+</div>
+</div>
+<a id="a217b2873b936017d83efc5d056ad1efb" name="a217b2873b936017d83efc5d056ad1efb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a217b2873b936017d83efc5d056ad1efb">&#9670;&#160;</a></span>spi_bus_add_device()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> spi_bus_add_device </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="spi__master_8h.html#aa196928ee9779318e49d008c00277957">spi_host_device_t</a>&#160;</td>
+          <td class="paramname"><em>host_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structspi__device__interface__config__t.html">spi_device_interface_config_t</a> *&#160;</td>
+          <td class="paramname"><em>dev_config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a> *&#160;</td>
+          <td class="paramname"><em>handle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Attach a device to an initialised bus. </p>
+
+</div>
+</div>
+<a id="ab069df1bd29bed4bb240db25b47b245d" name="ab069df1bd29bed4bb240db25b47b245d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab069df1bd29bed4bb240db25b47b245d">&#9670;&#160;</a></span>spi_bus_remove_device()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> spi_bus_remove_device </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detach a device from its bus. </p>
+
+</div>
+</div>
+<a id="a14588d8a89c0b7331d89e154cb865722" name="a14588d8a89c0b7331d89e154cb865722"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14588d8a89c0b7331d89e154cb865722">&#9670;&#160;</a></span>spi_device_transmit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> spi_device_transmit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structspi__transaction__t.html">spi_transaction_t</a> *&#160;</td>
+          <td class="paramname"><em>trans_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Blocking, interrupt-backed transaction. </p>
+
+</div>
+</div>
+<a id="a426bbc2907eb2da390f25d5889dbc0a5" name="a426bbc2907eb2da390f25d5889dbc0a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a426bbc2907eb2da390f25d5889dbc0a5">&#9670;&#160;</a></span>spi_device_polling_transmit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> spi_device_polling_transmit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structspi__transaction__t.html">spi_transaction_t</a> *&#160;</td>
+          <td class="paramname"><em>trans_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Blocking polling transaction (shim: same as spi_device_transmit). </p>
+
+</div>
+</div>
+<a id="a25e771fe917a7c08fb5b26c27e5a5075" name="a25e771fe917a7c08fb5b26c27e5a5075"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25e771fe917a7c08fb5b26c27e5a5075">&#9670;&#160;</a></span>spi_device_queue_trans()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> spi_device_queue_trans </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structspi__transaction__t.html">spi_transaction_t</a> *&#160;</td>
+          <td class="paramname"><em>trans_desc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>ticks_to_wait</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Queue a transaction for later completion. </p>
+<p>This port executes queued transactions inline (synchronously). The ticks_to_wait parameter bounds the bus-lock wait; once the bus is held the transfer runs to completion and a matching <a class="el" href="spi__master_8h.html#a8afe7d509cf7adfe9a58fb4ef79c7cfa" title="Retrieve a previously queued transaction.">spi_device_get_trans_result()</a> call will return the same pointer immediately. </p>
+
+</div>
+</div>
+<a id="a8afe7d509cf7adfe9a58fb4ef79c7cfa" name="a8afe7d509cf7adfe9a58fb4ef79c7cfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8afe7d509cf7adfe9a58fb4ef79c7cfa">&#9670;&#160;</a></span>spi_device_get_trans_result()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> spi_device_get_trans_result </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structspi__transaction__t.html">spi_transaction_t</a> **&#160;</td>
+          <td class="paramname"><em>trans_desc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>ticks_to_wait</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieve a previously queued transaction. </p>
+
+</div>
+</div>
+<a id="abc5c7652feb2947c7dff83b2e04cdc2f" name="abc5c7652feb2947c7dff83b2e04cdc2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc5c7652feb2947c7dff83b2e04cdc2f">&#9670;&#160;</a></span>spi_device_polling_start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> spi_device_polling_start </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structspi__transaction__t.html">spi_transaction_t</a> *&#160;</td>
+          <td class="paramname"><em>trans_desc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>ticks_to_wait</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start a polling transaction without blocking. </p>
+<p>Must be matched by exactly one <a class="el" href="spi__master_8h.html#add3cd44a0b23800e6bd2c0b771575949" title="Wait for a previously started polling transaction.">spi_device_polling_end()</a> call. </p>
+
+</div>
+</div>
+<a id="add3cd44a0b23800e6bd2c0b771575949" name="add3cd44a0b23800e6bd2c0b771575949"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add3cd44a0b23800e6bd2c0b771575949">&#9670;&#160;</a></span>spi_device_polling_end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> spi_device_polling_end </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>ticks_to_wait</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wait for a previously started polling transaction. </p>
+
+</div>
+</div>
+<a id="ae0688caf18dc37e23b9529607b845533" name="ae0688caf18dc37e23b9529607b845533"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0688caf18dc37e23b9529607b845533">&#9670;&#160;</a></span>spi_device_acquire_bus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> spi_device_acquire_bus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a>&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>wait</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Acquire the bus for a series of back-to-back transactions. </p>
+<p>While the bus is acquired by one device, other devices sharing the same host will block inside <a class="el" href="spi__master_8h.html#a14588d8a89c0b7331d89e154cb865722" title="Blocking, interrupt-backed transaction.">spi_device_transmit()</a> / queue_trans. </p>
+
+</div>
+</div>
+<a id="a7921cf4e7e6c347eb3f76d1beda63293" name="a7921cf4e7e6c347eb3f76d1beda63293"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7921cf4e7e6c347eb3f76d1beda63293">&#9670;&#160;</a></span>spi_device_release_bus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void spi_device_release_bus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a>&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Release a previously acquired bus. </p>
+
+</div>
+</div>
+<a id="a5c4eca523167981b263ab3430dfaa2c3" name="a5c4eca523167981b263ab3430dfaa2c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c4eca523167981b263ab3430dfaa2c3">&#9670;&#160;</a></span>spi_device_get_actual_freq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> spi_device_get_actual_freq </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="spi__master_8h.html#a7ce8be646715ad8b62840bde8f319659">spi_device_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>freq_khz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the actual clock frequency used for a device. </p>
+<p>This port returns dev-&gt;clock_speed_hz rounded through the HAL's granularity (typically the configured value). </p>
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a id="a2d0c1809252a4842c0ad0cb9798ab138" name="a2d0c1809252a4842c0ad0cb9798ab138"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d0c1809252a4842c0ad0cb9798ab138">&#9670;&#160;</a></span>is_inited</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> is_inited</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8254dfb61cc0f6efe78c1513e5a95077" name="a8254dfb61cc0f6efe78c1513e5a95077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8254dfb61cc0f6efe78c1513e5a95077">&#9670;&#160;</a></span>pool</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvsf__spi__t.html">vsf_spi_t</a>* const* pool</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a91c23b0d7b97904ff1e7d1b7f79a943d" name="a91c23b0d7b97904ff1e7d1b7f79a943d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91c23b0d7b97904ff1e7d1b7f79a943d">&#9670;&#160;</a></span>pool_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> pool_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b8110642b115d29ee025da0626084ef" name="a5b8110642b115d29ee025da0626084ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b8110642b115d29ee025da0626084ef">&#9670;&#160;</a></span>hosts</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structspi__host__state__t.html">spi_host_state_t</a>* hosts</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/9cfc618e0694b26bce50396b3411e66608f4acc3" target="_blank">vsfteam/vsf@9cfc618</a>
+  生成
+</div>

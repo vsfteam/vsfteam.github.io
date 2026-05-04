@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/espidf/include/driver/adc_oneshot.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_67078002197479e597ae23208194ae3e.html">espidf</a></li><li class="navelem"><a class="el" href="dir_368c75ff2ea44ed7d865b13e1d69fdba.html">include</a></li><li class="navelem"><a class="el" href="dir_61025676df5e30949ca290c9efd365ed.html">driver</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">adc_oneshot.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="adc__oneshot_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2026 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * Clean-room re-implementation of ESP-IDF &quot;esp_adc/adc_oneshot.h&quot; (v5.1).</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * Authored from the ESP-IDF v5.1 public API only. No code copied from</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * the ESP-IDF source tree. The VSF port bridges onto</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> *     hal/driver/common/template/vsf_template_adc.h</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> * via a caller-supplied pool of vsf_adc_t * instances (see</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> *     vsf_espidf_cfg_t::adc</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"> * ). Pool index equals adc_unit_t (0 -&gt; ADC_UNIT_1, 1 -&gt; ADC_UNIT_2).</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"> * Implemented subset:</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment"> *   - adc_oneshot_new_unit / adc_oneshot_del_unit</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"> *   - adc_oneshot_config_channel (cached; applied on each read)</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"> *   - adc_oneshot_read (synchronous blocking)</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"> * Continuous (DMA) mode is not implemented; callers requiring that path</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"> * will receive ESP_ERR_NOT_SUPPORTED from the companion adc_continuous.h.</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#ifndef __VSF_ESPIDF_DRIVER_ADC_ONESHOT_H__</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#define __VSF_ESPIDF_DRIVER_ADC_ONESHOT_H__</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;<a class="code" href="stdint_8h.html">stdint.h</a>&gt;</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#include &quot;<a class="code" href="esp__err_8h.html">esp_err.h</a>&quot;</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#include &quot;<a class="code" href="adc__types_8h.html">driver/adc_types.h</a>&quot;</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="adc__oneshot_8h.html#aae7a84c8e3d18ce84175d9c0a2f88d6e">   54</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structadc__oneshot__unit__ctx__t.html">adc_oneshot_unit_ctx_t</a> *<a class="code hl_typedef" href="adc__oneshot_8h.html#aae7a84c8e3d18ce84175d9c0a2f88d6e">adc_oneshot_unit_handle_t</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="structadc__oneshot__unit__init__cfg__t.html">   57</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="structadc__oneshot__unit__init__cfg__t.html#a786aba212f977360c7cc07f16e908599">   58</a></span>    <a class="code hl_enumeration" href="adc__types_8h.html#ad8b7b5a18bfe497e5313ac9a47b297e2">adc_unit_t</a>              <a class="code hl_variable" href="structadc__oneshot__unit__init__cfg__t.html#a786aba212f977360c7cc07f16e908599">unit_id</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="structadc__oneshot__unit__init__cfg__t.html#a76b95d3bea7f34aeb6a6756188deb0fe">   59</a></span>    <a class="code hl_enumeration" href="adc__types_8h.html#a2d45f66acd8c9417a11f244e72845af2">adc_oneshot_clk_src_t</a>   <a class="code hl_variable" href="structadc__oneshot__unit__init__cfg__t.html#a76b95d3bea7f34aeb6a6756188deb0fe">clk_src</a>;        </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structadc__oneshot__unit__init__cfg__t.html#ab8d3d841b8f83aff003544170f39ae2d">   60</a></span>    <a class="code hl_enumeration" href="adc__types_8h.html#ad50e9a6ef4aa8d4e63003ad1783f4dba">adc_ulp_mode_t</a>          <a class="code hl_variable" href="structadc__oneshot__unit__init__cfg__t.html#ab8d3d841b8f83aff003544170f39ae2d">ulp_mode</a>;       </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>} <a class="code hl_struct" href="structadc__oneshot__unit__init__cfg__t.html">adc_oneshot_unit_init_cfg_t</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="structadc__oneshot__chan__cfg__t.html">   64</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="structadc__oneshot__chan__cfg__t.html#a9f64721ad11f24403da95a50da9cfbaa">   65</a></span>    <a class="code hl_enumeration" href="adc__types_8h.html#a73f655480e1d86d998aba0b37fa5afb7">adc_atten_t</a>      <a class="code hl_variable" href="structadc__oneshot__chan__cfg__t.html#a9f64721ad11f24403da95a50da9cfbaa">atten</a>;                 </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="structadc__oneshot__chan__cfg__t.html#a0063ddae6ba794d591a2a211e6fe4f6e">   66</a></span>    <a class="code hl_enumeration" href="adc__types_8h.html#aec5666997cbd7257e838bea409056387">adc_bitwidth_t</a>   <a class="code hl_variable" href="structadc__oneshot__chan__cfg__t.html#a0063ddae6ba794d591a2a211e6fe4f6e">bitwidth</a>;              </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>} <a class="code hl_struct" href="structadc__oneshot__chan__cfg__t.html">adc_oneshot_chan_cfg_t</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="adc__oneshot_8h.html#a11a66f779579b5d3e0d82e3edcfaac68">adc_oneshot_new_unit</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structadc__oneshot__unit__init__cfg__t.html">adc_oneshot_unit_init_cfg_t</a> *init_config,</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                                      <a class="code hl_struct" href="structadc__oneshot__unit__ctx__t.html">adc_oneshot_unit_handle_t</a> *ret_unit);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="adc__oneshot_8h.html#abf1ad53c5377be979d980f9e411f4e61">adc_oneshot_del_unit</a>(<a class="code hl_struct" href="structadc__oneshot__unit__ctx__t.html">adc_oneshot_unit_handle_t</a> handle);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="adc__oneshot_8h.html#a0e3edf254fdef752b957b89dd4a40e93">adc_oneshot_config_channel</a>(<a class="code hl_struct" href="structadc__oneshot__unit__ctx__t.html">adc_oneshot_unit_handle_t</a> handle,</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                                            <a class="code hl_enumeration" href="adc__types_8h.html#aafc4060027875f8fe46242b0656d7814">adc_channel_t</a> channel,</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                                            <span class="keyword">const</span> <a class="code hl_struct" href="structadc__oneshot__chan__cfg__t.html">adc_oneshot_chan_cfg_t</a> *config);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="adc__oneshot_8h.html#aabfbb05c4b1db1c443d72e79682a509d">adc_oneshot_read</a>(<a class="code hl_struct" href="structadc__oneshot__unit__ctx__t.html">adc_oneshot_unit_handle_t</a> handle,</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                                  <a class="code hl_enumeration" href="adc__types_8h.html#aafc4060027875f8fe46242b0656d7814">adc_channel_t</a> channel,</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                                  <span class="keywordtype">int</span> *out_raw);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>}</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_ESPIDF_DRIVER_ADC_ONESHOT_H__</span></div>
+<div class="ttc" id="aadc__oneshot_8h_html_a0e3edf254fdef752b957b89dd4a40e93"><div class="ttname"><a href="adc__oneshot_8h.html#a0e3edf254fdef752b957b89dd4a40e93">adc_oneshot_config_channel</a></div><div class="ttdeci">esp_err_t adc_oneshot_config_channel(adc_oneshot_unit_handle_t handle, adc_channel_t channel, const adc_oneshot_chan_cfg_t *config)</div><div class="ttdoc">Cache a channel configuration on the handle. The actual vsf_adc channel_request_once call happens in ...</div><div class="ttdef"><b>Definition</b> driver_adc_port.c:235</div></div>
+<div class="ttc" id="aadc__oneshot_8h_html_a11a66f779579b5d3e0d82e3edcfaac68"><div class="ttname"><a href="adc__oneshot_8h.html#a11a66f779579b5d3e0d82e3edcfaac68">adc_oneshot_new_unit</a></div><div class="ttdeci">esp_err_t adc_oneshot_new_unit(const adc_oneshot_unit_init_cfg_t *init_config, adc_oneshot_unit_handle_t *ret_unit)</div><div class="ttdoc">Allocate an ADC oneshot unit handle from the pool entry matching init_config-&gt;unit_id.</div><div class="ttdef"><b>Definition</b> driver_adc_port.c:166</div></div>
+<div class="ttc" id="aadc__oneshot_8h_html_aabfbb05c4b1db1c443d72e79682a509d"><div class="ttname"><a href="adc__oneshot_8h.html#aabfbb05c4b1db1c443d72e79682a509d">adc_oneshot_read</a></div><div class="ttdeci">esp_err_t adc_oneshot_read(adc_oneshot_unit_handle_t handle, adc_channel_t channel, int *out_raw)</div><div class="ttdoc">Perform one blocking conversion on a channel and return the raw result.</div><div class="ttdef"><b>Definition</b> driver_adc_port.c:258</div></div>
+<div class="ttc" id="aadc__oneshot_8h_html_aae7a84c8e3d18ce84175d9c0a2f88d6e"><div class="ttname"><a href="adc__oneshot_8h.html#aae7a84c8e3d18ce84175d9c0a2f88d6e">adc_oneshot_unit_handle_t</a></div><div class="ttdeci">struct adc_oneshot_unit_ctx_t * adc_oneshot_unit_handle_t</div><div class="ttdoc">Opaque handle for an ADC oneshot unit.</div><div class="ttdef"><b>Definition</b> adc_oneshot.h:54</div></div>
+<div class="ttc" id="aadc__oneshot_8h_html_abf1ad53c5377be979d980f9e411f4e61"><div class="ttname"><a href="adc__oneshot_8h.html#abf1ad53c5377be979d980f9e411f4e61">adc_oneshot_del_unit</a></div><div class="ttdeci">esp_err_t adc_oneshot_del_unit(adc_oneshot_unit_handle_t handle)</div><div class="ttdoc">Release an ADC oneshot unit handle allocated by adc_oneshot_new_unit().</div><div class="ttdef"><b>Definition</b> driver_adc_port.c:209</div></div>
+<div class="ttc" id="aadc__types_8h_html"><div class="ttname"><a href="adc__types_8h.html">adc_types.h</a></div></div>
+<div class="ttc" id="aadc__types_8h_html_a2d45f66acd8c9417a11f244e72845af2"><div class="ttname"><a href="adc__types_8h.html#a2d45f66acd8c9417a11f244e72845af2">adc_oneshot_clk_src_t</a></div><div class="ttdeci">adc_oneshot_clk_src_t</div><div class="ttdoc">ADC clock source. Accepted but ignored.</div><div class="ttdef"><b>Definition</b> adc_types.h:75</div></div>
+<div class="ttc" id="aadc__types_8h_html_a73f655480e1d86d998aba0b37fa5afb7"><div class="ttname"><a href="adc__types_8h.html#a73f655480e1d86d998aba0b37fa5afb7">adc_atten_t</a></div><div class="ttdeci">adc_atten_t</div><div class="ttdoc">Input attenuation. Accepted but interpreted only as a hint for maximum measurable voltage – this shim...</div><div class="ttdef"><b>Definition</b> adc_types.h:66</div></div>
+<div class="ttc" id="aadc__types_8h_html_aafc4060027875f8fe46242b0656d7814"><div class="ttname"><a href="adc__types_8h.html#aafc4060027875f8fe46242b0656d7814">adc_channel_t</a></div><div class="ttdeci">adc_channel_t</div><div class="ttdoc">ADC channel identifiers. Range is chip-dependent; channels beyond the target device's capability are ...</div><div class="ttdef"><b>Definition</b> adc_types.h:40</div></div>
+<div class="ttc" id="aadc__types_8h_html_ad50e9a6ef4aa8d4e63003ad1783f4dba"><div class="ttname"><a href="adc__types_8h.html#ad50e9a6ef4aa8d4e63003ad1783f4dba">adc_ulp_mode_t</a></div><div class="ttdeci">adc_ulp_mode_t</div><div class="ttdoc">ULP mode (not modelled by this shim).</div><div class="ttdef"><b>Definition</b> adc_types.h:82</div></div>
+<div class="ttc" id="aadc__types_8h_html_ad8b7b5a18bfe497e5313ac9a47b297e2"><div class="ttname"><a href="adc__types_8h.html#ad8b7b5a18bfe497e5313ac9a47b297e2">adc_unit_t</a></div><div class="ttdeci">adc_unit_t</div><div class="ttdoc">ADC peripheral unit.</div><div class="ttdef"><b>Definition</b> adc_types.h:33</div></div>
+<div class="ttc" id="aadc__types_8h_html_aec5666997cbd7257e838bea409056387"><div class="ttname"><a href="adc__types_8h.html#aec5666997cbd7257e838bea409056387">adc_bitwidth_t</a></div><div class="ttdeci">adc_bitwidth_t</div><div class="ttdoc">Effective resolution of a conversion result. Most targets support 12 or 13 bits; DEFAULT yields the c...</div><div class="ttdef"><b>Definition</b> adc_types.h:55</div></div>
+<div class="ttc" id="aesp__err_8h_html"><div class="ttname"><a href="esp__err_8h.html">esp_err.h</a></div></div>
+<div class="ttc" id="aesp__err_8h_html_a8bc4f6626a2d4ebd67533c56064ccda8"><div class="ttname"><a href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a></div><div class="ttdeci">int esp_err_t</div><div class="ttdef"><b>Definition</b> esp_err.h:41</div></div>
+<div class="ttc" id="astdint_8h_html"><div class="ttname"><a href="stdint_8h.html">stdint.h</a></div></div>
+<div class="ttc" id="astructadc__oneshot__chan__cfg__t_html"><div class="ttname"><a href="structadc__oneshot__chan__cfg__t.html">adc_oneshot_chan_cfg_t</a></div><div class="ttdoc">Per-channel configuration.</div><div class="ttdef"><b>Definition</b> adc_oneshot.h:64</div></div>
+<div class="ttc" id="astructadc__oneshot__chan__cfg__t_html_a0063ddae6ba794d591a2a211e6fe4f6e"><div class="ttname"><a href="structadc__oneshot__chan__cfg__t.html#a0063ddae6ba794d591a2a211e6fe4f6e">adc_oneshot_chan_cfg_t::bitwidth</a></div><div class="ttdeci">adc_bitwidth_t bitwidth</div><div class="ttdef"><b>Definition</b> adc_oneshot.h:66</div></div>
+<div class="ttc" id="astructadc__oneshot__chan__cfg__t_html_a9f64721ad11f24403da95a50da9cfbaa"><div class="ttname"><a href="structadc__oneshot__chan__cfg__t.html#a9f64721ad11f24403da95a50da9cfbaa">adc_oneshot_chan_cfg_t::atten</a></div><div class="ttdeci">adc_atten_t atten</div><div class="ttdef"><b>Definition</b> adc_oneshot.h:65</div></div>
+<div class="ttc" id="astructadc__oneshot__unit__ctx__t_html"><div class="ttname"><a href="structadc__oneshot__unit__ctx__t.html">adc_oneshot_unit_ctx_t</a></div><div class="ttdef"><b>Definition</b> driver_adc_port.c:72</div></div>
+<div class="ttc" id="astructadc__oneshot__unit__init__cfg__t_html"><div class="ttname"><a href="structadc__oneshot__unit__init__cfg__t.html">adc_oneshot_unit_init_cfg_t</a></div><div class="ttdoc">Unit-level init configuration.</div><div class="ttdef"><b>Definition</b> adc_oneshot.h:57</div></div>
+<div class="ttc" id="astructadc__oneshot__unit__init__cfg__t_html_a76b95d3bea7f34aeb6a6756188deb0fe"><div class="ttname"><a href="structadc__oneshot__unit__init__cfg__t.html#a76b95d3bea7f34aeb6a6756188deb0fe">adc_oneshot_unit_init_cfg_t::clk_src</a></div><div class="ttdeci">adc_oneshot_clk_src_t clk_src</div><div class="ttdef"><b>Definition</b> adc_oneshot.h:59</div></div>
+<div class="ttc" id="astructadc__oneshot__unit__init__cfg__t_html_a786aba212f977360c7cc07f16e908599"><div class="ttname"><a href="structadc__oneshot__unit__init__cfg__t.html#a786aba212f977360c7cc07f16e908599">adc_oneshot_unit_init_cfg_t::unit_id</a></div><div class="ttdeci">adc_unit_t unit_id</div><div class="ttdef"><b>Definition</b> adc_oneshot.h:58</div></div>
+<div class="ttc" id="astructadc__oneshot__unit__init__cfg__t_html_ab8d3d841b8f83aff003544170f39ae2d"><div class="ttname"><a href="structadc__oneshot__unit__init__cfg__t.html#ab8d3d841b8f83aff003544170f39ae2d">adc_oneshot_unit_init_cfg_t::ulp_mode</a></div><div class="ttdeci">adc_ulp_mode_t ulp_mode</div><div class="ttdef"><b>Definition</b> adc_oneshot.h:60</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/9cfc618e0694b26bce50396b3411e66608f4acc3" target="_blank">vsfteam/vsf@9cfc618</a>
+  生成
+</div>

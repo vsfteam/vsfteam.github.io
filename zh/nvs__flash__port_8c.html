@@ -1,0 +1,1084 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/espidf/port/nvs_flash_port.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_67078002197479e597ae23208194ae3e.html">espidf</a></li><li class="navelem"><a class="el" href="dir_d14dc8466d44ad1adba1031dafa98f07.html">port</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">nvs_flash_port.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__espidf__cfg_8h_source.html">../vsf_espidf_cfg.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="stdint_8h_source.html">stdint.h</a>&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="vsf__hal_8h_source.html">hal/vsf_hal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__heap_8h_source.html">service/heap/vsf_heap.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="esp__err_8h_source.html">../include/esp_err.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="esp__partition_8h_source.html">../include/esp_partition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="nvs_8h_source.html">../include/nvs.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="nvs__flash_8h_source.html">../include/nvs_flash.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____nvs__disk__header__t.html">__nvs_disk_header_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____nvs__disk__entry__t.html">__nvs_disk_entry_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____nvs__kv__t.html">__nvs_kv_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____nvs__store__t.html">__nvs_store_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____nvs__handle__ctx__t.html">__nvs_handle_ctx_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnvs__opaque__iterator__t.html">nvs_opaque_iterator_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a1348bc04d6814a835001f1984aca235a" id="r_a1348bc04d6814a835001f1984aca235a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a1348bc04d6814a835001f1984aca235a">__NVS_MAX_STORES</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a1348bc04d6814a835001f1984aca235a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a279b35190dd959cb08020a21f417c60b" id="r_a279b35190dd959cb08020a21f417c60b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a279b35190dd959cb08020a21f417c60b">__NVS_MAX_HANDLES</a>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:a279b35190dd959cb08020a21f417c60b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15eb4239040a01416a51b0d6bfee78de" id="r_a15eb4239040a01416a51b0d6bfee78de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a15eb4239040a01416a51b0d6bfee78de">__NVS_MAX_SERIAL_SIZE</a>&#160;&#160;&#160;(64<a class="el" href="ieee80211_8h.html#a6925b87352020716357c7e59f12b16bc">u</a> * 1024<a class="el" href="ieee80211_8h.html#a6925b87352020716357c7e59f12b16bc">u</a>)</td></tr>
+<tr class="separator:a15eb4239040a01416a51b0d6bfee78de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a890ab809a4754eb5b5fdcb1aa70cb83f" id="r_a890ab809a4754eb5b5fdcb1aa70cb83f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a890ab809a4754eb5b5fdcb1aa70cb83f">__NVS_MAGIC</a>&#160;&#160;&#160;0x3153564Eu</td></tr>
+<tr class="separator:a890ab809a4754eb5b5fdcb1aa70cb83f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a0654e66063b30e2644c661407b42db" id="r_a5a0654e66063b30e2644c661407b42db"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a5a0654e66063b30e2644c661407b42db">__NVS_VERSION</a>&#160;&#160;&#160;1<a class="el" href="ieee80211_8h.html#a6925b87352020716357c7e59f12b16bc">u</a></td></tr>
+<tr class="separator:a5a0654e66063b30e2644c661407b42db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e74318607aaf4789710adaf1447b691" id="r_a0e74318607aaf4789710adaf1447b691"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a0e74318607aaf4789710adaf1447b691">__NVS_HEADER_SIZE</a>&#160;&#160;&#160;20u</td></tr>
+<tr class="separator:a0e74318607aaf4789710adaf1447b691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15cbd03135f9cd108e45161bf2da2976" id="r_a15cbd03135f9cd108e45161bf2da2976"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a15cbd03135f9cd108e45161bf2da2976">__NVS_DEF_SET_INT</a>(__suffix,  __ctype,  __nvs_type)</td></tr>
+<tr class="separator:a15cbd03135f9cd108e45161bf2da2976"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab41b78c7fadc6a1dbc70672ba34c0f41" id="r_ab41b78c7fadc6a1dbc70672ba34c0f41"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#ab41b78c7fadc6a1dbc70672ba34c0f41">__NVS_DEF_GET_INT</a>(__suffix,  __ctype,  __nvs_type)</td></tr>
+<tr class="separator:ab41b78c7fadc6a1dbc70672ba34c0f41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:a21f360a3ce7a3aa184e7b31f02c95207" id="r_a21f360a3ce7a3aa184e7b31f02c95207"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct____nvs__disk__header__t.html">__nvs_disk_header_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a21f360a3ce7a3aa184e7b31f02c95207">__nvs_disk_header_t</a></td></tr>
+<tr class="separator:a21f360a3ce7a3aa184e7b31f02c95207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab872c76fa08293709a340cce523a1e18" id="r_ab872c76fa08293709a340cce523a1e18"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct____nvs__disk__entry__t.html">__nvs_disk_entry_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#ab872c76fa08293709a340cce523a1e18">__nvs_disk_entry_t</a></td></tr>
+<tr class="separator:ab872c76fa08293709a340cce523a1e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab47fb84ea787965ec25884d44cb50a74" id="r_ab47fb84ea787965ec25884d44cb50a74"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct____nvs__kv__t.html">__nvs_kv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#ab47fb84ea787965ec25884d44cb50a74">__nvs_kv_t</a></td></tr>
+<tr class="separator:ab47fb84ea787965ec25884d44cb50a74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a399c76feb920dc00720088ff535ff76a" id="r_a399c76feb920dc00720088ff535ff76a"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct____nvs__store__t.html">__nvs_store_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a399c76feb920dc00720088ff535ff76a">__nvs_store_t</a></td></tr>
+<tr class="separator:a399c76feb920dc00720088ff535ff76a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac04bf2861c8ea68533181a782e191c2c" id="r_ac04bf2861c8ea68533181a782e191c2c"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct____nvs__handle__ctx__t.html">__nvs_handle_ctx_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#ac04bf2861c8ea68533181a782e191c2c">__nvs_handle_ctx_t</a></td></tr>
+<tr class="separator:ac04bf2861c8ea68533181a782e191c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ab3369aac205c7ee9d1768571f158aa" id="r_a8ab3369aac205c7ee9d1768571f158aa"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structnvs__opaque__iterator__t.html">nvs_opaque_iterator_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a8ab3369aac205c7ee9d1768571f158aa">nvs_opaque_iterator_t</a></td></tr>
+<tr class="separator:a8ab3369aac205c7ee9d1768571f158aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a0c37702eca98ffe39ff4d8a47a0e093f" id="r_a0c37702eca98ffe39ff4d8a47a0e093f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a0c37702eca98ffe39ff4d8a47a0e093f">nvs_flash_init</a> (void)</td></tr>
+<tr class="memdesc:a0c37702eca98ffe39ff4d8a47a0e093f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the default NVS partition (label "nvs").  <br /></td></tr>
+<tr class="separator:a0c37702eca98ffe39ff4d8a47a0e093f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae744286f362cca501e9f3cf753d538ea" id="r_ae744286f362cca501e9f3cf753d538ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#ae744286f362cca501e9f3cf753d538ea">nvs_flash_init_partition</a> (const char *partition_label)</td></tr>
+<tr class="memdesc:ae744286f362cca501e9f3cf753d538ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize NVS storage for a named partition.  <br /></td></tr>
+<tr class="separator:ae744286f362cca501e9f3cf753d538ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf6f650bdf802a3cccfcd4feceef0a75" id="r_acf6f650bdf802a3cccfcd4feceef0a75"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#acf6f650bdf802a3cccfcd4feceef0a75">nvs_flash_init_partition_ptr</a> (const <a class="el" href="structesp__partition__t.html">esp_partition_t</a> *partition)</td></tr>
+<tr class="memdesc:acf6f650bdf802a3cccfcd4feceef0a75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize NVS storage from an <a class="el" href="structesp__partition__t.html">esp_partition_t</a> pointer.  <br /></td></tr>
+<tr class="separator:acf6f650bdf802a3cccfcd4feceef0a75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0743d413ccfb038ea2cc78a151bbfb6" id="r_ab0743d413ccfb038ea2cc78a151bbfb6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#ab0743d413ccfb038ea2cc78a151bbfb6">nvs_flash_deinit</a> (void)</td></tr>
+<tr class="memdesc:ab0743d413ccfb038ea2cc78a151bbfb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinitialize the default NVS partition.  <br /></td></tr>
+<tr class="separator:ab0743d413ccfb038ea2cc78a151bbfb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16c7e9782bc34910db1e2811034a113c" id="r_a16c7e9782bc34910db1e2811034a113c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a16c7e9782bc34910db1e2811034a113c">nvs_flash_deinit_partition</a> (const char *partition_label)</td></tr>
+<tr class="memdesc:a16c7e9782bc34910db1e2811034a113c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinitialize NVS storage for a named partition.  <br /></td></tr>
+<tr class="separator:a16c7e9782bc34910db1e2811034a113c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9e4c719ccdb0d92ba974012868435cf" id="r_ac9e4c719ccdb0d92ba974012868435cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#ac9e4c719ccdb0d92ba974012868435cf">nvs_flash_erase</a> (void)</td></tr>
+<tr class="memdesc:ac9e4c719ccdb0d92ba974012868435cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Erase the default NVS partition (label "nvs").  <br /></td></tr>
+<tr class="separator:ac9e4c719ccdb0d92ba974012868435cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac0d1a70e1e4fb943c7a201bc27025b4" id="r_aac0d1a70e1e4fb943c7a201bc27025b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#aac0d1a70e1e4fb943c7a201bc27025b4">nvs_flash_erase_partition</a> (const char *part_name)</td></tr>
+<tr class="memdesc:aac0d1a70e1e4fb943c7a201bc27025b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Erase a named NVS partition.  <br /></td></tr>
+<tr class="separator:aac0d1a70e1e4fb943c7a201bc27025b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab516ae0892bdec690ce1c47ce2bb20b5" id="r_ab516ae0892bdec690ce1c47ce2bb20b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#ab516ae0892bdec690ce1c47ce2bb20b5">nvs_flash_erase_partition_ptr</a> (const <a class="el" href="structesp__partition__t.html">esp_partition_t</a> *partition)</td></tr>
+<tr class="memdesc:ab516ae0892bdec690ce1c47ce2bb20b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Erase a partition identified by pointer.  <br /></td></tr>
+<tr class="separator:ab516ae0892bdec690ce1c47ce2bb20b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6327b443d65e4a8344a540de6c186234" id="r_a6327b443d65e4a8344a540de6c186234"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a6327b443d65e4a8344a540de6c186234">nvs_open</a> (const char *namespace_name, <a class="el" href="nvs_8h.html#a017e1932838b044b88f875edf56e3793">nvs_open_mode_t</a> open_mode, <a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a> *out_handle)</td></tr>
+<tr class="separator:a6327b443d65e4a8344a540de6c186234"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29f3862a459214f2a057a174ddf80698" id="r_a29f3862a459214f2a057a174ddf80698"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a29f3862a459214f2a057a174ddf80698">nvs_open_from_partition</a> (const char *part_name, const char *namespace_name, <a class="el" href="nvs_8h.html#a017e1932838b044b88f875edf56e3793">nvs_open_mode_t</a> open_mode, <a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a> *out_handle)</td></tr>
+<tr class="separator:a29f3862a459214f2a057a174ddf80698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67e6e6b8ba9a43fc08ca9a9609905c8d" id="r_a67e6e6b8ba9a43fc08ca9a9609905c8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a67e6e6b8ba9a43fc08ca9a9609905c8d">nvs_close</a> (<a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a> handle)</td></tr>
+<tr class="separator:a67e6e6b8ba9a43fc08ca9a9609905c8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88e2da69bd240354fdc0be908a933ca1" id="r_a88e2da69bd240354fdc0be908a933ca1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a88e2da69bd240354fdc0be908a933ca1">nvs_commit</a> (<a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a> handle)</td></tr>
+<tr class="separator:a88e2da69bd240354fdc0be908a933ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66c6390e31cce9c4d59dc874d242ddac" id="r_a66c6390e31cce9c4d59dc874d242ddac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a66c6390e31cce9c4d59dc874d242ddac">nvs_set_str</a> (<a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a> handle, const char *key, const char *<a class="el" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>)</td></tr>
+<tr class="separator:a66c6390e31cce9c4d59dc874d242ddac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a2a8a79c0df9a1682d0a1bc31f351c3" id="r_a2a2a8a79c0df9a1682d0a1bc31f351c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a2a2a8a79c0df9a1682d0a1bc31f351c3">nvs_set_blob</a> (<a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a> handle, const char *key, const void *<a class="el" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> <a class="el" href="vsf__pbuf_8c.html#ae4be32df35b12bdacfbe8ae8cd5a8177">length</a>)</td></tr>
+<tr class="separator:a2a2a8a79c0df9a1682d0a1bc31f351c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e6cf0362aba1ed1601ea2d4af427d3d" id="r_a9e6cf0362aba1ed1601ea2d4af427d3d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a9e6cf0362aba1ed1601ea2d4af427d3d">nvs_get_str</a> (<a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a> handle, const char *key, char *out_value, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *<a class="el" href="vsf__pbuf_8c.html#ae4be32df35b12bdacfbe8ae8cd5a8177">length</a>)</td></tr>
+<tr class="separator:a9e6cf0362aba1ed1601ea2d4af427d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a407a597cf06407140d91f7898bf541f4" id="r_a407a597cf06407140d91f7898bf541f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a407a597cf06407140d91f7898bf541f4">nvs_get_blob</a> (<a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a> handle, const char *key, void *out_value, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *<a class="el" href="vsf__pbuf_8c.html#ae4be32df35b12bdacfbe8ae8cd5a8177">length</a>)</td></tr>
+<tr class="separator:a407a597cf06407140d91f7898bf541f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ba2174523872e14ef96b3add427e4dd" id="r_a0ba2174523872e14ef96b3add427e4dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a0ba2174523872e14ef96b3add427e4dd">nvs_erase_key</a> (<a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a> handle, const char *key)</td></tr>
+<tr class="separator:a0ba2174523872e14ef96b3add427e4dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c72514b8e1a7c464ad0356e4927158b" id="r_a8c72514b8e1a7c464ad0356e4927158b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a8c72514b8e1a7c464ad0356e4927158b">nvs_erase_all</a> (<a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a> handle)</td></tr>
+<tr class="separator:a8c72514b8e1a7c464ad0356e4927158b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fed09d46b77aa6dd0e8840959fe1933" id="r_a8fed09d46b77aa6dd0e8840959fe1933"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a8fed09d46b77aa6dd0e8840959fe1933">nvs_get_stats</a> (const char *part_name, <a class="el" href="structnvs__stats__t.html">nvs_stats_t</a> *nvs_stats)</td></tr>
+<tr class="separator:a8fed09d46b77aa6dd0e8840959fe1933"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6b52d96c1dcfc9d4b2ef987503955f0" id="r_ae6b52d96c1dcfc9d4b2ef987503955f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#ae6b52d96c1dcfc9d4b2ef987503955f0">nvs_get_used_entry_count</a> (<a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a> handle, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *used_entries)</td></tr>
+<tr class="separator:ae6b52d96c1dcfc9d4b2ef987503955f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29635aa4ade9944286d1fc39011969c6" id="r_a29635aa4ade9944286d1fc39011969c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a29635aa4ade9944286d1fc39011969c6">nvs_entry_find</a> (const char *part_name, const char *namespace_name, <a class="el" href="nvs_8h.html#a7c9aab15285454ca16459ce4e3ebed19">nvs_type_t</a> <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, <a class="el" href="nvs_8h.html#addeca2dd4bededba2c1c5aac2dfd5cbf">nvs_iterator_t</a> *output_iterator)</td></tr>
+<tr class="separator:a29635aa4ade9944286d1fc39011969c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b947d1e0c3568a12739bd3857c950db" id="r_a0b947d1e0c3568a12739bd3857c950db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a0b947d1e0c3568a12739bd3857c950db">nvs_entry_next</a> (<a class="el" href="nvs_8h.html#addeca2dd4bededba2c1c5aac2dfd5cbf">nvs_iterator_t</a> *iterator)</td></tr>
+<tr class="separator:a0b947d1e0c3568a12739bd3857c950db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc7f4cb1e782cd65b75bf2b6c11327ea" id="r_afc7f4cb1e782cd65b75bf2b6c11327ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#afc7f4cb1e782cd65b75bf2b6c11327ea">nvs_entry_info</a> (const <a class="el" href="nvs_8h.html#addeca2dd4bededba2c1c5aac2dfd5cbf">nvs_iterator_t</a> iterator, <a class="el" href="structnvs__entry__info__t.html">nvs_entry_info_t</a> *out_info)</td></tr>
+<tr class="separator:afc7f4cb1e782cd65b75bf2b6c11327ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33eceb70a1cc57c2fe2bae30a76f819a" id="r_a33eceb70a1cc57c2fe2bae30a76f819a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nvs__flash__port_8c.html#a33eceb70a1cc57c2fe2bae30a76f819a">nvs_release_iterator</a> (<a class="el" href="nvs_8h.html#addeca2dd4bededba2c1c5aac2dfd5cbf">nvs_iterator_t</a> iterator)</td></tr>
+<tr class="separator:a33eceb70a1cc57c2fe2bae30a76f819a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a1348bc04d6814a835001f1984aca235a" name="a1348bc04d6814a835001f1984aca235a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1348bc04d6814a835001f1984aca235a">&#9670;&#160;</a></span>__NVS_MAX_STORES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __NVS_MAX_STORES&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a279b35190dd959cb08020a21f417c60b" name="a279b35190dd959cb08020a21f417c60b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a279b35190dd959cb08020a21f417c60b">&#9670;&#160;</a></span>__NVS_MAX_HANDLES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __NVS_MAX_HANDLES&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a15eb4239040a01416a51b0d6bfee78de" name="a15eb4239040a01416a51b0d6bfee78de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15eb4239040a01416a51b0d6bfee78de">&#9670;&#160;</a></span>__NVS_MAX_SERIAL_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __NVS_MAX_SERIAL_SIZE&#160;&#160;&#160;(64<a class="el" href="ieee80211_8h.html#a6925b87352020716357c7e59f12b16bc">u</a> * 1024<a class="el" href="ieee80211_8h.html#a6925b87352020716357c7e59f12b16bc">u</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a890ab809a4754eb5b5fdcb1aa70cb83f" name="a890ab809a4754eb5b5fdcb1aa70cb83f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a890ab809a4754eb5b5fdcb1aa70cb83f">&#9670;&#160;</a></span>__NVS_MAGIC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __NVS_MAGIC&#160;&#160;&#160;0x3153564Eu</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5a0654e66063b30e2644c661407b42db" name="a5a0654e66063b30e2644c661407b42db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a0654e66063b30e2644c661407b42db">&#9670;&#160;</a></span>__NVS_VERSION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __NVS_VERSION&#160;&#160;&#160;1<a class="el" href="ieee80211_8h.html#a6925b87352020716357c7e59f12b16bc">u</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e74318607aaf4789710adaf1447b691" name="a0e74318607aaf4789710adaf1447b691"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e74318607aaf4789710adaf1447b691">&#9670;&#160;</a></span>__NVS_HEADER_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __NVS_HEADER_SIZE&#160;&#160;&#160;20u</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a15cbd03135f9cd108e45161bf2da2976" name="a15cbd03135f9cd108e45161bf2da2976"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15cbd03135f9cd108e45161bf2da2976">&#9670;&#160;</a></span>__NVS_DEF_SET_INT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __NVS_DEF_SET_INT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__suffix, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__ctype, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__nvs_type&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line"><a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_set_##__suffix(<a class="code hl_typedef" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a> handle, <span class="keyword">const</span> <span class="keywordtype">char</span> *key,          \</div>
+<div class="line">                             __ctype <a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>)                                  \</div>
+<div class="line">{                                                                            \</div>
+<div class="line">    <span class="keywordflow">return</span> __nvs_set_typed(handle, key, __nvs_type, &amp;<a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>, <span class="keyword">sizeof</span>(<a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>)); \</div>
+<div class="line">}</div>
+<div class="ttc" id="aesp__err_8h_html_a8bc4f6626a2d4ebd67533c56064ccda8"><div class="ttname"><a href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a></div><div class="ttdeci">int esp_err_t</div><div class="ttdef"><b>Definition</b> esp_err.h:41</div></div>
+<div class="ttc" id="anvs_8h_html_a1d7beddf57b3313de191f91ba639f9aa"><div class="ttname"><a href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a></div><div class="ttdeci">uint32_t nvs_handle_t</div><div class="ttdef"><b>Definition</b> nvs.h:64</div></div>
+<div class="ttc" id="avsf__audio_8h_html_ad5265e9eca2f756804584a9ac3335519"><div class="ttname"><a href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a></div><div class="ttdeci">vk_av_control_value_t value</div><div class="ttdef"><b>Definition</b> vsf_audio.h:171</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab41b78c7fadc6a1dbc70672ba34c0f41" name="ab41b78c7fadc6a1dbc70672ba34c0f41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab41b78c7fadc6a1dbc70672ba34c0f41">&#9670;&#160;</a></span>__NVS_DEF_GET_INT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __NVS_DEF_GET_INT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__suffix, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__ctype, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__nvs_type&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line"><a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_get_##__suffix(<a class="code hl_typedef" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a> handle, <span class="keyword">const</span> <span class="keywordtype">char</span> *key,          \</div>
+<div class="line">                             __ctype *out_value)                             \</div>
+<div class="line">{                                                                            \</div>
+<div class="line">    <span class="keywordflow">return</span> __nvs_get_typed(handle, key, __nvs_type, out_value, <a class="code hl_define" href="lvgl_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>);       \</div>
+<div class="line">}</div>
+<div class="ttc" id="alvgl_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="lvgl_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition</b> lvgl.h:26</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">类型定义说明</h2>
+<a id="a21f360a3ce7a3aa184e7b31f02c95207" name="a21f360a3ce7a3aa184e7b31f02c95207"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21f360a3ce7a3aa184e7b31f02c95207">&#9670;&#160;</a></span>__nvs_disk_header_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct____nvs__disk__header__t.html">__nvs_disk_header_t</a> <a class="el" href="struct____nvs__disk__header__t.html">__nvs_disk_header_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab872c76fa08293709a340cce523a1e18" name="ab872c76fa08293709a340cce523a1e18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab872c76fa08293709a340cce523a1e18">&#9670;&#160;</a></span>__nvs_disk_entry_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct____nvs__disk__entry__t.html">__nvs_disk_entry_t</a> <a class="el" href="struct____nvs__disk__entry__t.html">__nvs_disk_entry_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab47fb84ea787965ec25884d44cb50a74" name="ab47fb84ea787965ec25884d44cb50a74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab47fb84ea787965ec25884d44cb50a74">&#9670;&#160;</a></span>__nvs_kv_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct____nvs__kv__t.html">__nvs_kv_t</a> <a class="el" href="struct____nvs__kv__t.html">__nvs_kv_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a399c76feb920dc00720088ff535ff76a" name="a399c76feb920dc00720088ff535ff76a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a399c76feb920dc00720088ff535ff76a">&#9670;&#160;</a></span>__nvs_store_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct____nvs__store__t.html">__nvs_store_t</a> <a class="el" href="struct____nvs__store__t.html">__nvs_store_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac04bf2861c8ea68533181a782e191c2c" name="ac04bf2861c8ea68533181a782e191c2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac04bf2861c8ea68533181a782e191c2c">&#9670;&#160;</a></span>__nvs_handle_ctx_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct____nvs__handle__ctx__t.html">__nvs_handle_ctx_t</a> <a class="el" href="struct____nvs__handle__ctx__t.html">__nvs_handle_ctx_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8ab3369aac205c7ee9d1768571f158aa" name="a8ab3369aac205c7ee9d1768571f158aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ab3369aac205c7ee9d1768571f158aa">&#9670;&#160;</a></span>nvs_opaque_iterator_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structnvs__opaque__iterator__t.html">nvs_opaque_iterator_t</a> <a class="el" href="structnvs__opaque__iterator__t.html">nvs_opaque_iterator_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a0c37702eca98ffe39ff4d8a47a0e093f" name="a0c37702eca98ffe39ff4d8a47a0e093f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c37702eca98ffe39ff4d8a47a0e093f">&#9670;&#160;</a></span>nvs_flash_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_flash_init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize the default NVS partition (label "nvs"). </p>
+
+</div>
+</div>
+<a id="ae744286f362cca501e9f3cf753d538ea" name="ae744286f362cca501e9f3cf753d538ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae744286f362cca501e9f3cf753d538ea">&#9670;&#160;</a></span>nvs_flash_init_partition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_flash_init_partition </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>partition_label</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize NVS storage for a named partition. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">partition_label</td><td>Label of the partition (max 16 chars). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acf6f650bdf802a3cccfcd4feceef0a75" name="acf6f650bdf802a3cccfcd4feceef0a75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf6f650bdf802a3cccfcd4feceef0a75">&#9670;&#160;</a></span>nvs_flash_init_partition_ptr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_flash_init_partition_ptr </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structesp__partition__t.html">esp_partition_t</a> *&#160;</td>
+          <td class="paramname"><em>partition</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize NVS storage from an <a class="el" href="structesp__partition__t.html">esp_partition_t</a> pointer. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">partition</td><td>Partition descriptor obtained from esp_partition API. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab0743d413ccfb038ea2cc78a151bbfb6" name="ab0743d413ccfb038ea2cc78a151bbfb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0743d413ccfb038ea2cc78a151bbfb6">&#9670;&#160;</a></span>nvs_flash_deinit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_flash_deinit </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deinitialize the default NVS partition. </p>
+
+</div>
+</div>
+<a id="a16c7e9782bc34910db1e2811034a113c" name="a16c7e9782bc34910db1e2811034a113c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16c7e9782bc34910db1e2811034a113c">&#9670;&#160;</a></span>nvs_flash_deinit_partition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_flash_deinit_partition </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>partition_label</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deinitialize NVS storage for a named partition. </p>
+
+</div>
+</div>
+<a id="ac9e4c719ccdb0d92ba974012868435cf" name="ac9e4c719ccdb0d92ba974012868435cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9e4c719ccdb0d92ba974012868435cf">&#9670;&#160;</a></span>nvs_flash_erase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_flash_erase </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Erase the default NVS partition (label "nvs"). </p>
+<p>If the partition is initialised, it is first deinitialised. </p>
+
+</div>
+</div>
+<a id="aac0d1a70e1e4fb943c7a201bc27025b4" name="aac0d1a70e1e4fb943c7a201bc27025b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac0d1a70e1e4fb943c7a201bc27025b4">&#9670;&#160;</a></span>nvs_flash_erase_partition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_flash_erase_partition </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>part_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Erase a named NVS partition. </p>
+<p>If the partition is initialised, it is first deinitialised. </p>
+
+</div>
+</div>
+<a id="ab516ae0892bdec690ce1c47ce2bb20b5" name="ab516ae0892bdec690ce1c47ce2bb20b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab516ae0892bdec690ce1c47ce2bb20b5">&#9670;&#160;</a></span>nvs_flash_erase_partition_ptr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_flash_erase_partition_ptr </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structesp__partition__t.html">esp_partition_t</a> *&#160;</td>
+          <td class="paramname"><em>partition</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Erase a partition identified by pointer. </p>
+<p>If the partition is initialised, it is first deinitialised. </p>
+
+</div>
+</div>
+<a id="a6327b443d65e4a8344a540de6c186234" name="a6327b443d65e4a8344a540de6c186234"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6327b443d65e4a8344a540de6c186234">&#9670;&#160;</a></span>nvs_open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_open </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>namespace_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#a017e1932838b044b88f875edf56e3793">nvs_open_mode_t</a>&#160;</td>
+          <td class="paramname"><em>open_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a> *&#160;</td>
+          <td class="paramname"><em>out_handle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a29f3862a459214f2a057a174ddf80698" name="a29f3862a459214f2a057a174ddf80698"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29f3862a459214f2a057a174ddf80698">&#9670;&#160;</a></span>nvs_open_from_partition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_open_from_partition </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>part_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>namespace_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#a017e1932838b044b88f875edf56e3793">nvs_open_mode_t</a>&#160;</td>
+          <td class="paramname"><em>open_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a> *&#160;</td>
+          <td class="paramname"><em>out_handle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a67e6e6b8ba9a43fc08ca9a9609905c8d" name="a67e6e6b8ba9a43fc08ca9a9609905c8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67e6e6b8ba9a43fc08ca9a9609905c8d">&#9670;&#160;</a></span>nvs_close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void nvs_close </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a88e2da69bd240354fdc0be908a933ca1" name="a88e2da69bd240354fdc0be908a933ca1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88e2da69bd240354fdc0be908a933ca1">&#9670;&#160;</a></span>nvs_commit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_commit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a66c6390e31cce9c4d59dc874d242ddac" name="a66c6390e31cce9c4d59dc874d242ddac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66c6390e31cce9c4d59dc874d242ddac">&#9670;&#160;</a></span>nvs_set_str()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_set_str </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2a2a8a79c0df9a1682d0a1bc31f351c3" name="a2a2a8a79c0df9a1682d0a1bc31f351c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a2a8a79c0df9a1682d0a1bc31f351c3">&#9670;&#160;</a></span>nvs_set_blob()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_set_blob </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9e6cf0362aba1ed1601ea2d4af427d3d" name="a9e6cf0362aba1ed1601ea2d4af427d3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e6cf0362aba1ed1601ea2d4af427d3d">&#9670;&#160;</a></span>nvs_get_str()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_get_str </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>out_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a407a597cf06407140d91f7898bf541f4" name="a407a597cf06407140d91f7898bf541f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a407a597cf06407140d91f7898bf541f4">&#9670;&#160;</a></span>nvs_get_blob()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_get_blob </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>out_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0ba2174523872e14ef96b3add427e4dd" name="a0ba2174523872e14ef96b3add427e4dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ba2174523872e14ef96b3add427e4dd">&#9670;&#160;</a></span>nvs_erase_key()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_erase_key </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c72514b8e1a7c464ad0356e4927158b" name="a8c72514b8e1a7c464ad0356e4927158b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c72514b8e1a7c464ad0356e4927158b">&#9670;&#160;</a></span>nvs_erase_all()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_erase_all </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8fed09d46b77aa6dd0e8840959fe1933" name="a8fed09d46b77aa6dd0e8840959fe1933"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fed09d46b77aa6dd0e8840959fe1933">&#9670;&#160;</a></span>nvs_get_stats()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_get_stats </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>part_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structnvs__stats__t.html">nvs_stats_t</a> *&#160;</td>
+          <td class="paramname"><em>nvs_stats</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae6b52d96c1dcfc9d4b2ef987503955f0" name="ae6b52d96c1dcfc9d4b2ef987503955f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6b52d96c1dcfc9d4b2ef987503955f0">&#9670;&#160;</a></span>nvs_get_used_entry_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_get_used_entry_count </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#a1d7beddf57b3313de191f91ba639f9aa">nvs_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *&#160;</td>
+          <td class="paramname"><em>used_entries</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a29635aa4ade9944286d1fc39011969c6" name="a29635aa4ade9944286d1fc39011969c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29635aa4ade9944286d1fc39011969c6">&#9670;&#160;</a></span>nvs_entry_find()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_entry_find </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>part_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>namespace_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#a7c9aab15285454ca16459ce4e3ebed19">nvs_type_t</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#addeca2dd4bededba2c1c5aac2dfd5cbf">nvs_iterator_t</a> *&#160;</td>
+          <td class="paramname"><em>output_iterator</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0b947d1e0c3568a12739bd3857c950db" name="a0b947d1e0c3568a12739bd3857c950db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b947d1e0c3568a12739bd3857c950db">&#9670;&#160;</a></span>nvs_entry_next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_entry_next </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#addeca2dd4bededba2c1c5aac2dfd5cbf">nvs_iterator_t</a> *&#160;</td>
+          <td class="paramname"><em>iterator</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afc7f4cb1e782cd65b75bf2b6c11327ea" name="afc7f4cb1e782cd65b75bf2b6c11327ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc7f4cb1e782cd65b75bf2b6c11327ea">&#9670;&#160;</a></span>nvs_entry_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> nvs_entry_info </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="nvs_8h.html#addeca2dd4bededba2c1c5aac2dfd5cbf">nvs_iterator_t</a>&#160;</td>
+          <td class="paramname"><em>iterator</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structnvs__entry__info__t.html">nvs_entry_info_t</a> *&#160;</td>
+          <td class="paramname"><em>out_info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a33eceb70a1cc57c2fe2bae30a76f819a" name="a33eceb70a1cc57c2fe2bae30a76f819a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33eceb70a1cc57c2fe2bae30a76f819a">&#9670;&#160;</a></span>nvs_release_iterator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void nvs_release_iterator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="nvs_8h.html#addeca2dd4bededba2c1c5aac2dfd5cbf">nvs_iterator_t</a>&#160;</td>
+          <td class="paramname"><em>iterator</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/9cfc618e0694b26bce50396b3411e66608f4acc3" target="_blank">vsfteam/vsf@9cfc618</a>
+  生成
+</div>

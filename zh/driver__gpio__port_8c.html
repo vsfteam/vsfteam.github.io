@@ -1,0 +1,701 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/espidf/port/driver_gpio_port.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_67078002197479e597ae23208194ae3e.html">espidf</a></li><li class="navelem"><a class="el" href="dir_d14dc8466d44ad1adba1031dafa98f07.html">port</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">driver_gpio_port.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__espidf__cfg_8h_source.html">../vsf_espidf_cfg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h_source.html">driver/gpio.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hal_2driver_2driver_8h_source.html">hal/driver/driver.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__kernel_8h_source.html">kernel/vsf_kernel.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__io__mapper_8h_source.html">hal/utilities/io_mapper/vsf_io_mapper.h</a>&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgpio__isr__entry__t.html">gpio_isr_entry_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ad575e5bd7746cf6016ad40d6c4ac7016" id="r_ad575e5bd7746cf6016ad40d6c4ac7016"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#ad575e5bd7746cf6016ad40d6c4ac7016">gpio_config</a> (const <a class="el" href="structgpio__config__t.html">gpio_config_t</a> *config)</td></tr>
+<tr class="memdesc:ad575e5bd7746cf6016ad40d6c4ac7016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a bulk configuration to every pin listed in config-&gt;pin_bit_mask.  <br /></td></tr>
+<tr class="separator:ad575e5bd7746cf6016ad40d6c4ac7016"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79bea7977973d514581e42f9505f146f" id="r_a79bea7977973d514581e42f9505f146f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#a79bea7977973d514581e42f9505f146f">gpio_reset_pin</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num)</td></tr>
+<tr class="memdesc:a79bea7977973d514581e42f9505f146f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset a single pin to a safe post-boot state (input, no pull, no interrupt).  <br /></td></tr>
+<tr class="separator:a79bea7977973d514581e42f9505f146f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abea1de9763f4754edc8d3f815d11efc1" id="r_abea1de9763f4754edc8d3f815d11efc1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#abea1de9763f4754edc8d3f815d11efc1">gpio_set_direction</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num, <a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a491a2cbfb4e94f2afcc0d5bdef2dc454">gpio_mode_t</a> mode)</td></tr>
+<tr class="memdesc:abea1de9763f4754edc8d3f815d11efc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the direction of a single pin.  <br /></td></tr>
+<tr class="separator:abea1de9763f4754edc8d3f815d11efc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a7b8d376c4de80421df41320ed916e7" id="r_a7a7b8d376c4de80421df41320ed916e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#a7a7b8d376c4de80421df41320ed916e7">gpio_set_pull_mode</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num, <a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a266ff011afc89703be5a5152113d635d">gpio_pull_mode_t</a> pull)</td></tr>
+<tr class="memdesc:a7a7b8d376c4de80421df41320ed916e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the pull mode of a single pin.  <br /></td></tr>
+<tr class="separator:a7a7b8d376c4de80421df41320ed916e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afadd72970c01a00f25df734eba0d2b29" id="r_afadd72970c01a00f25df734eba0d2b29"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#afadd72970c01a00f25df734eba0d2b29">gpio_set_level</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> level)</td></tr>
+<tr class="memdesc:afadd72970c01a00f25df734eba0d2b29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the output level of a single pin (0 = low, non-zero = high).  <br /></td></tr>
+<tr class="separator:afadd72970c01a00f25df734eba0d2b29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50241613208689a83e0a72e4dc0ed7c3" id="r_a50241613208689a83e0a72e4dc0ed7c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#a50241613208689a83e0a72e4dc0ed7c3">gpio_get_level</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num)</td></tr>
+<tr class="memdesc:a50241613208689a83e0a72e4dc0ed7c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the input level of a single pin (0 or 1).  <br /></td></tr>
+<tr class="separator:a50241613208689a83e0a72e4dc0ed7c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a042006a8dca808bcc66d8054233f6e17" id="r_a042006a8dca808bcc66d8054233f6e17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#a042006a8dca808bcc66d8054233f6e17">gpio_pullup_en</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num)</td></tr>
+<tr class="memdesc:a042006a8dca808bcc66d8054233f6e17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shortcut pull-up/pull-down enable/disable APIs.  <br /></td></tr>
+<tr class="separator:a042006a8dca808bcc66d8054233f6e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5768de2196af2dd321852258cb82202b" id="r_a5768de2196af2dd321852258cb82202b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#a5768de2196af2dd321852258cb82202b">gpio_pullup_dis</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num)</td></tr>
+<tr class="separator:a5768de2196af2dd321852258cb82202b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8860c21c03a83bd431d026db223592b9" id="r_a8860c21c03a83bd431d026db223592b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#a8860c21c03a83bd431d026db223592b9">gpio_pulldown_en</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num)</td></tr>
+<tr class="separator:a8860c21c03a83bd431d026db223592b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5f70a96b8d737622c4623aab7a13cbd" id="r_af5f70a96b8d737622c4623aab7a13cbd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#af5f70a96b8d737622c4623aab7a13cbd">gpio_pulldown_dis</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num)</td></tr>
+<tr class="separator:af5f70a96b8d737622c4623aab7a13cbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad786cce417256036f213d7c3d9bb646f" id="r_ad786cce417256036f213d7c3d9bb646f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#ad786cce417256036f213d7c3d9bb646f">gpio_set_intr_type</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num, <a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#ae1d9cd0ebd0b0ac65ffc486396e0edc9">gpio_int_type_t</a> intr_type)</td></tr>
+<tr class="memdesc:ad786cce417256036f213d7c3d9bb646f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the edge/level that generates an external interrupt on the pin. This does NOT enable the interrupt by itself &ndash; call <a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#ab412b597c318316e1fb7da1af0e74577" title="Per-pin interrupt arm/disarm.">gpio_intr_enable()</a> afterwards.  <br /></td></tr>
+<tr class="separator:ad786cce417256036f213d7c3d9bb646f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab412b597c318316e1fb7da1af0e74577" id="r_ab412b597c318316e1fb7da1af0e74577"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#ab412b597c318316e1fb7da1af0e74577">gpio_intr_enable</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num)</td></tr>
+<tr class="memdesc:ab412b597c318316e1fb7da1af0e74577"><td class="mdescLeft">&#160;</td><td class="mdescRight">Per-pin interrupt arm/disarm.  <br /></td></tr>
+<tr class="separator:ab412b597c318316e1fb7da1af0e74577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abde4080e9d805a2c3ebd60c6c0385dae" id="r_abde4080e9d805a2c3ebd60c6c0385dae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#abde4080e9d805a2c3ebd60c6c0385dae">gpio_intr_disable</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num)</td></tr>
+<tr class="separator:abde4080e9d805a2c3ebd60c6c0385dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c66e3a547639d382d62497b39800de9" id="r_a3c66e3a547639d382d62497b39800de9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#a3c66e3a547639d382d62497b39800de9">gpio_install_isr_service</a> (int intr_alloc_flags)</td></tr>
+<tr class="memdesc:a3c66e3a547639d382d62497b39800de9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Install the shim's per-pin ISR dispatcher.  <br /></td></tr>
+<tr class="separator:a3c66e3a547639d382d62497b39800de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abad6f0378f9a37854bee3ced8014ac09" id="r_abad6f0378f9a37854bee3ced8014ac09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#abad6f0378f9a37854bee3ced8014ac09">gpio_uninstall_isr_service</a> (void)</td></tr>
+<tr class="memdesc:abad6f0378f9a37854bee3ced8014ac09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release the per-pin ISR dispatcher.  <br /></td></tr>
+<tr class="separator:abad6f0378f9a37854bee3ced8014ac09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a612767be29fc6e8209d2a4a774d325f8" id="r_a612767be29fc6e8209d2a4a774d325f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#a612767be29fc6e8209d2a4a774d325f8">gpio_isr_handler_add</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num, <a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#acc2fbc1804526b71823bd54f29bad6a8">gpio_isr_t</a> isr_handler, void *args)</td></tr>
+<tr class="memdesc:a612767be29fc6e8209d2a4a774d325f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attach a per-pin callback under the ISR service.  <br /></td></tr>
+<tr class="separator:a612767be29fc6e8209d2a4a774d325f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6089e615a3b223313a1303854edbac62" id="r_a6089e615a3b223313a1303854edbac62"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#a6089e615a3b223313a1303854edbac62">gpio_isr_handler_remove</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num)</td></tr>
+<tr class="memdesc:a6089e615a3b223313a1303854edbac62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detach a per-pin callback previously registered with <a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a612767be29fc6e8209d2a4a774d325f8" title="Attach a per-pin callback under the ISR service.">gpio_isr_handler_add()</a>.  <br /></td></tr>
+<tr class="separator:a6089e615a3b223313a1303854edbac62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16f3aef75c5a9cbad10264cc7f0f66c1" id="r_a16f3aef75c5a9cbad10264cc7f0f66c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#a16f3aef75c5a9cbad10264cc7f0f66c1">gpio_isr_register</a> (void(*fn)(void *), void *arg, int intr_alloc_flags, <a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#ab5ac8aacc96c553869b2429cea0c8c46">gpio_isr_handle_t</a> *handle)</td></tr>
+<tr class="separator:a16f3aef75c5a9cbad10264cc7f0f66c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0625f4ec860635bcfd744a18e56b029" id="r_ab0625f4ec860635bcfd744a18e56b029"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#ab0625f4ec860635bcfd744a18e56b029">gpio_wakeup_enable</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num, <a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#ae1d9cd0ebd0b0ac65ffc486396e0edc9">gpio_int_type_t</a> intr_type)</td></tr>
+<tr class="memdesc:ab0625f4ec860635bcfd744a18e56b029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accepted for source compatibility. Returns ESP_ERR_NOT_SUPPORTED unless the underlying board enables the corresponding low-power feature &ndash; which the shim cannot probe.  <br /></td></tr>
+<tr class="separator:ab0625f4ec860635bcfd744a18e56b029"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4b048f8bdfbc3e65e7a0f8111861939" id="r_ad4b048f8bdfbc3e65e7a0f8111861939"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver__gpio__port_8c.html#ad4b048f8bdfbc3e65e7a0f8111861939">gpio_wakeup_disable</a> (<a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a> gpio_num)</td></tr>
+<tr class="separator:ad4b048f8bdfbc3e65e7a0f8111861939"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">函数说明</h2>
+<a id="ad575e5bd7746cf6016ad40d6c4ac7016" name="ad575e5bd7746cf6016ad40d6c4ac7016"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad575e5bd7746cf6016ad40d6c4ac7016">&#9670;&#160;</a></span>gpio_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_config </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgpio__config__t.html">gpio_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Apply a bulk configuration to every pin listed in config-&gt;pin_bit_mask. </p>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">ESP_OK</td><td>success </td></tr>
+    <tr><td class="paramname">ESP_ERR_INVALID_ARG</td><td>config is NULL or the mask selects a pin that does not exist in the current io_mapper </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a79bea7977973d514581e42f9505f146f" name="a79bea7977973d514581e42f9505f146f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79bea7977973d514581e42f9505f146f">&#9670;&#160;</a></span>gpio_reset_pin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_reset_pin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reset a single pin to a safe post-boot state (input, no pull, no interrupt). </p>
+
+</div>
+</div>
+<a id="abea1de9763f4754edc8d3f815d11efc1" name="abea1de9763f4754edc8d3f815d11efc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abea1de9763f4754edc8d3f815d11efc1">&#9670;&#160;</a></span>gpio_set_direction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_set_direction </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a491a2cbfb4e94f2afcc0d5bdef2dc454">gpio_mode_t</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the direction of a single pin. </p>
+
+</div>
+</div>
+<a id="a7a7b8d376c4de80421df41320ed916e7" name="a7a7b8d376c4de80421df41320ed916e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a7b8d376c4de80421df41320ed916e7">&#9670;&#160;</a></span>gpio_set_pull_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_set_pull_mode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a266ff011afc89703be5a5152113d635d">gpio_pull_mode_t</a>&#160;</td>
+          <td class="paramname"><em>pull</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the pull mode of a single pin. </p>
+
+</div>
+</div>
+<a id="afadd72970c01a00f25df734eba0d2b29" name="afadd72970c01a00f25df734eba0d2b29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afadd72970c01a00f25df734eba0d2b29">&#9670;&#160;</a></span>gpio_set_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_set_level </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the output level of a single pin (0 = low, non-zero = high). </p>
+
+</div>
+</div>
+<a id="a50241613208689a83e0a72e4dc0ed7c3" name="a50241613208689a83e0a72e4dc0ed7c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50241613208689a83e0a72e4dc0ed7c3">&#9670;&#160;</a></span>gpio_get_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int gpio_get_level </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read the input level of a single pin (0 or 1). </p>
+
+</div>
+</div>
+<a id="a042006a8dca808bcc66d8054233f6e17" name="a042006a8dca808bcc66d8054233f6e17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a042006a8dca808bcc66d8054233f6e17">&#9670;&#160;</a></span>gpio_pullup_en()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_pullup_en </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Shortcut pull-up/pull-down enable/disable APIs. </p>
+
+</div>
+</div>
+<a id="a5768de2196af2dd321852258cb82202b" name="a5768de2196af2dd321852258cb82202b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5768de2196af2dd321852258cb82202b">&#9670;&#160;</a></span>gpio_pullup_dis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_pullup_dis </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8860c21c03a83bd431d026db223592b9" name="a8860c21c03a83bd431d026db223592b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8860c21c03a83bd431d026db223592b9">&#9670;&#160;</a></span>gpio_pulldown_en()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_pulldown_en </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af5f70a96b8d737622c4623aab7a13cbd" name="af5f70a96b8d737622c4623aab7a13cbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5f70a96b8d737622c4623aab7a13cbd">&#9670;&#160;</a></span>gpio_pulldown_dis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_pulldown_dis </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad786cce417256036f213d7c3d9bb646f" name="ad786cce417256036f213d7c3d9bb646f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad786cce417256036f213d7c3d9bb646f">&#9670;&#160;</a></span>gpio_set_intr_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_set_intr_type </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#ae1d9cd0ebd0b0ac65ffc486396e0edc9">gpio_int_type_t</a>&#160;</td>
+          <td class="paramname"><em>intr_type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configure the edge/level that generates an external interrupt on the pin. This does NOT enable the interrupt by itself &ndash; call <a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#ab412b597c318316e1fb7da1af0e74577" title="Per-pin interrupt arm/disarm.">gpio_intr_enable()</a> afterwards. </p>
+
+</div>
+</div>
+<a id="ab412b597c318316e1fb7da1af0e74577" name="ab412b597c318316e1fb7da1af0e74577"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab412b597c318316e1fb7da1af0e74577">&#9670;&#160;</a></span>gpio_intr_enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_intr_enable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Per-pin interrupt arm/disarm. </p>
+
+</div>
+</div>
+<a id="abde4080e9d805a2c3ebd60c6c0385dae" name="abde4080e9d805a2c3ebd60c6c0385dae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abde4080e9d805a2c3ebd60c6c0385dae">&#9670;&#160;</a></span>gpio_intr_disable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_intr_disable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3c66e3a547639d382d62497b39800de9" name="a3c66e3a547639d382d62497b39800de9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c66e3a547639d382d62497b39800de9">&#9670;&#160;</a></span>gpio_install_isr_service()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_install_isr_service </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>intr_alloc_flags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Install the shim's per-pin ISR dispatcher. </p>
+<p>Mirrors the ESP-IDF "ISR service" concept: a single central IRQ handler fans out to per-pin callbacks registered via <a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a612767be29fc6e8209d2a4a774d325f8" title="Attach a per-pin callback under the ISR service.">gpio_isr_handler_add()</a>. Must be called once before any _add/_remove call.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">intr_alloc_flags</td><td>accepted for source compatibility and otherwise ignored (VSF routes every EXTI through the same HAL priority level chosen by the board).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">ESP_OK</td><td>success or already installed </td></tr>
+    <tr><td class="paramname">ESP_ERR_NO_MEM</td><td>handler table could not be allocated </td></tr>
+    <tr><td class="paramname">ESP_ERR_INVALID_STATE</td><td>VSF io_mapper reports zero ports </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abad6f0378f9a37854bee3ced8014ac09" name="abad6f0378f9a37854bee3ced8014ac09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abad6f0378f9a37854bee3ced8014ac09">&#9670;&#160;</a></span>gpio_uninstall_isr_service()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_uninstall_isr_service </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Release the per-pin ISR dispatcher. </p>
+<p>All registered per-pin callbacks are dropped; per-port EXTI handlers are disabled in the underlying HAL driver. </p>
+
+</div>
+</div>
+<a id="a612767be29fc6e8209d2a4a774d325f8" name="a612767be29fc6e8209d2a4a774d325f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a612767be29fc6e8209d2a4a774d325f8">&#9670;&#160;</a></span>gpio_isr_handler_add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_isr_handler_add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#acc2fbc1804526b71823bd54f29bad6a8">gpio_isr_t</a>&#160;</td>
+          <td class="paramname"><em>isr_handler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Attach a per-pin callback under the ISR service. </p>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">ESP_OK</td><td>success </td></tr>
+    <tr><td class="paramname">ESP_ERR_INVALID_STATE</td><td>the ISR service has not been installed </td></tr>
+    <tr><td class="paramname">ESP_ERR_INVALID_ARG</td><td>gpio_num is out of range or isr_handler is NULL </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6089e615a3b223313a1303854edbac62" name="a6089e615a3b223313a1303854edbac62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6089e615a3b223313a1303854edbac62">&#9670;&#160;</a></span>gpio_isr_handler_remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_isr_handler_remove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detach a per-pin callback previously registered with <a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a612767be29fc6e8209d2a4a774d325f8" title="Attach a per-pin callback under the ISR service.">gpio_isr_handler_add()</a>. </p>
+
+</div>
+</div>
+<a id="a16f3aef75c5a9cbad10264cc7f0f66c1" name="a16f3aef75c5a9cbad10264cc7f0f66c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16f3aef75c5a9cbad10264cc7f0f66c1">&#9670;&#160;</a></span>gpio_isr_register()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_isr_register </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(void *)&#160;</td>
+          <td class="paramname"><em>fn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>arg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>intr_alloc_flags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#ab5ac8aacc96c553869b2429cea0c8c46">gpio_isr_handle_t</a> *&#160;</td>
+          <td class="paramname"><em>handle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab0625f4ec860635bcfd744a18e56b029" name="ab0625f4ec860635bcfd744a18e56b029"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0625f4ec860635bcfd744a18e56b029">&#9670;&#160;</a></span>gpio_wakeup_enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_wakeup_enable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#ae1d9cd0ebd0b0ac65ffc486396e0edc9">gpio_int_type_t</a>&#160;</td>
+          <td class="paramname"><em>intr_type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accepted for source compatibility. Returns ESP_ERR_NOT_SUPPORTED unless the underlying board enables the corresponding low-power feature &ndash; which the shim cannot probe. </p>
+
+</div>
+</div>
+<a id="ad4b048f8bdfbc3e65e7a0f8111861939" name="ad4b048f8bdfbc3e65e7a0f8111861939"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4b048f8bdfbc3e65e7a0f8111861939">&#9670;&#160;</a></span>gpio_wakeup_disable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> gpio_wakeup_disable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#a90f8a025e2527c454b863ebd8c6d2926">gpio_num_t</a>&#160;</td>
+          <td class="paramname"><em>gpio_num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a id="a8a1b0743a510e50530fce82f375bc660" name="a8a1b0743a510e50530fce82f375bc660"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a1b0743a510e50530fce82f375bc660">&#9670;&#160;</a></span>installed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> installed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2d8d6b84f11dd12728c907908b7729e8" name="a2d8d6b84f11dd12728c907908b7729e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d8d6b84f11dd12728c907908b7729e8">&#9670;&#160;</a></span>pins_per_port</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> pins_per_port</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>1 &lt;&lt; port_bits_log2 <br  />
+ </p>
+
+</div>
+</div>
+<a id="a139eefa27a49b56521efbbff079782ed" name="a139eefa27a49b56521efbbff079782ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a139eefa27a49b56521efbbff079782ed">&#9670;&#160;</a></span>total_pins</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> total_pins</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>port_num * pins_per_port </p>
+
+</div>
+</div>
+<a id="a501727cf6a711c466ca4b6a82a44788f" name="a501727cf6a711c466ca4b6a82a44788f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a501727cf6a711c466ca4b6a82a44788f">&#9670;&#160;</a></span>table</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgpio__isr__entry__t.html">gpio_isr_entry_t</a>* table</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/9cfc618e0694b26bce50396b3411e66608f4acc3" target="_blank">vsfteam/vsf@9cfc618</a>
+  生成
+</div>

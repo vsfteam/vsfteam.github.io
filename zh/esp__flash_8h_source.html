@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/espidf/include/esp_flash.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_67078002197479e597ae23208194ae3e.html">espidf</a></li><li class="navelem"><a class="el" href="dir_368c75ff2ea44ed7d865b13e1d69fdba.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">esp_flash.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="esp__flash_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2026 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * Clean-room re-implementation of ESP-IDF public API &quot;esp_flash.h&quot;.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * Baseline: ESP-IDF v5.x public API. Only the surface area that</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * real-world application / middleware code actually touches is exposed:</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * read / write / erase_region / erase_chip / get_size / get_chip_id /</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * plus the default-chip singleton.</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> * This shim layers directly on the same vk_mal_t &quot;root mal&quot; that the</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> * esp_partition port already consumes (see esp_partition_port.c). The</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"> * full ESP-IDF chip stack (spi_flash_host_driver_t + chip_driver_t +</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"> * os_functions) is not modelled: there is no physical SPI controller</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"> * in the host environment.</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"> * Encrypted variants (read_encrypted / write_encrypted) simply alias</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"> * the plain variants; the shim has no flash-encryption layer.</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"> * mmap is intentionally NOT exposed here. It is a cache/MMU facility</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"> * on real targets and only meaningful for the main flash; applications</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"> * that need a direct pointer should use esp_partition_mmap() which is</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"> * already wired through the root mal&#39;s VSF_MAL_LOCAL_BUFFER capability.</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#ifndef __VSF_ESPIDF_ESP_FLASH_H__</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#define __VSF_ESPIDF_ESP_FLASH_H__</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#include &lt;<a class="code" href="stdint_8h.html">stdint.h</a>&gt;</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#include &quot;<a class="code" href="esp__err_8h.html">esp_err.h</a>&quot;</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">/* esp_flash-specific error codes. Values follow ESP-IDF v5.x. */</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="esp__flash_8h.html#ac6d0b8ec96f3d419eccd96cfea0a053b">   59</a></span><span class="preprocessor">#define ESP_ERR_FLASH_NOT_INITIALISED   (ESP_ERR_FLASH_BASE + 1)</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="esp__flash_8h.html#a85b4208fafcae28164ff21da4a9e1317">   60</a></span><span class="preprocessor">#define ESP_ERR_FLASH_UNSUPPORTED_HOST  (ESP_ERR_FLASH_BASE + 2)</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="esp__flash_8h.html#aa958e8d43bf02552c1e2a5ecac006dfd">   61</a></span><span class="preprocessor">#define ESP_ERR_FLASH_UNSUPPORTED_CHIP  (ESP_ERR_FLASH_BASE + 3)</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="esp__flash_8h.html#a9c6650f9a0d3fd405adf45a27dd939d7">   62</a></span><span class="preprocessor">#define ESP_ERR_FLASH_PROTECTED         (ESP_ERR_FLASH_BASE + 4)</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">/* Forward declarations. The root mal is opaque at this header. */</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">struct </span><a class="code hl_class" href="classvk__mal__t.html">vk_mal_t</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">/* SPI flash I/O mode hint. Tracked as a field on esp_flash_t for API</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment"> * compatibility; the shim ignores the value. */</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88">   71</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88a33fa10dbe9954678f51a2b879ecf8ea0">   72</a></span>    <a class="code hl_enumvalue" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88a33fa10dbe9954678f51a2b879ecf8ea0">SPI_FLASH_SLOWRD</a> = 0,</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88a9ecddeabc897117f4b973ab6cf9aeb86">   73</a></span>    <a class="code hl_enumvalue" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88a9ecddeabc897117f4b973ab6cf9aeb86">SPI_FLASH_FASTRD</a>,</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88aa36a6bbcf39b8c0aaf335e04910f8b7d">   74</a></span>    <a class="code hl_enumvalue" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88aa36a6bbcf39b8c0aaf335e04910f8b7d">SPI_FLASH_DOUT</a>,</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88aa860b6d73aecb05afdf29a316be8a192">   75</a></span>    <a class="code hl_enumvalue" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88aa860b6d73aecb05afdf29a316be8a192">SPI_FLASH_DIO</a>,</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88aee60fb3a08f89320a8b8f17febfd3c04">   76</a></span>    <a class="code hl_enumvalue" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88aee60fb3a08f89320a8b8f17febfd3c04">SPI_FLASH_QOUT</a>,</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88af170aa9a057beb7aa7e0fa75823413cc">   77</a></span>    <a class="code hl_enumvalue" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88af170aa9a057beb7aa7e0fa75823413cc">SPI_FLASH_QIO</a>,</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88a873f07bac05d2e8be19d554c1edbf6f7">   78</a></span>    <a class="code hl_enumvalue" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88a873f07bac05d2e8be19d554c1edbf6f7">SPI_FLASH_OPI_STR</a>,</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88a874c47b2187c2cb1fdce2c60bfdec888">   79</a></span>    <a class="code hl_enumvalue" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88a874c47b2187c2cb1fdce2c60bfdec888">SPI_FLASH_OPI_DTR</a>,</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88ac9b6bffcb1b257f00f0ac5bce2109d58">   80</a></span>    <a class="code hl_enumvalue" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88ac9b6bffcb1b257f00f0ac5bce2109d58">SPI_FLASH_READ_MODE_MAX</a>,</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>} <a class="code hl_enumeration" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88">esp_flash_io_mode_t</a>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">/* Runtime descriptor of one flash chip. Field layout matches the public</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment"> * portion of the ESP-IDF struct; application code only reads size / chip_id.</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment"> * Shim-specific fields:</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment"> *   mal      vk_mal_t backing the whole chip address space. Caller MUST</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment"> *            keep this mal valid for the lifetime of the chip descriptor.</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="structesp__flash__t.html">   90</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structesp__flash__t.html">esp_flash_t</a> {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="structesp__flash__t.html#aceceb9373dd6a3347bf66fc27d0aa0aa">   91</a></span>    <span class="keywordtype">void</span>                   *<a class="code hl_variable" href="structesp__flash__t.html#aceceb9373dd6a3347bf66fc27d0aa0aa">host</a>;        <span class="comment">/* unused; kept for ABI parity */</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="structesp__flash__t.html#a25a6928f1909fc639b68d95a9a9d7128">   92</a></span>    <span class="keywordtype">void</span>                   *<a class="code hl_variable" href="structesp__flash__t.html#a25a6928f1909fc639b68d95a9a9d7128">chip_drv</a>;    <span class="comment">/* unused; kept for ABI parity */</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="structesp__flash__t.html#a085bf75855aceec37fc6aec852ad1ec5">   93</a></span>    <span class="keywordtype">void</span>                   *<a class="code hl_variable" href="structesp__flash__t.html#a085bf75855aceec37fc6aec852ad1ec5">os_func</a>;     <span class="comment">/* unused; kept for ABI parity */</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="structesp__flash__t.html#a72ca149555a0d3617ac0737f5c06f0ce">   94</a></span>    <span class="keywordtype">void</span>                   *<a class="code hl_variable" href="structesp__flash__t.html#a72ca149555a0d3617ac0737f5c06f0ce">os_func_data</a>;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="structesp__flash__t.html#a7a2be47d1127ec3a6666c1ed492d5549">   96</a></span>    <a class="code hl_enumeration" href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88">esp_flash_io_mode_t</a>     <a class="code hl_variable" href="structesp__flash__t.html#a7a2be47d1127ec3a6666c1ed492d5549">read_mode</a>;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="structesp__flash__t.html#a241862dd55bf586b82030d6c43ec47cc">   97</a></span>    <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>                <a class="code hl_variable" href="structesp__flash__t.html#a241862dd55bf586b82030d6c43ec47cc">size</a>;        <span class="comment">/* chip size in bytes */</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="structesp__flash__t.html#a6b0bbaac1061e0ca1c3498c60dbb4118">   98</a></span>    <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>                <a class="code hl_variable" href="structesp__flash__t.html#a6b0bbaac1061e0ca1c3498c60dbb4118">chip_id</a>;     <span class="comment">/* JEDEC ID or user-supplied */</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="structesp__flash__t.html#a9d860aec45616888c51ac1c5032c3543">   99</a></span>    <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>                <a class="code hl_variable" href="structesp__flash__t.html#a9d860aec45616888c51ac1c5032c3543">busy</a>;        <span class="comment">/* kept for ABI parity, always 0 */</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="comment">/* Opaque pointer to the backing vk_mal_t. Callers must NOT dereference</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">     * this field directly; it is exposed to keep esp_flash_t a complete</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">     * type so static allocation and struct embedding work. */</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="structesp__flash__t.html#a6324042b56ce778cf6280a2c8ead7761">  104</a></span>    <span class="keywordtype">void</span>                   *<a class="code hl_variable" href="structesp__flash__t.html#a6324042b56ce778cf6280a2c8ead7761">mal</a>;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="esp__flash_8h.html#a68028cb8a9c46815ee257469d301a565">  105</a></span>} <a class="code hl_struct" href="structesp__flash__t.html">esp_flash_t</a>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">/* Process-wide default chip handle. Points at the same root_mal that</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment"> * vsf_espidf_init() was given via vsf_espidf_cfg_t::partition.root_mal.</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment"> * NULL until the esp_flash sub-system has been initialised. All</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment"> * esp_flash_*() entry points accept a chip == NULL shorthand meaning</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment"> * &quot;use the default chip&quot;.</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="keyword">extern</span> <a class="code hl_struct" href="structesp__flash__t.html">esp_flash_t</a> *<a class="code hl_variable" href="esp__flash_8h.html#ade4092b839c0f0d461b1a31f29635126">esp_flash_default_chip</a>;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment">/* --- Lifecycle -------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">/* Probe a chip descriptor. On real ESP-IDF this queries the physical flash</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment"> * for its JEDEC ID, unique ID, SFDP tables etc.; in this shim it is a</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment"> * validation pass: the caller-supplied esp_flash_t must have `mal` set and</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment"> * `size` must fit inside the backing mal. Returns ESP_OK on success. */</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__flash_8h.html#a7b78c01ff9b885e28ae530d520cf2cd4">esp_flash_init</a>(<a class="code hl_struct" href="structesp__flash__t.html">esp_flash_t</a> *chip);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment">/* No-op in this shim (present for ABI parity with ESP-IDF). Returns</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment"> * ESP_OK unconditionally. */</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__flash_8h.html#a1bb0c0d802ba8a087fc18dbba71938d2">esp_flash_init_os_functions</a>(<a class="code hl_struct" href="structesp__flash__t.html">esp_flash_t</a> *chip, <span class="keywordtype">int</span> host_id,</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                                             <span class="keywordtype">int</span> *out_attached_id);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__flash_8h.html#a9e19014ab1effbd311bd1bea9d8781af">esp_flash_deinit_os_functions</a>(<a class="code hl_struct" href="structesp__flash__t.html">esp_flash_t</a> *chip);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment">/* --- Identity --------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">/* Retrieve the flash chip ID. chip == NULL selects the default chip. */</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__flash_8h.html#a9ae74399552dabafaae8b221c7b13f1e">esp_flash_read_id</a>(<a class="code hl_struct" href="structesp__flash__t.html">esp_flash_t</a> *chip, <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *out_id);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment">/* Retrieve the flash chip size in bytes. Equivalent to chip-&gt;size.</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment"> * chip == NULL selects the default chip. */</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__flash_8h.html#a3e88353604d41a67589c1516e28f7967">esp_flash_get_size</a>(<a class="code hl_struct" href="structesp__flash__t.html">esp_flash_t</a> *chip, <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *out_size);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment">/* On real ESP-IDF this returns the chip&#39;s physical size even when the</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="comment"> * configured size is smaller. In this shim it always matches get_size().</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__flash_8h.html#a50fc6bcebcf53b9fe38e27c183ea7941">esp_flash_get_physical_size</a>(<a class="code hl_struct" href="structesp__flash__t.html">esp_flash_t</a> *chip,</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                                             <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> *out_size);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">/* --- I/O -------------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">/* Synchronous read / write / erase against the chip&#39;s address space.</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="comment"> * All offsets are absolute chip addresses; bounds are validated against</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="comment"> * chip-&gt;size. Must be called from a stack-owner thread (vsf_thread_t):</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="comment"> * the underlying vk_mal_t I/O is a peda subcall and only short-circuits</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment"> * to synchronous completion in that context. */</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__flash_8h.html#a3124eba3c0428aa810be82593d49f164">esp_flash_read</a>(<a class="code hl_struct" href="structesp__flash__t.html">esp_flash_t</a> *chip, <span class="keywordtype">void</span> *buffer,</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                                <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> address, <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> <a class="code hl_variable" href="vsf__pbuf_8c.html#ae4be32df35b12bdacfbe8ae8cd5a8177">length</a>);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__flash_8h.html#ac797be419c7ec74a897ec2292d003f2f">esp_flash_write</a>(<a class="code hl_struct" href="structesp__flash__t.html">esp_flash_t</a> *chip, <span class="keyword">const</span> <span class="keywordtype">void</span> *buffer,</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                                 <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> address, <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> <a class="code hl_variable" href="vsf__pbuf_8c.html#ae4be32df35b12bdacfbe8ae8cd5a8177">length</a>);</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__flash_8h.html#a3463ff7939e150a484c2bfbd5f234611">esp_flash_erase_region</a>(<a class="code hl_struct" href="structesp__flash__t.html">esp_flash_t</a> *chip,</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>                                        <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> start, <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> len);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__flash_8h.html#aa3ce75afa86644bcd48458b438fc97de">esp_flash_erase_chip</a>(<a class="code hl_struct" href="structesp__flash__t.html">esp_flash_t</a> *chip);</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="comment">/* Encrypted variants: alias to plain read/write. Provided for API</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment"> * compatibility only -- there is no flash-encryption layer in this shim.</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__flash_8h.html#a7a5baa4846df3db2e6a905ffa2ab6272">esp_flash_read_encrypted</a>(<a class="code hl_struct" href="structesp__flash__t.html">esp_flash_t</a> *chip, <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> address,</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                                          <span class="keywordtype">void</span> *out_buffer, <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> <a class="code hl_variable" href="vsf__pbuf_8c.html#ae4be32df35b12bdacfbe8ae8cd5a8177">length</a>);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="keyword">extern</span> <a class="code hl_typedef" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> <a class="code hl_function" href="esp__flash_8h.html#ad30649c5e250eccada206c555be21d34">esp_flash_write_encrypted</a>(<a class="code hl_struct" href="structesp__flash__t.html">esp_flash_t</a> *chip, <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> address,</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>                                           <span class="keyword">const</span> <span class="keywordtype">void</span> *buffer, <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> <a class="code hl_variable" href="vsf__pbuf_8c.html#ae4be32df35b12bdacfbe8ae8cd5a8177">length</a>);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>}</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="preprocessor">#endif      </span><span class="comment">/* __VSF_ESPIDF_ESP_FLASH_H__ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassvk__mal__t_html"><div class="ttname"><a href="classvk__mal__t.html">vk_mal_t</a></div><div class="ttdoc">mal类</div><div class="ttdef"><b>Definition</b> vsf_mal.h:168</div></div>
+<div class="ttc" id="aesp__err_8h_html"><div class="ttname"><a href="esp__err_8h.html">esp_err.h</a></div></div>
+<div class="ttc" id="aesp__err_8h_html_a8bc4f6626a2d4ebd67533c56064ccda8"><div class="ttname"><a href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a></div><div class="ttdeci">int esp_err_t</div><div class="ttdef"><b>Definition</b> esp_err.h:41</div></div>
+<div class="ttc" id="aesp__flash_8h_html_a1bb0c0d802ba8a087fc18dbba71938d2"><div class="ttname"><a href="esp__flash_8h.html#a1bb0c0d802ba8a087fc18dbba71938d2">esp_flash_init_os_functions</a></div><div class="ttdeci">esp_err_t esp_flash_init_os_functions(esp_flash_t *chip, int host_id, int *out_attached_id)</div><div class="ttdef"><b>Definition</b> esp_flash_port.c:160</div></div>
+<div class="ttc" id="aesp__flash_8h_html_a3124eba3c0428aa810be82593d49f164"><div class="ttname"><a href="esp__flash_8h.html#a3124eba3c0428aa810be82593d49f164">esp_flash_read</a></div><div class="ttdeci">esp_err_t esp_flash_read(esp_flash_t *chip, void *buffer, uint32_t address, uint32_t length)</div><div class="ttdef"><b>Definition</b> esp_flash_port.c:213</div></div>
+<div class="ttc" id="aesp__flash_8h_html_a3463ff7939e150a484c2bfbd5f234611"><div class="ttname"><a href="esp__flash_8h.html#a3463ff7939e150a484c2bfbd5f234611">esp_flash_erase_region</a></div><div class="ttdeci">esp_err_t esp_flash_erase_region(esp_flash_t *chip, uint32_t start, uint32_t len)</div><div class="ttdef"><b>Definition</b> esp_flash_port.c:251</div></div>
+<div class="ttc" id="aesp__flash_8h_html_a3e88353604d41a67589c1516e28f7967"><div class="ttname"><a href="esp__flash_8h.html#a3e88353604d41a67589c1516e28f7967">esp_flash_get_size</a></div><div class="ttdeci">esp_err_t esp_flash_get_size(esp_flash_t *chip, uint32_t *out_size)</div><div class="ttdef"><b>Definition</b> esp_flash_port.c:192</div></div>
+<div class="ttc" id="aesp__flash_8h_html_a50fc6bcebcf53b9fe38e27c183ea7941"><div class="ttname"><a href="esp__flash_8h.html#a50fc6bcebcf53b9fe38e27c183ea7941">esp_flash_get_physical_size</a></div><div class="ttdeci">esp_err_t esp_flash_get_physical_size(esp_flash_t *chip, uint32_t *out_size)</div><div class="ttdef"><b>Definition</b> esp_flash_port.c:205</div></div>
+<div class="ttc" id="aesp__flash_8h_html_a7a5baa4846df3db2e6a905ffa2ab6272"><div class="ttname"><a href="esp__flash_8h.html#a7a5baa4846df3db2e6a905ffa2ab6272">esp_flash_read_encrypted</a></div><div class="ttdeci">esp_err_t esp_flash_read_encrypted(esp_flash_t *chip, uint32_t address, void *out_buffer, uint32_t length)</div><div class="ttdef"><b>Definition</b> esp_flash_port.c:285</div></div>
+<div class="ttc" id="aesp__flash_8h_html_a7b78c01ff9b885e28ae530d520cf2cd4"><div class="ttname"><a href="esp__flash_8h.html#a7b78c01ff9b885e28ae530d520cf2cd4">esp_flash_init</a></div><div class="ttdeci">esp_err_t esp_flash_init(esp_flash_t *chip)</div><div class="ttdef"><b>Definition</b> esp_flash_port.c:135</div></div>
+<div class="ttc" id="aesp__flash_8h_html_a9ae74399552dabafaae8b221c7b13f1e"><div class="ttname"><a href="esp__flash_8h.html#a9ae74399552dabafaae8b221c7b13f1e">esp_flash_read_id</a></div><div class="ttdeci">esp_err_t esp_flash_read_id(esp_flash_t *chip, uint32_t *out_id)</div><div class="ttdef"><b>Definition</b> esp_flash_port.c:179</div></div>
+<div class="ttc" id="aesp__flash_8h_html_a9e19014ab1effbd311bd1bea9d8781af"><div class="ttname"><a href="esp__flash_8h.html#a9e19014ab1effbd311bd1bea9d8781af">esp_flash_deinit_os_functions</a></div><div class="ttdeci">esp_err_t esp_flash_deinit_os_functions(esp_flash_t *chip)</div><div class="ttdef"><b>Definition</b> esp_flash_port.c:171</div></div>
+<div class="ttc" id="aesp__flash_8h_html_aa3ce75afa86644bcd48458b438fc97de"><div class="ttname"><a href="esp__flash_8h.html#aa3ce75afa86644bcd48458b438fc97de">esp_flash_erase_chip</a></div><div class="ttdeci">esp_err_t esp_flash_erase_chip(esp_flash_t *chip)</div><div class="ttdef"><b>Definition</b> esp_flash_port.c:274</div></div>
+<div class="ttc" id="aesp__flash_8h_html_ac797be419c7ec74a897ec2292d003f2f"><div class="ttname"><a href="esp__flash_8h.html#ac797be419c7ec74a897ec2292d003f2f">esp_flash_write</a></div><div class="ttdeci">esp_err_t esp_flash_write(esp_flash_t *chip, const void *buffer, uint32_t address, uint32_t length)</div><div class="ttdef"><b>Definition</b> esp_flash_port.c:232</div></div>
+<div class="ttc" id="aesp__flash_8h_html_ad30649c5e250eccada206c555be21d34"><div class="ttname"><a href="esp__flash_8h.html#ad30649c5e250eccada206c555be21d34">esp_flash_write_encrypted</a></div><div class="ttdeci">esp_err_t esp_flash_write_encrypted(esp_flash_t *chip, uint32_t address, const void *buffer, uint32_t length)</div><div class="ttdef"><b>Definition</b> esp_flash_port.c:291</div></div>
+<div class="ttc" id="aesp__flash_8h_html_ade4092b839c0f0d461b1a31f29635126"><div class="ttname"><a href="esp__flash_8h.html#ade4092b839c0f0d461b1a31f29635126">esp_flash_default_chip</a></div><div class="ttdeci">esp_flash_t * esp_flash_default_chip</div><div class="ttdef"><b>Definition</b> esp_flash_port.c:66</div></div>
+<div class="ttc" id="aesp__flash_8h_html_aed5e725de9342f7843c931c3d5119c88"><div class="ttname"><a href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88">esp_flash_io_mode_t</a></div><div class="ttdeci">esp_flash_io_mode_t</div><div class="ttdef"><b>Definition</b> esp_flash.h:71</div></div>
+<div class="ttc" id="aesp__flash_8h_html_aed5e725de9342f7843c931c3d5119c88a33fa10dbe9954678f51a2b879ecf8ea0"><div class="ttname"><a href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88a33fa10dbe9954678f51a2b879ecf8ea0">SPI_FLASH_SLOWRD</a></div><div class="ttdeci">@ SPI_FLASH_SLOWRD</div><div class="ttdef"><b>Definition</b> esp_flash.h:72</div></div>
+<div class="ttc" id="aesp__flash_8h_html_aed5e725de9342f7843c931c3d5119c88a873f07bac05d2e8be19d554c1edbf6f7"><div class="ttname"><a href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88a873f07bac05d2e8be19d554c1edbf6f7">SPI_FLASH_OPI_STR</a></div><div class="ttdeci">@ SPI_FLASH_OPI_STR</div><div class="ttdef"><b>Definition</b> esp_flash.h:78</div></div>
+<div class="ttc" id="aesp__flash_8h_html_aed5e725de9342f7843c931c3d5119c88a874c47b2187c2cb1fdce2c60bfdec888"><div class="ttname"><a href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88a874c47b2187c2cb1fdce2c60bfdec888">SPI_FLASH_OPI_DTR</a></div><div class="ttdeci">@ SPI_FLASH_OPI_DTR</div><div class="ttdef"><b>Definition</b> esp_flash.h:79</div></div>
+<div class="ttc" id="aesp__flash_8h_html_aed5e725de9342f7843c931c3d5119c88a9ecddeabc897117f4b973ab6cf9aeb86"><div class="ttname"><a href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88a9ecddeabc897117f4b973ab6cf9aeb86">SPI_FLASH_FASTRD</a></div><div class="ttdeci">@ SPI_FLASH_FASTRD</div><div class="ttdef"><b>Definition</b> esp_flash.h:73</div></div>
+<div class="ttc" id="aesp__flash_8h_html_aed5e725de9342f7843c931c3d5119c88aa36a6bbcf39b8c0aaf335e04910f8b7d"><div class="ttname"><a href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88aa36a6bbcf39b8c0aaf335e04910f8b7d">SPI_FLASH_DOUT</a></div><div class="ttdeci">@ SPI_FLASH_DOUT</div><div class="ttdef"><b>Definition</b> esp_flash.h:74</div></div>
+<div class="ttc" id="aesp__flash_8h_html_aed5e725de9342f7843c931c3d5119c88aa860b6d73aecb05afdf29a316be8a192"><div class="ttname"><a href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88aa860b6d73aecb05afdf29a316be8a192">SPI_FLASH_DIO</a></div><div class="ttdeci">@ SPI_FLASH_DIO</div><div class="ttdef"><b>Definition</b> esp_flash.h:75</div></div>
+<div class="ttc" id="aesp__flash_8h_html_aed5e725de9342f7843c931c3d5119c88ac9b6bffcb1b257f00f0ac5bce2109d58"><div class="ttname"><a href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88ac9b6bffcb1b257f00f0ac5bce2109d58">SPI_FLASH_READ_MODE_MAX</a></div><div class="ttdeci">@ SPI_FLASH_READ_MODE_MAX</div><div class="ttdef"><b>Definition</b> esp_flash.h:80</div></div>
+<div class="ttc" id="aesp__flash_8h_html_aed5e725de9342f7843c931c3d5119c88aee60fb3a08f89320a8b8f17febfd3c04"><div class="ttname"><a href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88aee60fb3a08f89320a8b8f17febfd3c04">SPI_FLASH_QOUT</a></div><div class="ttdeci">@ SPI_FLASH_QOUT</div><div class="ttdef"><b>Definition</b> esp_flash.h:76</div></div>
+<div class="ttc" id="aesp__flash_8h_html_aed5e725de9342f7843c931c3d5119c88af170aa9a057beb7aa7e0fa75823413cc"><div class="ttname"><a href="esp__flash_8h.html#aed5e725de9342f7843c931c3d5119c88af170aa9a057beb7aa7e0fa75823413cc">SPI_FLASH_QIO</a></div><div class="ttdeci">@ SPI_FLASH_QIO</div><div class="ttdef"><b>Definition</b> esp_flash.h:77</div></div>
+<div class="ttc" id="astdint_8h_html"><div class="ttname"><a href="stdint_8h.html">stdint.h</a></div></div>
+<div class="ttc" id="astdint_8h_html_a324c5d28c0d82f502a234ab99efac87a"><div class="ttname"><a href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a></div><div class="ttdeci">unsigned uint32_t</div><div class="ttdef"><b>Definition</b> stdint.h:9</div></div>
+<div class="ttc" id="astructesp__flash__t_html"><div class="ttname"><a href="structesp__flash__t.html">esp_flash_t</a></div><div class="ttdef"><b>Definition</b> esp_flash.h:90</div></div>
+<div class="ttc" id="astructesp__flash__t_html_a085bf75855aceec37fc6aec852ad1ec5"><div class="ttname"><a href="structesp__flash__t.html#a085bf75855aceec37fc6aec852ad1ec5">esp_flash_t::os_func</a></div><div class="ttdeci">void * os_func</div><div class="ttdef"><b>Definition</b> esp_flash.h:93</div></div>
+<div class="ttc" id="astructesp__flash__t_html_a241862dd55bf586b82030d6c43ec47cc"><div class="ttname"><a href="structesp__flash__t.html#a241862dd55bf586b82030d6c43ec47cc">esp_flash_t::size</a></div><div class="ttdeci">uint32_t size</div><div class="ttdef"><b>Definition</b> esp_flash.h:97</div></div>
+<div class="ttc" id="astructesp__flash__t_html_a25a6928f1909fc639b68d95a9a9d7128"><div class="ttname"><a href="structesp__flash__t.html#a25a6928f1909fc639b68d95a9a9d7128">esp_flash_t::chip_drv</a></div><div class="ttdeci">void * chip_drv</div><div class="ttdef"><b>Definition</b> esp_flash.h:92</div></div>
+<div class="ttc" id="astructesp__flash__t_html_a6324042b56ce778cf6280a2c8ead7761"><div class="ttname"><a href="structesp__flash__t.html#a6324042b56ce778cf6280a2c8ead7761">esp_flash_t::mal</a></div><div class="ttdeci">void * mal</div><div class="ttdef"><b>Definition</b> esp_flash.h:104</div></div>
+<div class="ttc" id="astructesp__flash__t_html_a6b0bbaac1061e0ca1c3498c60dbb4118"><div class="ttname"><a href="structesp__flash__t.html#a6b0bbaac1061e0ca1c3498c60dbb4118">esp_flash_t::chip_id</a></div><div class="ttdeci">uint32_t chip_id</div><div class="ttdef"><b>Definition</b> esp_flash.h:98</div></div>
+<div class="ttc" id="astructesp__flash__t_html_a72ca149555a0d3617ac0737f5c06f0ce"><div class="ttname"><a href="structesp__flash__t.html#a72ca149555a0d3617ac0737f5c06f0ce">esp_flash_t::os_func_data</a></div><div class="ttdeci">void * os_func_data</div><div class="ttdef"><b>Definition</b> esp_flash.h:94</div></div>
+<div class="ttc" id="astructesp__flash__t_html_a7a2be47d1127ec3a6666c1ed492d5549"><div class="ttname"><a href="structesp__flash__t.html#a7a2be47d1127ec3a6666c1ed492d5549">esp_flash_t::read_mode</a></div><div class="ttdeci">esp_flash_io_mode_t read_mode</div><div class="ttdef"><b>Definition</b> esp_flash.h:96</div></div>
+<div class="ttc" id="astructesp__flash__t_html_a9d860aec45616888c51ac1c5032c3543"><div class="ttname"><a href="structesp__flash__t.html#a9d860aec45616888c51ac1c5032c3543">esp_flash_t::busy</a></div><div class="ttdeci">uint32_t busy</div><div class="ttdef"><b>Definition</b> esp_flash.h:99</div></div>
+<div class="ttc" id="astructesp__flash__t_html_aceceb9373dd6a3347bf66fc27d0aa0aa"><div class="ttname"><a href="structesp__flash__t.html#aceceb9373dd6a3347bf66fc27d0aa0aa">esp_flash_t::host</a></div><div class="ttdeci">void * host</div><div class="ttdef"><b>Definition</b> esp_flash.h:91</div></div>
+<div class="ttc" id="avsf__pbuf_8c_html_ae4be32df35b12bdacfbe8ae8cd5a8177"><div class="ttname"><a href="vsf__pbuf_8c.html#ae4be32df35b12bdacfbe8ae8cd5a8177">length</a></div><div class="ttdeci">uint_fast8_t length</div><div class="ttdef"><b>Definition</b> vsf_pbuf.c:38</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/9cfc618e0694b26bce50396b3411e66608f4acc3" target="_blank">vsfteam/vsf@9cfc618</a>
+  生成
+</div>
