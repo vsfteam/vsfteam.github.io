@@ -1,0 +1,1162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/espidf/port/esp_netif_port.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_67078002197479e597ae23208194ae3e.html">espidf</a></li><li class="navelem"><a class="el" href="dir_d14dc8466d44ad1adba1031dafa98f07.html">port</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">esp_netif_port.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__espidf__cfg_8h_source.html">../vsf_espidf_cfg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="esp__netif_8h_source.html">esp_netif.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="esp__event_8h_source.html">esp_event.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__espidf_8h_source.html">../vsf_espidf.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__kernel_8h_source.html">kernel/vsf_kernel.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__tcpip_8h_source.html">component/tcpip/vsf_tcpip.h</a>&quot;</code><br />
+<code>#include &quot;lwip/tcpip.h&quot;</code><br />
+<code>#include &quot;lwip/netif.h&quot;</code><br />
+<code>#include &quot;lwip/dhcp.h&quot;</code><br />
+<code>#include &quot;lwip/dns.h&quot;</code><br />
+<code>#include &quot;lwip/ip_addr.h&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structesp__netif__obj.html">esp_netif_obj</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a9b979d60ff92e1bf35ab686f05337b91" id="r_a9b979d60ff92e1bf35ab686f05337b91"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a9b979d60ff92e1bf35ab686f05337b91">__VSF_NETDRV_CLASS_INHERIT_NETIF__</a></td></tr>
+<tr class="separator:a9b979d60ff92e1bf35ab686f05337b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2510b39f694a383985f5855962a180d" id="r_ad2510b39f694a383985f5855962a180d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#ad2510b39f694a383985f5855962a180d">VSF_ESPIDF_CFG_NETIF_MAX_INSTANCES</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:ad2510b39f694a383985f5855962a180d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a3ebe55597ce593857a6063aa17fe2f13" id="r_a3ebe55597ce593857a6063aa17fe2f13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a3ebe55597ce593857a6063aa17fe2f13">lwip_netif_set_netdrv</a> (struct netif *netif, <a class="el" href="classvk__netdrv__t.html">vk_netdrv_t</a> *netdrv)</td></tr>
+<tr class="separator:a3ebe55597ce593857a6063aa17fe2f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d2816590b9a4bcb5711667e07bcede4" id="r_a9d2816590b9a4bcb5711667e07bcede4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a9d2816590b9a4bcb5711667e07bcede4">ESP_EVENT_DEFINE_BASE</a> (IP_EVENT)</td></tr>
+<tr class="separator:a9d2816590b9a4bcb5711667e07bcede4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2a66efbc3181912e387af430fd265fc" id="r_ae2a66efbc3181912e387af430fd265fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#ae2a66efbc3181912e387af430fd265fc">esp_netif_init</a> (void)</td></tr>
+<tr class="separator:ae2a66efbc3181912e387af430fd265fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46d1f03026902672e1cb8ea21f223011" id="r_a46d1f03026902672e1cb8ea21f223011"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a46d1f03026902672e1cb8ea21f223011">esp_netif_deinit</a> (void)</td></tr>
+<tr class="separator:a46d1f03026902672e1cb8ea21f223011"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a043b9b36cb4fe3024cd04440cfa90692" id="r_a043b9b36cb4fe3024cd04440cfa90692"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a043b9b36cb4fe3024cd04440cfa90692">vsf_espidf_netif_init</a> (void)</td></tr>
+<tr class="separator:a043b9b36cb4fe3024cd04440cfa90692"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4799d703490f1a0b3b24c88c6d9657f" id="r_ac4799d703490f1a0b3b24c88c6d9657f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#ac4799d703490f1a0b3b24c88c6d9657f">esp_netif_new</a> (const <a class="el" href="esp__netif__types_8h.html#a11ed9abd86799c2199844236718180d1">esp_netif_config_t</a> *cfg)</td></tr>
+<tr class="separator:ac4799d703490f1a0b3b24c88c6d9657f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c9f55966bc8fb84f11f5c316f12154b" id="r_a2c9f55966bc8fb84f11f5c316f12154b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a2c9f55966bc8fb84f11f5c316f12154b">esp_netif_destroy</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif)</td></tr>
+<tr class="separator:a2c9f55966bc8fb84f11f5c316f12154b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad77cff732728f4c9302c4fd905c51fe2" id="r_ad77cff732728f4c9302c4fd905c51fe2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#ad77cff732728f4c9302c4fd905c51fe2">esp_netif_attach</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, <a class="el" href="esp__netif__types_8h.html#a8642602fdeda692b85c458bd8e02748c">esp_netif_iodriver_handle</a> driver_handle)</td></tr>
+<tr class="separator:ad77cff732728f4c9302c4fd905c51fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d0fbed313cd6464dbd12f7068699d3a" id="r_a2d0fbed313cd6464dbd12f7068699d3a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a2d0fbed313cd6464dbd12f7068699d3a">esp_netif_set_driver_config</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, const <a class="el" href="esp__netif__types_8h.html#a2ee78b89fa1260166e7f59508b6dda57">esp_netif_driver_ifconfig_t</a> *cfg)</td></tr>
+<tr class="separator:a2d0fbed313cd6464dbd12f7068699d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10e9afd00278729cdcee79b5adf6c29c" id="r_a10e9afd00278729cdcee79b5adf6c29c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a10e9afd00278729cdcee79b5adf6c29c">esp_netif_attach_netdrv</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, struct vk_netdrv *netdrv)</td></tr>
+<tr class="separator:a10e9afd00278729cdcee79b5adf6c29c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74b0abd3bef1ba32a1cefc3edce1e881" id="r_a74b0abd3bef1ba32a1cefc3edce1e881"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a74b0abd3bef1ba32a1cefc3edce1e881">esp_netif_action_start</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, <a class="el" href="esp__event__base_8h.html#a4e776a2d890806fb130046f4fd03ba47">esp_event_base_t</a> base, <a class="el" href="stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> id, void *<a class="el" href="ieee80211_8h.html#a0523b4597a0b055eae49bfe42a58b918">data</a>)</td></tr>
+<tr class="separator:a74b0abd3bef1ba32a1cefc3edce1e881"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1278a1b33664f0d373819965337dc4b" id="r_ab1278a1b33664f0d373819965337dc4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#ab1278a1b33664f0d373819965337dc4b">esp_netif_action_stop</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, <a class="el" href="esp__event__base_8h.html#a4e776a2d890806fb130046f4fd03ba47">esp_event_base_t</a> base, <a class="el" href="stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> id, void *<a class="el" href="ieee80211_8h.html#a0523b4597a0b055eae49bfe42a58b918">data</a>)</td></tr>
+<tr class="separator:ab1278a1b33664f0d373819965337dc4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18cc3b5afc403300b00f00019c75b00b" id="r_a18cc3b5afc403300b00f00019c75b00b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a18cc3b5afc403300b00f00019c75b00b">esp_netif_action_connected</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, <a class="el" href="esp__event__base_8h.html#a4e776a2d890806fb130046f4fd03ba47">esp_event_base_t</a> b, <a class="el" href="stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> id, void *d)</td></tr>
+<tr class="separator:a18cc3b5afc403300b00f00019c75b00b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7d48c74437fee8328e5010b9b5ca4d1" id="r_ab7d48c74437fee8328e5010b9b5ca4d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#ab7d48c74437fee8328e5010b9b5ca4d1">esp_netif_action_disconnected</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, <a class="el" href="esp__event__base_8h.html#a4e776a2d890806fb130046f4fd03ba47">esp_event_base_t</a> b, <a class="el" href="stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> id, void *d)</td></tr>
+<tr class="separator:ab7d48c74437fee8328e5010b9b5ca4d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3121a58e3aaf826971b35b124d5dc928" id="r_a3121a58e3aaf826971b35b124d5dc928"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a3121a58e3aaf826971b35b124d5dc928">esp_netif_action_got_ip</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, <a class="el" href="esp__event__base_8h.html#a4e776a2d890806fb130046f4fd03ba47">esp_event_base_t</a> b, <a class="el" href="stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> id, void *d)</td></tr>
+<tr class="separator:a3121a58e3aaf826971b35b124d5dc928"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad212483b3f1e5df4c889b2beb3e9f39d" id="r_ad212483b3f1e5df4c889b2beb3e9f39d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#ad212483b3f1e5df4c889b2beb3e9f39d">esp_netif_set_ip_info</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, const <a class="el" href="structesp__netif__ip__info__t.html">esp_netif_ip_info_t</a> *ip_info)</td></tr>
+<tr class="separator:ad212483b3f1e5df4c889b2beb3e9f39d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10ecd20749854a778fa75277f5dca210" id="r_a10ecd20749854a778fa75277f5dca210"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a10ecd20749854a778fa75277f5dca210">esp_netif_get_ip_info</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, <a class="el" href="structesp__netif__ip__info__t.html">esp_netif_ip_info_t</a> *out)</td></tr>
+<tr class="separator:a10ecd20749854a778fa75277f5dca210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbab7c252eeede5f5d0b53f91de4cbdd" id="r_afbab7c252eeede5f5d0b53f91de4cbdd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#afbab7c252eeede5f5d0b53f91de4cbdd">esp_netif_dhcpc_start</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif)</td></tr>
+<tr class="separator:afbab7c252eeede5f5d0b53f91de4cbdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11eaf99500d9deb36f223ffc6d51b004" id="r_a11eaf99500d9deb36f223ffc6d51b004"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a11eaf99500d9deb36f223ffc6d51b004">esp_netif_dhcpc_stop</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif)</td></tr>
+<tr class="separator:a11eaf99500d9deb36f223ffc6d51b004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1e280f48cc688fc59dcc7348b3e47e6" id="r_ad1e280f48cc688fc59dcc7348b3e47e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#ad1e280f48cc688fc59dcc7348b3e47e6">esp_netif_dhcpc_get_status</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, <a class="el" href="esp__netif__types_8h.html#a63b808066ae3f2dba7301e99375815c4">esp_netif_dhcp_status_t</a> *<a class="el" href="vsf__tgui_8h.html#ade818037fd6c985038ff29656089758d">status</a>)</td></tr>
+<tr class="separator:ad1e280f48cc688fc59dcc7348b3e47e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8db0d07cb43ddba080eda854db043577" id="r_a8db0d07cb43ddba080eda854db043577"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a8db0d07cb43ddba080eda854db043577">esp_netif_dhcps_start</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif)</td></tr>
+<tr class="separator:a8db0d07cb43ddba080eda854db043577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a367c70d5d6986e6fd10e5d643eb5ab89" id="r_a367c70d5d6986e6fd10e5d643eb5ab89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a367c70d5d6986e6fd10e5d643eb5ab89">esp_netif_dhcps_stop</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif)</td></tr>
+<tr class="separator:a367c70d5d6986e6fd10e5d643eb5ab89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a178408f951d5da97a522a15b624384" id="r_a4a178408f951d5da97a522a15b624384"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a4a178408f951d5da97a522a15b624384">esp_netif_dhcps_get_status</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, <a class="el" href="esp__netif__types_8h.html#a63b808066ae3f2dba7301e99375815c4">esp_netif_dhcp_status_t</a> *<a class="el" href="vsf__tgui_8h.html#ade818037fd6c985038ff29656089758d">status</a>)</td></tr>
+<tr class="separator:a4a178408f951d5da97a522a15b624384"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15c4187460d36262c3789d8c85272872" id="r_a15c4187460d36262c3789d8c85272872"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a15c4187460d36262c3789d8c85272872">esp_netif_set_dns_info</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, <a class="el" href="esp__netif__types_8h.html#a49d236195083d03928e0530ad117307f">esp_netif_dns_type_t</a> <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, <a class="el" href="structesp__netif__dns__info__t.html">esp_netif_dns_info_t</a> *dns)</td></tr>
+<tr class="separator:a15c4187460d36262c3789d8c85272872"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a440f96e85ab8da9557fc9a62201f5f79" id="r_a440f96e85ab8da9557fc9a62201f5f79"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a440f96e85ab8da9557fc9a62201f5f79">esp_netif_get_dns_info</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, <a class="el" href="esp__netif__types_8h.html#a49d236195083d03928e0530ad117307f">esp_netif_dns_type_t</a> <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, <a class="el" href="structesp__netif__dns__info__t.html">esp_netif_dns_info_t</a> *dns)</td></tr>
+<tr class="separator:a440f96e85ab8da9557fc9a62201f5f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55624c8b0d362ac3aaae06eaa1d31621" id="r_a55624c8b0d362ac3aaae06eaa1d31621"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a55624c8b0d362ac3aaae06eaa1d31621">esp_netif_set_mac</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> mac[6])</td></tr>
+<tr class="separator:a55624c8b0d362ac3aaae06eaa1d31621"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef41c7420160e71a46d0b6f3def3a815" id="r_aef41c7420160e71a46d0b6f3def3a815"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#aef41c7420160e71a46d0b6f3def3a815">esp_netif_get_mac</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> mac[6])</td></tr>
+<tr class="separator:aef41c7420160e71a46d0b6f3def3a815"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67825f9a6f932968fc54a2e8058598af" id="r_a67825f9a6f932968fc54a2e8058598af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a67825f9a6f932968fc54a2e8058598af">esp_netif_set_hostname</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, const char *hostname)</td></tr>
+<tr class="separator:a67825f9a6f932968fc54a2e8058598af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcdb70a13c967372813ae4839d6eb461" id="r_afcdb70a13c967372813ae4839d6eb461"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#afcdb70a13c967372813ae4839d6eb461">esp_netif_get_hostname</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif, const char **hostname)</td></tr>
+<tr class="separator:afcdb70a13c967372813ae4839d6eb461"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4850e704b92c85879cd430aa570b3af2" id="r_a4850e704b92c85879cd430aa570b3af2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a4850e704b92c85879cd430aa570b3af2">esp_netif_is_netif_up</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif)</td></tr>
+<tr class="separator:a4850e704b92c85879cd430aa570b3af2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9198dcc287c407b43a75147733c0ceba" id="r_a9198dcc287c407b43a75147733c0ceba"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a9198dcc287c407b43a75147733c0ceba">esp_netif_get_desc</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif)</td></tr>
+<tr class="separator:a9198dcc287c407b43a75147733c0ceba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a524c3f1c6a7477c07c01ba6679b7e4bc" id="r_a524c3f1c6a7477c07c01ba6679b7e4bc"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a524c3f1c6a7477c07c01ba6679b7e4bc">esp_netif_get_ifkey</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif)</td></tr>
+<tr class="separator:a524c3f1c6a7477c07c01ba6679b7e4bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab58e276cd8a001d4887a623523152b50" id="r_ab58e276cd8a001d4887a623523152b50"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#ab58e276cd8a001d4887a623523152b50">esp_netif_get_route_prio</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif)</td></tr>
+<tr class="separator:ab58e276cd8a001d4887a623523152b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae94f548c1dbe72203cda63a154454d53" id="r_ae94f548c1dbe72203cda63a154454d53"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__netif__types_8h.html#a3a4a72959540d8f85d105885d847a7f8">esp_netif_flags_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#ae94f548c1dbe72203cda63a154454d53">esp_netif_get_flags</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *netif)</td></tr>
+<tr class="separator:ae94f548c1dbe72203cda63a154454d53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83761390c381f75301c183e5218778df" id="r_a83761390c381f75301c183e5218778df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a83761390c381f75301c183e5218778df">esp_netif_next</a> (<a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *prev)</td></tr>
+<tr class="separator:a83761390c381f75301c183e5218778df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbfb940124293c4056cd61bf953fe215" id="r_adbfb940124293c4056cd61bf953fe215"><td class="memItemLeft" align="right" valign="top"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#adbfb940124293c4056cd61bf953fe215">esp_netif_get_nr_of_ifs</a> (void)</td></tr>
+<tr class="separator:adbfb940124293c4056cd61bf953fe215"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45765ebda8e7a79b01a72419d6a82b0f" id="r_a45765ebda8e7a79b01a72419d6a82b0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__netif__port_8c.html#a45765ebda8e7a79b01a72419d6a82b0f">esp_netif_get_handle_from_ifkey</a> (const char *ifkey)</td></tr>
+<tr class="separator:a45765ebda8e7a79b01a72419d6a82b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a9b979d60ff92e1bf35ab686f05337b91" name="a9b979d60ff92e1bf35ab686f05337b91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b979d60ff92e1bf35ab686f05337b91">&#9670;&#160;</a></span>__VSF_NETDRV_CLASS_INHERIT_NETIF__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_NETDRV_CLASS_INHERIT_NETIF__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad2510b39f694a383985f5855962a180d" name="ad2510b39f694a383985f5855962a180d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2510b39f694a383985f5855962a180d">&#9670;&#160;</a></span>VSF_ESPIDF_CFG_NETIF_MAX_INSTANCES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_ESPIDF_CFG_NETIF_MAX_INSTANCES&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a3ebe55597ce593857a6063aa17fe2f13" name="a3ebe55597ce593857a6063aa17fe2f13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ebe55597ce593857a6063aa17fe2f13">&#9670;&#160;</a></span>lwip_netif_set_netdrv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lwip_netif_set_netdrv </td>
+          <td>(</td>
+          <td class="paramtype">struct netif *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classvk__netdrv__t.html">vk_netdrv_t</a> *&#160;</td>
+          <td class="paramname"><em>netdrv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d2816590b9a4bcb5711667e07bcede4" name="a9d2816590b9a4bcb5711667e07bcede4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d2816590b9a4bcb5711667e07bcede4">&#9670;&#160;</a></span>ESP_EVENT_DEFINE_BASE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ESP_EVENT_DEFINE_BASE </td>
+          <td>(</td>
+          <td class="paramtype">IP_EVENT&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae2a66efbc3181912e387af430fd265fc" name="ae2a66efbc3181912e387af430fd265fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2a66efbc3181912e387af430fd265fc">&#9670;&#160;</a></span>esp_netif_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a46d1f03026902672e1cb8ea21f223011" name="a46d1f03026902672e1cb8ea21f223011"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46d1f03026902672e1cb8ea21f223011">&#9670;&#160;</a></span>esp_netif_deinit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_deinit </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a043b9b36cb4fe3024cd04440cfa90692" name="a043b9b36cb4fe3024cd04440cfa90692"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a043b9b36cb4fe3024cd04440cfa90692">&#9670;&#160;</a></span>vsf_espidf_netif_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_espidf_netif_init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac4799d703490f1a0b3b24c88c6d9657f" name="ac4799d703490f1a0b3b24c88c6d9657f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4799d703490f1a0b3b24c88c6d9657f">&#9670;&#160;</a></span>esp_netif_new()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> * esp_netif_new </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="esp__netif__types_8h.html#a11ed9abd86799c2199844236718180d1">esp_netif_config_t</a> *&#160;</td>
+          <td class="paramname"><em>cfg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c9f55966bc8fb84f11f5c316f12154b" name="a2c9f55966bc8fb84f11f5c316f12154b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c9f55966bc8fb84f11f5c316f12154b">&#9670;&#160;</a></span>esp_netif_destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void esp_netif_destroy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad77cff732728f4c9302c4fd905c51fe2" name="ad77cff732728f4c9302c4fd905c51fe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad77cff732728f4c9302c4fd905c51fe2">&#9670;&#160;</a></span>esp_netif_attach()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_attach </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a8642602fdeda692b85c458bd8e02748c">esp_netif_iodriver_handle</a>&#160;</td>
+          <td class="paramname"><em>driver_handle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2d0fbed313cd6464dbd12f7068699d3a" name="a2d0fbed313cd6464dbd12f7068699d3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d0fbed313cd6464dbd12f7068699d3a">&#9670;&#160;</a></span>esp_netif_set_driver_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_set_driver_config </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="esp__netif__types_8h.html#a2ee78b89fa1260166e7f59508b6dda57">esp_netif_driver_ifconfig_t</a> *&#160;</td>
+          <td class="paramname"><em>cfg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a10e9afd00278729cdcee79b5adf6c29c" name="a10e9afd00278729cdcee79b5adf6c29c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10e9afd00278729cdcee79b5adf6c29c">&#9670;&#160;</a></span>esp_netif_attach_netdrv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_attach_netdrv </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct vk_netdrv *&#160;</td>
+          <td class="paramname"><em>netdrv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a74b0abd3bef1ba32a1cefc3edce1e881" name="a74b0abd3bef1ba32a1cefc3edce1e881"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74b0abd3bef1ba32a1cefc3edce1e881">&#9670;&#160;</a></span>esp_netif_action_start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_action_start </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__event__base_8h.html#a4e776a2d890806fb130046f4fd03ba47">esp_event_base_t</a>&#160;</td>
+          <td class="paramname"><em>base</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab1278a1b33664f0d373819965337dc4b" name="ab1278a1b33664f0d373819965337dc4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1278a1b33664f0d373819965337dc4b">&#9670;&#160;</a></span>esp_netif_action_stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_action_stop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__event__base_8h.html#a4e776a2d890806fb130046f4fd03ba47">esp_event_base_t</a>&#160;</td>
+          <td class="paramname"><em>base</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18cc3b5afc403300b00f00019c75b00b" name="a18cc3b5afc403300b00f00019c75b00b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18cc3b5afc403300b00f00019c75b00b">&#9670;&#160;</a></span>esp_netif_action_connected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_action_connected </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__event__base_8h.html#a4e776a2d890806fb130046f4fd03ba47">esp_event_base_t</a>&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab7d48c74437fee8328e5010b9b5ca4d1" name="ab7d48c74437fee8328e5010b9b5ca4d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7d48c74437fee8328e5010b9b5ca4d1">&#9670;&#160;</a></span>esp_netif_action_disconnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_action_disconnected </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__event__base_8h.html#a4e776a2d890806fb130046f4fd03ba47">esp_event_base_t</a>&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3121a58e3aaf826971b35b124d5dc928" name="a3121a58e3aaf826971b35b124d5dc928"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3121a58e3aaf826971b35b124d5dc928">&#9670;&#160;</a></span>esp_netif_action_got_ip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_action_got_ip </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__event__base_8h.html#a4e776a2d890806fb130046f4fd03ba47">esp_event_base_t</a>&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad212483b3f1e5df4c889b2beb3e9f39d" name="ad212483b3f1e5df4c889b2beb3e9f39d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad212483b3f1e5df4c889b2beb3e9f39d">&#9670;&#160;</a></span>esp_netif_set_ip_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_set_ip_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structesp__netif__ip__info__t.html">esp_netif_ip_info_t</a> *&#160;</td>
+          <td class="paramname"><em>ip_info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a10ecd20749854a778fa75277f5dca210" name="a10ecd20749854a778fa75277f5dca210"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10ecd20749854a778fa75277f5dca210">&#9670;&#160;</a></span>esp_netif_get_ip_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_get_ip_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structesp__netif__ip__info__t.html">esp_netif_ip_info_t</a> *&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afbab7c252eeede5f5d0b53f91de4cbdd" name="afbab7c252eeede5f5d0b53f91de4cbdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbab7c252eeede5f5d0b53f91de4cbdd">&#9670;&#160;</a></span>esp_netif_dhcpc_start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_dhcpc_start </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a11eaf99500d9deb36f223ffc6d51b004" name="a11eaf99500d9deb36f223ffc6d51b004"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11eaf99500d9deb36f223ffc6d51b004">&#9670;&#160;</a></span>esp_netif_dhcpc_stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_dhcpc_stop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad1e280f48cc688fc59dcc7348b3e47e6" name="ad1e280f48cc688fc59dcc7348b3e47e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1e280f48cc688fc59dcc7348b3e47e6">&#9670;&#160;</a></span>esp_netif_dhcpc_get_status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_dhcpc_get_status </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a63b808066ae3f2dba7301e99375815c4">esp_netif_dhcp_status_t</a> *&#160;</td>
+          <td class="paramname"><em>status</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8db0d07cb43ddba080eda854db043577" name="a8db0d07cb43ddba080eda854db043577"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8db0d07cb43ddba080eda854db043577">&#9670;&#160;</a></span>esp_netif_dhcps_start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_dhcps_start </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a367c70d5d6986e6fd10e5d643eb5ab89" name="a367c70d5d6986e6fd10e5d643eb5ab89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a367c70d5d6986e6fd10e5d643eb5ab89">&#9670;&#160;</a></span>esp_netif_dhcps_stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_dhcps_stop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4a178408f951d5da97a522a15b624384" name="a4a178408f951d5da97a522a15b624384"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a178408f951d5da97a522a15b624384">&#9670;&#160;</a></span>esp_netif_dhcps_get_status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_dhcps_get_status </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a63b808066ae3f2dba7301e99375815c4">esp_netif_dhcp_status_t</a> *&#160;</td>
+          <td class="paramname"><em>status</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a15c4187460d36262c3789d8c85272872" name="a15c4187460d36262c3789d8c85272872"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15c4187460d36262c3789d8c85272872">&#9670;&#160;</a></span>esp_netif_set_dns_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_set_dns_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a49d236195083d03928e0530ad117307f">esp_netif_dns_type_t</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structesp__netif__dns__info__t.html">esp_netif_dns_info_t</a> *&#160;</td>
+          <td class="paramname"><em>dns</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a440f96e85ab8da9557fc9a62201f5f79" name="a440f96e85ab8da9557fc9a62201f5f79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a440f96e85ab8da9557fc9a62201f5f79">&#9670;&#160;</a></span>esp_netif_get_dns_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_get_dns_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a49d236195083d03928e0530ad117307f">esp_netif_dns_type_t</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structesp__netif__dns__info__t.html">esp_netif_dns_info_t</a> *&#160;</td>
+          <td class="paramname"><em>dns</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a55624c8b0d362ac3aaae06eaa1d31621" name="a55624c8b0d362ac3aaae06eaa1d31621"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55624c8b0d362ac3aaae06eaa1d31621">&#9670;&#160;</a></span>esp_netif_set_mac()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_set_mac </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
+          <td class="paramname"><em>mac</em>[6]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aef41c7420160e71a46d0b6f3def3a815" name="aef41c7420160e71a46d0b6f3def3a815"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef41c7420160e71a46d0b6f3def3a815">&#9670;&#160;</a></span>esp_netif_get_mac()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_get_mac </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
+          <td class="paramname"><em>mac</em>[6]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a67825f9a6f932968fc54a2e8058598af" name="a67825f9a6f932968fc54a2e8058598af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67825f9a6f932968fc54a2e8058598af">&#9670;&#160;</a></span>esp_netif_set_hostname()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_set_hostname </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>hostname</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afcdb70a13c967372813ae4839d6eb461" name="afcdb70a13c967372813ae4839d6eb461"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcdb70a13c967372813ae4839d6eb461">&#9670;&#160;</a></span>esp_netif_get_hostname()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> esp_netif_get_hostname </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>hostname</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4850e704b92c85879cd430aa570b3af2" name="a4850e704b92c85879cd430aa570b3af2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4850e704b92c85879cd430aa570b3af2">&#9670;&#160;</a></span>esp_netif_is_netif_up()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> esp_netif_is_netif_up </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9198dcc287c407b43a75147733c0ceba" name="a9198dcc287c407b43a75147733c0ceba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9198dcc287c407b43a75147733c0ceba">&#9670;&#160;</a></span>esp_netif_get_desc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * esp_netif_get_desc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a524c3f1c6a7477c07c01ba6679b7e4bc" name="a524c3f1c6a7477c07c01ba6679b7e4bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a524c3f1c6a7477c07c01ba6679b7e4bc">&#9670;&#160;</a></span>esp_netif_get_ifkey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * esp_netif_get_ifkey </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab58e276cd8a001d4887a623523152b50" name="ab58e276cd8a001d4887a623523152b50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab58e276cd8a001d4887a623523152b50">&#9670;&#160;</a></span>esp_netif_get_route_prio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int esp_netif_get_route_prio </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae94f548c1dbe72203cda63a154454d53" name="ae94f548c1dbe72203cda63a154454d53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae94f548c1dbe72203cda63a154454d53">&#9670;&#160;</a></span>esp_netif_get_flags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__netif__types_8h.html#a3a4a72959540d8f85d105885d847a7f8">esp_netif_flags_t</a> esp_netif_get_flags </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>netif</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83761390c381f75301c183e5218778df" name="a83761390c381f75301c183e5218778df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83761390c381f75301c183e5218778df">&#9670;&#160;</a></span>esp_netif_next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> * esp_netif_next </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> *&#160;</td>
+          <td class="paramname"><em>prev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adbfb940124293c4056cd61bf953fe215" name="adbfb940124293c4056cd61bf953fe215"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbfb940124293c4056cd61bf953fe215">&#9670;&#160;</a></span>esp_netif_get_nr_of_ifs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> esp_netif_get_nr_of_ifs </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45765ebda8e7a79b01a72419d6a82b0f" name="a45765ebda8e7a79b01a72419d6a82b0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45765ebda8e7a79b01a72419d6a82b0f">&#9670;&#160;</a></span>esp_netif_get_handle_from_ifkey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__netif__types_8h.html#a2019bd75d661c3ccf10e9730a79d84d2">esp_netif_t</a> * esp_netif_get_handle_from_ifkey </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>ifkey</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a id="a2d0c1809252a4842c0ad0cb9798ab138" name="a2d0c1809252a4842c0ad0cb9798ab138"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d0c1809252a4842c0ad0cb9798ab138">&#9670;&#160;</a></span>is_inited</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> is_inited</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad9cd9eb8067fe8be9263649c5333c016" name="ad9cd9eb8067fe8be9263649c5333c016"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9cd9eb8067fe8be9263649c5333c016">&#9670;&#160;</a></span>pool</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structesp__netif__obj.html">esp_netif_obj</a> pool[<a class="el" href="esp__netif__port_8c.html#ad2510b39f694a383985f5855962a180d">VSF_ESPIDF_CFG_NETIF_MAX_INSTANCES</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/2f235a9ff6630b978709af3a5dd601121e843ac9" target="_blank">vsfteam/vsf@2f235a9</a>
+  生成
+</div>

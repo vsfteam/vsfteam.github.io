@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/espidf/include/esp_netif_ip_addr.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_67078002197479e597ae23208194ae3e.html">espidf</a></li><li class="navelem"><a class="el" href="dir_368c75ff2ea44ed7d865b13e1d69fdba.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">esp_netif_ip_addr.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="esp__netif__ip__addr_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2026 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * Clean-room re-implementation of ESP-IDF public API &quot;esp_netif_ip_addr.h&quot;.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * Authored from ESP-IDF v5.x public API only. No code copied from the</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * ESP-IDF source tree. Addresses are stored in network byte order to match</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * the ESP-IDF contract; helper macros mirror the upstream names.</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#ifndef __VSF_ESPIDF_ESP_NETIF_IP_ADDR_H__</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#define __VSF_ESPIDF_ESP_NETIF_IP_ADDR_H__</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;<a class="code" href="stdint_8h.html">stdint.h</a>&gt;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">/* IPv4 address in network byte order. */</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structesp__ip4__addr.html">   39</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structesp__ip4__addr.html">esp_ip4_addr</a> {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structesp__ip4__addr.html#a442c618ef49c9b1c08837044c441072c">   40</a></span>    <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>    <a class="code hl_variable" href="structesp__ip4__addr.html#a442c618ef49c9b1c08837044c441072c">addr</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="esp__netif__ip__addr_8h.html#a12a90ccb1628745535a6cd1d2a933a18">   41</a></span>} <a class="code hl_typedef" href="esp__netif__ip__addr_8h.html#a12a90ccb1628745535a6cd1d2a933a18">esp_ip4_addr_t</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">/* IPv6 address in network byte order. zone is the IPv6 scope id</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"> * (0 when unscoped). */</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structesp__ip6__addr.html">   45</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structesp__ip6__addr.html">esp_ip6_addr</a> {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structesp__ip6__addr.html#ac8d1dc4b8c5f00f3dce78c58155058e3">   46</a></span>    <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>    <a class="code hl_variable" href="structesp__ip6__addr.html#ac8d1dc4b8c5f00f3dce78c58155058e3">addr</a>[4];</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structesp__ip6__addr.html#a0de830a552809188bbe061460af37b2c">   47</a></span>    <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>     <a class="code hl_variable" href="structesp__ip6__addr.html#a0de830a552809188bbe061460af37b2c">zone</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="esp__netif__ip__addr_8h.html#ab2f0448e354ec8e58f3bbf32d174aece">   48</a></span>} <a class="code hl_typedef" href="esp__netif__ip__addr_8h.html#ab2f0448e354ec8e58f3bbf32d174aece">esp_ip6_addr_t</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">/* Tagged union covering both address families. type is one of the</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"> * ESP_IPADDR_TYPE_* constants below. */</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structesp__ip__addr.html">   52</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structesp__ip__addr.html">esp_ip_addr</a> {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">union </span>{</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structesp__ip__addr.html#a0ce4e412208c7ef8df7cec788421b8fc">   54</a></span>        <a class="code hl_struct" href="structesp__ip6__addr.html">esp_ip6_addr_t</a>  <a class="code hl_variable" href="structesp__ip__addr.html#a0ce4e412208c7ef8df7cec788421b8fc">ip6</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="structesp__ip__addr.html#a43151e4ed1257527afb241bdee947dad">   55</a></span>        <a class="code hl_struct" href="structesp__ip4__addr.html">esp_ip4_addr_t</a>  <a class="code hl_variable" href="structesp__ip__addr.html#a43151e4ed1257527afb241bdee947dad">ip4</a>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structesp__ip__addr.html#ad00e0eb796c2a75f67c6e3d8b9095938">   56</a></span>    } <a class="code hl_variable" href="structesp__ip__addr.html#ad00e0eb796c2a75f67c6e3d8b9095938">u_addr</a>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="structesp__ip__addr.html#a5c7fb097cffb5ef3c438f8b7980d0151">   57</a></span>    <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>     <a class="code hl_variable" href="structesp__ip__addr.html#a5c7fb097cffb5ef3c438f8b7980d0151">type</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="esp__netif__ip__addr_8h.html#a4e03a6fb075a27a4b038ecb739a399d6">   58</a></span>} <a class="code hl_typedef" href="esp__netif__ip__addr_8h.html#a4e03a6fb075a27a4b038ecb739a399d6">esp_ip_addr_t</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">/* Address family tag values for esp_ip_addr_t::type. */</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="esp__netif__ip__addr_8h.html#a6e8954cc70c12adb17ed3b143531e81b">   61</a></span><span class="preprocessor">#define ESP_IPADDR_TYPE_V4              0U</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="esp__netif__ip__addr_8h.html#a1adf4bb2b83e38d0d3435427dcd0e2ff">   62</a></span><span class="preprocessor">#define ESP_IPADDR_TYPE_V6              6U</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="esp__netif__ip__addr_8h.html#a647f48acd65d46e0f908574493c3af25">   63</a></span><span class="preprocessor">#define ESP_IPADDR_TYPE_ANY             46U</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">/* Build an esp_ip4_addr_t from four dotted-decimal octets (host-order args,</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment"> * stored in network byte order). Matches ESP-IDF ESP_IP4TOADDR semantics. */</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="esp__netif__ip__addr_8h.html#a2d274b24a758a19394a63acc85866926">   69</a></span><span class="preprocessor">#define ESP_IP4TOUINT32(a, b, c, d)                                         \</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">        (((uint32_t)((a) &amp; 0xff))       |                                   \</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">         ((uint32_t)((b) &amp; 0xff) &lt;&lt;  8) |                                   \</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">         ((uint32_t)((c) &amp; 0xff) &lt;&lt; 16) |                                   \</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">         ((uint32_t)((d) &amp; 0xff) &lt;&lt; 24))</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="esp__netif__ip__addr_8h.html#a94145628985e0e8914d9e421b74694a6">   75</a></span><span class="preprocessor">#define ESP_IP4TOADDR(a, b, c, d)       ESP_IP4TOUINT32(a, b, c, d)</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">/* Copy a raw 32-bit (network-order) IPv4 value into an esp_ip4_addr_t. */</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="esp__netif__ip__addr_8h.html#a346679295e47c8f1aecd119ba7e3b95c">   78</a></span><span class="preprocessor">#define ESP_IP4ADDR(ipaddr, a, b, c, d)                                     \</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">        do {                                                                \</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">            (ipaddr)-&gt;addr = ESP_IP4TOADDR(a, b, c, d);                     \</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">        } while (0)</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">/* Extract an octet from a network-order IPv4 address. The _n form reads the</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment"> * byte at offset n (0 is the lowest-order byte of the network value). */</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="esp__netif__ip__addr_8h.html#a907619aeba4f2062cf9d76674f32ecc0">   85</a></span><span class="preprocessor">#define esp_ip4_addr1(ipaddr)           ((uint8_t)((ipaddr)-&gt;addr        &amp; 0xff))</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="esp__netif__ip__addr_8h.html#a0e4c3cffba685c5dccd3a09c20d9952d">   86</a></span><span class="preprocessor">#define esp_ip4_addr2(ipaddr)           ((uint8_t)(((ipaddr)-&gt;addr &gt;&gt; 8) &amp; 0xff))</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="esp__netif__ip__addr_8h.html#ae643c720a54be038def4b364a5ef770e">   87</a></span><span class="preprocessor">#define esp_ip4_addr3(ipaddr)           ((uint8_t)(((ipaddr)-&gt;addr &gt;&gt; 16) &amp; 0xff))</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="esp__netif__ip__addr_8h.html#a7d235e16561c3d3d7874d076d99fa804">   88</a></span><span class="preprocessor">#define esp_ip4_addr4(ipaddr)           ((uint8_t)(((ipaddr)-&gt;addr &gt;&gt; 24) &amp; 0xff))</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">/* printf helper: expands to &quot;%u.%u.%u.%u&quot; argument tuple. */</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="esp__netif__ip__addr_8h.html#ac88858dbe588b82edadb33513aed16d4">   91</a></span><span class="preprocessor">#define IPSTR                           &quot;%u.%u.%u.%u&quot;</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="esp__netif__ip__addr_8h.html#af488ccb181cdd5905e55ffb8bff92552">   92</a></span><span class="preprocessor">#define IP2STR(ipaddr)                                                      \</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">        esp_ip4_addr1(ipaddr),                                              \</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">        esp_ip4_addr2(ipaddr),                                              \</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">        esp_ip4_addr3(ipaddr),                                              \</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">        esp_ip4_addr4(ipaddr)</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>}</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_ESPIDF_ESP_NETIF_IP_ADDR_H__</span></div>
+<div class="ttc" id="aesp__netif__ip__addr_8h_html_a12a90ccb1628745535a6cd1d2a933a18"><div class="ttname"><a href="esp__netif__ip__addr_8h.html#a12a90ccb1628745535a6cd1d2a933a18">esp_ip4_addr_t</a></div><div class="ttdeci">struct esp_ip4_addr esp_ip4_addr_t</div></div>
+<div class="ttc" id="aesp__netif__ip__addr_8h_html_a4e03a6fb075a27a4b038ecb739a399d6"><div class="ttname"><a href="esp__netif__ip__addr_8h.html#a4e03a6fb075a27a4b038ecb739a399d6">esp_ip_addr_t</a></div><div class="ttdeci">struct esp_ip_addr esp_ip_addr_t</div></div>
+<div class="ttc" id="aesp__netif__ip__addr_8h_html_ab2f0448e354ec8e58f3bbf32d174aece"><div class="ttname"><a href="esp__netif__ip__addr_8h.html#ab2f0448e354ec8e58f3bbf32d174aece">esp_ip6_addr_t</a></div><div class="ttdeci">struct esp_ip6_addr esp_ip6_addr_t</div></div>
+<div class="ttc" id="astdint_8h_html"><div class="ttname"><a href="stdint_8h.html">stdint.h</a></div></div>
+<div class="ttc" id="astdint_8h_html_a324c5d28c0d82f502a234ab99efac87a"><div class="ttname"><a href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a></div><div class="ttdeci">unsigned uint32_t</div><div class="ttdef"><b>Definition</b> stdint.h:9</div></div>
+<div class="ttc" id="astdint_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition</b> stdint.h:5</div></div>
+<div class="ttc" id="astructesp__ip4__addr_html"><div class="ttname"><a href="structesp__ip4__addr.html">esp_ip4_addr</a></div><div class="ttdef"><b>Definition</b> esp_netif_ip_addr.h:39</div></div>
+<div class="ttc" id="astructesp__ip4__addr_html_a442c618ef49c9b1c08837044c441072c"><div class="ttname"><a href="structesp__ip4__addr.html#a442c618ef49c9b1c08837044c441072c">esp_ip4_addr::addr</a></div><div class="ttdeci">uint32_t addr</div><div class="ttdef"><b>Definition</b> esp_netif_ip_addr.h:40</div></div>
+<div class="ttc" id="astructesp__ip6__addr_html"><div class="ttname"><a href="structesp__ip6__addr.html">esp_ip6_addr</a></div><div class="ttdef"><b>Definition</b> esp_netif_ip_addr.h:45</div></div>
+<div class="ttc" id="astructesp__ip6__addr_html_a0de830a552809188bbe061460af37b2c"><div class="ttname"><a href="structesp__ip6__addr.html#a0de830a552809188bbe061460af37b2c">esp_ip6_addr::zone</a></div><div class="ttdeci">uint8_t zone</div><div class="ttdef"><b>Definition</b> esp_netif_ip_addr.h:47</div></div>
+<div class="ttc" id="astructesp__ip6__addr_html_ac8d1dc4b8c5f00f3dce78c58155058e3"><div class="ttname"><a href="structesp__ip6__addr.html#ac8d1dc4b8c5f00f3dce78c58155058e3">esp_ip6_addr::addr</a></div><div class="ttdeci">uint32_t addr[4]</div><div class="ttdef"><b>Definition</b> esp_netif_ip_addr.h:46</div></div>
+<div class="ttc" id="astructesp__ip__addr_html"><div class="ttname"><a href="structesp__ip__addr.html">esp_ip_addr</a></div><div class="ttdef"><b>Definition</b> esp_netif_ip_addr.h:52</div></div>
+<div class="ttc" id="astructesp__ip__addr_html_a0ce4e412208c7ef8df7cec788421b8fc"><div class="ttname"><a href="structesp__ip__addr.html#a0ce4e412208c7ef8df7cec788421b8fc">esp_ip_addr::ip6</a></div><div class="ttdeci">esp_ip6_addr_t ip6</div><div class="ttdef"><b>Definition</b> esp_netif_ip_addr.h:54</div></div>
+<div class="ttc" id="astructesp__ip__addr_html_a43151e4ed1257527afb241bdee947dad"><div class="ttname"><a href="structesp__ip__addr.html#a43151e4ed1257527afb241bdee947dad">esp_ip_addr::ip4</a></div><div class="ttdeci">esp_ip4_addr_t ip4</div><div class="ttdef"><b>Definition</b> esp_netif_ip_addr.h:55</div></div>
+<div class="ttc" id="astructesp__ip__addr_html_a5c7fb097cffb5ef3c438f8b7980d0151"><div class="ttname"><a href="structesp__ip__addr.html#a5c7fb097cffb5ef3c438f8b7980d0151">esp_ip_addr::type</a></div><div class="ttdeci">uint8_t type</div><div class="ttdef"><b>Definition</b> esp_netif_ip_addr.h:57</div></div>
+<div class="ttc" id="astructesp__ip__addr_html_ad00e0eb796c2a75f67c6e3d8b9095938"><div class="ttname"><a href="structesp__ip__addr.html#ad00e0eb796c2a75f67c6e3d8b9095938">esp_ip_addr::u_addr</a></div><div class="ttdeci">union esp_ip_addr::@990 u_addr</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/2f235a9ff6630b978709af3a5dd601121e843ac9" target="_blank">vsfteam/vsf@2f235a9</a>
+  生成
+</div>
