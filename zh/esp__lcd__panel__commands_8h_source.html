@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/espidf/include/esp_lcd_panel_commands.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_67078002197479e597ae23208194ae3e.html">espidf</a></li><li class="navelem"><a class="el" href="dir_368c75ff2ea44ed7d865b13e1d69fdba.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">esp_lcd_panel_commands.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="esp__lcd__panel__commands_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2026 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * Clean-room re-implementation of ESP-IDF public header</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * &quot;esp_lcd_panel_commands.h&quot; -- Standard MIPI DCS command macros.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#ifndef __VSF_ESPIDF_ESP_LCD_PANEL_COMMANDS_H__</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#define __VSF_ESPIDF_ESP_LCD_PANEL_COMMANDS_H__</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a2f8a031cabd6094242e9b2efa1296fce">   25</a></span><span class="preprocessor">#define LCD_CMD_NOP          0x00</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#ac00d8e81fe283b0f7e46095eaf3758f8">   26</a></span><span class="preprocessor">#define LCD_CMD_SWRESET      0x01</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#aabfbb4492be730a167447e53adb0cb9a">   27</a></span><span class="preprocessor">#define LCD_CMD_RDDID        0x04</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#ae88d71637bd42077b126141be0568af5">   28</a></span><span class="preprocessor">#define LCD_CMD_RDDST        0x09</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#adeebdc46bf0997eb2eaa30c5f03d5b9f">   29</a></span><span class="preprocessor">#define LCD_CMD_RDDPM        0x0A</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a091d09299f8bfba24c9526157712aaea">   30</a></span><span class="preprocessor">#define LCD_CMD_RDD_MADCTL   0x0B</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#ab99d1b6d9a2081b23c8c329deb6cf5b5">   31</a></span><span class="preprocessor">#define LCD_CMD_RDD_COLMOD   0x0C</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a1cb608397d6e535d7263161ee3dafb05">   32</a></span><span class="preprocessor">#define LCD_CMD_RDDIM        0x0D</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a83be51ce6035aae5d05e7e9c278139d5">   33</a></span><span class="preprocessor">#define LCD_CMD_RDDSM        0x0E</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a98c5b4b42be288e3bd25ad437be797c6">   34</a></span><span class="preprocessor">#define LCD_CMD_RDDSR        0x0F</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a9076c7bdd92391142050682cc66da8b8">   35</a></span><span class="preprocessor">#define LCD_CMD_SLPIN        0x10</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a9030786994f14df26dd3c99a79516e0a">   36</a></span><span class="preprocessor">#define LCD_CMD_SLPOUT       0x11</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#ac0c3321124c71039f29b30eba45c2980">   37</a></span><span class="preprocessor">#define LCD_CMD_PTLON        0x12</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#adaf83724b59ecc7af5ab6364c51b1c90">   38</a></span><span class="preprocessor">#define LCD_CMD_NORON        0x13</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a94a14854c651ffe1c4a1f57f4dc79232">   39</a></span><span class="preprocessor">#define LCD_CMD_INVOFF       0x20</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a5187f175efea2fbaa57c77d28f8da46c">   40</a></span><span class="preprocessor">#define LCD_CMD_INVON        0x21</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a62ede99e78cd5074d1bf6190af7eefc7">   41</a></span><span class="preprocessor">#define LCD_CMD_GAMSET       0x26</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#ad0e5be6fec8653a3cdeedf27571d5c44">   42</a></span><span class="preprocessor">#define LCD_CMD_DISPOFF      0x28</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a8b84344a88624e8f9b52b5790241f6e6">   43</a></span><span class="preprocessor">#define LCD_CMD_DISPON       0x29</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a67adb85097e3a6eb07ce0f4a1f56dcec">   44</a></span><span class="preprocessor">#define LCD_CMD_CASET        0x2A</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a6b1cf8145691a46e84d7dc7b31f25a94">   45</a></span><span class="preprocessor">#define LCD_CMD_RASET        0x2B</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a493311a7392e46c1b0f39b16f7a74257">   46</a></span><span class="preprocessor">#define LCD_CMD_RAMWR        0x2C</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a90ae533cf76b746273a59b439aea2161">   47</a></span><span class="preprocessor">#define LCD_CMD_RAMRD        0x2E</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#af3b5bb5db6a2644b6203de0aab51175f">   48</a></span><span class="preprocessor">#define LCD_CMD_PTLAR        0x30</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a366e4493c78f5a7a5be602d980086baa">   49</a></span><span class="preprocessor">#define LCD_CMD_VSCRDEF      0x33</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#ab4ae9557a4b6fdb97a067d57c2a2250c">   50</a></span><span class="preprocessor">#define LCD_CMD_TEOFF        0x34</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a34d827baf6326e3688dae8e7d9647ab9">   51</a></span><span class="preprocessor">#define LCD_CMD_TEON         0x35</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#ace4d3f9b442bfebc11d6071897ebbb72">   52</a></span><span class="preprocessor">#define LCD_CMD_MADCTL       0x36</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#affcb646f32c4d185e610bd33bbbfba9b">   53</a></span><span class="preprocessor">#define LCD_CMD_VSCSAD       0x37</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a26e7eef7f2be7c5c5c4c116e35c40106">   54</a></span><span class="preprocessor">#define LCD_CMD_IDMOFF       0x38</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#ad839cf435f53c1f546e644f8d84ae40b">   55</a></span><span class="preprocessor">#define LCD_CMD_IDMON        0x39</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#ad96215614e2bd3434cd161cf8543bd9c">   56</a></span><span class="preprocessor">#define LCD_CMD_COLMOD       0x3A</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a8b115d80b86ae8e63055a34247927bdd">   57</a></span><span class="preprocessor">#define LCD_CMD_RAMWRC       0x3C</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#ab17a6c5749af7ee4ec4dcbd8a353d26c">   58</a></span><span class="preprocessor">#define LCD_CMD_RAMRDC       0x3E</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a7a6438c54fb8abadc423374fc006ab05">   59</a></span><span class="preprocessor">#define LCD_CMD_STE          0x44</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a8d5746b9d2ec0caaf50b8d252cd64298">   60</a></span><span class="preprocessor">#define LCD_CMD_GDCAN        0x45</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a2d9c379b5d904eee99aedb80218bb6e1">   61</a></span><span class="preprocessor">#define LCD_CMD_WRDISBV      0x51</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a2dd4e41ddc1ae74a5e0a01901eb23f49">   62</a></span><span class="preprocessor">#define LCD_CMD_RDDISBV      0x52</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a2eaea46e2b4e665c3f9c8ec5bf969cd4">   64</a></span><span class="preprocessor">#define LCD_CMD_MH_BIT       (1 &lt;&lt; 2)</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#abbca5441a5d23b7e0f1fd72c5d0608fb">   65</a></span><span class="preprocessor">#define LCD_CMD_BGR_BIT      (1 &lt;&lt; 3)</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a13dcf79e1882615c5b65306dfcc8b08e">   66</a></span><span class="preprocessor">#define LCD_CMD_ML_BIT       (1 &lt;&lt; 4)</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#ac8ed55880c28d6a6f35302bca7c90b16">   67</a></span><span class="preprocessor">#define LCD_CMD_MV_BIT       (1 &lt;&lt; 5)</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a63a446d213d81be03a3357ca273ea2b7">   68</a></span><span class="preprocessor">#define LCD_CMD_MX_BIT       (1 &lt;&lt; 6)</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="esp__lcd__panel__commands_8h.html#a63fe98945ebf07424fda63a74d42383a">   69</a></span><span class="preprocessor">#define LCD_CMD_MY_BIT       (1 &lt;&lt; 7)</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif </span><span class="comment">/* __VSF_ESPIDF_ESP_LCD_PANEL_COMMANDS_H__ */</span><span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/6fd41ce5006ec497d7533f5dc33ea81a87c25c9a" target="_blank">vsfteam/vsf@6fd41ce</a>
+  生成
+</div>

@@ -47,6 +47,7 @@
 <h1><a class="anchor" id="autotoc_md41"></a>
 Scope</h1>
 <p>This sub-system does <b>not</b> embed any ESP-IDF source code. All public headers under <code>include/</code> are clean-room re-implementations of the ESP-IDF public API. Implementations live under <code>port/</code> and are thin bridges onto existing VSF facilities.</p>
+<p>VSF espidf targets ESP-IDF <b>v5.1.0</b> baseline and covers roughly <b>5–10%</b> of the full ESP-IDF component surface. It focuses on the software core needed to run typical sensor / I/O / networking applications, while wireless radios, advanced peripherals, security, and power management are not in scope (see Gap Analysis).</p>
 <h1><a class="anchor" id="autotoc_md42"></a>
 Layout</h1>
 <div class="fragment"><div class="line">espidf/</div>
@@ -54,22 +55,123 @@ Layout</h1>
 <div class="line">├── vsf_espidf.h               # internal sub-system header</div>
 <div class="line">├── vsf_espidf_cfg.h           # feature switches + IDF baseline version</div>
 <div class="line">├── vsf_espidf.c               # sub-system init + per-module init chain</div>
-<div class="line">├── include/                   # clean-room ESP-IDF public headers</div>
+<div class="line">├── README.md                  # &lt;-- this file</div>
+<div class="line">├── include/                   # clean-room ESP-IDF public headers (34 files)</div>
 <div class="line">│   ├── README.md</div>
 <div class="line">│   ├── driver/                # driver/*.h</div>
-<div class="line">│   ├── freertos/              # FreeRTOS.h etc. (forwarders)</div>
-<div class="line">│   └── hal/                   # hal/*_types.h</div>
-<div class="line">└── port/                      # ESP-IDF-API -&gt; VSF-internal glue</div>
+<div class="line">│   └── usb/                   # usb/*.h</div>
+<div class="line">└── port/                      # ESP-IDF-API -&gt; VSF-internal glue (25 port files)</div>
 <div class="line">    └── CMakeLists.txt</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md43"></a>
-Backend mapping (implementation guide)</h1>
+Implemented Modules</h1>
+<h2><a class="anchor" id="autotoc_md44"></a>
+Stage 1 — Pure-software core (all code ✅)</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Module   </th><th class="markdownTableHeadNone">VSF Backend   </th><th class="markdownTableHeadNone">Port File   </th><th class="markdownTableHeadNone">Lines   </th><th class="markdownTableHeadNone">Notes    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__err_8h.html">esp_err.h</a></code>   </td><td class="markdownTableBodyNone">header-only + diagnostic helpers   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__err__port_8c.html">esp_err_port.c</a></code>   </td><td class="markdownTableBodyNone">126   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__log_8h.html">esp_log.h</a></code>   </td><td class="markdownTableBodyNone"><code>service/trace</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__log__port_8c.html">esp_log_port.c</a></code>   </td><td class="markdownTableBodyNone">198   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__event_8h.html">esp_event.h</a></code>   </td><td class="markdownTableBodyNone">FreeRTOS shim (<code>xQueue</code> + <code>xTaskCreate</code>)   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__event__port_8c.html">esp_event_port.c</a></code>   </td><td class="markdownTableBodyNone">500   </td><td class="markdownTableBodyNone">no deprecated event API    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__timer_8h.html">esp_timer.h</a></code>   </td><td class="markdownTableBodyNone"><code>vsf_callback_timer</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__timer__port_8c.html">esp_timer_port.c</a></code>   </td><td class="markdownTableBodyNone">172   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__system_8h.html">esp_system.h</a></code>   </td><td class="markdownTableBodyNone">VSF reset + entropy + heap stats   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__system__port_8c.html">esp_system_port.c</a></code>   </td><td class="markdownTableBodyNone">226   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__ringbuf_8h.html">esp_ringbuf.h</a></code>   </td><td class="markdownTableBodyNone">byte ring buffer on vsf_heap   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__ringbuf__port_8c.html">esp_ringbuf_port.c</a></code>   </td><td class="markdownTableBodyNone">217   </td><td class="markdownTableBodyNone">bytebuf only; item framing planned    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__heap__caps_8h.html">esp_heap_caps.h</a></code>   </td><td class="markdownTableBodyNone"><code>service/heap</code> (caps collapsed)   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__heap__caps__port_8c.html">esp_heap_caps_port.c</a></code>   </td><td class="markdownTableBodyNone">249   </td><td class="markdownTableBodyNone">no heap tracing or multi_heap   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md45"></a>
+Stage 2 — Storage &amp; filesystem</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Module   </th><th class="markdownTableHeadNone">VSF Backend   </th><th class="markdownTableHeadNone">Port File   </th><th class="markdownTableHeadNone">Lines   </th><th class="markdownTableHeadNone">Notes    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__partition_8h.html">esp_partition.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/mal</code> (mim_mal slices)   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__partition__port_8c.html">esp_partition_port.c</a></code>   </td><td class="markdownTableBodyNone">515   </td><td class="markdownTableBodyNone"><code><a class="el" href="mman_8h.html#a36b853afbcecfee2501abf5d82a87442">munmap()</a></code> → NOT_SUPPORTED    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__flash_8h.html">esp_flash.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/mal</code> (root mal)   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__flash__port_8c.html">esp_flash_port.c</a></code>   </td><td class="markdownTableBodyNone">257   </td><td class="markdownTableBodyNone">no encrypted r/w; no SPI chip drivers    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="nvs_8h.html">nvs.h</a></code> / <code><a class="el" href="nvs__flash_8h.html">nvs_flash.h</a></code>   </td><td class="markdownTableBodyNone">custom binary format on partition   </td><td class="markdownTableBodyNone"><code><a class="el" href="nvs__flash__port_8c.html">nvs_flash_port.c</a></code>   </td><td class="markdownTableBodyNone">796   </td><td class="markdownTableBodyNone"><code>nvs_sec_provider</code> not bridged    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__vfs_8h.html">esp_vfs.h</a></code>   </td><td class="markdownTableBodyNone">POSIX forwarding stubs   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__vfs__port_8c.html">esp_vfs_port.c</a></code>   </td><td class="markdownTableBodyNone">50   </td><td class="markdownTableBodyNone">register/unregister → NOT_SUPPORTED    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__littlefs_8h.html">esp_littlefs.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/fs/littlefs</code> via POSIX   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__littlefs__port_8c.html">esp_littlefs_port.c</a></code>   </td><td class="markdownTableBodyNone">241   </td><td class="markdownTableBodyNone">some ops NOT_SUPPORTED    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__vfs__fat_8h.html">esp_vfs_fat.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/fs/fatfs</code> via POSIX   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__vfs__fat__port_8c.html">esp_vfs_fat_port.c</a></code>   </td><td class="markdownTableBodyNone">259   </td><td class="markdownTableBodyNone">no RO mount on spiflash   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md46"></a>
+Stage 3 — Network</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Module   </th><th class="markdownTableHeadNone">VSF Backend   </th><th class="markdownTableHeadNone">Port File   </th><th class="markdownTableHeadNone">Lines   </th><th class="markdownTableHeadNone">Notes    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__netif_8h.html">esp_netif.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/tcpip/netdrv</code> + lwIP raw   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__netif__port_8c.html">esp_netif_port.c</a></code>   </td><td class="markdownTableBodyNone">694   </td><td class="markdownTableBodyNone">DHCP client + IP events only    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__http__client_8h.html">esp_http_client.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/tcpip/protocol/http/client</code> + mbedTLS   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__http__client__port_8c.html">esp_http_client_port.c</a></code>   </td><td class="markdownTableBodyNone">1475   </td><td class="markdownTableBodyNone">42 APIs; 3-feature profile config   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md47"></a>
+Stage 4 — Peripheral drivers (code ✅, on-target ⬜)</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Driver   </th><th class="markdownTableHeadNone">Port File   </th><th class="markdownTableHeadNone">Lines   </th><th class="markdownTableHeadNone">Notes    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="gptimer_8h.html">driver/gptimer.h</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="driver__gptimer__port_8c.html">driver_gptimer_port.c</a></code>   </td><td class="markdownTableBodyNone">374   </td><td class="markdownTableBodyNone">pool-injected; no etm / capture / alarm_action    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html">driver/gpio.h</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="driver__gpio__port_8c.html">driver_gpio_port.c</a></code>   </td><td class="markdownTableBodyNone">527   </td><td class="markdownTableBodyNone">global io_mapper; ISR / intr → NOT_SUPPORTED    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="shell_2sys_2espidf_2include_2driver_2uart_8h.html">driver/uart.h</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="driver__uart__port_8c.html">driver_uart_port.c</a></code>   </td><td class="markdownTableBodyNone">752   </td><td class="markdownTableBodyNone">pool-injected; no pin muxing / pattern detect    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="i2c__master_8h.html">driver/i2c_master.h</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="driver__i2c__port_8c.html">driver_i2c_port.c</a></code>   </td><td class="markdownTableBodyNone">516   </td><td class="markdownTableBodyNone">v5.2 new API only; no slave mode    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="spi__master_8h.html">driver/spi_master.h</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="driver__spi__master__port_8c.html">driver_spi_master_port.c</a></code>   </td><td class="markdownTableBodyNone">673   </td><td class="markdownTableBodyNone">pool-injected; master only    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="ledc_8h.html">driver/ledc.h</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="driver__ledc__port_8c.html">driver_ledc_port.c</a></code>   </td><td class="markdownTableBodyNone">433   </td><td class="markdownTableBodyNone">pool-injected; no fade hardware    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="adc__oneshot_8h.html">driver/adc_oneshot.h</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="driver__adc__port_8c.html">driver_adc_port.c</a></code>   </td><td class="markdownTableBodyNone">266   </td><td class="markdownTableBodyNone">oneshot only; no continuous / DMA / cali   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md48"></a>
+Stage 5 — USB</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Module   </th><th class="markdownTableHeadNone">VSF Backend   </th><th class="markdownTableHeadNone">Port File   </th><th class="markdownTableHeadNone">Lines   </th><th class="markdownTableHeadNone">Notes    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="usb__host_8h.html">usb_host.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/usb/host</code> (vsf_usbh)   </td><td class="markdownTableBodyNone"><code><a class="el" href="usb__host__port_8c.html">usb_host_port.c</a></code>   </td><td class="markdownTableBodyNone">638   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="usb__device_8h.html">usb_device.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/usb/device</code> (vsf_usbd)   </td><td class="markdownTableBodyNone"><code><a class="el" href="usb__device__port_8c.html">usb_device_port.c</a></code>   </td><td class="markdownTableBodyNone">550   </td><td class="markdownTableBodyNone"></td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md49"></a>
+Stage 6 — LCD panel</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Module   </th><th class="markdownTableHeadNone">VSF Backend   </th><th class="markdownTableHeadNone">Port File   </th><th class="markdownTableHeadNone">Lines   </th><th class="markdownTableHeadNone">Notes    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__lcd__types_8h.html">esp_lcd_types.h</a></code>   </td><td class="markdownTableBodyNone">header-only types   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__lcd__port_8c.html">esp_lcd_port.c</a></code>   </td><td class="markdownTableBodyNone">360+   </td><td class="markdownTableBodyNone">handle types, config structs, callbacks    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__lcd__panel__io_8h.html">esp_lcd_panel_io.h</a></code>   </td><td class="markdownTableBodyNone">config carrier (stub vtable)   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__lcd__port_8c.html">esp_lcd_port.c</a></code>   </td><td class="markdownTableBodyNone">—   </td><td class="markdownTableBodyNone">IO layer stores transport config; tx/rx are no-ops    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__lcd__panel__ops_8h.html">esp_lcd_panel_ops.h</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="classvk__disp__t.html">vk_disp_t</a></code> bridge   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__lcd__port_8c.html">esp_lcd_port.c</a></code>   </td><td class="markdownTableBodyNone">—   </td><td class="markdownTableBodyNone">dispatch to vk_disp_init/refresh/fini    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>esp_lcd_io_spi.h</code>   </td><td class="markdownTableBodyNone">SPI IO config + factory   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__lcd__port_8c.html">esp_lcd_port.c</a></code>   </td><td class="markdownTableBodyNone">—   </td><td class="markdownTableBodyNone">records CS/DC/pclk/spi_mode    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>esp_lcd_io_i2c.h</code>   </td><td class="markdownTableBodyNone">I2C IO config + factory   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__lcd__port_8c.html">esp_lcd_port.c</a></code>   </td><td class="markdownTableBodyNone">—   </td><td class="markdownTableBodyNone">records dev_addr/scl_speed    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>esp_lcd_panel_ssd1306.h</code>   </td><td class="markdownTableBodyNone">panel factory   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__lcd__port_8c.html">esp_lcd_port.c</a></code>   </td><td class="markdownTableBodyNone">—   </td><td class="markdownTableBodyNone">creates 128×64 panel wrapping <a class="el" href="classvk__disp__t.html">vk_disp_t</a>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>esp_lcd_panel_st7789.h</code>   </td><td class="markdownTableBodyNone">panel factory   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__lcd__port_8c.html">esp_lcd_port.c</a></code>   </td><td class="markdownTableBodyNone">—   </td><td class="markdownTableBodyNone">creates 240×320 panel wrapping <a class="el" href="classvk__disp__t.html">vk_disp_t</a>   </td></tr>
+</table>
+<p>Architecture: ESP-IDF's two-layer (IO + Panel) pattern is preserved at the API level, but the IO vtable is all no-ops and the panel vtable dispatches to a <code><a class="el" href="classvk__disp__t.html">vk_disp_t</a></code> supplied by the board layer via <code>vsf_espidf_cfg_t::lcd_disp</code>. The board owns the actual display driver (wingdi / ST7789-SPI / SDL2 / etc.) and the espidf LCD shim is agnostic to the concrete driver type.</p>
+<h1><a class="anchor" id="autotoc_md50"></a>
+Backend mapping</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">ESP-IDF API   </th><th class="markdownTableHeadNone">VSF backend    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="esp__log_8h.html">esp_log.h</a></code> (ESP_LOGx)   </td><td class="markdownTableBodyNone"><code>service/trace</code> + <code>vsf_trace</code>    </td></tr>
-<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__err_8h.html">esp_err.h</a></code> / <code>esp_check.h</code>   </td><td class="markdownTableBodyNone">header-only    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__log_8h.html">esp_log.h</a></code> (ESP_LOGx)   </td><td class="markdownTableBodyNone"><code>service/trace</code> + <code>vsf_trace</code>    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__event_8h.html">esp_event.h</a></code>   </td><td class="markdownTableBodyNone"><code>kernel/vsf_eda</code>    </td></tr>
 <tr class="markdownTableRowEven">
@@ -83,7 +185,7 @@ Backend mapping (implementation guide)</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__partition_8h.html">esp_partition.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/mal</code> (<code>vsf_mal</code>)    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="nvs__flash_8h.html">nvs_flash.h</a></code> / <code><a class="el" href="nvs_8h.html">nvs.h</a></code>   </td><td class="markdownTableBodyNone">KV layered on partition or littlefs; to be written    </td></tr>
+<td class="markdownTableBodyNone"><code><a class="el" href="nvs__flash_8h.html">nvs_flash.h</a></code> / <code><a class="el" href="nvs_8h.html">nvs.h</a></code>   </td><td class="markdownTableBodyNone">KV layered on partition or littlefs    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__vfs_8h.html">esp_vfs.h</a></code> + POSIX I/O   </td><td class="markdownTableBodyNone"><code>component/fs</code> + <code>shell/sys/linux</code> VFS    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -93,9 +195,9 @@ Backend mapping (implementation guide)</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">mbedtls   </td><td class="markdownTableBodyNone"><code>component/3rd-party/mbedtls</code>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code><a class="el" href="esp__http__client_8h.html">esp_http_client.h</a></code> / <code>esp_http_server.h</code>   </td><td class="markdownTableBodyNone"><code>component/tcpip/protocol/http</code>    </td></tr>
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__http__client_8h.html">esp_http_client.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/tcpip/protocol/http/client</code>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">cJSON / esp_json   </td><td class="markdownTableBodyNone">not shimmed &ndash; applications include cJSON directly    </td></tr>
+<td class="markdownTableBodyNone">cJSON / esp_json   </td><td class="markdownTableBodyNone">not shimmed — applications include cJSON directly    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">pthread   </td><td class="markdownTableBodyNone"><code>shell/sys/linux</code> pthread    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -103,24 +205,57 @@ Backend mapping (implementation guide)</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__netif_8h.html">esp_netif.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/tcpip/netdrv</code> + lwIP glue    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>driver/gptimer</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="vsf__template__timer_8h.html">hal/driver/common/template/vsf_template_timer.h</a></code> (pool injected via <code><a class="el" href="structvsf__espidf__cfg__t.html#adfeb1111b634c6c8685f944695420702">vsf_espidf_cfg_t::gptimer</a></code>)    </td></tr>
+<td class="markdownTableBodyNone"><code>driver/gptimer</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="vsf__template__timer_8h.html">hal/driver/common/template/vsf_template_timer.h</a></code> (pool-injected)    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>driver/gpio</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="vsf__template__gpio_8h.html">hal/driver/common/template/vsf_template_gpio.h</a></code> (global <code>vsf_hw_io_mapper</code>, no cfg injection)    </td></tr>
+<td class="markdownTableBodyNone"><code>driver/gpio</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="vsf__template__gpio_8h.html">hal/driver/common/template/vsf_template_gpio.h</a></code> (global io_mapper)    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>driver/uart</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="vsf__template__usart_8h.html">hal/driver/common/template/vsf_template_usart.h</a></code> (pool injected via <code><a class="el" href="structvsf__espidf__cfg__t.html#ae56a76e698188ba35134327f067896a8">vsf_espidf_cfg_t::uart</a></code>)    </td></tr>
+<td class="markdownTableBodyNone"><code>driver/uart</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="vsf__template__usart_8h.html">hal/driver/common/template/vsf_template_usart.h</a></code> (pool-injected)    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>driver/i2c</code> / <code>driver/spi_master</code> / <code>driver/ledc</code> / <code>driver/adc</code>   </td><td class="markdownTableBodyNone"><code>hal/driver/common/template/vsf_template_*</code> (code landed; on-target pending, see Stage 4 table)    </td></tr>
+<td class="markdownTableBodyNone"><code>driver/i2c_master</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="vsf__template__i2c_8h.html">hal/driver/common/template/vsf_template_i2c.h</a></code>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>esp_wifi.h</code>   </td><td class="markdownTableBodyNone">external Wi-Fi module semantic shim (stage C)    </td></tr>
+<td class="markdownTableBodyNone"><code>driver/spi_master</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="vsf__template__spi_8h.html">hal/driver/common/template/vsf_template_spi.h</a></code> (pool-injected)    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>esp_bt.h</code>   </td><td class="markdownTableBodyNone">external HCI via VSF BTHCI (stage C)    </td></tr>
+<td class="markdownTableBodyNone"><code>driver/ledc</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="vsf__template__pwm_8h.html">hal/driver/common/template/vsf_template_pwm.h</a></code> (pool-injected)    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>mqtt_client.h</code>   </td><td class="markdownTableBodyNone">upstream Paho Embedded C (not ESP-MQTT)   </td></tr>
+<td class="markdownTableBodyNone"><code>driver/adc_oneshot</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="vsf__template__adc_8h.html">hal/driver/common/template/vsf_template_adc.h</a></code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="usb__host_8h.html">usb_host.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/usb/host</code> (vsf_usbh)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="usb__device_8h.html">usb_device.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/usb/device</code> (vsf_usbd)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>esp_lcd_*.h</code> (IO + panel)   </td><td class="markdownTableBodyNone"><code>component/ui/disp</code> (vsf_disp_t bridge)   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md44"></a>
+<h1><a class="anchor" id="autotoc_md51"></a>
 Enablement</h1>
-<p>Master switch <code>VSF_USE_ESPIDF</code> plus per-component <code>VSF_ESPIDF_CFG_USE_*</code> switches in <code><a class="el" href="vsf__espidf__cfg_8h.html">vsf_espidf_cfg.h</a></code>. All disabled by default; opt in per module as it becomes implemented.</p>
-<h1><a class="anchor" id="autotoc_md45"></a>
+<p>Master switch <code>VSF_USE_ESPIDF</code> plus per-component <code>VSF_ESPIDF_CFG_USE_*</code> switches in <code><a class="el" href="vsf__espidf__cfg_8h.html">vsf_espidf_cfg.h</a></code>. All disabled by default except core infrastructure; opt in per module as needed.</p>
+<div class="fragment"><div class="line">VSF_ESPIDF_CFG_USE_LOG               (core, default ON)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_ERR               (core, default ON)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_EVENT             (core, default ON)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_TIMER             (core, default ON)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_SYSTEM            (core, default ON)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_RINGBUF           (core, default ON)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_HEAP_CAPS         (core, default ON)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_PARTITION         (storage)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_NVS               (storage)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_ESP_FLASH         (storage)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_VFS               (storage)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_LITTLEFS          (storage)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_FATFS             (storage)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_NETIF             (network)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_HTTP_CLIENT       (network)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_HTTP_SERVER       (disabled — NOT IMPLEMENTED)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_WIFI              (disabled — NOT IMPLEMENTED)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_DRIVER_GPIO       (peripheral)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_DRIVER_UART       (peripheral)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_DRIVER_I2C        (peripheral)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_DRIVER_SPI_MASTER (peripheral)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_DRIVER_LEDC       (peripheral)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_DRIVER_GPTIMER    (peripheral)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_DRIVER_ADC        (peripheral)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_USB_HOST          (usb)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_USB_DEVICE        (usb)</div>
+<div class="line">VSF_ESPIDF_CFG_USE_LCD               (display)</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md52"></a>
 Roadmap</h1>
 <p>Stage 1 (pure-software core, no HW dependency): <code>esp_err</code> → <code>esp_log</code> → <code>esp_event</code> → <code><a class="el" href="structesp__timer.html">esp_timer</a></code> → <code>esp_system</code> → <code>esp_ringbuf</code> → <code>esp_heap_caps</code>.</p>
 <p>Stage 2 (storage &amp; fs): <code>esp_partition</code> → <code>nvs_flash</code> → <code>esp_vfs</code>.</p>
@@ -146,12 +281,147 @@ Roadmap</h1>
 </table>
 <p>A driver is considered fully <b>done</b> only when both axes are ✅.</p>
 <p>Stage 5 (radio, optional): external Wi-Fi module <code>esp_wifi</code> semantic shim.</p>
-<h1><a class="anchor" id="autotoc_md46"></a>
+<h1><a class="anchor" id="autotoc_md53"></a>
+Gap Analysis</h1>
+<p>Overview of ESP-IDF features that are <b>not implemented</b> in VSF espidf as of this writing.</p>
+<h2><a class="anchor" id="autotoc_md54"></a>
+Completely missing major subsystems</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Category   </th><th class="markdownTableHeadNone">Missing ESP-IDF components   </th><th class="markdownTableHeadNone">Notes    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Wi-Fi   </td><td class="markdownTableBodyNone"><code>esp_wifi</code>, <code>esp_now</code>, <code>esp_smartconfig</code>, <code>esp_mesh</code>   </td><td class="markdownTableBodyNone">requires external Wi-Fi module    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">BT / BLE   </td><td class="markdownTableBodyNone"><code>bt</code> (host/controller/BLE/BLE Mesh/BLE Audio)   </td><td class="markdownTableBodyNone">requires external HCI    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">802.15.4 / Thread   </td><td class="markdownTableBodyNone"><code>ieee802154</code>, <code>openthread</code>   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Ethernet   </td><td class="markdownTableBodyNone"><code>esp_eth</code> (MAC, PHY, netif glue)   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">HTTP Server   </td><td class="markdownTableBodyNone"><code>esp_http_server</code>, <code>esp_https_server</code>   </td><td class="markdownTableBodyNone">config switch exists but always DISABLED    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">OTA   </td><td class="markdownTableBodyNone"><code>app_update</code> (<code>esp_ota_ops.h</code>), <code>esp_https_ota</code>   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Security   </td><td class="markdownTableBodyNone"><code>esp_security</code> (DS/HMAC/Key Manager), <code>bootloader_support</code> (secure boot / flash encrypt), <code>efuse</code>, <code>nvs_sec_provider</code>   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Power Management   </td><td class="markdownTableBodyNone"><code>esp_pm</code> (DFS / light sleep), <code>esp_hw_support</code> (sleep / intr_alloc / CPU / clk / rtc / pmu)   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">RF PHY   </td><td class="markdownTableBodyNone"><code>esp_phy</code> (calibration / control), <code>esp_coex</code> (coexistence)   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PSRAM   </td><td class="markdownTableBodyNone"><code>esp_psram</code>, <code>esp_mm</code> (cache / MMU)   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">SPIFFS   </td><td class="markdownTableBodyNone"><code>spiffs</code> (<code>esp_spiffs.h</code>)   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Wear Levelling   </td><td class="markdownTableBodyNone"><code>wear_levelling</code>   </td><td class="markdownTableBodyNone">VSF uses <code>component/mal</code> directly    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">LCD   </td><td class="markdownTableBodyNone"><code>esp_lcd</code>   </td><td class="markdownTableBodyNone">IO + ST7789/SSD1306 vendor panels bridged to <a class="el" href="classvk__disp__t.html">vk_disp_t</a>; RGB/DPI/I80 not bridged    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">HID   </td><td class="markdownTableBodyNone"><code>esp_hid</code> (HID host/device over BLE/USB)   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Camera   </td><td class="markdownTableBodyNone"><code>esp_driver_cam</code>   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">GDB / Tracing   </td><td class="markdownTableBodyNone"><code>esp_gdbstub</code>, <code>espcoredump</code>, <code>app_trace</code>, <code>esp_trace</code>, <code>perfmon</code>   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">TEE   </td><td class="markdownTableBodyNone"><code>esp_tee</code> (Trusted Execution Environment)   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Protocomm   </td><td class="markdownTableBodyNone"><code>protocomm</code>, <code>esp_local_ctrl</code>   </td><td class="markdownTableBodyNone">Wi-Fi provisioning infrastructure    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">TCP Transport   </td><td class="markdownTableBodyNone"><code>tcp_transport</code> (TCP/SSL/WS transport abstraction)   </td><td class="markdownTableBodyNone"></td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md55"></a>
+Missing peripheral drivers (23 esp_driver_* components)</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Driver   </th><th class="markdownTableHeadNone">Function   </th><th class="markdownTableHeadNone">Driver   </th><th class="markdownTableHeadNone">Function    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>ana_cmpr</code>   </td><td class="markdownTableBodyNone">Analog comparator   </td><td class="markdownTableBodyNone"><code>parlio</code>   </td><td class="markdownTableBodyNone">Parallel I/O    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>bitscrambler</code>   </td><td class="markdownTableBodyNone">Bit scrambler   </td><td class="markdownTableBodyNone"><code>pcnt</code>   </td><td class="markdownTableBodyNone">Pulse counter    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>cam</code>   </td><td class="markdownTableBodyNone">Camera controller   </td><td class="markdownTableBodyNone"><code>ppa</code>   </td><td class="markdownTableBodyNone">Pixel Processing Accelerator    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>cordic</code>   </td><td class="markdownTableBodyNone">CORDIC co-processor   </td><td class="markdownTableBodyNone"><code>rmt</code>   </td><td class="markdownTableBodyNone">Remote control (IR)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>dac</code>   </td><td class="markdownTableBodyNone">DAC (oneshot / continuous / cosine)   </td><td class="markdownTableBodyNone"><code>sdm</code>   </td><td class="markdownTableBodyNone">Sigma-Delta Modulation    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>dma</code>   </td><td class="markdownTableBodyNone">GDMA / 2D-DMA / async memcpy   </td><td class="markdownTableBodyNone"><code>sdio_slave</code>   </td><td class="markdownTableBodyNone">SDIO slave    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>i2s</code>   </td><td class="markdownTableBodyNone">I2S (standard / PDM / TDM)   </td><td class="markdownTableBodyNone"><code>sdmmc</code>   </td><td class="markdownTableBodyNone">SD/MMC host (native)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>i3c</code>   </td><td class="markdownTableBodyNone">I3C bus   </td><td class="markdownTableBodyNone"><code>sdspi</code>   </td><td class="markdownTableBodyNone">SD/MMC over SPI    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>isp</code>   </td><td class="markdownTableBodyNone">Image Signal Processor   </td><td class="markdownTableBodyNone"><code>touch_sens</code>   </td><td class="markdownTableBodyNone">Touch sensor    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>jpeg</code>   </td><td class="markdownTableBodyNone">JPEG codec   </td><td class="markdownTableBodyNone"><code>tsens</code>   </td><td class="markdownTableBodyNone">Temperature sensor    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>mcpwm</code>   </td><td class="markdownTableBodyNone">Motor Control PWM   </td><td class="markdownTableBodyNone"><code>twai</code>   </td><td class="markdownTableBodyNone">CAN bus (TWAI)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>usb_serial_jtag</code>   </td><td class="markdownTableBodyNone">USB Serial/JTAG console   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md56"></a>
+Missing sub-features in implemented drivers</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Driver   </th><th class="markdownTableHeadNone">Implemented   </th><th class="markdownTableHeadNone">Missing sub-APIs    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">GPIO   </td><td class="markdownTableBodyNone"><code>gpio.h</code>   </td><td class="markdownTableBodyNone"><code>rtc_io.h</code>, <code>lp_io.h</code>, <code>dedic_gpio.h</code>, <code>gpio_etm.h</code>, <code>gpio_filter.h</code>, ISR/intr    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">GPTimer   </td><td class="markdownTableBodyNone"><code><a class="el" href="gptimer_8h.html">gptimer.h</a></code>   </td><td class="markdownTableBodyNone"><code>gptimer_etm.h</code>, <code>get_resolution()</code>, <code>get_captured_count()</code>, <code>set_alarm_action()</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">I2C   </td><td class="markdownTableBodyNone"><code><a class="el" href="i2c__master_8h.html">i2c_master.h</a></code>   </td><td class="markdownTableBodyNone"><code>i2c_slave.h</code>; legacy <code>driver/i2c.h</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">SPI   </td><td class="markdownTableBodyNone"><code><a class="el" href="spi__master_8h.html">spi_master.h</a></code>   </td><td class="markdownTableBodyNone"><code>spi_common.h</code>, <code>spi_slave.h</code>, <code>spi_slave_hd.h</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">UART   </td><td class="markdownTableBodyNone"><code>uart.h</code>   </td><td class="markdownTableBodyNone"><code>uart_select.h</code>, <code>uart_vfs.h</code>, <code>uart_wakeup.h</code>, <code>uhci.h</code>, pin muxing    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">LEDC   </td><td class="markdownTableBodyNone"><code><a class="el" href="ledc_8h.html">ledc.h</a></code>   </td><td class="markdownTableBodyNone"><code>ledc_etm.h</code>, <code><a class="el" href="ledc_8h.html#ae96eee7a81d019cfc0f2c3d74c047004" title="Install the fade service. Returns ESP_ERR_NOT_SUPPORTED.">ledc_fade_func_install()</a></code> → NOT_SUPPORTED    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ADC   </td><td class="markdownTableBodyNone"><code><a class="el" href="adc__oneshot_8h.html">adc_oneshot.h</a></code>   </td><td class="markdownTableBodyNone"><code>adc_continuous.h</code>, <code>adc_dma.h</code>, <code>adc_cali.h</code>, <code>adc_filter.h</code>, <code>adc_monitor.h</code>   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md57"></a>
+Known limitations in implemented modules</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Module   </th><th class="markdownTableHeadNone">Limitation    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>esp_vfs</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__vfs_8h.html#a732fcf8679e84bc69c9477e326877a2c">esp_vfs_register()</a></code> / <code><a class="el" href="esp__vfs_8h.html#a0d1f4219100762f93da1ba6f7a45a737">esp_vfs_unregister()</a></code> / <code><a class="el" href="esp__vfs_8h.html#a6c6723ef8863d26af3e0d1ffb4822723">esp_vfs_register_fd_range()</a></code> are stubs returning <code>ESP_ERR_NOT_SUPPORTED</code>. VSF uses native VFS via <code>vk_fs_mount</code>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>esp_flash</code>   </td><td class="markdownTableBodyNone">Encrypted read/write returns <code>ESP_ERR_NOT_SUPPORTED</code>. No SPI flash chip drivers. No memory-mapped access.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>esp_partition</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__partition_8h.html#afc68105a259705435b48c5ad8e41d3c7">esp_partition_munmap()</a></code> returns <code>ESP_ERR_NOT_SUPPORTED</code> (VSF mim_mal lacks <code>VSF_MAL_LOCAL_BUFFER</code>).    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>esp_ringbuf</code>   </td><td class="markdownTableBodyNone">Item-framed ring buffers (NOSPLIT/ALLOWSPLIT) are treated as byte buffers; per-message length prefix not yet implemented.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>esp_netif</code>   </td><td class="markdownTableBodyNone">DHCP server, PPP, Bridge, SLAAC return <code>ESP_ERR_NOT_SUPPORTED</code>. No <code>esp_netif_sntp.h</code>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="structesp__http__client.html">esp_http_client</a></code>   </td><td class="markdownTableBodyNone"><code>get_chunk_length()</code>, <code><a class="el" href="unistd_8h.html#ac40a1eaac5f8dbc1eef9b944d494770c">write()</a></code>, <code><a class="el" href="fcntl_8h.html#a8854c2a82db965759bd6095a666ffb76">open()</a></code>, <code>fetch_headers()</code>, <code>flush_response()</code>, <code>get_and_clear_last_tls_error()</code> return <code>ESP_ERR_NOT_SUPPORTED</code>. Async mode not implemented. Digest auth only in FULL profile.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>esp_event</code>   </td><td class="markdownTableBodyNone">No deprecated event loop API (<code>esp_event_loop.h</code>).    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>esp_system</code>   </td><td class="markdownTableBodyNone">Missing <code>esp_debug_helpers.h</code>, <code>esp_task_wdt.h</code>, <code>esp_ipc.h</code>, <code>esp_pm.h</code>.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="structesp__timer.html">esp_timer</a></code>   </td><td class="markdownTableBodyNone">No alarm/wakeup timer.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>nvs_flash</code>   </td><td class="markdownTableBodyNone">Missing <code>nvs_bootloader.h</code>, <code>nvs_sec_provider.h</code>. NVS init not yet in main init chain (TODO in <code><a class="el" href="vsf__espidf_8c.html">vsf_espidf.c</a>:149</code>).    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>usb_host</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="usb__host_8h.html#a66575b7df4ca68e55fe29aa6b0397d45">usb_host_lib_handle_events()</a></code> variant returns <code>ESP_ERR_NOT_SUPPORTED</code>.   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md58"></a>
+Missing ESP-IDF infrastructure layers</h2>
+<ul>
+<li><b>HAL layer</b> — All 35 <code>esp_hal_*</code> components are absent. VSF uses its own <code>hal/driver/common/template/</code> abstraction instead.</li>
+<li><b>esp_common</b> — Only <code><a class="el" href="esp__err_8h.html">esp_err.h</a></code> is provided; missing <code>esp_check.h</code>, <code>esp_compiler.h</code>, <code>esp_attr.h</code>, <code>esp_macros.h</code>, <code>esp_idf_version.h</code>, <code>esp_assert.h</code>.</li>
+<li><b>esp_log extensions</b> — Missing <code>esp_log_buffer.h</code>, <code>esp_log_color.h</code>, <code>esp_log_timestamp.h</code>, etc.</li>
+<li><b>esp_heap_caps extensions</b> — Missing <code>esp_heap_caps_init.h</code>, <code>esp_heap_task_info.h</code>, <code>esp_heap_trace.h</code>, <code>multi_heap.h</code>.</li>
+<li><b>esp_vfs extensions</b> — Missing <code>esp_vfs_dev.h</code>, <code>esp_vfs_eventfd.h</code>, <code>esp_vfs_semihost.h</code>.</li>
+<li><b>soc</b> — Missing all SoC capability / peripheral definition headers.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md59"></a>
 Validation</h1>
 <p>Each stage validated by compiling and running matching <code>esp-idf/examples/</code> trees built against this sub-system's headers (no ESP-IDF source in the build). </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/fcf4d99efd08597b7dff2a8851a16f351c483424" target="_blank">vsfteam/vsf@fcf4d99</a>
+  <a href="https://github.com/vsfteam/vsf/commit/6fd41ce5006ec497d7533f5dc33ea81a87c25c9a" target="_blank">vsfteam/vsf@6fd41ce</a>
 </div>
