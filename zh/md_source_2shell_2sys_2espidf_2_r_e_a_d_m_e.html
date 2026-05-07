@@ -409,7 +409,7 @@ Known limitations in implemented modules</h2>
 <h2><a class="anchor" id="autotoc_md58"></a>
 Missing ESP-IDF infrastructure layers</h2>
 <ul>
-<li><b>HAL layer</b> — All 35 <code>esp_hal_*</code> components are absent. VSF uses its own <code>hal/driver/common/template/</code> abstraction instead.</li>
+<li><b>HAL layer</b> — All 35 <code>esp_hal_*</code>components (e.g. <code>esp_hal_gpio</code>, <code>esp_hal_uart</code>) are not implemented, and are NOT needed by this subsystem. VSF's espidf compatibility layer targets the <code>driver/*.h</code> API level (application-facing APIs such as <code><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#afadd72970c01a00f25df734eba0d2b29" title="Set the output level of a single pin (0 = low, non-zero = high).">gpio_set_level()</a></code>, <code><a class="el" href="shell_2sys_2espidf_2include_2driver_2uart_8h.html#a8327a6a4cadd86583d0efd555a1fa523">uart_write_bytes()</a></code>), not the HAL <code>_ll.h</code> level that <code>esp_hal_*</code> provides. The HAL role is fulfilled by VSF's own <code>hal/driver/common/template/vsf_template_*.h</code> abstraction, which each <code>driver/*.h</code> port header bridges to directly. Application code using this subsystem never includes <code>hal/*.h</code> headers, so the absence of <code>esp_hal_*</code> is a deliberate architectural choice, not a gap.</li>
 <li><b>esp_common</b> — Only <code><a class="el" href="esp__err_8h.html">esp_err.h</a></code> is provided; missing <code>esp_check.h</code>, <code>esp_compiler.h</code>, <code>esp_attr.h</code>, <code>esp_macros.h</code>, <code>esp_idf_version.h</code>, <code>esp_assert.h</code>.</li>
 <li><b>esp_log extensions</b> — Missing <code>esp_log_buffer.h</code>, <code>esp_log_color.h</code>, <code>esp_log_timestamp.h</code>, etc.</li>
 <li><b>esp_heap_caps extensions</b> — Missing <code>esp_heap_caps_init.h</code>, <code>esp_heap_task_info.h</code>, <code>esp_heap_trace.h</code>, <code>multi_heap.h</code>.</li>
@@ -423,6 +423,6 @@ Validation</h1>
 </div><!-- PageDoc -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/6fd41ce5006ec497d7533f5dc33ea81a87c25c9a" target="_blank">vsfteam/vsf@6fd41ce</a>
+  <a href="https://github.com/vsfteam/vsf/commit/e9479fdffeac47bc511e36ef28caa6265c13e5a7" target="_blank">vsfteam/vsf@e9479fd</a>
   生成
 </div>
