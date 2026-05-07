@@ -80,7 +80,7 @@ Stage 1 — Pure-software core (all code ✅)</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__system_8h.html">esp_system.h</a></code>   </td><td class="markdownTableBodyNone">VSF reset + entropy + heap stats   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__system__port_8c.html">esp_system_port.c</a></code>   </td><td class="markdownTableBodyNone">226   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code><a class="el" href="esp__ringbuf_8h.html">esp_ringbuf.h</a></code>   </td><td class="markdownTableBodyNone">byte ring buffer on vsf_heap   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__ringbuf__port_8c.html">esp_ringbuf_port.c</a></code>   </td><td class="markdownTableBodyNone">217   </td><td class="markdownTableBodyNone">bytebuf only; item framing planned    </td></tr>
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__ringbuf_8h.html">esp_ringbuf.h</a></code>   </td><td class="markdownTableBodyNone">four-pointer ring buffer on vsf_heap   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__ringbuf__port_8c.html">esp_ringbuf_port.c</a></code>   </td><td class="markdownTableBodyNone">~1500   </td><td class="markdownTableBodyNone">all 3 types (BYTEBUF/NOSPLIT/ALLOWSPLIT); blocking + ISR + QueueSet    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__heap__caps_8h.html">esp_heap_caps.h</a></code>   </td><td class="markdownTableBodyNone"><code>service/heap</code> (caps collapsed)   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__heap__caps__port_8c.html">esp_heap_caps_port.c</a></code>   </td><td class="markdownTableBodyNone">249   </td><td class="markdownTableBodyNone">no heap tracing or multi_heap   </td></tr>
 </table>
@@ -179,7 +179,7 @@ Backend mapping</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__system_8h.html">esp_system.h</a></code> (restart/reset_reason/random)   </td><td class="markdownTableBodyNone">VSF reset + entropy    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">xRingbuffer (<code><a class="el" href="esp__ringbuf_8h.html">esp_ringbuf.h</a></code>)   </td><td class="markdownTableBodyNone"><code>service/fifo</code>, <code>service/pbuf</code>, <code>service/simple_stream</code>    </td></tr>
+<td class="markdownTableBodyNone">xRingbuffer (<code><a class="el" href="esp__ringbuf_8h.html">esp_ringbuf.h</a></code>)   </td><td class="markdownTableBodyNone">four-pointer ring buffer + <code>vsf_sem_t</code> for blocking    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__heap__caps_8h.html">esp_heap_caps.h</a></code>   </td><td class="markdownTableBodyNone"><code>service/heap</code> + <code>service/pool</code> (caps collapsed)    </td></tr>
 <tr class="markdownTableRowEven">
@@ -201,7 +201,7 @@ Backend mapping</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">pthread   </td><td class="markdownTableBodyNone"><code>shell/sys/linux</code> pthread    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">FreeRTOS FreeRTOS.h, queue, event_groups   </td><td class="markdownTableBodyNone">VSF FreeRTOS compat layer    </td></tr>
+<td class="markdownTableBodyNone">FreeRTOS FreeRTOS.h, queue, event_groups, QueueSet   </td><td class="markdownTableBodyNone">VSF FreeRTOS compat layer    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__netif_8h.html">esp_netif.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/tcpip/netdrv</code> + lwIP glue    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -234,6 +234,7 @@ Enablement</h1>
 <div class="line">VSF_ESPIDF_CFG_USE_TIMER             (core, default ON)</div>
 <div class="line">VSF_ESPIDF_CFG_USE_SYSTEM            (core, default ON)</div>
 <div class="line">VSF_ESPIDF_CFG_USE_RINGBUF           (core, default ON)</div>
+<div class="line">VSF_ESPIDF_CFG_RINGBUF_USE_FREERTOS_QUEUESET  (requires VSF_USE_FREERTOS)</div>
 <div class="line">VSF_ESPIDF_CFG_USE_HEAP_CAPS         (core, default ON)</div>
 <div class="line">VSF_ESPIDF_CFG_USE_PARTITION         (storage)</div>
 <div class="line">VSF_ESPIDF_CFG_USE_NVS               (storage)</div>
@@ -390,7 +391,7 @@ Known limitations in implemented modules</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>esp_partition</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__partition_8h.html#afc68105a259705435b48c5ad8e41d3c7">esp_partition_munmap()</a></code> returns <code>ESP_ERR_NOT_SUPPORTED</code> (VSF mim_mal lacks <code>VSF_MAL_LOCAL_BUFFER</code>).    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>esp_ringbuf</code>   </td><td class="markdownTableBodyNone">Item-framed ring buffers (NOSPLIT/ALLOWSPLIT) are treated as byte buffers; per-message length prefix not yet implemented.    </td></tr>
+<td class="markdownTableBodyNone"><code>esp_ringbuf</code>   </td><td class="markdownTableBodyNone"><code>xRingbufferAddToQueueSetRead</code> / <code>xRingbufferRemoveFromQueueSetRead</code> requires VSF_ESPIDF_CFG_RINGBUF_USE_FREERTOS_QUEUESET and the VSF FreeRTOS shim (<code>VSF_USE_FREERTOS</code>). QueueSet notification is deferred outside the ringbuf critical section to avoid lock nesting (mirrors ESP-IDF upstream behaviour).    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>esp_netif</code>   </td><td class="markdownTableBodyNone">DHCP server, PPP, Bridge, SLAAC return <code>ESP_ERR_NOT_SUPPORTED</code>. No <code>esp_netif_sntp.h</code>.    </td></tr>
 <tr class="markdownTableRowEven">
@@ -423,5 +424,5 @@ Validation</h1>
 </div><!-- PageDoc -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/c2e1d37ad6fea7883517152f42d6c112fadd2d4f" target="_blank">vsfteam/vsf@c2e1d37</a>
+  <a href="https://github.com/vsfteam/vsf/commit/834d510bf842ae9d81c4fc6d4022f580c9eeceb3" target="_blank">vsfteam/vsf@834d510</a>
 </div>
