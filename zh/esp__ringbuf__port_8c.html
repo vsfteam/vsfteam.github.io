@@ -63,6 +63,8 @@
 <code>#include &quot;<a class="el" href="vsf__kernel_8h_source.html">kernel/vsf_kernel.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__trace_8h_source.html">service/trace/vsf_trace.h</a>&quot;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="inttypes_8h_source.html">inttypes.h</a>&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 结构体</h2></td></tr>
@@ -103,6 +105,10 @@
 <tr class="separator:a19e2c9cae9c40a0bc9809c2fbdb9fc88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93bdf120501e91d2012eaaaffef95956" id="r_a93bdf120501e91d2012eaaaffef95956"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#a93bdf120501e91d2012eaaaffef95956">__rb_wake_space</a>(rb)&#160;&#160;&#160;<a class="el" href="vsf__eda_8h.html#a53820edcc984447442dd99509a0a245b">vsf_eda_sem_post</a>(&amp;(rb)-&gt;space_sem)</td></tr>
 <tr class="separator:a93bdf120501e91d2012eaaaffef95956"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f392f676eabd3455dcc127dc41b32ba" id="r_a6f392f676eabd3455dcc127dc41b32ba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#a6f392f676eabd3455dcc127dc41b32ba">__rb_wake_data_isr</a>(rb,  w)</td></tr>
+<tr class="separator:a6f392f676eabd3455dcc127dc41b32ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1acf533d1288768d8ea2f6a1e83f7531" id="r_a1acf533d1288768d8ea2f6a1e83f7531"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#a1acf533d1288768d8ea2f6a1e83f7531">__rb_wake_space_isr</a>(rb,  w)</td></tr>
+<tr class="separator:a1acf533d1288768d8ea2f6a1e83f7531"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3eefeba224ca23b88e14892000ad8c2" id="r_ac3eefeba224ca23b88e14892000ad8c2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#ac3eefeba224ca23b88e14892000ad8c2">__rb_cancel</a>(rb)</td></tr>
 <tr class="separator:ac3eefeba224ca23b88e14892000ad8c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -128,6 +134,36 @@
 <tr class="separator:a0b63137b217b0b20a86778221686327a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43cd9e1dc8baabf7226aa4a83fa3a852" id="r_a43cd9e1dc8baabf7226aa4a83fa3a852"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#a43cd9e1dc8baabf7226aa4a83fa3a852">xRingbufferReceiveSplit</a> (<a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> handle, void **ppvHeadItem, void **ppvTailItem, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *pxHeadItemSize, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *pxTailItemSize, <a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a> ticks_to_wait)</td></tr>
 <tr class="separator:a43cd9e1dc8baabf7226aa4a83fa3a852"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc44b9f85cf0b59566a8281a09010e4f" id="r_adc44b9f85cf0b59566a8281a09010e4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#adc44b9f85cf0b59566a8281a09010e4f">xRingbufferCreateNoSplit</a> (<a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> xItemSize, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> xItemNum)</td></tr>
+<tr class="separator:adc44b9f85cf0b59566a8281a09010e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb99212fd0d688bacd333870b4d9d877" id="r_aeb99212fd0d688bacd333870b4d9d877"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#aeb99212fd0d688bacd333870b4d9d877">xRingbufferSendFromISR</a> (<a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> handle, const void *<a class="el" href="ieee80211_8h.html#a0523b4597a0b055eae49bfe42a58b918">data</a>, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> data_size, <a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *pxHigherPriorityTaskWoken)</td></tr>
+<tr class="separator:aeb99212fd0d688bacd333870b4d9d877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe36eaf3aae60ef69546d88dc35a7ddf" id="r_abe36eaf3aae60ef69546d88dc35a7ddf"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#abe36eaf3aae60ef69546d88dc35a7ddf">xRingbufferReceiveFromISR</a> (<a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> handle, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *<a class="el" href="vsf__pool_8h.html#ad27d25a00990c74c7bf1cc2bca27b745">item_size</a>, <a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *pxHigherPriorityTaskWoken)</td></tr>
+<tr class="separator:abe36eaf3aae60ef69546d88dc35a7ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad13ce24ea2375e47cbf737495643faf1" id="r_ad13ce24ea2375e47cbf737495643faf1"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#ad13ce24ea2375e47cbf737495643faf1">xRingbufferReceiveUpToFromISR</a> (<a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> handle, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *<a class="el" href="vsf__pool_8h.html#ad27d25a00990c74c7bf1cc2bca27b745">item_size</a>, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> wanted_size, <a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *pxHigherPriorityTaskWoken)</td></tr>
+<tr class="separator:ad13ce24ea2375e47cbf737495643faf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52fbc3eef8697ad4bf9e5c5ecee54a90" id="r_a52fbc3eef8697ad4bf9e5c5ecee54a90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#a52fbc3eef8697ad4bf9e5c5ecee54a90">xRingbufferReceiveSplitFromISR</a> (<a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> handle, void **ppvHeadItem, void **ppvTailItem, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *pxHeadItemSize, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *pxTailItemSize, <a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *pxHigherPriorityTaskWoken)</td></tr>
+<tr class="separator:a52fbc3eef8697ad4bf9e5c5ecee54a90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb931627d09fa5c6c2ecfabeb19b64f9" id="r_afb931627d09fa5c6c2ecfabeb19b64f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#afb931627d09fa5c6c2ecfabeb19b64f9">vRingbufferReturnItemFromISR</a> (<a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> handle, void *item, <a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *pxHigherPriorityTaskWoken)</td></tr>
+<tr class="separator:afb931627d09fa5c6c2ecfabeb19b64f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ef55f9d536256914246382fc648f807" id="r_a5ef55f9d536256914246382fc648f807"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#a5ef55f9d536256914246382fc648f807">xRingbufferSendAcquire</a> (<a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> handle, void **ppvItem, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> xItemSize, <a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a> ticks_to_wait)</td></tr>
+<tr class="separator:a5ef55f9d536256914246382fc648f807"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64f5dcfc7347754fdf7bc1a40e74c2d4" id="r_a64f5dcfc7347754fdf7bc1a40e74c2d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#a64f5dcfc7347754fdf7bc1a40e74c2d4">xRingbufferSendComplete</a> (<a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> handle, void *pvItem)</td></tr>
+<tr class="separator:a64f5dcfc7347754fdf7bc1a40e74c2d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf18220f947a9d023a8b0ab778536f55" id="r_acf18220f947a9d023a8b0ab778536f55"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#acf18220f947a9d023a8b0ab778536f55">vRingbufferReset</a> (<a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> handle)</td></tr>
+<tr class="separator:acf18220f947a9d023a8b0ab778536f55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a545508a7523fcd469746a8da5db80ee1" id="r_a545508a7523fcd469746a8da5db80ee1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#a545508a7523fcd469746a8da5db80ee1">vRingbufferGetInfo</a> (<a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> handle, <a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> *uxFree, <a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> *uxRead, <a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> *uxWrite, <a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> *uxAcquire, <a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> *uxItemsWaiting)</td></tr>
+<tr class="separator:a545508a7523fcd469746a8da5db80ee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02f8652deb632e8080a17921cf2e5b25" id="r_a02f8652deb632e8080a17921cf2e5b25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#a02f8652deb632e8080a17921cf2e5b25">xRingbufferPrintInfo</a> (<a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> handle)</td></tr>
+<tr class="separator:a02f8652deb632e8080a17921cf2e5b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5eac48538d98e593c240f6af5b05d579" id="r_a5eac48538d98e593c240f6af5b05d579"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#a5eac48538d98e593c240f6af5b05d579">xRingbufferCreateStatic</a> (<a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> buffer_size, <a class="el" href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601">RingbufferType_t</a> <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *pucStorage, <a class="el" href="struct_static_ringbuffer__t.html">StaticRingbuffer_t</a> *pxStatic)</td></tr>
+<tr class="separator:a5eac48538d98e593c240f6af5b05d579"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f7793abb56bd5926e1e7b860c64f02a" id="r_a7f7793abb56bd5926e1e7b860c64f02a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#a7f7793abb56bd5926e1e7b860c64f02a">xRingbufferGetStaticBuffer</a> (<a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> handle, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> **ppucStorage, <a class="el" href="struct_static_ringbuffer__t.html">StaticRingbuffer_t</a> **ppxStatic)</td></tr>
+<tr class="separator:a7f7793abb56bd5926e1e7b860c64f02a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f9d2412f89ac305019b3778fce380e9" id="r_a3f9d2412f89ac305019b3778fce380e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#a3f9d2412f89ac305019b3778fce380e9">xRingbufferCreateWithCaps</a> (<a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> buffer_size, <a class="el" href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601">RingbufferType_t</a> <a class="el" href="vsf__audio_8h.html#ad64e18f867699b8e854388de816016af">type</a>, <a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> uxMemoryCaps)</td></tr>
+<tr class="separator:a3f9d2412f89ac305019b3778fce380e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade1e054325262df60298d1d80312750b" id="r_ade1e054325262df60298d1d80312750b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf__port_8c.html#ade1e054325262df60298d1d80312750b">vRingbufferDeleteWithCaps</a> (<a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> handle)</td></tr>
+<tr class="separator:ade1e054325262df60298d1d80312750b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">宏定义说明</h2>
 <a id="a6ab39468842ae25a5ef8f8d13a2983a5" name="a6ab39468842ae25a5ef8f8d13a2983a5"></a>
@@ -340,6 +376,72 @@
       </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<a id="a6f392f676eabd3455dcc127dc41b32ba" name="a6f392f676eabd3455dcc127dc41b32ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f392f676eabd3455dcc127dc41b32ba">&#9670;&#160;</a></span>__rb_wake_data_isr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __rb_wake_data_isr</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">rb, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">w&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">        <span class="keywordflow">do</span> { \</div>
+<div class="line">        vsf_eda_sem_post_isr(&amp;(rb)-&gt;data_sem); \</div>
+<div class="line">        if ((w) != <a class="code hl_define" href="lvgl_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) *(w) = <a class="code hl_define" href="rtos__al_8h.html#af268cf937960eb029256bd9c4d949fbe">pdTRUE</a>; \</div>
+<div class="line">    } <span class="keywordflow">while</span> (0)</div>
+<div class="ttc" id="alvgl_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="lvgl_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition</b> lvgl.h:26</div></div>
+<div class="ttc" id="artos__al_8h_html_af268cf937960eb029256bd9c4d949fbe"><div class="ttname"><a href="rtos__al_8h.html#af268cf937960eb029256bd9c4d949fbe">pdTRUE</a></div><div class="ttdeci">#define pdTRUE</div><div class="ttdef"><b>Definition</b> rtos_al.h:53</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1acf533d1288768d8ea2f6a1e83f7531" name="a1acf533d1288768d8ea2f6a1e83f7531"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1acf533d1288768d8ea2f6a1e83f7531">&#9670;&#160;</a></span>__rb_wake_space_isr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __rb_wake_space_isr</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">rb, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">w&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">        <span class="keywordflow">do</span> { \</div>
+<div class="line">        vsf_eda_sem_post_isr(&amp;(rb)-&gt;space_sem); \</div>
+<div class="line">        if ((w) != <a class="code hl_define" href="lvgl_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) *(w) = <a class="code hl_define" href="rtos__al_8h.html#af268cf937960eb029256bd9c4d949fbe">pdTRUE</a>; \</div>
+<div class="line">    } <span class="keywordflow">while</span> (0)</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ac3eefeba224ca23b88e14892000ad8c2" name="ac3eefeba224ca23b88e14892000ad8c2"></a>
@@ -659,9 +761,519 @@
 
 </div>
 </div>
+<a id="adc44b9f85cf0b59566a8281a09010e4f" name="adc44b9f85cf0b59566a8281a09010e4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc44b9f85cf0b59566a8281a09010e4f">&#9670;&#160;</a></span>xRingbufferCreateNoSplit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> xRingbufferCreateNoSplit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
+          <td class="paramname"><em>xItemSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
+          <td class="paramname"><em>xItemNum</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb99212fd0d688bacd333870b4d9d877" name="aeb99212fd0d688bacd333870b4d9d877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb99212fd0d688bacd333870b4d9d877">&#9670;&#160;</a></span>xRingbufferSendFromISR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> xRingbufferSendFromISR </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
+          <td class="paramname"><em>data_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *&#160;</td>
+          <td class="paramname"><em>pxHigherPriorityTaskWoken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abe36eaf3aae60ef69546d88dc35a7ddf" name="abe36eaf3aae60ef69546d88dc35a7ddf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe36eaf3aae60ef69546d88dc35a7ddf">&#9670;&#160;</a></span>xRingbufferReceiveFromISR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * xRingbufferReceiveFromISR </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *&#160;</td>
+          <td class="paramname"><em>item_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *&#160;</td>
+          <td class="paramname"><em>pxHigherPriorityTaskWoken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad13ce24ea2375e47cbf737495643faf1" name="ad13ce24ea2375e47cbf737495643faf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad13ce24ea2375e47cbf737495643faf1">&#9670;&#160;</a></span>xRingbufferReceiveUpToFromISR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * xRingbufferReceiveUpToFromISR </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *&#160;</td>
+          <td class="paramname"><em>item_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
+          <td class="paramname"><em>wanted_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *&#160;</td>
+          <td class="paramname"><em>pxHigherPriorityTaskWoken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a52fbc3eef8697ad4bf9e5c5ecee54a90" name="a52fbc3eef8697ad4bf9e5c5ecee54a90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52fbc3eef8697ad4bf9e5c5ecee54a90">&#9670;&#160;</a></span>xRingbufferReceiveSplitFromISR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> xRingbufferReceiveSplitFromISR </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&#160;</td>
+          <td class="paramname"><em>ppvHeadItem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&#160;</td>
+          <td class="paramname"><em>ppvTailItem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *&#160;</td>
+          <td class="paramname"><em>pxHeadItemSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> *&#160;</td>
+          <td class="paramname"><em>pxTailItemSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *&#160;</td>
+          <td class="paramname"><em>pxHigherPriorityTaskWoken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afb931627d09fa5c6c2ecfabeb19b64f9" name="afb931627d09fa5c6c2ecfabeb19b64f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb931627d09fa5c6c2ecfabeb19b64f9">&#9670;&#160;</a></span>vRingbufferReturnItemFromISR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vRingbufferReturnItemFromISR </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> *&#160;</td>
+          <td class="paramname"><em>pxHigherPriorityTaskWoken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5ef55f9d536256914246382fc648f807" name="a5ef55f9d536256914246382fc648f807"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ef55f9d536256914246382fc648f807">&#9670;&#160;</a></span>xRingbufferSendAcquire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> xRingbufferSendAcquire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&#160;</td>
+          <td class="paramname"><em>ppvItem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
+          <td class="paramname"><em>xItemSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a>&#160;</td>
+          <td class="paramname"><em>ticks_to_wait</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a64f5dcfc7347754fdf7bc1a40e74c2d4" name="a64f5dcfc7347754fdf7bc1a40e74c2d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64f5dcfc7347754fdf7bc1a40e74c2d4">&#9670;&#160;</a></span>xRingbufferSendComplete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> xRingbufferSendComplete </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pvItem</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf18220f947a9d023a8b0ab778536f55" name="acf18220f947a9d023a8b0ab778536f55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf18220f947a9d023a8b0ab778536f55">&#9670;&#160;</a></span>vRingbufferReset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__err_8h.html#a8bc4f6626a2d4ebd67533c56064ccda8">esp_err_t</a> vRingbufferReset </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a545508a7523fcd469746a8da5db80ee1" name="a545508a7523fcd469746a8da5db80ee1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a545508a7523fcd469746a8da5db80ee1">&#9670;&#160;</a></span>vRingbufferGetInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vRingbufferGetInfo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> *&#160;</td>
+          <td class="paramname"><em>uxFree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> *&#160;</td>
+          <td class="paramname"><em>uxRead</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> *&#160;</td>
+          <td class="paramname"><em>uxWrite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> *&#160;</td>
+          <td class="paramname"><em>uxAcquire</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a> *&#160;</td>
+          <td class="paramname"><em>uxItemsWaiting</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a02f8652deb632e8080a17921cf2e5b25" name="a02f8652deb632e8080a17921cf2e5b25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02f8652deb632e8080a17921cf2e5b25">&#9670;&#160;</a></span>xRingbufferPrintInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void xRingbufferPrintInfo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5eac48538d98e593c240f6af5b05d579" name="a5eac48538d98e593c240f6af5b05d579"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5eac48538d98e593c240f6af5b05d579">&#9670;&#160;</a></span>xRingbufferCreateStatic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> xRingbufferCreateStatic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
+          <td class="paramname"><em>buffer_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601">RingbufferType_t</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *&#160;</td>
+          <td class="paramname"><em>pucStorage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_static_ringbuffer__t.html">StaticRingbuffer_t</a> *&#160;</td>
+          <td class="paramname"><em>pxStatic</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7f7793abb56bd5926e1e7b860c64f02a" name="a7f7793abb56bd5926e1e7b860c64f02a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f7793abb56bd5926e1e7b860c64f02a">&#9670;&#160;</a></span>xRingbufferGetStaticBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a> xRingbufferGetStaticBuffer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> **&#160;</td>
+          <td class="paramname"><em>ppucStorage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_static_ringbuffer__t.html">StaticRingbuffer_t</a> **&#160;</td>
+          <td class="paramname"><em>ppxStatic</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3f9d2412f89ac305019b3778fce380e9" name="a3f9d2412f89ac305019b3778fce380e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f9d2412f89ac305019b3778fce380e9">&#9670;&#160;</a></span>xRingbufferCreateWithCaps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a> xRingbufferCreateWithCaps </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a>&#160;</td>
+          <td class="paramname"><em>buffer_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a9b67bb7faec2a6c56a77dad316713601">RingbufferType_t</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a>&#160;</td>
+          <td class="paramname"><em>uxMemoryCaps</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ade1e054325262df60298d1d80312750b" name="ade1e054325262df60298d1d80312750b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade1e054325262df60298d1d80312750b">&#9670;&#160;</a></span>vRingbufferDeleteWithCaps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vRingbufferDeleteWithCaps </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="esp__ringbuf_8h.html#a0ae59667ee2aa17a43dfd9eaec033e63">RingbufHandle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/e9479fdffeac47bc511e36ef28caa6265c13e5a7" target="_blank">vsfteam/vsf@e9479fd</a>
+  <a href="https://github.com/vsfteam/vsf/commit/c2e1d37ad6fea7883517152f42d6c112fadd2d4f" target="_blank">vsfteam/vsf@c2e1d37</a>
   生成
 </div>
