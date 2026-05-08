@@ -56,11 +56,11 @@ Layout</h1>
 <div class="line">├── vsf_espidf_cfg.h           # feature switches + IDF baseline version</div>
 <div class="line">├── vsf_espidf.c               # sub-system init + per-module init chain</div>
 <div class="line">├── README.md                  # &lt;-- this file</div>
-<div class="line">├── include/                   # clean-room ESP-IDF public headers (34 files)</div>
+<div class="line">├── include/                   # clean-room ESP-IDF public headers (48 files)</div>
 <div class="line">│   ├── README.md</div>
 <div class="line">│   ├── driver/                # driver/*.h</div>
 <div class="line">│   └── usb/                   # usb/*.h</div>
-<div class="line">└── port/                      # ESP-IDF-API -&gt; VSF-internal glue (25 port files)</div>
+<div class="line">└── port/                      # ESP-IDF-API -&gt; VSF-internal glue (30 port files)</div>
 <div class="line">    └── CMakeLists.txt</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md43"></a>
 Implemented Modules</h1>
@@ -82,7 +82,15 @@ Stage 1 — Pure-software core (all code ✅)</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__ringbuf_8h.html">esp_ringbuf.h</a></code>   </td><td class="markdownTableBodyNone">four-pointer ring buffer on vsf_heap   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__ringbuf__port_8c.html">esp_ringbuf_port.c</a></code>   </td><td class="markdownTableBodyNone">~1500   </td><td class="markdownTableBodyNone">all 3 types (BYTEBUF/NOSPLIT/ALLOWSPLIT); blocking + ISR + QueueSet    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="esp__heap__caps_8h.html">esp_heap_caps.h</a></code>   </td><td class="markdownTableBodyNone"><code>service/heap</code> (caps collapsed)   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__heap__caps__port_8c.html">esp_heap_caps_port.c</a></code>   </td><td class="markdownTableBodyNone">249   </td><td class="markdownTableBodyNone">no heap tracing or multi_heap   </td></tr>
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__heap__caps_8h.html">esp_heap_caps.h</a></code>   </td><td class="markdownTableBodyNone"><code>service/heap</code> (caps collapsed + registry)   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__heap__caps__port_8c.html">esp_heap_caps_port.c</a></code> + <code><a class="el" href="esp__heap__caps__init__port_8c.html">esp_heap_caps_init_port.c</a></code>   </td><td class="markdownTableBodyNone">249+110   </td><td class="markdownTableBodyNone"><code><a class="el" href="multi__heap_8h.html">multi_heap.h</a></code> wraps <code>__vsf_heap_*</code> instance API; <code><a class="el" href="esp__heap__caps__init_8h.html#ae22488c4edee3a2bff04a19938dc7b23">heap_caps_add_region()</a></code> adds registered per-caps heaps    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>esp_common/</code>   </td><td class="markdownTableBodyNone">header-only (clean-room)   </td><td class="markdownTableBodyNone">—   </td><td class="markdownTableBodyNone">~350   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__compiler_8h.html">esp_compiler.h</a></code>, <code><a class="el" href="esp__macros_8h.html">esp_macros.h</a></code>, <code><a class="el" href="esp__attr_8h.html">esp_attr.h</a></code>, <code><a class="el" href="esp__check_8h.html">esp_check.h</a></code>, <code><a class="el" href="esp__assert_8h.html">esp_assert.h</a></code>, <code><a class="el" href="esp__bit__defs_8h.html">esp_bit_defs.h</a></code>, <code><a class="el" href="esp__types_8h.html">esp_types.h</a></code>, <code><a class="el" href="esp__idf__version_8h.html">esp_idf_version.h</a></code> + <code><a class="el" href="sdkconfig_8h.html">sdkconfig.h</a></code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__log__buffer_8h.html">esp_log_buffer.h</a></code>   </td><td class="markdownTableBodyNone"><code>service/trace</code> via <code>esp_log_write</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__log__buffer__port_8c.html">esp_log_buffer_port.c</a></code>   </td><td class="markdownTableBodyNone">65   </td><td class="markdownTableBodyNone"><code>ESP_LOG_BUFFER_HEX</code> / <code>CHAR</code> / <code>HEXDUMP</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__vfs__eventfd_8h.html">esp_vfs_eventfd.h</a></code>   </td><td class="markdownTableBodyNone">VSF Linux <code><a class="el" href="eventfd_8h.html#abd67bb43475639155be5cef81a2df842">eventfd()</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__vfs__eventfd__port_8c.html">esp_vfs_eventfd_port.c</a></code>   </td><td class="markdownTableBodyNone">44   </td><td class="markdownTableBodyNone">register/unregister pass-through; <code><a class="el" href="eventfd_8h.html#abd67bb43475639155be5cef81a2df842">eventfd()</a></code> from VSF Linux    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__vfs__semihost_8h.html">esp_vfs_semihost.h</a></code>   </td><td class="markdownTableBodyNone">header-only stub   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__vfs__semihost__port_8c.html">esp_vfs_semihost_port.c</a></code>   </td><td class="markdownTableBodyNone">24   </td><td class="markdownTableBodyNone">returns <code>ESP_ERR_NOT_SUPPORTED</code> (VSF disables semihosting)   </td></tr>
 </table>
 <h2><a class="anchor" id="autotoc_md45"></a>
 Stage 2 — Storage &amp; filesystem</h2>
@@ -169,7 +177,7 @@ Backend mapping</h1>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">ESP-IDF API   </th><th class="markdownTableHeadNone">VSF backend    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="esp__err_8h.html">esp_err.h</a></code> / <code>esp_check.h</code>   </td><td class="markdownTableBodyNone">header-only    </td></tr>
+<td class="markdownTableBodyNone"><code><a class="el" href="esp__err_8h.html">esp_err.h</a></code> / <code><a class="el" href="esp__check_8h.html">esp_check.h</a></code>   </td><td class="markdownTableBodyNone">header-only    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__log_8h.html">esp_log.h</a></code> (ESP_LOGx)   </td><td class="markdownTableBodyNone"><code>service/trace</code> + <code>vsf_trace</code>    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -367,7 +375,7 @@ Missing sub-features in implemented drivers</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">GPIO   </td><td class="markdownTableBodyNone"><code>gpio.h</code>   </td><td class="markdownTableBodyNone"><code>rtc_io.h</code>, <code>lp_io.h</code>, <code>dedic_gpio.h</code>, <code>gpio_etm.h</code>, <code>gpio_filter.h</code>, ISR/intr    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">GPTimer   </td><td class="markdownTableBodyNone"><code><a class="el" href="gptimer_8h.html">gptimer.h</a></code>   </td><td class="markdownTableBodyNone"><code>gptimer_etm.h</code>, <code>get_resolution()</code>, <code>get_captured_count()</code>, <code>set_alarm_action()</code>    </td></tr>
+<td class="markdownTableBodyNone">GPTimer   </td><td class="markdownTableBodyNone"><code><a class="el" href="gptimer_8h.html">gptimer.h</a></code>   </td><td class="markdownTableBodyNone"><code>gptimer_etm.h</code>    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">I2C   </td><td class="markdownTableBodyNone"><code><a class="el" href="i2c__master_8h.html">i2c_master.h</a></code>   </td><td class="markdownTableBodyNone"><code>i2c_slave.h</code>; legacy <code>driver/i2c.h</code>    </td></tr>
 <tr class="markdownTableRowEven">
@@ -411,10 +419,10 @@ Known limitations in implemented modules</h2>
 Missing ESP-IDF infrastructure layers</h2>
 <ul>
 <li><b>HAL layer</b> — All 35 <code>esp_hal_*</code>components (e.g. <code>esp_hal_gpio</code>, <code>esp_hal_uart</code>) are not implemented, and are NOT needed by this subsystem. VSF's espidf compatibility layer targets the <code>driver/*.h</code> API level (application-facing APIs such as <code><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#afadd72970c01a00f25df734eba0d2b29" title="Set the output level of a single pin (0 = low, non-zero = high).">gpio_set_level()</a></code>, <code><a class="el" href="shell_2sys_2espidf_2include_2driver_2uart_8h.html#a8327a6a4cadd86583d0efd555a1fa523">uart_write_bytes()</a></code>), not the HAL <code>_ll.h</code> level that <code>esp_hal_*</code> provides. The HAL role is fulfilled by VSF's own <code>hal/driver/common/template/vsf_template_*.h</code> abstraction, which each <code>driver/*.h</code> port header bridges to directly. Application code using this subsystem never includes <code>hal/*.h</code> headers, so the absence of <code>esp_hal_*</code> is a deliberate architectural choice, not a gap.</li>
-<li><b>esp_common</b> — Only <code><a class="el" href="esp__err_8h.html">esp_err.h</a></code> is provided; missing <code>esp_check.h</code>, <code>esp_compiler.h</code>, <code>esp_attr.h</code>, <code>esp_macros.h</code>, <code>esp_idf_version.h</code>, <code>esp_assert.h</code>.</li>
-<li><b>esp_log extensions</b> — Missing <code>esp_log_buffer.h</code>, <code>esp_log_color.h</code>, <code>esp_log_timestamp.h</code>, etc.</li>
-<li><b>esp_heap_caps extensions</b> — Missing <code>esp_heap_caps_init.h</code>, <code>esp_heap_task_info.h</code>, <code>esp_heap_trace.h</code>, <code>multi_heap.h</code>.</li>
-<li><b>esp_vfs extensions</b> — Missing <code>esp_vfs_dev.h</code>, <code>esp_vfs_eventfd.h</code>, <code>esp_vfs_semihost.h</code>.</li>
+<li><b>esp_common</b> — Core headers complete (<code><a class="el" href="esp__compiler_8h.html">esp_compiler.h</a></code>, <code><a class="el" href="esp__macros_8h.html">esp_macros.h</a></code>, <code><a class="el" href="esp__attr_8h.html">esp_attr.h</a></code>, <code><a class="el" href="esp__check_8h.html">esp_check.h</a></code>, <code><a class="el" href="esp__assert_8h.html">esp_assert.h</a></code>, <code><a class="el" href="esp__bit__defs_8h.html">esp_bit_defs.h</a></code>, <code><a class="el" href="esp__types_8h.html">esp_types.h</a></code>, <code><a class="el" href="esp__idf__version_8h.html">esp_idf_version.h</a></code>, <code><a class="el" href="sdkconfig_8h.html">sdkconfig.h</a></code>). Missing: <code>esp_fault.h</code> (ESP hardware FI countermeasures — out of scope).</li>
+<li><b>esp_log extensions</b> — <code><a class="el" href="esp__log__buffer_8h.html">esp_log_buffer.h</a></code> implemented. Missing: <code>esp_log_color.h</code>, <code>esp_log_timestamp.h</code> (user-direct API — defer).</li>
+<li><b>esp_heap_caps extensions</b> — <code><a class="el" href="multi__heap_8h.html">multi_heap.h</a></code> + <code><a class="el" href="esp__heap__caps__init_8h.html">esp_heap_caps_init.h</a></code> implemented (instance heaps via <code>__vsf_heap_*</code>, caps registry via <code>heap_caps_add_region</code>). Missing: <code>esp_heap_task_info.h</code>, <code>esp_heap_trace.h</code> (debugging, deferred).</li>
+<li><b>esp_vfs extensions</b> — <code><a class="el" href="esp__vfs__eventfd_8h.html">esp_vfs_eventfd.h</a></code> (bridges VSF Linux eventfd) + <code><a class="el" href="esp__vfs__semihost_8h.html">esp_vfs_semihost.h</a></code> (NOT_SUPPORTED stub) implemented. Missing: <code>esp_vfs_dev.h</code>.</li>
 <li><b>soc</b> — Missing all SoC capability / peripheral definition headers.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md59"></a>
@@ -424,6 +432,6 @@ Validation</h1>
 </div><!-- PageDoc -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/1cdec6abdd8db504c654d5efd908414e1fbd5750" target="_blank">vsfteam/vsf@1cdec6a</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1fe26d2b944d1f272e8d79c5eac19ff06caec5bb" target="_blank">vsfteam/vsf@1fe26d2</a>
   生成
 </div>

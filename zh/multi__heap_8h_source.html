@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/shell/sys/espidf/include/multi_heap.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a66b54d9ccb7ac68fb96537b4100fe7c.html">shell</a></li><li class="navelem"><a class="el" href="dir_9193a593b30f234791fce6fa4e720ba0.html">sys</a></li><li class="navelem"><a class="el" href="dir_67078002197479e597ae23208194ae3e.html">espidf</a></li><li class="navelem"><a class="el" href="dir_368c75ff2ea44ed7d865b13e1d69fdba.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">multi_heap.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="multi__heap_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *   Copyright(C)2009-2026 by VSF Team                                       *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);          *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  you may not use this file except in compliance with the License.         *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  You may obtain a copy of the License at                                  *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0                            *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software      *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,        *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  See the License for the specific language governing permissions and      *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  limitations under the License.                                           *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *                                                                           *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * Clean-room re-implementation of ESP-IDF public API &quot;multi_heap.h&quot;.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * Provides independent heap instances backed by VSF&#39;s per-instance</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * vsf_heap_t API (__vsf_heap_init / __vsf_heap_add_buffer / ...).</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * Baseline: ESP-IDF v5.1 public API.</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#ifndef __VSF_ESPIDF_MULTI_HEAP_H__</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#define __VSF_ESPIDF_MULTI_HEAP_H__</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;<a class="code" href="stdint_8h.html">stdint.h</a>&gt;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="multi__heap_8h.html#aa9bf1bc733ed15ac60e01fce19f97b1b">   38</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvsf__espidf__multi__heap.html">vsf_espidf_multi_heap</a> *<a class="code hl_typedef" href="multi__heap_8h.html#aa9bf1bc733ed15ac60e01fce19f97b1b">multi_heap_handle_t</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structmulti__heap__info__t.html">   40</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structmulti__heap__info__t.html#a579d218a5e7be434de0e06c4a5e2fc44">   41</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structmulti__heap__info__t.html#a579d218a5e7be434de0e06c4a5e2fc44">total_free_bytes</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structmulti__heap__info__t.html#af7ac7bb9523d54bc65ff43ca695eaa4d">   42</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structmulti__heap__info__t.html#af7ac7bb9523d54bc65ff43ca695eaa4d">total_allocated_bytes</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structmulti__heap__info__t.html#ab1f0470a7a39d0ff6624aa3a51ebe314">   43</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structmulti__heap__info__t.html#ab1f0470a7a39d0ff6624aa3a51ebe314">largest_free_block</a>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structmulti__heap__info__t.html#aaae058568c1b0c400bf53060c64d1193">   44</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structmulti__heap__info__t.html#aaae058568c1b0c400bf53060c64d1193">minimum_free_bytes</a>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structmulti__heap__info__t.html#a216a36cb5c73cec2f2a1afafdbdb4727">   45</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structmulti__heap__info__t.html#a216a36cb5c73cec2f2a1afafdbdb4727">allocated_blocks</a>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structmulti__heap__info__t.html#ab18daccada986848b88c9c61b06183a7">   46</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structmulti__heap__info__t.html#ab18daccada986848b88c9c61b06183a7">free_blocks</a>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structmulti__heap__info__t.html#a0298f4fdc59110fe56a29c2e130ea9f7">   47</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structmulti__heap__info__t.html#a0298f4fdc59110fe56a29c2e130ea9f7">total_blocks</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>} <a class="code hl_struct" href="structmulti__heap__info__t.html">multi_heap_info_t</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">void</span> *<a class="code hl_function" href="multi__heap_8h.html#a3d88d9f5d2e00c62e7877cfd87b04a6d">multi_heap_aligned_alloc</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap, <span class="keywordtype">size_t</span> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>, <span class="keywordtype">size_t</span> <a class="code hl_variable" href="vsf__heap_8h.html#a76a334eceff36dd821a66e376256a569">alignment</a>);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">void</span> *<a class="code hl_function" href="multi__heap_8h.html#ac850df4bf1dfcde4550738d5b6f454f9">multi_heap_malloc</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap, <span class="keywordtype">size_t</span> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keywordtype">void</span>  <a class="code hl_function" href="multi__heap_8h.html#a57ece2f1499c39b5756498ec331bd468">multi_heap_free</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap, <span class="keywordtype">void</span> *p);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keywordtype">void</span> *<a class="code hl_function" href="multi__heap_8h.html#a5e2ece140107e5ee2a98b90bf818bed5">multi_heap_realloc</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap, <span class="keywordtype">void</span> *p, <span class="keywordtype">size_t</span> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="multi__heap_8h.html#af88d5a13cce47e48c329ef86f29f5fa2">multi_heap_get_allocated_size</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap, <span class="keywordtype">void</span> *p);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> <a class="code hl_function" href="multi__heap_8h.html#a83ee39aa9c03378c9eb32dc45c27f016">multi_heap_register</a>(<span class="keywordtype">void</span> *start, <span class="keywordtype">size_t</span> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keywordtype">void</span> <a class="code hl_function" href="multi__heap_8h.html#af1e3c624610b9768289eb95496f6cdeb">multi_heap_set_lock</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap, <span class="keywordtype">void</span> *lock);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keywordtype">void</span> <a class="code hl_function" href="multi__heap_8h.html#a498d52c8ab07c5863ce49cc142b01828">multi_heap_dump</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keywordtype">bool</span> <a class="code hl_function" href="multi__heap_8h.html#ad1f307768d124bc73ec03a44ef28d740">multi_heap_check</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap, <span class="keywordtype">bool</span> print_errors);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="multi__heap_8h.html#a31baeeba41b9560413af745b33c5b6b5">multi_heap_free_size</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="multi__heap_8h.html#a7073b215edc403edd4ef7083d8f86e13">multi_heap_minimum_free_size</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keywordtype">void</span> <a class="code hl_function" href="multi__heap_8h.html#aad3673c369c1efc02fd8aa1cbebcf713">multi_heap_get_info</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap, <a class="code hl_struct" href="structmulti__heap__info__t.html">multi_heap_info_t</a> *info);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keywordtype">void</span> *<a class="code hl_function" href="multi__heap_8h.html#a5bd68a8c4de105758813932748b207ed">multi_heap_aligned_alloc_offs</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap, <span class="keywordtype">size_t</span> <a class="code hl_variable" href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a>,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                                    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="vsf__heap_8h.html#a76a334eceff36dd821a66e376256a569">alignment</a>, <span class="keywordtype">size_t</span> <a class="code hl_variable" href="vsf__memfs_8h.html#a612bb2807d848cca89ea1437cceea886">offset</a>);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="multi__heap_8h.html#a63c94ec2432b1cff8873244b02f9a394">multi_heap_reset_minimum_free_bytes</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keywordtype">void</span> <a class="code hl_function" href="multi__heap_8h.html#a5e65837d15044e30317cf07e5ba29568">multi_heap_restore_minimum_free_bytes</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap,</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                                           <span class="keyword">const</span> <span class="keywordtype">size_t</span> new_minimum_free_bytes_value);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="multi__heap_8h.html#aa955ee963801b59565f9b8ac0d8e2219">   73</a></span><span class="keyword">typedef</span> <a class="code hl_enumeration" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> (*<a class="code hl_typedef" href="multi__heap_8h.html#aa955ee963801b59565f9b8ac0d8e2219">multi_heap_walker_cb_t</a>)(<span class="keywordtype">void</span> *<a class="code hl_variable" href="vsf__pbuf_8h.html#abd1f43bd6f5cdfae686ad1affd766840">block_ptr</a>, <span class="keywordtype">size_t</span> block_size,</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                                       <span class="keywordtype">int</span> block_used, <span class="keywordtype">void</span> *user_data);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keywordtype">void</span> <a class="code hl_function" href="multi__heap_8h.html#a9423fd4ba0f7e7cd72dd3c3532477485">multi_heap_walk</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap, <a class="code hl_typedef" href="multi__heap_8h.html#aa955ee963801b59565f9b8ac0d8e2219">multi_heap_walker_cb_t</a> walker_func,</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                     <span class="keywordtype">void</span> *user_data);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="multi__heap_8h.html#aad4f3f90b5b1fea1bde23cc80b9ee6af">multi_heap_get_full_block_size</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap, <span class="keywordtype">void</span> *p);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keywordtype">void</span> *<a class="code hl_function" href="multi__heap_8h.html#a87bd165d3c39662e23e7a1ae275f8311">multi_heap_find_containing_block</a>(<a class="code hl_struct" href="structvsf__espidf__multi__heap.html">multi_heap_handle_t</a> heap, <span class="keywordtype">void</span> *ptr);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>}</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_ESPIDF_MULTI_HEAP_H__</span></div>
+<div class="ttc" id="aarm_2type_8h_html_af6a258d8f3ee5206d682d799316314b1"><div class="ttname"><a href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a></div><div class="ttdeci">bool</div><div class="ttdef"><b>Definition</b> type.h:60</div></div>
+<div class="ttc" id="amulti__heap_8h_html_a31baeeba41b9560413af745b33c5b6b5"><div class="ttname"><a href="multi__heap_8h.html#a31baeeba41b9560413af745b33c5b6b5">multi_heap_free_size</a></div><div class="ttdeci">size_t multi_heap_free_size(multi_heap_handle_t heap)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:124</div></div>
+<div class="ttc" id="amulti__heap_8h_html_a3d88d9f5d2e00c62e7877cfd87b04a6d"><div class="ttname"><a href="multi__heap_8h.html#a3d88d9f5d2e00c62e7877cfd87b04a6d">multi_heap_aligned_alloc</a></div><div class="ttdeci">void * multi_heap_aligned_alloc(multi_heap_handle_t heap, size_t size, size_t alignment)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:70</div></div>
+<div class="ttc" id="amulti__heap_8h_html_a498d52c8ab07c5863ce49cc142b01828"><div class="ttname"><a href="multi__heap_8h.html#a498d52c8ab07c5863ce49cc142b01828">multi_heap_dump</a></div><div class="ttdeci">void multi_heap_dump(multi_heap_handle_t heap)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:110</div></div>
+<div class="ttc" id="amulti__heap_8h_html_a57ece2f1499c39b5756498ec331bd468"><div class="ttname"><a href="multi__heap_8h.html#a57ece2f1499c39b5756498ec331bd468">multi_heap_free</a></div><div class="ttdeci">void multi_heap_free(multi_heap_handle_t heap, void *p)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:85</div></div>
+<div class="ttc" id="amulti__heap_8h_html_a5bd68a8c4de105758813932748b207ed"><div class="ttname"><a href="multi__heap_8h.html#a5bd68a8c4de105758813932748b207ed">multi_heap_aligned_alloc_offs</a></div><div class="ttdeci">void * multi_heap_aligned_alloc_offs(multi_heap_handle_t heap, size_t size, size_t alignment, size_t offset)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:77</div></div>
+<div class="ttc" id="amulti__heap_8h_html_a5e2ece140107e5ee2a98b90bf818bed5"><div class="ttname"><a href="multi__heap_8h.html#a5e2ece140107e5ee2a98b90bf818bed5">multi_heap_realloc</a></div><div class="ttdeci">void * multi_heap_realloc(multi_heap_handle_t heap, void *p, size_t size)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:91</div></div>
+<div class="ttc" id="amulti__heap_8h_html_a5e65837d15044e30317cf07e5ba29568"><div class="ttname"><a href="multi__heap_8h.html#a5e65837d15044e30317cf07e5ba29568">multi_heap_restore_minimum_free_bytes</a></div><div class="ttdeci">void multi_heap_restore_minimum_free_bytes(multi_heap_handle_t heap, const size_t new_minimum_free_bytes_value)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:164</div></div>
+<div class="ttc" id="amulti__heap_8h_html_a63c94ec2432b1cff8873244b02f9a394"><div class="ttname"><a href="multi__heap_8h.html#a63c94ec2432b1cff8873244b02f9a394">multi_heap_reset_minimum_free_bytes</a></div><div class="ttdeci">size_t multi_heap_reset_minimum_free_bytes(multi_heap_handle_t heap)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:156</div></div>
+<div class="ttc" id="amulti__heap_8h_html_a7073b215edc403edd4ef7083d8f86e13"><div class="ttname"><a href="multi__heap_8h.html#a7073b215edc403edd4ef7083d8f86e13">multi_heap_minimum_free_size</a></div><div class="ttdeci">size_t multi_heap_minimum_free_size(multi_heap_handle_t heap)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:132</div></div>
+<div class="ttc" id="amulti__heap_8h_html_a83ee39aa9c03378c9eb32dc45c27f016"><div class="ttname"><a href="multi__heap_8h.html#a83ee39aa9c03378c9eb32dc45c27f016">multi_heap_register</a></div><div class="ttdeci">multi_heap_handle_t multi_heap_register(void *start, size_t size)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:41</div></div>
+<div class="ttc" id="amulti__heap_8h_html_a87bd165d3c39662e23e7a1ae275f8311"><div class="ttname"><a href="multi__heap_8h.html#a87bd165d3c39662e23e7a1ae275f8311">multi_heap_find_containing_block</a></div><div class="ttdeci">void * multi_heap_find_containing_block(multi_heap_handle_t heap, void *ptr)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:184</div></div>
+<div class="ttc" id="amulti__heap_8h_html_a9423fd4ba0f7e7cd72dd3c3532477485"><div class="ttname"><a href="multi__heap_8h.html#a9423fd4ba0f7e7cd72dd3c3532477485">multi_heap_walk</a></div><div class="ttdeci">void multi_heap_walk(multi_heap_handle_t heap, multi_heap_walker_cb_t walker_func, void *user_data)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:171</div></div>
+<div class="ttc" id="amulti__heap_8h_html_aa955ee963801b59565f9b8ac0d8e2219"><div class="ttname"><a href="multi__heap_8h.html#aa955ee963801b59565f9b8ac0d8e2219">multi_heap_walker_cb_t</a></div><div class="ttdeci">bool(* multi_heap_walker_cb_t)(void *block_ptr, size_t block_size, int block_used, void *user_data)</div><div class="ttdef"><b>Definition</b> multi_heap.h:73</div></div>
+<div class="ttc" id="amulti__heap_8h_html_aa9bf1bc733ed15ac60e01fce19f97b1b"><div class="ttname"><a href="multi__heap_8h.html#aa9bf1bc733ed15ac60e01fce19f97b1b">multi_heap_handle_t</a></div><div class="ttdeci">struct vsf_espidf_multi_heap * multi_heap_handle_t</div><div class="ttdef"><b>Definition</b> multi_heap.h:38</div></div>
+<div class="ttc" id="amulti__heap_8h_html_aad3673c369c1efc02fd8aa1cbebcf713"><div class="ttname"><a href="multi__heap_8h.html#aad3673c369c1efc02fd8aa1cbebcf713">multi_heap_get_info</a></div><div class="ttdeci">void multi_heap_get_info(multi_heap_handle_t heap, multi_heap_info_t *info)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:140</div></div>
+<div class="ttc" id="amulti__heap_8h_html_aad4f3f90b5b1fea1bde23cc80b9ee6af"><div class="ttname"><a href="multi__heap_8h.html#aad4f3f90b5b1fea1bde23cc80b9ee6af">multi_heap_get_full_block_size</a></div><div class="ttdeci">size_t multi_heap_get_full_block_size(multi_heap_handle_t heap, void *p)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:179</div></div>
+<div class="ttc" id="amulti__heap_8h_html_ac850df4bf1dfcde4550738d5b6f454f9"><div class="ttname"><a href="multi__heap_8h.html#ac850df4bf1dfcde4550738d5b6f454f9">multi_heap_malloc</a></div><div class="ttdeci">void * multi_heap_malloc(multi_heap_handle_t heap, size_t size)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:63</div></div>
+<div class="ttc" id="amulti__heap_8h_html_ad1f307768d124bc73ec03a44ef28d740"><div class="ttname"><a href="multi__heap_8h.html#ad1f307768d124bc73ec03a44ef28d740">multi_heap_check</a></div><div class="ttdeci">bool multi_heap_check(multi_heap_handle_t heap, bool print_errors)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:118</div></div>
+<div class="ttc" id="amulti__heap_8h_html_af1e3c624610b9768289eb95496f6cdeb"><div class="ttname"><a href="multi__heap_8h.html#af1e3c624610b9768289eb95496f6cdeb">multi_heap_set_lock</a></div><div class="ttdeci">void multi_heap_set_lock(multi_heap_handle_t heap, void *lock)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:104</div></div>
+<div class="ttc" id="amulti__heap_8h_html_af88d5a13cce47e48c329ef86f29f5fa2"><div class="ttname"><a href="multi__heap_8h.html#af88d5a13cce47e48c329ef86f29f5fa2">multi_heap_get_allocated_size</a></div><div class="ttdeci">size_t multi_heap_get_allocated_size(multi_heap_handle_t heap, void *p)</div><div class="ttdef"><b>Definition</b> multi_heap_port.c:98</div></div>
+<div class="ttc" id="astdint_8h_html"><div class="ttname"><a href="stdint_8h.html">stdint.h</a></div></div>
+<div class="ttc" id="astructmulti__heap__info__t_html"><div class="ttname"><a href="structmulti__heap__info__t.html">multi_heap_info_t</a></div><div class="ttdef"><b>Definition</b> multi_heap.h:40</div></div>
+<div class="ttc" id="astructmulti__heap__info__t_html_a0298f4fdc59110fe56a29c2e130ea9f7"><div class="ttname"><a href="structmulti__heap__info__t.html#a0298f4fdc59110fe56a29c2e130ea9f7">multi_heap_info_t::total_blocks</a></div><div class="ttdeci">size_t total_blocks</div><div class="ttdef"><b>Definition</b> multi_heap.h:47</div></div>
+<div class="ttc" id="astructmulti__heap__info__t_html_a216a36cb5c73cec2f2a1afafdbdb4727"><div class="ttname"><a href="structmulti__heap__info__t.html#a216a36cb5c73cec2f2a1afafdbdb4727">multi_heap_info_t::allocated_blocks</a></div><div class="ttdeci">size_t allocated_blocks</div><div class="ttdef"><b>Definition</b> multi_heap.h:45</div></div>
+<div class="ttc" id="astructmulti__heap__info__t_html_a579d218a5e7be434de0e06c4a5e2fc44"><div class="ttname"><a href="structmulti__heap__info__t.html#a579d218a5e7be434de0e06c4a5e2fc44">multi_heap_info_t::total_free_bytes</a></div><div class="ttdeci">size_t total_free_bytes</div><div class="ttdef"><b>Definition</b> multi_heap.h:41</div></div>
+<div class="ttc" id="astructmulti__heap__info__t_html_aaae058568c1b0c400bf53060c64d1193"><div class="ttname"><a href="structmulti__heap__info__t.html#aaae058568c1b0c400bf53060c64d1193">multi_heap_info_t::minimum_free_bytes</a></div><div class="ttdeci">size_t minimum_free_bytes</div><div class="ttdef"><b>Definition</b> multi_heap.h:44</div></div>
+<div class="ttc" id="astructmulti__heap__info__t_html_ab18daccada986848b88c9c61b06183a7"><div class="ttname"><a href="structmulti__heap__info__t.html#ab18daccada986848b88c9c61b06183a7">multi_heap_info_t::free_blocks</a></div><div class="ttdeci">size_t free_blocks</div><div class="ttdef"><b>Definition</b> multi_heap.h:46</div></div>
+<div class="ttc" id="astructmulti__heap__info__t_html_ab1f0470a7a39d0ff6624aa3a51ebe314"><div class="ttname"><a href="structmulti__heap__info__t.html#ab1f0470a7a39d0ff6624aa3a51ebe314">multi_heap_info_t::largest_free_block</a></div><div class="ttdeci">size_t largest_free_block</div><div class="ttdef"><b>Definition</b> multi_heap.h:43</div></div>
+<div class="ttc" id="astructmulti__heap__info__t_html_af7ac7bb9523d54bc65ff43ca695eaa4d"><div class="ttname"><a href="structmulti__heap__info__t.html#af7ac7bb9523d54bc65ff43ca695eaa4d">multi_heap_info_t::total_allocated_bytes</a></div><div class="ttdeci">size_t total_allocated_bytes</div><div class="ttdef"><b>Definition</b> multi_heap.h:42</div></div>
+<div class="ttc" id="astructvsf__espidf__multi__heap_html"><div class="ttname"><a href="structvsf__espidf__multi__heap.html">vsf_espidf_multi_heap</a></div><div class="ttdef"><b>Definition</b> esp_heap_caps_init_port.c:39</div></div>
+<div class="ttc" id="avsf__heap_8h_html_a76a334eceff36dd821a66e376256a569"><div class="ttname"><a href="vsf__heap_8h.html#a76a334eceff36dd821a66e376256a569">alignment</a></div><div class="ttdeci">uint_fast32_t alignment</div><div class="ttdef"><b>Definition</b> vsf_heap.h:172</div></div>
+<div class="ttc" id="avsf__memfs_8h_html_a612bb2807d848cca89ea1437cceea886"><div class="ttname"><a href="vsf__memfs_8h.html#a612bb2807d848cca89ea1437cceea886">offset</a></div><div class="ttdeci">uint64_t offset</div><div class="ttdef"><b>Definition</b> vsf_memfs.h:49</div></div>
+<div class="ttc" id="avsf__memfs_8h_html_ab2c6b258f02add8fdf4cfc7c371dd772"><div class="ttname"><a href="vsf__memfs_8h.html#ab2c6b258f02add8fdf4cfc7c371dd772">size</a></div><div class="ttdeci">uint32_t size</div><div class="ttdef"><b>Definition</b> vsf_memfs.h:50</div></div>
+<div class="ttc" id="avsf__pbuf_8h_html_abd1f43bd6f5cdfae686ad1affd766840"><div class="ttname"><a href="vsf__pbuf_8h.html#abd1f43bd6f5cdfae686ad1affd766840">block_ptr</a></div><div class="ttdeci">vsf_pbuf_t * block_ptr</div><div class="ttdoc">User specified free</div><div class="ttdef"><b>Definition</b> vsf_pbuf.h:127</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/1fe26d2b944d1f272e8d79c5eac19ff06caec5bb" target="_blank">vsfteam/vsf@1fe26d2</a>
+  生成
+</div>
