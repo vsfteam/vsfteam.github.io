@@ -63,6 +63,7 @@
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="esp__err_8h_source.html">esp_err.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__kernel_8h_source.html">kernel/vsf_kernel.h</a>&quot;</code><br />
 </div>
 <p><a href="esp__ringbuf_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -83,7 +84,7 @@ Macros</h2></td></tr>
 <tr class="separator:a07848d3078849bd32353c69d30a479b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99e2866c8cf4fe86db87dab62e7d6aa6" id="r_a99e2866c8cf4fe86db87dab62e7d6aa6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf_8h.html#a99e2866c8cf4fe86db87dab62e7d6aa6">pdFAIL</a>&#160;&#160;&#160;<a class="el" href="rtos__al_8h.html#aa56260e937e7e203026707e5ba944273">pdFALSE</a></td></tr>
 <tr class="separator:a99e2866c8cf4fe86db87dab62e7d6aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72723ba1e4a85ca14f25c2b9e066613d" id="r_a72723ba1e4a85ca14f25c2b9e066613d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf_8h.html#a72723ba1e4a85ca14f25c2b9e066613d">portMAX_DELAY</a>&#160;&#160;&#160;((<a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a>)0xFFFFFFFFu)</td></tr>
+<tr class="memitem:a72723ba1e4a85ca14f25c2b9e066613d" id="r_a72723ba1e4a85ca14f25c2b9e066613d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf_8h.html#a72723ba1e4a85ca14f25c2b9e066613d">portMAX_DELAY</a>&#160;&#160;&#160;((<a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a>)-1)</td></tr>
 <tr class="separator:a72723ba1e4a85ca14f25c2b9e066613d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a651ab2709dcc434553f7487d7428fc63" id="r_a651ab2709dcc434553f7487d7428fc63"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf_8h.html#a651ab2709dcc434553f7487d7428fc63">__VSF_FREERTOS_QUEUESET_TYPES_DEFINED__</a></td></tr>
 <tr class="separator:a651ab2709dcc434553f7487d7428fc63"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -94,8 +95,8 @@ Typedefs</h2></td></tr>
 <tr class="separator:a46fb21e00ae0729d7515c0fbf2269796"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a646f89d4298e4f5afd522202b11cb2e6" id="r_a646f89d4298e4f5afd522202b11cb2e6"><td class="memItemLeft" align="right" valign="top">typedef unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf_8h.html#a646f89d4298e4f5afd522202b11cb2e6">UBaseType_t</a></td></tr>
 <tr class="separator:a646f89d4298e4f5afd522202b11cb2e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa69c48c6e902ce54f70886e6573c92a9" id="r_aa69c48c6e902ce54f70886e6573c92a9"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a></td></tr>
-<tr class="separator:aa69c48c6e902ce54f70886e6573c92a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaaca4ff27b518df3440ecd212d98619" id="r_aeaaca4ff27b518df3440ecd212d98619"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="cortex__a__generic_8h.html#a6cd0f273a5af16a57986e9629e9379f0">vsf_systimer_tick_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf_8h.html#aeaaca4ff27b518df3440ecd212d98619">TickType_t</a></td></tr>
+<tr class="separator:aeaaca4ff27b518df3440ecd212d98619"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32a86d604e1706d72a5a4c62d8262f56" id="r_a32a86d604e1706d72a5a4c62d8262f56"><td class="memItemLeft" align="right" valign="top">typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf_8h.html#a32a86d604e1706d72a5a4c62d8262f56">QueueSetHandle_t</a></td></tr>
 <tr class="separator:a32a86d604e1706d72a5a4c62d8262f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c19a940d8fe07d338928ecea68b1776" id="r_a6c19a940d8fe07d338928ecea68b1776"><td class="memItemLeft" align="right" valign="top">typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="esp__ringbuf_8h.html#a6c19a940d8fe07d338928ecea68b1776">QueueSetMemberHandle_t</a></td></tr>
@@ -250,7 +251,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define portMAX_DELAY&#160;&#160;&#160;((<a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a>)0xFFFFFFFFu)</td>
+          <td class="memname">#define portMAX_DELAY&#160;&#160;&#160;((<a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a>)-1)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -304,14 +305,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa69c48c6e902ce54f70886e6573c92a9" name="aa69c48c6e902ce54f70886e6573c92a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa69c48c6e902ce54f70886e6573c92a9">&#9670;&#160;</a></span>TickType_t</h2>
+<a id="aeaaca4ff27b518df3440ecd212d98619" name="aeaaca4ff27b518df3440ecd212d98619"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaaca4ff27b518df3440ecd212d98619">&#9670;&#160;</a></span>TickType_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> <a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a></td>
+          <td class="memname">typedef <a class="el" href="cortex__a__generic_8h.html#a6cd0f273a5af16a57986e9629e9379f0">vsf_systimer_tick_t</a> <a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1252,5 +1253,5 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/c072a8d9da27c310160663ca7f6cb38bdfa85a6d" target="_blank">vsfteam/vsf@c072a8d</a>
+  <a href="https://github.com/vsfteam/vsf/commit/6688e0da1f6630df1ce13dc8aa96d0d05eac9ed2" target="_blank">vsfteam/vsf@6688e0d</a>
 </div>

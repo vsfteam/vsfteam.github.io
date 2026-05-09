@@ -128,8 +128,8 @@
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">// Tick-&gt;ms conversion. In this shim 1 tick == 1 ms so pdMS_TO_TICKS is the</span></div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">// identity; the underlying sleep still uses systimer ticks via vsf_thread.</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="_free_r_t_o_s_8h.html#a353d0f62b82a402cb3db63706c81ec3f">   76</a></span><span class="preprocessor">#define pdMS_TO_TICKS(xTimeInMs)        ((TickType_t)(xTimeInMs))</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="_free_r_t_o_s_8h.html#a189c3a55d37af0c2fc91310d59d86c7e">   77</a></span><span class="preprocessor">#define pdTICKS_TO_MS(xTicks)           ((uint32_t)(xTicks))</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="_free_r_t_o_s_8h.html#a353d0f62b82a402cb3db63706c81ec3f">   76</a></span><span class="preprocessor">#define pdMS_TO_TICKS(xTimeInMs)        ((TickType_t)vsf_systimer_ms_to_tick(xTimeInMs))</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="_free_r_t_o_s_8h.html#a189c3a55d37af0c2fc91310d59d86c7e">   77</a></span><span class="preprocessor">#define pdTICKS_TO_MS(xTicks)           ((uint32_t)vsf_systimer_tick_to_ms(xTicks))</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">/*============================ ASSERT ========================================*/</span></div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
@@ -148,5 +148,5 @@
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/c072a8d9da27c310160663ca7f6cb38bdfa85a6d" target="_blank">vsfteam/vsf@c072a8d</a>
+  <a href="https://github.com/vsfteam/vsf/commit/6688e0da1f6630df1ce13dc8aa96d0d05eac9ed2" target="_blank">vsfteam/vsf@6688e0d</a>
 </div>

@@ -61,6 +61,7 @@
 <div class="textblock"><code>#include &lt;<a class="el" href="stdint_8h_source.html">stdint.h</a>&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="vsf__kernel_8h_source.html">kernel/vsf_kernel.h</a>&quot;</code><br />
 </div>
 <p><a href="portmacro_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -71,7 +72,7 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a72723ba1e4a85ca14f25c2b9e066613d" id="r_a72723ba1e4a85ca14f25c2b9e066613d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a72723ba1e4a85ca14f25c2b9e066613d">portMAX_DELAY</a>&#160;&#160;&#160;((<a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a>)0xFFFFFFFFUL)</td></tr>
+<tr class="memitem:a72723ba1e4a85ca14f25c2b9e066613d" id="r_a72723ba1e4a85ca14f25c2b9e066613d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a72723ba1e4a85ca14f25c2b9e066613d">portMAX_DELAY</a>&#160;&#160;&#160;((<a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a>)-1)</td></tr>
 <tr class="separator:a72723ba1e4a85ca14f25c2b9e066613d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa56260e937e7e203026707e5ba944273" id="r_aa56260e937e7e203026707e5ba944273"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#aa56260e937e7e203026707e5ba944273">pdFALSE</a>&#160;&#160;&#160;((<a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a>)0)</td></tr>
 <tr class="separator:aa56260e937e7e203026707e5ba944273"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -81,13 +82,13 @@ Macros</h2></td></tr>
 <tr class="separator:a07848d3078849bd32353c69d30a479b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99e2866c8cf4fe86db87dab62e7d6aa6" id="r_a99e2866c8cf4fe86db87dab62e7d6aa6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a99e2866c8cf4fe86db87dab62e7d6aa6">pdFAIL</a>&#160;&#160;&#160;<a class="el" href="rtos__al_8h.html#aa56260e937e7e203026707e5ba944273">pdFALSE</a></td></tr>
 <tr class="separator:a99e2866c8cf4fe86db87dab62e7d6aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2b3620599cf7d8a8111d0b15c7256bb" id="r_af2b3620599cf7d8a8111d0b15c7256bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#af2b3620599cf7d8a8111d0b15c7256bb">portENTER_CRITICAL</a>(...)&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#af7496ea503bc46ef98e35db9ce9d747f">vTaskEnterCritical</a>()</td></tr>
+<tr class="memitem:af2b3620599cf7d8a8111d0b15c7256bb" id="r_af2b3620599cf7d8a8111d0b15c7256bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#af2b3620599cf7d8a8111d0b15c7256bb">portENTER_CRITICAL</a>(...)&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#af7496ea503bc46ef98e35db9ce9d747f">vTaskEnterCritical</a>()</td></tr>
 <tr class="separator:af2b3620599cf7d8a8111d0b15c7256bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8554e3537c224d2bff58d58979e27e3f" id="r_a8554e3537c224d2bff58d58979e27e3f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a8554e3537c224d2bff58d58979e27e3f">portEXIT_CRITICAL</a>(...)&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#ab2026aedc871bc29b9ef3f88c08e2e85">vTaskExitCritical</a>()</td></tr>
+<tr class="memitem:a8554e3537c224d2bff58d58979e27e3f" id="r_a8554e3537c224d2bff58d58979e27e3f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a8554e3537c224d2bff58d58979e27e3f">portEXIT_CRITICAL</a>(...)&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#ab2026aedc871bc29b9ef3f88c08e2e85">vTaskExitCritical</a>()</td></tr>
 <tr class="separator:a8554e3537c224d2bff58d58979e27e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7978eb1182e47bfb31b816641eec7168" id="r_a7978eb1182e47bfb31b816641eec7168"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a7978eb1182e47bfb31b816641eec7168">portENTER_CRITICAL_ISR</a>(...)&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#af7496ea503bc46ef98e35db9ce9d747f">vTaskEnterCritical</a>()</td></tr>
+<tr class="memitem:a7978eb1182e47bfb31b816641eec7168" id="r_a7978eb1182e47bfb31b816641eec7168"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a7978eb1182e47bfb31b816641eec7168">portENTER_CRITICAL_ISR</a>(...)&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#af7496ea503bc46ef98e35db9ce9d747f">vTaskEnterCritical</a>()</td></tr>
 <tr class="separator:a7978eb1182e47bfb31b816641eec7168"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f656cb89bad5dfc001206280ff62271" id="r_a7f656cb89bad5dfc001206280ff62271"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a7f656cb89bad5dfc001206280ff62271">portEXIT_CRITICAL_ISR</a>(...)&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#ab2026aedc871bc29b9ef3f88c08e2e85">vTaskExitCritical</a>()</td></tr>
+<tr class="memitem:a7f656cb89bad5dfc001206280ff62271" id="r_a7f656cb89bad5dfc001206280ff62271"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a7f656cb89bad5dfc001206280ff62271">portEXIT_CRITICAL_ISR</a>(...)&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#ab2026aedc871bc29b9ef3f88c08e2e85">vTaskExitCritical</a>()</td></tr>
 <tr class="separator:a7f656cb89bad5dfc001206280ff62271"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e3d10ee1a0734a647ca192523c2cfc1" id="r_a6e3d10ee1a0734a647ca192523c2cfc1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a6e3d10ee1a0734a647ca192523c2cfc1">portDISABLE_INTERRUPTS</a>()&#160;&#160;&#160;((void)0)</td></tr>
 <tr class="separator:a6e3d10ee1a0734a647ca192523c2cfc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -99,19 +100,19 @@ Macros</h2></td></tr>
 <tr class="separator:aeb0b75a0e2a4b2e6108d504112498b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54968f816d27b6346af614b64f05ed8a" id="r_a54968f816d27b6346af614b64f05ed8a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a54968f816d27b6346af614b64f05ed8a">vPortCPUInitializeMutex</a>(mux)&#160;&#160;&#160;do { (void)(mux); } <a class="el" href="vsf__musb__fdrc__dcd_8c.html#a8fdafe3be7e00ce3d4f0cb50a9a5eb39">while</a>(0)</td></tr>
 <tr class="separator:a54968f816d27b6346af614b64f05ed8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7598e3157f2e6f0796e86a759940adb0" id="r_a7598e3157f2e6f0796e86a759940adb0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a7598e3157f2e6f0796e86a759940adb0">taskENTER_CRITICAL</a>(...)&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#af7496ea503bc46ef98e35db9ce9d747f">vTaskEnterCritical</a>()</td></tr>
+<tr class="memitem:a7598e3157f2e6f0796e86a759940adb0" id="r_a7598e3157f2e6f0796e86a759940adb0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a7598e3157f2e6f0796e86a759940adb0">taskENTER_CRITICAL</a>(...)&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#af7496ea503bc46ef98e35db9ce9d747f">vTaskEnterCritical</a>()</td></tr>
 <tr class="separator:a7598e3157f2e6f0796e86a759940adb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42f99f577f3a32f0702d0aac89771843" id="r_a42f99f577f3a32f0702d0aac89771843"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a42f99f577f3a32f0702d0aac89771843">taskEXIT_CRITICAL</a>(...)&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#ab2026aedc871bc29b9ef3f88c08e2e85">vTaskExitCritical</a>()</td></tr>
+<tr class="memitem:a42f99f577f3a32f0702d0aac89771843" id="r_a42f99f577f3a32f0702d0aac89771843"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a42f99f577f3a32f0702d0aac89771843">taskEXIT_CRITICAL</a>(...)&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#ab2026aedc871bc29b9ef3f88c08e2e85">vTaskExitCritical</a>()</td></tr>
 <tr class="separator:a42f99f577f3a32f0702d0aac89771843"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef0698b8eb78305dfbc8e755747f8a17" id="r_aef0698b8eb78305dfbc8e755747f8a17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#aef0698b8eb78305dfbc8e755747f8a17">taskENTER_CRITICAL_ISR</a>(...)&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#a22767685731df10c42b260e36bd64981">vTaskEnterCriticalFromISR</a>()</td></tr>
+<tr class="memitem:aef0698b8eb78305dfbc8e755747f8a17" id="r_aef0698b8eb78305dfbc8e755747f8a17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#aef0698b8eb78305dfbc8e755747f8a17">taskENTER_CRITICAL_ISR</a>(...)&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#a22767685731df10c42b260e36bd64981">vTaskEnterCriticalFromISR</a>()</td></tr>
 <tr class="separator:aef0698b8eb78305dfbc8e755747f8a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af96dae3845cf2a7116680fadbbfe01e7" id="r_af96dae3845cf2a7116680fadbbfe01e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#af96dae3845cf2a7116680fadbbfe01e7">taskEXIT_CRITICAL_ISR</a>(x)&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#af534cbe325966b53355f1a5439fac632">vTaskExitCriticalFromISR</a>((<a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a>)(x))</td></tr>
+<tr class="memitem:af96dae3845cf2a7116680fadbbfe01e7" id="r_af96dae3845cf2a7116680fadbbfe01e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#af96dae3845cf2a7116680fadbbfe01e7">taskEXIT_CRITICAL_ISR</a>(x)&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#af534cbe325966b53355f1a5439fac632">vTaskExitCriticalFromISR</a>((<a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a>)(x))</td></tr>
 <tr class="separator:af96dae3845cf2a7116680fadbbfe01e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a765670f1300c28cfc06935e657a713ef" id="r_a765670f1300c28cfc06935e657a713ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a765670f1300c28cfc06935e657a713ef">taskENTER_CRITICAL_FROM_ISR</a>(...)&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#a22767685731df10c42b260e36bd64981">vTaskEnterCriticalFromISR</a>()</td></tr>
+<tr class="memitem:a765670f1300c28cfc06935e657a713ef" id="r_a765670f1300c28cfc06935e657a713ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a765670f1300c28cfc06935e657a713ef">taskENTER_CRITICAL_FROM_ISR</a>(...)&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#a22767685731df10c42b260e36bd64981">vTaskEnterCriticalFromISR</a>()</td></tr>
 <tr class="separator:a765670f1300c28cfc06935e657a713ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa2f5acc3c925b6542ecca1acf67a234" id="r_afa2f5acc3c925b6542ecca1acf67a234"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#afa2f5acc3c925b6542ecca1acf67a234">taskEXIT_CRITICAL_FROM_ISR</a>(x)&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#af534cbe325966b53355f1a5439fac632">vTaskExitCriticalFromISR</a>((<a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a>)(x))</td></tr>
+<tr class="memitem:afa2f5acc3c925b6542ecca1acf67a234" id="r_afa2f5acc3c925b6542ecca1acf67a234"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#afa2f5acc3c925b6542ecca1acf67a234">taskEXIT_CRITICAL_FROM_ISR</a>(x)&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#af534cbe325966b53355f1a5439fac632">vTaskExitCriticalFromISR</a>((<a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a>)(x))</td></tr>
 <tr class="separator:afa2f5acc3c925b6542ecca1acf67a234"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0a294066ac7369b8f59a52d9491a92c" id="r_ab0a294066ac7369b8f59a52d9491a92c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#ab0a294066ac7369b8f59a52d9491a92c">portSTACK_TYPE</a>&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#a0653e870c10f40dbbc69a6d4227cdc4b">StackType_t</a></td></tr>
+<tr class="memitem:ab0a294066ac7369b8f59a52d9491a92c" id="r_ab0a294066ac7369b8f59a52d9491a92c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#ab0a294066ac7369b8f59a52d9491a92c">portSTACK_TYPE</a>&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#a0653e870c10f40dbbc69a6d4227cdc4b">StackType_t</a></td></tr>
 <tr class="separator:ab0a294066ac7369b8f59a52d9491a92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ebe82d24d764ae4e352f7c3a9f92c01" id="r_a1ebe82d24d764ae4e352f7c3a9f92c01"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a1ebe82d24d764ae4e352f7c3a9f92c01">portBASE_TYPE</a>&#160;&#160;&#160;<a class="el" href="esp__ringbuf_8h.html#a46fb21e00ae0729d7515c0fbf2269796">BaseType_t</a></td></tr>
 <tr class="separator:a1ebe82d24d764ae4e352f7c3a9f92c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -128,8 +129,8 @@ Typedefs</h2></td></tr>
 <tr class="separator:a46fb21e00ae0729d7515c0fbf2269796"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a646f89d4298e4f5afd522202b11cb2e6" id="r_a646f89d4298e4f5afd522202b11cb2e6"><td class="memItemLeft" align="right" valign="top">typedef unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a646f89d4298e4f5afd522202b11cb2e6">UBaseType_t</a></td></tr>
 <tr class="separator:a646f89d4298e4f5afd522202b11cb2e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa69c48c6e902ce54f70886e6573c92a9" id="r_aa69c48c6e902ce54f70886e6573c92a9"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a></td></tr>
-<tr class="separator:aa69c48c6e902ce54f70886e6573c92a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaaca4ff27b518df3440ecd212d98619" id="r_aeaaca4ff27b518df3440ecd212d98619"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="cortex__a__generic_8h.html#a6cd0f273a5af16a57986e9629e9379f0">vsf_systimer_tick_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#aeaaca4ff27b518df3440ecd212d98619">TickType_t</a></td></tr>
+<tr class="separator:aeaaca4ff27b518df3440ecd212d98619"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0653e870c10f40dbbc69a6d4227cdc4b" id="r_a0653e870c10f40dbbc69a6d4227cdc4b"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="portmacro_8h.html#a0653e870c10f40dbbc69a6d4227cdc4b">StackType_t</a></td></tr>
 <tr class="separator:a0653e870c10f40dbbc69a6d4227cdc4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -152,7 +153,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define portMAX_DELAY&#160;&#160;&#160;((<a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a>)0xFFFFFFFFUL)</td>
+          <td class="memname">#define portMAX_DELAY&#160;&#160;&#160;((<a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a>)-1)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -226,7 +227,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#af7496ea503bc46ef98e35db9ce9d747f">vTaskEnterCritical</a>()</td>
+          <td>&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#af7496ea503bc46ef98e35db9ce9d747f">vTaskEnterCritical</a>()</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -244,7 +245,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#ab2026aedc871bc29b9ef3f88c08e2e85">vTaskExitCritical</a>()</td>
+          <td>&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#ab2026aedc871bc29b9ef3f88c08e2e85">vTaskExitCritical</a>()</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -262,7 +263,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#af7496ea503bc46ef98e35db9ce9d747f">vTaskEnterCritical</a>()</td>
+          <td>&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#af7496ea503bc46ef98e35db9ce9d747f">vTaskEnterCritical</a>()</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -280,7 +281,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#ab2026aedc871bc29b9ef3f88c08e2e85">vTaskExitCritical</a>()</td>
+          <td>&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#ab2026aedc871bc29b9ef3f88c08e2e85">vTaskExitCritical</a>()</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -378,7 +379,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#af7496ea503bc46ef98e35db9ce9d747f">vTaskEnterCritical</a>()</td>
+          <td>&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#af7496ea503bc46ef98e35db9ce9d747f">vTaskEnterCritical</a>()</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -396,7 +397,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#ab2026aedc871bc29b9ef3f88c08e2e85">vTaskExitCritical</a>()</td>
+          <td>&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#ab2026aedc871bc29b9ef3f88c08e2e85">vTaskExitCritical</a>()</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -414,7 +415,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#a22767685731df10c42b260e36bd64981">vTaskEnterCriticalFromISR</a>()</td>
+          <td>&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#a22767685731df10c42b260e36bd64981">vTaskEnterCriticalFromISR</a>()</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -432,7 +433,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">x</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#af534cbe325966b53355f1a5439fac632">vTaskExitCriticalFromISR</a>((<a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a>)(x))</td>
+          <td>&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#af534cbe325966b53355f1a5439fac632">vTaskExitCriticalFromISR</a>((<a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a>)(x))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -450,7 +451,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#a22767685731df10c42b260e36bd64981">vTaskEnterCriticalFromISR</a>()</td>
+          <td>&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#a22767685731df10c42b260e36bd64981">vTaskEnterCriticalFromISR</a>()</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -468,7 +469,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">x</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#af534cbe325966b53355f1a5439fac632">vTaskExitCriticalFromISR</a>((<a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a>)(x))</td>
+          <td>&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#af534cbe325966b53355f1a5439fac632">vTaskExitCriticalFromISR</a>((<a class="el" href="rtos__al_8h.html#ac2664ea79933f581cfee14e03e458bbd">UBaseType_t</a>)(x))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -482,7 +483,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define portSTACK_TYPE&#160;&#160;&#160;<a class="el" href="portmacro_8h.html#a0653e870c10f40dbbc69a6d4227cdc4b">StackType_t</a></td>
+          <td class="memname">#define portSTACK_TYPE&#160;&#160;&#160;<a class="el" href="espidf_2include_2freertos_2task_8h.html#a0653e870c10f40dbbc69a6d4227cdc4b">StackType_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -578,14 +579,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa69c48c6e902ce54f70886e6573c92a9" name="aa69c48c6e902ce54f70886e6573c92a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa69c48c6e902ce54f70886e6573c92a9">&#9670;&#160;</a></span>TickType_t</h2>
+<a id="aeaaca4ff27b518df3440ecd212d98619" name="aeaaca4ff27b518df3440ecd212d98619"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaaca4ff27b518df3440ecd212d98619">&#9670;&#160;</a></span>TickType_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> <a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a></td>
+          <td class="memname">typedef <a class="el" href="cortex__a__generic_8h.html#a6cd0f273a5af16a57986e9629e9379f0">vsf_systimer_tick_t</a> <a class="el" href="rtos__al_8h.html#aa69c48c6e902ce54f70886e6573c92a9">TickType_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -599,7 +600,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="el" href="portmacro_8h.html#a0653e870c10f40dbbc69a6d4227cdc4b">StackType_t</a></td>
+          <td class="memname">typedef <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> <a class="el" href="espidf_2include_2freertos_2task_8h.html#a0653e870c10f40dbbc69a6d4227cdc4b">StackType_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -714,5 +715,5 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/c072a8d9da27c310160663ca7f6cb38bdfa85a6d" target="_blank">vsfteam/vsf@c072a8d</a>
+  <a href="https://github.com/vsfteam/vsf/commit/6688e0da1f6630df1ce13dc8aa96d0d05eac9ed2" target="_blank">vsfteam/vsf@6688e0d</a>
 </div>
