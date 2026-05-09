@@ -319,7 +319,7 @@ Completely missing major subsystems</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">PSRAM   </td><td class="markdownTableBodyNone"><code>esp_psram</code>, <code>esp_mm</code> (cache / MMU)   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">SPIFFS   </td><td class="markdownTableBodyNone"><code>spiffs</code> (<code>esp_spiffs.h</code>)   </td><td class="markdownTableBodyNone"></td></tr>
+<td class="markdownTableBodyNone">SPIFFS   </td><td class="markdownTableBodyNone"><code>spiffs</code> (<code><a class="el" href="esp__spiffs_8h.html">esp_spiffs.h</a></code>)   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Wear Levelling   </td><td class="markdownTableBodyNone"><code>wear_levelling</code>   </td><td class="markdownTableBodyNone">VSF uses <code>component/mal</code> directly    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -420,9 +420,9 @@ Missing ESP-IDF infrastructure layers</h2>
 <ul>
 <li><b>HAL layer</b> — All 35 <code>esp_hal_*</code>components (e.g. <code>esp_hal_gpio</code>, <code>esp_hal_uart</code>) are not implemented, and are NOT needed by this subsystem. VSF's espidf compatibility layer targets the <code>driver/*.h</code> API level (application-facing APIs such as <code><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#afadd72970c01a00f25df734eba0d2b29" title="Set the output level of a single pin (0 = low, non-zero = high).">gpio_set_level()</a></code>, <code><a class="el" href="shell_2sys_2espidf_2include_2driver_2uart_8h.html#a8327a6a4cadd86583d0efd555a1fa523">uart_write_bytes()</a></code>), not the HAL <code>_ll.h</code> level that <code>esp_hal_*</code> provides. The HAL role is fulfilled by VSF's own <code>hal/driver/common/template/vsf_template_*.h</code> abstraction, which each <code>driver/*.h</code> port header bridges to directly. Application code using this subsystem never includes <code>hal/*.h</code> headers, so the absence of <code>esp_hal_*</code> is a deliberate architectural choice, not a gap.</li>
 <li><b>esp_common</b> — Core headers complete (<code><a class="el" href="esp__compiler_8h.html">esp_compiler.h</a></code>, <code><a class="el" href="esp__macros_8h.html">esp_macros.h</a></code>, <code><a class="el" href="esp__attr_8h.html">esp_attr.h</a></code>, <code><a class="el" href="esp__check_8h.html">esp_check.h</a></code>, <code><a class="el" href="esp__assert_8h.html">esp_assert.h</a></code>, <code><a class="el" href="esp__bit__defs_8h.html">esp_bit_defs.h</a></code>, <code><a class="el" href="esp__types_8h.html">esp_types.h</a></code>, <code><a class="el" href="esp__idf__version_8h.html">esp_idf_version.h</a></code>, <code><a class="el" href="sdkconfig_8h.html">sdkconfig.h</a></code>). Missing: <code>esp_fault.h</code> (ESP hardware FI countermeasures — out of scope).</li>
-<li><b>esp_log extensions</b> — <code><a class="el" href="esp__log__buffer_8h.html">esp_log_buffer.h</a></code> implemented. Missing: <code>esp_log_color.h</code>, <code>esp_log_timestamp.h</code> (user-direct API — defer).</li>
+<li><b>esp_log extensions</b> — <code><a class="el" href="esp__log__buffer_8h.html">esp_log_buffer.h</a></code> implemented. Missing: <code><a class="el" href="esp__log__color_8h.html">esp_log_color.h</a></code>, <code>esp_log_timestamp.h</code> (user-direct API — defer).</li>
 <li><b>esp_heap_caps extensions</b> — <code><a class="el" href="multi__heap_8h.html">multi_heap.h</a></code> + <code><a class="el" href="esp__heap__caps__init_8h.html">esp_heap_caps_init.h</a></code> implemented (instance heaps via <code>__vsf_heap_*</code>, caps registry via <code>heap_caps_add_region</code>). Missing: <code>esp_heap_task_info.h</code>, <code>esp_heap_trace.h</code> (debugging, deferred).</li>
-<li><b>esp_vfs extensions</b> — <code><a class="el" href="esp__vfs__eventfd_8h.html">esp_vfs_eventfd.h</a></code> (bridges VSF Linux eventfd) + <code><a class="el" href="esp__vfs__semihost_8h.html">esp_vfs_semihost.h</a></code> (NOT_SUPPORTED stub) implemented. Missing: <code>esp_vfs_dev.h</code>.</li>
+<li><b>esp_vfs extensions</b> — <code><a class="el" href="esp__vfs__eventfd_8h.html">esp_vfs_eventfd.h</a></code> (bridges VSF Linux eventfd) + <code><a class="el" href="esp__vfs__semihost_8h.html">esp_vfs_semihost.h</a></code> (NOT_SUPPORTED stub) implemented. Missing: <code><a class="el" href="esp__vfs__dev_8h.html">esp_vfs_dev.h</a></code>.</li>
 <li><b>soc</b> — Missing all SoC capability / peripheral definition headers.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md59"></a>
@@ -432,5 +432,5 @@ Validation</h1>
 </div><!-- PageDoc -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/c0727476e5741802a7546fed5edea49ce3e5a832" target="_blank">vsfteam/vsf@c072747</a>
+  <a href="https://github.com/vsfteam/vsf/commit/c072a8d9da27c310160663ca7f6cb38bdfa85a6d" target="_blank">vsfteam/vsf@c072a8d</a>
 </div>
