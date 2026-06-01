@@ -63,10 +63,12 @@
 <code>#include &quot;hardware/platform_defs.h&quot;</code><br />
 <code>#include &quot;hardware/address_mapped.h&quot;</code><br />
 <code>#include &quot;hardware/regs/resets.h&quot;</code><br />
+<code>#include &quot;hardware/regs/watchdog.h&quot;</code><br />
 <code>#include &quot;hardware/structs/xosc.h&quot;</code><br />
 <code>#include &quot;hardware/structs/clocks.h&quot;</code><br />
 <code>#include &quot;hardware/structs/pll.h&quot;</code><br />
 <code>#include &quot;hardware/structs/resets.h&quot;</code><br />
+<code>#include &quot;hardware/structs/watchdog.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__swi__template_8inc_source.html">hal/driver/common/swi/arm/vsf_swi_template.inc</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -75,9 +77,23 @@
 <tr class="separator:ae1bd66fc9846c52601de355a20901b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91dd8b26b5bbdd9ca65de2ebb0119743" id="r_a91dd8b26b5bbdd9ca65de2ebb0119743"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a91dd8b26b5bbdd9ca65de2ebb0119743">MHZ</a>&#160;&#160;&#160;1000000</td></tr>
 <tr class="separator:a91dd8b26b5bbdd9ca65de2ebb0119743"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf567c0ca95050ca43e84b0d22f556bd" id="r_abf567c0ca95050ca43e84b0d22f556bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#abf567c0ca95050ca43e84b0d22f556bd">PICO_PLL_VCO_MIN_FREQ_KHZ</a>&#160;&#160;&#160;(750 * <a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#ae1bd66fc9846c52601de355a20901b0e">KHZ</a>)</td></tr>
+<tr class="separator:abf567c0ca95050ca43e84b0d22f556bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e5dbb62a0e73a513ec9e0708cded989" id="r_a6e5dbb62a0e73a513ec9e0708cded989"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a6e5dbb62a0e73a513ec9e0708cded989">PICO_PLL_VCO_MAX_FREQ_KHZ</a>&#160;&#160;&#160;(1600 * <a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#ae1bd66fc9846c52601de355a20901b0e">KHZ</a>)</td></tr>
+<tr class="separator:a6e5dbb62a0e73a513ec9e0708cded989"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a324481435427a2d41c0511545f32777a" id="r_a324481435427a2d41c0511545f32777a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a324481435427a2d41c0511545f32777a">PLL_COMMON_REFDIV</a>&#160;&#160;&#160;1</td></tr>
 <tr class="memdesc:a324481435427a2d41c0511545f32777a"><td class="mdescLeft">&#160;</td><td class="mdescRight">\tag::pll_settings[]  <br /></td></tr>
 <tr class="separator:a324481435427a2d41c0511545f32777a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f46ea3176b76589983b4f3dd877ab69" id="r_a1f46ea3176b76589983b4f3dd877ab69"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a1f46ea3176b76589983b4f3dd877ab69">USB_CLK_KHZ</a>&#160;&#160;&#160;48000</td></tr>
+<tr class="separator:a1f46ea3176b76589983b4f3dd877ab69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a662bd2ddce5c4a00819f6a041076720b" id="r_a662bd2ddce5c4a00819f6a041076720b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a662bd2ddce5c4a00819f6a041076720b">PLL_USB_REFDIV</a>&#160;&#160;&#160;<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a324481435427a2d41c0511545f32777a">PLL_COMMON_REFDIV</a></td></tr>
+<tr class="separator:a662bd2ddce5c4a00819f6a041076720b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a075aded15d39c7de5e8f85321f555049" id="r_a075aded15d39c7de5e8f85321f555049"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a075aded15d39c7de5e8f85321f555049">PLL_USB_VCO_FREQ_KHZ</a>&#160;&#160;&#160;(1200 * <a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#ae1bd66fc9846c52601de355a20901b0e">KHZ</a>)</td></tr>
+<tr class="separator:a075aded15d39c7de5e8f85321f555049"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14712da21832bf9b912172eb5394eca3" id="r_a14712da21832bf9b912172eb5394eca3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a14712da21832bf9b912172eb5394eca3">PLL_USB_POSTDIV1</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a14712da21832bf9b912172eb5394eca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c8cde27040712311fb83f0d6e3aa284" id="r_a2c8cde27040712311fb83f0d6e3aa284"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a2c8cde27040712311fb83f0d6e3aa284">PLL_USB_POSTDIV2</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a2c8cde27040712311fb83f0d6e3aa284"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafe78184edbb372dbd08feca4dae87cd" id="r_aafe78184edbb372dbd08feca4dae87cd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#aafe78184edbb372dbd08feca4dae87cd">PICO_XOSC_STARTUP_DELAY_MULTIPLIER</a>&#160;&#160;&#160;64</td></tr>
 <tr class="separator:aafe78184edbb372dbd08feca4dae87cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaed067aba1d8dc17479c812291ca1bcc" id="r_aaed067aba1d8dc17479c812291ca1bcc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#aaed067aba1d8dc17479c812291ca1bcc">STARTUP_DELAY</a>&#160;&#160;&#160;(((XOSC_KHZ + 128) / 256) * <a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#aafe78184edbb372dbd08feca4dae87cd">PICO_XOSC_STARTUP_DELAY_MULTIPLIER</a>)</td></tr>
@@ -91,14 +107,14 @@
 <tr class="memitem:a9f54500ec817d4e3c233a043b6362fe1" id="r_a9f54500ec817d4e3c233a043b6362fe1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a9f54500ec817d4e3c233a043b6362fe1">pll_init</a> (pll_hw_t *pll, <a class="el" href="linux_2include_2sys_2types_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> refdiv, <a class="el" href="linux_2include_2sys_2types_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> vco_freq, <a class="el" href="linux_2include_2sys_2types_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> post_div1, <a class="el" href="linux_2include_2sys_2types_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> post_div2)</td></tr>
 <tr class="memdesc:a9f54500ec817d4e3c233a043b6362fe1"><td class="mdescLeft">&#160;</td><td class="mdescRight">\tag::pll_init_calculations[]  <br /></td></tr>
 <tr class="separator:a9f54500ec817d4e3c233a043b6362fe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90f15783df4e2cb041971a197b2119b1" id="r_a90f15783df4e2cb041971a197b2119b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a90f15783df4e2cb041971a197b2119b1">clock_configure</a> (enum clock_index clk_index, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> src, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> auxsrc, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> src_freq, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> freq)</td></tr>
-<tr class="memdesc:a90f15783df4e2cb041971a197b2119b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">\tag<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a90f15783df4e2cb041971a197b2119b1" title="\tagclock_configure[]">clock_configure</a>[]  <br /></td></tr>
-<tr class="separator:a90f15783df4e2cb041971a197b2119b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae78816cc6112538a12adcc604be4b344" id="r_ae78816cc6112538a12adcc604be4b344"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#ae78816cc6112538a12adcc604be4b344">clock_get_hz</a> (enum clock_index clk_index)</td></tr>
-<tr class="memdesc:ae78816cc6112538a12adcc604be4b344"><td class="mdescLeft">&#160;</td><td class="mdescRight">\end<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a90f15783df4e2cb041971a197b2119b1" title="\tagclock_configure[]">clock_configure</a>[]  <br /></td></tr>
-<tr class="separator:ae78816cc6112538a12adcc604be4b344"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4016950ebb19d8cd27af0d9440b2974a" id="r_a4016950ebb19d8cd27af0d9440b2974a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a4016950ebb19d8cd27af0d9440b2974a">clock_configure</a> (clock_num_t clk_index, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> src, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> auxsrc, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> src_freq, <a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> freq)</td></tr>
+<tr class="memdesc:a4016950ebb19d8cd27af0d9440b2974a"><td class="mdescLeft">&#160;</td><td class="mdescRight">\tag<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a4016950ebb19d8cd27af0d9440b2974a" title="\tagclock_configure[]">clock_configure</a>[]  <br /></td></tr>
+<tr class="separator:a4016950ebb19d8cd27af0d9440b2974a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a820921c8900abbe6e189cdf9b1ca9a08" id="r_a820921c8900abbe6e189cdf9b1ca9a08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a820921c8900abbe6e189cdf9b1ca9a08">clock_get_hz</a> (clock_num_t clk_index)</td></tr>
+<tr class="memdesc:a820921c8900abbe6e189cdf9b1ca9a08"><td class="mdescLeft">&#160;</td><td class="mdescRight">\end<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a4016950ebb19d8cd27af0d9440b2974a" title="\tagclock_configure[]">clock_configure</a>[]  <br /></td></tr>
+<tr class="separator:a820921c8900abbe6e189cdf9b1ca9a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a296f1c0f089ef21af9c6f28bb9b6ea74" id="r_a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a296f1c0f089ef21af9c6f28bb9b6ea74">vsf_driver_init</a> (void)</td></tr>
-<tr class="memdesc:a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="mdescLeft">&#160;</td><td class="mdescRight">\end<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#ae78816cc6112538a12adcc604be4b344" title="\endclock_configure[]">clock_get_hz</a>[]  <br /></td></tr>
+<tr class="memdesc:a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="mdescLeft">&#160;</td><td class="mdescRight">\end<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a820921c8900abbe6e189cdf9b1ca9a08" title="\endclock_configure[]">clock_get_hz</a>[]  <br /></td></tr>
 <tr class="separator:a296f1c0f089ef21af9c6f28bb9b6ea74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">宏定义说明</h2>
@@ -130,6 +146,34 @@
 
 </div>
 </div>
+<a id="abf567c0ca95050ca43e84b0d22f556bd" name="abf567c0ca95050ca43e84b0d22f556bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf567c0ca95050ca43e84b0d22f556bd">&#9670;&#160;</a></span>PICO_PLL_VCO_MIN_FREQ_KHZ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PICO_PLL_VCO_MIN_FREQ_KHZ&#160;&#160;&#160;(750 * <a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#ae1bd66fc9846c52601de355a20901b0e">KHZ</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6e5dbb62a0e73a513ec9e0708cded989" name="a6e5dbb62a0e73a513ec9e0708cded989"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e5dbb62a0e73a513ec9e0708cded989">&#9670;&#160;</a></span>PICO_PLL_VCO_MAX_FREQ_KHZ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PICO_PLL_VCO_MAX_FREQ_KHZ&#160;&#160;&#160;(1600 * <a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#ae1bd66fc9846c52601de355a20901b0e">KHZ</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a324481435427a2d41c0511545f32777a" name="a324481435427a2d41c0511545f32777a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a324481435427a2d41c0511545f32777a">&#9670;&#160;</a></span>PLL_COMMON_REFDIV</h2>
 
@@ -144,6 +188,76 @@
 
 <p>\tag::pll_settings[] </p>
 <p>\end::pll_settings[] </p>
+
+</div>
+</div>
+<a id="a1f46ea3176b76589983b4f3dd877ab69" name="a1f46ea3176b76589983b4f3dd877ab69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f46ea3176b76589983b4f3dd877ab69">&#9670;&#160;</a></span>USB_CLK_KHZ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_CLK_KHZ&#160;&#160;&#160;48000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a662bd2ddce5c4a00819f6a041076720b" name="a662bd2ddce5c4a00819f6a041076720b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a662bd2ddce5c4a00819f6a041076720b">&#9670;&#160;</a></span>PLL_USB_REFDIV</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLL_USB_REFDIV&#160;&#160;&#160;<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a324481435427a2d41c0511545f32777a">PLL_COMMON_REFDIV</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a075aded15d39c7de5e8f85321f555049" name="a075aded15d39c7de5e8f85321f555049"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a075aded15d39c7de5e8f85321f555049">&#9670;&#160;</a></span>PLL_USB_VCO_FREQ_KHZ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLL_USB_VCO_FREQ_KHZ&#160;&#160;&#160;(1200 * <a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#ae1bd66fc9846c52601de355a20901b0e">KHZ</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a14712da21832bf9b912172eb5394eca3" name="a14712da21832bf9b912172eb5394eca3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14712da21832bf9b912172eb5394eca3">&#9670;&#160;</a></span>PLL_USB_POSTDIV1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLL_USB_POSTDIV1&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c8cde27040712311fb83f0d6e3aa284" name="a2c8cde27040712311fb83f0d6e3aa284"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c8cde27040712311fb83f0d6e3aa284">&#9670;&#160;</a></span>PLL_USB_POSTDIV2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLL_USB_POSTDIV2&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -247,8 +361,8 @@
 
 </div>
 </div>
-<a id="a90f15783df4e2cb041971a197b2119b1" name="a90f15783df4e2cb041971a197b2119b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a90f15783df4e2cb041971a197b2119b1">&#9670;&#160;</a></span>clock_configure()</h2>
+<a id="a4016950ebb19d8cd27af0d9440b2974a" name="a4016950ebb19d8cd27af0d9440b2974a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4016950ebb19d8cd27af0d9440b2974a">&#9670;&#160;</a></span>clock_configure()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -256,7 +370,7 @@
         <tr>
           <td class="memname"><a class="el" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a> clock_configure </td>
           <td>(</td>
-          <td class="paramtype">enum clock_index&#160;</td>
+          <td class="paramtype">clock_num_t&#160;</td>
           <td class="paramname"><em>clk_index</em>, </td>
         </tr>
         <tr>
@@ -291,12 +405,12 @@
       </table>
 </div><div class="memdoc">
 
-<p>\tag<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a90f15783df4e2cb041971a197b2119b1" title="\tagclock_configure[]">clock_configure</a>[] </p>
+<p>\tag<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a4016950ebb19d8cd27af0d9440b2974a" title="\tagclock_configure[]">clock_configure</a>[] </p>
 
 </div>
 </div>
-<a id="ae78816cc6112538a12adcc604be4b344" name="ae78816cc6112538a12adcc604be4b344"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae78816cc6112538a12adcc604be4b344">&#9670;&#160;</a></span>clock_get_hz()</h2>
+<a id="a820921c8900abbe6e189cdf9b1ca9a08" name="a820921c8900abbe6e189cdf9b1ca9a08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a820921c8900abbe6e189cdf9b1ca9a08">&#9670;&#160;</a></span>clock_get_hz()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -304,15 +418,15 @@
         <tr>
           <td class="memname"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> clock_get_hz </td>
           <td>(</td>
-          <td class="paramtype">enum clock_index&#160;</td>
+          <td class="paramtype">clock_num_t&#160;</td>
           <td class="paramname"><em>clk_index</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>\end<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a90f15783df4e2cb041971a197b2119b1" title="\tagclock_configure[]">clock_configure</a>[] </p>
-<p>\tag<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#ae78816cc6112538a12adcc604be4b344" title="\endclock_configure[]">clock_get_hz</a>[] </p>
+<p>\end<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a4016950ebb19d8cd27af0d9440b2974a" title="\tagclock_configure[]">clock_configure</a>[] </p>
+<p>\tag<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a820921c8900abbe6e189cdf9b1ca9a08" title="\endclock_configure[]">clock_get_hz</a>[] </p>
 
 </div>
 </div>
@@ -332,7 +446,7 @@
       </table>
 </div><div class="memdoc">
 
-<p>\end<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#ae78816cc6112538a12adcc604be4b344" title="\endclock_configure[]">clock_get_hz</a>[] </p>
+<p>\end<a class="el" href="_raspberry_pi_2_r_p2040_2driver_8c.html#a820921c8900abbe6e189cdf9b1ca9a08" title="\endclock_configure[]">clock_get_hz</a>[] </p>
 <p>common hal drivers</p>
 <dl class="section note"><dt>注解</dt><dd>initialize device driver </dd></dl>
 <dl class="params"><dt>参数</dt><dd>
@@ -358,6 +472,6 @@
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/bd5d65e89dd5e680fbd86a65540fb4629c777472" target="_blank">vsfteam/vsf@bd5d65e</a>
+  <a href="https://github.com/vsfteam/vsf/commit/39b2b426929a427f8f08022ff0ecd60937f3dd3e" target="_blank">vsfteam/vsf@39b2b42</a>
   生成
 </div>

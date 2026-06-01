@@ -66,11 +66,12 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 结构体</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__pwm__cfg__t.html">vsf_pwm_cfg_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM 配置结构体。 用于配置 PWM 发生器的频率设置。  <a href="structvsf__pwm__cfg__t.html#details">更多...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__pwm__capability__t.html">vsf_pwm_capability_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM 能力结构体。 描述 PWM 硬件的能力和限制。  <a href="structvsf__pwm__capability__t.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__pwm__isr__t.html">vsf_pwm_isr_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__pwm__cfg__t.html">vsf_pwm_cfg_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvsf__pwm__op__t.html">vsf_pwm_op_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -87,6 +88,9 @@
 <tr class="separator:a46983897296848213edd797bfee7ffaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f1397b8a0d8257243a91cababc10eef" id="r_a8f1397b8a0d8257243a91cababc10eef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a8f1397b8a0d8257243a91cababc10eef">VSF_PWM_CFG_FUNCTION_RENAME</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#a73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a></td></tr>
 <tr class="separator:a8f1397b8a0d8257243a91cababc10eef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83c107b15456f4e673ddccb8ab53add2" id="r_a83c107b15456f4e673ddccb8ab53add2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a83c107b15456f4e673ddccb8ab53add2">VSF_PWM_CFG_REIMPLEMENT_TYPE_IRQ_MASK</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td></tr>
+<tr class="memdesc:a83c107b15456f4e673ddccb8ab53add2"><td class="mdescLeft">&#160;</td><td class="mdescRight">在特定硬件驱动中启用宏 VSF_PWM_CFG_REIMPLEMENT_TYPE_IRQ_MASK 来重新定义枚举 vsf_pwm_irq_mask_t。  <br /></td></tr>
+<tr class="separator:a83c107b15456f4e673ddccb8ab53add2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d85df8c47d5afa63240d33e7be3107e" id="r_a0d85df8c47d5afa63240d33e7be3107e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a0d85df8c47d5afa63240d33e7be3107e">VSF_PWM_CFG_REIMPLEMENT_TYPE_CFG</a>&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td></tr>
 <tr class="memdesc:a0d85df8c47d5afa63240d33e7be3107e"><td class="mdescLeft">&#160;</td><td class="mdescRight">在特定硬件驱动中，可以启用宏 VSF_PWM_CFG_REIMPLEMENT_TYPE_CFG 来 重新定义结构体 vsf_pwm_cfg_t。为保证兼容性，重新定义时不应删除成员。 同时需要重新定义类型 vsf_pwm_isr_handler_t。  <br /></td></tr>
 <tr class="separator:a0d85df8c47d5afa63240d33e7be3107e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -105,22 +109,37 @@
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 类型定义</h2></td></tr>
-<tr class="memitem:a6ea7066007dcade690d2b5a69a9e5b48" id="r_a6ea7066007dcade690d2b5a69a9e5b48"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__pwm__cfg__t.html">vsf_pwm_cfg_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a6ea7066007dcade690d2b5a69a9e5b48">vsf_pwm_cfg_t</a></td></tr>
-<tr class="memdesc:a6ea7066007dcade690d2b5a69a9e5b48"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM 配置结构体。 用于配置 PWM 发生器的频率设置。  <br /></td></tr>
-<tr class="separator:a6ea7066007dcade690d2b5a69a9e5b48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d8483f4d267737e2738fde554d2a9a1" id="r_a4d8483f4d267737e2738fde554d2a9a1"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__pwm__capability__t.html">vsf_pwm_capability_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a4d8483f4d267737e2738fde554d2a9a1">vsf_pwm_capability_t</a></td></tr>
 <tr class="memdesc:a4d8483f4d267737e2738fde554d2a9a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM 能力结构体。 描述 PWM 硬件的能力和限制。  <br /></td></tr>
 <tr class="separator:a4d8483f4d267737e2738fde554d2a9a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b93fb3c8afe6fbba9b34e3ace17c147" id="r_a4b93fb3c8afe6fbba9b34e3ace17c147"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a4b93fb3c8afe6fbba9b34e3ace17c147">vsf_pwm_irq_mask_t</a></td></tr>
+<tr class="separator:a4b93fb3c8afe6fbba9b34e3ace17c147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af43af40e5872e90ec65e3c32b8b0613b" id="r_af43af40e5872e90ec65e3c32b8b0613b"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#af43af40e5872e90ec65e3c32b8b0613b">vsf_pwm_t</a></td></tr>
+<tr class="separator:af43af40e5872e90ec65e3c32b8b0613b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13c77b4e783497837563a5b24ee9ca8c" id="r_a13c77b4e783497837563a5b24ee9ca8c"><td class="memItemLeft" align="right" valign="top">typedef void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a13c77b4e783497837563a5b24ee9ca8c">vsf_pwm_isr_handler_t</a>(void *target_ptr, <a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a> *pwm_ptr, <a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
+<tr class="separator:a13c77b4e783497837563a5b24ee9ca8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17c0e5ceae5f146fca781b5157de7337" id="r_a17c0e5ceae5f146fca781b5157de7337"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__pwm__isr__t.html">vsf_pwm_isr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a17c0e5ceae5f146fca781b5157de7337">vsf_pwm_isr_t</a></td></tr>
+<tr class="separator:a17c0e5ceae5f146fca781b5157de7337"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ea7066007dcade690d2b5a69a9e5b48" id="r_a6ea7066007dcade690d2b5a69a9e5b48"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__pwm__cfg__t.html">vsf_pwm_cfg_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a6ea7066007dcade690d2b5a69a9e5b48">vsf_pwm_cfg_t</a></td></tr>
+<tr class="separator:a6ea7066007dcade690d2b5a69a9e5b48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93d1dc04d917d54027d06ef0856ad461" id="r_a93d1dc04d917d54027d06ef0856ad461"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="vsf__template__pwm_8h.html#ad16edc8a521b0c2078d69e63733d17ab">vsf_pwm_ctrl_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a93d1dc04d917d54027d06ef0856ad461">vsf_pwm_ctrl_t</a></td></tr>
 <tr class="memdesc:a93d1dc04d917d54027d06ef0856ad461"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM 控制命令，用于硬件特定操作  <br /></td></tr>
 <tr class="separator:a93d1dc04d917d54027d06ef0856ad461"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af43af40e5872e90ec65e3c32b8b0613b" id="r_af43af40e5872e90ec65e3c32b8b0613b"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#af43af40e5872e90ec65e3c32b8b0613b">vsf_pwm_t</a></td></tr>
-<tr class="separator:af43af40e5872e90ec65e3c32b8b0613b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62e95b7dfb46f055aae5f1ba16241b84" id="r_a62e95b7dfb46f055aae5f1ba16241b84"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvsf__pwm__op__t.html">vsf_pwm_op_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a62e95b7dfb46f055aae5f1ba16241b84">vsf_pwm_op_t</a></td></tr>
 <tr class="separator:a62e95b7dfb46f055aae5f1ba16241b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 枚举</h2></td></tr>
+<tr class="memitem:a5e05ef86bacf8b2d910d7204853f928b" id="r_a5e05ef86bacf8b2d910d7204853f928b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a> { <a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928ba2535f2433389cc6dc50eba3abca41d9d">VSF_PWM_IRQ_MASK_WRAP</a> = (0x01 &lt;&lt; 0)
+ }</td></tr>
+<tr class="separator:a5e05ef86bacf8b2d910d7204853f928b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9319e2a18bf254e56f20a4537a7237e" id="r_af9319e2a18bf254e56f20a4537a7237e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="vsf__template__pwm_8h.html#af9319e2a18bf254e56f20a4537a7237ea2d7e91f06141ada08fd90914ccf2c867">VSF_PWM_IRQ_COUNT</a> = 1
+, <br />
+&#160;&#160;<a class="el" href="vsf__template__pwm_8h.html#af9319e2a18bf254e56f20a4537a7237eac21627ce2d028081585a06e2c12ff93e">VSF_PWM_IRQ_ALL_BITS_MASK</a> = VSF_PWM_IRQ_MASK_WRAP
+<br />
+ }</td></tr>
+<tr class="separator:af9319e2a18bf254e56f20a4537a7237e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad16edc8a521b0c2078d69e63733d17ab" id="r_ad16edc8a521b0c2078d69e63733d17ab"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#ad16edc8a521b0c2078d69e63733d17ab">vsf_pwm_ctrl_t</a> { <a class="el" href="vsf__template__pwm_8h.html#ad16edc8a521b0c2078d69e63733d17aba4fc7094808f01572db86ac69af02d774">__VSF_PWM_CTRL_DUMMY</a> = 0
  }</td></tr>
 <tr class="memdesc:ad16edc8a521b0c2078d69e63733d17ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM 控制命令，用于硬件特定操作  <a href="vsf__template__pwm_8h.html#ad16edc8a521b0c2078d69e63733d17ab">更多...</a><br /></td></tr>
@@ -152,6 +171,15 @@
 <tr class="memitem:a98a16561f606103b0040c02f8940aa4d" id="r_a98a16561f606103b0040c02f8940aa4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a98a16561f606103b0040c02f8940aa4d">vsf_pwm_get_freq</a> (<a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a> *pwm_ptr)</td></tr>
 <tr class="memdesc:a98a16561f606103b0040c02f8940aa4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM 获取时钟频率  <br /></td></tr>
 <tr class="separator:a98a16561f606103b0040c02f8940aa4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04a72bf1349a74f3fa9a3680d1b106b3" id="r_a04a72bf1349a74f3fa9a3680d1b106b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a04a72bf1349a74f3fa9a3680d1b106b3">vsf_pwm_irq_enable</a> (<a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a> *pwm_ptr, <a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
+<tr class="memdesc:a04a72bf1349a74f3fa9a3680d1b106b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">启用 PWM 中断  <br /></td></tr>
+<tr class="separator:a04a72bf1349a74f3fa9a3680d1b106b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14822435ffae0bd49fc131239f33a205" id="r_a14822435ffae0bd49fc131239f33a205"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a14822435ffae0bd49fc131239f33a205">vsf_pwm_irq_disable</a> (<a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a> *pwm_ptr, <a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
+<tr class="memdesc:a14822435ffae0bd49fc131239f33a205"><td class="mdescLeft">&#160;</td><td class="mdescRight">禁用 PWM 中断  <br /></td></tr>
+<tr class="separator:a14822435ffae0bd49fc131239f33a205"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9dd47091d3f879e31c9e5525551bf91" id="r_ab9dd47091d3f879e31c9e5525551bf91"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#ab9dd47091d3f879e31c9e5525551bf91">vsf_pwm_irq_clear</a> (<a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a> *pwm_ptr, <a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td></tr>
+<tr class="memdesc:ab9dd47091d3f879e31c9e5525551bf91"><td class="mdescLeft">&#160;</td><td class="mdescRight">清除 PWM 中断标志  <br /></td></tr>
+<tr class="separator:ab9dd47091d3f879e31c9e5525551bf91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9598d28c1e40fa099d4fa1df19350e14" id="r_a9598d28c1e40fa099d4fa1df19350e14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__template__pwm_8h.html#a9598d28c1e40fa099d4fa1df19350e14">vsf_pwm_ctrl</a> (<a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a> *pwm_ptr, <a class="el" href="vsf__template__pwm_8h.html#ad16edc8a521b0c2078d69e63733d17ab">vsf_pwm_ctrl_t</a> ctrl, void *param)</td></tr>
 <tr class="memdesc:a9598d28c1e40fa099d4fa1df19350e14"><td class="mdescLeft">&#160;</td><td class="mdescRight">调用指定的 PWM 命令  <br /></td></tr>
 <tr class="separator:a9598d28c1e40fa099d4fa1df19350e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -211,6 +239,22 @@
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83c107b15456f4e673ddccb8ab53add2" name="a83c107b15456f4e673ddccb8ab53add2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83c107b15456f4e673ddccb8ab53add2">&#9670;&#160;</a></span>VSF_PWM_CFG_REIMPLEMENT_TYPE_IRQ_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_PWM_CFG_REIMPLEMENT_TYPE_IRQ_MASK&#160;&#160;&#160;<a class="el" href="____type_8h.html#abd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在特定硬件驱动中启用宏 VSF_PWM_CFG_REIMPLEMENT_TYPE_IRQ_MASK 来重新定义枚举 vsf_pwm_irq_mask_t。 </p>
 
 </div>
 </div>
@@ -300,18 +344,23 @@
 <div class="line">    __VSF_HAL_TEMPLATE_API(__prefix_name, <a class="code hl_enumeration" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>,              pwm, disable,              <a class="code hl_function" href="_artery_2_a_t32_f402__405_2common_2dma_2dma_8c.html#addfc06d52054406e88ad478498964b1c">VSF_MCONNECT</a>(__prefix_name, _t) *pwm_ptr)                                                 \</div>
 <div class="line">    __VSF_HAL_TEMPLATE_API(__prefix_name, <a class="code hl_struct" href="structvsf__pwm__capability__t.html">vsf_pwm_capability_t</a>,  pwm, <a class="code hl_variable" href="ieee80211_8h.html#a546c92ec015c1d2e20e33d3d780ea426">capability</a>,           <a class="code hl_function" href="_artery_2_a_t32_f402__405_2common_2dma_2dma_8c.html#addfc06d52054406e88ad478498964b1c">VSF_MCONNECT</a>(__prefix_name, _t) *pwm_ptr)                                                 \</div>
 <div class="line">    __VSF_HAL_TEMPLATE_API(__prefix_name, <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>,             pwm, set,                  <a class="code hl_function" href="_artery_2_a_t32_f402__405_2common_2dma_2dma_8c.html#addfc06d52054406e88ad478498964b1c">VSF_MCONNECT</a>(__prefix_name, _t) *pwm_ptr, <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> channel, <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> period, <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> pulse)\</div>
-<div class="line">    __VSF_HAL_TEMPLATE_API(__prefix_name, <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>,              pwm, get_freq,             <a class="code hl_function" href="_artery_2_a_t32_f402__405_2common_2dma_2dma_8c.html#addfc06d52054406e88ad478498964b1c">VSF_MCONNECT</a>(__prefix_name, _t) *pwm_ptr) \</div>
+<div class="line">    __VSF_HAL_TEMPLATE_API(__prefix_name, <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>,              pwm, get_freq,             <a class="code hl_function" href="_artery_2_a_t32_f402__405_2common_2dma_2dma_8c.html#addfc06d52054406e88ad478498964b1c">VSF_MCONNECT</a>(__prefix_name, _t) *pwm_ptr)                                                 \</div>
+<div class="line">    __VSF_HAL_TEMPLATE_API(__prefix_name, <span class="keywordtype">void</span>,                  pwm, irq_enable,           <a class="code hl_function" href="_artery_2_a_t32_f402__405_2common_2dma_2dma_8c.html#addfc06d52054406e88ad478498964b1c">VSF_MCONNECT</a>(__prefix_name, _t) *pwm_ptr, <a class="code hl_enumeration" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a> <a class="code hl_variable" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)                    \</div>
+<div class="line">    __VSF_HAL_TEMPLATE_API(__prefix_name, <span class="keywordtype">void</span>,                  pwm, irq_disable,          <a class="code hl_function" href="_artery_2_a_t32_f402__405_2common_2dma_2dma_8c.html#addfc06d52054406e88ad478498964b1c">VSF_MCONNECT</a>(__prefix_name, _t) *pwm_ptr, <a class="code hl_enumeration" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a> <a class="code hl_variable" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)                    \</div>
+<div class="line">    __VSF_HAL_TEMPLATE_API(__prefix_name, <a class="code hl_enumeration" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a>,    pwm, irq_clear,            <a class="code hl_function" href="_artery_2_a_t32_f402__405_2common_2dma_2dma_8c.html#addfc06d52054406e88ad478498964b1c">VSF_MCONNECT</a>(__prefix_name, _t) *pwm_ptr, <a class="code hl_enumeration" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a> <a class="code hl_variable" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)                    \</div>
 <div class="line">    __VSF_HAL_TEMPLATE_API(__prefix_name, <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>,             pwm, ctrl,                  <a class="code hl_function" href="_artery_2_a_t32_f402__405_2common_2dma_2dma_8c.html#addfc06d52054406e88ad478498964b1c">VSF_MCONNECT</a>(__prefix_name, _t) *pwm_ptr, <a class="code hl_enumeration" href="vsf__template__pwm_8h.html#ad16edc8a521b0c2078d69e63733d17ab">vsf_pwm_ctrl_t</a> ctrl, <span class="keywordtype">void</span>* param)</div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition</b> __type.h:42</div></div>
 <div class="ttc" id="a_artery_2_a_t32_f402__405_2common_2dma_2dma_8c_html_addfc06d52054406e88ad478498964b1c"><div class="ttname"><a href="_artery_2_a_t32_f402__405_2common_2dma_2dma_8c.html#addfc06d52054406e88ad478498964b1c">VSF_MCONNECT</a></div><div class="ttdeci">struct VSF_MCONNECT(VSF_DMA_CFG_IMP_PREFIX, _dma_channel_t)</div><div class="ttdef"><b>Definition</b> dma.c:57</div></div>
 <div class="ttc" id="aieee80211_8h_html_a546c92ec015c1d2e20e33d3d780ea426"><div class="ttname"><a href="ieee80211_8h.html#a546c92ec015c1d2e20e33d3d780ea426">capability</a></div><div class="ttdeci">__le16 capability</div><div class="ttdef"><b>Definition</b> ieee80211.h:134</div></div>
+<div class="ttc" id="aspi__interface_8h_html_a4e63d8904c80fc456a1f865f48cc937b"><div class="ttname"><a href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a></div><div class="ttdeci">const i_spi_t vsf_spi_irq_mask_t irq_mask</div><div class="ttdef"><b>Definition</b> spi_interface.h:38</div></div>
 <div class="ttc" id="astdint_8h_html_a324c5d28c0d82f502a234ab99efac87a"><div class="ttname"><a href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a></div><div class="ttdeci">unsigned uint32_t</div><div class="ttdef"><b>Definition</b> stdint.h:9</div></div>
 <div class="ttc" id="astdint_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition</b> stdint.h:5</div></div>
-<div class="ttc" id="astructvsf__pwm__capability__t_html"><div class="ttname"><a href="structvsf__pwm__capability__t.html">vsf_pwm_capability_t</a></div><div class="ttdoc">PWM 能力结构体。 描述 PWM 硬件的能力和限制。</div><div class="ttdef"><b>Definition</b> vsf_template_pwm.h:204</div></div>
-<div class="ttc" id="astructvsf__pwm__cfg__t_html"><div class="ttname"><a href="structvsf__pwm__cfg__t.html">vsf_pwm_cfg_t</a></div><div class="ttdoc">PWM 配置结构体。 用于配置 PWM 发生器的频率设置。</div><div class="ttdef"><b>Definition</b> vsf_template_pwm.h:170</div></div>
+<div class="ttc" id="astructvsf__pwm__capability__t_html"><div class="ttname"><a href="structvsf__pwm__capability__t.html">vsf_pwm_capability_t</a></div><div class="ttdoc">PWM 能力结构体。 描述 PWM 硬件的能力和限制。</div><div class="ttdef"><b>Definition</b> vsf_template_pwm.h:185</div></div>
+<div class="ttc" id="astructvsf__pwm__cfg__t_html"><div class="ttname"><a href="structvsf__pwm__cfg__t.html">vsf_pwm_cfg_t</a></div><div class="ttdef"><b>Definition</b> vsf_template_pwm.h:236</div></div>
 <div class="ttc" id="avsf__fsm_8h_html_ae61ab5e1d66a489d89fa8786e6b5f64b"><div class="ttname"><a href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a></div><div class="ttdeci">fsm_rt_t</div><div class="ttdef"><b>Definition</b> vsf_fsm.h:315</div></div>
 <div class="ttc" id="avsf__template__instance__declaration_8h_html_a2615805a9af2d8ceb94bcde5dd0c6c5e"><div class="ttname"><a href="vsf__template__instance__declaration_8h.html#a2615805a9af2d8ceb94bcde5dd0c6c5e">__VSF_HAL_TEMPLATE_API</a></div><div class="ttdeci">#define __VSF_HAL_TEMPLATE_API</div><div class="ttdef"><b>Definition</b> vsf_template_instance_declaration.h:120</div></div>
-<div class="ttc" id="avsf__template__pwm_8h_html_ad16edc8a521b0c2078d69e63733d17ab"><div class="ttname"><a href="vsf__template__pwm_8h.html#ad16edc8a521b0c2078d69e63733d17ab">vsf_pwm_ctrl_t</a></div><div class="ttdeci">vsf_pwm_ctrl_t</div><div class="ttdoc">PWM 控制命令，用于硬件特定操作</div><div class="ttdef"><b>Definition</b> vsf_template_pwm.h:240</div></div>
+<div class="ttc" id="avsf__template__pwm_8h_html_a5e05ef86bacf8b2d910d7204853f928b"><div class="ttname"><a href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a></div><div class="ttdeci">vsf_pwm_irq_mask_t</div><div class="ttdef"><b>Definition</b> vsf_template_pwm.h:213</div></div>
+<div class="ttc" id="avsf__template__pwm_8h_html_ad16edc8a521b0c2078d69e63733d17ab"><div class="ttname"><a href="vsf__template__pwm_8h.html#ad16edc8a521b0c2078d69e63733d17ab">vsf_pwm_ctrl_t</a></div><div class="ttdeci">vsf_pwm_ctrl_t</div><div class="ttdoc">PWM 控制命令，用于硬件特定操作</div><div class="ttdef"><b>Definition</b> vsf_template_pwm.h:254</div></div>
 </div><!-- fragment -->
 <p>PWM API 模板，用于生成 PWM 类型、特定前缀的函数声明等。 </p>
 <dl class="params"><dt>参数</dt><dd>
@@ -324,22 +373,6 @@
 </div>
 </div>
 <h2 class="groupheader">类型定义说明</h2>
-<a id="a6ea7066007dcade690d2b5a69a9e5b48" name="a6ea7066007dcade690d2b5a69a9e5b48"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ea7066007dcade690d2b5a69a9e5b48">&#9670;&#160;</a></span>vsf_pwm_cfg_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structvsf__pwm__cfg__t.html">vsf_pwm_cfg_t</a> <a class="el" href="structvsf__pwm__cfg__t.html">vsf_pwm_cfg_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>PWM 配置结构体。 用于配置 PWM 发生器的频率设置。 </p>
-
-</div>
-</div>
 <a id="a4d8483f4d267737e2738fde554d2a9a1" name="a4d8483f4d267737e2738fde554d2a9a1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4d8483f4d267737e2738fde554d2a9a1">&#9670;&#160;</a></span>vsf_pwm_capability_t</h2>
 
@@ -353,6 +386,76 @@
 </div><div class="memdoc">
 
 <p>PWM 能力结构体。 描述 PWM 硬件的能力和限制。 </p>
+
+</div>
+</div>
+<a id="a4b93fb3c8afe6fbba9b34e3ace17c147" name="a4b93fb3c8afe6fbba9b34e3ace17c147"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b93fb3c8afe6fbba9b34e3ace17c147">&#9670;&#160;</a></span>vsf_pwm_irq_mask_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a> <a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af43af40e5872e90ec65e3c32b8b0613b" name="af43af40e5872e90ec65e3c32b8b0613b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af43af40e5872e90ec65e3c32b8b0613b">&#9670;&#160;</a></span>vsf_pwm_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a> <a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a13c77b4e783497837563a5b24ee9ca8c" name="a13c77b4e783497837563a5b24ee9ca8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13c77b4e783497837563a5b24ee9ca8c">&#9670;&#160;</a></span>vsf_pwm_isr_handler_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void vsf_pwm_isr_handler_t(void *target_ptr, <a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a> *pwm_ptr, <a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a> <a class="el" href="spi__interface_8h.html#a4e63d8904c80fc456a1f865f48cc937b">irq_mask</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a17c0e5ceae5f146fca781b5157de7337" name="a17c0e5ceae5f146fca781b5157de7337"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17c0e5ceae5f146fca781b5157de7337">&#9670;&#160;</a></span>vsf_pwm_isr_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__pwm__isr__t.html">vsf_pwm_isr_t</a> <a class="el" href="structvsf__pwm__isr__t.html">vsf_pwm_isr_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6ea7066007dcade690d2b5a69a9e5b48" name="a6ea7066007dcade690d2b5a69a9e5b48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ea7066007dcade690d2b5a69a9e5b48">&#9670;&#160;</a></span>vsf_pwm_cfg_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvsf__pwm__cfg__t.html">vsf_pwm_cfg_t</a> <a class="el" href="structvsf__pwm__cfg__t.html">vsf_pwm_cfg_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -373,20 +476,6 @@
 
 </div>
 </div>
-<a id="af43af40e5872e90ec65e3c32b8b0613b" name="af43af40e5872e90ec65e3c32b8b0613b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af43af40e5872e90ec65e3c32b8b0613b">&#9670;&#160;</a></span>vsf_pwm_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a> <a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a62e95b7dfb46f055aae5f1ba16241b84" name="a62e95b7dfb46f055aae5f1ba16241b84"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a62e95b7dfb46f055aae5f1ba16241b84">&#9670;&#160;</a></span>vsf_pwm_op_t</h2>
 
@@ -402,6 +491,41 @@
 </div>
 </div>
 <h2 class="groupheader">枚举类型说明</h2>
+<a id="a5e05ef86bacf8b2d910d7204853f928b" name="a5e05ef86bacf8b2d910d7204853f928b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e05ef86bacf8b2d910d7204853f928b">&#9670;&#160;</a></span>vsf_pwm_irq_mask_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a5e05ef86bacf8b2d910d7204853f928ba2535f2433389cc6dc50eba3abca41d9d" name="a5e05ef86bacf8b2d910d7204853f928ba2535f2433389cc6dc50eba3abca41d9d"></a>VSF_PWM_IRQ_MASK_WRAP&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="af9319e2a18bf254e56f20a4537a7237e" name="af9319e2a18bf254e56f20a4537a7237e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9319e2a18bf254e56f20a4537a7237e">&#9670;&#160;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="af9319e2a18bf254e56f20a4537a7237ea2d7e91f06141ada08fd90914ccf2c867" name="af9319e2a18bf254e56f20a4537a7237ea2d7e91f06141ada08fd90914ccf2c867"></a>VSF_PWM_IRQ_COUNT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af9319e2a18bf254e56f20a4537a7237eac21627ce2d028081585a06e2c12ff93e" name="af9319e2a18bf254e56f20a4537a7237eac21627ce2d028081585a06e2c12ff93e"></a>VSF_PWM_IRQ_ALL_BITS_MASK&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <a id="ad16edc8a521b0c2078d69e63733d17ab" name="ad16edc8a521b0c2078d69e63733d17ab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad16edc8a521b0c2078d69e63733d17ab">&#9670;&#160;</a></span>vsf_pwm_ctrl_t</h2>
 
@@ -756,6 +880,142 @@
 
 </div>
 </div>
+<a id="a04a72bf1349a74f3fa9a3680d1b106b3" name="a04a72bf1349a74f3fa9a3680d1b106b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04a72bf1349a74f3fa9a3680d1b106b3">&#9670;&#160;</a></span>vsf_pwm_irq_enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_pwm_irq_enable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a> *&#160;</td>
+          <td class="paramname"><em>pwm_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a>&#160;</td>
+          <td class="paramname"><em>irq_mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>启用 PWM 中断 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwm_ptr</td><td>指向结构体 <a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">irq_mask</td><td>一个或多个枚举 vsf_pwm_irq_mask_t 的值的按位或 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a14822435ffae0bd49fc131239f33a205" name="a14822435ffae0bd49fc131239f33a205"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14822435ffae0bd49fc131239f33a205">&#9670;&#160;</a></span>vsf_pwm_irq_disable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_pwm_irq_disable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a> *&#160;</td>
+          <td class="paramname"><em>pwm_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a>&#160;</td>
+          <td class="paramname"><em>irq_mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>禁用 PWM 中断 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwm_ptr</td><td>指向结构体 <a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">irq_mask</td><td>一个或多个枚举 vsf_pwm_irq_mask_t 的值的按位或 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab9dd47091d3f879e31c9e5525551bf91" name="ab9dd47091d3f879e31c9e5525551bf91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9dd47091d3f879e31c9e5525551bf91">&#9670;&#160;</a></span>vsf_pwm_irq_clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a> vsf_pwm_irq_clear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a> *&#160;</td>
+          <td class="paramname"><em>pwm_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__template__pwm_8h.html#a5e05ef86bacf8b2d910d7204853f928b">vsf_pwm_irq_mask_t</a>&#160;</td>
+          <td class="paramname"><em>irq_mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>清除 PWM 中断标志 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwm_ptr</td><td>指向结构体 <a class="el" href="structvsf__pwm__t.html">vsf_pwm_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">irq_mask</td><td>一个或多个枚举 vsf_pwm_irq_mask_t 的值的按位或 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_pwm_irq_mask_t: 清除前的中断标志 </dd></dl>
+
+</div>
+</div>
 <a id="a9598d28c1e40fa099d4fa1df19350e14" name="a9598d28c1e40fa099d4fa1df19350e14"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9598d28c1e40fa099d4fa1df19350e14">&#9670;&#160;</a></span>vsf_pwm_ctrl()</h2>
 
@@ -992,6 +1252,6 @@
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/bd5d65e89dd5e680fbd86a65540fb4629c777472" target="_blank">vsfteam/vsf@bd5d65e</a>
+  <a href="https://github.com/vsfteam/vsf/commit/39b2b426929a427f8f08022ff0ecd60937f3dd3e" target="_blank">vsfteam/vsf@39b2b42</a>
   生成
 </div>
