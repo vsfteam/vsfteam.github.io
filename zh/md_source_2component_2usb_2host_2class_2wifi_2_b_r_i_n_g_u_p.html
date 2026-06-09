@@ -1,0 +1,425 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: RT28xx USB WiFi 驱动 — 硬件 bring-up 进度</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">RT28xx USB WiFi 驱动 — 硬件 bring-up 进度</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md5"></a> 本文档记录 <code>vsf/source/component/usb/host/class/wifi/</code> 下 RT2800/RT28xx/RT5572 USB WiFi 驱动当前的实现状态、设计决策、待硬件到位后必须验证/补全的事项，以及 从代码到示波器/抓包的调试路线。</p>
+<blockquote class="doxtable">
+<p>&zwj;目标硬件：RT2870 / RT3070 / RT3572 / RT5370 / RT5372 / RT5572 系列 USB dongle 当前状态：**阶段1 已在 vc.linux + WinUSB HCD 上 bring-up 通过** —— 枚举、 33 条 init script、8 KiB 固件上传 (128×64B chunk) + post-fw 握手、MCU 就绪 全部走通；阶段 C/D/E (EEPROM / parse_rx / TX 头封装) 待续 框架依赖：仅依赖 VSF 内核 + USB host 栈，**不依赖 VSF/Linux 子系统** </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md6"></a>
+&lt;/blockquote&gt;</h1>
+<h1><a class="anchor" id="autotoc_md7"></a>
+1. 体系结构</h1>
+<div class="fragment"><div class="line">+---------------------------+</div>
+<div class="line">| 应用 (vsf_usbh_wifi_on_*)|</div>
+<div class="line">+-------------+-------------+</div>
+<div class="line">              |</div>
+<div class="line">+-------------v-------------+   公共 API</div>
+<div class="line">| vsf_usbh_wifi.h           |   vk_usbh_wifi_send / set_channel /</div>
+<div class="line">|                           |   scan / connect / disconnect ...</div>
+<div class="line">+-------------+-------------+</div>
+<div class="line">              |</div>
+<div class="line">+-------------v-------------+   类驱动 (chip-agnostic)</div>
+<div class="line">| vsf_usbh_wifi.c           |   - ep0 dispatcher (run_script / run_blob)</div>
+<div class="line">|                           |   - 状态机 (init chain, scan scheduler,</div>
+<div class="line">|                           |     disconnect graceful teardown)</div>
+<div class="line">|                           |   - bulk RX/TX URB pool</div>
+<div class="line">+-------------+-------------+</div>
+<div class="line">              | drv vtable (firmware_load / init / set_channel /</div>
+<div class="line">              |              parse_rx ...) + 内部 op-script API</div>
+<div class="line">+-------------v-------------+   芯片 backend</div>
+<div class="line">| vsf_usbh_wifi_rt28xx.c    |   - 全部 chip-specific 知识</div>
+<div class="line">|                           |   - .rodata 静态 op 表 (init / post_fw)</div>
+<div class="line">|                           |   - 参数化 op 拼装 (set_channel ...)</div>
+<div class="line">+---------------------------+</div>
+<div class="line">              |</div>
+<div class="line">+-------------v-------------+   固件 blob (链接期注入)</div>
+<div class="line">| vsf_usbh_wifi_rt2870_     |   - weak 占位符号 (size = 0)</div>
+<div class="line">|   firmware.c              |   - 集成方提供 strong override</div>
+<div class="line">+---------------------------+</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+ep0 dispatcher 模型</h2>
+<p>类驱动里所有 ep0 vendor 0x01 写入都通过同一个状态机：</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">模式   </th><th class="markdownTableHeadNone">API   </th><th class="markdownTableHeadNone">用途    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">script   </td><td class="markdownTableBodyNone"><code>vk_usbh_wifi_run_script(ops, count, done)</code>   </td><td class="markdownTableBodyNone">顺序写一组 (reg, val)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">blob   </td><td class="markdownTableBodyNone"><code>vk_usbh_wifi_run_blob(blob, done)</code>   </td><td class="markdownTableBodyNone">按 chunk 切片写大块连续数据 (固件)   </td></tr>
+</table>
+<ul>
+<li>同时只允许 1 个 ep0 操作在飞，由 <code>wifi-&gt;script_busy</code> + <code>dev-&gt;ep0.crit</code> 互斥</li>
+<li>ep0 完成在 <code>__vk_usbh_wifi_evthandler</code> 的 <code>VSF_EVT_MESSAGE</code> 分支推进</li>
+<li>backend 链式 (firmware_load = run_blob → run_script) 通过 <code>wifi-&gt;backend_chain_done</code> 暂存外层 <code>done</code></li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md10"></a>
+2. 已完成的功能</h1>
+<h2><a class="anchor" id="autotoc_md11"></a>
+2.1 软件框架 (与硬件无关，已实现)</h2>
+<ul>
+<li>[x] <code>vk_usbh_wifi_run_script</code>：异步寄存器写脚本</li>
+<li>[x] <code>vk_usbh_wifi_run_blob</code>：异步固件 blob 上传 (按 chunk 切片)</li>
+<li>[x] init 链：<code>firmware_load → init → set_rx_filter → start_rx → on_ready</code></li>
+<li>[x] scan 调度器：class 层主导跳频，使用 <code><a class="el" href="classvsf__callback__timer__t.html">vsf_callback_timer_t</a></code> dwell； 对扫描期间的 RX 帧路由到 <code>drv-&gt;parse_rx</code></li>
+<li>[x] disconnect 优雅终止：5 步流水线 (gate flag → cancel timer → on_del → drv-&gt;fini → free URB → eda_fini)，evthandler 入口的 <code>disconnecting</code> 守卫</li>
+<li>[x] send 失败回滚 <code>is_busy</code> (避免 TX slot 永久占用)</li>
+<li>[x] 固件 blob 占位 (<code>__rt2870_firmware_data</code> / <code>__rt2870_firmware_size</code>) — 默认 0 字节 weak stub，集成方 strong override</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md12"></a>
+2.2 RT28xx backend (已实现，阶段1 已在 vc.linux 上验证)</h2>
+<ul>
+<li>[x] <code>__rt28xx_init_script[]</code> (.rodata)：MAC reset / USB_DMA_CFG / WPDMA_GLO_CFG / MAC defaults / BBP defaults / RF defaults / TX+RX enable</li>
+<li>[x] <code>__rt28xx_post_fw_script[]</code> (.rodata)：固件上传后 H2M mailbox 清零 + PBF_SYS_CTRL 释放 patch-RAM 模式</li>
+<li>[x] <code>__rt28xx_firmware_load</code>：blob 上传 + post-fw 握手链</li>
+<li>[x] <code>__rt28xx_channel_table[1..14]</code>：每个信道的 TX_PIN/BAND/SW_CFG + RF1..4</li>
+<li>[x] <code>__rt28xx_emit_channel</code> / <code>__rt28xx_emit_bssid</code> 参数化拼装</li>
+<li>[x] backend vtable 全 11 个 hook：firmware_load/init/fini/set_channel/ set_rx_filter/set_mac_addr/set_bssid/set_auth_mode/connect/disconnect/ get_link_info</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md13"></a>
+2.3 vc.linux + WinUSB HCD bring-up (阶段1 完成)</h2>
+<p>在 RT5572 (VID=0x148F PID=0x5572) 真实 dongle 上，通过 vc.linux 工程的 winusb_hcd 走通了完整 bring-up 链：</p>
+<div class="fragment"><div class="line">/ # usbhost wifi</div>
+<div class="line">Device path: \\?\usb#vid_148f&amp;pid_5572#1.0#{a5dcbf10-...}</div>
+<div class="line">usbh: new high speed device connected</div>
+<div class="line">wifi_usb: probe matched vid=0x148F pid=0x5572 chip=rt28xx</div>
+<div class="line">wifi: start: chip=rt28xx, firmware=yes</div>
+<div class="line">wifi: uploading firmware ...</div>
+<div class="line">wifi: firmware uploaded, running init script ...</div>
+<div class="line">wifi: MCU ready, chip is up</div>
+</div><!-- fragment --><ul>
+<li>128 个 64-byte 固件 chunk + post-fw 握手 + init script 全部 <code>urb_status=0</code></li>
+<li>当前的 "MCU ready" 是 init script 全条 ACK 后由 class 层抛出的等价信号； 真正的 <code>PBF_SYS_CTRL.MCU_READY</code> 寄存器轮询仍在 P1 list</li>
+<li>验证脚本：<code>project/vc.linux/_run_wifi.bat</code>，注入文件 <code>wifi_in.txt</code> 包含 <code>usbhost wifi</code>，输出落在 <code>run_wifi.log</code></li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md15"></a>
+3. 硬件到位后必须做的事 (按顺序)</h1>
+<h2><a class="anchor" id="autotoc_md16"></a>
+3.1 先决：拿到 rt2870.bin</h2>
+<ul>
+<li>来源：Ralink/MediaTek 官方 release 或主流 Linux 发行版 <code>linux-firmware/rt2870.bin</code> (8192 字节，校验该字节数)</li>
+<li>集成方式：写一个 user 文件，例如 <code>application/.../rt2870_blob.c</code>： <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="stdint_8h.html">stdint.h</a>&gt;</span></div>
+<div class="line"><span class="comment">// 用 `xxd -i rt2870.bin` 生成下面的数组</span></div>
+<div class="line"><span class="keyword">const</span> <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>  <a class="code hl_variable" href="vsf__wifi__rt2870__firmware_8c.html#a9e471b3f6187e809abbd1905b3fadee8">__rt2870_firmware_data</a>[] = { 0x01, 0x23, <span class="comment">/* ... 8192 bytes */</span> };</div>
+<div class="line"><span class="keyword">const</span> <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> <a class="code hl_variable" href="vsf__wifi__rt2870__firmware_8c.html#ae39e4a760937b39cfad9074de31a7523">__rt2870_firmware_size</a>   = <span class="keyword">sizeof</span>(<a class="code hl_variable" href="vsf__wifi__rt2870__firmware_8c.html#a9e471b3f6187e809abbd1905b3fadee8">__rt2870_firmware_data</a>);</div>
+<div class="ttc" id="astdint_8h_html"><div class="ttname"><a href="stdint_8h.html">stdint.h</a></div></div>
+<div class="ttc" id="astdint_8h_html_a324c5d28c0d82f502a234ab99efac87a"><div class="ttname"><a href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a></div><div class="ttdeci">unsigned uint32_t</div><div class="ttdef"><b>Definition</b> stdint.h:9</div></div>
+<div class="ttc" id="astdint_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition</b> stdint.h:5</div></div>
+<div class="ttc" id="avsf__wifi__rt2870__firmware_8c_html_a9e471b3f6187e809abbd1905b3fadee8"><div class="ttname"><a href="vsf__wifi__rt2870__firmware_8c.html#a9e471b3f6187e809abbd1905b3fadee8">__rt2870_firmware_data</a></div><div class="ttdeci">const uint8_t __rt2870_firmware_data[1]</div><div class="ttdef"><b>Definition</b> vsf_wifi_rt2870_firmware.c:64</div></div>
+<div class="ttc" id="avsf__wifi__rt2870__firmware_8c_html_ae39e4a760937b39cfad9074de31a7523"><div class="ttname"><a href="vsf__wifi__rt2870__firmware_8c.html#ae39e4a760937b39cfad9074de31a7523">__rt2870_firmware_size</a></div><div class="ttdeci">const uint32_t __rt2870_firmware_size</div><div class="ttdef"><b>Definition</b> vsf_wifi_rt2870_firmware.c:67</div></div>
+</div><!-- fragment --> 链入工程后，weak stub 自动让位。<code>__rt28xx_firmware_load</code> 会检查 <code>size == 8192</code>，否则报 <code>VSF_ERR_INVALID_PARAMETER</code>。</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md17"></a>
+3.2 阶段 A — ep0 register-write 通路 ✅ 已完成</h2>
+<p><b>目标：确认 USB 枚举成功 + ep0 vendor 写入被设备 ACK。</b></p>
+<p>不需要固件。验证步骤：</p>
+<ol type="1">
+<li>插入 dongle，确认 <code>__vk_usbh_wifi_probe</code> 命中正确的 VID/PID 并分配 <code>wifi</code> 实例 (VID <code>0x148F</code> 是 Ralink 主标识)。</li>
+<li>在 <code>__vk_usbh_wifi_on_init_done</code> 设断点：若 <code>__rt28xx_init_script</code> 全部 ACK，说明 33 条 init 写入 (含 BBP/RF) 都通过。</li>
+<li>抓包 (Wireshark + USBPcap)：每条都是 <code>bRequest=0x01, wValue=&lt;reg&gt;</code>， wLength=4，data=LE32(val)，主机收到 IN STATUS phase。</li>
+<li>**故障定位**：若 init 中途失败，看 <code>wifi-&gt;s.script.idx</code> 落在哪一条。 对照 <code>__rt28xx_init_script[]</code> 的注释定位。常见原因：<ul>
+<li>USB_DMA_CFG (0x02A0) 写入超时 → 检查 USB endpoint 配置</li>
+<li>BBP/RF 写入超时 → BBP_CSR_CFG/RF_CSR_CFG (0x101C/0x1020)，需要确认 之前 MAC reset 真的成功了 (寄存器 self-clearing)</li>
+</ul>
+</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md18"></a>
+3.3 阶段 B — 固件上传 ✅ 已完成 (MCU_READY 轮询 deferred)</h2>
+<p><b>目标：确认 8 KiB 固件能被切片送到 0x3000 起始的指令 RAM，然后 post-fw 握手让 MCU 跳出 patch-RAM 模式。</b></p>
+<ol type="1">
+<li>链入 rt2870.bin 后，让 <code>__rt28xx_firmware_load</code> 走完整路径。</li>
+<li>在 <code>vk_usbh_wifi_run_blob</code> 进入循环时，检查每个 chunk 的：<ul>
+<li><code>wValue</code> 应从 <code>0x3000</code> 起步，每次递增 <code>chunk_size</code> (默认 64)</li>
+<li>共应有 <code>8192 / 64 = 128</code> 个 chunk</li>
+<li>全部 ACK 后切到 <code>__rt28xx_post_fw_script</code> (5 条 reg write)</li>
+</ul>
+</li>
+<li><b>关键观测**：post-fw 握手最后一条 <code>PBF_SYS_CTRL = 0</code> 之后，原始 rt2x00 驱动会**轮询</b> <code>PBF_SYS_CTRL.MCU_READY</code> 位。当前实现暂未轮询 (read 通路尚 未接入)，硬件到位后必须补全： <div class="fragment"><div class="line"><span class="comment">// 伪代码 — 在 post_fw_script 之后插入</span></div>
+<div class="line"><a class="code hl_define" href="poll_8h.html#a736293b83912ddb07766d4adea8391ad">poll</a> until (read32(PBF_SYS_CTRL) &amp; MCU_READY)</div>
+<div class="ttc" id="apoll_8h_html_a736293b83912ddb07766d4adea8391ad"><div class="ttname"><a href="poll_8h.html#a736293b83912ddb07766d4adea8391ad">poll</a></div><div class="ttdeci">#define poll</div><div class="ttdef"><b>Definition</b> poll.h:22</div></div>
+</div><!-- fragment --> 这需要先实现 <code>vk_usbh_wifi_run_read_script</code> (vendor 0x07 IN)。</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md19"></a>
+3.4 阶段 C — EEPROM 读取 (第 2-3 天)</h2>
+<p><b>目标：拿到设备真实 MAC、RF chip type、TX power 表。</b></p>
+<ol type="1">
+<li>RT28xx 的 EEPROM 经 ep0 vendor 请求 0x07 读出 (256 字节)<ul>
+<li><code>bRequestType = USB_TYPE_VENDOR | USB_RECIP_DEVICE | USB_DIR_IN</code></li>
+<li><code>bRequest = 0x07</code></li>
+<li><code>wValue = offset</code>, <code>wIndex = 0</code>, <code>wLength = chunk</code></li>
+</ul>
+</li>
+<li>关键 offset：<ul>
+<li>0x04..0x09 — MAC address (6 bytes, LE)</li>
+<li>0x1A — RF chip type (区分 RT2820/RT3070/RT5370/...)</li>
+<li>0x35..0x6A — TX power tables (per channel, per rate)</li>
+</ul>
+</li>
+<li>当前 <code>set_mac_addr</code> 接口要求**外部传入** MAC；EEPROM 方案应在 <code>firmware_load done</code> 之后插一步 <code>eeprom_read</code>，把读出的 MAC 通过 <code>on_ready</code> 回调暴露给应用，或在 backend 内部直接 <code>set_mac_addr(self_mac)</code>。</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md20"></a>
+3.5 阶段 D — RX 帧解析 (第 3-4 天)</h2>
+<p><b>目标：让 <code>vsf_usbh_wifi_on_rx</code> 收到去掉 RXWI/RXINFO 包头的 802.11 帧。</b></p>
+<ol type="1">
+<li>RT28xx bulk-IN 帧格式 (datasheet §RXINFO/RXWI)： <div class="fragment"><div class="line">+-----------+-----------+--------------+----------+</div>
+<div class="line">| RXINFO 4B | RXWI ~16B | 802.11 frame | TKIP MIC |</div>
+<div class="line">+-----------+-----------+--------------+----------+</div>
+</div><!-- fragment --><ul>
+<li>RXWI 大小因芯片而异：RT28xx/RT30xx 为 16B；RT5572/RT55xx 为 20B</li>
+<li>RXINFO.bit[7..0] = MPDU_LEN (含 802.11)</li>
+</ul>
+</li>
+<li>当前 <code>parse_rx</code> 钩子留为 <code>NULL</code>，需要在 <code>vsf_usbh_wifi_rt28xx.c</code> 实现： <div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> __rt28xx_parse_rx(<a class="code hl_struct" href="structvk__usbh__wifi__t.html">vk_usbh_wifi_t</a> *wifi,</div>
+<div class="line">        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *frame, <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> len) {</div>
+<div class="line">    <span class="comment">// 解 RXINFO -&gt; 跳过 RXWI -&gt; 取出 802.11 头 -&gt;</span></div>
+<div class="line">    <span class="comment">// 若是 beacon/probe-resp 且正在扫描 -&gt; 抽 SSID/BSSID/channel/RSSI</span></div>
+<div class="line">    <span class="comment">// 调用 vsf_usbh_wifi_on_scan_result(wifi, &amp;result)</span></div>
+<div class="line">}</div>
+<div class="ttc" id="astdint_8h_html_a273cf69d639a59973b6019625df33e30"><div class="ttname"><a href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a></div><div class="ttdeci">unsigned short uint16_t</div><div class="ttdef"><b>Definition</b> stdint.h:7</div></div>
+<div class="ttc" id="astructvk__usbh__wifi__t_html"><div class="ttname"><a href="structvk__usbh__wifi__t.html">vk_usbh_wifi_t</a></div><div class="ttdef"><b>Definition</b> vsf_usbh_wifi_priv.h:73</div></div>
+</div><!-- fragment --></li>
+<li>验证手段：在已知 AP 的环境下扫描，对比 <code>iw scan</code> 抓到的 BSS 列表。</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md21"></a>
+3.6 阶段 E — TX 路径 (第 4-5 天)</h2>
+<p><b>目标：发出 802.11 frame，被监听口抓到。</b></p>
+<ol type="1">
+<li>RT28xx bulk-OUT 帧需要前缀 TXINFO + TXWI (合计 ~16-24 字节)， 再附原始 802.11 frame，最后 4B padding (DMA done marker)。</li>
+<li>当前 <code>vk_usbh_wifi_send</code> 直接写 frame — 必须改为：<ul>
+<li>先在 <code>wifi_usb_eval</code> 描述的格式上封 TXINFO/TXWI</li>
+<li>计算 wireless protection / rate / power 字段</li>
+</ul>
+</li>
+<li>RT2870 与 RT5572 的 TXWI 布局有差异，应该用 vtable 钩子： <div class="fragment"><div class="line"><a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> (*build_tx_header)(<a class="code hl_struct" href="structvk__usbh__wifi__t.html">vk_usbh_wifi_t</a> *wifi,</div>
+<div class="line">        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *out, <span class="keyword">const</span> <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *frame, <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> len);</div>
+</div><!-- fragment --> 现在 vtable 没有这个 hook，硬件到位后再加。</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md22"></a>
+3.7 阶段 F — MLME / WPA (长期)</h2>
+<ul>
+<li>当前 <code>set_auth_mode</code> backend 是 stub，原文档 (<code>wifi_usb_eval.txt</code>) 说明 这是 raw-protocol 设计 — 关联/认证由上层应用直接发裸帧完成。</li>
+<li>若要加 host-driven WPA2 4-way handshake，需另起 <code>wpa_supplicant</code> 风格的 状态机，**不属于本驱动职责**。</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md24"></a>
+4. 已知限制与设计决策</h1>
+<h2><a class="anchor" id="autotoc_md25"></a>
+4.1 不依赖 VSF 内部的 Linux/wireless 子系统</h2>
+<ul>
+<li>用户决策 (本次会话)：**纯 VSF 实现，不引 VSF/Linux**</li>
+<li>后果：mac80211/cfg80211 那一套全部不可用 (扫描结果解析、信道列表、 MLME 都得自己写)</li>
+<li>收益：依赖面小，只要 VSF 内核 + USB host 栈即可，符合 ESP-IDF 子系统 独立性约束</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md26"></a>
+4.2 固件嵌入方案 A (rodata)</h2>
+<ul>
+<li>用户决策：**编译期嵌入为 rodata 静态数组**（不走文件系统）</li>
+<li>优点：零运行时依赖，无 fopen/lseek</li>
+<li>缺点：固件占 8 KiB rom；切换芯片型号要重链</li>
+<li>实现：<code>vsf_usbh_wifi_rt2870_firmware.c</code> 提供 weak 0 字节 stub；集成方写 strong override 文件</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md27"></a>
+4.3 ep0 dispatcher 单转单飞</h2>
+<ul>
+<li>script 与 blob 共用一个 <code>script_busy</code> 标志</li>
+<li>任何外部 API (set_channel / set_mac / connect / scan ...) 在 <code>script_busy</code> 时会得到 <code>VSF_ERR_NOT_AVAILABLE</code></li>
+<li>应用层应该在 <code>on_ready</code> 后再发起业务命令；scan 期间禁用其它命令</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md28"></a>
+4.4 scratch_ops 默认 16 entries</h2>
+<ul>
+<li>单次 backend 操作最坏 11 ops (connect: 2 BSSID + 8 channel + 1 RX filter)</li>
+<li>若新增 backend 序列超过 16，调 <code>VSF_USBH_WIFI_CFG_SCRATCH_OPS</code></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md29"></a>
+4.5 chunk_size 默认 64</h2>
+<ul>
+<li>对应 rt2x00 reference driver 行为</li>
+<li>真实硬件可调到 256/512 减少 round-trip</li>
+<li>通过 <code>VSF_USBH_WIFI_CFG_FW_CHUNK_SIZE</code> 改</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md30"></a>
+4.6 阶段1 bring-up 踩坑记录 (vc.linux + WinUSB)</h2>
+<p>实测过程中遇到 3 个本质性问题，全部已修复并加注释；后续 bring-up 其它 rt2x00 类芯片或迁移到别的 HCD 时，复发概率极高，列在这里：</p>
+<h3><a class="anchor" id="autotoc_md31"></a>
+(1) Ralink rt2x00 vendor 协议参数装错</h3>
+<p>**症状**：<code>urb_status=-121</code> (ERROR_SEM_TIMEOUT)，每次 control transfer 设备 直接超时不响应，所有 ep0 操作 timeout。</p>
+<p>**根因**：早期 setup packet 用了 <code>bRequest=0x01</code>，那其实是 <code>USB_DEVICE_MODE</code>； 并且把寄存器地址塞进了 <code>wValue</code>、<code>wIndex</code> 填 0。</p>
+<p>**正确协议**（对照 Linux kernel <code>drivers/net/wireless/ralink/rt2x00/rt2x00usb.{h,c}</code>）：</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">操作   </th><th class="markdownTableHeadNone">bRequest   </th><th class="markdownTableHeadNone">wValue   </th><th class="markdownTableHeadNone">wIndex    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">寄存器写   </td><td class="markdownTableBodyNone"><code>USB_MULTI_WRITE = 6</code>   </td><td class="markdownTableBodyNone"><code>0</code>   </td><td class="markdownTableBodyNone">寄存器偏移    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">寄存器读   </td><td class="markdownTableBodyNone"><code>USB_MULTI_READ = 7</code>   </td><td class="markdownTableBodyNone"><code>0</code>   </td><td class="markdownTableBodyNone">寄存器偏移    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">固件块写   </td><td class="markdownTableBodyNone"><code>USB_MULTI_WRITE = 6</code>   </td><td class="markdownTableBodyNone"><code>0</code>   </td><td class="markdownTableBodyNone">基址 + 块内偏移   </td></tr>
+</table>
+<p>常量已定义在 <code><a class="el" href="vsf__usbh__wifi_8c.html">vsf_usbh_wifi.c</a></code>：<code>VSF_USBH_WIFI_RT_REQ_MULTI_WRITE/READ</code>。</p>
+<h3><a class="anchor" id="autotoc_md32"></a>
+(2) 固件 BLOCK_WRITE 用了只读 buffer</h3>
+<p>**症状**：<code>urb_status=-998</code> (ERROR_NOACCESS)，第 1 个固件 chunk 就被 WinUSB 拒绝。</p>
+<p>**根因**：固件常量数组 <code>__rt2870_firmware_data</code> 链入 <code>.rdata</code> 段（只读页）， 之前用 <code>vk_usbh_urb_set_buffer</code> 直接把 urb buffer 指向它。WinUsb_ControlTransfer 要求 buffer 可写（DMA bounce 需求），对只读页指针返回 998。</p>
+<p>**修复**：BLOCK_WRITE 路径改用 <code>vk_usbh_urb_alloc_buffer</code> 拿一个 HCD 托管 的可写堆缓冲，<code>memcpy</code> 进去再发；每个 chunk 完成后配套 <code>free_buffer</code>。 REG_WRITE 路径本来就走的是 alloc_buffer，不受影响。</p>
+<h3><a class="anchor" id="autotoc_md33"></a>
+(3) Windows CRT system() 子进程吃光重定向 stdin</h3>
+<p>**症状**：vc.linux 用文件重定向注入命令时，<code>usbhost wifi</code> 这一行从未被 shell 看到，加 <code>rxdbg</code> 后看到 <code>ReadFile ok=1 rsize=0</code>（空读 EOF）。</p>
+<p>**根因**：<code>vsf/source/hal/driver/x86/win/driver.c</code> 启动时调了 <code>system("chcp 65001")</code>，CRT <a class="el" href="sys_2linux_2include_2simple__libc_2stdlib_8h.html#aebe76d3d4be24037885958cc523fd4ab">system()</a> 会 spawn cmd.exe 子进程并继承 stdin 句柄；当 stdin 被重定向到磁盘文件时，父子进程**共享文件指针**， cmd.exe 在退出前把整个 14 字节注入文件 drain 到 EOF，主进程随后读不到 任何数据。</p>
+<p>**修复**：用 Win32 <code>SetConsoleCP(CP_UTF8) + SetConsoleOutputCP(CP_UTF8)</code> 替代 <code>system("chcp ...")</code>，纯 API 调用不 spawn 任何子进程，stdin 文件 指针保持不动。</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md35"></a>
+5. 调试 cheatsheet</h1>
+<h2><a class="anchor" id="autotoc_md36"></a>
+5.1 看 ep0 script 卡住</h2>
+<div class="fragment"><div class="line"><span class="comment">// 在 evthandler VSF_EVT_MESSAGE 进入处加 trace</span></div>
+<div class="line"><span class="keywordflow">if</span> (urb_hcd == dev-&gt;ep0.urb.urb_hcd) {</div>
+<div class="line">    <a class="code hl_define" href="sys_2linux_2include_2simple__libc_2stdio_8h.html#a3cb9f0894fab1c8fbb0753c9c7c2a8d9">printf</a>(<span class="stringliteral">&quot;ep0 done idx=%u/%u status=%d\n&quot;</span>,</div>
+<div class="line">            wifi-&gt;script_is_blob ? wifi-&gt;s.blob.offset / wifi-&gt;s.blob.chunk_size</div>
+<div class="line">                                 : wifi-&gt;s.script.idx,</div>
+<div class="line">            wifi-&gt;script_is_blob ? wifi-&gt;s.blob.len / wifi-&gt;s.blob.chunk_size</div>
+<div class="line">                                 : wifi-&gt;s.script.count,</div>
+<div class="line">            <a class="code hl_function" href="vsf__usbh_8c.html#afc6c72a4e1da3d29e2190467b2c4d7fc">vk_usbh_urb_get_status</a>(&amp;dev-&gt;ep0.<a class="code hl_struct" href="structurb.html">urb</a>));</div>
+<div class="line">}</div>
+<div class="ttc" id="astructurb_html"><div class="ttname"><a href="structurb.html">urb</a></div><div class="ttdef"><b>Definition</b> usb.h:152</div></div>
+<div class="ttc" id="asys_2linux_2include_2simple__libc_2stdio_8h_html_a3cb9f0894fab1c8fbb0753c9c7c2a8d9"><div class="ttname"><a href="sys_2linux_2include_2simple__libc_2stdio_8h.html#a3cb9f0894fab1c8fbb0753c9c7c2a8d9">printf</a></div><div class="ttdeci">#define printf</div><div class="ttdef"><b>Definition</b> stdio.h:75</div></div>
+<div class="ttc" id="avsf__usbh_8c_html_afc6c72a4e1da3d29e2190467b2c4d7fc"><div class="ttname"><a href="vsf__usbh_8c.html#afc6c72a4e1da3d29e2190467b2c4d7fc">vk_usbh_urb_get_status</a></div><div class="ttdeci">int_fast16_t vk_usbh_urb_get_status(vk_usbh_urb_t *urb)</div><div class="ttdef"><b>Definition</b> vsf_usbh.c:481</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md37"></a>
+5.2 校验 init script 寄存器写入顺序</h2>
+<p>参考 <code>__rt28xx_init_script[]</code> 注释，每条配 (offset, value)。Wireshark filter <code>usb.bRequest == 0x01</code> 只看 vendor 控制写。</p>
+<h2><a class="anchor" id="autotoc_md38"></a>
+5.3 RX 数据完整性</h2>
+<div class="fragment"><div class="line"><span class="comment">// 在 evthandler RX 分支加 hex dump</span></div>
+<div class="line"><span class="keywordflow">if</span> (iocb-&gt;is_rx &amp;&amp; len &gt; 0) {</div>
+<div class="line">    <a class="code hl_define" href="sys_2linux_2include_2simple__libc_2stdio_8h.html#a3cb9f0894fab1c8fbb0753c9c7c2a8d9">printf</a>(<span class="stringliteral">&quot;rx %u bytes: &quot;</span>, len);</div>
+<div class="line">    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> i = 0; i &lt; (len &gt; 32 ? 32 : len); i++)</div>
+<div class="line">        <a class="code hl_define" href="sys_2linux_2include_2simple__libc_2stdio_8h.html#a3cb9f0894fab1c8fbb0753c9c7c2a8d9">printf</a>(<span class="stringliteral">&quot;%02x &quot;</span>, frame[i]);</div>
+<div class="line">    <a class="code hl_define" href="sys_2linux_2include_2simple__libc_2stdio_8h.html#a3cb9f0894fab1c8fbb0753c9c7c2a8d9">printf</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md39"></a>
+5.4 验证 disconnect 不泄漏</h2>
+<p>不停插拔 dongle，检查 <code>vsf_usbh_malloc</code> 计数应回到平衡。<code>__vk_usbh_wifi_free_all</code> 基于 <code>vk_usbh_urb_is_alloced</code>，只释放真分配过的，不会 double-free。</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md41"></a>
+6. 文件清单</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">文件   </th><th class="markdownTableHeadNone">行数   </th><th class="markdownTableHeadNone">用途    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="vsf__usbh__wifi_8h.html">vsf_usbh_wifi.h</a></code>   </td><td class="markdownTableBodyNone">195   </td><td class="markdownTableBodyNone">公共 API + backend vtable typedef    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="vsf__usbh__wifi_8c.html">vsf_usbh_wifi.c</a></code>   </td><td class="markdownTableBodyNone">882   </td><td class="markdownTableBodyNone">类驱动 (ep0 dispatcher / 状态机 / scan / disconnect)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="vsf__usbh__wifi__priv_8h.html">vsf_usbh_wifi_priv.h</a></code>   </td><td class="markdownTableBodyNone">233   </td><td class="markdownTableBodyNone">内部数据结构 + 内部 API    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>vsf_usbh_wifi_rt28xx.c</code>   </td><td class="markdownTableBodyNone">487   </td><td class="markdownTableBodyNone">RT28xx backend    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>vsf_usbh_wifi_rt2870_firmware.c</code>   </td><td class="markdownTableBodyNone">84   </td><td class="markdownTableBodyNone">固件 blob weak 占位    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>wifi_usb_eval.txt</code>   </td><td class="markdownTableBodyNone">41   </td><td class="markdownTableBodyNone">原始设计笔记    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="_b_r_i_n_g_u_p_8md.html">BRINGUP.md</a></code>   </td><td class="markdownTableBodyNone">本文   </td><td class="markdownTableBodyNone">硬件 bring-up 进度   </td></tr>
+</table>
+<hr  />
+<h1><a class="anchor" id="autotoc_md43"></a>
+7. 下一步 checklist (硬件到位后)</h1>
+<p>按优先级排序：</p>
+<ul>
+<li>[x] **(P0)** 拿到 rt2870.bin (8192 字节)，写一个 strong override blob 文件链入工程</li>
+<li>[x] **(P0)** 阶段 A：跑通 init script，确认所有 33 条 ep0 写入 ACK</li>
+<li>[x] **(P0)** 阶段 B：固件上传 + post-fw 握手 ACK</li>
+<li>[ ] **(P1)** 加 <code>vk_usbh_wifi_run_read_script</code> (vendor <code>USB_MULTI_READ=7</code> IN)</li>
+<li>[ ] **(P1)** 用 read_script 实现 <code>PBF_SYS_CTRL.MCU_READY</code> 寄存器级轮询 (取代当前的 init-script-done 隐式信号)</li>
+<li>[ ] **(P1)** 阶段 C：EEPROM 读取 → 自动 set_mac_addr</li>
+<li>[ ] **(P2)** 阶段 D：parse_rx (RXINFO/RXWI 解析)</li>
+<li>[ ] **(P2)** 加 <code>build_tx_header</code> vtable hook，重写 <code>vk_usbh_wifi_send</code></li>
+<li>[ ] **(P3)** 阶段 E：TX 路径联调 (按 vsf_usr_cfg 抓包确认)</li>
+<li>[ ] **(P3)** scan beacon 解析 → on_scan_result 触发</li>
+<li>[ ] **(P4)** 多 chip family 适配 (RT5572 RXWI 大小差异等)</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md45"></a>
+8. 重构历史</h1>
+<p>本驱动经历了 3 轮迭代，留作复盘：</p>
+<ol type="1">
+<li>**初版 (review 之前)**：原始的"逐个 API 各写各的 ep0"实现，存在 异步未等待、ep0 临界区误用、send 失败不回滚等 14 个 bug。</li>
+<li>**第二轮 (op-script 重构)**：引入 <code>vk_usbh_wifi_op_t</code> + <code>run_script</code>， 把所有 ep0 写收口到一个状态机。修了第 1 轮列出的所有 bug。</li>
+<li>**本轮 (firmware/scan/disconnect)**：<ul>
+<li>新增 <code>vk_usbh_wifi_run_blob</code> 处理大块固件</li>
+<li>新增 backend chain (firmware_load = blob → script)</li>
+<li>class 层主导 scan 跳频调度 (callback timer + parse_rx 钩子)</li>
+<li>disconnect 5 步优雅终止 + <code>disconnecting</code> gate</li>
+<li>固件 blob weak 占位文件 (方案 A)</li>
+</ul>
+</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md46"></a>
+9. 编译与运行验证状态</h1>
+<p>wifi 三个 .c 已加入 <code>project/vc.linux/vsf_demo.vcxproj</code>，msbuild Debug/x64 构建通过，0 error / 0 warning。</p>
+<p>**已验证**（vc.linux + WinUSB HCD + RT5572 真实硬件）：</p><ul>
+<li>ep0 vendor <code>USB_MULTI_WRITE=6</code> 控制传输 — 33 条 init script + 5 条 post-fw<ul>
+<li>128 个 64B 固件 chunk 全部 <code>urb_status=0</code></li>
+</ul>
+</li>
+<li><code>__rt2870_firmware_data</code> 8192 字节 blob 切片上传到基址 0x3000，全部 ACK</li>
+<li>post-fw 握手让 MCU 离开 patch-RAM 模式后回报就绪</li>
+<li>disconnect 路径 (拔出 dongle) 不泄漏</li>
+</ul>
+<p>**未验证**（待续阶段）：</p><ul>
+<li>vendor <code>USB_MULTI_READ=7</code> 读通路（EEPROM / 寄存器读 / MCU_READY 轮询）</li>
+<li>bulk RX 帧解析（RXINFO / RXWI）</li>
+<li>bulk TX 路径（TXINFO / TXWI 头封装）</li>
+<li>scan 跳频 + beacon 解析 → <code>on_scan_result</code></li>
+<li>station 关联 / 数据收发</li>
+</ul>
+<p>espidf 测试集 (<code>vsf_espidf_test.c</code>) **不包含 wifi 用例**——wifi 不接入 espidf，验证只通过 vc.linux 工程跑 <code>usbhost wifi</code> 命令完成。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/3b461d06196a01e993ae11fb92f8b9171365c831" target="_blank">vsfteam/vsf@3b461d0</a>
+  生成
+</div>

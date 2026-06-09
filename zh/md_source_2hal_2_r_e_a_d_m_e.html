@@ -44,24 +44,24 @@
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>目录</h3>
-<ul><li class="level1"><a href="#autotoc_md12">概述</a></li>
-<li class="level1"><a href="#autotoc_md13">硬件抽象层 (HAL) 目录</a><ul><li class="level2"><a href="#autotoc_md14">架构 (arch) 目录</a></li>
-<li class="level2"><a href="#autotoc_md15">驱动 (driver) 目录</a><ul><li class="level3"><a href="#autotoc_md16">驱动模板 (template) 目录</a><ul><li class="level4"><a href="#autotoc_md17">设备配置目录 (&lt;strong&gt;device_name_a&lt;/strong&gt;)</a></li>
-<li class="level4"><a href="#autotoc_md18">使用驱动模板的步骤（以USART为例）</a></li>
+<ul><li class="level1"><a href="#autotoc_md54">概述</a></li>
+<li class="level1"><a href="#autotoc_md55">硬件抽象层 (HAL) 目录</a><ul><li class="level2"><a href="#autotoc_md56">架构 (arch) 目录</a></li>
+<li class="level2"><a href="#autotoc_md57">驱动 (driver) 目录</a><ul><li class="level3"><a href="#autotoc_md58">驱动模板 (template) 目录</a><ul><li class="level4"><a href="#autotoc_md59">设备配置目录 (&lt;strong&gt;device_name_a&lt;/strong&gt;)</a></li>
+<li class="level4"><a href="#autotoc_md60">使用驱动模板的步骤（以USART为例）</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="level2"><a href="#autotoc_md19">实用工具 (utilities) 目录</a></li>
+<li class="level2"><a href="#autotoc_md61">实用工具 (utilities) 目录</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="textblock"><p><a class="anchor" id="autotoc_md11"></a></p>
-<h1><a class="anchor" id="autotoc_md12"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md53"></a></p>
+<h1><a class="anchor" id="autotoc_md54"></a>
 概述</h1>
 <p>硬件抽象层 (Hardware Abstraction Layer，简称 HAL) 是一种软件层，用于隐藏硬件的具体实现细节，为上层应用提供统一的接口。这使得应用程序能够在不同的硬件平台上运行，而不需要修改代码。</p>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<h1><a class="anchor" id="autotoc_md55"></a>
 硬件抽象层 (HAL) 目录</h1>
 <p>HAL 目录包含 VSF 的硬件抽象层实现代码。该目录采用模块化设计，将不同硬件功能分类到对应子目录中，便于代码维护和扩展。通过标准化接口，上层应用可以用统一方式访问不同硬件平台的功能，减少平台依赖性。</p>
 <div class="fragment"><div class="line">hal/</div>
@@ -71,7 +71,7 @@
 <div class="line">├── vsf_hal.c              # VSF HAL 层实现文件，提供 vsf_hal_init() 等 API</div>
 <div class="line">├── vsf_hal.h              # VSF HAL 层主头文件，定义公共接口</div>
 <div class="line">├── vsf_hal_cfg.h          # VSF HAL 配置文件</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md56"></a>
 架构 (arch) 目录</h2>
 <p>架构目录包含针对不同处理器架构的底层实现，为 HAL 提供基础功能支持。<code>template</code> 目录提供了新架构移植的参考模板，用于简化将 VSF 移植到新的处理器架构的过程。这些模板文件包含了实现新架构所需的基本框架和关键函数。</p>
 <div class="fragment"><div class="line">arch/</div>
@@ -90,7 +90,7 @@
 <div class="line">│   ├── template_generic.h # 模板头文件</div>
 <div class="line">│   └── template_generic.c # 模板实现文件</div>
 <div class="line">└── ...                    # 其他架构相关文件</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md57"></a>
 驱动 (driver) 目录</h2>
 <p>驱动目录主要包含各芯片厂商（如ST、Allwinner、RaspberryPi等）的特定驱动实现，按照厂商和芯片系列进行组织。这些驱动实现了HAL接口，为特定硬件平台提供标准化的访问方式。此外，该目录还包含一些通用支持模块，用于简化驱动开发和提供跨平台功能。</p>
 <div class="fragment"><div class="line">driver/</div>
@@ -131,7 +131,7 @@
 </li>
 <li>**vsf 目录**：提供了一系列通用的外设实现，主要是软件模拟和通用驱动，例如使用 GPIO 模拟 I2C、定时器 GPIO PWM 驱动等，无需特定硬件支持即可实现标准接口功能。</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md16"></a>
+<h3><a class="anchor" id="autotoc_md58"></a>
 驱动模板 (template) 目录</h3>
 <p>驱动模板目录提供了标准化的框架，可用于以下三种场景：</p>
 <ol type="1">
@@ -171,7 +171,7 @@
 <div class="line">│       └── driver.c       # 设备驱动实现文件</div>
 <div class="line">├── README.md              # 驱动开发指南和使用说明</div>
 <div class="line">└── ...                    # 其他模板文件</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md17"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md59"></a>
 设备配置目录 (&lt;strong&gt;device_name_a&lt;/strong&gt;)</h4>
 <p><code>__device_name_a__</code> 目录是实现特定设备驱动的核心配置部分，包含以下关键文件：</p>
 <ol type="1">
@@ -215,7 +215,7 @@
 <li>模板文件会根据不同的宏配置，从 <code>VSF_HW_USART_COUNT</code> 和 <code>VSF_HW_USART_MASK</code> 获取实例数量</li>
 <li>然后根据这些配置自动展开 <code>VSF_USART_CFG_IMP_LV0</code>，生成相应的外设驱动实例</li>
 </ol>
-<h4><a class="anchor" id="autotoc_md18"></a>
+<h4><a class="anchor" id="autotoc_md60"></a>
 使用驱动模板的步骤（以USART为例）</h4>
 <ol type="1">
 <li>**复制模板文件**：根据要实现的外设类型，从 template 目录中复制相应的模板文件到新的芯片目录下。 <div class="fragment"><div class="line"># 例如，为 STM32H750 实现 USART 驱动</div>
@@ -250,7 +250,7 @@
 <div class="ttc" id="avsf__hal__cfg_8h_html_ac53e084d43f6705ad3cb2687eb7a986c"><div class="ttname"><a href="vsf__hal__cfg_8h.html#ac53e084d43f6705ad3cb2687eb7a986c">VSF_HAL_ASSERT</a></div><div class="ttdeci">#define VSF_HAL_ASSERT(__CON)</div><div class="ttdoc">all hal modules use this configuration file</div><div class="ttdef"><b>Definition</b> vsf_hal_cfg.h:36</div></div>
 </div><!-- fragment --></li>
 </ol>
-<h2><a class="anchor" id="autotoc_md19"></a>
+<h2><a class="anchor" id="autotoc_md61"></a>
 实用工具 (utilities) 目录</h2>
 <p>utilities 目录包含各种辅助工具和库函数，为 HAL 和应用层提供通用功能支持。这些工具能够简化驱动开发，提高代码复用性和可维护性。</p>
 <div class="fragment"><div class="line">utilities/</div>
@@ -267,6 +267,6 @@
 </div><!-- PageDoc -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/7573dc340c3d217f9fc818246a339e18f3e01f5b" target="_blank">vsfteam/vsf@7573dc3</a>
+  <a href="https://github.com/vsfteam/vsf/commit/3b461d06196a01e993ae11fb92f8b9171365c831" target="_blank">vsfteam/vsf@3b461d0</a>
   生成
 </div>
