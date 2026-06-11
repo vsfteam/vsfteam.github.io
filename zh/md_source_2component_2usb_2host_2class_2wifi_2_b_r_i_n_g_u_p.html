@@ -145,6 +145,7 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 <li>[x] M4 多次发送（×3）提高可靠性（无硬件 ACK 情况下单次丢失率高）</li>
 <li>[x] RUN 状态接受 AP M3 重试（AP 未收到 M4 时自动重发 M4）</li>
 <li>[x] disconnect 发送 Deauth 帧 + 状态清理</li>
+<li>[x] **GTK Rekeying（Group Key Handshake）**：RUN 状态接收 AP 的 Group Key M1 （group 类型 EAPOL-Key），用 KCK 校验 MIC、KEK 解包新 GTK、就地更新 <code>wpa_gtk</code>，回复 G2 确认；软件 CCMP RX 路径立即使用新 GTK，硬件后端 重新 install_key。复用 4-way 的 MIC/unwrap/解析代码，链路保持不断开。</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md14"></a>
 2.4 CCMP 数据面（component/wifi/）</h2>
@@ -159,6 +160,7 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 <li>[x] 4-way 期间 PTK 解密：SNonce 已生成即可尝试解密（处理加密 M3）</li>
 <li>[x] AES-CCM 自测：NIST SP 800-38C Example C.4 向量验证</li>
 <li>[x] PN（Packet Number）递增：TX 每帧递增，防重放</li>
+<li>[x] DHCP 完整流程测试：Discover → Offer → Request → ACK，获得 IP 地址</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md15"></a>
 2.5 RT28xx backend 数据面增强（component/wifi/chip/rt28xx/）</h2>
@@ -189,8 +191,14 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 <div class="line">wifi: LINK UP bssid=74:39:89:1C:6B:07 ch=6 flags=0x3</div>
 <div class="line">wifi: connected to &quot;VStudio&quot;</div>
 <div class="line">/ # wifi_dhcp</div>
-<div class="line">wifi: DHCP TX #0 ok</div>
-<div class="line">wifi: DHCP Discover done, waiting for Offer...</div>
+<div class="line">wifi: DHCP Discover (xid=...)</div>
+<div class="line">wifi: DHCP Offer: ip=192.168.0.xxx server=192.168.0.1</div>
+<div class="line">wifi: DHCP Request (ip=192.168.0.xxx)</div>
+<div class="line">wifi: DHCP complete!</div>
+<div class="line">  IP:      192.168.0.xxx</div>
+<div class="line">  Subnet:  255.255.255.0</div>
+<div class="line">  Gateway: 192.168.0.1</div>
+<div class="line">  DNS:     192.168.0.1</div>
 <div class="line">/ # wifi_disconnect</div>
 <div class="line">wifi: LINK DOWN (reason=203)</div>
 </div><!-- fragment --><ul>
@@ -211,7 +219,6 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 3. 未完成 / 待续（按优先级）</h1>
 <ul>
 <li>[ ] **(P1)** WiFi netif 对接 lwIP：实现 linkoutput/input 桥接，lwIP 处理 DHCP/ARP/TCP</li>
-<li>[ ] **(P1)** GTK Rekeying：处理 AP 的 Group Key Handshake（长连接必需）</li>
 <li>[ ] **(P2)** 速率自适应：当前固定 OFDM MCS0 (6 Mbps)，需基于 TX status 反馈调整</li>
 <li>[ ] **(P2)** 扫描结果去重（同 AP 多次出现，多信道/重复 beacon）</li>
 <li>[ ] **(P2)** ch144 及 UNII-4 (169/173/177)：ref <code>rf_vals_5592</code> 表未提供系数</li>
@@ -395,6 +402,6 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 </div><!-- PageDoc -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/f21a37a4f5b1f423788189548fcc842770b0f300" target="_blank">vsfteam/vsf@f21a37a</a>
+  <a href="https://github.com/vsfteam/vsf/commit/48462b23bb9ad995276cd2ed2099576e3652651f" target="_blank">vsfteam/vsf@48462b2</a>
   生成
 </div>
