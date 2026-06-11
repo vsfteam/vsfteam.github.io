@@ -43,12 +43,12 @@
   <div class="headertitle"><div class="title">vsf_espidf — ESP-IDF compatibility sub-system for VSF</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md77"></a> A sibling of <code>shell/sys/linux/</code> (vsf_linux). Provides an ESP-IDF-shaped public API on top of VSF kernel / service / component / HAL layers so that applications written against ESP-IDF can be compiled and run on VSF-hosted targets.</p>
-<h1><a class="anchor" id="autotoc_md78"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md79"></a> A sibling of <code>shell/sys/linux/</code> (vsf_linux). Provides an ESP-IDF-shaped public API on top of VSF kernel / service / component / HAL layers so that applications written against ESP-IDF can be compiled and run on VSF-hosted targets.</p>
+<h1><a class="anchor" id="autotoc_md80"></a>
 Scope</h1>
 <p>This sub-system does <b>not</b> embed any ESP-IDF source code. All public headers under <code>include/</code> are clean-room re-implementations of the ESP-IDF public API. Implementations live under <code>port/</code> and are thin bridges onto existing VSF facilities.</p>
 <p>VSF espidf targets ESP-IDF <b>v5.1.0</b> baseline and covers roughly <b>5–10%</b> of the full ESP-IDF component surface. It focuses on the software core needed to run typical sensor / I/O / networking applications, while wireless radios, advanced peripherals, security, and power management are not in scope (see Gap Analysis).</p>
-<h1><a class="anchor" id="autotoc_md79"></a>
+<h1><a class="anchor" id="autotoc_md81"></a>
 Layout</h1>
 <div class="fragment"><div class="line">espidf/</div>
 <div class="line">├── CMakeLists.txt             # sub-system build entry, gated by VSF_USE_ESPIDF</div>
@@ -62,9 +62,9 @@ Layout</h1>
 <div class="line">│   └── usb/                   # usb/*.h</div>
 <div class="line">└── port/                      # ESP-IDF-API -&gt; VSF-internal glue (30 port files)</div>
 <div class="line">    └── CMakeLists.txt</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md80"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md82"></a>
 Implemented Modules</h1>
-<h2><a class="anchor" id="autotoc_md81"></a>
+<h2><a class="anchor" id="autotoc_md83"></a>
 Stage 1 — Pure-software core (all code ✅)</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -92,7 +92,7 @@ Stage 1 — Pure-software core (all code ✅)</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__vfs__semihost_8h.html">esp_vfs_semihost.h</a></code>   </td><td class="markdownTableBodyNone">header-only stub   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__vfs__semihost__port_8c.html">esp_vfs_semihost_port.c</a></code>   </td><td class="markdownTableBodyNone">24   </td><td class="markdownTableBodyNone">returns <code>ESP_ERR_NOT_SUPPORTED</code> (VSF disables semihosting)   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md82"></a>
+<h2><a class="anchor" id="autotoc_md84"></a>
 Stage 2 — Storage &amp; filesystem</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -110,7 +110,7 @@ Stage 2 — Storage &amp; filesystem</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__vfs__fat_8h.html">esp_vfs_fat.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/fs/fatfs</code> via POSIX   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__vfs__fat__port_8c.html">esp_vfs_fat_port.c</a></code>   </td><td class="markdownTableBodyNone">259   </td><td class="markdownTableBodyNone">no RO mount on spiflash   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md83"></a>
+<h2><a class="anchor" id="autotoc_md85"></a>
 Stage 3 — Network</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -120,7 +120,7 @@ Stage 3 — Network</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code><a class="el" href="esp__http__client_8h.html">esp_http_client.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/tcpip/protocol/http/client</code> + mbedTLS   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__http__client__port_8c.html">esp_http_client_port.c</a></code>   </td><td class="markdownTableBodyNone">1475   </td><td class="markdownTableBodyNone">42 APIs; 3-feature profile config   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md84"></a>
+<h2><a class="anchor" id="autotoc_md86"></a>
 Stage 4 — Peripheral drivers (code ✅, on-target ⬜)</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -140,7 +140,7 @@ Stage 4 — Peripheral drivers (code ✅, on-target ⬜)</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code><a class="el" href="adc__oneshot_8h.html">driver/adc_oneshot.h</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="driver__adc__port_8c.html">driver_adc_port.c</a></code>   </td><td class="markdownTableBodyNone">266   </td><td class="markdownTableBodyNone">oneshot only; no continuous / DMA / cali   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md85"></a>
+<h2><a class="anchor" id="autotoc_md87"></a>
 Stage 5 — USB</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -150,7 +150,7 @@ Stage 5 — USB</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code><a class="el" href="usb__device_8h.html">usb_device.h</a></code>   </td><td class="markdownTableBodyNone"><code>component/usb/device</code> (vsf_usbd)   </td><td class="markdownTableBodyNone"><code><a class="el" href="usb__device__port_8c.html">usb_device_port.c</a></code>   </td><td class="markdownTableBodyNone">550   </td><td class="markdownTableBodyNone"></td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md86"></a>
+<h2><a class="anchor" id="autotoc_md88"></a>
 Stage 6 — LCD panel</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -171,7 +171,7 @@ Stage 6 — LCD panel</h2>
 <td class="markdownTableBodyNone"><code>esp_lcd_panel_st7789.h</code>   </td><td class="markdownTableBodyNone">panel factory   </td><td class="markdownTableBodyNone"><code><a class="el" href="esp__lcd__port_8c.html">esp_lcd_port.c</a></code>   </td><td class="markdownTableBodyNone">—   </td><td class="markdownTableBodyNone">creates 240×320 panel wrapping <a class="el" href="classvk__disp__t.html">vk_disp_t</a>   </td></tr>
 </table>
 <p>Architecture: ESP-IDF's two-layer (IO + Panel) pattern is preserved at the API level, but the IO vtable is all no-ops and the panel vtable dispatches to a <code><a class="el" href="classvk__disp__t.html">vk_disp_t</a></code> supplied by the board layer via <code>vsf_espidf_cfg_t::lcd_disp</code>. The board owns the actual display driver (wingdi / ST7789-SPI / SDL2 / etc.) and the espidf LCD shim is agnostic to the concrete driver type.</p>
-<h1><a class="anchor" id="autotoc_md87"></a>
+<h1><a class="anchor" id="autotoc_md89"></a>
 Backend mapping</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -233,7 +233,7 @@ Backend mapping</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>esp_lcd_*.h</code> (IO + panel)   </td><td class="markdownTableBodyNone"><code>component/ui/disp</code> (vsf_disp_t bridge)   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md88"></a>
+<h1><a class="anchor" id="autotoc_md90"></a>
 Enablement</h1>
 <p>Master switch <code>VSF_USE_ESPIDF</code> plus per-component <code>VSF_ESPIDF_CFG_USE_*</code> switches in <code><a class="el" href="vsf__espidf__cfg_8h.html">vsf_espidf_cfg.h</a></code>. All disabled by default except core infrastructure; opt in per module as needed.</p>
 <div class="fragment"><div class="line">VSF_ESPIDF_CFG_USE_LOG               (core, default ON)</div>
@@ -264,7 +264,7 @@ Enablement</h1>
 <div class="line">VSF_ESPIDF_CFG_USE_USB_HOST          (usb)</div>
 <div class="line">VSF_ESPIDF_CFG_USE_USB_DEVICE        (usb)</div>
 <div class="line">VSF_ESPIDF_CFG_USE_LCD               (display)</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md89"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md91"></a>
 Roadmap</h1>
 <p>Stage 1 (pure-software core, no HW dependency): <code>esp_err</code> → <code>esp_log</code> → <code>esp_event</code> → <code><a class="el" href="structesp__timer.html">esp_timer</a></code> → <code>esp_system</code> → <code>esp_ringbuf</code> → <code>esp_heap_caps</code>.</p>
 <p>Stage 2 (storage &amp; fs): <code>esp_partition</code> → <code>nvs_flash</code> → <code>esp_vfs</code>.</p>
@@ -290,10 +290,10 @@ Roadmap</h1>
 </table>
 <p>A driver is considered fully <b>done</b> only when both axes are ✅.</p>
 <p>Stage 5 (radio, optional): external Wi-Fi module <code>esp_wifi</code> semantic shim.</p>
-<h1><a class="anchor" id="autotoc_md90"></a>
+<h1><a class="anchor" id="autotoc_md92"></a>
 Gap Analysis</h1>
 <p>Overview of ESP-IDF features that are <b>not implemented</b> in VSF espidf as of this writing.</p>
-<h2><a class="anchor" id="autotoc_md91"></a>
+<h2><a class="anchor" id="autotoc_md93"></a>
 Completely missing major subsystems</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -337,7 +337,7 @@ Completely missing major subsystems</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">TCP Transport   </td><td class="markdownTableBodyNone"><code>tcp_transport</code> (TCP/SSL/WS transport abstraction)   </td><td class="markdownTableBodyNone"></td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md92"></a>
+<h2><a class="anchor" id="autotoc_md94"></a>
 Missing peripheral drivers (23 esp_driver_* components)</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -367,7 +367,7 @@ Missing peripheral drivers (23 esp_driver_* components)</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>usb_serial_jtag</code>   </td><td class="markdownTableBodyNone">USB Serial/JTAG console   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md93"></a>
+<h2><a class="anchor" id="autotoc_md95"></a>
 Missing sub-features in implemented drivers</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -387,7 +387,7 @@ Missing sub-features in implemented drivers</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">ADC   </td><td class="markdownTableBodyNone"><code><a class="el" href="adc__oneshot_8h.html">adc_oneshot.h</a></code>   </td><td class="markdownTableBodyNone"><code>adc_continuous.h</code>, <code>adc_dma.h</code>, <code>adc_cali.h</code>, <code>adc_filter.h</code>, <code>adc_monitor.h</code>   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md94"></a>
+<h2><a class="anchor" id="autotoc_md96"></a>
 Known limitations in implemented modules</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -415,7 +415,7 @@ Known limitations in implemented modules</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>usb_host</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="usb__host_8h.html#a66575b7df4ca68e55fe29aa6b0397d45">usb_host_lib_handle_events()</a></code> variant returns <code>ESP_ERR_NOT_SUPPORTED</code>.   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md95"></a>
+<h2><a class="anchor" id="autotoc_md97"></a>
 Missing ESP-IDF infrastructure layers</h2>
 <ul>
 <li><b>HAL layer</b> — All 35 <code>esp_hal_*</code>components (e.g. <code>esp_hal_gpio</code>, <code>esp_hal_uart</code>) are not implemented, and are NOT needed by this subsystem. VSF's espidf compatibility layer targets the <code>driver/*.h</code> API level (application-facing APIs such as <code><a class="el" href="shell_2sys_2espidf_2include_2driver_2gpio_8h.html#afadd72970c01a00f25df734eba0d2b29" title="Set the output level of a single pin (0 = low, non-zero = high).">gpio_set_level()</a></code>, <code><a class="el" href="shell_2sys_2espidf_2include_2driver_2uart_8h.html#a8327a6a4cadd86583d0efd555a1fa523">uart_write_bytes()</a></code>), not the HAL <code>_ll.h</code> level that <code>esp_hal_*</code> provides. The HAL role is fulfilled by VSF's own <code>hal/driver/common/template/vsf_template_*.h</code> abstraction, which each <code>driver/*.h</code> port header bridges to directly. Application code using this subsystem never includes <code>hal/*.h</code> headers, so the absence of <code>esp_hal_*</code> is a deliberate architectural choice, not a gap.</li>
@@ -425,13 +425,13 @@ Missing ESP-IDF infrastructure layers</h2>
 <li><b>esp_vfs extensions</b> — <code><a class="el" href="esp__vfs__eventfd_8h.html">esp_vfs_eventfd.h</a></code> (bridges VSF Linux eventfd) + <code><a class="el" href="esp__vfs__semihost_8h.html">esp_vfs_semihost.h</a></code> (NOT_SUPPORTED stub) implemented. Missing: <code><a class="el" href="esp__vfs__dev_8h.html">esp_vfs_dev.h</a></code>.</li>
 <li><b>soc</b> — Missing all SoC capability / peripheral definition headers.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md96"></a>
+<h1><a class="anchor" id="autotoc_md98"></a>
 Validation</h1>
 <p>Each stage validated by compiling and running matching <code>esp-idf/examples/</code> trees built against this sub-system's headers (no ESP-IDF source in the build). </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/487d870ea4ab2a08d2e545ba1a74c1bdc381fa7b" target="_blank">vsfteam/vsf@487d870</a>
+  <a href="https://github.com/vsfteam/vsf/commit/41e09e4c99d9872832303c463d482c576fc5e22e" target="_blank">vsfteam/vsf@41e09e4</a>
   生成
 </div>

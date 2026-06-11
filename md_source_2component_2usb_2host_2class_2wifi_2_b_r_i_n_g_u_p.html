@@ -45,7 +45,7 @@
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md5"></a> 本文档记录 VSF 原生 RT2800/RT28xx/RT5572/RT5592 USB WiFi 驱动的实现状态、 架构、设计决策，以及从代码到示波器/抓包的调试路线。</p>
 <blockquote class="doxtable">
-<p>&zwj;目标硬件：RT2870 / RT3070 / RT3572 / RT5370 / RT5372 / RT5572(RT5592) USB dongle 实测平台：vc.linux 工程 + WinUSB HCD + RT5572 真实 dongle (VID=0x148F PID=0x5572) 当前状态：**2.4GHz + 5GHz 主动扫描已完整 bring-up 并实测通过** —— 枚举、 固件上传、MCU 就绪、eFuse MAC 读取、寄存器读通路、RF 全频段调谐、RX 帧解析 (RXWI/RXINFO) → 扫描结果回调，全部走通；TX 发包与 station 关联待续。 框架依赖：仅依赖 VSF 内核 + USB host 栈，**不依赖 VSF/Linux 子系统**。 </p>
+<p>&zwj;目标硬件：RT2870 / RT3070 / RT3572 / RT5370 / RT5372 / RT5572(RT5592) USB dongle 实测平台：vc.linux 工程 + WinUSB HCD + RT5572 真实 dongle (VID=0x148F PID=0x5572) 当前状态：**WPA2-PSK 全流程 bring-up 完成** —— 枚举、固件上传、MCU 就绪、 eFuse MAC 读取、RF 全频段调谐、2.4G+5G 扫描、TX 发包、Auth/Assoc、 WPA2-PSK 4-way handshake、连接/断开，全部实测通过。 框架依赖：仅依赖 VSF 内核 + USB host 栈，**不依赖 VSF/Linux 子系统**。 </p>
 </blockquote>
 <h1><a class="anchor" id="autotoc_md6"></a>
 &lt;/blockquote&gt;</h1>
@@ -132,51 +132,74 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 <li>[x] backend vtable hook：firmware_load / init / fini / set_channel / set_rx_filter / set_mac_addr / set_bssid / set_auth_mode / connect / disconnect / get_link_info / parse_rx</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md13"></a>
-2.3 vc.linux + WinUSB HCD 实测（RT5572 真实硬件）</h2>
+2.3 WPA2-PSK 连接（component/wifi/）</h2>
+<ul>
+<li>[x] TX 路径：TXINFO(4B) + TXWI 头封装 + bulk TX 发送</li>
+<li>[x] TX 自测（offline）：框架初始化后自动 TX self-test 验证发包通路</li>
+<li>[x] Auth 帧收发：Open System Authentication（seq1/seq2）</li>
+<li>[x] Association Request/Response：capability + listen interval + IE 编码</li>
+<li>[x] WPA2-PSK PBKDF2：SSID + passphrase → PMK (256-bit)</li>
+<li>[x] 4-way handshake：M1(ANonce) → M2(SNonce+MIC) → M3(encrypted GTK) → M4(confirm)</li>
+<li>[x] AES key-unwrap (RFC 3394)：就地解包，无大小限制</li>
+<li>[x] PTK/GTK 密钥派生与安装</li>
+<li>[x] disconnect 发送 Deauth 帧 + 状态清理</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md14"></a>
+2.4 vc.linux + WinUSB HCD 实测（RT5572 真实硬件）</h2>
 <div class="fragment"><div class="line">/ # usbhost</div>
-<div class="line">/ # usbhost wifi scan</div>
-<div class="line">wifi: device probed (chip=rt28xx)</div>
+<div class="line">/ # wifi_scan</div>
 <div class="line">wifi: scanning 37 channels (dwell 120 ms)</div>
-<div class="line">wifi: AP[ 1] 88:C7:8F:1B:81:6E ch= 1 rssi= -52 caps=0x1C31 ssid=&quot;ChinaNet-5Jhc&quot;</div>
-<div class="line">...</div>
-<div class="line">wifi: AP[19] 04:AB:08:A3:0D:A7 ch=48 rssi= -76 caps=0x1131 ssid=&quot;803_5G&quot;</div>
-<div class="line">wifi: scan done, 21 APs found</div>
+<div class="line">wifi: scan done, 40 APs found</div>
+<div class="line">/ # wifi_connect VStudio &lt;password&gt;</div>
+<div class="line">wifi: WPA2-PSK &quot;VStudio&quot; PMK derived, starting handshake</div>
+<div class="line">wifi: connecting to &quot;VStudio&quot; bssid=74:39:89:1C:6B:07 ch=6</div>
+<div class="line">wifi: auth ok, sending assoc-req</div>
+<div class="line">wifi: associated, aid=1 (4-way handshake)</div>
+<div class="line">wifi: 4-way M1 rx, M2 sent</div>
+<div class="line">wifi: 4-way M3 rx, M4 sent (keys ready)</div>
+<div class="line">wifi: 4-way handshake complete, aid=1 (link up)</div>
+<div class="line">wifi: LINK UP bssid=74:39:89:1C:6B:07 ch=6 flags=0x3</div>
+<div class="line">wifi: connected to &quot;VStudio&quot;</div>
+<div class="line">/ # wifi_disconnect</div>
+<div class="line">wifi: LINK DOWN (reason=203)</div>
 </div><!-- fragment --><ul>
 <li>枚举 + 固件 + init + MCU 就绪 + eFuse MAC 全部 <code>urb_status=0</code></li>
-<li>2.4GHz：单次扫描稳定捕获 25~35 个真实 AP</li>
+<li>2.4GHz：单次扫描稳定捕获 35~40 个真实 AP</li>
 <li>5GHz：LDO_CFG0 在 5G 信道正确切到 VLEVEL=5 (0x15040F14)，2.4G 为 VLEVEL=0 (0x01040F14)；抓到真实 5G AP（如 ch48 <code>803_5G</code>，与 2.4G 的 <code>803</code> 同源），所有 5G 信道 <code>false_cca</code> 非零，证明 5G RF/PHY 前端工作正常</li>
-<li>测试方法：交互式敲 <code>usbhost wifi scan</code>，或 stdin 重定向注入命令文件</li>
+<li>WPA2-PSK 全流程端到端验证通过（真实 AP: VStudio, ch6）</li>
+<li>测试方法：交互式 <code>wifi_scan</code> / <code>wifi_connect</code> / <code>wifi_disconnect</code></li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md16"></a>
 3. 未完成 / 待续（按优先级）</h1>
 <ul>
-<li>[ ] **(P1)** TX 路径：<code>vk_usbh_wifi_send</code> 目前直发裸 802.11 frame， <b>未封装 TXINFO/TXWI**；需加 <code>build_tx_header</code> vtable hook （RT2870 与 RT5592 的 TXWI 布局有差异）</b></li>
-<li><b>[ ] **(P1)</b> station 关联 / 认证：<code>set_auth_mode</code> / <code>connect</code> 为 raw-protocol stub（无 MLME / WPA 握手），关联需上层应用发裸帧或另起 supplicant 状态机</li>
+<li>[ ] **(P1)** 数据面：连接建立后的加密数据帧收发（CCMP encrypt/decrypt）</li>
 <li>[ ] **(P2)** 扫描结果去重（同 AP 多次出现，多信道/重复 beacon）</li>
 <li>[ ] **(P2)** ch144 及 UNII-4 (169/173/177)：ref <code>rf_vals_5592</code> 表未提供系数</li>
+<li>[ ] **(P2)** WPA2-Enterprise / WPA3-SAE 支持</li>
 <li>[ ] **(P3)** iq_calibrate / EEPROM TX power 表（当前 TX 功率 clamp 到 POWER_BOUND）</li>
 <li>[ ] **(P3)** 多 chip family 适配：RT2860/RT2870 的 RXWI 为 16B（当前按 RT5592 的 24B）</li>
+<li>[ ] **(P3)** 断线自动重连 / 漫游</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md17"></a>
+<h1><a class="anchor" id="autotoc_md18"></a>
 4. 5GHz (A-band) 实现要点</h1>
 <p>完全对照 Linux rt2x00 <code>rt2800_config_channel_rf55xx()</code> + <code>rt2800_config_channel()</code> 逐函数移植（参考 <code>ref/rt2x00/rt2800lib.c</code>）。</p>
-<h2><a class="anchor" id="autotoc_md18"></a>
+<h2><a class="anchor" id="autotoc_md19"></a>
 4.1 频率合成器表</h2>
 <ul>
 <li><code>__rf_vals_5592_xtal20[]</code> / <code>__rf_vals_5592_xtal40[]</code> 改为 <code>{channel, n, k, mod, r}</code> 格式，**verbatim 抄自 ref 原表**</li>
 <li>5GHz 信道号不连续（36,38,…,64 / 100,102,…,140 / 149,…,165 / 184,…,196）， 必须用 <code>__rt28xx_find_rf(channel)</code> **按信道号查找**，不能按索引</li>
 <li>覆盖范围：UNII-1/2 (36-64)、UNII-2e (100-140)、UNII-3 (149-165)； ref 表本身缺 ch144 / 163 / UNII-4</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md19"></a>
+<h2><a class="anchor" id="autotoc_md20"></a>
 4.2 信道调谐分支（&lt;tt&gt;__rt28xx_emit_channel&lt;/tt&gt;）</h2>
 <ul>
 <li><code>is_5g = (channel &gt; 14)</code> 分流；5GHz 共用一组 A-band RFCSR (10/11/25/27/36/37/38/40/41/42/45/48/57/60/61)</li>
 <li>5GHz 再按子频段细分：<code>36–64</code> 与 <code>100–165</code>，子频段内还有更细的 channel 阈值（&lt;=50 / &lt;=116 / &lt;=124 / &lt;=128 / &lt;=138 / &lt;=153 …）调整 RFCSR12/13/22/23/24/39/43/44/46/51/52/54/55/56/58/59/62</li>
 <li>**184–196 在频率表里有系数，但不落入任何子频段分支**（与 ref 一致， Japan 4.9G 实际不可用）</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md21"></a>
 4.3 按频段差异的关键寄存器</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -202,20 +225,23 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 <li>扫描表 <code>__app_wifi_scan_channels[]</code>（vsf_main.c）加入 24 个 5G 主信道； <code>VSF_WIFI_CFG_SCAN_MAX_CHANNELS</code> 由 14 扩到 40</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md22"></a>
+<h1><a class="anchor" id="autotoc_md23"></a>
 5. 已知限制与设计决策</h1>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md24"></a>
 5.1 不依赖 VSF 内部的 Linux/wireless 子系统</h2>
 <p>纯 VSF 实现：mac80211/cfg80211 全部不可用（扫描解析、信道列表、MLME 自己写）， 收益是依赖面小，只要 VSF 内核 + USB host 栈。</p>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md25"></a>
 5.2 固件嵌入方案 A（rodata）</h2>
 <p>编译期嵌入为 rodata 静态数组（<code><a class="el" href="vsf__wifi__rt2870__firmware__data_8c.html">vsf_wifi_rt2870_firmware_data.c</a></code>），零运行时 文件依赖；代价是占 8 KiB rom，切芯片型号要重链。weak stub + strong override。</p>
-<h2><a class="anchor" id="autotoc_md25"></a>
-5.3 raw-protocol 设计</h2>
-<p>本驱动只做 PHY/MAC bring-up 与裸帧收发；关联/认证/加密由上层负责， 不属于本驱动职责。</p>
 <h2><a class="anchor" id="autotoc_md26"></a>
-5.4 bring-up 踩坑记录（复发概率极高，务必保留）</h2>
-<h3><a class="anchor" id="autotoc_md27"></a>
+5.3 内建 WPA2-PSK supplicant</h2>
+<p>驱动内建轻量 WPA2-PSK supplicant（PBKDF2 + 4-way handshake + AES key-unwrap）， 无需外部 wpa_supplicant。Auth/Assoc/Deauth 帧由框架层构造发送。</p>
+<h2><a class="anchor" id="autotoc_md27"></a>
+5.4 AES key-unwrap 就地解包</h2>
+<p><code>vsf_wifi_aes_unwrap</code> 使用 caller 提供的 <code>out</code> 缓冲区做 RFC 3394 就地解包， 无栈缓冲区大小限制。真实 AP 的 M3 Key Data（RSN IE + GTK KDE）包裹后通常 &gt;48 字节， 旧版 40 字节栈缓冲区会导致 GTK unwrap 失败。</p>
+<h2><a class="anchor" id="autotoc_md28"></a>
+5.5 bring-up 踩坑记录（复发概率极高，务必保留）</h2>
+<h3><a class="anchor" id="autotoc_md29"></a>
 (1) Ralink rt2x00 vendor 协议参数</h3>
 <p>**症状**：control transfer 全部 timeout (<code>urb_status=-121</code>)。 **根因/正确协议**（对照 <code>drivers/net/wireless/ralink/rt2x00/rt2x00usb.{h,c}</code>）：</p>
 <table class="markdownTable">
@@ -228,20 +254,20 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">固件块写   </td><td class="markdownTableBodyNone"><code>USB_MULTI_WRITE = 6</code>   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">基址 + 块内偏移   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md28"></a>
+<h3><a class="anchor" id="autotoc_md30"></a>
 (2) 固件 BLOCK_WRITE 用了只读 buffer</h3>
 <p>**症状**：第 1 个固件 chunk 被 WinUSB 拒绝 (<code>urb_status=-998</code> NOACCESS)。 **根因**：固件常量在 <code>.rdata</code> 只读页，WinUsb_ControlTransfer 要求可写 buffer。 **修复**：BLOCK_WRITE 改用 <code>vk_usbh_urb_alloc_buffer</code> 拿可写堆缓冲，memcpy 后发。</p>
-<h3><a class="anchor" id="autotoc_md29"></a>
+<h3><a class="anchor" id="autotoc_md31"></a>
 (3) Windows CRT system() 子进程吃光重定向 stdin</h3>
 <p>**症状**：stdin 文件重定向注入命令时，命令行从未被 shell 读到（空读 EOF）。 **根因**：<code>system("chcp 65001")</code> spawn 的 cmd.exe 继承并 drain 了共享 stdin 文件指针。 **修复**：改用 Win32 <code>SetConsoleCP/SetConsoleOutputCP(CP_UTF8)</code>，纯 API 不 spawn 子进程。</p>
-<h3><a class="anchor" id="autotoc_md30"></a>
+<h3><a class="anchor" id="autotoc_md32"></a>
 (4) RF 调谐用错 RT30xx 序列（5572 scan 0 帧根因）</h3>
 <p>**症状**：枚举/固件全通，但扫描 0 帧、false_cca 恒为 0（RF/PHY 形同死亡）。 **根因**：早期 set_channel 套用了 RT30xx 的 RF 序列；RT5592 必须走 <code>config_channel_rf55xx</code> 的 RFCSR + BBP + LDO_CFG0 + TX_PIN/BAND_CFG 全序列。 **修复**：逐函数移植 ref 的 rf55xx 调谐；TX_PIN_CFG 必须置 LNA_PE/RFTR/TRSW， 否则接收前端无输出。</p>
-<h3><a class="anchor" id="autotoc_md31"></a>
+<h3><a class="anchor" id="autotoc_md33"></a>
 (5) RF 间接访问总线地址</h3>
 <p>RT5592 的 RF_CSR_CFG 寄存器地址应为 **0x0500**（非早期误用的 0x1020）。</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md33"></a>
+<h1><a class="anchor" id="autotoc_md35"></a>
 6. 文件清单</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -266,26 +292,26 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 <td class="markdownTableBodyNone"><code><a class="el" href="_b_r_i_n_g_u_p_8md.html">usb/host/class/wifi/BRINGUP.md</a></code>   </td><td class="markdownTableBodyNone">本文   </td></tr>
 </table>
 <hr  />
-<h1><a class="anchor" id="autotoc_md35"></a>
+<h1><a class="anchor" id="autotoc_md37"></a>
 7. 调试 cheatsheet</h1>
-<h2><a class="anchor" id="autotoc_md36"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 7.1 set_channel 诊断日志</h2>
 <p><code>__rt28xx_setch_after_diag</code> 每次跳频打印 RX_STA_CNT1 / false_cca / plcp_err / MAC_SYS_CTRL(TX_EN/RX_EN) / LDO_CFG0(VLEVEL) / CH_IDLE / CH_BUSY。</p><ul>
 <li>false_cca &gt; 0 ⇒ RF/PHY 前端活着（0 帧则查 USB DMA 路径）</li>
 <li>全 0 ⇒ RF/PHY dead（查 RF 序列 / TX_PIN_CFG）</li>
 <li>5G 信道 VLEVEL 应为 5，2.4G 应为 0</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md37"></a>
+<h2><a class="anchor" id="autotoc_md39"></a>
 7.2 校验寄存器写入顺序</h2>
 <p>Wireshark filter <code>usb.bRequest == 6</code> 看 vendor 控制写；对照 <code>__rt28xx_init_script[]</code> / <code>__rt28xx_emit_channel</code> 注释定位。</p>
-<h2><a class="anchor" id="autotoc_md38"></a>
+<h2><a class="anchor" id="autotoc_md40"></a>
 7.3 RX 帧完整性</h2>
 <p>在 RX 分支 hex dump 前 32 字节，核对 RXINFO_W0[15:0] = rx_pkt_len = RXWI(24B)+frame。</p>
-<h2><a class="anchor" id="autotoc_md39"></a>
+<h2><a class="anchor" id="autotoc_md41"></a>
 7.4 验证 disconnect 不泄漏</h2>
 <p>反复插拔 dongle，<code>vsf_usbh_malloc</code> 计数应回到平衡。</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md41"></a>
+<h1><a class="anchor" id="autotoc_md43"></a>
 8. 编译与运行验证状态</h1>
 <ul>
 <li>vc.linux 工程 msbuild Debug/x64 构建通过，0 error。</li>
@@ -293,21 +319,25 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 <li>ep0 vendor 写 (USB_MULTI_WRITE=6) / 读 (USB_MULTI_READ=7) 通路</li>
 <li>8192B 固件切片上传 + post-fw 握手 + MCU 就绪轮询</li>
 <li>eFuse row-0 MAC 读取</li>
-<li>2.4GHz 扫描（25~35 AP）+ 5GHz 扫描（抓到真实 5G AP）</li>
-<li>disconnect 路径不泄漏</li>
+<li>2.4GHz 扫描（35~40 AP）+ 5GHz 扫描（抓到真实 5G AP）</li>
+<li>bulk TX 路径 + TXINFO/TXWI 头封装（TX self-test PASSED）</li>
+<li>Open System Auth + Association（aid=1）</li>
+<li>WPA2-PSK 4-way handshake（M1→M2→M3→M4，PTK/GTK 安装成功）</li>
+<li>全流程连接到真实 AP（VStudio, WPA2-PSK, ch6）</li>
+<li>disconnect（Deauth 发送 + LINK DOWN）路径不泄漏</li>
 </ul>
 </li>
 <li>**未验证 / 待续**：<ul>
-<li>bulk TX 路径（TXINFO/TXWI 头封装）</li>
-<li>station 关联 / 数据收发 / WPA</li>
+<li>加密数据帧收发（CCMP）</li>
 <li>扫描去重、ch144 / UNII-4</li>
+<li>断线重连 / 漫游</li>
 </ul>
 </li>
 </ul>
-<p>espidf 测试集不含 wifi 用例——wifi 不接入 espidf，验证只通过 vc.linux 工程 跑 <code>usbhost wifi scan</code> 完成。 </p>
+<p>espidf 测试集不含 wifi 用例——wifi 不接入 espidf，验证只通过 vc.linux 工程 跑 <code>wifi_scan</code> / <code>wifi_connect</code> / <code>wifi_disconnect</code> 完成。 </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/487d870ea4ab2a08d2e545ba1a74c1bdc381fa7b" target="_blank">vsfteam/vsf@487d870</a>
+  <a href="https://github.com/vsfteam/vsf/commit/41e09e4c99d9872832303c463d482c576fc5e22e" target="_blank">vsfteam/vsf@41e09e4</a>
 </div>
