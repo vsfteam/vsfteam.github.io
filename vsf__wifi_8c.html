@@ -58,6 +58,8 @@
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="vsf__wifi_8h_source.html">./vsf_wifi.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__wifi__priv_8h_source.html">./vsf_wifi_priv.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__wifi__wpa_8h_source.html">./vsf_wifi_wpa.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__wifi__crypto_8h_source.html">./vsf_wifi_crypto.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
@@ -65,10 +67,14 @@ Macros</h2></td></tr>
 <tr class="separator:ab251be6e467f545a2138a030378bedeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab23958907eba7379bf408ddc37ba5957" id="r_ab23958907eba7379bf408ddc37ba5957"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#ab23958907eba7379bf408ddc37ba5957">__VSF_WIFI_SCAN_DEFAULT_DWELL_MS</a>&#160;&#160;&#160;120</td></tr>
 <tr class="separator:ab23958907eba7379bf408ddc37ba5957"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7506eb9c6c392461950a265d482aa47" id="r_af7506eb9c6c392461950a265d482aa47"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#af7506eb9c6c392461950a265d482aa47">__VSF_WIFI_CCMP_BUF_SIZE</a>&#160;&#160;&#160;1600</td></tr>
+<tr class="separator:af7506eb9c6c392461950a265d482aa47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a2445fa8d59cf301db1fbd76216b2b3" id="r_a0a2445fa8d59cf301db1fbd76216b2b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#a0a2445fa8d59cf301db1fbd76216b2b3">__VSF_WIFI_MLME_MAX_RETRY</a>&#160;&#160;&#160;3</td></tr>
 <tr class="separator:a0a2445fa8d59cf301db1fbd76216b2b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9045c0752036e1763298594c6684189c" id="r_a9045c0752036e1763298594c6684189c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#a9045c0752036e1763298594c6684189c">__VSF_WIFI_MLME_TIMEOUT_MS</a>&#160;&#160;&#160;400</td></tr>
 <tr class="separator:a9045c0752036e1763298594c6684189c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a189b4ff4e52babfb8969ed5d887a7e61" id="r_a189b4ff4e52babfb8969ed5d887a7e61"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#a189b4ff4e52babfb8969ed5d887a7e61">__VSF_WIFI_WPA_TIMEOUT_MS</a>&#160;&#160;&#160;3000</td></tr>
+<tr class="separator:a189b4ff4e52babfb8969ed5d887a7e61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebe3a4f1de3f8112be853b4eef7d80d4" id="r_aebe3a4f1de3f8112be853b4eef7d80d4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#aebe3a4f1de3f8112be853b4eef7d80d4">__DOT11_STYPE_ASSOC_REQ</a>&#160;&#160;&#160;0x0</td></tr>
 <tr class="separator:aebe3a4f1de3f8112be853b4eef7d80d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaceafb0e47ca226f4ef684bccaae4c2" id="r_abaceafb0e47ca226f4ef684bccaae4c2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#abaceafb0e47ca226f4ef684bccaae4c2">__DOT11_STYPE_ASSOC_RESP</a>&#160;&#160;&#160;0x1</td></tr>
@@ -126,6 +132,8 @@ Functions</h2></td></tr>
 <tr class="separator:aa4da5bf21f504946a56f246c0d03bf83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fd93dffd6d54d79f59a0beba26dea63" id="r_a4fd93dffd6d54d79f59a0beba26dea63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#a4fd93dffd6d54d79f59a0beba26dea63">vsf_wifi_on_rx_internal</a> (<a class="el" href="structvsf__wifi__t.html">vsf_wifi_t</a> *wifi, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *frame, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> len)</td></tr>
 <tr class="separator:a4fd93dffd6d54d79f59a0beba26dea63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a232e9116ab2181ff9435780df855e81b" id="r_a232e9116ab2181ff9435780df855e81b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#a232e9116ab2181ff9435780df855e81b">vsf_wifi_data_rx</a> (<a class="el" href="structvsf__wifi__t.html">vsf_wifi_t</a> *wifi, const <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *dot11, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> len)</td></tr>
+<tr class="separator:a232e9116ab2181ff9435780df855e81b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d5a32c75f853597122ac61d4017d1d6" id="r_a7d5a32c75f853597122ac61d4017d1d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#a7d5a32c75f853597122ac61d4017d1d6">vsf_wifi_on_scan_hop_evt</a> (<a class="el" href="structvsf__wifi__t.html">vsf_wifi_t</a> *wifi)</td></tr>
 <tr class="separator:a7d5a32c75f853597122ac61d4017d1d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a762d9b876793abb57634eae3931c3182" id="r_a762d9b876793abb57634eae3931c3182"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#a762d9b876793abb57634eae3931c3182">vsf_wifi_on_mlme_retry_evt</a> (<a class="el" href="structvsf__wifi__t.html">vsf_wifi_t</a> *wifi)</td></tr>
@@ -160,6 +168,14 @@ Functions</h2></td></tr>
 <tr class="separator:ab055885badd6b25c168ca967dc67335c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6c3e3dc297ea8c284cc6527cba1952a" id="r_ac6c3e3dc297ea8c284cc6527cba1952a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#ac6c3e3dc297ea8c284cc6527cba1952a">vsf_wifi_tx</a> (<a class="el" href="structvsf__wifi__t.html">vsf_wifi_t</a> *wifi, const <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *frame, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> len)</td></tr>
 <tr class="separator:ac6c3e3dc297ea8c284cc6527cba1952a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d9449fbbb9374e12f56c9e98ead8a30" id="r_a7d9449fbbb9374e12f56c9e98ead8a30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#a7d9449fbbb9374e12f56c9e98ead8a30">vsf_wifi_mlme_tx</a> (<a class="el" href="structvsf__wifi__t.html">vsf_wifi_t</a> *wifi, const <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *frame, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> len)</td></tr>
+<tr class="separator:a7d9449fbbb9374e12f56c9e98ead8a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a946e1bedbfde4d81e4787df8df465ac3" id="r_a946e1bedbfde4d81e4787df8df465ac3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#a946e1bedbfde4d81e4787df8df465ac3">vsf_wifi_mlme_arm_timer</a> (<a class="el" href="structvsf__wifi__t.html">vsf_wifi_t</a> *wifi, <a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> ms)</td></tr>
+<tr class="separator:a946e1bedbfde4d81e4787df8df465ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad635adfc832682e7a179dd250457cf7a" id="r_ad635adfc832682e7a179dd250457cf7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#ad635adfc832682e7a179dd250457cf7a">vsf_wifi_mlme_handshake_done</a> (<a class="el" href="structvsf__wifi__t.html">vsf_wifi_t</a> *wifi)</td></tr>
+<tr class="separator:ad635adfc832682e7a179dd250457cf7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ebf7ec0032f8ba8bcce7bcd8799a5f0" id="r_a5ebf7ec0032f8ba8bcce7bcd8799a5f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsf__wifi_8c.html#a5ebf7ec0032f8ba8bcce7bcd8799a5f0">vsf_wifi_mlme_handshake_fail</a> (<a class="el" href="structvsf__wifi__t.html">vsf_wifi_t</a> *wifi, <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> reason)</td></tr>
+<tr class="separator:a5ebf7ec0032f8ba8bcce7bcd8799a5f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ab251be6e467f545a2138a030378bedeb" name="ab251be6e467f545a2138a030378bedeb"></a>
@@ -190,6 +206,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="af7506eb9c6c392461950a265d482aa47" name="af7506eb9c6c392461950a265d482aa47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7506eb9c6c392461950a265d482aa47">&#9670;&#160;</a></span>__VSF_WIFI_CCMP_BUF_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_WIFI_CCMP_BUF_SIZE&#160;&#160;&#160;1600</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a0a2445fa8d59cf301db1fbd76216b2b3" name="a0a2445fa8d59cf301db1fbd76216b2b3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0a2445fa8d59cf301db1fbd76216b2b3">&#9670;&#160;</a></span>__VSF_WIFI_MLME_MAX_RETRY</h2>
 
@@ -212,6 +242,20 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define __VSF_WIFI_MLME_TIMEOUT_MS&#160;&#160;&#160;400</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a189b4ff4e52babfb8969ed5d887a7e61" name="a189b4ff4e52babfb8969ed5d887a7e61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a189b4ff4e52babfb8969ed5d887a7e61">&#9670;&#160;</a></span>__VSF_WIFI_WPA_TIMEOUT_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_WIFI_WPA_TIMEOUT_MS&#160;&#160;&#160;3000</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -889,6 +933,40 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a232e9116ab2181ff9435780df855e81b" name="a232e9116ab2181ff9435780df855e81b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a232e9116ab2181ff9435780df855e81b">&#9670;&#160;</a></span>vsf_wifi_data_rx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_wifi_data_rx </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__wifi__t.html">vsf_wifi_t</a> *&#160;</td>
+          <td class="paramname"><em>wifi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *&#160;</td>
+          <td class="paramname"><em>dot11</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a7d5a32c75f853597122ac61d4017d1d6" name="a7d5a32c75f853597122ac61d4017d1d6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7d5a32c75f853597122ac61d4017d1d6">&#9670;&#160;</a></span>vsf_wifi_on_scan_hop_evt()</h2>
 
@@ -1327,8 +1405,116 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a7d9449fbbb9374e12f56c9e98ead8a30" name="a7d9449fbbb9374e12f56c9e98ead8a30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d9449fbbb9374e12f56c9e98ead8a30">&#9670;&#160;</a></span>vsf_wifi_mlme_tx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> vsf_wifi_mlme_tx </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__wifi__t.html">vsf_wifi_t</a> *&#160;</td>
+          <td class="paramname"><em>wifi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *&#160;</td>
+          <td class="paramname"><em>frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a946e1bedbfde4d81e4787df8df465ac3" name="a946e1bedbfde4d81e4787df8df465ac3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a946e1bedbfde4d81e4787df8df465ac3">&#9670;&#160;</a></span>vsf_wifi_mlme_arm_timer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_wifi_mlme_arm_timer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__wifi__t.html">vsf_wifi_t</a> *&#160;</td>
+          <td class="paramname"><em>wifi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a>&#160;</td>
+          <td class="paramname"><em>ms</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad635adfc832682e7a179dd250457cf7a" name="ad635adfc832682e7a179dd250457cf7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad635adfc832682e7a179dd250457cf7a">&#9670;&#160;</a></span>vsf_wifi_mlme_handshake_done()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_wifi_mlme_handshake_done </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__wifi__t.html">vsf_wifi_t</a> *&#160;</td>
+          <td class="paramname"><em>wifi</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5ebf7ec0032f8ba8bcce7bcd8799a5f0" name="a5ebf7ec0032f8ba8bcce7bcd8799a5f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ebf7ec0032f8ba8bcce7bcd8799a5f0">&#9670;&#160;</a></span>vsf_wifi_mlme_handshake_fail()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vsf_wifi_mlme_handshake_fail </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvsf__wifi__t.html">vsf_wifi_t</a> *&#160;</td>
+          <td class="paramname"><em>wifi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td>
+          <td class="paramname"><em>reason</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/08d95352a1b141089b2525e5e380d1577f185ee1" target="_blank">vsfteam/vsf@08d9535</a>
+  <a href="https://github.com/vsfteam/vsf/commit/487d870ea4ab2a08d2e545ba1a74c1bdc381fa7b" target="_blank">vsfteam/vsf@487d870</a>
 </div>
