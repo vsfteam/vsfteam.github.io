@@ -218,7 +218,7 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 <h1><a class="anchor" id="autotoc_md18"></a>
 3. 未完成 / 待续（按优先级）</h1>
 <ul>
-<li>[ ] **(P0) 【进行中】RT5572 + ChinaNet-5Jhc 回归：连接态单播 data 帧 TX 全失败 / RX EAPOL M1 不交付 → 4-way 超时**（详见 §5.6 调试记录，根因仍未定位）</li>
+<li>[x] **(已修复) RT5572 + ChinaNet-5Jhc 4-way 超时：BBP1 初始化错误（0x14 vs 0x50） 导致 PHY 无法解码 CCK short-preamble EAPOL M1**（详见 §5.6）</li>
 <li>[ ] **(P1)** WiFi netif 对接 lwIP：实现 linkoutput/input 桥接，lwIP 处理 DHCP/ARP/TCP</li>
 <li>[ ] **(P2)** 速率自适应：当前固定 OFDM MCS0 (6 Mbps)，需基于 TX status 反馈调整</li>
 <li>[ ] **(P2)** 扫描结果去重（同 AP 多次出现，多信道/重复 beacon）</li>
@@ -323,49 +323,56 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 <h3><a class="anchor" id="autotoc_md38"></a>
 (8) 无 LEGACY_BASIC_RATE 导致硬件不发 ACK</h3>
 <p>**症状**：AP 持续重传，最终放弃关联。 **根因**：硬件 auto-responder 没有有效的 basic-rate 表，无法生成 ACK。 **修复**：写入 LEGACY_BASIC_RATE + AUTO_RSP_CFG，同时设 TX_PWR_CFG_0..4 确保 ACK 发射功率足够。</p>
-<h2><a class="anchor" id="autotoc_md39"></a>
-5.6 【进行中】RT5572 + ChinaNet-5Jhc 4-way 超时回归（根因：硬件未 auto-ACK）</h2>
-<p>**测试环境**：vc.linux + WinUSB HCD + RT5572 真实 dongle（ASIC=0x55920222 rev=0x0222 = RT5592C+，2T2R），目标 AP <code>ChinaNet-5Jhc</code>（BSSID <code>88:C7:8F:1B:81:6E</code>，ch1，WPA2-PSK），STA MAC <code>00:87:33:23:03:41</code>。 测试脚本 <code>run_wifi_dhcp_test.ps1</code>，运行日志 <code>wifi_dhcp_run.log</code>， 空口抓包 <code>ref/wifi_channel1.pcap</code>（11.7MB，45783 帧，决定性证据）。</p>
-<p><b>症状（pcap + 设备日志双向印证）**：</p><ul>
-<li>本机状态机进入 mlme=4（自认为关联成功、AP 分配 aid），但 RAW-TOP 实测显示 AP 仍在 mlme=4 后持续重发 Assoc-Resp（最新一次 40 次），说明 AP 未认为关联 完成——即本机未对 Assoc-Resp 回链路层 ACK（详见下方根因重定位）。</li>
-<li>**EAPOL M1 = 明文 QoS Data 帧**（pcap frame 3669：<code>fc=0x880a</code>，type=2 sub=8，<code>llc=0x888e</code>，<code>eapol.type=3</code>，Protected=0）；AP 需先认为关联完成才会发 M1，因此在本 bug 下 M1 根本不会被发出。</li>
-<li>**M1 既不被硬件 ACK，也不被 DMA 上交主机**：设备日志 <code>mlme=4</code> 阶段 从未出现任何 <code>type=2</code> 帧（RAW-TOP 会打印所有 to-us 帧），全是 Assoc-Resp (sub=1) 和 Auth (sub=11) 的重传。STA 因此永远进不了 4-way → 无 M2 → pcap 中 STA→AP 方向一个 EAPOL 都没有 → 握手超时。</li>
-<li>**我方上行 data 帧 TX「失败」实为虚假统计**：<code>TX_STA_FIFO ack_ok=0 ack_req=1 wcid=1 pid=4 mcs=0 raw=0x40000189</code> 连续 34 次完全相同。<code>raw 值 一字不变</code>是已知的 TX_STA_FIFO 虚假统计现象**（FIFO 未被正确清空，VALID=1 但内容不刷新），不代表真实 TX 失败。绝不能据此判断 TX 死亡——必须用 RAW-TOP 真实帧观测，或先确认 FIFO 返回值是否动态刷新。</li>
-</ul>
-<p></b></p>
-<p><b>**已排除的假设（逐一实测证伪）**：</p><ol type="1">
-<li>**IQ 校准**：eFuse IQ 块全 0xFF，原代码却 iq_valid=true。已修为全 0xFF 时 iq_valid=false，不执行校准。不是根因。</li>
-<li>**RFCSR1=0x17（缺 TX0/TX1_PD）**：怀疑 TX 链路 power-gate。但 RFCSR8=0xF1 读回完全正确证明 RF 读路径可信；且 mgmt 帧能正常 TX 到达 AP，说明 TX 物理层 没死。0x17 可能只是 idle 时 TX 动态 power-gate。不是根因。</li>
-</ol>
-<p></b></p>
-<p><b>**⚠️ 本 session 的两处错误改动（已回滚，记录以防再犯）**： 本 session 一度无视历史已验证结论，把两处正确配置改反，均经实测证明是 **退化**，现已全部回滚到验证基线：</p><ol type="1">
-<li>**WCID_ATTR**：误据 Linux <code>rt2800_config_wcid_attr_cipher</code>（装 PTK 前清 0） 把 0x0001 改成 0x0000。**这是退化**——RT5572 的 WCID_ATTR <code>KEYTAB</code> 位 (bit0) 是硬件接收 unicast data 帧（type=2）的门控，即使软件加解密 (cipher=0) 也必须置 1，否则硬件丢弃所有 to-me 单播 data 帧（含明文 EAPOL M1）。Windows 实测写 0x0001，Linux/VSF 默认 0x0000 才是 bug。**已恢复 0x00000001**。Linux 的 clear-before-SET_KEY 路径不适用于本软件加解密 raw 后端。</li>
-<li>**MAC_BSSID(0x1010)**：误据 Linux <code>rt2800_config_intf</code> 把写我方 MAC 改成 写 AP BSSID。**这是退化**——验证基线是 0x1010 写我方 MAC + DW1 高半字 0x0023（vendor bit21=auto-ACK 门控），正是该组合下 mgmt 帧 auto-ACK 工作 (aid 分配、Assoc-Resp 双向 ACK)。改写 AP BSSID 实测无效。**已恢复写我方 MAC**。</li>
-</ol>
-<p></b></p>
-<p><b><b>当前状态**：两处错误改动已回滚到验证基线（WCID_ATTR=0x0001、0x1010=我方 MAC+bit21）并重测（wifi_dhcp_run.log），以 RAW-TOP 真实帧为唯一可信信号：</p><ul>
-<li><code>mlme=4</code> 阶段 **type=2 帧 = 0 个**（M1 仍未被 DMA 上交）。</li>
-<li>AP 持续重发 **Assoc-Resp 40 次 + Auth 9 次。</li>
-<li>4-way handshake 依旧 timeout。</li>
-</ul>
-<p></b></b></p>
-<p><b><b>**根因重定位（以 RAW-TOP 实测为准，修正本节开头的“mgmt 双向 ACK”假设）**： AP 反复重发同一 Assoc-Resp 达 40 次的唯一原因 = 收不到我方对该单播管理帧 的链路层 ACK。即**硬件未对 AP 的单播帧自动回 ACK**，这才是 M1 永不到达的真 正根因（与本 session 早期“mgmt 能 ACK”的判断相反；以无盲区的 RAW-TOP 实测 为准）。<code>TX_STA_FIFO=0x40000189</code> 确认为虚假统计、不可作为 TX 判断依据。</b></b></p>
-<p><b><b>**下一步方向**：在 Windows 成功抓包 <code>ref/rt5572_win_usb.log</code> 中定位关联成功 瞬间为开启 auto-ACK 写的寄存器（<code>MAC_SYS_CTRL</code> / <code>AUTO_RSP_CFG</code> / <code>TXOP</code> / <code>PBF</code> 等），与我方连接流程逐条对齐，找出缺失的 auto-ACK 使能写。</b></b></p>
-<p><b><b></p><blockquote class="doxtable">
-<p>&zwj;教训：历史记忆中经实测验证的配置（WCID_ATTR KEYTAB=1、0x1010 写我方 MAC、 TX_STA_FIFO 虚假统计）优先级高于 Linux 参考源码的纸面推断；不得用未经实测 的源码比对去推翻已验证结论。 </p>
-</blockquote>
-<blockquote class="doxtable">
-<p>&zwj;注：本回归出现在 ChinaNet-5Jhc；§2.6 记录的 VStudio AP 全流程通过是更早 的验证状态，两者差异（信道 ch1 vs ch6、AP 行为）尚待对比确认。 </p>
-</blockquote>
-<p></b></b></p>
+<h3><a class="anchor" id="autotoc_md39"></a>
+(9) BBP1 配错导致 CCK short-preamble EAPOL M1 丢失</h3>
+<p>**症状**：assoc 成功，但软件层完全收不到 AP 单播 EAPOL-Key M1，空口抓包显示 AP 反复重传 M1（<code>fc=0x880A</code>，Protected=0，CCK short-preamble），4-way handshake timeout。 **根因**：<code>__rt28xx_build_bbp()</code> 中 BBP1 被写成 0x14（I/Q_SWAP 0x04 + TX_ANTENNA 0x10）， 而 RT5592 2T2R 的正确值应为 0x50（Windows 原生驱动 <code>ref/rt5572_win_usb.log</code> 实测值）。 错误的 BBP1 使 PHY 无法正确解码 CCK short-preamble 的 M1 帧；软件层因此永远看不到 M1。 **修复**：BBP1 改为 0x50，并恢复 RX_FILTER=0x17F97（DROP_NOT_TO_ME）。 验证：M1 以明文 QoS Data 帧到达（prot=0），4-way 握手完成，DHCP 成功。</p>
 <h1><a class="anchor" id="autotoc_md40"></a>
-&lt;/blockquote&gt;</h1>
-<p><b><b></b></b></p>
-<p><b><b></b></b></p>
-<h1><a class="anchor" id="autotoc_md41"></a>
+5.6 【已修复】RT5572 + ChinaNet-5Jhc 4-way 超时回归</h1>
+<p>**测试环境**：vc.linux + WinUSB HCD + RT5572 真实 dongle（ASIC=0x55920222 rev=0x0222 = RT5592C+，2T2R），目标 AP <code>ChinaNet-5Jhc</code>（BSSID <code>88:C7:8F:1B:81:6E</code>，ch1，WPA2-PSK），STA MAC <code>00:87:33:23:03:41</code>。 测试脚本 <code>run_wifi_dhcp_test.ps1</code>，运行日志 <code>wifi_dhcp_run.log</code>， 空口抓包 <code>ref/wifi_channel1.pcap</code>（11.7MB，45783 帧，决定性证据）。 Windows 原生驱动 USB 对照：<code>ref/rt5572_win_usb.log</code>（Bus Hound 6.01）。</p>
+<h3><a class="anchor" id="autotoc_md41"></a>
+症状</h3>
+<p>assoc 成功后 STA 进入 4-way 状态，但 <code><a class="el" href="vsf__wifi_8c.html#a232e9116ab2181ff9435780df855e81b">vsf_wifi_data_rx()</a></code> 始终收不到 AP 单播的 EAPOL-Key M1。空口抓包 <code>ref/wifi_channel1.pcap</code> 显示 AP 反复向 STA MAC <code>00:87:33:23:03:41</code> 重传 M1（<code>fc=0x880A</code>，type=2 sub=8，Protected=0， LLC/SNAP <code>AA AA 03 00 00 00 88 8E</code>），但设备日志中没有任何目标地址为本 STA 的 <code>type=2</code> 帧；即使临时关闭 <code>DROP_NOT_TO_ME</code> 也看不到 M1，只看到大量其他 BSS 的帧。 最终 <code>wifi: 4-way handshake timeout</code>。</p>
+<h3><a class="anchor" id="autotoc_md42"></a>
+关键对照实验</h3>
+<p>通过逐变量回退，定位到 <b>BBP1</b> 是决定性寄存器：</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">BBP1   </th><th class="markdownTableHeadNone">其他 BBP 保持基线   </th><th class="markdownTableHeadNone">M1 是否到达   </th><th class="markdownTableHeadNone">handshake    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0x14   </td><td class="markdownTableBodyNone">基线   </td><td class="markdownTableBodyNone">否   </td><td class="markdownTableBodyNone">timeout    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">0x50   </td><td class="markdownTableBodyNone">基线   </td><td class="markdownTableBodyNone">是（prot=0）   </td><td class="markdownTableBodyNone">完成   </td></tr>
+</table>
+<p>Windows 原生驱动 <code>ref/rt5572_win_usb.log</code> 在 RT5572 2T2R 初始化时明确写入 <code>BBP1=0x50</code>；Linux <code>rt2800_config_ant()</code> 对 2T2R 也会把 <code>BBP1_TX_ANTENNA</code> 配成 2， 但这里额外依赖了寄存器默认值/其他写入保持 bit6，而 VSF 的 shadow 初始化从 0 开始， 只写 0x14 会丢失必要的 bit6，导致 PHY 行为异常。</p>
+<h3><a class="anchor" id="autotoc_md43"></a>
+根因</h3>
+<p>BBP1 是 RT5592 的 <b>TX/RX 天线与 I-Q 路径控制</b> 寄存器。错误的 0x14 使 PHY 无法正确解码 AP 以 <b>CCK short-preamble 2 Mbps</b> 发送的 EAPOL-Key M1 帧， 芯片因此不向 USB DMA 上交该帧，软件层完全无感知。Auth/Assoc 使用 OFDM 6 Mbps， 所以此前工作正常；4-way 阶段的 M1 改用 CCK，问题才暴露。</p>
+<blockquote class="doxtable">
+<p>&zwj;注：此前曾误判为「硬件篡改 FC Protected bit」——那是在 <code>DROP_NOT_TO_ME</code> 关闭后，其他 BSS 的 data 帧被误当作 M1 的干扰现象；真正属于本 STA 的 M1 当时根本未被 PHY 解出，自然谈不上 Protected bit。 </p>
+</blockquote>
+<h3><a class="anchor" id="autotoc_md44"></a>
+修复</h3>
+<p><code>__rt28xx_build_bbp()</code> 中：</p>
+<div class="fragment"><div class="line">n = __emit_bbp(ops, n, 1, 0x50);   <span class="comment">/* 原为 0x14 */</span></div>
+</div><!-- fragment --><p>同时把调试期间临时改动的项恢复为基线：</p><ul>
+<li>BBP70 恢复为 <code>0x05</code></li>
+<li>RX_FILTER 恢复为 <code>0x00017F97</code>（DROP_NOT_TO_ME）</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md45"></a>
+验证</h3>
+<p>修复后日志：</p>
+<div class="fragment"><div class="line">wifi: associated, aid=19 (4-way handshake)</div>
+<div class="line">wifi: 4-way M2 sent (single)</div>
+<div class="line">wifi: 4-way M3 rx, M4 sent (keys ready)</div>
+<div class="line">wifi: 4-way handshake complete, aid=19 (link up)</div>
+<div class="line">wifi: connected to &quot;ChinaNet-5Jhc&quot;</div>
+<div class="line">...</div>
+<div class="line">wifi: DHCP complete!</div>
+</div><!-- fragment --><p>M1 现在以明文 QoS Data 帧到达（<code>fc=0x880A</code>，Protected=0），<code><a class="el" href="vsf__wifi_8c.html#a232e9116ab2181ff9435780df855e81b">vsf_wifi_data_rx()</a></code> 正确识别 LLC/SNAP EAPOL 并送入 4-way 状态机。</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md47"></a>
 6. 文件清单</h1>
-<p><b><b></b></b></p>
-<p><b><b></p><table class="markdownTable">
+<table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">文件   </th><th class="markdownTableHeadNone">用途    </th></tr>
 <tr class="markdownTableRowOdd">
@@ -391,41 +398,29 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code><a class="el" href="_b_r_i_n_g_u_p_8md.html">usb/host/class/wifi/BRINGUP.md</a></code>   </td><td class="markdownTableBodyNone">本文   </td></tr>
 </table>
-<p></b></b></p>
-<p><b><b></p><hr  />
-<p></b></b></p>
-<p><b><b></b></b></p>
-<h1><a class="anchor" id="autotoc_md43"></a>
+<hr  />
+<h1><a class="anchor" id="autotoc_md49"></a>
 7. 调试 cheatsheet</h1>
-<p><b><b></b></b></p>
-<p><b><b></b></b></p>
-<h2><a class="anchor" id="autotoc_md44"></a>
+<h2><a class="anchor" id="autotoc_md50"></a>
 7.1 set_channel 诊断日志</h2>
-<p><b><b> <code>__rt28xx_setch_after_diag</code> 每次跳频打印 RX_STA_CNT1 / false_cca / plcp_err / MAC_SYS_CTRL(TX_EN/RX_EN) / LDO_CFG0(VLEVEL) / CH_IDLE / CH_BUSY。</p><ul>
+<p><code>__rt28xx_setch_after_diag</code> 每次跳频打印 RX_STA_CNT1 / false_cca / plcp_err / MAC_SYS_CTRL(TX_EN/RX_EN) / LDO_CFG0(VLEVEL) / CH_IDLE / CH_BUSY。</p><ul>
 <li>false_cca &gt; 0 ⇒ RF/PHY 前端活着（0 帧则查 USB DMA 路径）</li>
 <li>全 0 ⇒ RF/PHY dead（查 RF 序列 / TX_PIN_CFG）</li>
 <li>5G 信道 VLEVEL 应为 5，2.4G 应为 0</li>
 </ul>
-<p></b></b></p>
-<p><b><b></b></b></p>
-<h2><a class="anchor" id="autotoc_md45"></a>
+<h2><a class="anchor" id="autotoc_md51"></a>
 7.2 校验寄存器写入顺序</h2>
-<p><b><b> Wireshark filter <code>usb.bRequest == 6</code> 看 vendor 控制写；对照 <code>__rt28xx_init_script[]</code> / <code>__rt28xx_emit_channel</code> 注释定位。</b></b></p>
-<p><b><b></b></b></p>
-<h2><a class="anchor" id="autotoc_md46"></a>
+<p>Wireshark filter <code>usb.bRequest == 6</code> 看 vendor 控制写；对照 <code>__rt28xx_init_script[]</code> / <code>__rt28xx_emit_channel</code> 注释定位。</p>
+<h2><a class="anchor" id="autotoc_md52"></a>
 7.3 RX 帧完整性</h2>
-<p><b><b> 在 RX 分支 hex dump 前 32 字节，核对 RXINFO_W0[15:0] = rx_pkt_len = RXWI(24B)+frame。</b></b></p>
-<p><b><b></b></b></p>
-<h2><a class="anchor" id="autotoc_md47"></a>
+<p>在 RX 分支 hex dump 前 32 字节，核对 RXINFO_W0[15:0] = rx_pkt_len = RXWI(24B)+frame。</p>
+<h2><a class="anchor" id="autotoc_md53"></a>
 7.4 验证 disconnect 不泄漏</h2>
-<p><b><b> 反复插拔 dongle，<code>vsf_usbh_malloc</code> 计数应回到平衡。</b></b></p>
-<p><b><b></p><hr  />
-<p></b></b></p>
-<p><b><b></b></b></p>
-<h1><a class="anchor" id="autotoc_md49"></a>
+<p>反复插拔 dongle，<code>vsf_usbh_malloc</code> 计数应回到平衡。</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md55"></a>
 8. 编译与运行验证状态</h1>
-<p><b><b></b></b></p>
-<p><b><b></p><ul>
+<ul>
 <li>vc.linux 工程 msbuild Debug/x64 构建通过，0 error。</li>
 <li>**已验证**（vc.linux + WinUSB HCD + RT5572 真实硬件）：<ul>
 <li>ep0 vendor 写 (USB_MULTI_WRITE=6) / 读 (USB_MULTI_READ=7) 通路</li>
@@ -449,11 +444,10 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 </ul>
 </li>
 </ul>
-<p></b></b></p>
-<p><b><b>espidf 测试集不含 wifi 用例——wifi 不接入 espidf，验证只通过 vc.linux 工程 跑 <code>wifi_scan</code> / <code>wifi_connect</code> / <code>wifi_disconnect</code> 完成。 </b></b></p>
+<p>espidf 测试集不含 wifi 用例——wifi 不接入 espidf，验证只通过 vc.linux 工程 跑 <code>wifi_scan</code> / <code>wifi_connect</code> / <code>wifi_disconnect</code> 完成。 </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/615b62dc82ff0e6292000e165c9222e3e542fe94" target="_blank">vsfteam/vsf@615b62d</a>
+  <a href="https://github.com/vsfteam/vsf/commit/c4c250b6ff967810a33c62fb61a555671bcc07ff" target="_blank">vsfteam/vsf@c4c250b</a>
 </div>
