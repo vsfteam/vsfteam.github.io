@@ -3,12 +3,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>VSF Documented: source/utilities/compiler/arm/arm_compiler.h 源文件</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -26,12 +28,17 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>首页</span></a></li>
       <li><a href="pages.html"><span>相关页面</span></a></li>
-      <li><a href="topics.html"><span>Topics</span></a></li>
+      <li><a href="topics.html"><span>专题</span></a></li>
       <li><a href="namespaces.html"><span>命名空间</span></a></li>
       <li><a href="annotated.html"><span>结构体</span></a></li>
       <li class="current"><a href="files.html"><span>文件</span></a></li>
@@ -44,11 +51,17 @@
       <li><a href="globals.html"><span>全局定义</span></a></li>
     </ul>
   </div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
 <div id="nav-path" class="navpath">
   <ul>
 <li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_6a3f4a93de6832ab3fcb23711763be58.html">utilities</a></li><li class="navelem"><a class="el" href="dir_aa5d0ba264f082f4cd7bb2153def15af.html">compiler</a></li><li class="navelem"><a class="el" href="dir_224dc75cf40d50b0f58e3c7b66f6bb7f.html">arm</a></li>  </ul>
 </div>
 </div><!-- top -->
+<div id="doc-content">
 <div class="header">
   <div class="headertitle"><div class="title">arm_compiler.h</div></div>
 </div><!--header-->
@@ -86,9 +99,9 @@
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#ifndef __VSF_HEADER_ONLY_SHOW_COMPILER_INFO__</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#   include &quot;<a class="code" href="x86_2type_8h.html">./type.h</a>&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#   include &quot;<a class="code" href="arm_2type_8h.html">./type.h</a>&quot;</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;../__common/__compiler.h&quot;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;<a class="code" href="____compiler_8h.html">../__common/__compiler.h</a>&quot;</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">/*----------------------------------------------------------------------------*</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"> * Overwrite MAX_CONSTRUCTOR_PRIORITY if necessary                            *</span></div>
@@ -252,15 +265,15 @@
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="preprocessor">#if __IS_COMPILER_IAR__</span></div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="preprocessor">#   define ENABLE_GLOBAL_INTERRUPT()            __enable_interrupt()</span></div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="preprocessor">#   define ENABLE_GLOBAL_INTERRUPT()            __enable_irq()</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="arm__compiler_8h.html#a5f49ab0b615a22ce16c6fd2a09a9f9dd">  203</a></span><span class="preprocessor">#   define ENABLE_GLOBAL_INTERRUPT()            __enable_irq()</span></div>
 <div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="preprocessor">#if __IS_COMPILER_IAR__</span></div>
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="preprocessor">#   define DISABLE_GLOBAL_INTERRUPT()           ____disable_irq()</span></div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno"><a class="line" href="arm__compiler_8h.html#a5f49ab0b615a22ce16c6fd2a09a9f9dd">  209</a></span> </div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> ____disable_irq(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_typedef" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ____disable_irq(<span class="keywordtype">void</span>)</div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>{</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> wPRIMASK = __get_interrupt_state();</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <a class="code hl_typedef" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> wPRIMASK = __get_interrupt_state();</div>
 <div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    __disable_interrupt();</div>
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <span class="keywordflow">return</span> wPRIMASK;</div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>}</div>
@@ -275,9 +288,9 @@
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="preprocessor">#   define DISABLE_GLOBAL_INTERRUPT()           ____disable_irq()</span></div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> ____disable_irq(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_typedef" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ____disable_irq(<span class="keywordtype">void</span>)</div>
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno"><a class="line" href="arm__compiler_8h.html#a02f5fad71c0af5fc8ae4659ddf631ebc">  228</a></span>{</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> cpsr;</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    <a class="code hl_typedef" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> cpsr;</div>
 <div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
 <div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    __asm__ <a class="code hl_define" href="____compiler_8h.html#a64fa3037957156c60db536aad57ae07e">__volatile__</a>(<span class="stringliteral">&quot;mrs %[cpsr], primask\n&quot;</span></div>
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>                        <span class="stringliteral">&quot;cpsid i\n&quot;</span></div>
@@ -289,20 +302,20 @@
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="preprocessor">#if __IS_COMPILER_IAR__</span></div>
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="preprocessor">#   define GET_GLOBAL_INTERRUPT_STATE()         __get_interrupt_state()</span></div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="preprocessor">#   define SET_GLOBAL_INTERRUPT_STATE(__STATE)  __set_interrupt_state(__STATE)</span></div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="keyword">typedef</span> __istate_t   <a class="code hl_typedef" href="arm__compiler_8h.html#a4497b5ac084b87f2d9890ef5f1cc78e7">vsf_gint_state_t</a>;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="keyword">typedef</span> __istate_t   <a class="code hl_typedef" href="linux__generic_8h.html#a4497b5ac084b87f2d9890ef5f1cc78e7">vsf_gint_state_t</a>;</div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="preprocessor">#elif __IS_COMPILER_ARM_COMPILER_5__ || __IS_COMPILER_ARM_COMPILER_6__</span></div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="preprocessor">#   define GET_GLOBAL_INTERRUPT_STATE()         __get_PRIMASK()</span></div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="preprocessor">#   define SET_GLOBAL_INTERRUPT_STATE(__STATE)  __set_PRIMASK(__STATE)</span></div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="keyword">typedef</span> <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>   <a class="code hl_typedef" href="arm__compiler_8h.html#a4497b5ac084b87f2d9890ef5f1cc78e7">vsf_gint_state_t</a>;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="keyword">typedef</span> <a class="code hl_typedef" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>   <a class="code hl_typedef" href="linux__generic_8h.html#a4497b5ac084b87f2d9890ef5f1cc78e7">vsf_gint_state_t</a>;</div>
 <div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="preprocessor">#elif __IS_COMPILER_GCC__</span></div>
 <div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="preprocessor">#   define GET_GLOBAL_INTERRUPT_STATE()         __get_PRIMASK()</span></div>
 <div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="preprocessor">#   define SET_GLOBAL_INTERRUPT_STATE(__STATE)  __set_PRIMASK(__STATE)</span></div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="keyword">typedef</span> <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>   <a class="code hl_typedef" href="arm__compiler_8h.html#a4497b5ac084b87f2d9890ef5f1cc78e7">vsf_gint_state_t</a>;</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="keyword">typedef</span> <a class="code hl_typedef" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>   <a class="code hl_typedef" href="linux__generic_8h.html#a4497b5ac084b87f2d9890ef5f1cc78e7">vsf_gint_state_t</a>;</div>
 <div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="keyword">typedef</span> <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a>   <a class="code hl_typedef" href="arm__compiler_8h.html#a4497b5ac084b87f2d9890ef5f1cc78e7">vsf_gint_state_t</a>;</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="keyword">typedef</span> <a class="code hl_typedef" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a>   <a class="code hl_typedef" href="linux__generic_8h.html#a4497b5ac084b87f2d9890ef5f1cc78e7">vsf_gint_state_t</a>;</div>
 <div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="preprocessor">#   define GET_GLOBAL_INTERRUPT_STATE()         ____get_PRIMASK()</span></div>
 <div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>VSF_CAL_ALWAYS_INLINE <span class="keyword">static</span> <span class="keyword">inline</span> <a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> ____get_PRIMASK(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>VSF_CAL_ALWAYS_INLINE <span class="keyword">static</span> <span class="keyword">inline</span> <a class="code hl_typedef" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> ____get_PRIMASK(<span class="keywordtype">void</span>)</div>
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>{</div>
 <div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> result;</div>
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
@@ -312,7 +325,7 @@
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
 <div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="preprocessor">#   define SET_GLOBAL_INTERRUPT_STATE(__STATE)  ____set_PRIMASK(__STATE)</span></div>
 <div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>VSF_CAL_ALWAYS_INLINE <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> ____set_PRIMASK(<a class="code hl_typedef" href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a> priMask)</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>VSF_CAL_ALWAYS_INLINE <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> ____set_PRIMASK(<a class="code hl_typedef" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> priMask)</div>
 <div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>{</div>
 <div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    __asm__ <span class="keyword">volatile</span> (<span class="stringliteral">&quot;MSR primask, %0&quot;</span> : : <span class="stringliteral">&quot;r&quot;</span> (priMask) : <span class="stringliteral">&quot;memory&quot;</span>);</div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>}</div>
@@ -386,14 +399,15 @@
 <div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
 <div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span> </div>
 <div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span> </div>
-<div class="ttc" id="a____compiler_8h_html_a64fa3037957156c60db536aad57ae07e"><div class="ttname"><a href="____compiler_8h.html#a64fa3037957156c60db536aad57ae07e">__volatile__</a></div><div class="ttdeci">#define __volatile__</div><div class="ttdef"><b>Definition</b> __compiler.h:56</div></div>
-<div class="ttc" id="aarm__compiler_8h_html_a4497b5ac084b87f2d9890ef5f1cc78e7"><div class="ttname"><a href="arm__compiler_8h.html#a4497b5ac084b87f2d9890ef5f1cc78e7">vsf_gint_state_t</a></div><div class="ttdeci">uint32_t vsf_gint_state_t</div><div class="ttdef"><b>Definition</b> arm_compiler.h:254</div></div>
+<div class="ttc" id="a____compiler_8h_html"><div class="ttname"><a href="____compiler_8h.html">__compiler.h</a></div></div>
+<div class="ttc" id="a____compiler_8h_html_a64fa3037957156c60db536aad57ae07e"><div class="ttname"><a href="____compiler_8h.html#a64fa3037957156c60db536aad57ae07e">__volatile__</a></div><div class="ttdeci">#define __volatile__</div><div class="ttdef"><b>定义</b> __compiler.h:56</div></div>
+<div class="ttc" id="aarm_2type_8h_html"><div class="ttname"><a href="arm_2type_8h.html">type.h</a></div></div>
 <div class="ttc" id="aarm__compiler__detect_8h_html"><div class="ttname"><a href="arm__compiler__detect_8h.html">arm_compiler_detect.h</a></div></div>
-<div class="ttc" id="astdint_8h_html_a324c5d28c0d82f502a234ab99efac87a"><div class="ttname"><a href="stdint_8h.html#a324c5d28c0d82f502a234ab99efac87a">uint32_t</a></div><div class="ttdeci">unsigned uint32_t</div><div class="ttdef"><b>Definition</b> stdint.h:9</div></div>
-<div class="ttc" id="ax86_2type_8h_html"><div class="ttname"><a href="x86_2type_8h.html">type.h</a></div></div>
+<div class="ttc" id="alinux__generic_8h_html_a4497b5ac084b87f2d9890ef5f1cc78e7"><div class="ttname"><a href="linux__generic_8h.html#a4497b5ac084b87f2d9890ef5f1cc78e7">vsf_gint_state_t</a></div><div class="ttdeci">volatile bool vsf_gint_state_t</div><div class="ttdef"><b>定义</b> linux_generic.h:109</div></div>
+<div class="ttc" id="astdint_8h_html_a33594304e786b158f3fb30289278f5af"><div class="ttname"><a href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a></div><div class="ttdeci">unsigned uint32_t</div><div class="ttdef"><b>定义</b> stdint.h:9</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/05dbbae9804ceb66a85f9f502042888e7521f8e7" target="_blank">vsfteam/vsf@05dbbae</a>
+  <a href="https://github.com/vsfteam/vsf/commit/38c3a6bbe9ebcf24c6487b816a7af393e4de4618" target="_blank">vsfteam/vsf@38c3a6b</a>
   生成
 </div>
