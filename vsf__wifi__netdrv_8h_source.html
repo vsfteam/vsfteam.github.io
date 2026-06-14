@@ -96,89 +96,109 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__wifi_8h.html">./vsf_wifi.h</a>&quot;</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__tcpip_8h.html">component/tcpip/vsf_tcpip.h</a>&quot;</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#if     defined(__VSF_WIFI_NETDRV_CLASS_IMPLEMENT)</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#   undef __VSF_WIFI_NETDRV_CLASS_IMPLEMENT</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#   define __VSF_CLASS_IMPLEMENT__</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">/* Number of inbound frames the bus-context RX hook can stage for the netdrv</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"> * worker thread.  Each slot holds one fully built Ethernet frame. */</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#ifndef VSF_WIFI_NETDRV_CFG_RX_QUEUE_SIZE</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="vsf__wifi__netdrv_8h.html#aa08eae752dc8e48da949720e85b6c6f4">   47</a></span><span class="preprocessor">#   define VSF_WIFI_NETDRV_CFG_RX_QUEUE_SIZE    8</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">/* Ethernet frame staging size: 14-byte Ethernet II header + 1500 MTU. */</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="vsf__wifi__netdrv_8h.html#adf1aec3a8d508aea29e2ed2a030309dc">   51</a></span><span class="preprocessor">#define VSF_WIFI_NETDRV_ETH_FRAME_SIZE          (14 + 1500)</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">/* 802.11 TX frame size: QoS data header(26) + LLC/SNAP(8) + 1500 payload. */</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="vsf__wifi__netdrv_8h.html#a65673092dc4bce6db919364ecf6374de">   54</a></span><span class="preprocessor">#define VSF_WIFI_NETDRV_DOT11_FRAME_SIZE        (26 + 8 + 1500)</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/*============================ LOGGING HELPERS ===============================*/</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#if VSF_WIFI_CFG_NETDRV_LOG_LEVEL &gt;= 1</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#   define vsf_wifi_netdrv_trace_error(...)    vsf_trace_error(__VA_ARGS__)</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="vsf__wifi__netdrv_8h.html#a86f76c4e809ee52a95090890850e4d36">   36</a></span><span class="preprocessor">#   define vsf_wifi_netdrv_trace_error(...)    ((void)0)</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#if VSF_WIFI_CFG_NETDRV_LOG_LEVEL &gt;= 2</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#   define vsf_wifi_netdrv_trace_info(...)     vsf_trace_info(__VA_ARGS__)</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="vsf__wifi__netdrv_8h.html#ab813ec8df9ed3da5b040577e6f7feb08">   42</a></span><span class="preprocessor">#   define vsf_wifi_netdrv_trace_info(...)     ((void)0)</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#if VSF_WIFI_CFG_NETDRV_LOG_LEVEL &gt;= 4</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#   define vsf_wifi_netdrv_trace_debug(...)    vsf_trace_info(__VA_ARGS__)</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="vsf__wifi__netdrv_8h.html#a21b05957a9723844f95b57e5fbdd689e">   48</a></span><span class="preprocessor">#   define vsf_wifi_netdrv_trace_debug(...)    ((void)0)</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#if     defined(__VSF_WIFI_NETDRV_CLASS_IMPLEMENT)</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#   undef __VSF_WIFI_NETDRV_CLASS_IMPLEMENT</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#   define __VSF_CLASS_IMPLEMENT__</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="foldopen" id="foldopen00059" data-start="{" data-end="};">
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="structvk__netdrv__wifi__rxslot__t.html">   59</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvk__netdrv__wifi__rxslot__t.html">vk_netdrv_wifi_rxslot_t</a> {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structvk__netdrv__wifi__rxslot__t.html#a88a17f867d7e4f3d7bcc11ff06be0821">   60</a></span>    <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="code hl_variable" href="structvk__netdrv__wifi__rxslot__t.html#a88a17f867d7e4f3d7bcc11ff06be0821">len</a>;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="structvk__netdrv__wifi__rxslot__t.html#a8f3d405db7d6fdd9e758b07e98bad506">   61</a></span>    <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>  <a class="code hl_variable" href="structvk__netdrv__wifi__rxslot__t.html#a8f3d405db7d6fdd9e758b07e98bad506">buf</a>[<a class="code hl_define" href="vsf__wifi__netdrv_8h.html#adf1aec3a8d508aea29e2ed2a030309dc">VSF_WIFI_NETDRV_ETH_FRAME_SIZE</a>];</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="vsf__wifi__netdrv_8h.html#ae0e0e3c2af090dd0afc33b7e825460f8">   62</a></span>} <a class="code hl_typedef" href="vsf__wifi__netdrv_8h.html#ae0e0e3c2af090dd0afc33b7e825460f8">vk_netdrv_wifi_rxslot_t</a>;</div>
-</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#include &quot;<a class="code" href="ooc__class_8h.html">utilities/ooc_class.h</a>&quot;</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="foldopen" id="foldopen00064" data-start="{" data-end="};">
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classvk__netdrv__wifi__t.html">   64</a></span><a class="code hl_define" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code hl_class" href="classvk__netdrv__wifi__t.html">vk_netdrv_wifi_t</a>) {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    public_member(</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        implement(<a class="code hl_class" href="classvk__netdrv__t.html">vk_netdrv_t</a>)</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <a class="code hl_struct" href="structvsf__wifi__t.html">vsf_wifi_t</a> *wifi;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classvk__netdrv__wifi__t.html#a177d77f6383414103cb78c940a966f82">   68</a></span>    )</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    private_member(</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <a class="code hl_class" href="classvsf__eda__t.html">vsf_eda_t</a> *thread;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>    <a class="code hl_variable" href="ieee80211_8h.html#abed930eaee09463899231504dbbdaa98">bssid</a>[6];        <span class="comment">/* cached on link-up, used as TX RA/addr1 */</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">/* Number of inbound frames the bus-context RX hook can stage for the netdrv</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment"> * worker thread.  Each slot holds one fully built Ethernet frame. */</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#ifndef VSF_WIFI_NETDRV_CFG_RX_QUEUE_SIZE</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="vsf__wifi__netdrv_8h.html#aa08eae752dc8e48da949720e85b6c6f4">   67</a></span><span class="preprocessor">#   define VSF_WIFI_NETDRV_CFG_RX_QUEUE_SIZE    8</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">/* Ethernet frame staging size: 14-byte Ethernet II header + 1500 MTU. */</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="vsf__wifi__netdrv_8h.html#adf1aec3a8d508aea29e2ed2a030309dc">   71</a></span><span class="preprocessor">#define VSF_WIFI_NETDRV_ETH_FRAME_SIZE          (14 + 1500)</span></div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="comment">/* Single-producer (bus EDA RX hook) / single-consumer (worker thread)</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">         * ring of pre-built Ethernet frames.  head is advanced by the worker,</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">         * tail by the RX hook; both indices are touched under vsf_protect. */</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_struct" href="structvk__netdrv__wifi__rxslot__t.html">vk_netdrv_wifi_rxslot_t</a> rx_slots[<a class="code hl_define" href="vsf__wifi__netdrv_8h.html#aa08eae752dc8e48da949720e85b6c6f4">VSF_WIFI_NETDRV_CFG_RX_QUEUE_SIZE</a>];</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>    rx_head;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>    rx_tail;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="comment">/* Event flags raised in bus-EDA context (link up/down, rx ready) and</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">         * drained by the worker thread under vsf_protect. */</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>    pending;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="comment">/* TX scratch (worker/tcpip-thread context only, single-threaded). */</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>    tx_frame[<a class="code hl_define" href="vsf__wifi__netdrv_8h.html#a65673092dc4bce6db919364ecf6374de">VSF_WIFI_NETDRV_DOT11_FRAME_SIZE</a>];</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    )</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>};</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">/* 802.11 TX frame size: QoS data header(26) + LLC/SNAP(8) + 1500 payload. */</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="vsf__wifi__netdrv_8h.html#a65673092dc4bce6db919364ecf6374de">   74</a></span><span class="preprocessor">#define VSF_WIFI_NETDRV_DOT11_FRAME_SIZE        (26 + 8 + 1500)</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="};">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="structvk__netdrv__wifi__rxslot__t.html">   79</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvk__netdrv__wifi__rxslot__t.html">vk_netdrv_wifi_rxslot_t</a> {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="structvk__netdrv__wifi__rxslot__t.html#a88a17f867d7e4f3d7bcc11ff06be0821">   80</a></span>    <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="code hl_variable" href="structvk__netdrv__wifi__rxslot__t.html#a88a17f867d7e4f3d7bcc11ff06be0821">len</a>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="structvk__netdrv__wifi__rxslot__t.html#a8f3d405db7d6fdd9e758b07e98bad506">   81</a></span>    <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>  <a class="code hl_variable" href="structvk__netdrv__wifi__rxslot__t.html#a8f3d405db7d6fdd9e758b07e98bad506">buf</a>[<a class="code hl_define" href="vsf__wifi__netdrv_8h.html#adf1aec3a8d508aea29e2ed2a030309dc">VSF_WIFI_NETDRV_ETH_FRAME_SIZE</a>];</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="vsf__wifi__netdrv_8h.html#ae0e0e3c2af090dd0afc33b7e825460f8">   82</a></span>} <a class="code hl_typedef" href="vsf__wifi__netdrv_8h.html#ae0e0e3c2af090dd0afc33b7e825460f8">vk_netdrv_wifi_rxslot_t</a>;</div>
 </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">struct </span><a class="code hl_class" href="classvk__netlink__op__t.html">vk_netlink_op_t</a> <a class="code hl_variable" href="vsf__wifi__netdrv_8h.html#ab64179ee7e5bb316b2aa16fb82e69e2c">vk_netdrv_wifi_netlink_op</a>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="foldopen" id="foldopen00084" data-start="{" data-end="};">
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classvk__netdrv__wifi__t.html">   84</a></span><a class="code hl_define" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code hl_class" href="classvk__netdrv__wifi__t.html">vk_netdrv_wifi_t</a>) {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    public_member(</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        implement(<a class="code hl_class" href="classvk__netdrv__t.html">vk_netdrv_t</a>)</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <a class="code hl_struct" href="structvsf__wifi__t.html">vsf_wifi_t</a> *wifi;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classvk__netdrv__wifi__t.html#a177d77f6383414103cb78c940a966f82">   88</a></span>    )</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    private_member(</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <a class="code hl_class" href="classvsf__eda__t.html">vsf_eda_t</a> *thread;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>    <a class="code hl_variable" href="ieee80211_8h.html#abed930eaee09463899231504dbbdaa98">bssid</a>[6];        <span class="comment">/* cached on link-up, used as TX RA/addr1 */</span></div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">/* Wire a wifi-core instance to a netdrv instance and hand it to the lwIP</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment"> * pnp layer.  After this call decrypted RX data frames and link up/down</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment"> * events from `wifi` are bridged to lwIP; the stack auto-starts DHCP on</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment"> * link-up via the existing vsf_pnp_on_netdrv_connected hook.  `netdrv` must</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment"> * stay valid for the lifetime of the binding. */</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keywordtype">void</span> <a class="code hl_function" href="vsf__wifi__netdrv_8h.html#a59be882d44fbfa34c445d919b0d381cb">vsf_wifi_netdrv_start</a>(<a class="code hl_class" href="classvk__netdrv__wifi__t.html">vk_netdrv_wifi_t</a> *netdrv, <a class="code hl_struct" href="structvsf__wifi__t.html">vsf_wifi_t</a> *wifi);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>}</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_WIFI &amp;&amp; VSF_USE_TCPIP &amp;&amp; VSF_USE_LWIP</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_WIFI_NETDRV_H__</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="comment">/* Single-producer (bus EDA RX hook) / single-consumer (worker thread)</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">         * ring of pre-built Ethernet frames.  head is advanced by the worker,</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">         * tail by the RX hook; both indices are touched under vsf_protect. */</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <a class="code hl_struct" href="structvk__netdrv__wifi__rxslot__t.html">vk_netdrv_wifi_rxslot_t</a> rx_slots[<a class="code hl_define" href="vsf__wifi__netdrv_8h.html#aa08eae752dc8e48da949720e85b6c6f4">VSF_WIFI_NETDRV_CFG_RX_QUEUE_SIZE</a>];</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>    rx_head;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>    rx_tail;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="comment">/* Event flags raised in bus-EDA context (link up/down, rx ready) and</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">         * drained by the worker thread under vsf_protect. */</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>    pending;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="comment">/* TX scratch (worker/tcpip-thread context only, single-threaded). */</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>    tx_frame[<a class="code hl_define" href="vsf__wifi__netdrv_8h.html#a65673092dc4bce6db919364ecf6374de">VSF_WIFI_NETDRV_DOT11_FRAME_SIZE</a>];</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    )</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>};</div>
+</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">struct </span><a class="code hl_class" href="classvk__netlink__op__t.html">vk_netlink_op_t</a> <a class="code hl_variable" href="vsf__wifi__netdrv_8h.html#ab64179ee7e5bb316b2aa16fb82e69e2c">vk_netdrv_wifi_netlink_op</a>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">/* Wire a wifi-core instance to a netdrv instance and hand it to the lwIP</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment"> * pnp layer.  After this call decrypted RX data frames and link up/down</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment"> * events from `wifi` are bridged to lwIP; the stack auto-starts DHCP on</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment"> * link-up via the existing vsf_pnp_on_netdrv_connected hook.  `netdrv` must</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment"> * stay valid for the lifetime of the binding. */</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="keywordtype">void</span> <a class="code hl_function" href="vsf__wifi__netdrv_8h.html#a59be882d44fbfa34c445d919b0d381cb">vsf_wifi_netdrv_start</a>(<a class="code hl_class" href="classvk__netdrv__wifi__t.html">vk_netdrv_wifi_t</a> *netdrv, <a class="code hl_struct" href="structvsf__wifi__t.html">vsf_wifi_t</a> *wifi);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>}</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_USE_WIFI &amp;&amp; VSF_USE_TCPIP &amp;&amp; VSF_USE_LWIP</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_WIFI_NETDRV_H__</span></div>
 <div class="ttc" id="aclassvk__netdrv__t_html"><div class="ttname"><a href="classvk__netdrv__t.html">vk_netdrv_t</a></div><div class="ttdef"><b>Definition</b> vsf_netdrv.h:99</div></div>
-<div class="ttc" id="aclassvk__netdrv__wifi__t_html"><div class="ttname"><a href="classvk__netdrv__wifi__t.html">vk_netdrv_wifi_t</a></div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.h:64</div></div>
+<div class="ttc" id="aclassvk__netdrv__wifi__t_html"><div class="ttname"><a href="classvk__netdrv__wifi__t.html">vk_netdrv_wifi_t</a></div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.h:84</div></div>
 <div class="ttc" id="aclassvk__netlink__op__t_html"><div class="ttname"><a href="classvk__netlink__op__t.html">vk_netlink_op_t</a></div><div class="ttdef"><b>Definition</b> vsf_netdrv.h:53</div></div>
 <div class="ttc" id="aclassvsf__eda__t_html"><div class="ttname"><a href="classvsf__eda__t.html">vsf_eda_t</a></div><div class="ttdef"><b>Definition</b> vsf_eda.h:769</div></div>
 <div class="ttc" id="aieee80211_8h_html_abed930eaee09463899231504dbbdaa98"><div class="ttname"><a href="ieee80211_8h.html#abed930eaee09463899231504dbbdaa98">bssid</a></div><div class="ttdeci">u8 bssid[ETH_ALEN]</div><div class="ttdef"><b>Definition</b> ieee80211.h:2</div></div>
@@ -186,21 +206,21 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="aooc__class_8h_html_a62f3fe6fb9699483707f5352d777f2f0"><div class="ttname"><a href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a></div><div class="ttdeci">#define vsf_class(__name)</div><div class="ttdef"><b>Definition</b> ooc_class.h:52</div></div>
 <div class="ttc" id="astdint_8h_html_a273cf69d639a59973b6019625df33e30"><div class="ttname"><a href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a></div><div class="ttdeci">unsigned short uint16_t</div><div class="ttdef"><b>Definition</b> stdint.h:7</div></div>
 <div class="ttc" id="astdint_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition</b> stdint.h:5</div></div>
-<div class="ttc" id="astructvk__netdrv__wifi__rxslot__t_html"><div class="ttname"><a href="structvk__netdrv__wifi__rxslot__t.html">vk_netdrv_wifi_rxslot_t</a></div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.h:59</div></div>
-<div class="ttc" id="astructvk__netdrv__wifi__rxslot__t_html_a88a17f867d7e4f3d7bcc11ff06be0821"><div class="ttname"><a href="structvk__netdrv__wifi__rxslot__t.html#a88a17f867d7e4f3d7bcc11ff06be0821">vk_netdrv_wifi_rxslot_t::len</a></div><div class="ttdeci">uint16_t len</div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.h:60</div></div>
-<div class="ttc" id="astructvk__netdrv__wifi__rxslot__t_html_a8f3d405db7d6fdd9e758b07e98bad506"><div class="ttname"><a href="structvk__netdrv__wifi__rxslot__t.html#a8f3d405db7d6fdd9e758b07e98bad506">vk_netdrv_wifi_rxslot_t::buf</a></div><div class="ttdeci">uint8_t buf[VSF_WIFI_NETDRV_ETH_FRAME_SIZE]</div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.h:61</div></div>
+<div class="ttc" id="astructvk__netdrv__wifi__rxslot__t_html"><div class="ttname"><a href="structvk__netdrv__wifi__rxslot__t.html">vk_netdrv_wifi_rxslot_t</a></div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.h:79</div></div>
+<div class="ttc" id="astructvk__netdrv__wifi__rxslot__t_html_a88a17f867d7e4f3d7bcc11ff06be0821"><div class="ttname"><a href="structvk__netdrv__wifi__rxslot__t.html#a88a17f867d7e4f3d7bcc11ff06be0821">vk_netdrv_wifi_rxslot_t::len</a></div><div class="ttdeci">uint16_t len</div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.h:80</div></div>
+<div class="ttc" id="astructvk__netdrv__wifi__rxslot__t_html_a8f3d405db7d6fdd9e758b07e98bad506"><div class="ttname"><a href="structvk__netdrv__wifi__rxslot__t.html#a8f3d405db7d6fdd9e758b07e98bad506">vk_netdrv_wifi_rxslot_t::buf</a></div><div class="ttdeci">uint8_t buf[VSF_WIFI_NETDRV_ETH_FRAME_SIZE]</div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.h:81</div></div>
 <div class="ttc" id="astructvsf__wifi__t_html"><div class="ttname"><a href="structvsf__wifi__t.html">vsf_wifi_t</a></div><div class="ttdef"><b>Definition</b> vsf_wifi_priv.h:36</div></div>
 <div class="ttc" id="avsf__tcpip_8h_html"><div class="ttname"><a href="vsf__tcpip_8h.html">vsf_tcpip.h</a></div></div>
 <div class="ttc" id="avsf__wifi_8h_html"><div class="ttname"><a href="vsf__wifi_8h.html">vsf_wifi.h</a></div></div>
 <div class="ttc" id="avsf__wifi__cfg_8h_html"><div class="ttname"><a href="vsf__wifi__cfg_8h.html">vsf_wifi_cfg.h</a></div></div>
-<div class="ttc" id="avsf__wifi__netdrv_8h_html_a59be882d44fbfa34c445d919b0d381cb"><div class="ttname"><a href="vsf__wifi__netdrv_8h.html#a59be882d44fbfa34c445d919b0d381cb">vsf_wifi_netdrv_start</a></div><div class="ttdeci">void vsf_wifi_netdrv_start(vk_netdrv_wifi_t *netdrv, vsf_wifi_t *wifi)</div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.c:408</div></div>
-<div class="ttc" id="avsf__wifi__netdrv_8h_html_a65673092dc4bce6db919364ecf6374de"><div class="ttname"><a href="vsf__wifi__netdrv_8h.html#a65673092dc4bce6db919364ecf6374de">VSF_WIFI_NETDRV_DOT11_FRAME_SIZE</a></div><div class="ttdeci">#define VSF_WIFI_NETDRV_DOT11_FRAME_SIZE</div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.h:54</div></div>
-<div class="ttc" id="avsf__wifi__netdrv_8h_html_aa08eae752dc8e48da949720e85b6c6f4"><div class="ttname"><a href="vsf__wifi__netdrv_8h.html#aa08eae752dc8e48da949720e85b6c6f4">VSF_WIFI_NETDRV_CFG_RX_QUEUE_SIZE</a></div><div class="ttdeci">#define VSF_WIFI_NETDRV_CFG_RX_QUEUE_SIZE</div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.h:47</div></div>
+<div class="ttc" id="avsf__wifi__netdrv_8h_html_a59be882d44fbfa34c445d919b0d381cb"><div class="ttname"><a href="vsf__wifi__netdrv_8h.html#a59be882d44fbfa34c445d919b0d381cb">vsf_wifi_netdrv_start</a></div><div class="ttdeci">void vsf_wifi_netdrv_start(vk_netdrv_wifi_t *netdrv, vsf_wifi_t *wifi)</div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.c:411</div></div>
+<div class="ttc" id="avsf__wifi__netdrv_8h_html_a65673092dc4bce6db919364ecf6374de"><div class="ttname"><a href="vsf__wifi__netdrv_8h.html#a65673092dc4bce6db919364ecf6374de">VSF_WIFI_NETDRV_DOT11_FRAME_SIZE</a></div><div class="ttdeci">#define VSF_WIFI_NETDRV_DOT11_FRAME_SIZE</div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.h:74</div></div>
+<div class="ttc" id="avsf__wifi__netdrv_8h_html_aa08eae752dc8e48da949720e85b6c6f4"><div class="ttname"><a href="vsf__wifi__netdrv_8h.html#aa08eae752dc8e48da949720e85b6c6f4">VSF_WIFI_NETDRV_CFG_RX_QUEUE_SIZE</a></div><div class="ttdeci">#define VSF_WIFI_NETDRV_CFG_RX_QUEUE_SIZE</div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.h:67</div></div>
 <div class="ttc" id="avsf__wifi__netdrv_8h_html_ab64179ee7e5bb316b2aa16fb82e69e2c"><div class="ttname"><a href="vsf__wifi__netdrv_8h.html#ab64179ee7e5bb316b2aa16fb82e69e2c">vk_netdrv_wifi_netlink_op</a></div><div class="ttdeci">const struct vk_netlink_op_t vk_netdrv_wifi_netlink_op</div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.c:59</div></div>
-<div class="ttc" id="avsf__wifi__netdrv_8h_html_adf1aec3a8d508aea29e2ed2a030309dc"><div class="ttname"><a href="vsf__wifi__netdrv_8h.html#adf1aec3a8d508aea29e2ed2a030309dc">VSF_WIFI_NETDRV_ETH_FRAME_SIZE</a></div><div class="ttdeci">#define VSF_WIFI_NETDRV_ETH_FRAME_SIZE</div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.h:51</div></div>
+<div class="ttc" id="avsf__wifi__netdrv_8h_html_adf1aec3a8d508aea29e2ed2a030309dc"><div class="ttname"><a href="vsf__wifi__netdrv_8h.html#adf1aec3a8d508aea29e2ed2a030309dc">VSF_WIFI_NETDRV_ETH_FRAME_SIZE</a></div><div class="ttdeci">#define VSF_WIFI_NETDRV_ETH_FRAME_SIZE</div><div class="ttdef"><b>Definition</b> vsf_wifi_netdrv.h:71</div></div>
 <div class="ttc" id="avsf__wifi__netdrv_8h_html_ae0e0e3c2af090dd0afc33b7e825460f8"><div class="ttname"><a href="vsf__wifi__netdrv_8h.html#ae0e0e3c2af090dd0afc33b7e825460f8">vk_netdrv_wifi_rxslot_t</a></div><div class="ttdeci">struct vk_netdrv_wifi_rxslot_t vk_netdrv_wifi_rxslot_t</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/83b544521de994e7e56d1c485e6bfcd7eedcce16" target="_blank">vsfteam/vsf@83b5445</a>
+  <a href="https://github.com/vsfteam/vsf/commit/8b7786083154c9db5d0e8c29172587d388b9405a" target="_blank">vsfteam/vsf@8b77860</a>
 </div>
