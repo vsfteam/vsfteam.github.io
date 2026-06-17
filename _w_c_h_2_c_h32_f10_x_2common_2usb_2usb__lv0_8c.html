@@ -98,7 +98,12 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">ch32f10x_##__TYPE##_t USB_DC##__N;                                              \</div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keyword">const</span> ch32f10x_##__TYPE##_const_t __USB_DC##__N##_const = {              \</div>
+<div class="line">    USB_DC##__N##_CONFIG                                                        \</div>
+<div class="line">};                                                                              \</div>
+<div class="line">ch32f10x_##__TYPE##_t USB_DC##__N = {                                           \</div>
+<div class="line">    .param = &amp;__USB_DC##__N##_const                                             \</div>
+<div class="line">};                                                                              \</div>
 <div class="line">VSF_CAL_ISR(USB_DC##__N##_IRQHandler)                                           \</div>
 <div class="line">{                                                                               \</div>
 <div class="line">    ch32f10x_##__TYPE##_irq(&amp;USB_DC##__N);                                      \</div>
@@ -155,5 +160,5 @@ Macros</h2></td></tr>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/2909000939e8a07c490c2ccb074eb7cf9b4040bf" target="_blank">vsfteam/vsf@2909000</a>
+  <a href="https://github.com/vsfteam/vsf/commit/36b16b15372aa5e26c0af8868328720b699656a0" target="_blank">vsfteam/vsf@36b16b1</a>
 </div>
