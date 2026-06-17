@@ -88,7 +88,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__wifi__cfg_8h.html">../../vsf_wifi_cfg.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__wifi_8h.html">../../vsf_wifi.h</a>&quot;</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#if VSF_WIFI_USE_RT28XX == ENABLED</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
@@ -96,51 +96,80 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">/*</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"> * Firmware blob declared by chip/rt28xx/vsf_wifi_rt2870_firmware.c (weak</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"> * stub).  Link a strong override to ship the real rt2870.bin; the rt28xx</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"> * chip driver uses size &gt; 0 as the trigger to invoke run_blob during</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"> * firmware_load.</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>  <a class="code hl_variable" href="vsf__wifi__rt28xx_8h.html#a32542a898cedf7833da97bcdc73030c2">__rt2870_firmware_data</a>[];</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_typedef" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code hl_variable" href="vsf__wifi__rt28xx_8h.html#ae39e4a760937b39cfad9074de31a7523">__rt2870_firmware_size</a>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">/*============================ LOGGING HELPERS ===============================*/</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#if VSF_WIFI_CFG_CHIP_RT28XX_LOG_LEVEL &gt;= 1</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#   define vsf_wifi_chip_rt28xx_trace_error(...)   vsf_trace_error(__VA_ARGS__)</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="vsf__wifi__rt28xx_8h.html#a202d53706dd77883c3f7869cb4516566">   47</a></span><span class="preprocessor">#   define vsf_wifi_chip_rt28xx_trace_error(...)   ((void)0)</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"> * RT28xx chip-private bus operations.</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"> * The first member MUST be vsf_wifi_reg_bus_t so the generic wifi layer can</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"> * treat the structure as a plain register bus.  The USB bus driver embeds the</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"> * standard register ops here and appends RT28xx-specific primitives (e.g. the</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"> * USB ep0 vendor_request used for USB_DEVICE_MODE) after the shared part.</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="};">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structvsf__wifi__rt28xx__bus__ops__t.html">   41</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvsf__wifi__rt28xx__bus__ops__t.html">vsf_wifi_rt28xx_bus_ops_t</a> {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structvsf__wifi__rt28xx__bus__ops__t.html#a809dbcefc79b0142f6b832c356c72260">   42</a></span>    <a class="code hl_struct" href="structvsf__wifi__reg__bus__t.html">vsf_wifi_reg_bus_t</a> <a class="code hl_variable" href="structvsf__wifi__rt28xx__bus__ops__t.html#a809dbcefc79b0142f6b832c356c72260">base</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structvsf__wifi__rt28xx__bus__ops__t.html#af5f5f5b426d01512bbba21e0781f5bcc">   43</a></span>    <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> (*<a class="code hl_variable" href="structvsf__wifi__rt28xx__bus__ops__t.html#af5f5f5b426d01512bbba21e0781f5bcc">vendor_request</a>)(<a class="code hl_struct" href="structvsf__wifi__t.html">vsf_wifi_t</a> *wifi, <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> request,</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                                <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>, <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> index,</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                                <a class="code hl_typedef" href="vsf__wifi_8h.html#ac7fe4cecbf820060860fd6a9ea600ed1">vsf_wifi_done_t</a> done);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="vsf__wifi__rt28xx_8h.html#ae473e27dfd0ffb8358ce824f14f22acf">   46</a></span>} <a class="code hl_typedef" href="vsf__wifi__rt28xx_8h.html#ae473e27dfd0ffb8358ce824f14f22acf">vsf_wifi_rt28xx_bus_ops_t</a>;</div>
+</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#if VSF_WIFI_CFG_CHIP_RT28XX_LOG_LEVEL &gt;= 2</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#   define vsf_wifi_chip_rt28xx_trace_info(...)    vsf_trace_info(__VA_ARGS__)</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="vsf__wifi__rt28xx_8h.html#a5ad97f1f9eb3860d0203d8ca9b323a05">   53</a></span><span class="preprocessor">#   define vsf_wifi_chip_rt28xx_trace_info(...)    ((void)0)</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#if VSF_WIFI_CFG_CHIP_RT28XX_LOG_LEVEL &gt;= 4</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#   define vsf_wifi_chip_rt28xx_trace_debug(...)   vsf_trace_info(__VA_ARGS__)</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="vsf__wifi__rt28xx_8h.html#aff905144dc6b607c5fd6a3ce9a4ca875">   59</a></span><span class="preprocessor">#   define vsf_wifi_chip_rt28xx_trace_debug(...)   ((void)0)</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_WIFI_USE_RT28XX</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_WIFI_RT28XX_H__</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"> * Firmware blob declared by chip/rt28xx/vsf_wifi_rt2870_firmware.c (weak</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> * stub).  Link a strong override to ship the real rt2870.bin; the rt28xx</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> * chip driver uses size &gt; 0 as the trigger to invoke run_blob during</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> * firmware_load.</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>  <a class="code hl_variable" href="vsf__wifi__rt28xx_8h.html#a32542a898cedf7833da97bcdc73030c2">__rt2870_firmware_data</a>[];</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_typedef" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> <a class="code hl_variable" href="vsf__wifi__rt28xx_8h.html#ae39e4a760937b39cfad9074de31a7523">__rt2870_firmware_size</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">/*============================ LOGGING HELPERS ===============================*/</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#if VSF_WIFI_CFG_CHIP_RT28XX_LOG_LEVEL &gt;= 1</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#   define vsf_wifi_chip_rt28xx_trace_error(...)   vsf_trace_error(__VA_ARGS__)</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="vsf__wifi__rt28xx_8h.html#a202d53706dd77883c3f7869cb4516566">   64</a></span><span class="preprocessor">#   define vsf_wifi_chip_rt28xx_trace_error(...)   ((void)0)</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#if VSF_WIFI_CFG_CHIP_RT28XX_LOG_LEVEL &gt;= 2</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#   define vsf_wifi_chip_rt28xx_trace_info(...)    vsf_trace_info(__VA_ARGS__)</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="vsf__wifi__rt28xx_8h.html#a5ad97f1f9eb3860d0203d8ca9b323a05">   70</a></span><span class="preprocessor">#   define vsf_wifi_chip_rt28xx_trace_info(...)    ((void)0)</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#if VSF_WIFI_CFG_CHIP_RT28XX_LOG_LEVEL &gt;= 4</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">#   define vsf_wifi_chip_rt28xx_trace_debug(...)   vsf_trace_info(__VA_ARGS__)</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="vsf__wifi__rt28xx_8h.html#aff905144dc6b607c5fd6a3ce9a4ca875">   76</a></span><span class="preprocessor">#   define vsf_wifi_chip_rt28xx_trace_debug(...)   ((void)0)</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#endif      </span><span class="comment">// VSF_WIFI_USE_RT28XX</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#endif      </span><span class="comment">// __VSF_WIFI_RT28XX_H__</span></div>
+<div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>定义</b> __type.h:42</div></div>
+<div class="ttc" id="astdint_8h_html_a273cf69d639a59973b6019625df33e30"><div class="ttname"><a href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a></div><div class="ttdeci">unsigned short uint16_t</div><div class="ttdef"><b>定义</b> stdint.h:7</div></div>
 <div class="ttc" id="astdint_8h_html_a33594304e786b158f3fb30289278f5af"><div class="ttname"><a href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a></div><div class="ttdeci">unsigned uint32_t</div><div class="ttdef"><b>定义</b> stdint.h:9</div></div>
 <div class="ttc" id="astdint_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>定义</b> stdint.h:5</div></div>
-<div class="ttc" id="avsf__wifi__cfg_8h_html"><div class="ttname"><a href="vsf__wifi__cfg_8h.html">vsf_wifi_cfg.h</a></div></div>
+<div class="ttc" id="astructvsf__wifi__reg__bus__t_html"><div class="ttname"><a href="structvsf__wifi__reg__bus__t.html">vsf_wifi_reg_bus_t</a></div><div class="ttdef"><b>定义</b> vsf_wifi.h:211</div></div>
+<div class="ttc" id="astructvsf__wifi__rt28xx__bus__ops__t_html"><div class="ttname"><a href="structvsf__wifi__rt28xx__bus__ops__t.html">vsf_wifi_rt28xx_bus_ops_t</a></div><div class="ttdef"><b>定义</b> vsf_wifi_rt28xx.h:41</div></div>
+<div class="ttc" id="astructvsf__wifi__rt28xx__bus__ops__t_html_a809dbcefc79b0142f6b832c356c72260"><div class="ttname"><a href="structvsf__wifi__rt28xx__bus__ops__t.html#a809dbcefc79b0142f6b832c356c72260">vsf_wifi_rt28xx_bus_ops_t::base</a></div><div class="ttdeci">vsf_wifi_reg_bus_t base</div><div class="ttdef"><b>定义</b> vsf_wifi_rt28xx.h:42</div></div>
+<div class="ttc" id="astructvsf__wifi__rt28xx__bus__ops__t_html_af5f5f5b426d01512bbba21e0781f5bcc"><div class="ttname"><a href="structvsf__wifi__rt28xx__bus__ops__t.html#af5f5f5b426d01512bbba21e0781f5bcc">vsf_wifi_rt28xx_bus_ops_t::vendor_request</a></div><div class="ttdeci">vsf_err_t(* vendor_request)(vsf_wifi_t *wifi, uint8_t request, uint16_t value, uint16_t index, vsf_wifi_done_t done)</div><div class="ttdef"><b>定义</b> vsf_wifi_rt28xx.h:43</div></div>
+<div class="ttc" id="astructvsf__wifi__t_html"><div class="ttname"><a href="structvsf__wifi__t.html">vsf_wifi_t</a></div><div class="ttdef"><b>定义</b> vsf_wifi_priv.h:53</div></div>
+<div class="ttc" id="avsf__audio_8h_html_ad5265e9eca2f756804584a9ac3335519"><div class="ttname"><a href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a></div><div class="ttdeci">vk_av_control_value_t value</div><div class="ttdef"><b>定义</b> vsf_audio.h:171</div></div>
+<div class="ttc" id="avsf__wifi_8h_html"><div class="ttname"><a href="vsf__wifi_8h.html">vsf_wifi.h</a></div></div>
+<div class="ttc" id="avsf__wifi_8h_html_ac7fe4cecbf820060860fd6a9ea600ed1"><div class="ttname"><a href="vsf__wifi_8h.html#ac7fe4cecbf820060860fd6a9ea600ed1">vsf_wifi_done_t</a></div><div class="ttdeci">void(* vsf_wifi_done_t)(vsf_wifi_t *wifi, vsf_err_t err)</div><div class="ttdef"><b>定义</b> vsf_wifi.h:123</div></div>
 <div class="ttc" id="avsf__wifi__rt28xx_8h_html_a32542a898cedf7833da97bcdc73030c2"><div class="ttname"><a href="vsf__wifi__rt28xx_8h.html#a32542a898cedf7833da97bcdc73030c2">__rt2870_firmware_data</a></div><div class="ttdeci">const uint8_t __rt2870_firmware_data[]</div><div class="ttdef"><b>定义</b> vsf_wifi_rt2870_firmware.c:64</div></div>
 <div class="ttc" id="avsf__wifi__rt28xx_8h_html_ae39e4a760937b39cfad9074de31a7523"><div class="ttname"><a href="vsf__wifi__rt28xx_8h.html#ae39e4a760937b39cfad9074de31a7523">__rt2870_firmware_size</a></div><div class="ttdeci">const uint32_t __rt2870_firmware_size</div><div class="ttdef"><b>定义</b> vsf_wifi_rt2870_firmware.c:67</div></div>
+<div class="ttc" id="avsf__wifi__rt28xx_8h_html_ae473e27dfd0ffb8358ce824f14f22acf"><div class="ttname"><a href="vsf__wifi__rt28xx_8h.html#ae473e27dfd0ffb8358ce824f14f22acf">vsf_wifi_rt28xx_bus_ops_t</a></div><div class="ttdeci">struct vsf_wifi_rt28xx_bus_ops_t vsf_wifi_rt28xx_bus_ops_t</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/81c8834b328b50f30b3363206645cdae3efcb3e7" target="_blank">vsfteam/vsf@81c8834</a>
+  <a href="https://github.com/vsfteam/vsf/commit/4ae0ea9f0d6618a2f65a1e04491cbe082ffef2a2" target="_blank">vsfteam/vsf@4ae0ea9</a>
   生成
 </div>
