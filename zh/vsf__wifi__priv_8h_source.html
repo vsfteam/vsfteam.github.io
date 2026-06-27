@@ -304,8 +304,20 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>};</div>
 </div>
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="preprocessor">#endif </span><span class="comment">// VSF_USE_WIFI</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="preprocessor">#endif </span><span class="comment">// __VSF_WIFI_PRIV_H__</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="preprocessor">#if VSF_WIFI_USE_WPA == ENABLED</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="comment">/* CCMP-encrypt a plaintext data MPDU using a caller-supplied 48-bit PN</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="comment"> * counter (little-endian, pn[0] = LSB).  If `pn` is NULL the function falls</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="comment"> * back to wifi-&gt;wpa_tx_pn.  Returns the encrypted MPDU length, or 0 on</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="comment"> * failure.  Used by chip drivers that need to software-encrypt specific</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="comment"> * frames (e.g. MT76 broadcast/multicast) while leaving unicast traffic to</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="comment"> * the hardware crypto backend. */</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="keyword">extern</span> <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="code hl_function" href="vsf__wifi__priv_8h.html#aea2ec0611a5c6a996235f54a2f5c8625">vsf_wifi_ccmp_encap_with_pn</a>(<a class="code hl_struct" href="structvsf__wifi__t.html">vsf_wifi_t</a> *wifi,</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *frame, <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> len, <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *out, <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> cap,</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> pn[6]);</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="preprocessor">#endif </span><span class="comment">// VSF_USE_WIFI</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="preprocessor">#endif </span><span class="comment">// __VSF_WIFI_PRIV_H__</span></div>
 <div class="ttc" id="aclassvsf__callback__timer__t_html"><div class="ttname"><a href="classvsf__callback__timer__t.html">vsf_callback_timer_t</a></div><div class="ttdef"><b>定义</b> vsf_eda.h:851</div></div>
 <div class="ttc" id="aclassvsf__eda__t_html"><div class="ttname"><a href="classvsf__eda__t.html">vsf_eda_t</a></div><div class="ttdef"><b>定义</b> vsf_eda.h:769</div></div>
 <div class="ttc" id="astdint_8h_html_a273cf69d639a59973b6019625df33e30"><div class="ttname"><a href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a></div><div class="ttdeci">unsigned short uint16_t</div><div class="ttdef"><b>定义</b> stdint.h:7</div></div>
@@ -396,11 +408,12 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="avsf__wifi_8h_html_aa112f8b87782810fd08e3ab500f3a77b"><div class="ttname"><a href="vsf__wifi_8h.html#aa112f8b87782810fd08e3ab500f3a77b">VSF_WIFI_CFG_SCAN_MAX_CHANNELS</a></div><div class="ttdeci">#define VSF_WIFI_CFG_SCAN_MAX_CHANNELS</div><div class="ttdef"><b>定义</b> vsf_wifi.h:110</div></div>
 <div class="ttc" id="avsf__wifi_8h_html_ac7fe4cecbf820060860fd6a9ea600ed1"><div class="ttname"><a href="vsf__wifi_8h.html#ac7fe4cecbf820060860fd6a9ea600ed1">vsf_wifi_done_t</a></div><div class="ttdeci">void(* vsf_wifi_done_t)(vsf_wifi_t *wifi, vsf_err_t err)</div><div class="ttdef"><b>定义</b> vsf_wifi.h:123</div></div>
 <div class="ttc" id="avsf__wifi_8h_html_aea22baa6b624adb88d57a278696995ba"><div class="ttname"><a href="vsf__wifi_8h.html#aea22baa6b624adb88d57a278696995ba">vsf_wifi_attach_fail_t</a></div><div class="ttdeci">void(* vsf_wifi_attach_fail_t)(vsf_wifi_t *wifi, vsf_err_t err)</div><div class="ttdef"><b>定义</b> vsf_wifi.h:516</div></div>
+<div class="ttc" id="avsf__wifi__priv_8h_html_aea2ec0611a5c6a996235f54a2f5c8625"><div class="ttname"><a href="vsf__wifi__priv_8h.html#aea2ec0611a5c6a996235f54a2f5c8625">vsf_wifi_ccmp_encap_with_pn</a></div><div class="ttdeci">uint16_t vsf_wifi_ccmp_encap_with_pn(vsf_wifi_t *wifi, const uint8_t *frame, uint16_t len, uint8_t *out, uint16_t cap, uint8_t pn[6])</div><div class="ttdef"><b>定义</b> vsf_wifi.c:923</div></div>
 <div class="ttc" id="avsf__wifi__radio_8h_html_a5cc71c2443269bfab778fe2d1141cf92"><div class="ttname"><a href="vsf__wifi__radio_8h.html#a5cc71c2443269bfab778fe2d1141cf92">vsf_wifi_radio_rx_cb_t</a></div><div class="ttdeci">void(* vsf_wifi_radio_rx_cb_t)(vsf_wifi_radio_t *radio, void *param, uint8_t *frame, uint16_t len)</div><div class="ttdef"><b>定义</b> vsf_wifi_radio.h:42</div></div>
 <div class="ttc" id="avsf__wifi__radio_8h_html_a8c3a77b68273636c7606628bedea02e6"><div class="ttname"><a href="vsf__wifi__radio_8h.html#a8c3a77b68273636c7606628bedea02e6">vsf_wifi_radio_done_t</a></div><div class="ttdeci">void(* vsf_wifi_radio_done_t)(vsf_wifi_radio_t *radio, vsf_err_t err)</div><div class="ttdef"><b>定义</b> vsf_wifi_radio.h:46</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/09e9d91c425b970b50228b5f34404e425306ecc6" target="_blank">vsfteam/vsf@09e9d91</a>
+  <a href="https://github.com/vsfteam/vsf/commit/71621e919eba25c45f41befa1e8e493520f03661" target="_blank">vsfteam/vsf@71621e9</a>
   生成
 </div>
