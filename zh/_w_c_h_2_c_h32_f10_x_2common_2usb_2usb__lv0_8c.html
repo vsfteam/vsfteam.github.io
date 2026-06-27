@@ -98,7 +98,12 @@ $(function(){ initResizable(false); });
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">ch32f10x_##__TYPE##_t USB_DC##__N;                                              \</div>
+<b>值:</b><div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keyword">const</span> ch32f10x_##__TYPE##_const_t __USB_DC##__N##_const = {              \</div>
+<div class="line">    USB_DC##__N##_CONFIG                                                        \</div>
+<div class="line">};                                                                              \</div>
+<div class="line">ch32f10x_##__TYPE##_t USB_DC##__N = {                                           \</div>
+<div class="line">    .param = &amp;__USB_DC##__N##_const                                             \</div>
+<div class="line">};                                                                              \</div>
 <div class="line">VSF_CAL_ISR(USB_DC##__N##_IRQHandler)                                           \</div>
 <div class="line">{                                                                               \</div>
 <div class="line">    ch32f10x_##__TYPE##_irq(&amp;USB_DC##__N);                                      \</div>
@@ -155,6 +160,6 @@ $(function(){ initResizable(false); });
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/71621e919eba25c45f41befa1e8e493520f03661" target="_blank">vsfteam/vsf@71621e9</a>
+  <a href="https://github.com/vsfteam/vsf/commit/7dc0fb3c0d1f2374379b81bf5e650369a19014fd" target="_blank">vsfteam/vsf@7dc0fb3</a>
   生成
 </div>
