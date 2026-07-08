@@ -77,6 +77,7 @@ $(function(){ initResizable(false); });
 <code>#include &quot;<a class="el" href="vsf__wifi__radio_8h_source.html">./vsf_wifi_radio.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__wifi__rt28xx_8h_source.html">./chip/rt28xx/vsf_wifi_rt28xx.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vsf__wifi__mt76_8h_source.html">./chip/mt76/vsf_wifi_mt76.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__wifi__aic8800d_8h_source.html">./chip/aic8800d/vsf_wifi_aic8800d.h</a>&quot;</code><br />
 </div>
 <p><a href="vsf__wifi_8h_source.html">浏览该文件的源代码.</a></p>
 <table class="memberdecls">
@@ -119,6 +120,8 @@ $(function(){ initResizable(false); });
 <tr class="separator:a5c2212cd6e88f8f821e1da4a57600eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa112f8b87782810fd08e3ab500f3a77b" id="r_aa112f8b87782810fd08e3ab500f3a77b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa112f8b87782810fd08e3ab500f3a77b">VSF_WIFI_CFG_SCAN_MAX_CHANNELS</a>&#160;&#160;&#160;40</td></tr>
 <tr class="separator:aa112f8b87782810fd08e3ab500f3a77b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7cbc1ca7a1afe32af8db6e9db63ebba" id="r_aa7cbc1ca7a1afe32af8db6e9db63ebba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7cbc1ca7a1afe32af8db6e9db63ebba">VSF_WIFI_CHIP_FLAG_FULLMAC</a>&#160;&#160;&#160;(1 &lt;&lt; 0)</td></tr>
+<tr class="separator:aa7cbc1ca7a1afe32af8db6e9db63ebba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f4f146c2b38820851862ed3c75c9bb2" id="r_a2f4f146c2b38820851862ed3c75c9bb2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f4f146c2b38820851862ed3c75c9bb2">WIFI_BW_20MHZ</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:a2f4f146c2b38820851862ed3c75c9bb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac6744be1d10e6b4e7c04cd5a919f26a" id="r_aac6744be1d10e6b4e7c04cd5a919f26a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac6744be1d10e6b4e7c04cd5a919f26a">WIFI_BW_40MHZ_PLUS</a>&#160;&#160;&#160;1   /* primary lower, extension above      */</td></tr>
@@ -127,9 +130,9 @@ $(function(){ initResizable(false); });
 <tr class="separator:a0f2d41b9bb49065d1ad2bbb1c5e3277b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a329d530cf5d688dea1adc13c72e4529f" id="r_a329d530cf5d688dea1adc13c72e4529f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a329d530cf5d688dea1adc13c72e4529f">WIFI_BW_80MHZ</a>&#160;&#160;&#160;3</td></tr>
 <tr class="separator:a329d530cf5d688dea1adc13c72e4529f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34240a4a41ca02dcc8c755c504208a41" id="r_a34240a4a41ca02dcc8c755c504208a41"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34240a4a41ca02dcc8c755c504208a41">VSF_WIFI_EVT_SCAN_HOP</a>&#160;&#160;&#160;(<a class="el" href="vsf__eda_8h.html#aea03429e255c6f8bc7307a836b204825afb9153262c6fa7b1868c65e7fd68ef59">VSF_EVT_USER</a> + 0x40)</td></tr>
+<tr class="memitem:a34240a4a41ca02dcc8c755c504208a41" id="r_a34240a4a41ca02dcc8c755c504208a41"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34240a4a41ca02dcc8c755c504208a41">VSF_WIFI_EVT_SCAN_HOP</a>&#160;&#160;&#160;(<a class="el" href="vsf__eda_8h.html#a96cd8b588bf2252e8106e2b04e867ee3afb9153262c6fa7b1868c65e7fd68ef59">VSF_EVT_USER</a> + 0x40)</td></tr>
 <tr class="separator:a34240a4a41ca02dcc8c755c504208a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf63319a56a5dc9817899e7bc34f16dd" id="r_acf63319a56a5dc9817899e7bc34f16dd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf63319a56a5dc9817899e7bc34f16dd">VSF_WIFI_EVT_MLME_RETRY</a>&#160;&#160;&#160;(<a class="el" href="vsf__eda_8h.html#aea03429e255c6f8bc7307a836b204825afb9153262c6fa7b1868c65e7fd68ef59">VSF_EVT_USER</a> + 0x41)</td></tr>
+<tr class="memitem:acf63319a56a5dc9817899e7bc34f16dd" id="r_acf63319a56a5dc9817899e7bc34f16dd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf63319a56a5dc9817899e7bc34f16dd">VSF_WIFI_EVT_MLME_RETRY</a>&#160;&#160;&#160;(<a class="el" href="vsf__eda_8h.html#a96cd8b588bf2252e8106e2b04e867ee3afb9153262c6fa7b1868c65e7fd68ef59">VSF_EVT_USER</a> + 0x41)</td></tr>
 <tr class="separator:acf63319a56a5dc9817899e7bc34f16dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af95b8280090dfd378cfae815d79d4150" id="r_af95b8280090dfd378cfae815d79d4150"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af95b8280090dfd378cfae815d79d4150">vsf_wifi_trace_error</a>(...)</td></tr>
 <tr class="separator:af95b8280090dfd378cfae815d79d4150"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,72 +172,72 @@ $(function(){ initResizable(false); });
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 枚举</h2></td></tr>
-<tr class="memitem:a727cc1d940fa1a6396c79b0f86a72653" id="r_a727cc1d940fa1a6396c79b0f86a72653"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<a class="el" href="#a727cc1d940fa1a6396c79b0f86a72653aec99578e47621f4bcafebeab1682b451">WIFI_AUTH_OPEN</a> = 0
+<tr class="memitem:a2f540bcfdd4fc37daf6a2ce293262088" id="r_a2f540bcfdd4fc37daf6a2ce293262088"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="#a2f540bcfdd4fc37daf6a2ce293262088aec99578e47621f4bcafebeab1682b451">WIFI_AUTH_OPEN</a> = 0
 , <br />
-&#160;&#160;<a class="el" href="#a727cc1d940fa1a6396c79b0f86a72653abb9264f7eafe40e9c304dfaf3d431ae3">WIFI_AUTH_WEP</a> = 1
+&#160;&#160;<a class="el" href="#a2f540bcfdd4fc37daf6a2ce293262088abb9264f7eafe40e9c304dfaf3d431ae3">WIFI_AUTH_WEP</a> = 1
 , <br />
-&#160;&#160;<a class="el" href="#a727cc1d940fa1a6396c79b0f86a72653adc0fa6f688742d65b06606fec7f46a6a">WIFI_AUTH_WPA_PSK</a> = 2
+&#160;&#160;<a class="el" href="#a2f540bcfdd4fc37daf6a2ce293262088adc0fa6f688742d65b06606fec7f46a6a">WIFI_AUTH_WPA_PSK</a> = 2
 , <br />
-&#160;&#160;<a class="el" href="#a727cc1d940fa1a6396c79b0f86a72653a6c34d5d67f8144715aac350a3d332b93">WIFI_AUTH_WPA2_PSK</a> = 3
+&#160;&#160;<a class="el" href="#a2f540bcfdd4fc37daf6a2ce293262088a6c34d5d67f8144715aac350a3d332b93">WIFI_AUTH_WPA2_PSK</a> = 3
 , <br />
-&#160;&#160;<a class="el" href="#a727cc1d940fa1a6396c79b0f86a72653aa45844e4cdab1e3fb8f4e68bbeae60be">WIFI_AUTH_WPA_WPA2_PSK</a> = 4
+&#160;&#160;<a class="el" href="#a2f540bcfdd4fc37daf6a2ce293262088aa45844e4cdab1e3fb8f4e68bbeae60be">WIFI_AUTH_WPA_WPA2_PSK</a> = 4
 , <br />
-&#160;&#160;<a class="el" href="#a727cc1d940fa1a6396c79b0f86a72653acfd0aa8f654079e9411e94bf1972a1af">WIFI_AUTH_WPA2_ENTERPRISE</a> = 5
+&#160;&#160;<a class="el" href="#a2f540bcfdd4fc37daf6a2ce293262088acfd0aa8f654079e9411e94bf1972a1af">WIFI_AUTH_WPA2_ENTERPRISE</a> = 5
 <br />
  }</td></tr>
-<tr class="separator:a727cc1d940fa1a6396c79b0f86a72653"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bc6c193b77b15ca30bb8821799616e3" id="r_a5bc6c193b77b15ca30bb8821799616e3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<a class="el" href="#a5bc6c193b77b15ca30bb8821799616e3ad9a7bffc9e5f021d4bbb04f1fd211f49">WIFI_CIPHER_NONE</a> = 0
+<tr class="separator:a2f540bcfdd4fc37daf6a2ce293262088"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ef8dcf274b6eac0ec8bacc8303b366a" id="r_a9ef8dcf274b6eac0ec8bacc8303b366a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="#a9ef8dcf274b6eac0ec8bacc8303b366aad9a7bffc9e5f021d4bbb04f1fd211f49">WIFI_CIPHER_NONE</a> = 0
 , <br />
-&#160;&#160;<a class="el" href="#a5bc6c193b77b15ca30bb8821799616e3ae17aa01e79c53c658cc03f7a3809b751">WIFI_CIPHER_WEP40</a> = 1
+&#160;&#160;<a class="el" href="#a9ef8dcf274b6eac0ec8bacc8303b366aae17aa01e79c53c658cc03f7a3809b751">WIFI_CIPHER_WEP40</a> = 1
 , <br />
-&#160;&#160;<a class="el" href="#a5bc6c193b77b15ca30bb8821799616e3af7a6abca429563cb6b56584fa24b366e">WIFI_CIPHER_WEP104</a> = 2
+&#160;&#160;<a class="el" href="#a9ef8dcf274b6eac0ec8bacc8303b366aaf7a6abca429563cb6b56584fa24b366e">WIFI_CIPHER_WEP104</a> = 2
 , <br />
-&#160;&#160;<a class="el" href="#a5bc6c193b77b15ca30bb8821799616e3a0278db3a65b5c15f177deeadb1d0cdc7">WIFI_CIPHER_TKIP</a> = 3
+&#160;&#160;<a class="el" href="#a9ef8dcf274b6eac0ec8bacc8303b366aa0278db3a65b5c15f177deeadb1d0cdc7">WIFI_CIPHER_TKIP</a> = 3
 , <br />
-&#160;&#160;<a class="el" href="#a5bc6c193b77b15ca30bb8821799616e3a35168962b68eb1db98dcbe2ae80a3171">WIFI_CIPHER_CCMP</a> = 4
+&#160;&#160;<a class="el" href="#a9ef8dcf274b6eac0ec8bacc8303b366aa35168962b68eb1db98dcbe2ae80a3171">WIFI_CIPHER_CCMP</a> = 4
 , <br />
-&#160;&#160;<a class="el" href="#a5bc6c193b77b15ca30bb8821799616e3a335edb9cfff6d1e557ee8ded9ed3e209">WIFI_CIPHER_TKIP_CCMP</a> = 5
+&#160;&#160;<a class="el" href="#a9ef8dcf274b6eac0ec8bacc8303b366aa335edb9cfff6d1e557ee8ded9ed3e209">WIFI_CIPHER_TKIP_CCMP</a> = 5
 <br />
  }</td></tr>
-<tr class="separator:a5bc6c193b77b15ca30bb8821799616e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6cdb622357fec6e889e47579a078524" id="r_ae6cdb622357fec6e889e47579a078524"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<a class="el" href="#ae6cdb622357fec6e889e47579a078524a562b4715df98070081c3e672d8f5f31c">WIFI_MLME_IDLE</a> = 0
+<tr class="separator:a9ef8dcf274b6eac0ec8bacc8303b366a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c0581a1af2c849406558c0611b41266" id="r_a1c0581a1af2c849406558c0611b41266"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="#a1c0581a1af2c849406558c0611b41266a562b4715df98070081c3e672d8f5f31c">WIFI_MLME_IDLE</a> = 0
 , <br />
-&#160;&#160;<a class="el" href="#ae6cdb622357fec6e889e47579a078524a67c2293ff79f22a1373d2b970ffaf03d">WIFI_MLME_AUTH</a> = 1
+&#160;&#160;<a class="el" href="#a1c0581a1af2c849406558c0611b41266a67c2293ff79f22a1373d2b970ffaf03d">WIFI_MLME_AUTH</a> = 1
 , <br />
-&#160;&#160;<a class="el" href="#ae6cdb622357fec6e889e47579a078524a516259c376ba8e210065ca3e39bc767c">WIFI_MLME_ASSOC</a> = 2
+&#160;&#160;<a class="el" href="#a1c0581a1af2c849406558c0611b41266a516259c376ba8e210065ca3e39bc767c">WIFI_MLME_ASSOC</a> = 2
 , <br />
-&#160;&#160;<a class="el" href="#ae6cdb622357fec6e889e47579a078524ad0afc0c26f91b3d1c018438524c777d0">WIFI_MLME_4WAY</a> = 4
+&#160;&#160;<a class="el" href="#a1c0581a1af2c849406558c0611b41266ad0afc0c26f91b3d1c018438524c777d0">WIFI_MLME_4WAY</a> = 4
 , <br />
-&#160;&#160;<a class="el" href="#ae6cdb622357fec6e889e47579a078524acb4e5da93dec8b16f1f892653986cb1a">WIFI_MLME_RUN</a> = 3
+&#160;&#160;<a class="el" href="#a1c0581a1af2c849406558c0611b41266acb4e5da93dec8b16f1f892653986cb1a">WIFI_MLME_RUN</a> = 3
 , <br />
-&#160;&#160;<a class="el" href="#ae6cdb622357fec6e889e47579a078524ab1491b1ffe65bde47dc8e9221e819a51">WIFI_MLME_KEY_INSTALL</a> = 5
+&#160;&#160;<a class="el" href="#a1c0581a1af2c849406558c0611b41266ab1491b1ffe65bde47dc8e9221e819a51">WIFI_MLME_KEY_INSTALL</a> = 5
 , <br />
-&#160;&#160;<a class="el" href="#ae6cdb622357fec6e889e47579a078524af64da47e6b9d90aa6ab41455a61cdb92">WIFI_MLME_RAW_RADIO</a> = 6
+&#160;&#160;<a class="el" href="#a1c0581a1af2c849406558c0611b41266af64da47e6b9d90aa6ab41455a61cdb92">WIFI_MLME_RAW_RADIO</a> = 6
 <br />
  }</td></tr>
-<tr class="separator:ae6cdb622357fec6e889e47579a078524"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b1af8ba72fb238659a469ca5d2ef52b" id="r_a6b1af8ba72fb238659a469ca5d2ef52b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<a class="el" href="#a6b1af8ba72fb238659a469ca5d2ef52ba976f9cb06ee9e62bf5141d11a80d8199">WIFI_REASON_UNSPECIFIED</a> = 1
+<tr class="separator:a1c0581a1af2c849406558c0611b41266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb6624c7dc121e8a3fd6bff996afb7e8" id="r_adb6624c7dc121e8a3fd6bff996afb7e8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="#adb6624c7dc121e8a3fd6bff996afb7e8a976f9cb06ee9e62bf5141d11a80d8199">WIFI_REASON_UNSPECIFIED</a> = 1
 , <br />
-&#160;&#160;<a class="el" href="#a6b1af8ba72fb238659a469ca5d2ef52babcf9bc31dfb20f10ca67e792a5caa442">WIFI_REASON_AUTH_LEAVING</a> = 3
+&#160;&#160;<a class="el" href="#adb6624c7dc121e8a3fd6bff996afb7e8abcf9bc31dfb20f10ca67e792a5caa442">WIFI_REASON_AUTH_LEAVING</a> = 3
 , <br />
-&#160;&#160;<a class="el" href="#a6b1af8ba72fb238659a469ca5d2ef52ba95ce6aea227e0ff8fdd0c8a3b078e040">WIFI_REASON_MIC_FAILURE</a> = 14
+&#160;&#160;<a class="el" href="#adb6624c7dc121e8a3fd6bff996afb7e8a95ce6aea227e0ff8fdd0c8a3b078e040">WIFI_REASON_MIC_FAILURE</a> = 14
 , <br />
-&#160;&#160;<a class="el" href="#a6b1af8ba72fb238659a469ca5d2ef52ba319725ee5cc632238080a84cfe57b402">WIFI_REASON_DISASSOC_LEAVING</a> = 8
+&#160;&#160;<a class="el" href="#adb6624c7dc121e8a3fd6bff996afb7e8a319725ee5cc632238080a84cfe57b402">WIFI_REASON_DISASSOC_LEAVING</a> = 8
 , <br />
-&#160;&#160;<a class="el" href="#a6b1af8ba72fb238659a469ca5d2ef52ba4d0f1b2a5987247829b8c250826f098d">WIFI_REASON_LOCAL_TIMEOUT</a> = 200
+&#160;&#160;<a class="el" href="#adb6624c7dc121e8a3fd6bff996afb7e8a4d0f1b2a5987247829b8c250826f098d">WIFI_REASON_LOCAL_TIMEOUT</a> = 200
 , <br />
-&#160;&#160;<a class="el" href="#a6b1af8ba72fb238659a469ca5d2ef52ba372eb851d8951957ace11708b4bb6c74">WIFI_REASON_AUTH_REJECTED</a> = 201
+&#160;&#160;<a class="el" href="#adb6624c7dc121e8a3fd6bff996afb7e8a372eb851d8951957ace11708b4bb6c74">WIFI_REASON_AUTH_REJECTED</a> = 201
 , <br />
-&#160;&#160;<a class="el" href="#a6b1af8ba72fb238659a469ca5d2ef52ba7946bd66b861cb67c4955ebee91a5749">WIFI_REASON_ASSOC_REJECTED</a> = 202
+&#160;&#160;<a class="el" href="#adb6624c7dc121e8a3fd6bff996afb7e8a7946bd66b861cb67c4955ebee91a5749">WIFI_REASON_ASSOC_REJECTED</a> = 202
 , <br />
-&#160;&#160;<a class="el" href="#a6b1af8ba72fb238659a469ca5d2ef52baae5d0de7d044dda1bfc210b279bc153d">WIFI_REASON_LOCAL_DISCONNECT</a> = 203
+&#160;&#160;<a class="el" href="#adb6624c7dc121e8a3fd6bff996afb7e8aae5d0de7d044dda1bfc210b279bc153d">WIFI_REASON_LOCAL_DISCONNECT</a> = 203
 <br />
  }</td></tr>
-<tr class="separator:a6b1af8ba72fb238659a469ca5d2ef52b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:adb6624c7dc121e8a3fd6bff996afb7e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 函数</h2></td></tr>
@@ -442,6 +445,20 @@ $(function(){ initResizable(false); });
 
 </div>
 </div>
+<a id="aa7cbc1ca7a1afe32af8db6e9db63ebba" name="aa7cbc1ca7a1afe32af8db6e9db63ebba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7cbc1ca7a1afe32af8db6e9db63ebba">&#9670;&#160;</a></span>VSF_WIFI_CHIP_FLAG_FULLMAC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VSF_WIFI_CHIP_FLAG_FULLMAC&#160;&#160;&#160;(1 &lt;&lt; 0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2f4f146c2b38820851862ed3c75c9bb2" name="a2f4f146c2b38820851862ed3c75c9bb2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f4f146c2b38820851862ed3c75c9bb2">&#9670;&#160;</a></span>WIFI_BW_20MHZ</h2>
 
@@ -505,7 +522,7 @@ $(function(){ initResizable(false); });
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define VSF_WIFI_EVT_SCAN_HOP&#160;&#160;&#160;(<a class="el" href="vsf__eda_8h.html#aea03429e255c6f8bc7307a836b204825afb9153262c6fa7b1868c65e7fd68ef59">VSF_EVT_USER</a> + 0x40)</td>
+          <td class="memname">#define VSF_WIFI_EVT_SCAN_HOP&#160;&#160;&#160;(<a class="el" href="vsf__eda_8h.html#a96cd8b588bf2252e8106e2b04e867ee3afb9153262c6fa7b1868c65e7fd68ef59">VSF_EVT_USER</a> + 0x40)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -519,7 +536,7 @@ $(function(){ initResizable(false); });
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define VSF_WIFI_EVT_MLME_RETRY&#160;&#160;&#160;(<a class="el" href="vsf__eda_8h.html#aea03429e255c6f8bc7307a836b204825afb9153262c6fa7b1868c65e7fd68ef59">VSF_EVT_USER</a> + 0x41)</td>
+          <td class="memname">#define VSF_WIFI_EVT_MLME_RETRY&#160;&#160;&#160;(<a class="el" href="vsf__eda_8h.html#a96cd8b588bf2252e8106e2b04e867ee3afb9153262c6fa7b1868c65e7fd68ef59">VSF_EVT_USER</a> + 0x41)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -764,8 +781,8 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 <h2 class="groupheader">枚举类型说明</h2>
-<a id="a727cc1d940fa1a6396c79b0f86a72653" name="a727cc1d940fa1a6396c79b0f86a72653"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a727cc1d940fa1a6396c79b0f86a72653">&#9670;&#160;</a></span>anonymous enum</h2>
+<a id="a2f540bcfdd4fc37daf6a2ce293262088" name="a2f540bcfdd4fc37daf6a2ce293262088"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f540bcfdd4fc37daf6a2ce293262088">&#9670;&#160;</a></span>anonymous enum</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -776,18 +793,18 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a727cc1d940fa1a6396c79b0f86a72653aec99578e47621f4bcafebeab1682b451" name="a727cc1d940fa1a6396c79b0f86a72653aec99578e47621f4bcafebeab1682b451"></a>WIFI_AUTH_OPEN&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a727cc1d940fa1a6396c79b0f86a72653abb9264f7eafe40e9c304dfaf3d431ae3" name="a727cc1d940fa1a6396c79b0f86a72653abb9264f7eafe40e9c304dfaf3d431ae3"></a>WIFI_AUTH_WEP&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a727cc1d940fa1a6396c79b0f86a72653adc0fa6f688742d65b06606fec7f46a6a" name="a727cc1d940fa1a6396c79b0f86a72653adc0fa6f688742d65b06606fec7f46a6a"></a>WIFI_AUTH_WPA_PSK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a727cc1d940fa1a6396c79b0f86a72653a6c34d5d67f8144715aac350a3d332b93" name="a727cc1d940fa1a6396c79b0f86a72653a6c34d5d67f8144715aac350a3d332b93"></a>WIFI_AUTH_WPA2_PSK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a727cc1d940fa1a6396c79b0f86a72653aa45844e4cdab1e3fb8f4e68bbeae60be" name="a727cc1d940fa1a6396c79b0f86a72653aa45844e4cdab1e3fb8f4e68bbeae60be"></a>WIFI_AUTH_WPA_WPA2_PSK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a727cc1d940fa1a6396c79b0f86a72653acfd0aa8f654079e9411e94bf1972a1af" name="a727cc1d940fa1a6396c79b0f86a72653acfd0aa8f654079e9411e94bf1972a1af"></a>WIFI_AUTH_WPA2_ENTERPRISE&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a2f540bcfdd4fc37daf6a2ce293262088aec99578e47621f4bcafebeab1682b451" name="a2f540bcfdd4fc37daf6a2ce293262088aec99578e47621f4bcafebeab1682b451"></a>WIFI_AUTH_OPEN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2f540bcfdd4fc37daf6a2ce293262088abb9264f7eafe40e9c304dfaf3d431ae3" name="a2f540bcfdd4fc37daf6a2ce293262088abb9264f7eafe40e9c304dfaf3d431ae3"></a>WIFI_AUTH_WEP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2f540bcfdd4fc37daf6a2ce293262088adc0fa6f688742d65b06606fec7f46a6a" name="a2f540bcfdd4fc37daf6a2ce293262088adc0fa6f688742d65b06606fec7f46a6a"></a>WIFI_AUTH_WPA_PSK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2f540bcfdd4fc37daf6a2ce293262088a6c34d5d67f8144715aac350a3d332b93" name="a2f540bcfdd4fc37daf6a2ce293262088a6c34d5d67f8144715aac350a3d332b93"></a>WIFI_AUTH_WPA2_PSK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2f540bcfdd4fc37daf6a2ce293262088aa45844e4cdab1e3fb8f4e68bbeae60be" name="a2f540bcfdd4fc37daf6a2ce293262088aa45844e4cdab1e3fb8f4e68bbeae60be"></a>WIFI_AUTH_WPA_WPA2_PSK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2f540bcfdd4fc37daf6a2ce293262088acfd0aa8f654079e9411e94bf1972a1af" name="a2f540bcfdd4fc37daf6a2ce293262088acfd0aa8f654079e9411e94bf1972a1af"></a>WIFI_AUTH_WPA2_ENTERPRISE&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
 </div>
-<a id="a5bc6c193b77b15ca30bb8821799616e3" name="a5bc6c193b77b15ca30bb8821799616e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5bc6c193b77b15ca30bb8821799616e3">&#9670;&#160;</a></span>anonymous enum</h2>
+<a id="a9ef8dcf274b6eac0ec8bacc8303b366a" name="a9ef8dcf274b6eac0ec8bacc8303b366a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ef8dcf274b6eac0ec8bacc8303b366a">&#9670;&#160;</a></span>anonymous enum</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -798,18 +815,18 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a5bc6c193b77b15ca30bb8821799616e3ad9a7bffc9e5f021d4bbb04f1fd211f49" name="a5bc6c193b77b15ca30bb8821799616e3ad9a7bffc9e5f021d4bbb04f1fd211f49"></a>WIFI_CIPHER_NONE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5bc6c193b77b15ca30bb8821799616e3ae17aa01e79c53c658cc03f7a3809b751" name="a5bc6c193b77b15ca30bb8821799616e3ae17aa01e79c53c658cc03f7a3809b751"></a>WIFI_CIPHER_WEP40&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5bc6c193b77b15ca30bb8821799616e3af7a6abca429563cb6b56584fa24b366e" name="a5bc6c193b77b15ca30bb8821799616e3af7a6abca429563cb6b56584fa24b366e"></a>WIFI_CIPHER_WEP104&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5bc6c193b77b15ca30bb8821799616e3a0278db3a65b5c15f177deeadb1d0cdc7" name="a5bc6c193b77b15ca30bb8821799616e3a0278db3a65b5c15f177deeadb1d0cdc7"></a>WIFI_CIPHER_TKIP&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5bc6c193b77b15ca30bb8821799616e3a35168962b68eb1db98dcbe2ae80a3171" name="a5bc6c193b77b15ca30bb8821799616e3a35168962b68eb1db98dcbe2ae80a3171"></a>WIFI_CIPHER_CCMP&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5bc6c193b77b15ca30bb8821799616e3a335edb9cfff6d1e557ee8ded9ed3e209" name="a5bc6c193b77b15ca30bb8821799616e3a335edb9cfff6d1e557ee8ded9ed3e209"></a>WIFI_CIPHER_TKIP_CCMP&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a9ef8dcf274b6eac0ec8bacc8303b366aad9a7bffc9e5f021d4bbb04f1fd211f49" name="a9ef8dcf274b6eac0ec8bacc8303b366aad9a7bffc9e5f021d4bbb04f1fd211f49"></a>WIFI_CIPHER_NONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9ef8dcf274b6eac0ec8bacc8303b366aae17aa01e79c53c658cc03f7a3809b751" name="a9ef8dcf274b6eac0ec8bacc8303b366aae17aa01e79c53c658cc03f7a3809b751"></a>WIFI_CIPHER_WEP40&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9ef8dcf274b6eac0ec8bacc8303b366aaf7a6abca429563cb6b56584fa24b366e" name="a9ef8dcf274b6eac0ec8bacc8303b366aaf7a6abca429563cb6b56584fa24b366e"></a>WIFI_CIPHER_WEP104&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9ef8dcf274b6eac0ec8bacc8303b366aa0278db3a65b5c15f177deeadb1d0cdc7" name="a9ef8dcf274b6eac0ec8bacc8303b366aa0278db3a65b5c15f177deeadb1d0cdc7"></a>WIFI_CIPHER_TKIP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9ef8dcf274b6eac0ec8bacc8303b366aa35168962b68eb1db98dcbe2ae80a3171" name="a9ef8dcf274b6eac0ec8bacc8303b366aa35168962b68eb1db98dcbe2ae80a3171"></a>WIFI_CIPHER_CCMP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9ef8dcf274b6eac0ec8bacc8303b366aa335edb9cfff6d1e557ee8ded9ed3e209" name="a9ef8dcf274b6eac0ec8bacc8303b366aa335edb9cfff6d1e557ee8ded9ed3e209"></a>WIFI_CIPHER_TKIP_CCMP&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
 </div>
-<a id="ae6cdb622357fec6e889e47579a078524" name="ae6cdb622357fec6e889e47579a078524"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6cdb622357fec6e889e47579a078524">&#9670;&#160;</a></span>anonymous enum</h2>
+<a id="a1c0581a1af2c849406558c0611b41266" name="a1c0581a1af2c849406558c0611b41266"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c0581a1af2c849406558c0611b41266">&#9670;&#160;</a></span>anonymous enum</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -820,19 +837,19 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="ae6cdb622357fec6e889e47579a078524a562b4715df98070081c3e672d8f5f31c" name="ae6cdb622357fec6e889e47579a078524a562b4715df98070081c3e672d8f5f31c"></a>WIFI_MLME_IDLE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ae6cdb622357fec6e889e47579a078524a67c2293ff79f22a1373d2b970ffaf03d" name="ae6cdb622357fec6e889e47579a078524a67c2293ff79f22a1373d2b970ffaf03d"></a>WIFI_MLME_AUTH&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ae6cdb622357fec6e889e47579a078524a516259c376ba8e210065ca3e39bc767c" name="ae6cdb622357fec6e889e47579a078524a516259c376ba8e210065ca3e39bc767c"></a>WIFI_MLME_ASSOC&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ae6cdb622357fec6e889e47579a078524ad0afc0c26f91b3d1c018438524c777d0" name="ae6cdb622357fec6e889e47579a078524ad0afc0c26f91b3d1c018438524c777d0"></a>WIFI_MLME_4WAY&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ae6cdb622357fec6e889e47579a078524acb4e5da93dec8b16f1f892653986cb1a" name="ae6cdb622357fec6e889e47579a078524acb4e5da93dec8b16f1f892653986cb1a"></a>WIFI_MLME_RUN&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ae6cdb622357fec6e889e47579a078524ab1491b1ffe65bde47dc8e9221e819a51" name="ae6cdb622357fec6e889e47579a078524ab1491b1ffe65bde47dc8e9221e819a51"></a>WIFI_MLME_KEY_INSTALL&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ae6cdb622357fec6e889e47579a078524af64da47e6b9d90aa6ab41455a61cdb92" name="ae6cdb622357fec6e889e47579a078524af64da47e6b9d90aa6ab41455a61cdb92"></a>WIFI_MLME_RAW_RADIO&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a1c0581a1af2c849406558c0611b41266a562b4715df98070081c3e672d8f5f31c" name="a1c0581a1af2c849406558c0611b41266a562b4715df98070081c3e672d8f5f31c"></a>WIFI_MLME_IDLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1c0581a1af2c849406558c0611b41266a67c2293ff79f22a1373d2b970ffaf03d" name="a1c0581a1af2c849406558c0611b41266a67c2293ff79f22a1373d2b970ffaf03d"></a>WIFI_MLME_AUTH&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1c0581a1af2c849406558c0611b41266a516259c376ba8e210065ca3e39bc767c" name="a1c0581a1af2c849406558c0611b41266a516259c376ba8e210065ca3e39bc767c"></a>WIFI_MLME_ASSOC&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1c0581a1af2c849406558c0611b41266ad0afc0c26f91b3d1c018438524c777d0" name="a1c0581a1af2c849406558c0611b41266ad0afc0c26f91b3d1c018438524c777d0"></a>WIFI_MLME_4WAY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1c0581a1af2c849406558c0611b41266acb4e5da93dec8b16f1f892653986cb1a" name="a1c0581a1af2c849406558c0611b41266acb4e5da93dec8b16f1f892653986cb1a"></a>WIFI_MLME_RUN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1c0581a1af2c849406558c0611b41266ab1491b1ffe65bde47dc8e9221e819a51" name="a1c0581a1af2c849406558c0611b41266ab1491b1ffe65bde47dc8e9221e819a51"></a>WIFI_MLME_KEY_INSTALL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1c0581a1af2c849406558c0611b41266af64da47e6b9d90aa6ab41455a61cdb92" name="a1c0581a1af2c849406558c0611b41266af64da47e6b9d90aa6ab41455a61cdb92"></a>WIFI_MLME_RAW_RADIO&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
 </div>
-<a id="a6b1af8ba72fb238659a469ca5d2ef52b" name="a6b1af8ba72fb238659a469ca5d2ef52b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b1af8ba72fb238659a469ca5d2ef52b">&#9670;&#160;</a></span>anonymous enum</h2>
+<a id="adb6624c7dc121e8a3fd6bff996afb7e8" name="adb6624c7dc121e8a3fd6bff996afb7e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb6624c7dc121e8a3fd6bff996afb7e8">&#9670;&#160;</a></span>anonymous enum</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -843,14 +860,14 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a6b1af8ba72fb238659a469ca5d2ef52ba976f9cb06ee9e62bf5141d11a80d8199" name="a6b1af8ba72fb238659a469ca5d2ef52ba976f9cb06ee9e62bf5141d11a80d8199"></a>WIFI_REASON_UNSPECIFIED&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6b1af8ba72fb238659a469ca5d2ef52babcf9bc31dfb20f10ca67e792a5caa442" name="a6b1af8ba72fb238659a469ca5d2ef52babcf9bc31dfb20f10ca67e792a5caa442"></a>WIFI_REASON_AUTH_LEAVING&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6b1af8ba72fb238659a469ca5d2ef52ba95ce6aea227e0ff8fdd0c8a3b078e040" name="a6b1af8ba72fb238659a469ca5d2ef52ba95ce6aea227e0ff8fdd0c8a3b078e040"></a>WIFI_REASON_MIC_FAILURE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6b1af8ba72fb238659a469ca5d2ef52ba319725ee5cc632238080a84cfe57b402" name="a6b1af8ba72fb238659a469ca5d2ef52ba319725ee5cc632238080a84cfe57b402"></a>WIFI_REASON_DISASSOC_LEAVING&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6b1af8ba72fb238659a469ca5d2ef52ba4d0f1b2a5987247829b8c250826f098d" name="a6b1af8ba72fb238659a469ca5d2ef52ba4d0f1b2a5987247829b8c250826f098d"></a>WIFI_REASON_LOCAL_TIMEOUT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6b1af8ba72fb238659a469ca5d2ef52ba372eb851d8951957ace11708b4bb6c74" name="a6b1af8ba72fb238659a469ca5d2ef52ba372eb851d8951957ace11708b4bb6c74"></a>WIFI_REASON_AUTH_REJECTED&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6b1af8ba72fb238659a469ca5d2ef52ba7946bd66b861cb67c4955ebee91a5749" name="a6b1af8ba72fb238659a469ca5d2ef52ba7946bd66b861cb67c4955ebee91a5749"></a>WIFI_REASON_ASSOC_REJECTED&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6b1af8ba72fb238659a469ca5d2ef52baae5d0de7d044dda1bfc210b279bc153d" name="a6b1af8ba72fb238659a469ca5d2ef52baae5d0de7d044dda1bfc210b279bc153d"></a>WIFI_REASON_LOCAL_DISCONNECT&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="adb6624c7dc121e8a3fd6bff996afb7e8a976f9cb06ee9e62bf5141d11a80d8199" name="adb6624c7dc121e8a3fd6bff996afb7e8a976f9cb06ee9e62bf5141d11a80d8199"></a>WIFI_REASON_UNSPECIFIED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adb6624c7dc121e8a3fd6bff996afb7e8abcf9bc31dfb20f10ca67e792a5caa442" name="adb6624c7dc121e8a3fd6bff996afb7e8abcf9bc31dfb20f10ca67e792a5caa442"></a>WIFI_REASON_AUTH_LEAVING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adb6624c7dc121e8a3fd6bff996afb7e8a95ce6aea227e0ff8fdd0c8a3b078e040" name="adb6624c7dc121e8a3fd6bff996afb7e8a95ce6aea227e0ff8fdd0c8a3b078e040"></a>WIFI_REASON_MIC_FAILURE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adb6624c7dc121e8a3fd6bff996afb7e8a319725ee5cc632238080a84cfe57b402" name="adb6624c7dc121e8a3fd6bff996afb7e8a319725ee5cc632238080a84cfe57b402"></a>WIFI_REASON_DISASSOC_LEAVING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adb6624c7dc121e8a3fd6bff996afb7e8a4d0f1b2a5987247829b8c250826f098d" name="adb6624c7dc121e8a3fd6bff996afb7e8a4d0f1b2a5987247829b8c250826f098d"></a>WIFI_REASON_LOCAL_TIMEOUT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adb6624c7dc121e8a3fd6bff996afb7e8a372eb851d8951957ace11708b4bb6c74" name="adb6624c7dc121e8a3fd6bff996afb7e8a372eb851d8951957ace11708b4bb6c74"></a>WIFI_REASON_AUTH_REJECTED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adb6624c7dc121e8a3fd6bff996afb7e8a7946bd66b861cb67c4955ebee91a5749" name="adb6624c7dc121e8a3fd6bff996afb7e8a7946bd66b861cb67c4955ebee91a5749"></a>WIFI_REASON_ASSOC_REJECTED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adb6624c7dc121e8a3fd6bff996afb7e8aae5d0de7d044dda1bfc210b279bc153d" name="adb6624c7dc121e8a3fd6bff996afb7e8aae5d0de7d044dda1bfc210b279bc153d"></a>WIFI_REASON_LOCAL_DISCONNECT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -1936,6 +1953,6 @@ $(function(){ initResizable(false); });
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/136c066035d407aca1a4a9afe5dfff9e82d23da0" target="_blank">vsfteam/vsf@136c066</a>
+  <a href="https://github.com/vsfteam/vsf/commit/4458c13c30c11bcf15c2e095dd932332239dfd66" target="_blank">vsfteam/vsf@4458c13</a>
   生成
 </div>
