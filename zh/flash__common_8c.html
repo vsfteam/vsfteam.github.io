@@ -435,7 +435,10 @@ $(function(){ initResizable(false); });
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>如果 FLASH 开始执行擦除返回 VSF_ERR_NONE，否则返回错误码 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>如果擦除请求成功提交返回 VSF_ERR_NONE，否则返回错误码</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。它仅启动擦除后立即返回；返回 VSF_ERR_NONE 只表示请求已被接受， 并不代表擦除已经完成。在完成通知之前不要访问该扇区。 </dd>
+<dd>
+完成通过在 cfg.isr 中注册的回调（参见 vsf_flash_init）经 VSF_FLASH_IRQ_MASK_ERASE 中断通知。 </dd></dl>
 
 </div>
 </div>
@@ -472,7 +475,10 @@ $(function(){ initResizable(false); });
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>如果 flash 开始执行擦除返回 VSF_ERR_NONE，否则返回负数 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>如果擦除请求成功提交返回 VSF_ERR_NONE，否则返回负数</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。它仅启动擦除后立即返回；返回 VSF_ERR_NONE 只表示请求已被接受， 并不代表擦除已经完成。在完成通知之前不要访问该区域。 </dd>
+<dd>
+完成通过在 cfg.isr 中注册的回调（参见 vsf_flash_init）经 VSF_FLASH_IRQ_MASK_ERASE 中断通知。 </dd></dl>
 
 </div>
 </div>
@@ -498,7 +504,10 @@ $(function(){ initResizable(false); });
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>如果 flash 开始执行整片擦除返回 VSF_ERR_NONE，否则返回负数 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>如果整片擦除请求成功提交返回 VSF_ERR_NONE，否则返回负数</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。它仅启动擦除后立即返回；返回 VSF_ERR_NONE 只表示请求已被接受， 并不代表擦除已经完成。 </dd>
+<dd>
+完成通过在 cfg.isr 中注册的回调（参见 vsf_flash_init）经 VSF_FLASH_IRQ_MASK_ERASE 中断通知。 </dd></dl>
 
 </div>
 </div>
@@ -536,12 +545,17 @@ $(function(){ initResizable(false); });
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">flash_ptr</td><td>指向结构体 <a class="el" href="structvsf__flash__t.html">vsf_flash_t</a> 的指针 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">offset_of_bytes</td><td>被写入扇区的地址, 部分 flash 需要是最小可写入扇区大小的整数倍 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>数据的指针 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">size_of_bytes</td><td>被写入扇区的长度，部分 flash 需要是最小可写入扇区大小的整数倍 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>指向要写入 flash 的源数据的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size_of_bytes</td><td>要写入的字节数 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>如果 flash 开始执行写入返回 VSF_ERR_NONE，否则返回负数 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>如果写入请求成功提交返回 VSF_ERR_NONE，否则返回负数</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。它仅启动写入后立即返回；返回 VSF_ERR_NONE 只表示请求已被接受， 并不代表写入已经完成。 </dd>
+<dd>
+完成通过在 cfg.isr 中注册的回调（参见 vsf_flash_init）经 VSF_FLASH_IRQ_MASK_WRITE 中断通知。 </dd>
+<dd>
+buffer 在完成通知之前必须保持有效且不被修改。 </dd></dl>
 
 </div>
 </div>
@@ -579,12 +593,17 @@ $(function(){ initResizable(false); });
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">flash_ptr</td><td>指向结构体 <a class="el" href="structvsf__flash__t.html">vsf_flash_t</a> 的指针 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">offset_of_bytes</td><td>被写入扇区的地址, 部分 flash 需要是最小可擦除扇区大小的整数倍 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>数据的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>指向要写入 flash 的源数据的指针 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">size_of_bytes</td><td>被写入扇区的长度，部分 flash 需要是最小可擦除扇区大小的整数倍 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>如果 flash 开始执行写入返回 VSF_ERR_NONE，否则返回负数 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>如果写入请求成功提交返回 VSF_ERR_NONE，否则返回负数</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。它仅启动写入后立即返回；返回 VSF_ERR_NONE 只表示请求已被接受， 并不代表写入已经完成。 </dd>
+<dd>
+完成通过在 cfg.isr 中注册的回调（参见 vsf_flash_init）经 VSF_FLASH_IRQ_MASK_WRITE 中断通知。 </dd>
+<dd>
+buffer 在完成通知之前必须保持有效且不被修改。 </dd></dl>
 
 </div>
 </div>
@@ -622,12 +641,17 @@ $(function(){ initResizable(false); });
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">flash_ptr</td><td>指向结构体 <a class="el" href="structvsf__flash__t.html">vsf_flash_t</a> 的指针 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">offset_of_bytes</td><td>被读入扇区的地址, 部分 flash 需要是最小可读入扇区大小的整数倍 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>数据的指针 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">size_of_bytes</td><td>被读入扇区的长度，部分 flash 需要是最小可读入扇区大小的整数倍 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>用于接收从 flash 读出数据的缓冲区指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size_of_bytes</td><td>要读取的字节数 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>如果 flash 开始执行读入返回 VSF_ERR_NONE , 否则返回负数。 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>如果读取请求成功提交返回 VSF_ERR_NONE , 否则返回负数。</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。它仅启动读取后立即返回；返回 VSF_ERR_NONE 只表示请求已被接受， 并不代表读取已经完成。在完成通知之前不要读取 buffer。 </dd>
+<dd>
+完成通过在 cfg.isr 中注册的回调（参见 vsf_flash_init）经 VSF_FLASH_IRQ_MASK_READ 中断通知。 数据由驱动异步写入 buffer。 </dd>
+<dd>
+buffer 在完成通知之前必须保持有效。 </dd></dl>
 
 </div>
 </div>
@@ -664,13 +688,18 @@ $(function(){ initResizable(false); });
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">flash_ptr</td><td>指向结构体 <a class="el" href="structvsf__flash__t.html">vsf_flash_t</a> 的指针 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">offset_of_bytes</td><td>被读入扇区的地址, 部分 flash 需要是最小可擦除扇区大小的整数倍 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>数据的指针 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">size_of_bytes</td><td>被读入扇区的长度，部分 flash 需要是最小可擦除扇区大小的整数倍 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">offset_of_bytes</td><td>被读入扇区的地址, 部分 flash 需要是最小可读入扇区大小的整数倍 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>用于接收从 flash 读出数据的缓冲区指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size_of_bytes</td><td>要读取的字节数 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>如果 flash 开始执行读入返回 VSF_ERR_NONE , 否则返回负数。 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>如果读取请求成功提交返回 VSF_ERR_NONE , 否则返回负数。</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。它仅启动读取后立即返回；返回 VSF_ERR_NONE 只表示请求已被接受， 并不代表读取已经完成。在完成通知之前不要读取 buffer。 </dd>
+<dd>
+完成通过在 cfg.isr 中注册的回调（参见 vsf_flash_init）经 VSF_FLASH_IRQ_MASK_READ 中断通知。 数据由驱动异步写入 buffer。 </dd>
+<dd>
+buffer 在完成通知之前必须保持有效。 </dd></dl>
 
 </div>
 </div>
@@ -749,6 +778,6 @@ $(function(){ initResizable(false); });
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/1570d0cf7d79dd280f0d992edde5947a6f3d61fa" target="_blank">vsfteam/vsf@1570d0c</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1d94181ffb63d859ea905bf21dc5742f1b5e5e00" target="_blank">vsfteam/vsf@1d94181</a>
   生成
 </div>

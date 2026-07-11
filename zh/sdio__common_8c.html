@@ -418,7 +418,7 @@ $(function(){ initResizable(false); });
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structvsf__sdio__req__t.html">vsf_sdio_req_t</a> *</td>          <td class="paramname"><span class="paramname"><em>req</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structvsf__sdio__req__t.html">vsf_sdio_req_t</a> *</td>          <td class="paramname"><span class="paramname"><em>req_ptr</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -426,12 +426,17 @@ $(function(){ initResizable(false); });
 <p>启动 sdio 请求 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">sdio_ptr</td><td>a pointer to structure <a class="el" href="structvsf__sdio__t.html">vsf_sdio_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">req</td><td>sdio 请求结构指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sdio_ptr</td><td>指向结构体 <a class="el" href="structvsf__sdio__t.html">vsf_sdio_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">req_ptr</td><td>sdio 请求结构指针，参考 vsf_sdio_req_t。对于数据传输，req_ptr-&gt;buffer 指向数据 缓冲区（写时作为源数据，读时由驱动异步填充）。 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果 sdio 主机传输开始返回 VSF_ERR_NONE，否则返回负数 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果请求成功启动返回 VSF_ERR_NONE，否则返回负数</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。它仅启动请求后立即返回；返回 VSF_ERR_NONE 只表示请求已被接受， 并不代表命令/数据传输已经完成。 </dd>
+<dd>
+完成通过在 cfg.isr 中注册的回调（参见 vsf_sdio_init）通知：收到命令响应时为 SDIO_IRQ_MASK_HOST_RESP_DONE，数据传输结束时为 SDIO_IRQ_MASK_HOST_DATA_DONE。 </dd>
+<dd>
+req_ptr（及其 req_ptr-&gt;buffer，若有）在完成通知之前必须保持有效；读操作时 req_ptr-&gt;buffer 的内容 在完成前是未定义的。 </dd></dl>
 
 </div>
 </div>
@@ -510,6 +515,6 @@ $(function(){ initResizable(false); });
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/1570d0cf7d79dd280f0d992edde5947a6f3d61fa" target="_blank">vsfteam/vsf@1570d0c</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1d94181ffb63d859ea905bf21dc5742f1b5e5e00" target="_blank">vsfteam/vsf@1d94181</a>
   生成
 </div>

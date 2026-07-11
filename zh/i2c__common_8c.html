@@ -591,11 +591,14 @@ $(function(){ initResizable(false); });
     <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>I2C 传输的地址（地址不包含读写位） </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">cmd</td><td>I2C 命令 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>要传输的数据数量 </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">buffer_ptr</td><td>I2C 传输缓冲区 </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">buffer_ptr</td><td>I2C 传输缓冲区；写时作为源数据、读时由驱动异步填充 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 成功返回 VSF_ERR_NONE，否则返回负数 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果传输成功启动返回 VSF_ERR_NONE，否则返回负数</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。它仅启动传输后立即返回；返回 VSF_ERR_NONE 只表示请求已被接受， 并不代表传输已经完成。 </dd>
+<dd>
+完成通过在 cfg.isr 中注册的回调（参见 vsf_i2c_init）经 VSF_I2C_IRQ_MASK_MASTER_TRANSFER_COMPLETE，或主机错误掩码如 VSF_I2C_IRQ_MASK_MASTER_ADDRESS_NACK / VSF_I2C_IRQ_MASK_MASTER_TX_NACK_DETECT 通知。 buffer_ptr 在完成通知之前必须保持有效。具体的中断事件请参考 vsf_i2c_irq_mask_t。 </dd></dl>
 
 </div>
 </div>
@@ -634,11 +637,14 @@ $(function(){ initResizable(false); });
     <tr><td class="paramdir">[in,out]</td><td class="paramname">i2c_ptr</td><td>结构体 <a class="el" href="structvsf__i2c__t.html">vsf_i2c_t</a> 的指针 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">transmit_or_receive</td><td>true 表示发送，false 表示接收 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>要传输的数据数量 </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">buffer_ptr</td><td>I2C 传输缓冲区 </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">buffer_ptr</td><td>I2C 传输缓冲区；发送时作为源数据、接收时由驱动异步填充 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 成功返回 VSF_ERR_NONE，否则返回负数 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果请求成功启动返回 VSF_ERR_NONE，否则返回负数</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。它仅启动传输后立即返回；返回 VSF_ERR_NONE 只表示请求已被接受， 并不代表传输已经完成。 </dd>
+<dd>
+完成通过在 cfg.isr 中注册的回调（参见 vsf_i2c_init）经 VSF_I2C_IRQ_MASK_SLAVE_TRANSFER_COMPLETE 通知。buffer_ptr 在完成通知之前必须保持有效。 具体的中断事件请参考 vsf_i2c_irq_mask_t。 </dd></dl>
 
 </div>
 </div>
@@ -665,7 +671,7 @@ $(function(){ initResizable(false); });
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>uint_fast16_t: 已传输的数据数量 </dd></dl>
-<dl class="section note"><dt>注解</dt><dd>此 API 可在从机 NAK 之后到下一次传输之前使用 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>配合异步的 vsf_i2c_master_request 使用，用于查询当前已传输的字节数。通常在完成/错误的 ISR 回调中查询，也可在从机 NAK 之后到下一次传输之前使用。 </dd></dl>
 
 </div>
 </div>
@@ -735,6 +741,6 @@ $(function(){ initResizable(false); });
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/1570d0cf7d79dd280f0d992edde5947a6f3d61fa" target="_blank">vsfteam/vsf@1570d0c</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1d94181ffb63d859ea905bf21dc5742f1b5e5e00" target="_blank">vsfteam/vsf@1d94181</a>
   生成
 </div>

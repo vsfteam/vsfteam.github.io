@@ -368,8 +368,10 @@ $(function(){ initResizable(false); });
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果缓冲区成功发送返回 VSF_ERR_NONE，失败返回负数 </dd></dl>
-<dl class="section note"><dt>注解</dt><dd>如果 capability 的 is_send_buf_releasable_immediately 为 false， 在接收到发送完整中断之前，缓冲区应该保持有效 </dd>
+<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果发送请求成功提交返回 VSF_ERR_NONE，失败返回负数 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。它仅提交发送请求后立即返回；返回 VSF_ERR_NONE 只表示请求已被接受， 并不代表帧已经发送完成。完成通过在 cfg.isr 中注册的回调经 VSF_ETH_IRQ_MASK_TX_COMPLETE 中断通知。 </dd>
+<dd>
+如果 capability 的 is_send_buf_releasable_immediately 为 false， 在接收到发送完整中断之前，缓冲区应该保持有效 </dd>
 <dd>
 如果 buf_ptr 的 payload 为 NULL，len 不为零，驱动如果可以支持对应大小的 buf，就返回 VSF_ERR_NONE，否则返回 VSF_ERR_INVALID_PARAMETER </dd></dl>
 
@@ -402,8 +404,10 @@ $(function(){ initResizable(false); });
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果缓冲区成功接收返回 VSF_ERR_NONE，失败返回负数 </dd></dl>
-<dl class="section note"><dt>注解</dt><dd>必须预先分配具有足够大小的缓冲区以存储接收到的数据 </dd>
+<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果数据成功接收返回 VSF_ERR_NONE，失败返回负数 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步接收 API。到达的帧通过在 cfg.isr 中注册的回调经 VSF_ETH_IRQ_MASK_RX_AVAILABLE 中断通知；通常在收到该通知后（或 status.is_rx_available 为 1 时）调用本 API 取出数据， 若无可用数据则返回 VSF_ERR_NOT_READY。 </dd>
+<dd>
+必须预先分配具有足够大小的缓冲区以存储接收到的数据 </dd>
 <dd>
 如果 buf_ptr 的 payload 为 NULL，驱动将修改 len 返回可以读取的数据的长度 </dd>
 <dd>
@@ -425,7 +429,7 @@ $(function(){ initResizable(false); });
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="vsf__template__eth_8h.html#a98b79491045c8e2da09973bd8ede80af">vsf_eth_send_sg_buf_desc_t</a> *</td>          <td class="paramname"><span class="paramname"><em>sg_ptr</em></span>, </td>
+          <td class="paramtype"><a class="el" href="vsf__template__eth_8h.html#a98b79491045c8e2da09973bd8ede80af">vsf_eth_send_sg_buf_desc_t</a> *</td>          <td class="paramname"><span class="paramname"><em>sg_buf_ptr</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -439,13 +443,15 @@ $(function(){ initResizable(false); });
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">eth_ptr</td><td>指向结构体 <a class="el" href="structvsf__eth__t.html">vsf_eth_t</a> 的指针 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">sg_ptr</td><td>指向要发送的分散聚集的缓冲区数组的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sg_buf_ptr</td><td>指向要发送的分散聚集的缓冲区数组的指针 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">sg_count</td><td>分散聚集的缓冲区数组中的元素数量 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果缓冲区成功发送返回 VSF_ERR_NONE，失败返回负数 </dd></dl>
-<dl class="section note"><dt>注解</dt><dd>在接收到发送完成中断之前，缓冲区应该保持有效 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果发送请求成功提交返回 VSF_ERR_NONE，失败返回负数 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。它仅提交发送请求后立即返回；返回 VSF_ERR_NONE 只表示请求已被接受， 并不代表帧已经发送完成。完成通过在 cfg.isr 中注册的回调经 VSF_ETH_IRQ_MASK_SG_TX_COMPLETE 中断通知。 </dd>
+<dd>
+在接收到发送完成中断之前，缓冲区应该保持有效 </dd></dl>
 
 </div>
 </div>
@@ -463,7 +469,7 @@ $(function(){ initResizable(false); });
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="vsf__template__eth_8h.html#adad72927d1ab664ef36ad047ae0e146e">vsf_eth_recv_sg_buf_desc_t</a> *</td>          <td class="paramname"><span class="paramname"><em>sg_ptr</em></span>, </td>
+          <td class="paramtype"><a class="el" href="vsf__template__eth_8h.html#adad72927d1ab664ef36ad047ae0e146e">vsf_eth_recv_sg_buf_desc_t</a> *</td>          <td class="paramname"><span class="paramname"><em>sg_buf_ptr</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -477,13 +483,15 @@ $(function(){ initResizable(false); });
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">eth_ptr</td><td>指向结构体 <a class="el" href="structvsf__eth__t.html">vsf_eth_t</a> 的指针 </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">sg_ptr</td><td>指向用于存储接收数据的分散聚集缓冲区数组的指针 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">sg_buf_ptr</td><td>指向用于存储接收数据的分散聚集缓冲区数组的指针 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">sg_count</td><td>分散聚集缓缓冲区数组中的元素数量 </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果数据成功接收返回 VSF_ERR_NONE，失败返回负数 </dd></dl>
-<dl class="section note"><dt>注解</dt><dd>必须预先分配具有足够大小的缓冲区以存储接收到的数据 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步接收 API。到达的帧通过在 cfg.isr 中注册的回调经 VSF_ETH_IRQ_MASK_SG_RX_AVAILABLE 中断通知；通常在收到该通知后调用本 API 取出数据。 </dd>
+<dd>
+必须预先分配具有足够大小的缓冲区以存储接收到的数据 </dd></dl>
 
 </div>
 </div>
@@ -579,6 +587,6 @@ $(function(){ initResizable(false); });
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/1570d0cf7d79dd280f0d992edde5947a6f3d61fa" target="_blank">vsfteam/vsf@1570d0c</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1d94181ffb63d859ea905bf21dc5742f1b5e5e00" target="_blank">vsfteam/vsf@1d94181</a>
   生成
 </div>

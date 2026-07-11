@@ -1480,11 +1480,14 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>address of I2C transfer (address does not include read/write bit) </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">cmd</td><td>I2C command </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>number of data to transfer </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">buffer_ptr</td><td>I2C transfer buffer </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">buffer_ptr</td><td>I2C transfer buffer; used as source for a write and filled asynchronously by the driver for a read </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if successful, or a negative error code </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the transfer was successfully started, or a negative error code</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This is an asynchronous API. It only starts the transfer and returns immediately; a VSF_ERR_NONE return means the request was accepted, NOT that the transfer has completed. </dd>
+<dd>
+Completion is signaled through the ISR callback registered in cfg.isr (see vsf_i2c_init) via VSF_I2C_IRQ_MASK_MASTER_TRANSFER_COMPLETE, or a master error mask such as VSF_I2C_IRQ_MASK_MASTER_ADDRESS_NACK / VSF_I2C_IRQ_MASK_MASTER_TX_NACK_DETECT. buffer_ptr must remain valid until completion is signaled. For the interrupt events see <a class="el" href="hal_2driver_2_artery_2_a_t32_f402__405_2common_2i2c_2i2c_8h.html#ad682f2ecf4643bfd9e9cee675d2b9282">vsf_i2c_irq_mask_t</a>. </dd></dl>
 
 </div>
 </div>
@@ -1531,11 +1534,14 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">i2c_ptr</td><td>a pointer to structure <a class="el" href="structvsf__i2c__t.html">vsf_i2c_t</a> </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">transmit_or_receive</td><td>true for transmit, false for receive </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>number of data to transfer </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">buffer_ptr</td><td>I2C transfer buffer </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">buffer_ptr</td><td>I2C transfer buffer; used as source when transmitting and filled asynchronously by the driver when receiving </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if successful, or a negative error code </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the request was successfully started, or a negative error code</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This is an asynchronous API. It only starts the transfer and returns immediately; a VSF_ERR_NONE return means the request was accepted, NOT that the transfer has completed. </dd>
+<dd>
+Completion is signaled through the ISR callback registered in cfg.isr (see vsf_i2c_init) via VSF_I2C_IRQ_MASK_SLAVE_TRANSFER_COMPLETE. buffer_ptr must remain valid until completion is signaled. For the interrupt events see <a class="el" href="hal_2driver_2_artery_2_a_t32_f402__405_2common_2i2c_2i2c_8h.html#ad682f2ecf4643bfd9e9cee675d2b9282">vsf_i2c_irq_mask_t</a>. </dd></dl>
 
 </div>
 </div>
@@ -1570,7 +1576,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>uint_fast16_t: number of data transferred </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>This API can be used between slave NAK and the next transmission </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Used together with the asynchronous vsf_i2c_master_request to query how many bytes have been transferred so far. It is typically queried in the completion/error ISR callback, and can also be used between a slave NAK and the next transmission. </dd></dl>
 
 </div>
 </div>
@@ -1700,5 +1706,5 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/1570d0cf7d79dd280f0d992edde5947a6f3d61fa" target="_blank">vsfteam/vsf@1570d0c</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1d94181ffb63d859ea905bf21dc5742f1b5e5e00" target="_blank">vsfteam/vsf@1d94181</a>
 </div>

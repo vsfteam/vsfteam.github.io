@@ -599,7 +599,9 @@ $(function(){ initResizable(false); });
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果传输成功启动则返回 VSF_ERR_NONE，否则返回错误码 </dd></dl>
-<dl class="section note"><dt>注解</dt><dd>这是一个异步操作，注册完成中断以获得通知 </dd>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。返回 VSF_ERR_NONE 只表示传输已经启动，并不代表传输已经完成。 完成通过在 cfg.isr 中注册的回调（参见 vsf_spi_init）经 VSF_SPI_IRQ_MASK_TX_CPL / VSF_SPI_IRQ_MASK_RX_CPL 中断通知。 </dd>
+<dd>
+out_buffer_ptr 和 in_buffer_ptr 在完成通知之前必须保持有效；in_buffer_ptr 的内容 在完成前是未定义的。 </dd>
 <dd>
 数据单元大小由 SPI 模式中配置的数据大小决定（vsf_spi_mode_t） </dd>
 <dd>
@@ -755,6 +757,6 @@ $(function(){ initResizable(false); });
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/1570d0cf7d79dd280f0d992edde5947a6f3d61fa" target="_blank">vsfteam/vsf@1570d0c</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1d94181ffb63d859ea905bf21dc5742f1b5e5e00" target="_blank">vsfteam/vsf@1d94181</a>
   生成
 </div>

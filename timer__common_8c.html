@@ -674,11 +674,16 @@ Some commands may not be supported on all hardware platforms </dd></dl>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">timer_ptr</td><td>a pointer to structure <a class="el" href="structvsf__timer__t.html">vsf_timer_t</a> </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>timer channel </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">request_ptr</td><td>a pointer to request structure <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> For VSF_TIMER_CHANNEL_MODE_BASE mode, period_buffer in structure <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> is array of period value to be set after each overflow. For VSF_TIMER_CHANNEL_MODE_PWM mode, pwm_buffer in structure <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> is array of pulse value to be set after each overflow. For VSF_TIMER_CHANNEL_MODE_OUTPUT_COMPARE mode, pulse_buffer in structure <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> is array of pulse value to be set after each overflow. For VSF_TIMER_CHANNEL_MODE_INPUT_CAPTURE mode, input_capture_buffer in structure <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> is array of input capture value. For VSF_TIMER_CHANNEL_MODE_ENCODER mode, channel_a_buffer and channel_b_buffer in structure <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> is array of encoder value for channel A and channel B. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">request_ptr</td><td>a pointer to request structure <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> For VSF_TIMER_CHANNEL_MODE_BASE mode, period_buffer in structure <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> is array of period value to be set after each overflow. For VSF_TIMER_CHANNEL_MODE_PWM mode, pwm_buffer in structure <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> is array of pulse value to be set after each overflow. For VSF_TIMER_CHANNEL_MODE_OUTPUT_COMPARE mode, pulse_buffer in structure <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> is array of pulse value to be set after each overflow. For VSF_TIMER_CHANNEL_MODE_INPUT_CAPTURE mode, input_capture_buffer in structure <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> is array of input capture value. For VSF_TIMER_CHANNEL_MODE_ENCODER mode, channel_a_buffer and channel_b_buffer in structure <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> is array of encoder value for channel A and channel B. The buffers in request_ptr are inputs for BASE/PWM/OUTPUT_COMPARE modes and are filled asynchronously by the driver (outputs) for INPUT_CAPTURE/ENCODER modes. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the TIMER channel start was successfully, or a negative error code </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the channel request was successfully started, or a negative error code</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This is an asynchronous, continuous request. It only starts the request and returns immediately; a VSF_ERR_NONE return means the request was accepted, NOT that a transfer round has completed. The request keeps running (each buffer element is consumed/produced on every overflow) until vsf_timer_channel_request_stop is called. </dd>
+<dd>
+Progress is signaled through the ISR callback registered in cfg.isr via VSF_TIMER_IRQ_MASK_CHANNEL_REQUEST_COMPLETE and VSF_TIMER_IRQ_MASK_CHANNEL_REQUEST_HALF_COMPLETE. </dd>
+<dd>
+request_ptr and its buffers must remain valid until the request is stopped. </dd></dl>
 
 </div>
 </div>
@@ -710,6 +715,7 @@ Some commands may not be supported on all hardware platforms </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the TIMER channel stop was successfully, or a negative error code </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Stops a continuous request previously started by vsf_timer_channel_request_start. After it returns, the request_ptr buffer passed to the start call may be safely released. </dd></dl>
 
 </div>
 </div>
@@ -794,5 +800,5 @@ Some commands may not be supported on all hardware platforms </dd></dl>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/1570d0cf7d79dd280f0d992edde5947a6f3d61fa" target="_blank">vsfteam/vsf@1570d0c</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1d94181ffb63d859ea905bf21dc5742f1b5e5e00" target="_blank">vsfteam/vsf@1d94181</a>
 </div>

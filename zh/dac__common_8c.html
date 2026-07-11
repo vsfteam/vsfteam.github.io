@@ -440,7 +440,7 @@ $(function(){ initResizable(false); });
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structvsf__dac__channel__cfg__t.html">vsf_dac_channel_cfg_t</a> *</td>          <td class="paramname"><span class="paramname"><em>channel_cfg</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structvsf__dac__channel__cfg__t.html">vsf_dac_channel_cfg_t</a> *</td>          <td class="paramname"><span class="paramname"><em>channel_cfg_ptr</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -454,12 +454,15 @@ $(function(){ initResizable(false); });
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">dac_ptr</td><td>指向结构体 <a class="el" href="structvsf__dac__t.html">vsf_dac_t</a> 的指针 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">channel_cfg</td><td>转换通道配置的指针 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>待转换的值 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel_cfg_ptr</td><td>转换通道配置的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>待转换的值（按值传递，输出到 DAC） </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果请求成功返回 VSF_ERR_NONE，否则返回错误码 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果请求成功提交返回 VSF_ERR_NONE，否则返回错误码</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。它仅提交转换请求后立即返回；返回 VSF_ERR_NONE 只表示请求已被接受， 并不代表转换已经完成。 </dd>
+<dd>
+完成通过在 cfg.isr 中注册的回调（参见 vsf_dac_init）经 VSF_DAC_IRQ_MASK_CPL 中断通知。 </dd></dl>
 
 </div>
 </div>
@@ -477,12 +480,12 @@ $(function(){ initResizable(false); });
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structvsf__dac__channel__cfg__t.html">vsf_dac_channel_cfg_t</a> *</td>          <td class="paramname"><span class="paramname"><em>cfgs_ptr</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structvsf__dac__channel__cfg__t.html">vsf_dac_channel_cfg_t</a> *</td>          <td class="paramname"><span class="paramname"><em>channel_cfgs_ptr</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="stdint_8h.html#a2d31063fef649c85396fb28130ef9795">uint_fast8_t</a></td>          <td class="paramname"><span class="paramname"><em>cnt</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a2d31063fef649c85396fb28130ef9795">uint_fast8_t</a></td>          <td class="paramname"><span class="paramname"><em>count</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -491,8 +494,8 @@ $(function(){ initResizable(false); });
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">dac_ptr</td><td>指向结构体 <a class="el" href="structvsf__dac__t.html">vsf_dac_t</a> 的指针 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cfgs_ptr</td><td>转换通道配置数组 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cnt</td><td>转换通道配置数组的长度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel_cfgs_ptr</td><td>转换通道配置数组 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>转换通道配置数组的长度 </td></tr>
   </table>
   </dd>
 </dl>
@@ -528,12 +531,17 @@ $(function(){ initResizable(false); });
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">dac_ptr</td><td>指向结构体 <a class="el" href="structvsf__dac__t.html">vsf_dac_t</a> 的指针 </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">buffer_ptr</td><td>转换通道数据数组 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>转换通道配置数据数组的长度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer_ptr</td><td>要输出到 DAC 的通道数据数组 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>转换通道数据数组的长度 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果请求成功返回 VSF_ERR_NONE，否则返回错误码 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果请求成功提交返回 VSF_ERR_NONE，否则返回错误码</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。它仅提交请求后立即返回；返回 VSF_ERR_NONE 只表示请求已被接受， 并不代表转换已经完成。 </dd>
+<dd>
+完成通过在 cfg.isr 中注册的回调（参见 vsf_dac_init）经 VSF_DAC_IRQ_MASK_CPL 中断通知。 </dd>
+<dd>
+buffer_ptr 在完成回调被调用之前必须保持有效（传输期间数据可能由 DMA 读取）， 且在完成前不可修改或复用。 </dd></dl>
 
 </div>
 </div>
@@ -577,6 +585,6 @@ $(function(){ initResizable(false); });
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/1570d0cf7d79dd280f0d992edde5947a6f3d61fa" target="_blank">vsfteam/vsf@1570d0c</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1d94181ffb63d859ea905bf21dc5742f1b5e5e00" target="_blank">vsfteam/vsf@1d94181</a>
   生成
 </div>

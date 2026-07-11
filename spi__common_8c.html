@@ -595,8 +595,10 @@ Driver implementers should validate the parameters and use an assertion (e.g., V
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if transfer started successfully, or error code </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>This is an asynchronous operation, register for completion interrupts to be notified </dd>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the transfer was successfully started, or error code </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This is an asynchronous API. A VSF_ERR_NONE return only means the transfer was started, NOT that it has completed. Completion is signaled through the ISR callback registered in cfg.isr (see vsf_spi_init) via VSF_SPI_IRQ_MASK_TX_CPL / VSF_SPI_IRQ_MASK_RX_CPL. </dd>
+<dd>
+out_buffer_ptr and in_buffer_ptr must remain valid until completion is signaled; in_buffer_ptr content is undefined before completion. </dd>
 <dd>
 Data unit size is determined by the configured data size in SPI mode (<a class="el" href="_a_i_c_2_a_i_c8800_2spi_2spi_8h.html#ab21578569e5e21a2748d2fa14bbbe3a0">vsf_spi_mode_t</a>) </dd>
 <dd>
@@ -752,5 +754,5 @@ Some commands may not be supported on all hardware platforms </dd></dl>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/1570d0cf7d79dd280f0d992edde5947a6f3d61fa" target="_blank">vsfteam/vsf@1570d0c</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1d94181ffb63d859ea905bf21dc5742f1b5e5e00" target="_blank">vsfteam/vsf@1d94181</a>
 </div>

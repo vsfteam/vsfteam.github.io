@@ -674,11 +674,16 @@ $(function(){ initResizable(false); });
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">timer_ptr</td><td>指向结构体 <a class="el" href="structvsf__timer__t.html">vsf_timer_t</a> 的指针 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>TIMER 通道 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">request_ptr</td><td>指向结构体 <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> 的指针，参考 <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> 对于 VSF_TIMER_CHANNEL_MODE_BASE 模式, <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> 中的 period_buffer 是每次溢出后要设置的周期值数组。 对于 VSF_TIMER_CHANNEL_MODE_PWM 模式, <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> 中的 pwm_buffer 是每次溢出后要设置的脉冲值数组。 对于 VSF_TIMER_CHANNEL_MODE_OUTPUT_COMPARE 模式, <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> 中的 pulse_buffer 是每次溢出后要设置的脉冲值数组。 对于 VSF_TIMER_CHANNEL_MODE_INPUT_CAPTURE 模式, <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> 中的 input_capture_buffer 是输入捕获值数组。 对于 VSF_TIMER_CHANNEL_MODE_ENCODER 模式, <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> 中的 channel_a_buffer 和 channel_b_buffer 是通道 A 和通道 B 的编码器值数组。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">request_ptr</td><td>指向结构体 <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> 的指针，参考 <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> 对于 VSF_TIMER_CHANNEL_MODE_BASE 模式, <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> 中的 period_buffer 是每次溢出后要设置的周期值数组。 对于 VSF_TIMER_CHANNEL_MODE_PWM 模式, <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> 中的 pwm_buffer 是每次溢出后要设置的脉冲值数组。 对于 VSF_TIMER_CHANNEL_MODE_OUTPUT_COMPARE 模式, <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> 中的 pulse_buffer 是每次溢出后要设置的脉冲值数组。 对于 VSF_TIMER_CHANNEL_MODE_INPUT_CAPTURE 模式, <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> 中的 input_capture_buffer 是输入捕获值数组。 对于 VSF_TIMER_CHANNEL_MODE_ENCODER 模式, <a class="el" href="structvsf__timer__channel__request__t.html">vsf_timer_channel_request_t</a> 中的 channel_a_buffer 和 channel_b_buffer 是通道 A 和通道 B 的编码器值数组。 request_ptr 中的缓冲区在 BASE/PWM/OUTPUT_COMPARE 模式下为输入，在 INPUT_CAPTURE/ENCODER 模式下由驱动异步填充（为输出）。 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果 TIMER 通道开始成功返回 VSF_ERR_NONE, 否则返回负数。 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果通道请求成功启动返回 VSF_ERR_NONE, 否则返回负数。</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步、持续型请求。它仅启动请求后立即返回；返回 VSF_ERR_NONE 只表示请求已被接受， 并不代表一轮传输已经完成。请求会持续运行（每次溢出消耗/产生一个缓冲区元素）， 直到调用 vsf_timer_channel_request_stop 为止。 </dd>
+<dd>
+进度通过在 cfg.isr 中注册的回调经 VSF_TIMER_IRQ_MASK_CHANNEL_REQUEST_COMPLETE 和 VSF_TIMER_IRQ_MASK_CHANNEL_REQUEST_HALF_COMPLETE 中断通知。 </dd>
+<dd>
+request_ptr 及其缓冲区在请求被停止之前必须保持有效。 </dd></dl>
 
 </div>
 </div>
@@ -710,6 +715,7 @@ $(function(){ initResizable(false); });
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果 TIMER 通道停止成功返回 VSF_ERR_NONE, 否则返回负数。 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>用于停止先前由 vsf_timer_channel_request_start 启动的持续型请求。返回后，传给 start 调用的 request_ptr 缓冲区即可安全释放。 </dd></dl>
 
 </div>
 </div>
@@ -794,6 +800,6 @@ $(function(){ initResizable(false); });
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/1570d0cf7d79dd280f0d992edde5947a6f3d61fa" target="_blank">vsfteam/vsf@1570d0c</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1d94181ffb63d859ea905bf21dc5742f1b5e5e00" target="_blank">vsfteam/vsf@1d94181</a>
   生成
 </div>

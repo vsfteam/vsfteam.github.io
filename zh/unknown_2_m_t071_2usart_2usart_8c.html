@@ -485,13 +485,15 @@ $(function(){ initResizable(false); });
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">usart_ptr</td><td>指向结构体 <a class="el" href="structvsf__usart__t.html">vsf_usart_t</a> 的指针 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">buffer_ptr</td><td>接收缓冲区指针 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buffer_ptr</td><td>接收缓冲区指针，由驱动异步填充 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>要接收的字节数 </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果接收请求成功启动则返回 VSF_ERR_NONE，否则返回错误码 </dd></dl>
-<dl class="section note"><dt>注解</dt><dd>这是一个异步操作 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。返回 VSF_ERR_NONE 只表示请求已被接受，并不代表数据已经接收完成。 完成通过在 cfg.isr 中注册的回调（参见 vsf_usart_init）经 VSF_USART_IRQ_MASK_RX_CPL 中断通知。 </dd>
+<dd>
+buffer_ptr 在完成通知之前必须保持有效，其内容在完成前是未定义的。可在 RX_CPL 之后 （或调用 vsf_usart_cancel_rx 之后）使用 <a class="el" href="vsf__template__usart_8h.html#a9b53ff163b016b428005c7833453cc91" title="获取当前或最后一次 USART 操作中接收的字节数">vsf_usart_get_rx_count()</a> 获取实际接收的字节数。 </dd></dl>
 
 </div>
 </div>
@@ -523,13 +525,17 @@ $(function(){ initResizable(false); });
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">usart_ptr</td><td>指向结构体 <a class="el" href="structvsf__usart__t.html">vsf_usart_t</a> 的指针 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">buffer_ptr</td><td>发送缓冲区指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer_ptr</td><td>发送源缓冲区指针 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>要发送的字节数 </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果发送请求成功启动则返回 VSF_ERR_NONE，否则返回错误码 </dd></dl>
-<dl class="section note"><dt>注解</dt><dd>这是一个异步操作 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个异步 API。返回 VSF_ERR_NONE 只表示请求已被接受，并不代表数据已经发送完成。 完成通过在 cfg.isr 中注册的回调（参见 vsf_usart_init）经 VSF_USART_IRQ_MASK_TX_CPL 中断通知。 </dd>
+<dd>
+buffer_ptr 在完成通知之前必须保持有效且不被修改。 </dd>
+<dd>
+VSF_USART_IRQ_MASK_TX_CPL 仅表示所有数据已被推入 TX FIFO，并不代表最后一个 bit 已从 线缆发出。若必须确认硬件完全空闲，请轮询 status（txfe / is_busy）。 </dd></dl>
 
 </div>
 </div>
@@ -556,6 +562,7 @@ $(function(){ initResizable(false); });
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果成功取消接收操作则返回 VSF_ERR_NONE，否则返回错误码 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>用于中止先前由 vsf_usart_request_rx 启动的传输。取消后接收缓冲区即可安全释放； 可使用 <a class="el" href="vsf__template__usart_8h.html#a9b53ff163b016b428005c7833453cc91" title="获取当前或最后一次 USART 操作中接收的字节数">vsf_usart_get_rx_count()</a> 获取取消前已接收的字节数。 </dd></dl>
 
 </div>
 </div>
@@ -582,6 +589,7 @@ $(function(){ initResizable(false); });
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果成功取消发送操作则返回 VSF_ERR_NONE，否则返回错误码 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>用于中止先前由 vsf_usart_request_tx 启动的传输。取消后发送缓冲区即可安全释放； 可使用 <a class="el" href="vsf__template__usart_8h.html#ace2955e38e62f18ba5216c1999b25c8f" title="获取当前或最后一次 USART 操作中发送的字节数">vsf_usart_get_tx_count()</a> 获取取消前已发送的字节数。 </dd></dl>
 
 </div>
 </div>
@@ -642,6 +650,6 @@ $(function(){ initResizable(false); });
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/1570d0cf7d79dd280f0d992edde5947a6f3d61fa" target="_blank">vsfteam/vsf@1570d0c</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1d94181ffb63d859ea905bf21dc5742f1b5e5e00" target="_blank">vsfteam/vsf@1d94181</a>
   生成
 </div>

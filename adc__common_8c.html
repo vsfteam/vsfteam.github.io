@@ -442,7 +442,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structvsf__adc__channel__cfg__t.html">vsf_adc_channel_cfg_t</a> *</td>          <td class="paramname"><span class="paramname"><em>channel_cfg</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structvsf__adc__channel__cfg__t.html">vsf_adc_channel_cfg_t</a> *</td>          <td class="paramname"><span class="paramname"><em>channel_cfg_ptr</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -456,12 +456,17 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">adc_ptr</td><td>a pointer to structure <a class="el" href="structvsf__adc__t.html">vsf_adc_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">channel_cfg</td><td>a pointer to convert channel configuration </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">buffer_ptr</td><td>value to be converted </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel_cfg_ptr</td><td>a pointer to convert channel configuration </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buffer_ptr</td><td>pointer to the buffer that receives the conversion result </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the request was successful, otherwise returns error code </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the request was successfully submitted, otherwise returns error code</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This is an asynchronous API. It only submits the sampling request and returns immediately; a VSF_ERR_NONE return means the request was accepted, NOT that the conversion has completed. </dd>
+<dd>
+Completion is signaled through the ISR callback registered in cfg.isr (see vsf_adc_init) via the VSF_ADC_IRQ_MASK_CPL interrupt. The conversion result is written into buffer_ptr asynchronously by the driver. </dd>
+<dd>
+buffer_ptr must remain valid until the completion callback is invoked, and its content is undefined before completion. </dd></dl>
 
 </div>
 </div>
@@ -479,12 +484,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structvsf__adc__channel__cfg__t.html">vsf_adc_channel_cfg_t</a> *</td>          <td class="paramname"><span class="paramname"><em>cfgs_ptr</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structvsf__adc__channel__cfg__t.html">vsf_adc_channel_cfg_t</a> *</td>          <td class="paramname"><span class="paramname"><em>channel_cfgs_ptr</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a></td>          <td class="paramname"><span class="paramname"><em>cnt</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a></td>          <td class="paramname"><span class="paramname"><em>count</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -493,8 +498,8 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">adc_ptr</td><td>a pointer to structure <a class="el" href="structvsf__adc__t.html">vsf_adc_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cfgs_ptr</td><td>convert channel configuration array </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cnt</td><td>the length of convert channel configuration array </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel_cfgs_ptr</td><td>convert channel configuration array </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>the length of convert channel configuration array </td></tr>
   </table>
   </dd>
 </dl>
@@ -530,12 +535,17 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">adc_ptr</td><td>a pointer to structure <a class="el" href="structvsf__adc__t.html">vsf_adc_t</a> </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">buffer_ptr</td><td>convert channel data array </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>the length of convert channel configuration data array </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buffer_ptr</td><td>array that receives the converted channel data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>the length of the convert channel data array </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the request was successful, otherwise returns error code </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the request was successfully submitted, otherwise returns error code</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This is an asynchronous API. It only submits the request and returns immediately; a VSF_ERR_NONE return means the request was accepted, NOT that the conversions have completed. </dd>
+<dd>
+Completion is signaled through the ISR callback registered in cfg.isr (see vsf_adc_init) via the VSF_ADC_IRQ_MASK_CPL interrupt. The converted data is written into buffer_ptr asynchronously by the driver. </dd>
+<dd>
+buffer_ptr must remain valid until the completion callback is invoked, and its content is undefined before completion. </dd></dl>
 
 </div>
 </div>
@@ -582,5 +592,5 @@ Some commands may not be supported on all hardware platforms </dd></dl>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/1570d0cf7d79dd280f0d992edde5947a6f3d61fa" target="_blank">vsfteam/vsf@1570d0c</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1d94181ffb63d859ea905bf21dc5742f1b5e5e00" target="_blank">vsfteam/vsf@1d94181</a>
 </div>

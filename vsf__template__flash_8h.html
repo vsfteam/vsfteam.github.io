@@ -1103,7 +1103,10 @@ If you enable any control commands below (uncomment them), or if you redefine th
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if FLASH starts to perform the erase, otherwise returns error code </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the erase request was successfully submitted, otherwise returns error code</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This is an asynchronous API. It only starts the erase and returns immediately; a VSF_ERR_NONE return means the request was accepted, NOT that the erase has completed. Do not access the sector until completion is signaled. </dd>
+<dd>
+Completion is signaled through the ISR callback registered in cfg.isr (see vsf_flash_init) via the VSF_FLASH_IRQ_MASK_ERASE interrupt. </dd></dl>
 
 </div>
 </div>
@@ -1148,7 +1151,10 @@ If you enable any control commands below (uncomment them), or if you redefine th
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if flash starts to perform the erase, or a negative error code </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the erase request was successfully submitted, or a negative error code</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This is an asynchronous API. It only starts the erase and returns immediately; a VSF_ERR_NONE return means the request was accepted, NOT that the erase has completed. Do not access the range until completion is signaled. </dd>
+<dd>
+Completion is signaled through the ISR callback registered in cfg.isr (see vsf_flash_init) via the VSF_FLASH_IRQ_MASK_ERASE interrupt. </dd></dl>
 
 </div>
 </div>
@@ -1182,7 +1188,10 @@ If you enable any control commands below (uncomment them), or if you redefine th
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if flash starts to perform the chip erase, or a negative error code </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the chip-erase request was successfully submitted, or a negative error code</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This is an asynchronous API. It only starts the erase and returns immediately; a VSF_ERR_NONE return means the request was accepted, NOT that the erase has completed. </dd>
+<dd>
+Completion is signaled through the ISR callback registered in cfg.isr (see vsf_flash_init) via the VSF_FLASH_IRQ_MASK_ERASE interrupt. </dd></dl>
 
 </div>
 </div>
@@ -1228,12 +1237,17 @@ If you enable any control commands below (uncomment them), or if you redefine th
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">flash_ptr</td><td>a pointer to structure <a class="el" href="structvsf__flash__t.html">vsf_flash_t</a> </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">offset_of_bytes</td><td>Address of the sector to be written, some flash requires an integer multiple of the smallest writable sector size </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>a pointer to data </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">size_of_bytes</td><td>a pointer to data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>pointer to the source data to be written to flash </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size_of_bytes</td><td>size in bytes to write </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if flash starts to perform the write, or a negative error code </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the write request was successfully submitted, or a negative error code</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This is an asynchronous API. It only starts the write and returns immediately; a VSF_ERR_NONE return means the request was accepted, NOT that the write has completed. </dd>
+<dd>
+Completion is signaled through the ISR callback registered in cfg.isr (see vsf_flash_init) via the VSF_FLASH_IRQ_MASK_WRITE interrupt. </dd>
+<dd>
+buffer must remain valid and unmodified until completion is signaled. </dd></dl>
 
 </div>
 </div>
@@ -1279,12 +1293,17 @@ If you enable any control commands below (uncomment them), or if you redefine th
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">flash_ptr</td><td>a pointer to structure <a class="el" href="structvsf__flash__t.html">vsf_flash_t</a> </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">offset_of_bytes</td><td>Address of the sector to be written, some flash requires an integer multiple of the smallest writable sector size </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>a pointer to data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>pointer to the source data to be written to flash </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">size_of_bytes</td><td>size of data to write </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if flash starts to perform the write, or a negative error code </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the write request was successfully submitted, or a negative error code</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This is an asynchronous API. It only starts the write and returns immediately; a VSF_ERR_NONE return means the request was accepted, NOT that the write has completed. </dd>
+<dd>
+Completion is signaled through the ISR callback registered in cfg.isr (see vsf_flash_init) via the VSF_FLASH_IRQ_MASK_WRITE interrupt. </dd>
+<dd>
+buffer must remain valid and unmodified until completion is signaled. </dd></dl>
 
 </div>
 </div>
@@ -1329,13 +1348,18 @@ If you enable any control commands below (uncomment them), or if you redefine th
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">flash_ptr</td><td>a pointer to structure <a class="el" href="structvsf__flash__t.html">vsf_flash_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">offset_of_bytes</td><td>Address of the sector to be written, some flash requires an integer multiple of the smallest writable sector size </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>a pointer to data </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">size_of_bytes</td><td>a pointer to data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">offset_of_bytes</td><td>Address of the sector to be read, some flash requires an integer multiple of the smallest readable sector size </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>pointer to the buffer that receives the data read from flash </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size_of_bytes</td><td>size in bytes to read </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if flash starts to perform the chip erase, or a negative error code </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the read request was successfully submitted, or a negative error code</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This is an asynchronous API. It only starts the read and returns immediately; a VSF_ERR_NONE return means the request was accepted, NOT that the read has completed. Do not read buffer until completion is signaled. </dd>
+<dd>
+Completion is signaled through the ISR callback registered in cfg.isr (see vsf_flash_init) via the VSF_FLASH_IRQ_MASK_READ interrupt. The data is written into buffer asynchronously by the driver. </dd>
+<dd>
+buffer must remain valid until completion is signaled. </dd></dl>
 
 </div>
 </div>
@@ -1380,13 +1404,18 @@ If you enable any control commands below (uncomment them), or if you redefine th
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">flash_ptr</td><td>a pointer to structure <a class="el" href="structvsf__flash__t.html">vsf_flash_t</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">offset_of_bytes</td><td>Address of the sector to be written, some flash requires an integer multiple of the smallest writable sector size </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>a pointer to data </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">size_of_bytes</td><td>a pointer to data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">offset_of_bytes</td><td>Address of the sector to be read, some flash requires an integer multiple of the smallest readable sector size </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>pointer to the buffer that receives the data read from flash </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size_of_bytes</td><td>size in bytes to read </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if flash starts to perform the chip erase, or a negative error code </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if the read request was successfully submitted, or a negative error code</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This is an asynchronous API. It only starts the read and returns immediately; a VSF_ERR_NONE return means the request was accepted, NOT that the read has completed. Do not read buffer until completion is signaled. </dd>
+<dd>
+Completion is signaled through the ISR callback registered in cfg.isr (see vsf_flash_init) via the VSF_FLASH_IRQ_MASK_READ interrupt. The data is written into buffer asynchronously by the driver. </dd>
+<dd>
+buffer must remain valid until completion is signaled. </dd></dl>
 
 </div>
 </div>
@@ -1441,5 +1470,5 @@ Some commands may not be supported on all hardware platforms </dd></dl>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/1570d0cf7d79dd280f0d992edde5947a6f3d61fa" target="_blank">vsfteam/vsf@1570d0c</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1d94181ffb63d859ea905bf21dc5742f1b5e5e00" target="_blank">vsfteam/vsf@1d94181</a>
 </div>

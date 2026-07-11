@@ -531,19 +531,19 @@ $(function(){ initResizable(false); });
     <tr><td class="paramdir">[in]</td><td class="paramname">dma_ptr</td><td>指向结构体 <a class="el" href="structvsf__dma__t.html">vsf_dma_t</a> 的指针 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>通道序号 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">isr</td><td>DMA 中断处理函数 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cfg_ptr</td><td>指向 DMA 通道 scatter-gather 配置的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sg_desc_ptr</td><td>指向 DMA 通道 scatter-gather 配置的指针 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">sg_count</td><td>scatter-gather 配置的数量 </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>vsf_err_t: 如果配置成功返回 VSF_ERR_NONE，否则返回错误码 </dd></dl>
-<dl class="section note"><dt>注解</dt><dd>scatter_gather_cfg 指向的结构体应该使用宏 VSF_DMA_CHANNEL_SG_ARRAY 来初始化，以保证更好的兼容性。 </dd>
+<dl class="section note"><dt>注解</dt><dd>sg_desc_ptr 指向的结构体应该使用宏 VSF_DMA_CHANNEL_SG_ARRAY 来初始化，以保证更好的兼容性。 </dd>
 <dd>
-scatter_gather_cfg 指向的结构体需要是可以被 DMA 直接访问的内存区域。 </dd>
+sg_desc_ptr 指向的结构体需要是可以被 DMA 直接访问的内存区域。 </dd>
 <dd>
-scatter_gather_cfg 指向的结构体需要调用者确保在 DMA 传输完成之前不会被释放。 </dd>
+sg_desc_ptr 指向的结构体需要调用者确保在 DMA 传输完成之前不会被释放。 </dd>
 <dd>
-scatter_gather_cfg 指向的结构体的内容可能在配置后被修改成 DMA 实际需要的 Scatter-Gather 描述符结构。 </dd>
+sg_desc_ptr 指向的结构体的内容可能在配置后被修改成 DMA 实际需要的 Scatter-Gather 描述符结构。 </dd>
 <dd>
 驱动会在内部处理链表的构建，包括：<ul>
 <li>为每个描述符设置 'next' 指针</li>
@@ -759,6 +759,6 @@ Scatter-Gather 语义:<ul>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/1570d0cf7d79dd280f0d992edde5947a6f3d61fa" target="_blank">vsfteam/vsf@1570d0c</a>
+  <a href="https://github.com/vsfteam/vsf/commit/1d94181ffb63d859ea905bf21dc5742f1b5e5e00" target="_blank">vsfteam/vsf@1d94181</a>
   生成
 </div>
