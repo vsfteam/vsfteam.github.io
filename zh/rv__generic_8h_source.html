@@ -159,78 +159,106 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment">// interrupt control is implemented as WEAK functions in rv_generic.c</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">//  (mstatus.MIE based); a chip with a BASEPRI-style threshold register</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">//  (eg: Qingke PFIC ITHRESDR) can provide strong overrides in its driver,</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">//  same as cortex_m_generic.c</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <span class="keywordtype">void</span> <a class="code hl_function" href="arm9__generic_8c.html#abfd8856e97ed5169d3a780d3306fd408">vsf_arch_sleep</a>(<a class="code hl_typedef" href="stdint_8h.html#a8a5d6c5353ff297fd0797e654772361b">uint_fast32_t</a> mode)</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>{</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;wfi&quot;</span> : :);</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>}</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <span class="keywordtype">void</span> vsf_arch_set_stack(<a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> stack, <a class="code hl_typedef" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> stack_size)</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>{</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mv sp, %0&quot;</span> : : <span class="stringliteral">&quot;r&quot;</span>(stack) : );</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>}</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> vsf_arch_get_stack(<span class="keywordtype">void</span>)</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>{</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> result;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mv %0, sp&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(result) : );</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>}</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment">// x3(gp) is used as the thread register(eg: GOT base of applets in vsf linux,</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">//  the ARM counterpart is r9). enabled by the BOARD config</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">//  (VSF_ARCH_USE_THREAD_REG, see board/&lt;chip&gt;/vsf_board_cfg.h), and unlike</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment">//  ARM r9 it has toolchain side effects, ALL required:</span></div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment">//  1. firmware built with -mno-relax -msmall-data-limit=0, so gp is never</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment">//     used for small-data addressing and stays owned by the thread register;</span></div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment">//  2. applets with GOT accesses rebound to gp at link time(patched binutils</span></div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="comment">//     or a post-link rewriter like elfpatch_rv.py), see gnuriscvemb.cmake;</span></div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="comment">//  3. the gp-aware setjmp/longjmp injected below(standard RV setjmp does</span></div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment">//     not save gp)</span></div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="preprocessor">#if VSF_ARCH_USE_THREAD_REG == ENABLED &amp;&amp; !defined(__cplusplus)</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> vsf_arch_set_thread_reg(<a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> <a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>)</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_enumeration" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">vsf_gint_state_t</a> <a class="code hl_function" href="arm9__generic_8c.html#a8ed592f2c9ad4a77a0969d4d9b0b9b6e">vsf_get_interrupt</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>{</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <a class="code hl_enumeration" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">vsf_gint_state_t</a> result;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;csrr %0, mstatus&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(result) : );</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>}</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_enumeration" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">vsf_gint_state_t</a> <a class="code hl_function" href="arm9__generic_8c.html#af378272d25b8cc8740db82bfa02f8377">vsf_set_interrupt</a>(<a class="code hl_enumeration" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">vsf_gint_state_t</a> level)</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>{</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <a class="code hl_enumeration" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">vsf_gint_state_t</a> result;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;csrrs %0, mstatus, %1&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(result) : <span class="stringliteral">&quot;r&quot;</span>(level));</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">return</span> result &amp; 8;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>}</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_enumeration" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">vsf_gint_state_t</a> <a class="code hl_function" href="arm9__generic_8c.html#a718eb823c82ffd4d8929470efe736d91">vsf_disable_interrupt</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>{</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <a class="code hl_enumeration" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">vsf_gint_state_t</a> result;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;csrrci %0, mstatus, 8&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(result) :);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordflow">return</span> result &amp; 8;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>}</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_enumeration" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">vsf_gint_state_t</a> <a class="code hl_function" href="arm9__generic_8c.html#ac74d7f82173c8b72aa92e8d72ad6273c">vsf_enable_interrupt</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>{</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <a class="code hl_enumeration" href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">vsf_gint_state_t</a> result;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;csrrsi %0, mstatus, 8&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(result) :);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordflow">return</span> result &amp; 8;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>}</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <span class="keywordtype">void</span> <a class="code hl_function" href="arm9__generic_8c.html#abfd8856e97ed5169d3a780d3306fd408">vsf_arch_sleep</a>(<a class="code hl_typedef" href="stdint_8h.html#a8a5d6c5353ff297fd0797e654772361b">uint_fast32_t</a> mode)</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>{</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;wfi&quot;</span> : :);</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>}</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <span class="keywordtype">void</span> vsf_arch_set_stack(<a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> stack, <a class="code hl_typedef" href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a> stack_size)</div>
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>{</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> result;</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mv %0, gp&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(result) : );</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mv gp, %0&quot;</span> : : <span class="stringliteral">&quot;r&quot;</span>(<a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>));</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>}</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> vsf_arch_get_thread_reg(<span class="keywordtype">void</span>)</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>{</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> result;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mv %0, gp&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(result) : );</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>}</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">// thread context switches rely on setjmp/longjmp, and the standard RISC-V</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment">//  setjmp does not save gp(x3) - inject the gp-aware implementation from</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment">//  rv_setjmp.S so that the thread register is preserved across switches.</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment">//  NOTE: prototypes come from simple_libc setjmp.h(jmp_buf typed)</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="preprocessor">#   ifndef VSF_ARCH_SETJMP</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="rv__generic_8h.html#a198d65e881625c4c9197136e1d3089c8">  161</a></span><span class="preprocessor">#       define VSF_ARCH_SETJMP      vsf_arch_rv_setjmp</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="preprocessor">#   ifndef VSF_ARCH_LONGJMP</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="rv__generic_8h.html#a093d7348a1ac0566e8b2e2cea38646f7">  164</a></span><span class="preprocessor">#       define VSF_ARCH_LONGJMP     vsf_arch_rv_longjmp</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="preprocessor">#   endif</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="preprocessor">#if VSF_ARCH_CFG_CALLSTACK_TRACE == ENABLED</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="rv__generic_8h.html#a4710800467bf88b0c8d9823b6781febd">vsf_arch_add_text_region</a>(<a class="code hl_struct" href="structvsf__arch__text__region__t.html">vsf_arch_text_region_t</a> *region);</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="keyword">extern</span> <a class="code hl_typedef" href="stdint_8h.html#aaf1a25f7e1013b1bb5dfb59a77c17975">uint_fast16_t</a> <a class="code hl_function" href="rv__generic_8h.html#a7d3e9802a5075b7a69d9d38cab782476">vsf_arch_get_callstack</a>(<a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> sp, <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> *callstack, <a class="code hl_typedef" href="stdint_8h.html#aaf1a25f7e1013b1bb5dfb59a77c17975">uint_fast16_t</a> callstack_num);</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>}</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="comment">/* EOF */</span></div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mv sp, %0&quot;</span> : : <span class="stringliteral">&quot;r&quot;</span>(stack) : );</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>}</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> vsf_arch_get_stack(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>{</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> result;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mv %0, sp&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(result) : );</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>}</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">// x3(gp) is used as the thread register(eg: GOT base of applets in vsf linux,</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">//  the ARM counterpart is r9). enabled by the BOARD config</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">//  (VSF_ARCH_USE_THREAD_REG, see board/&lt;chip&gt;/vsf_board_cfg.h), and unlike</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment">//  ARM r9 it has toolchain side effects, ALL required:</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment">//  1. firmware built with -mno-relax -msmall-data-limit=0, so gp is never</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment">//     used for small-data addressing and stays owned by the thread register;</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">//  2. applets with GOT accesses rebound to gp at link time(patched binutils</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="comment">//     or a post-link rewriter like elfpatch_rv.py), see gnuriscvemb.cmake;</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment">//  3. the gp-aware setjmp/longjmp injected below(standard RV setjmp does</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment">//     not save gp)</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="preprocessor">#if VSF_ARCH_USE_THREAD_REG == ENABLED &amp;&amp; !defined(__cplusplus)</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> vsf_arch_set_thread_reg(<a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> <a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>)</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>{</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> result;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mv %0, gp&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(result) : );</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mv gp, %0&quot;</span> : : <span class="stringliteral">&quot;r&quot;</span>(<a class="code hl_variable" href="vsf__audio_8h.html#ad5265e9eca2f756804584a9ac3335519">value</a>));</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>}</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="keyword">static</span> VSF_CAL_ALWAYS_INLINE <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> vsf_arch_get_thread_reg(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>{</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> result;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    __asm <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mv %0, gp&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(result) : );</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>}</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment">// thread context switches rely on setjmp/longjmp, and the standard RISC-V</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="comment">//  setjmp does not save gp(x3) - inject the gp-aware implementation from</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="comment">//  rv_setjmp.S so that the thread register is preserved across switches.</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="comment">//  NOTE: prototypes come from simple_libc setjmp.h(jmp_buf typed)</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="preprocessor">#   ifndef VSF_ARCH_SETJMP</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno"><a class="line" href="rv__generic_8h.html#a198d65e881625c4c9197136e1d3089c8">  184</a></span><span class="preprocessor">#       define VSF_ARCH_SETJMP      vsf_arch_rv_setjmp</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="preprocessor">#   ifndef VSF_ARCH_LONGJMP</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="rv__generic_8h.html#a093d7348a1ac0566e8b2e2cea38646f7">  187</a></span><span class="preprocessor">#       define VSF_ARCH_LONGJMP     vsf_arch_rv_longjmp</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="preprocessor">#   endif</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="preprocessor">#if VSF_ARCH_CFG_CALLSTACK_TRACE == ENABLED</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="rv__generic_8h.html#a4710800467bf88b0c8d9823b6781febd">vsf_arch_add_text_region</a>(<a class="code hl_struct" href="structvsf__arch__text__region__t.html">vsf_arch_text_region_t</a> *region);</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="keyword">extern</span> <a class="code hl_typedef" href="stdint_8h.html#aaf1a25f7e1013b1bb5dfb59a77c17975">uint_fast16_t</a> <a class="code hl_function" href="rv__generic_8h.html#a7d3e9802a5075b7a69d9d38cab782476">vsf_arch_get_callstack</a>(<a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> sp, <a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> *callstack, <a class="code hl_typedef" href="stdint_8h.html#aaf1a25f7e1013b1bb5dfb59a77c17975">uint_fast16_t</a> callstack_num);</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>}</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment">/* EOF */</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="ttc" id="aarm9__generic_8c_html_a718eb823c82ffd4d8929470efe736d91"><div class="ttname"><a href="arm9__generic_8c.html#a718eb823c82ffd4d8929470efe736d91">vsf_disable_interrupt</a></div><div class="ttdeci">vsf_gint_state_t vsf_disable_interrupt(void)</div><div class="ttdef"><b>定义</b> arm9_generic.c:176</div></div>
+<div class="ttc" id="aarm9__generic_8c_html_a8ed592f2c9ad4a77a0969d4d9b0b9b6e"><div class="ttname"><a href="arm9__generic_8c.html#a8ed592f2c9ad4a77a0969d4d9b0b9b6e">vsf_get_interrupt</a></div><div class="ttdeci">vsf_gint_state_t vsf_get_interrupt(void)</div><div class="ttdef"><b>定义</b> arm9_generic.c:164</div></div>
 <div class="ttc" id="aarm9__generic_8c_html_abfd8856e97ed5169d3a780d3306fd408"><div class="ttname"><a href="arm9__generic_8c.html#abfd8856e97ed5169d3a780d3306fd408">vsf_arch_sleep</a></div><div class="ttdeci">void vsf_arch_sleep(uint32_t mode)</div><div class="ttdef"><b>定义</b> arm9_generic.c:193</div></div>
+<div class="ttc" id="aarm9__generic_8c_html_ac74d7f82173c8b72aa92e8d72ad6273c"><div class="ttname"><a href="arm9__generic_8c.html#ac74d7f82173c8b72aa92e8d72ad6273c">vsf_enable_interrupt</a></div><div class="ttdeci">vsf_gint_state_t vsf_enable_interrupt(void)</div><div class="ttdef"><b>定义</b> arm9_generic.c:181</div></div>
+<div class="ttc" id="aarm9__generic_8c_html_af378272d25b8cc8740db82bfa02f8377"><div class="ttname"><a href="arm9__generic_8c.html#af378272d25b8cc8740db82bfa02f8377">vsf_set_interrupt</a></div><div class="ttdeci">vsf_gint_state_t vsf_set_interrupt(vsf_gint_state_t level)</div><div class="ttdef"><b>定义</b> arm9_generic.c:169</div></div>
+<div class="ttc" id="aarm_2type_8h_html_af6a258d8f3ee5206d682d799316314b1"><div class="ttname"><a href="arm_2type_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a></div><div class="ttdeci">bool</div><div class="ttdef"><b>定义</b> type.h:60</div></div>
 <div class="ttc" id="acortex__a__generic_8h_html_a60978fc9640c36a19791b1f69b167070"><div class="ttname"><a href="cortex__a__generic_8h.html#a60978fc9640c36a19791b1f69b167070">vsf_systimer_tick_t</a></div><div class="ttdeci">uint64_t vsf_systimer_tick_t</div><div class="ttdef"><b>定义</b> cortex_a_generic.h:70</div></div>
 <div class="ttc" id="acortex__a__generic_8h_html_ad7047b55b618cd4470207a624dd263df"><div class="ttname"><a href="cortex__a__generic_8h.html#ad7047b55b618cd4470207a624dd263df">vsf_arch_prio_t</a></div><div class="ttdeci">vsf_arch_prio_t</div><div class="ttdef"><b>定义</b> cortex_a_generic.h:85</div></div>
 <div class="ttc" id="ahal_2driver_2driver_8h_html"><div class="ttname"><a href="hal_2driver_2driver_8h.html">driver.h</a></div></div>
@@ -250,6 +278,6 @@ $(function(){ initResizable(false); });
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/883b27b660d5ce97dc9ef7f2e1df6c86935aceb4" target="_blank">vsfteam/vsf@883b27b</a>
+  <a href="https://github.com/vsfteam/vsf/commit/f8e0bf1f550e6a30b3de3b26b09956c9ecb0bf38" target="_blank">vsfteam/vsf@f8e0bf1</a>
   生成
 </div>
