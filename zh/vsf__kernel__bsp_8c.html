@@ -91,6 +91,7 @@ $(function(){ initResizable(false); });
 <tr class="memitem:a23d0b567cacd8efd7433043dd7aaf8ca" id="r_a23d0b567cacd8efd7433043dd7aaf8ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23d0b567cacd8efd7433043dd7aaf8ca">dcl_vsf_thread</a> (<a class="el" href="vsf__thread_8h.html#a2c7ebfc211ca368ae295d86c69c13fe2">def_vsf_thread</a>(app_main_thread_t)</td></tr>
 <tr class="separator:a23d0b567cacd8efd7433043dd7aaf8ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b68960966a6c59e18488a0c0feb923b" id="r_a1b68960966a6c59e18488a0c0feb923b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b68960966a6c59e18488a0c0feb923b">vsf_kernel_err_report</a> (<a class="el" href="vsf__eda_8h.html#a3f224d5b6b7933b79f31f478ec313d96">vsf_kernel_error_t</a> err)</td></tr>
+<tr class="memdesc:a1b68960966a6c59e18488a0c0feb923b"><td class="mdescLeft">&#160;</td><td class="mdescRight">报告一个内核错误  <br /></td></tr>
 <tr class="separator:a1b68960966a6c59e18488a0c0feb923b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf12a5236287faa5e272195c77333d39" id="r_acf12a5236287faa5e272195c77333d39"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf12a5236287faa5e272195c77333d39">implement_vsf_thread</a> (app_main_thread_t)</td></tr>
 <tr class="separator:acf12a5236287faa5e272195c77333d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,11 +176,20 @@ $(function(){ initResizable(false); });
         <tr>
           <td class="memname">void vsf_kernel_err_report </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="vsf__eda_8h.html#a3f224d5b6b7933b79f31f478ec313d96">vsf_kernel_error_t</a></td>          <td class="paramname"><span class="paramname"><em>err</em></span></td><td>)</td>
+          <td class="paramtype">enum <a class="el" href="vsf__eda_8h.html#a3f224d5b6b7933b79f31f478ec313d96">vsf_kernel_error_t</a></td>          <td class="paramname"><span class="paramname"><em>err</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>报告一个内核错误 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">err</td><td><a class="el" href="vsf__eda_8h.html#a3f224d5b6b7933b79f31f478ec313d96">vsf_kernel_error_t</a> 类型的内核错误 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>弱函数，可通过定义 WEAK_VSF_KERNEL_ERR_REPORT 重新实现。 </dd></dl>
 <dl class="section note"><dt>注解</dt><dd>This should not happen. Two possible reasons could be:<ol type="1">
 <li>Forgeting to set VSF_OS_CFG_MAIN_MODE to VSF_OS_CFG_MAIN_MODE_THREAD and using vsf kernel APIs, e.g. vsf_delay_ms, vsf_sem_pend and etc.</li>
 <li>When VSF_OS_CFG_MAIN_MODE is not VSF_OS_CFG_MAIN_MODE_THREAD, using any vsf_eda_xxxx APIs.</li>
@@ -231,6 +241,6 @@ This should not happen. One possible reason is: <blockquote class="doxtable">
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/176370d0ebfebd2cd6336d8271f58ddb7d9ebdaf" target="_blank">vsfteam/vsf@176370d</a>
+  <a href="https://github.com/vsfteam/vsf/commit/db56c81dc1b0c6bd4262cf0d79df99b6355cc26b" target="_blank">vsfteam/vsf@db56c81</a>
   生成
 </div>

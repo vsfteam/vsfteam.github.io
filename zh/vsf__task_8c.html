@@ -80,6 +80,7 @@ $(function(){ initResizable(false); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 函数</h2></td></tr>
 <tr class="memitem:ac06b538398b22814d49f5ac92f2d9456" id="r_ac06b538398b22814d49f5ac92f2d9456"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac06b538398b22814d49f5ac92f2d9456">__vsf_eda_call_task</a> (<a class="el" href="vsf__task_8h.html#a26cffe5c3e2648f0a41e1cc712b9ca4f">vsf_task_entry_t</a> entry, <a class="el" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a> param, <a class="el" href="linux_2include_2sys_2types_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">size_t</a> local_size)</td></tr>
+<tr class="memdesc:ac06b538398b22814d49f5ac92f2d9456"><td class="mdescLeft">&#160;</td><td class="mdescRight">调用一个任务作为子任务，并等待其返回值。  <br /></td></tr>
 <tr class="separator:ac06b538398b22814d49f5ac92f2d9456"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a0d44139fdda98bf01ed798de26ec80" id="r_a7a0d44139fdda98bf01ed798de26ec80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a0d44139fdda98bf01ed798de26ec80">__vsf_eda_task_evthandler_process_return_value</a> (<a class="el" href="classvsf__eda__t.html">vsf_eda_t</a> *pthis, <a class="el" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> evt)</td></tr>
 <tr class="separator:a7a0d44139fdda98bf01ed798de26ec80"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,6 +124,18 @@ $(function(){ initResizable(false); });
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>调用一个任务作为子任务，并等待其返回值。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">entry</td><td>子任务的入口函数，类型为 <a class="el" href="vsf__task_8h.html#a26cffe5c3e2648f0a41e1cc712b9ca4f">vsf_task_entry_t</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">param</td><td>指向子任务目标（参数）的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">local_size</td><td>子任务栈帧局部变量的大小 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>fsm_rt_t: 子任务完成时的返回值；子任务被调度运行期间返回 <a class="el" href="____type_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64ba7ada37e5681b5e67679104f23898a060">fsm_rt_yield</a></dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是内部函数，请使用 <a class="el" href="vsf__task_8h.html#a9794a2572e3b6c580fa38ffb8634aeae" title="从当前任务调用另一个任务作为子任务，并等待其完成。">vsf_task_call_task()</a>。 </dd></dl>
 <dl class="section note"><dt>注解</dt><dd><ul>
 <li>if VSF_ERR_NOT_ENOUGH_RESOURCES is detected, yield and try it again (automatically). For tasks sharing the same frame pool, if the pool is too small, only task performance will be affected, and all sub-task call will work when frame is allocated.</li>
 <li>if the frame is allocated and pushed to the stack, we should yield to let the sub-task run.</li>
@@ -162,6 +175,6 @@ $(function(){ initResizable(false); });
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/176370d0ebfebd2cd6336d8271f58ddb7d9ebdaf" target="_blank">vsfteam/vsf@176370d</a>
+  <a href="https://github.com/vsfteam/vsf/commit/db56c81dc1b0c6bd4262cf0d79df99b6355cc26b" target="_blank">vsfteam/vsf@db56c81</a>
   生成
 </div>

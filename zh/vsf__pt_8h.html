@@ -88,83 +88,113 @@ $(function(){ initResizable(false); });
 <tr class="memitem:a6233b66334fbd64c593774f9a35901db" id="r_a6233b66334fbd64c593774f9a35901db"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6233b66334fbd64c593774f9a35901db">__vsf_pt_entry</a>(__state, ...)</td></tr>
 <tr class="separator:a6233b66334fbd64c593774f9a35901db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d6f2a5cc15235f951109f5fadd4694f" id="r_a2d6f2a5cc15235f951109f5fadd4694f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d6f2a5cc15235f951109f5fadd4694f">vsf_pt_entry</a>(...)</td></tr>
+<tr class="memdesc:a2d6f2a5cc15235f951109f5fadd4694f"><td class="mdescLeft">&#160;</td><td class="mdescRight">在 protothread 体内标记一个重入点。  <br /></td></tr>
 <tr class="separator:a2d6f2a5cc15235f951109f5fadd4694f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad29bc496efce6f16037e106b3568570" id="r_aad29bc496efce6f16037e106b3568570"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad29bc496efce6f16037e106b3568570">__vsf_pt_begin</a>(__state)</td></tr>
 <tr class="separator:aad29bc496efce6f16037e106b3568570"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8ee6c55eb14c49333906710ee7a63ed" id="r_aa8ee6c55eb14c49333906710ee7a63ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8ee6c55eb14c49333906710ee7a63ed">vsf_pt_begin</a>()</td></tr>
+<tr class="memdesc:aa8ee6c55eb14c49333906710ee7a63ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">开始 protothread 体，紧跟在 <a class="el" href="#a7ad9f858945fbcc93a1768f27c251836" title="开始 protothread 入口函数的实现。">implement_vsf_pt()</a> 之后。  <br /></td></tr>
 <tr class="separator:aa8ee6c55eb14c49333906710ee7a63ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9193dbaff6b365dbd9699fdf8fe0998a" id="r_a9193dbaff6b365dbd9699fdf8fe0998a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9193dbaff6b365dbd9699fdf8fe0998a">vsf_pt_end</a>()</td></tr>
+<tr class="memdesc:a9193dbaff6b365dbd9699fdf8fe0998a"><td class="mdescLeft">&#160;</td><td class="mdescRight">结束由 <a class="el" href="#aa8ee6c55eb14c49333906710ee7a63ed" title="开始 protothread 体，紧跟在 implement_vsf_pt() 之后。">vsf_pt_begin()</a> 开始的 protothread 体，并终止该 protothread。  <br /></td></tr>
 <tr class="separator:a9193dbaff6b365dbd9699fdf8fe0998a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c98b1dd74453d2d163037812ac37289" id="r_a6c98b1dd74453d2d163037812ac37289"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c98b1dd74453d2d163037812ac37289">vsf_pt_wait_for_evt</a>(__evt)</td></tr>
+<tr class="memdesc:a6c98b1dd74453d2d163037812ac37289"><td class="mdescLeft">&#160;</td><td class="mdescRight">协作式等待，直到给定事件到达。  <br /></td></tr>
 <tr class="separator:a6c98b1dd74453d2d163037812ac37289"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad529c190ddc3b03298d285db672cad00" id="r_ad529c190ddc3b03298d285db672cad00"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad529c190ddc3b03298d285db672cad00">vsf_pt_wfe</a>(__evt)</td></tr>
+<tr class="memdesc:ad529c190ddc3b03298d285db672cad00"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#a6c98b1dd74453d2d163037812ac37289" title="协作式等待，直到给定事件到达。">vsf_pt_wait_for_evt()</a> 的别名。  <br /></td></tr>
 <tr class="separator:ad529c190ddc3b03298d285db672cad00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5870541efc2008378fd6e2525fabc877" id="r_a5870541efc2008378fd6e2525fabc877"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5870541efc2008378fd6e2525fabc877">vsf_pt_yield</a>()</td></tr>
+<tr class="memdesc:a5870541efc2008378fd6e2525fabc877"><td class="mdescLeft">&#160;</td><td class="mdescRight">协作式让出 CPU：标记一个重入点，并向当前 protothread 发送 VSF_EVT_YIELD 事件，使其将被重新调度。  <br /></td></tr>
 <tr class="separator:a5870541efc2008378fd6e2525fabc877"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fdd7df89b2e4021741549e40eef3df5" id="r_a1fdd7df89b2e4021741549e40eef3df5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fdd7df89b2e4021741549e40eef3df5">vsf_pt_raw_next</a>()</td></tr>
+<tr class="memdesc:a1fdd7df89b2e4021741549e40eef3df5"><td class="mdescLeft">&#160;</td><td class="mdescRight">将 protothread 状态设置为下一个重入点，但不生成重入标签。  <br /></td></tr>
 <tr class="separator:a1fdd7df89b2e4021741549e40eef3df5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76719f4250844a2ac2970569244943bc" id="r_a76719f4250844a2ac2970569244943bc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76719f4250844a2ac2970569244943bc">vsf_pt_raw_entry</a>(...)</td></tr>
+<tr class="memdesc:a76719f4250844a2ac2970569244943bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">生成一个重入标签，可选地先执行给定代码。  <br /></td></tr>
 <tr class="separator:a76719f4250844a2ac2970569244943bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a407019690f41bae4e2a6ef9161b6d815" id="r_a407019690f41bae4e2a6ef9161b6d815"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a407019690f41bae4e2a6ef9161b6d815">vsf_pt_wait_until</a>(...)</td></tr>
+<tr class="memdesc:a407019690f41bae4e2a6ef9161b6d815"><td class="mdescLeft">&#160;</td><td class="mdescRight">协作式等待，直到给定条件满足。  <br /></td></tr>
 <tr class="separator:a407019690f41bae4e2a6ef9161b6d815"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa75432b9f2937c76d373be651ba57544" id="r_aa75432b9f2937c76d373be651ba57544"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa75432b9f2937c76d373be651ba57544">__vsf_pt_call_sub</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __target, ...)</td></tr>
 <tr class="separator:aa75432b9f2937c76d373be651ba57544"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9290d75e4dc5c037dbb61af8ea231837" id="r_a9290d75e4dc5c037dbb61af8ea231837"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9290d75e4dc5c037dbb61af8ea231837">vsf_pt_call_sub</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __target)</td></tr>
+<tr class="memdesc:a9290d75e4dc5c037dbb61af8ea231837"><td class="mdescLeft">&#160;</td><td class="mdescRight">从当前 protothread 调用一个事件驱动子程序（子 eda），并等待其 完成。  <br /></td></tr>
 <tr class="separator:a9290d75e4dc5c037dbb61af8ea231837"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae70f20feb190a149576a892014cee36b" id="r_ae70f20feb190a149576a892014cee36b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae70f20feb190a149576a892014cee36b">vsf_pt_call_pt</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __target)</td></tr>
+<tr class="memdesc:ae70f20feb190a149576a892014cee36b"><td class="mdescLeft">&#160;</td><td class="mdescRight">从当前 protothread 调用另一个 protothread 作为子程序，并等待其 完成。  <br /></td></tr>
 <tr class="separator:ae70f20feb190a149576a892014cee36b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdd575ef65e329b9427e68324da37d95" id="r_afdd575ef65e329b9427e68324da37d95"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdd575ef65e329b9427e68324da37d95">vsf_eda_call_pt</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __target)</td></tr>
+<tr class="memdesc:afdd575ef65e329b9427e68324da37d95"><td class="mdescLeft">&#160;</td><td class="mdescRight">从事件驱动任务（eda）中调用一个 protothread 作为子程序，不阻塞。  <br /></td></tr>
 <tr class="separator:afdd575ef65e329b9427e68324da37d95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a622aeedd1633c8c5048de1982e7fcded" id="r_a622aeedd1633c8c5048de1982e7fcded"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a622aeedd1633c8c5048de1982e7fcded">__vsf_pt_call_task</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __target, ...)</td></tr>
 <tr class="separator:a622aeedd1633c8c5048de1982e7fcded"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a357bb55c4ef43ac94fe1b575abd40d2d" id="r_a357bb55c4ef43ac94fe1b575abd40d2d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a357bb55c4ef43ac94fe1b575abd40d2d">vsf_pt_call_task</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __target,  __ret_addr, ...)</td></tr>
+<tr class="memdesc:a357bb55c4ef43ac94fe1b575abd40d2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">从当前 protothread 调用一个任务作为子任务，并等待其完成。  <br /></td></tr>
 <tr class="separator:a357bb55c4ef43ac94fe1b575abd40d2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f89a73c84ef67d0ef3279d480bd05de" id="r_a3f89a73c84ef67d0ef3279d480bd05de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f89a73c84ef67d0ef3279d480bd05de">vsf_pt_start</a>&#160;&#160;&#160;<a class="el" href="vsf__eda_8h.html#a78d37b47214056cf02dd04f250f5999d">vsf_teda_start</a></td></tr>
+<tr class="memdesc:a3f89a73c84ef67d0ef3279d480bd05de"><td class="mdescLeft">&#160;</td><td class="mdescRight">以给定配置启动 protothread。在此变体中 （VSF_KERNEL_CFG_EDA_SUPPORT_TIMER 为 ENABLED）映射为 <a class="el" href="vsf__eda_8h.html#a78d37b47214056cf02dd04f250f5999d" title="以给定的配置启动一个 teda（带定时器支持的 eda）任务，并向其发送 VSF_EVT_INIT 事件">vsf_teda_start()</a>，可使用定时器服务。  <br /></td></tr>
 <tr class="separator:a3f89a73c84ef67d0ef3279d480bd05de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ad9f858945fbcc93a1768f27c251836" id="r_a7ad9f858945fbcc93a1768f27c251836"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ad9f858945fbcc93a1768f27c251836">implement_vsf_pt</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</td></tr>
+<tr class="memdesc:a7ad9f858945fbcc93a1768f27c251836"><td class="mdescLeft">&#160;</td><td class="mdescRight">开始 protothread 入口函数的实现。  <br /></td></tr>
 <tr class="separator:a7ad9f858945fbcc93a1768f27c251836"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba52c67a8a66b847ca90a39db87f1fcc" id="r_aba52c67a8a66b847ca90a39db87f1fcc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba52c67a8a66b847ca90a39db87f1fcc">implement_vsf_pt_ex</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __FUNC_NAME)</td></tr>
+<tr class="memdesc:aba52c67a8a66b847ca90a39db87f1fcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">以指定的函数名开始 protothread 入口函数的实现。  <br /></td></tr>
 <tr class="separator:aba52c67a8a66b847ca90a39db87f1fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2af696fec89b474f556fce336b14ce27" id="r_a2af696fec89b474f556fce336b14ce27"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2af696fec89b474f556fce336b14ce27">imp_vsf_pt</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</td></tr>
+<tr class="memdesc:a2af696fec89b474f556fce336b14ce27"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#a7ad9f858945fbcc93a1768f27c251836" title="开始 protothread 入口函数的实现。">implement_vsf_pt()</a> 的别名。  <br /></td></tr>
 <tr class="separator:a2af696fec89b474f556fce336b14ce27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dfa778516d049bef139c2d9bbefc4b1" id="r_a4dfa778516d049bef139c2d9bbefc4b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dfa778516d049bef139c2d9bbefc4b1">imp_vsf_pt_ex</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __FUNC_NAME)</td></tr>
+<tr class="memdesc:a4dfa778516d049bef139c2d9bbefc4b1"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#aba52c67a8a66b847ca90a39db87f1fcc" title="以指定的函数名开始 protothread 入口函数的实现。">implement_vsf_pt_ex()</a> 的别名。  <br /></td></tr>
 <tr class="separator:a4dfa778516d049bef139c2d9bbefc4b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1ce69712204faf1b6f43f6bc217a602" id="r_ae1ce69712204faf1b6f43f6bc217a602"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1ce69712204faf1b6f43f6bc217a602">__vsf_pt_func</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</td></tr>
+<tr class="memdesc:ae1ce69712204faf1b6f43f6bc217a602"><td class="mdescLeft">&#160;</td><td class="mdescRight">展开为 protothread 入口函数的函数名。  <br /></td></tr>
 <tr class="separator:ae1ce69712204faf1b6f43f6bc217a602"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4e30ad2b76f846b706a616c5f7fd99a" id="r_aa4e30ad2b76f846b706a616c5f7fd99a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4e30ad2b76f846b706a616c5f7fd99a">vsf_pt_func</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</td></tr>
 <tr class="separator:aa4e30ad2b76f846b706a616c5f7fd99a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a386e396d9fc4a2d9ee688832042a4e" id="r_a4a386e396d9fc4a2d9ee688832042a4e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a386e396d9fc4a2d9ee688832042a4e">__vsf_pt</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</td></tr>
+<tr class="memdesc:a4a386e396d9fc4a2d9ee688832042a4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">展开为 protothread 控制块的类型名。  <br /></td></tr>
 <tr class="separator:a4a386e396d9fc4a2d9ee688832042a4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa358f19cf1389399f6649fb5f0656710" id="r_aa358f19cf1389399f6649fb5f0656710"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa358f19cf1389399f6649fb5f0656710">vsf_pt</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</td></tr>
 <tr class="separator:aa358f19cf1389399f6649fb5f0656710"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe25d5210da9abe74a33d33ca7e71c94" id="r_abe25d5210da9abe74a33d33ca7e71c94"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe25d5210da9abe74a33d33ca7e71c94">__def_vsf_pt</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, ...)</td></tr>
 <tr class="separator:abe25d5210da9abe74a33d33ca7e71c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1261f2b277dff0da436b6d93f5e3d63" id="r_af1261f2b277dff0da436b6d93f5e3d63"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1261f2b277dff0da436b6d93f5e3d63">def_vsf_pt</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, ...)</td></tr>
+<tr class="memdesc:af1261f2b277dff0da436b6d93f5e3d63"><td class="mdescLeft">&#160;</td><td class="mdescRight">定义 protothread 控制块。  <br /></td></tr>
 <tr class="separator:af1261f2b277dff0da436b6d93f5e3d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43065abd02a6117dae266c9198ac2e3e" id="r_a43065abd02a6117dae266c9198ac2e3e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43065abd02a6117dae266c9198ac2e3e">end_def_vsf_pt</a>(...)</td></tr>
+<tr class="memdesc:a43065abd02a6117dae266c9198ac2e3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">结束由 <a class="el" href="#af1261f2b277dff0da436b6d93f5e3d63" title="定义 protothread 控制块。">def_vsf_pt()</a> 开始的 protothread 定义。该宏为空，仅用于 编码风格上的对称。  <br /></td></tr>
 <tr class="separator:a43065abd02a6117dae266c9198ac2e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c5a3d08e02417181b7e8c5ba4c3d096" id="r_a3c5a3d08e02417181b7e8c5ba4c3d096"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c5a3d08e02417181b7e8c5ba4c3d096">define_vsf_pt</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, ...)</td></tr>
+<tr class="memdesc:a3c5a3d08e02417181b7e8c5ba4c3d096"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#af1261f2b277dff0da436b6d93f5e3d63" title="定义 protothread 控制块。">def_vsf_pt()</a> 的别名。  <br /></td></tr>
 <tr class="separator:a3c5a3d08e02417181b7e8c5ba4c3d096"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf5dd25ae047f38b5d856b784f4a9daa" id="r_acf5dd25ae047f38b5d856b784f4a9daa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf5dd25ae047f38b5d856b784f4a9daa">end_define_vsf_pt</a>(...)</td></tr>
+<tr class="memdesc:acf5dd25ae047f38b5d856b784f4a9daa"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#a43065abd02a6117dae266c9198ac2e3e" title="结束由 def_vsf_pt() 开始的 protothread 定义。该宏为空，仅用于 编码风格上的对称。">end_def_vsf_pt()</a> 的别名。  <br /></td></tr>
 <tr class="separator:acf5dd25ae047f38b5d856b784f4a9daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a869f46a8a967a74d9796b7ffea2abcb9" id="r_a869f46a8a967a74d9796b7ffea2abcb9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a869f46a8a967a74d9796b7ffea2abcb9">__declare_vsf_pt</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</td></tr>
 <tr class="separator:a869f46a8a967a74d9796b7ffea2abcb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c8c681e68796955483f938f56153e1a" id="r_a0c8c681e68796955483f938f56153e1a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c8c681e68796955483f938f56153e1a">declare_vsf_pt</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</td></tr>
+<tr class="memdesc:a0c8c681e68796955483f938f56153e1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">在使用 <a class="el" href="#af1261f2b277dff0da436b6d93f5e3d63" title="定义 protothread 控制块。">def_vsf_pt()</a> 定义之前，先声明 protothread（protothread 类、其控制块类型及其入口函数原型）。  <br /></td></tr>
 <tr class="separator:a0c8c681e68796955483f938f56153e1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad849f07187bc7c8da351acf5d8356838" id="r_ad849f07187bc7c8da351acf5d8356838"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad849f07187bc7c8da351acf5d8356838">dcl_vsf_pt</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</td></tr>
+<tr class="memdesc:ad849f07187bc7c8da351acf5d8356838"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#a0c8c681e68796955483f938f56153e1a" title="在使用 def_vsf_pt() 定义之前，先声明 protothread（protothread 类、其控制块类型及其入口函数原型）。">declare_vsf_pt()</a> 的别名。  <br /></td></tr>
 <tr class="separator:ad849f07187bc7c8da351acf5d8356838"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f609501c6f8720cc3f3197a48c0ffbd" id="r_a8f609501c6f8720cc3f3197a48c0ffbd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f609501c6f8720cc3f3197a48c0ffbd">__init_vsf_pt</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __pt,  __pri, ...)</td></tr>
 <tr class="separator:a8f609501c6f8720cc3f3197a48c0ffbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acda23e4ab36768606dc452deda9bdb77" id="r_acda23e4ab36768606dc452deda9bdb77"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acda23e4ab36768606dc452deda9bdb77">vsf_pt_call_thread</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __target)</td></tr>
+<tr class="memdesc:acda23e4ab36768606dc452deda9bdb77"><td class="mdescLeft">&#160;</td><td class="mdescRight">从当前 protothread 调用一个线程，并等待线程结束。  <br /></td></tr>
 <tr class="separator:acda23e4ab36768606dc452deda9bdb77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64c091d0e4ba99959478d95fc3f81250" id="r_a64c091d0e4ba99959478d95fc3f81250"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64c091d0e4ba99959478d95fc3f81250">init_vsf_pt</a>(<a class="el" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,  __pt,  __pri, ...)</td></tr>
+<tr class="memdesc:a64c091d0e4ba99959478d95fc3f81250"><td class="mdescLeft">&#160;</td><td class="mdescRight">准备并启动由 <a class="el" href="#af1261f2b277dff0da436b6d93f5e3d63" title="定义 protothread 控制块。">def_vsf_pt()</a> 定义的 protothread。  <br /></td></tr>
 <tr class="separator:a64c091d0e4ba99959478d95fc3f81250"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 类型定义</h2></td></tr>
 <tr class="memitem:a03a396f627ae1a95e8cf44b8e0ae9492" id="r_a03a396f627ae1a95e8cf44b8e0ae9492"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classvsf__teda__t.html">vsf_teda_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03a396f627ae1a95e8cf44b8e0ae9492">vsf_pt_t</a></td></tr>
+<tr class="memdesc:a03a396f627ae1a95e8cf44b8e0ae9492"><td class="mdescLeft">&#160;</td><td class="mdescRight">protothread 类型，启用 VSF_KERNEL_CFG_EDA_SUPPORT_TIMER 时是 <a class="el" href="classvsf__teda__t.html">vsf_teda_t</a> 的别名  <br /></td></tr>
 <tr class="separator:a03a396f627ae1a95e8cf44b8e0ae9492"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a622a0c283075eaba0e14db3b064756de" id="r_a622a0c283075eaba0e14db3b064756de"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="vsf__eda_8h.html#a43a14c27fa7cd929d1633f29bd58515b">vsf_eda_evthandler_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a622a0c283075eaba0e14db3b064756de">vsf_pt_entry_t</a></td></tr>
+<tr class="memdesc:a622a0c283075eaba0e14db3b064756de"><td class="mdescLeft">&#160;</td><td class="mdescRight">protothread 入口函数，采用 eda 事件处理函数签名 （<a class="el" href="vsf__eda_8h.html#a43a14c27fa7cd929d1633f29bd58515b">vsf_eda_evthandler_t</a> 的别名）  <br /></td></tr>
 <tr class="separator:a622a0c283075eaba0e14db3b064756de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">宏定义说明</h2>
@@ -299,6 +329,15 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="avsf__pt_8h_html_a1c90f821586dc74b332e73a7a3285f23"><div class="ttname"><a href="#a1c90f821586dc74b332e73a7a3285f23">__vsf_pt_state</a></div><div class="ttdeci">#define __vsf_pt_state()</div><div class="ttdef"><b>定义</b> vsf_pt.h:62</div></div>
 <div class="ttc" id="avsf__pt_8h_html_a6233b66334fbd64c593774f9a35901db"><div class="ttname"><a href="#a6233b66334fbd64c593774f9a35901db">__vsf_pt_entry</a></div><div class="ttdeci">#define __vsf_pt_entry(__state,...)</div><div class="ttdef"><b>定义</b> vsf_pt.h:66</div></div>
 </div><!-- fragment -->
+<p>在 protothread 体内标记一个重入点。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">...</td><td>设置重入点后立即执行的可选代码</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>之后再次进入该 protothread 时，从该重入点恢复执行。它本身不会从 入口函数返回，通常由 <a class="el" href="#a407019690f41bae4e2a6ef9161b6d815" title="协作式等待，直到给定条件满足。">vsf_pt_wait_until()</a> 等阻塞宏使用。 </dd></dl>
+
 </div>
 </div>
 <a id="aad29bc496efce6f16037e106b3568570" name="aad29bc496efce6f16037e106b3568570"></a>
@@ -338,6 +377,9 @@ $(function(){ initResizable(false); });
 <div class="line">                                    __vsf_pt_begin(<a class="code hl_define" href="#a1c90f821586dc74b332e73a7a3285f23">__vsf_pt_state</a>())</div>
 <div class="ttc" id="a____type_8h_html_a6885b194de594173e9e976ee7bada865"><div class="ttname"><a href="____type_8h.html#a6885b194de594173e9e976ee7bada865">VSF_UNUSED_PARAM</a></div><div class="ttdeci">#define VSF_UNUSED_PARAM(__VAL)</div><div class="ttdef"><b>定义</b> __type.h:190</div></div>
 </div><!-- fragment -->
+<p>开始 protothread 体，紧跟在 <a class="el" href="#a7ad9f858945fbcc93a1768f27c251836" title="开始 protothread 入口函数的实现。">implement_vsf_pt()</a> 之后。 </p>
+<dl class="section note"><dt>注解</dt><dd>与 <a class="el" href="#a9193dbaff6b365dbd9699fdf8fe0998a" title="结束由 vsf_pt_begin() 开始的 protothread 体，并终止该 protothread。">vsf_pt_end()</a> 配合使用；阻塞类宏只能在它们之间使用。 </dd></dl>
+
 </div>
 </div>
 <a id="a9193dbaff6b365dbd9699fdf8fe0998a" name="a9193dbaff6b365dbd9699fdf8fe0998a"></a>
@@ -357,6 +399,8 @@ $(function(){ initResizable(false); });
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#aeaff056068ba9446f374175fb5645dc9">__vsf_pt_end</a>() }</div>
 <div class="ttc" id="avsf__pt_8h_html_aeaff056068ba9446f374175fb5645dc9"><div class="ttname"><a href="#aeaff056068ba9446f374175fb5645dc9">__vsf_pt_end</a></div><div class="ttdeci">#define __vsf_pt_end()</div><div class="ttdef"><b>定义</b> vsf_pt.h:63</div></div>
 </div><!-- fragment -->
+<p>结束由 <a class="el" href="#aa8ee6c55eb14c49333906710ee7a63ed" title="开始 protothread 体，紧跟在 implement_vsf_pt() 之后。">vsf_pt_begin()</a> 开始的 protothread 体，并终止该 protothread。 </p>
+
 </div>
 </div>
 <a id="a6c98b1dd74453d2d163037812ac37289" name="a6c98b1dd74453d2d163037812ac37289"></a>
@@ -376,6 +420,15 @@ $(function(){ initResizable(false); });
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="____vsf__task__common_8h.html#a932749d28ca1f6489e31b0d0833dc248">__vsf_pt_wfe_common</a>(<a class="code hl_define" href="#a1c90f821586dc74b332e73a7a3285f23">__vsf_pt_state</a>(), __evt)</div>
 <div class="ttc" id="a____vsf__task__common_8h_html_a932749d28ca1f6489e31b0d0833dc248"><div class="ttname"><a href="____vsf__task__common_8h.html#a932749d28ca1f6489e31b0d0833dc248">__vsf_pt_wfe_common</a></div><div class="ttdeci">#define __vsf_pt_wfe_common(__state, __evt)</div><div class="ttdef"><b>定义</b> __vsf_task_common.h:68</div></div>
 </div><!-- fragment -->
+<p>协作式等待，直到给定事件到达。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__evt</td><td>要等待的事件，类型为 <a class="el" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>如果当前事件不是期望的事件，protothread 返回，并在新事件到达时 从此处恢复执行。 </dd></dl>
+
 </div>
 </div>
 <a id="ad529c190ddc3b03298d285db672cad00" name="ad529c190ddc3b03298d285db672cad00"></a>
@@ -393,8 +446,16 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#a6c98b1dd74453d2d163037812ac37289">vsf_pt_wait_for_evt</a>(__evt)</div>
-<div class="ttc" id="avsf__pt_8h_html_a6c98b1dd74453d2d163037812ac37289"><div class="ttname"><a href="#a6c98b1dd74453d2d163037812ac37289">vsf_pt_wait_for_evt</a></div><div class="ttdeci">#define vsf_pt_wait_for_evt(__evt)</div><div class="ttdef"><b>定义</b> vsf_pt.h:79</div></div>
+<div class="ttc" id="avsf__pt_8h_html_a6c98b1dd74453d2d163037812ac37289"><div class="ttname"><a href="#a6c98b1dd74453d2d163037812ac37289">vsf_pt_wait_for_evt</a></div><div class="ttdeci">#define vsf_pt_wait_for_evt(__evt)</div><div class="ttdoc">协作式等待，直到给定事件到达。</div><div class="ttdef"><b>定义</b> vsf_pt.h:130</div></div>
 </div><!-- fragment -->
+<p><a class="el" href="#a6c98b1dd74453d2d163037812ac37289" title="协作式等待，直到给定事件到达。">vsf_pt_wait_for_evt()</a> 的别名。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__evt</td><td>要等待的事件，类型为 <a class="el" href="vsf__eda_8h.html#a0095e13b0285f6d680edab1e0f9bd2f3">vsf_evt_t</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a5870541efc2008378fd6e2525fabc877" name="a5870541efc2008378fd6e2525fabc877"></a>
@@ -412,9 +473,11 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#a2d6f2a5cc15235f951109f5fadd4694f">vsf_pt_entry</a>(<a class="code hl_function" href="vsf__eda_8c.html#a1c7ed64f286d37b10b647bc2fc0c8039">__vsf_eda_yield</a>();)</div>
-<div class="ttc" id="avsf__eda_8c_html_a1c7ed64f286d37b10b647bc2fc0c8039"><div class="ttname"><a href="vsf__eda_8c.html#a1c7ed64f286d37b10b647bc2fc0c8039">__vsf_eda_yield</a></div><div class="ttdeci">void __vsf_eda_yield(void)</div><div class="ttdef"><b>定义</b> vsf_eda.c:539</div></div>
-<div class="ttc" id="avsf__pt_8h_html_a2d6f2a5cc15235f951109f5fadd4694f"><div class="ttname"><a href="#a2d6f2a5cc15235f951109f5fadd4694f">vsf_pt_entry</a></div><div class="ttdeci">#define vsf_pt_entry(...)</div><div class="ttdef"><b>定义</b> vsf_pt.h:68</div></div>
+<div class="ttc" id="avsf__eda_8c_html_a1c7ed64f286d37b10b647bc2fc0c8039"><div class="ttname"><a href="vsf__eda_8c.html#a1c7ed64f286d37b10b647bc2fc0c8039">__vsf_eda_yield</a></div><div class="ttdeci">void __vsf_eda_yield(void)</div><div class="ttdoc">通过向自身发送 VSF_EVT_YIELD 事件让出当前任务，使其稍后被再次处理</div><div class="ttdef"><b>定义</b> vsf_eda.c:539</div></div>
+<div class="ttc" id="avsf__pt_8h_html_a2d6f2a5cc15235f951109f5fadd4694f"><div class="ttname"><a href="#a2d6f2a5cc15235f951109f5fadd4694f">vsf_pt_entry</a></div><div class="ttdeci">#define vsf_pt_entry(...)</div><div class="ttdoc">在 protothread 体内标记一个重入点。</div><div class="ttdef"><b>定义</b> vsf_pt.h:85</div></div>
 </div><!-- fragment -->
+<p>协作式让出 CPU：标记一个重入点，并向当前 protothread 发送 VSF_EVT_YIELD 事件，使其将被重新调度。 </p>
+
 </div>
 </div>
 <a id="a1fdd7df89b2e4021741549e40eef3df5" name="a1fdd7df89b2e4021741549e40eef3df5"></a>
@@ -434,6 +497,9 @@ $(function(){ initResizable(false); });
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="____vsf__task__common_8h.html#add63a969f39f3859ee651ab1e04cacde">__vsf_pt_raw_next_common</a>(<a class="code hl_define" href="#a1c90f821586dc74b332e73a7a3285f23">__vsf_pt_state</a>())</div>
 <div class="ttc" id="a____vsf__task__common_8h_html_add63a969f39f3859ee651ab1e04cacde"><div class="ttname"><a href="____vsf__task__common_8h.html#add63a969f39f3859ee651ab1e04cacde">__vsf_pt_raw_next_common</a></div><div class="ttdeci">#define __vsf_pt_raw_next_common(__state)</div><div class="ttdef"><b>定义</b> __vsf_task_common.h:40</div></div>
 </div><!-- fragment -->
+<p>将 protothread 状态设置为下一个重入点，但不生成重入标签。 </p>
+<dl class="section note"><dt>注解</dt><dd>与 <a class="el" href="#a76719f4250844a2ac2970569244943bc" title="生成一个重入标签，可选地先执行给定代码。">vsf_pt_raw_entry()</a> 成对使用，用于实现快速子调用 （VSF_KERNEL_CFG_EDA_FAST_SUB_CALL 为 ENABLED）。 </dd></dl>
+
 </div>
 </div>
 <a id="a76719f4250844a2ac2970569244943bc" name="a76719f4250844a2ac2970569244943bc"></a>
@@ -453,6 +519,15 @@ $(function(){ initResizable(false); });
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="____vsf__task__common_8h.html#a6f34bb05d6336cadbdd2a4108c253ca9">__vsf_pt_raw_entry_common</a>(<a class="code hl_define" href="#a1c90f821586dc74b332e73a7a3285f23">__vsf_pt_state</a>(), __VA_ARGS__)</div>
 <div class="ttc" id="a____vsf__task__common_8h_html_a6f34bb05d6336cadbdd2a4108c253ca9"><div class="ttname"><a href="____vsf__task__common_8h.html#a6f34bb05d6336cadbdd2a4108c253ca9">__vsf_pt_raw_entry_common</a></div><div class="ttdeci">#define __vsf_pt_raw_entry_common(__state,...)</div><div class="ttdef"><b>定义</b> __vsf_task_common.h:42</div></div>
 </div><!-- fragment -->
+<p>生成一个重入标签，可选地先执行给定代码。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">...</td><td>在重入标签之前执行的可选代码</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>与 <a class="el" href="#a1fdd7df89b2e4021741549e40eef3df5" title="将 protothread 状态设置为下一个重入点，但不生成重入标签。">vsf_pt_raw_next()</a> 成对使用，用于实现快速子调用 （VSF_KERNEL_CFG_EDA_FAST_SUB_CALL 为 ENABLED）。 </dd></dl>
+
 </div>
 </div>
 <a id="a407019690f41bae4e2a6ef9161b6d815" name="a407019690f41bae4e2a6ef9161b6d815"></a>
@@ -473,7 +548,16 @@ $(function(){ initResizable(false); });
 <div class="line">            __VA_ARGS__ {} <span class="keywordflow">else</span> {                                               \</div>
 <div class="line">                return ;                                                        \</div>
 <div class="line">            }</div>
-</div><!-- fragment --><dl class="section note"><dt>注解</dt><dd>please use if-then clause in the <a class="el" href="#a407019690f41bae4e2a6ef9161b6d815">vsf_pt_wait_until()</a> ! E.g. ! <a class="el" href="#a407019690f41bae4e2a6ef9161b6d815">vsf_pt_wait_until( if (...) )</a>; ! ! ! NOTE: <a class="el" href="vsf__simple__bmpevt_8h.html#ade4d72e98dc2d77156088e54fb5d33f1">wait_for_one()</a>, <a class="el" href="vsf__simple__bmpevt_8h.html#a543bd1c01ff81a63649ef87210dd5804">wait_for_any()</a> and <a class="el" href="vsf__simple__bmpevt_8h.html#a2fdf44a5351201159a11edb6ba003675">wait_for_all()</a> can be seen as ! an if-then clause. So you can use them directly here. E.g. ! ! <a class="el" href="#a407019690f41bae4e2a6ef9161b6d815">vsf_pt_wait_until( wait_for_one(&amp;__user_grouped_evts, sem_evt_msk) )</a>; ! </dd></dl>
+</div><!-- fragment -->
+<p>协作式等待，直到给定条件满足。 </p>
+<dl class="section note"><dt>注解</dt><dd>please use if-then clause in the <a class="el" href="#a407019690f41bae4e2a6ef9161b6d815" title="协作式等待，直到给定条件满足。">vsf_pt_wait_until()</a> ! E.g. ! <a class="el" href="#a407019690f41bae4e2a6ef9161b6d815" title="协作式等待，直到给定条件满足。">vsf_pt_wait_until( if (...) )</a>; ! ! ! NOTE: <a class="el" href="vsf__simple__bmpevt_8h.html#ade4d72e98dc2d77156088e54fb5d33f1" title="等待位图事件组中掩码指定的任一事件位置位（wait_for_any() 的别名， 或），一直等待（协作式，不阻塞其他任务）。">wait_for_one()</a>, <a class="el" href="vsf__simple__bmpevt_8h.html#a543bd1c01ff81a63649ef87210dd5804" title="等待位图事件组中掩码指定的任一事件位置位（或），一直等待 （协作式，不阻塞其他任务）。">wait_for_any()</a> and <a class="el" href="vsf__simple__bmpevt_8h.html#a2fdf44a5351201159a11edb6ba003675" title="等待位图事件组中掩码指定的所有事件位都置位（与），一直等待 （协作式，不阻塞其他任务）。">wait_for_all()</a> can be seen as ! an if-then clause. So you can use them directly here. E.g. ! ! <a class="el" href="#a407019690f41bae4e2a6ef9161b6d815" title="协作式等待，直到给定条件满足。">vsf_pt_wait_until( wait_for_one(&amp;__user_grouped_evts, sem_evt_msk) )</a>; !</dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">...</td><td>要等待的条件，必须是 if-then 语句，例如 <a class="el" href="#a407019690f41bae4e2a6ef9161b6d815" title="协作式等待，直到给定条件满足。">vsf_pt_wait_until( if (...) )</a>;</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>如果条件不满足，protothread 返回，并在再次进入时从此处恢复执行。 </dd></dl>
 
 </div>
 </div>
@@ -503,7 +587,7 @@ $(function(){ initResizable(false); });
 <b>值:</b><div class="fragment"><div class="line">            <a class="code hl_function" href="vsf__eda_8c.html#ac7984f15b901f62124c13d5074af6cb6">__vsf_eda_call_eda</a>( (<a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>)(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>),                            \</div>
 <div class="line">                                (<a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>)(__target),                          \</div>
 <div class="line">                                (0, ##__VA_ARGS__))</div>
-<div class="ttc" id="avsf__eda_8c_html_ac7984f15b901f62124c13d5074af6cb6"><div class="ttname"><a href="vsf__eda_8c.html#ac7984f15b901f62124c13d5074af6cb6">__vsf_eda_call_eda</a></div><div class="ttdeci">vsf_err_t __vsf_eda_call_eda(uintptr_t evthandler, uintptr_t param, size_t local_size)</div><div class="ttdef"><b>定义</b> vsf_eda.c:730</div></div>
+<div class="ttc" id="avsf__eda_8c_html_ac7984f15b901f62124c13d5074af6cb6"><div class="ttname"><a href="vsf__eda_8c.html#ac7984f15b901f62124c13d5074af6cb6">__vsf_eda_call_eda</a></div><div class="ttdeci">vsf_err_t __vsf_eda_call_eda(uintptr_t evthandler, uintptr_t param, size_t local_size)</div><div class="ttdoc">子调用一个事件处理函数：准备帧并分发 VSF_EVT_INIT 事件</div><div class="ttdef"><b>定义</b> vsf_eda.c:730</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -534,8 +618,18 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>定义</b> __type.h:42</div></div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a></div><div class="ttdeci">@ VSF_ERR_NONE</div><div class="ttdoc">none error</div><div class="ttdef"><b>定义</b> __type.h:44</div></div>
 <div class="ttc" id="avsf__preprocessor_8h_html_a5fd32e93159a228f586c0e21900043ce"><div class="ttname"><a href="vsf__preprocessor_8h.html#a5fd32e93159a228f586c0e21900043ce">VSF_MACRO_SAFE_NAME</a></div><div class="ttdeci">#define VSF_MACRO_SAFE_NAME(__NAME)</div><div class="ttdef"><b>定义</b> vsf_preprocessor.h:32</div></div>
-<div class="ttc" id="avsf__pt_8h_html_a1fdd7df89b2e4021741549e40eef3df5"><div class="ttname"><a href="#a1fdd7df89b2e4021741549e40eef3df5">vsf_pt_raw_next</a></div><div class="ttdeci">#define vsf_pt_raw_next()</div><div class="ttdef"><b>定义</b> vsf_pt.h:85</div></div>
+<div class="ttc" id="avsf__pt_8h_html_a1fdd7df89b2e4021741549e40eef3df5"><div class="ttname"><a href="#a1fdd7df89b2e4021741549e40eef3df5">vsf_pt_raw_next</a></div><div class="ttdeci">#define vsf_pt_raw_next()</div><div class="ttdoc">将 protothread 状态设置为下一个重入点，但不生成重入标签。</div><div class="ttdef"><b>定义</b> vsf_pt.h:167</div></div>
 </div><!-- fragment -->
+<p>从当前 protothread 调用一个事件驱动子程序（子 eda），并等待其 完成。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>子程序的入口函数 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">__target</td><td>指向子程序目标（参数）的指针</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>在此变体中（VSF_KERNEL_CFG_EDA_FAST_SUB_CALL 为 ENABLED），子程序 被直接派发。子程序运行期间 protothread 返回，并在其完成后恢复 执行。 </dd></dl>
+
 </div>
 </div>
 <a id="ae70f20feb190a149576a892014cee36b" name="ae70f20feb190a149576a892014cee36b"></a>
@@ -558,8 +652,18 @@ $(function(){ initResizable(false); });
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line">            (__target)-&gt;fsm_state = 0;                                          \</div>
 <div class="line">            vsf_pt_call_sub(<a class="code hl_define" href="#aa4e30ad2b76f846b706a616c5f7fd99a">vsf_pt_func</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>), (__target))</div>
-<div class="ttc" id="avsf__pt_8h_html_aa4e30ad2b76f846b706a616c5f7fd99a"><div class="ttname"><a href="#aa4e30ad2b76f846b706a616c5f7fd99a">vsf_pt_func</a></div><div class="ttdeci">#define vsf_pt_func(__name)</div><div class="ttdef"><b>定义</b> vsf_pt.h:180</div></div>
+<div class="ttc" id="avsf__pt_8h_html_aa4e30ad2b76f846b706a616c5f7fd99a"><div class="ttname"><a href="#aa4e30ad2b76f846b706a616c5f7fd99a">vsf_pt_func</a></div><div class="ttdeci">#define vsf_pt_func(__name)</div><div class="ttdef"><b>定义</b> vsf_pt.h:462</div></div>
 </div><!-- fragment -->
+<p>从当前 protothread 调用另一个 protothread 作为子程序，并等待其 完成。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>子 protothread 名 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">__target</td><td>指向子 protothread 控制块的指针</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>先复位子 protothread 的控制块。 </dd></dl>
+
 </div>
 </div>
 <a id="afdd575ef65e329b9427e68324da37d95" name="afdd575ef65e329b9427e68324da37d95"></a>
@@ -581,8 +685,19 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line">            <a class="code hl_define" href="#aa75432b9f2937c76d373be651ba57544">__vsf_pt_call_sub</a>(<a class="code hl_define" href="#aa4e30ad2b76f846b706a616c5f7fd99a">vsf_pt_func</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>), (__target))</div>
-<div class="ttc" id="avsf__pt_8h_html_aa75432b9f2937c76d373be651ba57544"><div class="ttname"><a href="#aa75432b9f2937c76d373be651ba57544">__vsf_pt_call_sub</a></div><div class="ttdeci">#define __vsf_pt_call_sub(__name, __target,...)</div><div class="ttdef"><b>定义</b> vsf_pt.h:107</div></div>
+<div class="ttc" id="avsf__pt_8h_html_aa75432b9f2937c76d373be651ba57544"><div class="ttname"><a href="#aa75432b9f2937c76d373be651ba57544">__vsf_pt_call_sub</a></div><div class="ttdeci">#define __vsf_pt_call_sub(__name, __target,...)</div><div class="ttdef"><b>定义</b> vsf_pt.h:219</div></div>
 </div><!-- fragment -->
+<p>从事件驱动任务（eda）中调用一个 protothread 作为子程序，不阻塞。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>protothread 名 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">__target</td><td>指向 protothread 控制块的指针 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_err_t: 子程序调用启动成功返回 VSF_ERR_NONE；没有可用的帧返回 VSF_ERR_NOT_ENOUGH_RESOURCES</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>在普通 eda 事件处理函数中使用；在 protothread 内请使用 <a class="el" href="#ae70f20feb190a149576a892014cee36b" title="从当前 protothread 调用另一个 protothread 作为子程序，并等待其 完成。">vsf_pt_call_pt()</a>。 </dd></dl>
+
 </div>
 </div>
 <a id="a622aeedd1633c8c5048de1982e7fcded" name="a622aeedd1633c8c5048de1982e7fcded"></a>
@@ -611,8 +726,8 @@ $(function(){ initResizable(false); });
 <b>值:</b><div class="fragment"><div class="line">            <a class="code hl_function" href="vsf__task_8c.html#ac06b538398b22814d49f5ac92f2d9456">__vsf_eda_call_task</a>((<a class="code hl_typedef" href="vsf__task_8h.html#a26cffe5c3e2648f0a41e1cc712b9ca4f">vsf_task_entry_t</a>)(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>),                     \</div>
 <div class="line">                                (<a class="code hl_typedef" href="stdint_8h.html#a09674b9e56fd7a93a2169aa9210deec7">uintptr_t</a>)(__target),                          \</div>
 <div class="line">                                (0, ##__VA_ARGS__))</div>
-<div class="ttc" id="avsf__task_8c_html_ac06b538398b22814d49f5ac92f2d9456"><div class="ttname"><a href="vsf__task_8c.html#ac06b538398b22814d49f5ac92f2d9456">__vsf_eda_call_task</a></div><div class="ttdeci">fsm_rt_t __vsf_eda_call_task(vsf_task_entry_t entry, uintptr_t param, size_t local_size)</div><div class="ttdef"><b>定义</b> vsf_task.c:49</div></div>
-<div class="ttc" id="avsf__task_8h_html_a26cffe5c3e2648f0a41e1cc712b9ca4f"><div class="ttname"><a href="vsf__task_8h.html#a26cffe5c3e2648f0a41e1cc712b9ca4f">vsf_task_entry_t</a></div><div class="ttdeci">fsm_rt_t(* vsf_task_entry_t)(uintptr_t target, vsf_evt_t evt)</div><div class="ttdef"><b>定义</b> vsf_task.h:241</div></div>
+<div class="ttc" id="avsf__task_8c_html_ac06b538398b22814d49f5ac92f2d9456"><div class="ttname"><a href="vsf__task_8c.html#ac06b538398b22814d49f5ac92f2d9456">__vsf_eda_call_task</a></div><div class="ttdeci">fsm_rt_t __vsf_eda_call_task(vsf_task_entry_t entry, uintptr_t param, size_t local_size)</div><div class="ttdoc">调用一个任务作为子任务，并等待其返回值。</div><div class="ttdef"><b>定义</b> vsf_task.c:49</div></div>
+<div class="ttc" id="avsf__task_8h_html_a26cffe5c3e2648f0a41e1cc712b9ca4f"><div class="ttname"><a href="vsf__task_8h.html#a26cffe5c3e2648f0a41e1cc712b9ca4f">vsf_task_entry_t</a></div><div class="ttdeci">fsm_rt_t(* vsf_task_entry_t)(uintptr_t target, vsf_evt_t evt)</div><div class="ttdoc">任务入口函数（任务的事件处理函数），启用 VSF_KERNEL_CFG_EDA_SUBCALL_HAS_RETURN_VALUE 时返回 fsm_rt_t</div><div class="ttdef"><b>定义</b> vsf_task.h:632</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -660,11 +775,23 @@ $(function(){ initResizable(false); });
 <div class="line">        } <span class="keywordflow">while</span>(0)</div>
 <div class="ttc" id="alvgl_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="lvgl_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>定义</b> lvgl.h:26</div></div>
 <div class="ttc" id="avsf__connect__macro_8h_html_aa76d81b93fccb3670eef3881b2679ee1"><div class="ttname"><a href="vsf__connect__macro_8h.html#aa76d81b93fccb3670eef3881b2679ee1">VSF_MCONNECT3</a></div><div class="ttdeci">#define VSF_MCONNECT3(a, b, c)</div><div class="ttdef"><b>定义</b> vsf_connect_macro.h:73</div></div>
-<div class="ttc" id="avsf__fsm_8h_html_ae61ab5e1d66a489d89fa8786e6b5f64b"><div class="ttname"><a href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a></div><div class="ttdeci">fsm_rt_t</div><div class="ttdef"><b>定义</b> vsf_fsm.h:315</div></div>
-<div class="ttc" id="avsf__fsm_8h_html_ae61ab5e1d66a489d89fa8786e6b5f64baab382e0a010b65ca433edb2e8e6f2aee"><div class="ttname"><a href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64baab382e0a010b65ca433edb2e8e6f2aee">fsm_rt_on_going</a></div><div class="ttdeci">@ fsm_rt_on_going</div><div class="ttdoc">fsm on-going</div><div class="ttdef"><b>定义</b> vsf_fsm.h:318</div></div>
-<div class="ttc" id="avsf__pt_8h_html_a622aeedd1633c8c5048de1982e7fcded"><div class="ttname"><a href="#a622aeedd1633c8c5048de1982e7fcded">__vsf_pt_call_task</a></div><div class="ttdeci">#define __vsf_pt_call_task(__name, __target,...)</div><div class="ttdef"><b>定义</b> vsf_pt.h:140</div></div>
-<div class="ttc" id="avsf__task_8h_html_a09a582161189ce16e5a630aaa02979df"><div class="ttname"><a href="vsf__task_8h.html#a09a582161189ce16e5a630aaa02979df">vsf_task_func</a></div><div class="ttdeci">#define vsf_task_func(__name)</div><div class="ttdef"><b>定义</b> vsf_task.h:40</div></div>
+<div class="ttc" id="avsf__fsm_8h_html_ae61ab5e1d66a489d89fa8786e6b5f64b"><div class="ttname"><a href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a></div><div class="ttdeci">fsm_rt_t</div><div class="ttdef"><b>定义</b> vsf_fsm.h:771</div></div>
+<div class="ttc" id="avsf__fsm_8h_html_ae61ab5e1d66a489d89fa8786e6b5f64baab382e0a010b65ca433edb2e8e6f2aee"><div class="ttname"><a href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64baab382e0a010b65ca433edb2e8e6f2aee">fsm_rt_on_going</a></div><div class="ttdeci">@ fsm_rt_on_going</div><div class="ttdoc">fsm on-going</div><div class="ttdef"><b>定义</b> vsf_fsm.h:774</div></div>
+<div class="ttc" id="avsf__pt_8h_html_a622aeedd1633c8c5048de1982e7fcded"><div class="ttname"><a href="#a622aeedd1633c8c5048de1982e7fcded">__vsf_pt_call_task</a></div><div class="ttdeci">#define __vsf_pt_call_task(__name, __target,...)</div><div class="ttdef"><b>定义</b> vsf_pt.h:315</div></div>
+<div class="ttc" id="avsf__task_8h_html_a09a582161189ce16e5a630aaa02979df"><div class="ttname"><a href="vsf__task_8h.html#a09a582161189ce16e5a630aaa02979df">vsf_task_func</a></div><div class="ttdeci">#define vsf_task_func(__name)</div><div class="ttdoc">展开为任务入口函数的函数名。</div><div class="ttdef"><b>定义</b> vsf_task.h:48</div></div>
 </div><!-- fragment -->
+<p>从当前 protothread 调用一个任务作为子任务，并等待其完成。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>子任务名 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">__target</td><td>指向子任务控制块的指针 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">__ret_addr</td><td>用于接收子任务 <a class="el" href="vsf__fsm_8h.html#ae61ab5e1d66a489d89fa8786e6b5f64b">fsm_rt_t</a> 返回值的指针， 可以为 NULL </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">...</td><td>子任务栈帧局部变量的可选大小</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>子任务运行期间 protothread 返回，并在其完成后恢复执行。仅在 VSF_KERNEL_CFG_EDA_SUBCALL_HAS_RETURN_VALUE 为 ENABLED 时可用。 </dd></dl>
+
 </div>
 </div>
 <a id="a3f89a73c84ef67d0ef3279d480bd05de" name="a3f89a73c84ef67d0ef3279d480bd05de"></a>
@@ -678,6 +805,17 @@ $(function(){ initResizable(false); });
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>以给定配置启动 protothread。在此变体中 （VSF_KERNEL_CFG_EDA_SUPPORT_TIMER 为 ENABLED）映射为 <a class="el" href="vsf__eda_8h.html#a78d37b47214056cf02dd04f250f5999d" title="以给定的配置启动一个 teda（带定时器支持的 eda）任务，并向其发送 VSF_EVT_INIT 事件">vsf_teda_start()</a>，可使用定时器服务。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__pt</td><td>指向 protothread 的指针，类型为 <a class="el" href="#a03a396f627ae1a95e8cf44b8e0ae9492">vsf_pt_t</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">__cfg</td><td>指向配置的指针，类型为 <a class="el" href="structvsf__eda__cfg__t.html">vsf_eda_cfg_t</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_err_t: protothread 启动成功返回 VSF_ERR_NONE；没有可用的帧返回 VSF_ERR_NOT_ENOUGH_RESOURCES</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>protothread 启动后会收到一个 VSF_EVT_INIT 事件。 </dd></dl>
 
 </div>
 </div>
@@ -698,6 +836,17 @@ $(function(){ initResizable(false); });
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#a666e5ff666d1500e836620e26ef11213">__implement_vsf_pt</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</div>
 <div class="ttc" id="avsf__pt_8h_html_a666e5ff666d1500e836620e26ef11213"><div class="ttname"><a href="#a666e5ff666d1500e836620e26ef11213">__implement_vsf_pt</a></div><div class="ttdeci">#define __implement_vsf_pt(__name)</div><div class="ttdef"><b>定义</b> vsf_pt.h:37</div></div>
 </div><!-- fragment -->
+<p>开始 protothread 入口函数的实现。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>protothread 名</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>在函数体内，vsf_pthis 指向 protothread 控制块，vsf_this 可直接 访问其成员。函数体必须由 <a class="el" href="#aa8ee6c55eb14c49333906710ee7a63ed" title="开始 protothread 体，紧跟在 implement_vsf_pt() 之后。">vsf_pt_begin()</a> 和 <a class="el" href="#a9193dbaff6b365dbd9699fdf8fe0998a" title="结束由 vsf_pt_begin() 开始的 protothread 体，并终止该 protothread。">vsf_pt_end()</a> 包围。 </dd>
+<dd>
+与 <a class="el" href="#af1261f2b277dff0da436b6d93f5e3d63" title="定义 protothread 控制块。">def_vsf_pt()</a> 和 <a class="el" href="#a64c091d0e4ba99959478d95fc3f81250" title="准备并启动由 def_vsf_pt() 定义的 protothread。">init_vsf_pt()</a> 配合使用。 </dd></dl>
+
 </div>
 </div>
 <a id="aba52c67a8a66b847ca90a39db87f1fcc" name="aba52c67a8a66b847ca90a39db87f1fcc"></a>
@@ -721,6 +870,15 @@ $(function(){ initResizable(false); });
 <b>值:</b><div class="fragment"><div class="line">            <a class="code hl_define" href="#a7b71b48d04e0ed567b6d50c9df977eb1">__implement_vsf_pt_ex</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, __FUNC_NAME)</div>
 <div class="ttc" id="avsf__pt_8h_html_a7b71b48d04e0ed567b6d50c9df977eb1"><div class="ttname"><a href="#a7b71b48d04e0ed567b6d50c9df977eb1">__implement_vsf_pt_ex</a></div><div class="ttdeci">#define __implement_vsf_pt_ex(__name, __func_name)</div><div class="ttdef"><b>定义</b> vsf_pt.h:44</div></div>
 </div><!-- fragment -->
+<p>以指定的函数名开始 protothread 入口函数的实现。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>protothread 名 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">__FUNC_NAME</td><td>入口函数的函数名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a2af696fec89b474f556fce336b14ce27" name="a2af696fec89b474f556fce336b14ce27"></a>
@@ -738,8 +896,16 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#a7ad9f858945fbcc93a1768f27c251836">implement_vsf_pt</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</div>
-<div class="ttc" id="avsf__pt_8h_html_a7ad9f858945fbcc93a1768f27c251836"><div class="ttname"><a href="#a7ad9f858945fbcc93a1768f27c251836">implement_vsf_pt</a></div><div class="ttdeci">#define implement_vsf_pt(__name)</div><div class="ttdef"><b>定义</b> vsf_pt.h:171</div></div>
+<div class="ttc" id="avsf__pt_8h_html_a7ad9f858945fbcc93a1768f27c251836"><div class="ttname"><a href="#a7ad9f858945fbcc93a1768f27c251836">implement_vsf_pt</a></div><div class="ttdeci">#define implement_vsf_pt(__name)</div><div class="ttdoc">开始 protothread 入口函数的实现。</div><div class="ttdef"><b>定义</b> vsf_pt.h:414</div></div>
 </div><!-- fragment -->
+<p><a class="el" href="#a7ad9f858945fbcc93a1768f27c251836" title="开始 protothread 入口函数的实现。">implement_vsf_pt()</a> 的别名。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>protothread 名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a4dfa778516d049bef139c2d9bbefc4b1" name="a4dfa778516d049bef139c2d9bbefc4b1"></a>
@@ -761,8 +927,17 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line">            <a class="code hl_define" href="#aba52c67a8a66b847ca90a39db87f1fcc">implement_vsf_pt_ex</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, __FUNC_NAME)</div>
-<div class="ttc" id="avsf__pt_8h_html_aba52c67a8a66b847ca90a39db87f1fcc"><div class="ttname"><a href="#aba52c67a8a66b847ca90a39db87f1fcc">implement_vsf_pt_ex</a></div><div class="ttdeci">#define implement_vsf_pt_ex(__name, __FUNC_NAME)</div><div class="ttdef"><b>定义</b> vsf_pt.h:172</div></div>
+<div class="ttc" id="avsf__pt_8h_html_aba52c67a8a66b847ca90a39db87f1fcc"><div class="ttname"><a href="#aba52c67a8a66b847ca90a39db87f1fcc">implement_vsf_pt_ex</a></div><div class="ttdeci">#define implement_vsf_pt_ex(__name, __FUNC_NAME)</div><div class="ttdoc">以指定的函数名开始 protothread 入口函数的实现。</div><div class="ttdef"><b>定义</b> vsf_pt.h:427</div></div>
 </div><!-- fragment -->
+<p><a class="el" href="#aba52c67a8a66b847ca90a39db87f1fcc" title="以指定的函数名开始 protothread 入口函数的实现。">implement_vsf_pt_ex()</a> 的别名。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>protothread 名 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">__FUNC_NAME</td><td>入口函数的函数名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ae1ce69712204faf1b6f43f6bc217a602" name="ae1ce69712204faf1b6f43f6bc217a602"></a>
@@ -782,6 +957,14 @@ $(function(){ initResizable(false); });
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="____vsf__task__common_8h.html#a82fb3b0399e022a1e658929998834483">__vsf_pt_func_common</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</div>
 <div class="ttc" id="a____vsf__task__common_8h_html_a82fb3b0399e022a1e658929998834483"><div class="ttname"><a href="____vsf__task__common_8h.html#a82fb3b0399e022a1e658929998834483">__vsf_pt_func_common</a></div><div class="ttdeci">#define __vsf_pt_func_common(__name)</div><div class="ttdef"><b>定义</b> __vsf_task_common.h:71</div></div>
 </div><!-- fragment -->
+<p>展开为 protothread 入口函数的函数名。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>protothread 名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aa4e30ad2b76f846b706a616c5f7fd99a" name="aa4e30ad2b76f846b706a616c5f7fd99a"></a>
@@ -799,7 +982,7 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#ae1ce69712204faf1b6f43f6bc217a602">__vsf_pt_func</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</div>
-<div class="ttc" id="avsf__pt_8h_html_ae1ce69712204faf1b6f43f6bc217a602"><div class="ttname"><a href="#ae1ce69712204faf1b6f43f6bc217a602">__vsf_pt_func</a></div><div class="ttdeci">#define __vsf_pt_func(__name)</div><div class="ttdef"><b>定义</b> vsf_pt.h:179</div></div>
+<div class="ttc" id="avsf__pt_8h_html_ae1ce69712204faf1b6f43f6bc217a602"><div class="ttname"><a href="#ae1ce69712204faf1b6f43f6bc217a602">__vsf_pt_func</a></div><div class="ttdeci">#define __vsf_pt_func(__name)</div><div class="ttdoc">展开为 protothread 入口函数的函数名。</div><div class="ttdef"><b>定义</b> vsf_pt.h:461</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -819,6 +1002,14 @@ $(function(){ initResizable(false); });
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="____vsf__task__common_8h.html#a3787d670815417613ae4382b961bf596">__vsf_pt_common</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</div>
 </div><!-- fragment -->
+<p>展开为 protothread 控制块的类型名。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>protothread 名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aa358f19cf1389399f6649fb5f0656710" name="aa358f19cf1389399f6649fb5f0656710"></a>
@@ -836,7 +1027,7 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#a4a386e396d9fc4a2d9ee688832042a4e">__vsf_pt</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</div>
-<div class="ttc" id="avsf__pt_8h_html_a4a386e396d9fc4a2d9ee688832042a4e"><div class="ttname"><a href="#a4a386e396d9fc4a2d9ee688832042a4e">__vsf_pt</a></div><div class="ttdeci">#define __vsf_pt(__name)</div><div class="ttdef"><b>定义</b> vsf_pt.h:182</div></div>
+<div class="ttc" id="avsf__pt_8h_html_a4a386e396d9fc4a2d9ee688832042a4e"><div class="ttname"><a href="#a4a386e396d9fc4a2d9ee688832042a4e">__vsf_pt</a></div><div class="ttdeci">#define __vsf_pt(__name)</div><div class="ttdoc">展开为 protothread 控制块的类型名。</div><div class="ttdef"><b>定义</b> vsf_pt.h:472</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -885,8 +1076,20 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#abe25d5210da9abe74a33d33ca7e71c94">__def_vsf_pt</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,__VA_ARGS__)</div>
-<div class="ttc" id="avsf__pt_8h_html_abe25d5210da9abe74a33d33ca7e71c94"><div class="ttname"><a href="#abe25d5210da9abe74a33d33ca7e71c94">__def_vsf_pt</a></div><div class="ttdeci">#define __def_vsf_pt(__name,...)</div><div class="ttdef"><b>定义</b> vsf_pt.h:185</div></div>
+<div class="ttc" id="avsf__pt_8h_html_abe25d5210da9abe74a33d33ca7e71c94"><div class="ttname"><a href="#abe25d5210da9abe74a33d33ca7e71c94">__def_vsf_pt</a></div><div class="ttdeci">#define __def_vsf_pt(__name,...)</div><div class="ttdef"><b>定义</b> vsf_pt.h:475</div></div>
 </div><!-- fragment -->
+<p>定义 protothread 控制块。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>protothread 名 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">...</td><td>protothread 控制块的成员变量</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>protothread 控制块的第一个成员是 fsm_state，供内部保存 protothread 状态使用。 </dd>
+<dd>
+与 <a class="el" href="#a7ad9f858945fbcc93a1768f27c251836" title="开始 protothread 入口函数的实现。">implement_vsf_pt()</a> 和 <a class="el" href="#a64c091d0e4ba99959478d95fc3f81250" title="准备并启动由 def_vsf_pt() 定义的 protothread。">init_vsf_pt()</a> 配合使用。 </dd></dl>
+
 </div>
 </div>
 <a id="a43065abd02a6117dae266c9198ac2e3e" name="a43065abd02a6117dae266c9198ac2e3e"></a>
@@ -903,6 +1106,8 @@ $(function(){ initResizable(false); });
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>结束由 <a class="el" href="#af1261f2b277dff0da436b6d93f5e3d63" title="定义 protothread 控制块。">def_vsf_pt()</a> 开始的 protothread 定义。该宏为空，仅用于 编码风格上的对称。 </p>
 
 </div>
 </div>
@@ -925,8 +1130,17 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#af1261f2b277dff0da436b6d93f5e3d63">def_vsf_pt</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>,__VA_ARGS__)</div>
-<div class="ttc" id="avsf__pt_8h_html_af1261f2b277dff0da436b6d93f5e3d63"><div class="ttname"><a href="#af1261f2b277dff0da436b6d93f5e3d63">def_vsf_pt</a></div><div class="ttdeci">#define def_vsf_pt(__name,...)</div><div class="ttdef"><b>定义</b> vsf_pt.h:190</div></div>
+<div class="ttc" id="avsf__pt_8h_html_af1261f2b277dff0da436b6d93f5e3d63"><div class="ttname"><a href="#af1261f2b277dff0da436b6d93f5e3d63">def_vsf_pt</a></div><div class="ttdeci">#define def_vsf_pt(__name,...)</div><div class="ttdoc">定义 protothread 控制块。</div><div class="ttdef"><b>定义</b> vsf_pt.h:498</div></div>
 </div><!-- fragment -->
+<p><a class="el" href="#af1261f2b277dff0da436b6d93f5e3d63" title="定义 protothread 控制块。">def_vsf_pt()</a> 的别名。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>protothread 名 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">...</td><td>protothread 控制块的成员变量 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="acf5dd25ae047f38b5d856b784f4a9daa" name="acf5dd25ae047f38b5d856b784f4a9daa"></a>
@@ -943,6 +1157,8 @@ $(function(){ initResizable(false); });
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p><a class="el" href="#a43065abd02a6117dae266c9198ac2e3e" title="结束由 def_vsf_pt() 开始的 protothread 定义。该宏为空，仅用于 编码风格上的对称。">end_def_vsf_pt()</a> 的别名。 </p>
 
 </div>
 </div>
@@ -981,8 +1197,16 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#a869f46a8a967a74d9796b7ffea2abcb9">__declare_vsf_pt</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</div>
-<div class="ttc" id="avsf__pt_8h_html_a869f46a8a967a74d9796b7ffea2abcb9"><div class="ttname"><a href="#a869f46a8a967a74d9796b7ffea2abcb9">__declare_vsf_pt</a></div><div class="ttdeci">#define __declare_vsf_pt(__name)</div><div class="ttdef"><b>定义</b> vsf_pt.h:198</div></div>
+<div class="ttc" id="avsf__pt_8h_html_a869f46a8a967a74d9796b7ffea2abcb9"><div class="ttname"><a href="#a869f46a8a967a74d9796b7ffea2abcb9">__declare_vsf_pt</a></div><div class="ttdeci">#define __declare_vsf_pt(__name)</div><div class="ttdef"><b>定义</b> vsf_pt.h:533</div></div>
 </div><!-- fragment -->
+<p>在使用 <a class="el" href="#af1261f2b277dff0da436b6d93f5e3d63" title="定义 protothread 控制块。">def_vsf_pt()</a> 定义之前，先声明 protothread（protothread 类、其控制块类型及其入口函数原型）。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>protothread 名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ad849f07187bc7c8da351acf5d8356838" name="ad849f07187bc7c8da351acf5d8356838"></a>
@@ -1000,8 +1224,16 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#a0c8c681e68796955483f938f56153e1a">declare_vsf_pt</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>)</div>
-<div class="ttc" id="avsf__pt_8h_html_a0c8c681e68796955483f938f56153e1a"><div class="ttname"><a href="#a0c8c681e68796955483f938f56153e1a">declare_vsf_pt</a></div><div class="ttdeci">#define declare_vsf_pt(__name)</div><div class="ttdef"><b>定义</b> vsf_pt.h:207</div></div>
+<div class="ttc" id="avsf__pt_8h_html_a0c8c681e68796955483f938f56153e1a"><div class="ttname"><a href="#a0c8c681e68796955483f938f56153e1a">declare_vsf_pt</a></div><div class="ttdeci">#define declare_vsf_pt(__name)</div><div class="ttdoc">在使用 def_vsf_pt() 定义之前，先声明 protothread（protothread 类、其控制块类型及其入口函数原型）。</div><div class="ttdef"><b>定义</b> vsf_pt.h:553</div></div>
 </div><!-- fragment -->
+<p><a class="el" href="#a0c8c681e68796955483f938f56153e1a" title="在使用 def_vsf_pt() 定义之前，先声明 protothread（protothread 类、其控制块类型及其入口函数原型）。">declare_vsf_pt()</a> 的别名。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>protothread 名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a8f609501c6f8720cc3f3197a48c0ffbd" name="a8f609501c6f8720cc3f3197a48c0ffbd"></a>
@@ -1043,8 +1275,8 @@ $(function(){ initResizable(false); });
 <div class="line">            vsf_pt_start(&amp;((__pt)-&gt;use_as__vsf_pt_t),                           \</div>
 <div class="line">                &amp;<a class="code hl_define" href="vsf__preprocessor_8h.html#a5fd32e93159a228f586c0e21900043ce">VSF_MACRO_SAFE_NAME</a>(cfg));                                     \</div>
 <div class="line">        } <span class="keywordflow">while</span>(0)</div>
-<div class="ttc" id="astructvsf__eda__cfg__t_html"><div class="ttname"><a href="structvsf__eda__cfg__t.html">vsf_eda_cfg_t</a></div><div class="ttdef"><b>定义</b> vsf_eda.h:758</div></div>
-<div class="ttc" id="avsf__pt_8h_html_a622a0c283075eaba0e14db3b064756de"><div class="ttname"><a href="#a622a0c283075eaba0e14db3b064756de">vsf_pt_entry_t</a></div><div class="ttdeci">vsf_eda_evthandler_t vsf_pt_entry_t</div><div class="ttdef"><b>定义</b> vsf_pt.h:259</div></div>
+<div class="ttc" id="astructvsf__eda__cfg__t_html"><div class="ttname"><a href="structvsf__eda__cfg__t.html">vsf_eda_cfg_t</a></div><div class="ttdoc">启动 eda/teda 任务的配置（vsf_eda_start()、vsf_teda_start()、init_vsf_peda() 等）</div><div class="ttdef"><b>定义</b> vsf_eda.h:1805</div></div>
+<div class="ttc" id="avsf__pt_8h_html_a622a0c283075eaba0e14db3b064756de"><div class="ttname"><a href="#a622a0c283075eaba0e14db3b064756de">vsf_pt_entry_t</a></div><div class="ttdeci">vsf_eda_evthandler_t vsf_pt_entry_t</div><div class="ttdoc">protothread 入口函数，采用 eda 事件处理函数签名 （vsf_eda_evthandler_t 的别名）</div><div class="ttdef"><b>定义</b> vsf_pt.h:684</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1073,8 +1305,18 @@ $(function(){ initResizable(false); });
 <div class="line">            VSF_KERNEL_ASSERT(<a class="code hl_enumvalue" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4a078ab9b363e9306304391b040282f6fe">VSF_ERR_NONE</a> == <a class="code hl_define" href="vsf__preprocessor_8h.html#a5fd32e93159a228f586c0e21900043ce">VSF_MACRO_SAFE_NAME</a>(ret));        \</div>
 <div class="line">            return ;                                                            \</div>
 <div class="line">            vsf_pt_raw_entry();</div>
-<div class="ttc" id="avsf__thread_8h_html_a759529b1bfc13d7240db320f7c814121"><div class="ttname"><a href="vsf__thread_8h.html#a759529b1bfc13d7240db320f7c814121">vsf_eda_call_thread_prepare</a></div><div class="ttdeci">#define vsf_eda_call_thread_prepare(__name, __thread_cb)</div><div class="ttdef"><b>定义</b> vsf_thread.h:184</div></div>
+<div class="ttc" id="avsf__thread_8h_html_a759529b1bfc13d7240db320f7c814121"><div class="ttname"><a href="vsf__thread_8h.html#a759529b1bfc13d7240db320f7c814121">vsf_eda_call_thread_prepare</a></div><div class="ttdeci">#define vsf_eda_call_thread_prepare(__name, __thread_cb)</div><div class="ttdoc">在当前 eda 调用线程之前准备线程控制块</div><div class="ttdef"><b>定义</b> vsf_thread.h:248</div></div>
 </div><!-- fragment -->
+<p>从当前 protothread 调用一个线程，并等待线程结束。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>由 <a class="el" href="vsf__thread_8h.html#a2c7ebfc211ca368ae295d86c69c13fe2" title="定义一个内嵌堆栈的线程类型">def_vsf_thread()</a> 定义的线程类型名 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">__target</td><td>指向线程控制块的指针</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>在此变体中（VSF_KERNEL_CFG_EDA_FAST_SUB_CALL 为 ENABLED），线程被 直接启动。线程运行期间 protothread 返回，并在线程结束后恢复 执行。 </dd></dl>
+
 </div>
 </div>
 <a id="a64c091d0e4ba99959478d95fc3f81250" name="a64c091d0e4ba99959478d95fc3f81250"></a>
@@ -1106,8 +1348,20 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line">            <a class="code hl_define" href="#a8f609501c6f8720cc3f3197a48c0ffbd">__init_vsf_pt</a>(<a class="code hl_define" href="hci__transport__aic8800_8c.html#a7f565b52ec477e9c0c235e88b9355558">__name</a>, __pt, __pri, __VA_ARGS__)</div>
-<div class="ttc" id="avsf__pt_8h_html_a8f609501c6f8720cc3f3197a48c0ffbd"><div class="ttname"><a href="#a8f609501c6f8720cc3f3197a48c0ffbd">__init_vsf_pt</a></div><div class="ttdeci">#define __init_vsf_pt(__name, __pt, __pri,...)</div><div class="ttdef"><b>定义</b> vsf_pt.h:210</div></div>
+<div class="ttc" id="avsf__pt_8h_html_a8f609501c6f8720cc3f3197a48c0ffbd"><div class="ttname"><a href="#a8f609501c6f8720cc3f3197a48c0ffbd">__init_vsf_pt</a></div><div class="ttdeci">#define __init_vsf_pt(__name, __pt, __pri,...)</div><div class="ttdef"><b>定义</b> vsf_pt.h:565</div></div>
 </div><!-- fragment -->
+<p>准备并启动由 <a class="el" href="#af1261f2b277dff0da436b6d93f5e3d63" title="定义 protothread 控制块。">def_vsf_pt()</a> 定义的 protothread。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">__name</td><td>protothread 名 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">__pt</td><td>指向 protothread 实例的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">__pri</td><td>protothread 优先级，类型为 <a class="el" href="vsf__kernel__common_8h.html#ad388b0c213cac0eadd2a95f215e8ffc3">vsf_prio_t</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">...</td><td><a class="el" href="structvsf__eda__cfg__t.html">vsf_eda_cfg_t</a> 的可选额外初始化项</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>先复位 protothread 控制块，再通过 <a class="el" href="#a3f89a73c84ef67d0ef3279d480bd05de" title="以给定配置启动 protothread。在此变体中 （VSF_KERNEL_CFG_EDA_SUPPORT_TIMER 为 ENABLED）映射为 vsf_teda_start()，可使用定时器服务。">vsf_pt_start()</a> 启动 protothread；protothread 入口函数将收到 VSF_EVT_INIT 事件。 </dd></dl>
+
 </div>
 </div>
 <h2 class="groupheader">类型定义说明</h2>
@@ -1123,6 +1377,8 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 
+<p>protothread 类型，启用 VSF_KERNEL_CFG_EDA_SUPPORT_TIMER 时是 <a class="el" href="classvsf__teda__t.html">vsf_teda_t</a> 的别名 </p>
+
 </div>
 </div>
 <a id="a622a0c283075eaba0e14db3b064756de" name="a622a0c283075eaba0e14db3b064756de"></a>
@@ -1137,11 +1393,13 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 
+<p>protothread 入口函数，采用 eda 事件处理函数签名 （<a class="el" href="vsf__eda_8h.html#a43a14c27fa7cd929d1633f29bd58515b">vsf_eda_evthandler_t</a> 的别名） </p>
+
 </div>
 </div>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/176370d0ebfebd2cd6336d8271f58ddb7d9ebdaf" target="_blank">vsfteam/vsf@176370d</a>
+  <a href="https://github.com/vsfteam/vsf/commit/db56c81dc1b0c6bd4262cf0d79df99b6355cc26b" target="_blank">vsfteam/vsf@db56c81</a>
   生成
 </div>

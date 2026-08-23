@@ -85,8 +85,10 @@ $(function(){ initResizable(false); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 函数</h2></td></tr>
 <tr class="memitem:a3700cee992fd87786cd6195dffd97d69" id="r_a3700cee992fd87786cd6195dffd97d69"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vsf__eda_8h.html#aeaa3152ca9e561ff10865c65a67bb939">vsf_sync_reason_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3700cee992fd87786cd6195dffd97d69">__vsf_bmpevt_wait_for</a> (<a class="el" href="classvsf__bmpevt__t.html">vsf_bmpevt_t</a> *bmpevt_ptr, const <a class="el" href="classvsf__bmpevt__pender__t.html">vsf_bmpevt_pender_t</a> *pender_ptr, <a class="el" href="stdint_8h.html#ae785c58dac36959b504b39358ccc644e">int_fast32_t</a> time_out)</td></tr>
+<tr class="memdesc:a3700cee992fd87786cd6195dffd97d69"><td class="mdescLeft">&#160;</td><td class="mdescRight">支撑 <a class="el" href="vsf__simple__bmpevt_8h.html#ade4d72e98dc2d77156088e54fb5d33f1" title="等待位图事件组中掩码指定的任一事件位置位（wait_for_any() 的别名， 或），一直等待（协作式，不阻塞其他任务）。">wait_for_one()</a>/wait_for_any()/wait_for_all() 语句宏的底层 位图事件等待辅助函数。  <br /></td></tr>
 <tr class="separator:a3700cee992fd87786cd6195dffd97d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a213273986da45c740e1db6f532c9bcfc" id="r_a213273986da45c740e1db6f532c9bcfc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a213273986da45c740e1db6f532c9bcfc">__vsf_grouped_evts_init</a> (<a class="el" href="classvsf__bmpevt__t.html">vsf_bmpevt_t</a> *this_ptr, <a class="el" href="classvsf__bmpevt__adapter__t.html">vsf_bmpevt_adapter_t</a> **adapters_pptr, <a class="el" href="stdint_8h.html#a2d31063fef649c85396fb28130ef9795">uint_fast8_t</a> adapter_count, <a class="el" href="stdint_8h.html#a8a5d6c5353ff297fd0797e654772361b">uint_fast32_t</a> auto_reset)</td></tr>
+<tr class="memdesc:a213273986da45c740e1db6f532c9bcfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">支撑 <a class="el" href="vsf__simple__bmpevt_8h.html#aaa08d50b9fbf3daa8a553c17f1ada498" title="用适配器列表初始化一个位图事件组实例。">init_grouped_evts()</a> 宏的底层初始化辅助函数。  <br /></td></tr>
 <tr class="separator:a213273986da45c740e1db6f532c9bcfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">宏定义说明</h2>
@@ -143,6 +145,18 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 
+<p>支撑 <a class="el" href="vsf__simple__bmpevt_8h.html#ade4d72e98dc2d77156088e54fb5d33f1" title="等待位图事件组中掩码指定的任一事件位置位（wait_for_any() 的别名， 或），一直等待（协作式，不阻塞其他任务）。">wait_for_one()</a>/wait_for_any()/wait_for_all() 语句宏的底层 位图事件等待辅助函数。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">bmpevt_ptr</td><td>指向组实例 <a class="el" href="classvsf__bmpevt__t.html">vsf_bmpevt_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pender_ptr</td><td>指向等待者 <a class="el" href="classvsf__bmpevt__pender__t.html">vsf_bmpevt_pender_t</a> 的指针，保存 事件位掩码和操作（VSF_BMPEVT_AND/VSF_BMPEVT_OR） </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">time_out</td><td>以系统定时器 tick 为单位的超时时间；负值表示一直等待 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_sync_reason_t: 等待条件满足时返回 VSF_SYNC_GET，超时时返回 VSF_SYNC_TIMEOUT，被取消时返回 VSF_SYNC_CANCEL，出错时返回 VSF_SYNC_FAIL，等待仍在进行时返回 VSF_SYNC_PENDING</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>仅供内部使用。 </dd></dl>
+
 </div>
 </div>
 <a id="a213273986da45c740e1db6f532c9bcfc" name="a213273986da45c740e1db6f532c9bcfc"></a>
@@ -174,11 +188,24 @@ $(function(){ initResizable(false); });
       </table>
 </div><div class="memdoc">
 
+<p>支撑 <a class="el" href="vsf__simple__bmpevt_8h.html#aaa08d50b9fbf3daa8a553c17f1ada498" title="用适配器列表初始化一个位图事件组实例。">init_grouped_evts()</a> 宏的底层初始化辅助函数。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">this_ptr</td><td>指向组实例 <a class="el" href="classvsf__bmpevt__t.html">vsf_bmpevt_t</a> 的指针 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">adapters_pptr</td><td>指向 <a class="el" href="vsf__simple__bmpevt_8h.html#a4d40cd79a5e72d26bbe7be266163ac7b" title="定义位图事件组的适配器列表。">implement_grouped_evts()</a> 定义的适配器列表 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">adapter_count</td><td>列表中适配器的数量 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">auto_reset</td><td>等待成功后自动复位的事件位掩码 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>无</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>仅供内部使用。 </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/176370d0ebfebd2cd6336d8271f58ddb7d9ebdaf" target="_blank">vsfteam/vsf@176370d</a>
+  <a href="https://github.com/vsfteam/vsf/commit/db56c81dc1b0c6bd4262cf0d79df99b6355cc26b" target="_blank">vsfteam/vsf@db56c81</a>
   生成
 </div>
