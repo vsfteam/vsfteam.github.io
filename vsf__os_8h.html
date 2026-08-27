@@ -94,10 +94,10 @@ Macros</h2></td></tr>
 <tr class="memdesc:aa781ca2d9afea73c187309115d376259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant above.  <br /></td></tr>
 <tr class="separator:aa781ca2d9afea73c187309115d376259"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad480bc7021eb6462ee36878b09396b05" id="r_ad480bc7021eb6462ee36878b09396b05"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad480bc7021eb6462ee36878b09396b05">vsf_sched_lock</a>()</td></tr>
-<tr class="memdesc:ad480bc7021eb6462ee36878b09396b05"><td class="mdescLeft">&#160;</td><td class="mdescRight">No-op stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant above.  <br /></td></tr>
+<tr class="memdesc:ad480bc7021eb6462ee36878b09396b05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: masks interrupts if VSF_KERNEL_CFG_ALLOW_KERNEL_BEING_PREEMPTED is ENABLED (see the note above), otherwise a no-op stub; shares the documentation of the first variant above.  <br /></td></tr>
 <tr class="separator:ad480bc7021eb6462ee36878b09396b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca308a56ac40038a0604bc88d25b179c" id="r_aca308a56ac40038a0604bc88d25b179c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca308a56ac40038a0604bc88d25b179c">vsf_sched_unlock</a>(__level)</td></tr>
-<tr class="memdesc:aca308a56ac40038a0604bc88d25b179c"><td class="mdescLeft">&#160;</td><td class="mdescRight">No-op stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant above.  <br /></td></tr>
+<tr class="memdesc:aca308a56ac40038a0604bc88d25b179c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: restores the interrupt state saved by <a class="el" href="#ad480bc7021eb6462ee36878b09396b05" title="Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: masks interrupts if VSF_KERNEL_CFG_ALLOW_KERNEL_BEING_PREE...">vsf_sched_lock()</a> if VSF_KERNEL_CFG_ALLOW_KERNEL_BEING_PREEMPTED is ENABLED, otherwise a no-op stub; shares the documentation of the first variant above.  <br /></td></tr>
 <tr class="separator:aca308a56ac40038a0604bc88d25b179c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74c9dc69355989586b01180d0269bc70" id="r_a74c9dc69355989586b01180d0269bc70"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74c9dc69355989586b01180d0269bc70">vsf_sched_safe</a>()</td></tr>
 <tr class="memdesc:a74c9dc69355989586b01180d0269bc70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1 (the following block always runs); shares the documentation of the first variant above.  <br /></td></tr>
@@ -109,10 +109,10 @@ Macros</h2></td></tr>
 <tr class="memdesc:aabfeeb8e025d736c2f88efc7bbffa540"><td class="mdescLeft">&#160;</td><td class="mdescRight">No-op stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant above.  <br /></td></tr>
 <tr class="separator:aabfeeb8e025d736c2f88efc7bbffa540"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae63ed75d0fb3b0b3cb3f37aacaebad62" id="r_ae63ed75d0fb3b0b3cb3f37aacaebad62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae63ed75d0fb3b0b3cb3f37aacaebad62">vsf_protect_scheduler</a>()</td></tr>
-<tr class="memdesc:ae63ed75d0fb3b0b3cb3f37aacaebad62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock the scheduler, alias of <a class="el" href="#ad480bc7021eb6462ee36878b09396b05" title="No-op stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant a...">vsf_sched_lock()</a>  <br /></td></tr>
+<tr class="memdesc:ae63ed75d0fb3b0b3cb3f37aacaebad62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock the scheduler, alias of <a class="el" href="#ad480bc7021eb6462ee36878b09396b05" title="Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: masks interrupts if VSF_KERNEL_CFG_ALLOW_KERNEL_BEING_PREE...">vsf_sched_lock()</a>  <br /></td></tr>
 <tr class="separator:ae63ed75d0fb3b0b3cb3f37aacaebad62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae62f99de3b65be1a0ef1b9d08a68997a" id="r_ae62f99de3b65be1a0ef1b9d08a68997a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae62f99de3b65be1a0ef1b9d08a68997a">vsf_unprotect_scheduler</a>(__state)</td></tr>
-<tr class="memdesc:ae62f99de3b65be1a0ef1b9d08a68997a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlock the scheduler, alias of <a class="el" href="#aca308a56ac40038a0604bc88d25b179c" title="No-op stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant a...">vsf_sched_unlock()</a>  <br /></td></tr>
+<tr class="memdesc:ae62f99de3b65be1a0ef1b9d08a68997a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlock the scheduler, alias of <a class="el" href="#aca308a56ac40038a0604bc88d25b179c" title="Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: restores the interrupt state saved by vsf_sched_lock() if ...">vsf_sched_unlock()</a>  <br /></td></tr>
 <tr class="separator:ae62f99de3b65be1a0ef1b9d08a68997a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d6d9f1d096950ac42a9be5db92b0b2a" id="r_a6d6d9f1d096950ac42a9be5db92b0b2a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d6d9f1d096950ac42a9be5db92b0b2a">vsf_protect_sched</a>()</td></tr>
 <tr class="memdesc:a6d6d9f1d096950ac42a9be5db92b0b2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock the scheduler and return the previous status as <a class="el" href="vsf__arch__abstraction_8h.html#a1b0d8a7ae206accc2a7e6f5c4e3d78e3">vsf_protect_t</a>.  <br /></td></tr>
@@ -150,7 +150,7 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a716f48d52a10627b7f1c40acf5c8f69e" id="r_a716f48d52a10627b7f1c40acf5c8f69e"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="cortex__a__generic_8h.html#ad7047b55b618cd4470207a624dd263df">vsf_arch_prio_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a716f48d52a10627b7f1c40acf5c8f69e">vsf_sched_lock_status_t</a></td></tr>
-<tr class="memdesc:a716f48d52a10627b7f1c40acf5c8f69e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduler lock status, returned by <a class="el" href="#ad480bc7021eb6462ee36878b09396b05" title="No-op stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant a...">vsf_sched_lock()</a> / vsf_forced_sched_lock() and passed back to <a class="el" href="#aca308a56ac40038a0604bc88d25b179c" title="No-op stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant a...">vsf_sched_unlock()</a> / vsf_forced_sched_unlock()  <br /></td></tr>
+<tr class="memdesc:a716f48d52a10627b7f1c40acf5c8f69e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduler lock status, returned by <a class="el" href="#ad480bc7021eb6462ee36878b09396b05" title="Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: masks interrupts if VSF_KERNEL_CFG_ALLOW_KERNEL_BEING_PREE...">vsf_sched_lock()</a> / vsf_forced_sched_lock() and passed back to <a class="el" href="#aca308a56ac40038a0604bc88d25b179c" title="Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: restores the interrupt state saved by vsf_sched_lock() if ...">vsf_sched_unlock()</a> / vsf_forced_sched_unlock()  <br /></td></tr>
 <tr class="separator:a716f48d52a10627b7f1c40acf5c8f69e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba0fad1ae0684727da9a8df9a48a5a96" id="r_aba0fad1ae0684727da9a8df9a48a5a96"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structvsf__evt__node__t.html">vsf_evt_node_t</a> struct __vsf_eda_frame_buffer_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba0fad1ae0684727da9a8df9a48a5a96">__vsf_eda_frame_buffer_t</a></td></tr>
 <tr class="separator:aba0fad1ae0684727da9a8df9a48a5a96"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -229,9 +229,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">0</div>
+<b>Value:</b><div class="fragment"><div class="line">((<a class="code hl_typedef" href="#a716f48d52a10627b7f1c40acf5c8f69e">vsf_sched_lock_status_t</a>)<a class="code hl_define" href="vsf__arch__abstraction_8h.html#a7c03c8d361503984bed9099c80890f54">vsf_protect_int</a>())</div>
+<div class="ttc" id="avsf__arch__abstraction_8h_html_a7c03c8d361503984bed9099c80890f54"><div class="ttname"><a href="vsf__arch__abstraction_8h.html#a7c03c8d361503984bed9099c80890f54">vsf_protect_int</a></div><div class="ttdeci">#define vsf_protect_int</div><div class="ttdef"><b>Definition</b> vsf_arch_abstraction.h:376</div></div>
+<div class="ttc" id="avsf__os_8h_html_a716f48d52a10627b7f1c40acf5c8f69e"><div class="ttname"><a href="#a716f48d52a10627b7f1c40acf5c8f69e">vsf_sched_lock_status_t</a></div><div class="ttdeci">vsf_arch_prio_t vsf_sched_lock_status_t</div><div class="ttdoc">Scheduler lock status, returned by vsf_sched_lock() / vsf_forced_sched_lock() and passed back to vsf_...</div><div class="ttdef"><b>Definition</b> vsf_os.h:482</div></div>
 </div><!-- fragment -->
-<p>No-op stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant above. </p>
+<p>Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: masks interrupts if VSF_KERNEL_CFG_ALLOW_KERNEL_BEING_PREEMPTED is ENABLED (see the note above), otherwise a no-op stub; shares the documentation of the first variant above. </p>
 
 </div>
 </div>
@@ -249,10 +251,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="____type_8h.html#a6885b194de594173e9e976ee7bada865">VSF_UNUSED_PARAM</a>(__level)</div>
-<div class="ttc" id="a____type_8h_html_a6885b194de594173e9e976ee7bada865"><div class="ttname"><a href="____type_8h.html#a6885b194de594173e9e976ee7bada865">VSF_UNUSED_PARAM</a></div><div class="ttdeci">#define VSF_UNUSED_PARAM(__VAL)</div><div class="ttdef"><b>Definition</b> __type.h:190</div></div>
+<b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="vsf__arch__abstraction_8h.html#ad73b8c9ea65510638e6f5bec8c6621f3">vsf_unprotect_int</a>((<a class="code hl_typedef" href="vsf__arch__abstraction_8h.html#a1b0d8a7ae206accc2a7e6f5c4e3d78e3">vsf_protect_t</a>)(__level))</div>
+<div class="ttc" id="avsf__arch__abstraction_8h_html_a1b0d8a7ae206accc2a7e6f5c4e3d78e3"><div class="ttname"><a href="vsf__arch__abstraction_8h.html#a1b0d8a7ae206accc2a7e6f5c4e3d78e3">vsf_protect_t</a></div><div class="ttdeci">uintalu_t vsf_protect_t</div><div class="ttdef"><b>Definition</b> vsf_arch_abstraction.h:60</div></div>
+<div class="ttc" id="avsf__arch__abstraction_8h_html_ad73b8c9ea65510638e6f5bec8c6621f3"><div class="ttname"><a href="vsf__arch__abstraction_8h.html#ad73b8c9ea65510638e6f5bec8c6621f3">vsf_unprotect_int</a></div><div class="ttdeci">#define vsf_unprotect_int</div><div class="ttdef"><b>Definition</b> vsf_arch_abstraction.h:377</div></div>
 </div><!-- fragment -->
-<p>No-op stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant above. </p>
+<p>Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: restores the interrupt state saved by <a class="el" href="#ad480bc7021eb6462ee36878b09396b05" title="Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: masks interrupts if VSF_KERNEL_CFG_ALLOW_KERNEL_BEING_PREE...">vsf_sched_lock()</a> if VSF_KERNEL_CFG_ALLOW_KERNEL_BEING_PREEMPTED is ENABLED, otherwise a no-op stub; shares the documentation of the first variant above. </p>
 
 </div>
 </div>
@@ -330,9 +333,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#ad480bc7021eb6462ee36878b09396b05">vsf_sched_lock</a>()</div>
-<div class="ttc" id="avsf__os_8h_html_ad480bc7021eb6462ee36878b09396b05"><div class="ttname"><a href="#ad480bc7021eb6462ee36878b09396b05">vsf_sched_lock</a></div><div class="ttdeci">#define vsf_sched_lock()</div><div class="ttdoc">No-op stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant a...</div><div class="ttdef"><b>Definition</b> vsf_os.h:144</div></div>
+<div class="ttc" id="avsf__os_8h_html_ad480bc7021eb6462ee36878b09396b05"><div class="ttname"><a href="#ad480bc7021eb6462ee36878b09396b05">vsf_sched_lock</a></div><div class="ttdeci">#define vsf_sched_lock()</div><div class="ttdoc">Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: masks interrupts if VSF_KERNEL_CFG_ALLOW_KERNEL_BEING_PREE...</div><div class="ttdef"><b>Definition</b> vsf_os.h:160</div></div>
 </div><!-- fragment -->
-<p>Lock the scheduler, alias of <a class="el" href="#ad480bc7021eb6462ee36878b09396b05" title="No-op stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant a...">vsf_sched_lock()</a> </p>
+<p>Lock the scheduler, alias of <a class="el" href="#ad480bc7021eb6462ee36878b09396b05" title="Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: masks interrupts if VSF_KERNEL_CFG_ALLOW_KERNEL_BEING_PREE...">vsf_sched_lock()</a> </p>
 <dl class="section return"><dt>Returns</dt><dd>vsf_sched_lock_status_t: the previous scheduler lock status, to be passed to <a class="el" href="#ae62f99de3b65be1a0ef1b9d08a68997a" title="Unlock the scheduler, alias of vsf_sched_unlock()">vsf_unprotect_scheduler()</a> </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Typically called in task context to protect a short critical section from scheduling. </dd></dl>
 
@@ -353,9 +356,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#aca308a56ac40038a0604bc88d25b179c">vsf_sched_unlock</a>((__state))</div>
-<div class="ttc" id="avsf__os_8h_html_aca308a56ac40038a0604bc88d25b179c"><div class="ttname"><a href="#aca308a56ac40038a0604bc88d25b179c">vsf_sched_unlock</a></div><div class="ttdeci">#define vsf_sched_unlock(__level)</div><div class="ttdoc">No-op stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant a...</div><div class="ttdef"><b>Definition</b> vsf_os.h:152</div></div>
+<div class="ttc" id="avsf__os_8h_html_aca308a56ac40038a0604bc88d25b179c"><div class="ttname"><a href="#aca308a56ac40038a0604bc88d25b179c">vsf_sched_unlock</a></div><div class="ttdeci">#define vsf_sched_unlock(__level)</div><div class="ttdoc">Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: restores the interrupt state saved by vsf_sched_lock() if ...</div><div class="ttdef"><b>Definition</b> vsf_os.h:178</div></div>
 </div><!-- fragment -->
-<p>Unlock the scheduler, alias of <a class="el" href="#aca308a56ac40038a0604bc88d25b179c" title="No-op stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant a...">vsf_sched_unlock()</a> </p>
+<p>Unlock the scheduler, alias of <a class="el" href="#aca308a56ac40038a0604bc88d25b179c" title="Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: restores the interrupt state saved by vsf_sched_lock() if ...">vsf_sched_unlock()</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">__state</td><td>the lock status returned by <a class="el" href="#ae63ed75d0fb3b0b3cb3f37aacaebad62" title="Lock the scheduler, alias of vsf_sched_lock()">vsf_protect_scheduler()</a> </td></tr>
@@ -381,8 +384,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">(<a class="code hl_typedef" href="vsf__arch__abstraction_8h.html#a1b0d8a7ae206accc2a7e6f5c4e3d78e3">vsf_protect_t</a>)<a class="code hl_define" href="#ae63ed75d0fb3b0b3cb3f37aacaebad62">vsf_protect_scheduler</a>()</div>
-<div class="ttc" id="avsf__arch__abstraction_8h_html_a1b0d8a7ae206accc2a7e6f5c4e3d78e3"><div class="ttname"><a href="vsf__arch__abstraction_8h.html#a1b0d8a7ae206accc2a7e6f5c4e3d78e3">vsf_protect_t</a></div><div class="ttdeci">uintalu_t vsf_protect_t</div><div class="ttdef"><b>Definition</b> vsf_arch_abstraction.h:60</div></div>
-<div class="ttc" id="avsf__os_8h_html_ae63ed75d0fb3b0b3cb3f37aacaebad62"><div class="ttname"><a href="#ae63ed75d0fb3b0b3cb3f37aacaebad62">vsf_protect_scheduler</a></div><div class="ttdeci">#define vsf_protect_scheduler()</div><div class="ttdoc">Lock the scheduler, alias of vsf_sched_lock()</div><div class="ttdef"><b>Definition</b> vsf_os.h:200</div></div>
+<div class="ttc" id="avsf__os_8h_html_ae63ed75d0fb3b0b3cb3f37aacaebad62"><div class="ttname"><a href="#ae63ed75d0fb3b0b3cb3f37aacaebad62">vsf_protect_scheduler</a></div><div class="ttdeci">#define vsf_protect_scheduler()</div><div class="ttdoc">Lock the scheduler, alias of vsf_sched_lock()</div><div class="ttdef"><b>Definition</b> vsf_os.h:229</div></div>
 </div><!-- fragment -->
 <p>Lock the scheduler and return the previous status as <a class="el" href="vsf__arch__abstraction_8h.html#a1b0d8a7ae206accc2a7e6f5c4e3d78e3">vsf_protect_t</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vsf_protect_t: the previous scheduler lock status, to be passed to <a class="el" href="#ae9a1ef1a05f21db937560b964cd9c49a" title="Restore the scheduler lock status saved by vsf_protect_sched()">vsf_unprotect_sched()</a> </dd></dl>
@@ -405,7 +407,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#ae62f99de3b65be1a0ef1b9d08a68997a">vsf_unprotect_scheduler</a>(__prot)</div>
-<div class="ttc" id="avsf__os_8h_html_ae62f99de3b65be1a0ef1b9d08a68997a"><div class="ttname"><a href="#ae62f99de3b65be1a0ef1b9d08a68997a">vsf_unprotect_scheduler</a></div><div class="ttdeci">#define vsf_unprotect_scheduler(__state)</div><div class="ttdoc">Unlock the scheduler, alias of vsf_sched_unlock()</div><div class="ttdef"><b>Definition</b> vsf_os.h:212</div></div>
+<div class="ttc" id="avsf__os_8h_html_ae62f99de3b65be1a0ef1b9d08a68997a"><div class="ttname"><a href="#ae62f99de3b65be1a0ef1b9d08a68997a">vsf_unprotect_scheduler</a></div><div class="ttdeci">#define vsf_unprotect_scheduler(__state)</div><div class="ttdoc">Unlock the scheduler, alias of vsf_sched_unlock()</div><div class="ttdef"><b>Definition</b> vsf_os.h:241</div></div>
 </div><!-- fragment -->
 <p>Restore the scheduler lock status saved by <a class="el" href="#a6d6d9f1d096950ac42a9be5db92b0b2a" title="Lock the scheduler and return the previous status as vsf_protect_t.">vsf_protect_sched()</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -698,7 +700,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Scheduler lock status, returned by <a class="el" href="#ad480bc7021eb6462ee36878b09396b05" title="No-op stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant a...">vsf_sched_lock()</a> / vsf_forced_sched_lock() and passed back to <a class="el" href="#aca308a56ac40038a0604bc88d25b179c" title="No-op stub variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1; shares the documentation of the first variant a...">vsf_sched_unlock()</a> / vsf_forced_sched_unlock() </p>
+<p>Scheduler lock status, returned by <a class="el" href="#ad480bc7021eb6462ee36878b09396b05" title="Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: masks interrupts if VSF_KERNEL_CFG_ALLOW_KERNEL_BEING_PREE...">vsf_sched_lock()</a> / vsf_forced_sched_lock() and passed back to <a class="el" href="#aca308a56ac40038a0604bc88d25b179c" title="Variant when VSF_OS_CFG_PRIORITY_NUM &lt;= 1: restores the interrupt state saved by vsf_sched_lock() if ...">vsf_sched_unlock()</a> / vsf_forced_sched_unlock() </p>
 
 </div>
 </div>
@@ -971,5 +973,5 @@ This should not happen. One possible reason is: <blockquote class="doxtable">
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/03b1410516b65ee24cdc22629fba765ab7e4cbfd" target="_blank">vsfteam/vsf@03b1410</a>
+  <a href="https://github.com/vsfteam/vsf/commit/91109ea6eb5490a2ce7047ce769d2e66fd712d69" target="_blank">vsfteam/vsf@91109ea</a>
 </div>
