@@ -216,19 +216,35 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#a418038a704a7d54c7bfe20c4dc0b2031">  149</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_KEEPALIVE_MIN_PERIOD_MS     2000</span></div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">/* EOF */</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">/* Auto-reconnect: when a previously-LINKED session is torn down by an</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment"> * over-the-air deauth/disassoc (mesh client-steering kicks, AP restarts),</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment"> * the MLME re-issues vsf_wifi_connect to the same target after</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment"> * AUTO_RECONNECT_DELAY_MS, up to AUTO_RECONNECT_RETRIES attempts.  The</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment"> * retry budget resets on a fresh vsf_wifi_connect or on link-up.</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment"> * User-initiated disconnects never trigger it. */</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="preprocessor">#ifndef VSF_WIFI_CFG_AUTO_RECONNECT</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#ab6f0b8c7cdc7b2f8ee1f705f202dbb1a">  159</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_AUTO_RECONNECT              ENABLED</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="preprocessor">#ifndef VSF_WIFI_CFG_AUTO_RECONNECT_RETRIES</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#a57ed6f9978f28eb82fa9cf9524c71fda">  162</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_AUTO_RECONNECT_RETRIES      3</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="preprocessor">#ifndef VSF_WIFI_CFG_AUTO_RECONNECT_DELAY_MS</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#a33211c1bd153da7a6762c05a07e785f1">  165</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_AUTO_RECONNECT_DELAY_MS     3000</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="comment">/* EOF */</span></div>
 <div class="ttc" id="avsf__component__cfg_8h_html"><div class="ttname"><a href="vsf__component__cfg_8h.html">vsf_component_cfg.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/0e1b3b9b39bada485e424aa4b346c98793be36d6" target="_blank">vsfteam/vsf@0e1b3b9</a>
+  <a href="https://github.com/vsfteam/vsf/commit/591bc23e073d492a1ff6810f52878c2d6e258ce7" target="_blank">vsfteam/vsf@591bc23</a>
   生成
 </div>
