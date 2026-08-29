@@ -196,55 +196,63 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment"> * When ENABLED the RT28xx chip driver registers crypto_ops and the wifi layer</span></div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment"> * skips software CCMP encap/decap.  When DISABLED the existing software CCMP</span></div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment"> * path is used.</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="preprocessor">#ifndef VSF_WIFI_CFG_RT28XX_HW_CRYPTO</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#a16f7c7128fda5c651efd3ad7e5786349">  134</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_RT28XX_HW_CRYPTO    ENABLED</span></div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment">/*</span></div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="comment"> * 802.11 keepalive: send a null data frame at regular intervals to prevent</span></div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="comment"> * the AP from deauthenticating an idle STA.  The interval is derived from</span></div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment"> * the BSS Max Idle Period IE advertised by the AP when available, otherwise</span></div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="comment"> * the default below is used.  Set to 0 to disable.</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="preprocessor">#ifndef VSF_WIFI_CFG_KEEPALIVE_PERIOD_MS</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#ae63a7409e2da33b395d17be0e9d70df6">  144</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_KEEPALIVE_PERIOD_MS         10000</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">/* Hard lower bound for the dynamic keepalive period (avoid excessive airtime). */</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="preprocessor">#ifndef VSF_WIFI_CFG_KEEPALIVE_MIN_PERIOD_MS</span></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#a418038a704a7d54c7bfe20c4dc0b2031">  149</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_KEEPALIVE_MIN_PERIOD_MS     2000</span></div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">/* Auto-reconnect: when a previously-LINKED session is torn down by an</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment"> * over-the-air deauth/disassoc (mesh client-steering kicks, AP restarts),</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment"> * the MLME re-issues vsf_wifi_connect to the same target after</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment"> * AUTO_RECONNECT_DELAY_MS, up to AUTO_RECONNECT_RETRIES attempts.  The</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment"> * retry budget resets on a fresh vsf_wifi_connect or on link-up.</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment"> * User-initiated disconnects never trigger it. */</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="preprocessor">#ifndef VSF_WIFI_CFG_AUTO_RECONNECT</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#ab6f0b8c7cdc7b2f8ee1f705f202dbb1a">  159</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_AUTO_RECONNECT              ENABLED</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="preprocessor">#ifndef VSF_WIFI_CFG_AUTO_RECONNECT_RETRIES</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#a57ed6f9978f28eb82fa9cf9524c71fda">  162</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_AUTO_RECONNECT_RETRIES      3</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="preprocessor">#ifndef VSF_WIFI_CFG_AUTO_RECONNECT_DELAY_MS</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#a33211c1bd153da7a6762c05a07e785f1">  165</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_AUTO_RECONNECT_DELAY_MS     3000</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="comment">/* EOF */</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment"> * Default DISABLED (2026-08-30): on RT5572 the hw-crypto path breaks the link</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment"> * right after the 4-way handshake (AP-side deauth reason=15 storm, unicast RX</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment"> * dead -&gt; DHCP never completes) regardless of the key-programming layout</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment"> * (byte[0]/byte[3] IVEIV, SHARED_KEY_MODE stride, WCID_ATTR all tried --</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment"> * see wifi.md board A/B).  mainline rt2800usb carries the `nohwcrypt` module</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="comment"> * param for the same class of problem.  The software CCMP path is the</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="comment"> * battle-tested default; re-enable only for dedicated hw-crypto bring-up.</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="preprocessor">#ifndef VSF_WIFI_CFG_RT28XX_HW_CRYPTO</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#a16f7c7128fda5c651efd3ad7e5786349">  142</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_RT28XX_HW_CRYPTO    DISABLED</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment"> * 802.11 keepalive: send a null data frame at regular intervals to prevent</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment"> * the AP from deauthenticating an idle STA.  The interval is derived from</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment"> * the BSS Max Idle Period IE advertised by the AP when available, otherwise</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="comment"> * the default below is used.  Set to 0 to disable.</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="preprocessor">#ifndef VSF_WIFI_CFG_KEEPALIVE_PERIOD_MS</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#ae63a7409e2da33b395d17be0e9d70df6">  152</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_KEEPALIVE_PERIOD_MS         10000</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">/* Hard lower bound for the dynamic keepalive period (avoid excessive airtime). */</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="preprocessor">#ifndef VSF_WIFI_CFG_KEEPALIVE_MIN_PERIOD_MS</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#a418038a704a7d54c7bfe20c4dc0b2031">  157</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_KEEPALIVE_MIN_PERIOD_MS     2000</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">/* Auto-reconnect: when a previously-LINKED session is torn down by an</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="comment"> * over-the-air deauth/disassoc (mesh client-steering kicks, AP restarts),</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment"> * the MLME re-issues vsf_wifi_connect to the same target after</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment"> * AUTO_RECONNECT_DELAY_MS, up to AUTO_RECONNECT_RETRIES attempts.  The</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="comment"> * retry budget resets on a fresh vsf_wifi_connect or on link-up.</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="comment"> * User-initiated disconnects never trigger it. */</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="preprocessor">#ifndef VSF_WIFI_CFG_AUTO_RECONNECT</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#ab6f0b8c7cdc7b2f8ee1f705f202dbb1a">  167</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_AUTO_RECONNECT              ENABLED</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="preprocessor">#ifndef VSF_WIFI_CFG_AUTO_RECONNECT_RETRIES</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#a57ed6f9978f28eb82fa9cf9524c71fda">  170</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_AUTO_RECONNECT_RETRIES      3</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="preprocessor">#ifndef VSF_WIFI_CFG_AUTO_RECONNECT_DELAY_MS</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="vsf__wifi__cfg_8h.html#a33211c1bd153da7a6762c05a07e785f1">  173</a></span><span class="preprocessor">#   define VSF_WIFI_CFG_AUTO_RECONNECT_DELAY_MS     3000</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="comment">/* EOF */</span></div>
 <div class="ttc" id="avsf__component__cfg_8h_html"><div class="ttname"><a href="vsf__component__cfg_8h.html">vsf_component_cfg.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/591bc23e073d492a1ff6810f52878c2d6e258ce7" target="_blank">vsfteam/vsf@591bc23</a>
+  <a href="https://github.com/vsfteam/vsf/commit/a5104db1ffa8ee47db97e369e766104200dac9bb" target="_blank">vsfteam/vsf@a5104db</a>
   生成
 </div>

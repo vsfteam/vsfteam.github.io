@@ -390,7 +390,7 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 <p>纯 VSF 实现：mac80211/cfg80211 全部不可用（扫描解析、信道列表、MLME 自己写）， 收益是依赖面小，只要 VSF 内核 + USB host 栈。</p>
 <h2><a class="anchor" id="autotoc_md27"></a>
 5.2 固件嵌入方案 A（rodata）</h2>
-<p>编译期嵌入为 rodata 静态数组（<code><a class="el" href="vsf__wifi__rt2870__firmware__data_8c.html">vsf_wifi_rt2870_firmware_data.c</a></code>），零运行时 文件依赖；代价是占 8 KiB rom，切芯片型号要重链。weak stub + strong override。</p>
+<p>编译期嵌入为 rodata 静态数组（<code>vsf_wifi_rt2870_firmware_data.c</code>），零运行时 文件依赖；代价是占 8 KiB rom，切芯片型号要重链。weak stub + strong override。</p>
 <h2><a class="anchor" id="autotoc_md28"></a>
 5.3 内建 WPA2-PSK supplicant</h2>
 <p>驱动内建轻量 WPA2-PSK supplicant（PBKDF2 + 4-way handshake + AES key-unwrap）， 无需外部 wpa_supplicant。Auth/Assoc/Deauth 帧由框架层构造发送。</p>
@@ -500,7 +500,7 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code><a class="el" href="vsf__wifi__rt2870__firmware_8c.html">component/wifi/chip/rt28xx/vsf_wifi_rt2870_firmware.c</a></code>   </td><td class="markdownTableBodyNone">固件 weak 占位    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code><a class="el" href="vsf__wifi__rt2870__firmware__data_8c.html">component/wifi/chip/rt28xx/vsf_wifi_rt2870_firmware_data.c</a></code>   </td><td class="markdownTableBodyNone">rt2870.bin 8192B 数组    </td></tr>
+<td class="markdownTableBodyNone"><code>component/wifi/chip/rt28xx/vsf_wifi_rt2870_firmware_data.c</code>   </td><td class="markdownTableBodyNone">rt2870.bin 8192B 数组    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code><a class="el" href="vsf__usbh__wifi__rt2x00_8h.html">usb/host/class/rt2x00/vsf_usbh_wifi_rt2x00.h</a> / .c</code>   </td><td class="markdownTableBodyNone">USB 传输层：probe + bulk RX/TX + ep0 后端    </td></tr>
 <tr class="markdownTableRowEven">
@@ -559,5 +559,5 @@ ep0 dispatcher 模型（component/wifi/vsf_wifi.c）</h2>
 </div><!-- PageDoc -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/591bc23e073d492a1ff6810f52878c2d6e258ce7" target="_blank">vsfteam/vsf@591bc23</a>
+  <a href="https://github.com/vsfteam/vsf/commit/a5104db1ffa8ee47db97e369e766104200dac9bb" target="_blank">vsfteam/vsf@a5104db</a>
 </div>
