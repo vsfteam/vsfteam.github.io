@@ -5659,7 +5659,9 @@ Must be called in task (or initialization) context, NOT in interrupt context. </
 <dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if successful; VSF_ERR_NOT_AVAILABLE if tick is 0 (tick == 0 also triggers an assertion in debug builds)</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Only available when VSF_KERNEL_CFG_EDA_SUPPORT_TIMER is ENABLED. </dd>
 <dd>
-Operates on the current task; must be called in the current eda/teda task's event handler context. </dd></dl>
+Operates on the current task; must be called in the current eda/teda task's event handler context. </dd>
+<dd>
+A teda can have only ONE pending one-shot timer: setting a new timer while the previous one is still pending triggers a kernel assertion. To restart the timer, cancel the pending one with <a class="el" href="#a1d3461225844528e614f734d0f45cad8" title="Cancel the pending timer of the current teda task.">vsf_teda_cancel_timer()</a> first. </dd></dl>
 
 </div>
 </div>
@@ -5701,7 +5703,9 @@ Operates on the current task; must be called in the current eda/teda task's even
 <dl class="section return"><dt>Returns</dt><dd>vsf_err_t: always VSF_ERR_NONE</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Only available when VSF_KERNEL_CFG_EDA_SUPPORT_TIMER is ENABLED. The task receives VSF_EVT_TIMER when the timer expires. </dd>
 <dd>
-Must be called in task context, NOT in interrupt context (in interrupt context use the corresponding _isr API if available). </dd></dl>
+Must be called in task context, NOT in interrupt context (in interrupt context use the corresponding _isr API if available). </dd>
+<dd>
+A teda can have only ONE pending one-shot timer: setting a new timer while the previous one is still pending triggers a kernel assertion. To restart the timer, cancel the pending one with <a class="el" href="#a1d3461225844528e614f734d0f45cad8" title="Cancel the pending timer of the current teda task.">vsf_teda_cancel_timer()</a> first. </dd></dl>
 
 </div>
 </div>
@@ -5743,7 +5747,9 @@ Must be called in task context, NOT in interrupt context (in interrupt context u
 <dl class="section return"><dt>Returns</dt><dd>vsf_err_t: VSF_ERR_NONE if successful; VSF_ERR_NOT_AVAILABLE if tick is 0 (tick == 0 also triggers an assertion in debug builds)</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Only available when VSF_KERNEL_CFG_EDA_SUPPORT_TIMER is ENABLED. </dd>
 <dd>
-Must be called in task context, NOT in interrupt context (in interrupt context use the corresponding _isr API if available). </dd></dl>
+Must be called in task context, NOT in interrupt context (in interrupt context use the corresponding _isr API if available). </dd>
+<dd>
+A teda can have only ONE pending one-shot timer: setting a new timer while the previous one is still pending triggers a kernel assertion. To restart the timer, cancel the pending one with <a class="el" href="#a1d3461225844528e614f734d0f45cad8" title="Cancel the pending timer of the current teda task.">vsf_teda_cancel_timer()</a> first. </dd></dl>
 
 </div>
 </div>
@@ -7564,5 +7570,5 @@ Intended for interrupt context: the node is dequeued directly, and the sender wa
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/a5104db1ffa8ee47db97e369e766104200dac9bb" target="_blank">vsfteam/vsf@a5104db</a>
+  <a href="https://github.com/vsfteam/vsf/commit/d7c7a8f5dd9b68078c437233aa144f2440aa8d9f" target="_blank">vsfteam/vsf@d7c7a8f</a>
 </div>

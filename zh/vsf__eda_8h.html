@@ -5659,7 +5659,9 @@ $(function(){ initResizable(false); });
 <dl class="section return"><dt>返回</dt><dd>vsf_err_t: 成功返回 VSF_ERR_NONE；tick 为 0 返回 VSF_ERR_NOT_AVAILABLE （tick 为 0 时在调试版本中还会触发断言）</dd></dl>
 <dl class="section note"><dt>注解</dt><dd>仅在 VSF_KERNEL_CFG_EDA_SUPPORT_TIMER 使能时可用。 </dd>
 <dd>
-作用于当前任务，必须在当前 eda/teda 任务的事件处理函数上下文中调用。 </dd></dl>
+作用于当前任务，必须在当前 eda/teda 任务的事件处理函数上下文中调用。 </dd>
+<dd>
+一个 teda 只允许有一个挂起的单次定时器：前一个定时器未到期时再次设置 会触发内核断言。若需重新设置（重启定时器），请先调用 <a class="el" href="#a1d3461225844528e614f734d0f45cad8" title="取消当前 teda 任务未到期的定时器">vsf_teda_cancel_timer()</a> 取消挂起的定时器。 </dd></dl>
 
 </div>
 </div>
@@ -5701,7 +5703,9 @@ $(function(){ initResizable(false); });
 <dl class="section return"><dt>返回</dt><dd>vsf_err_t: 始终返回 VSF_ERR_NONE</dd></dl>
 <dl class="section note"><dt>注解</dt><dd>仅在 VSF_KERNEL_CFG_EDA_SUPPORT_TIMER 使能时可用。定时器到期后任务 会收到 VSF_EVT_TIMER 事件。 </dd>
 <dd>
-必须在任务上下文中调用，禁止在中断上下文中调用（如有对应的 _isr API，中断里请使用它）。 </dd></dl>
+必须在任务上下文中调用，禁止在中断上下文中调用（如有对应的 _isr API，中断里请使用它）。 </dd>
+<dd>
+一个 teda 只允许有一个挂起的单次定时器：前一个定时器未到期时再次设置 会触发内核断言。若需重新设置（重启定时器），请先调用 <a class="el" href="#a1d3461225844528e614f734d0f45cad8" title="取消当前 teda 任务未到期的定时器">vsf_teda_cancel_timer()</a> 取消挂起的定时器。 </dd></dl>
 
 </div>
 </div>
@@ -5743,7 +5747,9 @@ $(function(){ initResizable(false); });
 <dl class="section return"><dt>返回</dt><dd>vsf_err_t: 成功返回 VSF_ERR_NONE；tick 为 0 返回 VSF_ERR_NOT_AVAILABLE （tick 为 0 时在调试版本中还会触发断言）</dd></dl>
 <dl class="section note"><dt>注解</dt><dd>仅在 VSF_KERNEL_CFG_EDA_SUPPORT_TIMER 使能时可用。 </dd>
 <dd>
-必须在任务上下文中调用，禁止在中断上下文中调用（如有对应的 _isr API，中断里请使用它）。 </dd></dl>
+必须在任务上下文中调用，禁止在中断上下文中调用（如有对应的 _isr API，中断里请使用它）。 </dd>
+<dd>
+一个 teda 只允许有一个挂起的单次定时器：前一个定时器未到期时再次设置 会触发内核断言。若需重新设置（重启定时器），请先调用 <a class="el" href="#a1d3461225844528e614f734d0f45cad8" title="取消当前 teda 任务未到期的定时器">vsf_teda_cancel_timer()</a> 取消挂起的定时器。 </dd></dl>
 
 </div>
 </div>
@@ -7564,6 +7570,6 @@ $(function(){ initResizable(false); });
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/a5104db1ffa8ee47db97e369e766104200dac9bb" target="_blank">vsfteam/vsf@a5104db</a>
+  <a href="https://github.com/vsfteam/vsf/commit/d7c7a8f5dd9b68078c437233aa144f2440aa8d9f" target="_blank">vsfteam/vsf@d7c7a8f</a>
   生成
 </div>
