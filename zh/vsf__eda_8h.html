@@ -6747,8 +6747,16 @@ $(function(){ initResizable(false); });
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>vsf_sync_reason_t: 已获得资源返回 VSF_SYNC_GET，超时返回 VSF_SYNC_TIMEOUT，被取消返回 VSF_SYNC_CANCEL，如果超时事件到达前已获得同步 且需要继续等待返回 VSF_SYNC_PENDING </dd></dl>
-<dl class="section note"><dt>注解</dt><dd>必须在 eda 任务上下文（事件处理函数）中调用，禁止在中断上下文中调用。 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>vsf_sync_reason_t: 已获得资源返回 VSF_SYNC_GET，超时返回 VSF_SYNC_TIMEOUT，被取消返回 VSF_SYNC_CANCEL，如果超时事件到达前已获得同步 且需要继续等待返回 VSF_SYNC_PENDING</dd></dl>
+<dl class="section note"><dt>注解</dt><dd>同步消费规范。授予的令牌以 VSF_EVT_SYNC 事件送达，同时置起 eda 级的 is_sync_got 锁存位（VSF_EVT_SYNC_CANCEL 亦置位）。该位是 eda 状态而非 sync 状态：越过置位它的那次等待继续存活，且只有本函数能清它。任何结果经本调用 裁决的等待（如 __vsf_thread_wait_for_sync——线程侧带超时的 trig/mutex/sem pend、nanosleep）在残留位置位期间会把 TIMER 误判为 VSF_SYNC_PENDING 并 永久挂起。 </dd>
+<dd>
+消费风格两种：<ul>
+<li>get_reason 风格（默认，永远正确）：SYNC 重入处调用本函数并按返回值行动。 只要该 eda 上现在或将来会承载 wait_for_sync 式 pend 就必须用它——即 linux 线程代码（nanosleep/trig/mutex/sem 超时），或经 sync 带超时 pend 的 peda 子调用（mal/fs 式操作跑在调用者的 eda 上）。</li>
+<li>自管风格（豁免）：专用 eda 的 handler 把 VSF_EVT_SYNC 当作纯粹的 “已授予——立即行动”通知、自行管理周边 crit/sem 状态时，可跳过本调用—— 前提是该 eda 上没有任何代码使用 wait_for_sync 式 pend 或调用本函数。 此时锁存位保持置位但为惰性状态。该前提是现在时态、可检查的（该 eda 自身代码中无 get_reason 调用、无线程侧带超时的 sync pend）；跳过须在 原地登记。将来若向该 eda 加入 get_reason 风格的等待，残留位会挂死该 等待——须在同一次改动里把 handler 转换为本函数风格。 </li>
+</ul>
+</dd>
+<dd>
+必须在 eda 任务上下文（事件处理函数）中调用，禁止在中断上下文中调用。 </dd></dl>
 
 </div>
 </div>
@@ -7570,6 +7578,6 @@ $(function(){ initResizable(false); });
 </div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   由提交
-  <a href="https://github.com/vsfteam/vsf/commit/37e3cbb9b75491049b55c4a7d463de9e2deac4ae" target="_blank">vsfteam/vsf@37e3cbb</a>
+  <a href="https://github.com/vsfteam/vsf/commit/34ff85981e730e1749ff75cbbad34c3de632cb67" target="_blank">vsfteam/vsf@34ff859</a>
   生成
 </div>
