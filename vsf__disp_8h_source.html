@@ -341,94 +341,153 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>};</div>
 </div>
 <div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="preprocessor">#if VSF_KERNEL_CFG_SUPPORT_SYNC == ENABLED</span></div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_class" href="classvk__disp__drv__t.html">vk_disp_drv_t</a> <a class="code hl_variable" href="vsf__disp_8h.html#a00ddabec9ac06f8f04dea613f5eb3766">vk_disp_reentrant_drv</a>;</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_class" href="classvk__disp__drv__t.html">vk_disp_drv_t</a> <a class="code hl_variable" href="vsf__disp_8h.html#a3cdde50772134f9443745f49f80009a3">vk_disp_dummy_drv</a>;</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="comment">// vk_disp_cvrt_t/vk_disp_cvrt_drv is used to convert color format</span></div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_class" href="classvk__disp__drv__t.html">vk_disp_drv_t</a> <a class="code hl_variable" href="vsf__disp_8h.html#abd154c3b28c3211aa63e4b638650ebc7">vk_disp_cvrt_drv</a>;</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span> </div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="comment">/*</span></div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="comment"> * vk_disp_init / vk_disp_fini / vk_disp_refresh are asynchronous.</span></div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="comment"> * The driver signals completion by calling vk_disp_on_ready(pthis),</span></div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="comment"> * which invokes the ui_on_ready callback registered on the vk_disp_t.</span></div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="comment"> * NOTE: The ui_on_ready callback may fire either synchronously (within</span></div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="comment"> * the call to vk_disp_init/refresh itself) or asynchronously (after the</span></div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="comment"> * call returns), depending on the driver implementation.  Callers must</span></div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="comment"> * handle both cases.</span></div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="comment"> * Typical usage pattern:</span></div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="comment"> *   1. Set disp-&gt;ui_data = &lt;your context pointer&gt;</span></div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="comment"> *   2. Set disp-&gt;ui_on_ready = &lt;your callback&gt;</span></div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="comment"> *   3. Call vk_disp_init(disp)</span></div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="comment"> *   4. Wait disp-&gt;ui_on_ready being called</span></div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="comment"> *   5. Set disp-&gt;ui_on_ready if necessary</span></div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="comment"> *   6. Call vk_disp_refresh(disp, ...)</span></div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="comment"> *   7. Wait disp-&gt;ui_on_ready being called</span></div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="comment"> * The ui_on_ready callback receives the vk_disp_t * and can retrieve</span></div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="comment"> * the waiting context from disp-&gt;ui_data, and will never be changed by display driver.</span></div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><span class="keyword">extern</span> <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code hl_function" href="vsf__disp_8h.html#a1f63eb702f0659d71fb2b54ef5f0b9f7">vk_disp_init</a>(<a class="code hl_class" href="classvk__disp__t.html">vk_disp_t</a> *pthis);</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="vsf__disp_8h.html#a1a7f048062d3e5838093f9cfdbfc6fbf">vk_disp_fini</a>(<a class="code hl_class" href="classvk__disp__t.html">vk_disp_t</a> *pthis);</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span><span class="keyword">extern</span> <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code hl_function" href="vsf__disp_8h.html#a9169dde8fbe9a8170282bbbbbd874a36">vk_disp_refresh</a>(<a class="code hl_class" href="classvk__disp__t.html">vk_disp_t</a> *pthis, <a class="code hl_struct" href="structvk__disp__area__t.html">vk_disp_area_t</a> *area, <span class="keywordtype">void</span> *disp_buff);</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span><span class="preprocessor">#ifdef __VSF_DISP_CLASS_INHERIT__</span></div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="vsf__disp_8c.html#a1e82a73355ae4286a9ca8b38ad903f04">vk_disp_on_ready</a>(<a class="code hl_class" href="classvk__disp__t.html">vk_disp_t</a> *pthis);</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="preprocessor">#if VSF_DISP_USE_MUX == ENABLED</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><a class="code hl_define" href="ooc__class_8h.html#a226f6a53efbee32ec33e32995b0ab6c9">vsf_dcl_class</a>(<a class="code hl_class" href="classvk__disp__mux__t.html">vk_disp_mux_t</a>)</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><a class="code hl_define" href="ooc__class_8h.html#a226f6a53efbee32ec33e32995b0ab6c9">vsf_dcl_class</a>(<a class="code hl_class" href="classvk__disp__mux__ctx__t.html">vk_disp_mux_ctx_t</a>)</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="foldopen" id="foldopen00236" data-start="{" data-end="};">
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno"><a class="line" href="vsf__disp_8h.html#a576ad8c77ca5187b9ac7e22404eda527">  236</a></span>typedef enum <a class="code hl_enumeration" href="vsf__disp_8h.html#a576ad8c77ca5187b9ac7e22404eda527">vk_disp_mux_evt_t</a> {</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno"><a class="line" href="vsf__disp_8h.html#a576ad8c77ca5187b9ac7e22404eda527ad37f4a9e9909789dce3ea0b90194d932">  237</a></span>    <a class="code hl_enumvalue" href="vsf__disp_8h.html#a576ad8c77ca5187b9ac7e22404eda527ad37f4a9e9909789dce3ea0b90194d932">VK_DISP_MUX_EVT_ACTIVE</a> = 0,</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno"><a class="line" href="vsf__disp_8h.html#a576ad8c77ca5187b9ac7e22404eda527a1f52dcfe4f61da237d39fa8802e78ad9">  238</a></span>    <a class="code hl_enumvalue" href="vsf__disp_8h.html#a576ad8c77ca5187b9ac7e22404eda527a1f52dcfe4f61da237d39fa8802e78ad9">VK_DISP_MUX_EVT_INACTIVE</a>,</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno"><a class="line" href="vsf__disp_8h.html#abbcbe5edd23037c15186eed61b0989d9">  239</a></span>} <a class="code hl_enumeration" href="vsf__disp_8h.html#a576ad8c77ca5187b9ac7e22404eda527">vk_disp_mux_evt_t</a>;</div>
+</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
+<div class="foldopen" id="foldopen00241" data-start="{" data-end="};">
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno"><a class="line" href="classvk__disp__mux__ctx__t.html">  241</a></span><a class="code hl_define" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code hl_class" href="classvk__disp__mux__ctx__t.html">vk_disp_mux_ctx_t</a>) {</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    public_member(</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        <a class="code hl_class" href="classvk__disp__t.html">vk_disp_t</a> *disp_real;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno"><a class="line" href="classvk__disp__mux__ctx__t.html#a4f06fbd0939ce52b64836e57c5b01e82">  244</a></span>    )</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    private_member(</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <a class="code hl_class" href="classvk__disp__mux__t.html">vk_disp_mux_t</a> *layers;</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <a class="code hl_class" href="classvk__disp__mux__t.html">vk_disp_mux_t</a> *active;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <a class="code hl_class" href="classvk__disp__mux__t.html">vk_disp_mux_t</a> *real_owner;</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> real_state;</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> real_op;</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    )</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>};</div>
+</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
+<div class="foldopen" id="foldopen00254" data-start="{" data-end="};">
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno"><a class="line" href="classvk__disp__mux__t.html">  254</a></span><a class="code hl_define" href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a>(<a class="code hl_class" href="classvk__disp__mux__t.html">vk_disp_mux_t</a>) {</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    public_member(</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        implement(<a class="code hl_class" href="classvk__disp__t.html">vk_disp_t</a>)</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        <a class="code hl_class" href="classvk__disp__mux__ctx__t.html">vk_disp_mux_ctx_t</a> *ctx;</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> layer;</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>        void (*on_evt)(<a class="code hl_class" href="classvk__disp__mux__t.html">vk_disp_mux_t</a> *pthis, <a class="code hl_enumeration" href="vsf__disp_8h.html#a576ad8c77ca5187b9ac7e22404eda527">vk_disp_mux_evt_t</a> evt, <span class="keywordtype">void</span> *param);</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        <span class="keywordtype">void</span> *on_evt_param;</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno"><a class="line" href="classvk__disp__mux__t.html#a2adee0cca0fddc36f1d5787a7cef65a5">  261</a></span>    )</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    private_member(</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        <a class="code hl_class" href="classvk__disp__mux__t.html">vk_disp_mux_t</a> *<a class="code hl_variable" href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a>;</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="keywordtype">bool</span> is_registered;</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        <span class="keywordtype">bool</span> <a class="code hl_variable" href="driver__gptimer__port_8c.html#a2d0c1809252a4842c0ad0cb9798ab138">is_inited</a>;</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        <span class="keywordtype">bool</span> init_pending;</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        <span class="keywordtype">bool</span> fini_pending;</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    )</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>};</div>
+</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span> </div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="preprocessor">#if VSF_KERNEL_CFG_SUPPORT_SYNC == ENABLED</span></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_class" href="classvk__disp__drv__t.html">vk_disp_drv_t</a> <a class="code hl_variable" href="vsf__disp_8h.html#a00ddabec9ac06f8f04dea613f5eb3766">vk_disp_reentrant_drv</a>;</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_class" href="classvk__disp__drv__t.html">vk_disp_drv_t</a> <a class="code hl_variable" href="vsf__disp_8h.html#a3cdde50772134f9443745f49f80009a3">vk_disp_dummy_drv</a>;</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span><span class="comment">// vk_disp_cvrt_t/vk_disp_cvrt_drv is used to convert color format</span></div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_class" href="classvk__disp__drv__t.html">vk_disp_drv_t</a> <a class="code hl_variable" href="vsf__disp_8h.html#abd154c3b28c3211aa63e4b638650ebc7">vk_disp_cvrt_drv</a>;</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span><span class="preprocessor">#if VSF_DISP_USE_MUX == ENABLED</span></div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_class" href="classvk__disp__drv__t.html">vk_disp_drv_t</a> <a class="code hl_variable" href="vsf__disp_8h.html#a2fde157f33a0f82e75978581155001c7">vk_disp_mux_drv</a>;</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="preprocessor">#if VSF_DISP_USE_MUX == ENABLED</span></div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="vsf__disp_8h.html#a2289589c73acbdddd0e8b7dd7523f4eb">vk_disp_mux_config</a>(<a class="code hl_class" href="classvk__disp__mux__t.html">vk_disp_mux_t</a> *pthis, <a class="code hl_class" href="classvk__disp__mux__ctx__t.html">vk_disp_mux_ctx_t</a> *ctx,</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>                               <a class="code hl_typedef" href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> layer);</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="vsf__disp_8h.html#a5cf9e22477414aff82907a0beaeed6ee">vk_disp_mux_is_active</a>(<a class="code hl_class" href="classvk__disp__mux__t.html">vk_disp_mux_t</a> *pthis);</div>
 <div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>}</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__sdl2_8h.html">./driver/sdl2/vsf_disp_sdl2.h</a>&quot;</span></div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__usbd__uvc_8h.html">./driver/usbd_uvc/vsf_disp_usbd_uvc.h</a>&quot;</span></div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__st7789_8h.html">./driver/sitronix/st7789/vsf_disp_st7789.h</a>&quot;</span></div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__st7735_8h.html">./driver/sitronix/st7735/vsf_disp_st7735.h</a>&quot;</span></div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__ssd1306_8h.html">./driver/solomon-systech/ssd1306/vsf_disp_ssd1306.h</a>&quot;</span></div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__ch1115_8h.html">./driver/chipwealth/ch1115/vsf_disp_ch1115.h</a>&quot;</span></div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__vga__m480_8h.html">./driver/vga/m480/vsf_disp_vga_m480.h</a>&quot;</span></div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__fb_8h.html">./driver/fb/vsf_disp_fb.h</a>&quot;</span></div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span><span class="preprocessor">#if VSF_DISP_USE_MIPI_SPI_LCD == ENABLED</span></div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno"><a class="line" href="vsf__disp_8h.html#a0f7f9b8be57a08f341912ad32734b910">  314</a></span><span class="preprocessor">#   define VSF_DISP_USE_MIPI_LCD            ENABLED</span></div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span><span class="preprocessor">#if VSF_DISP_USE_MIPI_LCD == ENABLED</span></div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span><span class="preprocessor">#   include &quot;<a class="code" href="vsf__disp__mipi__lcd__dcs_8h.html">./driver/mipi_lcd/vsf_disp_mipi_lcd_dcs.h</a>&quot;</span></div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__mipi__spi__lcd_8h.html">./driver/mipi_lcd/vsf_disp_mipi_spi_lcd.h</a>&quot;</span></div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__did_8h.html">./driver/did/vsf_disp_did.h</a>&quot;</span></div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span><span class="preprocessor">#if VSF_DISP_USE_WINGDI == ENABLED &amp;&amp; defined(__WIN__)</span></div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="preprocessor">#   include &quot;<a class="code" href="vsf__disp__wingdi_8h.html">./driver/wingdi/vsf_disp_wingdi.h</a>&quot;</span></div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span> </div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span><span class="preprocessor">#undef __VSF_DISP_CLASS_IMPLEMENT</span></div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span><span class="preprocessor">#undef __VSF_DISP_CLASS_INHERIT__</span></div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span> </div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span><span class="preprocessor">#endif  </span><span class="comment">// VSF_USE_UI</span></div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span><span class="preprocessor">#endif  </span><span class="comment">// __VSF_DISP_H__</span></div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="comment"> * vk_disp_init / vk_disp_fini / vk_disp_refresh are asynchronous.</span></div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span><span class="comment"> * The driver signals completion by calling vk_disp_on_ready(pthis),</span></div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="comment"> * which invokes the ui_on_ready callback registered on the vk_disp_t.</span></div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="comment"> * NOTE: The ui_on_ready callback may fire either synchronously (within</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="comment"> * the call to vk_disp_init/refresh itself) or asynchronously (after the</span></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span><span class="comment"> * call returns), depending on the driver implementation.  Callers must</span></div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="comment"> * handle both cases.</span></div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span><span class="comment"> * Typical usage pattern:</span></div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="comment"> *   1. Set disp-&gt;ui_data = &lt;your context pointer&gt;</span></div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span><span class="comment"> *   2. Set disp-&gt;ui_on_ready = &lt;your callback&gt;</span></div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span><span class="comment"> *   3. Call vk_disp_init(disp)</span></div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span><span class="comment"> *   4. Wait disp-&gt;ui_on_ready being called</span></div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="comment"> *   5. Set disp-&gt;ui_on_ready if necessary</span></div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span><span class="comment"> *   6. Call vk_disp_refresh(disp, ...)</span></div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span><span class="comment"> *   7. Wait disp-&gt;ui_on_ready being called</span></div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><span class="comment"> * The ui_on_ready callback receives the vk_disp_t * and can retrieve</span></div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span><span class="comment"> * the waiting context from disp-&gt;ui_data, and will never be changed by display driver.</span></div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span> </div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span><span class="keyword">extern</span> <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code hl_function" href="vsf__disp_8h.html#a1f63eb702f0659d71fb2b54ef5f0b9f7">vk_disp_init</a>(<a class="code hl_class" href="classvk__disp__t.html">vk_disp_t</a> *pthis);</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="vsf__disp_8h.html#a1a7f048062d3e5838093f9cfdbfc6fbf">vk_disp_fini</a>(<a class="code hl_class" href="classvk__disp__t.html">vk_disp_t</a> *pthis);</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span><span class="keyword">extern</span> <a class="code hl_enumeration" href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a> <a class="code hl_function" href="vsf__disp_8h.html#a9169dde8fbe9a8170282bbbbbd874a36">vk_disp_refresh</a>(<a class="code hl_class" href="classvk__disp__t.html">vk_disp_t</a> *pthis, <a class="code hl_struct" href="structvk__disp__area__t.html">vk_disp_area_t</a> *area, <span class="keywordtype">void</span> *disp_buff);</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span><span class="preprocessor">#ifdef __VSF_DISP_CLASS_INHERIT__</span></div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="vsf__disp_8c.html#a1e82a73355ae4286a9ca8b38ad903f04">vk_disp_on_ready</a>(<a class="code hl_class" href="classvk__disp__t.html">vk_disp_t</a> *pthis);</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span> </div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>}</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span> </div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span><span class="comment">/*============================ INCLUDES ======================================*/</span></div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span> </div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__sdl2_8h.html">./driver/sdl2/vsf_disp_sdl2.h</a>&quot;</span></div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__usbd__uvc_8h.html">./driver/usbd_uvc/vsf_disp_usbd_uvc.h</a>&quot;</span></div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__st7789_8h.html">./driver/sitronix/st7789/vsf_disp_st7789.h</a>&quot;</span></div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__st7735_8h.html">./driver/sitronix/st7735/vsf_disp_st7735.h</a>&quot;</span></div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__ssd1306_8h.html">./driver/solomon-systech/ssd1306/vsf_disp_ssd1306.h</a>&quot;</span></div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__ch1115_8h.html">./driver/chipwealth/ch1115/vsf_disp_ch1115.h</a>&quot;</span></div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__vga__m480_8h.html">./driver/vga/m480/vsf_disp_vga_m480.h</a>&quot;</span></div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__fb_8h.html">./driver/fb/vsf_disp_fb.h</a>&quot;</span></div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span><span class="preprocessor">#if VSF_DISP_USE_MIPI_SPI_LCD == ENABLED</span></div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno"><a class="line" href="vsf__disp_8h.html#a0f7f9b8be57a08f341912ad32734b910">  369</a></span><span class="preprocessor">#   define VSF_DISP_USE_MIPI_LCD            ENABLED</span></div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span><span class="preprocessor">#if VSF_DISP_USE_MIPI_LCD == ENABLED</span></div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span><span class="preprocessor">#   include &quot;<a class="code" href="vsf__disp__mipi__lcd__dcs_8h.html">./driver/mipi_lcd/vsf_disp_mipi_lcd_dcs.h</a>&quot;</span></div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__mipi__spi__lcd_8h.html">./driver/mipi_lcd/vsf_disp_mipi_spi_lcd.h</a>&quot;</span></div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span><span class="preprocessor">#include &quot;<a class="code" href="vsf__disp__did_8h.html">./driver/did/vsf_disp_did.h</a>&quot;</span></div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span><span class="preprocessor">#if VSF_DISP_USE_WINGDI == ENABLED &amp;&amp; defined(__WIN__)</span></div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span><span class="preprocessor">#   include &quot;<a class="code" href="vsf__disp__wingdi_8h.html">./driver/wingdi/vsf_disp_wingdi.h</a>&quot;</span></div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span> </div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span><span class="preprocessor">#undef __VSF_DISP_CLASS_IMPLEMENT</span></div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span><span class="preprocessor">#undef __VSF_DISP_CLASS_INHERIT__</span></div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span><span class="preprocessor">#endif  </span><span class="comment">// VSF_USE_UI</span></div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span><span class="preprocessor">#endif  </span><span class="comment">// __VSF_DISP_H__</span></div>
 <div class="ttc" id="a____type_8h_html_ac6c55e737799b5e73899ccfae13b98e4"><div class="ttname"><a href="____type_8h.html#ac6c55e737799b5e73899ccfae13b98e4">vsf_err_t</a></div><div class="ttdeci">vsf_err_t</div><div class="ttdef"><b>Definition</b> __type.h:42</div></div>
 <div class="ttc" id="aclassvk__disp__cvrt__t_html"><div class="ttname"><a href="classvk__disp__cvrt__t.html">vk_disp_cvrt_t</a></div><div class="ttdef"><b>Definition</b> vsf_disp.h:223</div></div>
 <div class="ttc" id="aclassvk__disp__drv__t_html"><div class="ttname"><a href="classvk__disp__drv__t.html">vk_disp_drv_t</a></div><div class="ttdef"><b>Definition</b> vsf_disp.h:154</div></div>
 <div class="ttc" id="aclassvk__disp__dummy__t_html"><div class="ttname"><a href="classvk__disp__dummy__t.html">vk_disp_dummy_t</a></div><div class="ttdef"><b>Definition</b> vsf_disp.h:216</div></div>
+<div class="ttc" id="aclassvk__disp__mux__ctx__t_html"><div class="ttname"><a href="classvk__disp__mux__ctx__t.html">vk_disp_mux_ctx_t</a></div><div class="ttdef"><b>Definition</b> vsf_disp.h:241</div></div>
+<div class="ttc" id="aclassvk__disp__mux__t_html"><div class="ttname"><a href="classvk__disp__mux__t.html">vk_disp_mux_t</a></div><div class="ttdef"><b>Definition</b> vsf_disp.h:254</div></div>
 <div class="ttc" id="aclassvk__disp__reentrant__t_html"><div class="ttname"><a href="classvk__disp__reentrant__t.html">vk_disp_reentrant_t</a></div><div class="ttdef"><b>Definition</b> vsf_disp.h:197</div></div>
 <div class="ttc" id="aclassvk__disp__t_html"><div class="ttname"><a href="classvk__disp__t.html">vk_disp_t</a></div><div class="ttdef"><b>Definition</b> vsf_disp.h:184</div></div>
 <div class="ttc" id="aclassvsf__eda__t_html"><div class="ttname"><a href="classvsf__eda__t.html">vsf_eda_t</a></div><div class="ttdoc">The event-driven task (TCB); every VSF task is an eda at the bottom. Tasks share stacks and only occu...</div><div class="ttdef"><b>Definition</b> vsf_eda.h:1838</div></div>
 <div class="ttc" id="aclassvsf__sync__owner__t_html"><div class="ttname"><a href="classvsf__sync__owner__t.html">vsf_sync_owner_t</a></div><div class="ttdoc">Sync object with an owner (mutex base); supports priority inheritance; the owner must leave it itself...</div><div class="ttdef"><b>Definition</b> vsf_eda.h:2009</div></div>
+<div class="ttc" id="adriver__gptimer__port_8c_html_a2d0c1809252a4842c0ad0cb9798ab138"><div class="ttname"><a href="driver__gptimer__port_8c.html#a2d0c1809252a4842c0ad0cb9798ab138">is_inited</a></div><div class="ttdeci">bool is_inited</div><div class="ttdef"><b>Definition</b> driver_gptimer_port.c:88</div></div>
 <div class="ttc" id="aooc__class_8h_html"><div class="ttname"><a href="ooc__class_8h.html">ooc_class.h</a></div></div>
 <div class="ttc" id="aooc__class_8h_html_a226f6a53efbee32ec33e32995b0ab6c9"><div class="ttname"><a href="ooc__class_8h.html#a226f6a53efbee32ec33e32995b0ab6c9">vsf_dcl_class</a></div><div class="ttdeci">#define vsf_dcl_class</div><div class="ttdef"><b>Definition</b> ooc_class.h:50</div></div>
 <div class="ttc" id="aooc__class_8h_html_a62f3fe6fb9699483707f5352d777f2f0"><div class="ttname"><a href="ooc__class_8h.html#a62f3fe6fb9699483707f5352d777f2f0">vsf_class</a></div><div class="ttdeci">#define vsf_class(__name)</div><div class="ttdef"><b>Definition</b> ooc_class.h:52</div></div>
 <div class="ttc" id="astdint_8h_html_a273cf69d639a59973b6019625df33e30"><div class="ttname"><a href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a></div><div class="ttdeci">unsigned short uint16_t</div><div class="ttdef"><b>Definition</b> stdint.h:7</div></div>
 <div class="ttc" id="astdint_8h_html_a33594304e786b158f3fb30289278f5af"><div class="ttname"><a href="stdint_8h.html#a33594304e786b158f3fb30289278f5af">uint32_t</a></div><div class="ttdeci">unsigned uint32_t</div><div class="ttdef"><b>Definition</b> stdint.h:9</div></div>
 <div class="ttc" id="astdint_8h_html_a8a5d6c5353ff297fd0797e654772361b"><div class="ttname"><a href="stdint_8h.html#a8a5d6c5353ff297fd0797e654772361b">uint_fast32_t</a></div><div class="ttdeci">unsigned int uint_fast32_t</div><div class="ttdef"><b>Definition</b> stdint.h:27</div></div>
+<div class="ttc" id="astdint_8h_html_aba7bc1797add20fe3efdf37ced1182c5"><div class="ttname"><a href="stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a></div><div class="ttdeci">unsigned char uint8_t</div><div class="ttdef"><b>Definition</b> stdint.h:5</div></div>
 <div class="ttc" id="astdint_8h_html_ac58f2c111cc9989c86db2a7dc4fd84ca"><div class="ttname"><a href="stdint_8h.html#ac58f2c111cc9989c86db2a7dc4fd84ca">INT16_MAX</a></div><div class="ttdeci">#define INT16_MAX</div><div class="ttdef"><b>Definition</b> stdint.h:50</div></div>
 <div class="ttc" id="astdint_8h_html_ad4e9955955b27624963643eac448118a"><div class="ttname"><a href="stdint_8h.html#ad4e9955955b27624963643eac448118a">INT16_MIN</a></div><div class="ttdeci">#define INT16_MIN</div><div class="ttdef"><b>Definition</b> stdint.h:45</div></div>
 <div class="ttc" id="astructmutex_html"><div class="ttname"><a href="structmutex.html">mutex</a></div><div class="ttdef"><b>Definition</b> mutex.h:10</div></div>
@@ -448,13 +507,19 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="avsf__disp_8h_html_a1a7f048062d3e5838093f9cfdbfc6fbf"><div class="ttname"><a href="vsf__disp_8h.html#a1a7f048062d3e5838093f9cfdbfc6fbf">vk_disp_fini</a></div><div class="ttdeci">void vk_disp_fini(vk_disp_t *pthis)</div><div class="ttdoc">Deinitialize a display instance (asynchronous)</div><div class="ttdef"><b>Definition</b> vsf_disp.c:121</div></div>
 <div class="ttc" id="avsf__disp_8h_html_a1f63eb702f0659d71fb2b54ef5f0b9f7"><div class="ttname"><a href="vsf__disp_8h.html#a1f63eb702f0659d71fb2b54ef5f0b9f7">vk_disp_init</a></div><div class="ttdeci">vsf_err_t vk_disp_init(vk_disp_t *pthis)</div><div class="ttdoc">Initialize a display instance (asynchronous)</div><div class="ttdef"><b>Definition</b> vsf_disp.c:107</div></div>
 <div class="ttc" id="avsf__disp_8h_html_a21c8a274e32b42c7eb623c7081ec332c"><div class="ttname"><a href="vsf__disp_8h.html#a21c8a274e32b42c7eb623c7081ec332c">VSF_DISP_COLOR_DEF</a></div><div class="ttdeci">#define VSF_DISP_COLOR_DEF(__NAME, __BITLEN, __BYTELEN, __HAS_ALPHA)</div><div class="ttdef"><b>Definition</b> vsf_disp.h:57</div></div>
+<div class="ttc" id="avsf__disp_8h_html_a2289589c73acbdddd0e8b7dd7523f4eb"><div class="ttname"><a href="vsf__disp_8h.html#a2289589c73acbdddd0e8b7dd7523f4eb">vk_disp_mux_config</a></div><div class="ttdeci">void vk_disp_mux_config(vk_disp_mux_t *pthis, vk_disp_mux_ctx_t *ctx, uint8_t layer)</div><div class="ttdef"><b>Definition</b> vsf_disp.c:357</div></div>
 <div class="ttc" id="avsf__disp_8h_html_a2cd346171c38ae9865ce4338a1dcb649"><div class="ttname"><a href="vsf__disp_8h.html#a2cd346171c38ae9865ce4338a1dcb649">VSF_DISP_COLOR_IDX_DEF</a></div><div class="ttdeci">#define VSF_DISP_COLOR_IDX_DEF(__NAME)</div><div class="ttdef"><b>Definition</b> vsf_disp.h:43</div></div>
 <div class="ttc" id="avsf__disp_8h_html_a2cf7dc1b855e3da1b4fa3f2194cb428c"><div class="ttname"><a href="vsf__disp_8h.html#a2cf7dc1b855e3da1b4fa3f2194cb428c">vk_disp_color_type_t</a></div><div class="ttdeci">vk_disp_color_type_t</div><div class="ttdef"><b>Definition</b> vsf_disp.h:119</div></div>
 <div class="ttc" id="avsf__disp_8h_html_a2cf7dc1b855e3da1b4fa3f2194cb428ca499036fd06dd5233b519ab239a0e1dbe"><div class="ttname"><a href="vsf__disp_8h.html#a2cf7dc1b855e3da1b4fa3f2194cb428ca499036fd06dd5233b519ab239a0e1dbe">__VSF_DISP_COLOR_LEAST_MAX</a></div><div class="ttdeci">@ __VSF_DISP_COLOR_LEAST_MAX</div><div class="ttdef"><b>Definition</b> vsf_disp.h:121</div></div>
 <div class="ttc" id="avsf__disp_8h_html_a2cf7dc1b855e3da1b4fa3f2194cb428caa9e50474cf564a0e513ac12645a11556"><div class="ttname"><a href="vsf__disp_8h.html#a2cf7dc1b855e3da1b4fa3f2194cb428caa9e50474cf564a0e513ac12645a11556">__VSF_DISP_COLOR_LEAST_MIN</a></div><div class="ttdeci">@ __VSF_DISP_COLOR_LEAST_MIN</div><div class="ttdef"><b>Definition</b> vsf_disp.h:122</div></div>
+<div class="ttc" id="avsf__disp_8h_html_a2fde157f33a0f82e75978581155001c7"><div class="ttname"><a href="vsf__disp_8h.html#a2fde157f33a0f82e75978581155001c7">vk_disp_mux_drv</a></div><div class="ttdeci">const vk_disp_drv_t vk_disp_mux_drv</div><div class="ttdef"><b>Definition</b> vsf_disp.c:447</div></div>
 <div class="ttc" id="avsf__disp_8h_html_a3cdde50772134f9443745f49f80009a3"><div class="ttname"><a href="vsf__disp_8h.html#a3cdde50772134f9443745f49f80009a3">vk_disp_dummy_drv</a></div><div class="ttdeci">const vk_disp_drv_t vk_disp_dummy_drv</div><div class="ttdef"><b>Definition</b> vsf_disp.c:85</div></div>
 <div class="ttc" id="avsf__disp_8h_html_a4aabb6629c29415e16846e3aea137283"><div class="ttname"><a href="vsf__disp_8h.html#a4aabb6629c29415e16846e3aea137283">vk_disp_coord_t</a></div><div class="ttdeci">#define vk_disp_coord_t</div><div class="ttdef"><b>Definition</b> vsf_disp.h:86</div></div>
 <div class="ttc" id="avsf__disp_8h_html_a55536c42e6e6e8b923b8fc456e2618d9"><div class="ttname"><a href="vsf__disp_8h.html#a55536c42e6e6e8b923b8fc456e2618d9">vk_disp_fast_coord_t</a></div><div class="ttdeci">#define vk_disp_fast_coord_t</div><div class="ttdef"><b>Definition</b> vsf_disp.h:89</div></div>
+<div class="ttc" id="avsf__disp_8h_html_a576ad8c77ca5187b9ac7e22404eda527"><div class="ttname"><a href="vsf__disp_8h.html#a576ad8c77ca5187b9ac7e22404eda527">vk_disp_mux_evt_t</a></div><div class="ttdeci">vk_disp_mux_evt_t</div><div class="ttdef"><b>Definition</b> vsf_disp.h:236</div></div>
+<div class="ttc" id="avsf__disp_8h_html_a576ad8c77ca5187b9ac7e22404eda527a1f52dcfe4f61da237d39fa8802e78ad9"><div class="ttname"><a href="vsf__disp_8h.html#a576ad8c77ca5187b9ac7e22404eda527a1f52dcfe4f61da237d39fa8802e78ad9">VK_DISP_MUX_EVT_INACTIVE</a></div><div class="ttdeci">@ VK_DISP_MUX_EVT_INACTIVE</div><div class="ttdef"><b>Definition</b> vsf_disp.h:238</div></div>
+<div class="ttc" id="avsf__disp_8h_html_a576ad8c77ca5187b9ac7e22404eda527ad37f4a9e9909789dce3ea0b90194d932"><div class="ttname"><a href="vsf__disp_8h.html#a576ad8c77ca5187b9ac7e22404eda527ad37f4a9e9909789dce3ea0b90194d932">VK_DISP_MUX_EVT_ACTIVE</a></div><div class="ttdeci">@ VK_DISP_MUX_EVT_ACTIVE</div><div class="ttdef"><b>Definition</b> vsf_disp.h:237</div></div>
+<div class="ttc" id="avsf__disp_8h_html_a5cf9e22477414aff82907a0beaeed6ee"><div class="ttname"><a href="vsf__disp_8h.html#a5cf9e22477414aff82907a0beaeed6ee">vk_disp_mux_is_active</a></div><div class="ttdeci">bool vk_disp_mux_is_active(vk_disp_mux_t *pthis)</div><div class="ttdef"><b>Definition</b> vsf_disp.c:369</div></div>
 <div class="ttc" id="avsf__disp_8h_html_a791a335532cc533b7b007af815fda556"><div class="ttname"><a href="vsf__disp_8h.html#a791a335532cc533b7b007af815fda556">vk_disp_param_t</a></div><div class="ttdeci">struct vk_disp_param_t vk_disp_param_t</div></div>
 <div class="ttc" id="avsf__disp_8h_html_a8d229d7f20f3d278a43b85034c0d063c"><div class="ttname"><a href="vsf__disp_8h.html#a8d229d7f20f3d278a43b85034c0d063c">vk_disp_area_t</a></div><div class="ttdeci">struct vk_disp_area_t vk_disp_area_t</div></div>
 <div class="ttc" id="avsf__disp_8h_html_a9169dde8fbe9a8170282bbbbbd874a36"><div class="ttname"><a href="vsf__disp_8h.html#a9169dde8fbe9a8170282bbbbbd874a36">vk_disp_refresh</a></div><div class="ttdeci">vsf_err_t vk_disp_refresh(vk_disp_t *pthis, vk_disp_area_t *area, void *disp_buff)</div><div class="ttdoc">Refresh a display area (asynchronous)</div><div class="ttdef"><b>Definition</b> vsf_disp.c:134</div></div>
@@ -475,11 +540,12 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="avsf__disp__vga__m480_8h_html"><div class="ttname"><a href="vsf__disp__vga__m480_8h.html">vsf_disp_vga_m480.h</a></div></div>
 <div class="ttc" id="avsf__disp__wingdi_8h_html"><div class="ttname"><a href="vsf__disp__wingdi_8h.html">vsf_disp_wingdi.h</a></div></div>
 <div class="ttc" id="avsf__kernel_8h_html"><div class="ttname"><a href="vsf__kernel_8h.html">vsf_kernel.h</a></div></div>
+<div class="ttc" id="avsf__msg__tree_8h_html_afa9360287850ff1c4466d8bed43341ae"><div class="ttname"><a href="vsf__msg__tree_8h.html#afa9360287850ff1c4466d8bed43341ae">next</a></div><div class="ttdeci">vsf_msgt_node_offset_t next</div><div class="ttdef"><b>Definition</b> vsf_msg_tree.h:192</div></div>
 <div class="ttc" id="avsf__sdl2__pixelformat_8c_html_a66b2ef8398a8bbb0f5816f22a7b138da"><div class="ttname"><a href="vsf__sdl2__pixelformat_8c.html#a66b2ef8398a8bbb0f5816f22a7b138da">color</a></div><div class="ttdeci">uint32_t color</div><div class="ttdef"><b>Definition</b> vsf_sdl2_pixelformat.c:31</div></div>
 <div class="ttc" id="avsf__ui__cfg_8h_html"><div class="ttname"><a href="vsf__ui__cfg_8h.html">vsf_ui_cfg.h</a></div></div>
 <div class="ttc" id="avsf__utilities_8h_html"><div class="ttname"><a href="vsf__utilities_8h.html">vsf_utilities.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/c46986daf958bd054dcacda618f4e281b9ccfbb9" target="_blank">vsfteam/vsf@c46986d</a>
+  <a href="https://github.com/vsfteam/vsf/commit/332b7aef37a26ab87b6c0cf0cc53bf3c038d098a" target="_blank">vsfteam/vsf@332b7ae</a>
 </div>
