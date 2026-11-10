@@ -100,81 +100,101 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">/*============================ MACROS ========================================*/</span></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">/*============================ MACROFIED FUNCTIONS ===========================*/</span></div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">// prototype: vsf_input_touchscreen_set(vk_touchscreen_evt_t *evt, uint8_t id,</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">//                      bool is_done, uint16_t x, uint16_t y, uint16_t pressure);</span></div>
-<div class="foldopen" id="foldopen00037" data-start="" data-end="">
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#af4cae9d0eb2942db58e162318dafbc73">   37</a></span><span class="preprocessor">#define vsf_input_touchscreen_set(__evt, __id, __is_down, __pressure, __x, __y) \</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">            do {                                                                \</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">                (__evt)-&gt;id = ((__id) | (!!(__is_down) &lt;&lt; 8));                  \</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">                (__evt)-&gt;cur.valu64 = (__x) | ((__y) &lt;&lt; 16) | ((uint64_t)(__pressure) &lt;&lt; 32);\</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">            } while (0)</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">// cur.valu64: x[0:15], y[16:31], pressure[32:47], xy_valid[48].</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">// prototype: vsf_input_touchscreen_set(vk_touchscreen_evt_t *evt, uint8_t id,</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">//                      bool is_down, uint16_t pressure, uint16_t x, uint16_t y,</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">//                      bool xy_valid = true);</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">// pressure must be 0 for UP events(is_down == false).</span></div>
+<div class="foldopen" id="foldopen00040" data-start="" data-end="">
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#ab6b0976f1dc04e74adc22f622273aeb0">   40</a></span><span class="preprocessor">#define __vsf_input_touchscreen_set6(__evt, __id, __is_down, __pressure, __x, __y) \</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">            __vsf_input_touchscreen_set7(                                         \</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">                __evt, __id, __is_down, __pressure, __x, __y, true)</span></div>
 </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="foldopen" id="foldopen00043" data-start="" data-end="">
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#afe5c5c88c644c64c98a7758fafe62231">   43</a></span><span class="preprocessor">#define vsf_input_touchscreen_get_id(__evt)                                     \</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">            ((uint8_t)(((__evt)-&gt;id &gt;&gt; 0) &amp; 0xFF))</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#a6cab3b423b61009026842a9cbdd383f2">   43</a></span><span class="preprocessor">#define __vsf_input_touchscreen_set7(__evt, __id, __is_down, __pressure, __x, __y, __xy_valid) \</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">            do {                                                                \</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">                (__evt)-&gt;id = ((__id) | (!!(__is_down) &lt;&lt; 8));                  \</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">                (__evt)-&gt;cur.valu64 = (__x) | ((__y) &lt;&lt; 16)                     \</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">                    | ((uint64_t)(__pressure) &lt;&lt; 32)                            \</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">                    | ((uint64_t)(!!(__xy_valid)) &lt;&lt; 48);                       \</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">            } while (0)</span></div>
 </div>
-<div class="foldopen" id="foldopen00045" data-start="" data-end="">
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#a9803a59f9152431a64d0b2bb001cd4a2">   45</a></span><span class="preprocessor">#define vsf_input_touchscreen_is_down(__evt)                                    \</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">            (!!(((__evt)-&gt;id &gt;&gt; 8) &amp; 0xFF))</span></div>
+<div class="foldopen" id="foldopen00050" data-start="" data-end="">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#a257d3f796a3d0718f5d8ee2060440d9f">   50</a></span><span class="preprocessor">#define vsf_input_touchscreen_set(__evt, __id, __is_down, __pressure, __x, __y, ...) \</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">            __PLOOC_EVAL(__vsf_input_touchscreen_set,                             \</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">                (__evt), (__id), (__is_down), (__pressure), (__x), (__y), ##__VA_ARGS__) \</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">                ((__evt), (__id), (__is_down), (__pressure), (__x), (__y), ##__VA_ARGS__)</span></div>
 </div>
-<div class="foldopen" id="foldopen00047" data-start="" data-end="">
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#a2f7ed0cc9329394c493a008c58de9a7b">   47</a></span><span class="preprocessor">#define vsf_input_touchscreen_get_x(__evt)                                      \</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">            ((uint16_t)(((__evt)-&gt;cur.valu64 &gt;&gt; 0) &amp; 0xFFFF))</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="foldopen" id="foldopen00055" data-start="" data-end="">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#afe5c5c88c644c64c98a7758fafe62231">   55</a></span><span class="preprocessor">#define vsf_input_touchscreen_get_id(__evt)                                     \</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">            ((uint8_t)(((__evt)-&gt;id &gt;&gt; 0) &amp; 0xFF))</span></div>
 </div>
-<div class="foldopen" id="foldopen00049" data-start="" data-end="">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#aebc7e1f707ba5f62486f9874c766403f">   49</a></span><span class="preprocessor">#define vsf_input_touchscreen_get_y(__evt)                                      \</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">            ((uint16_t)(((__evt)-&gt;cur.valu64 &gt;&gt; 16) &amp; 0xFFFF))</span></div>
+<div class="foldopen" id="foldopen00057" data-start="" data-end="">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#a9803a59f9152431a64d0b2bb001cd4a2">   57</a></span><span class="preprocessor">#define vsf_input_touchscreen_is_down(__evt)                                    \</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">            (!!(((__evt)-&gt;id &gt;&gt; 8) &amp; 0xFF))</span></div>
 </div>
-<div class="foldopen" id="foldopen00051" data-start="" data-end="">
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#a7f2d913316a5caf881735d636181a204">   51</a></span><span class="preprocessor">#define vsf_input_touchscreen_get_pressure(__evt)                               \</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">            ((uint16_t)(((__evt)-&gt;cur.valu64 &gt;&gt; 32) &amp; 0xFFFF))</span></div>
+<div class="foldopen" id="foldopen00059" data-start="" data-end="">
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#a2f7ed0cc9329394c493a008c58de9a7b">   59</a></span><span class="preprocessor">#define vsf_input_touchscreen_get_x(__evt)                                      \</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">            ((uint16_t)(((__evt)-&gt;cur.valu64 &gt;&gt; 0) &amp; 0xFFFF))</span></div>
 </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">enum</span> {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#a950bf8e3371138ceb9649d45e9a96340ac5d4aee82c269c80a092f597268d4012">   57</a></span>    <a class="code hl_enumvalue" href="vsf__input__touchscreen_8h.html#a950bf8e3371138ceb9649d45e9a96340ac5d4aee82c269c80a092f597268d4012">VSF_INPUT_TYPE_TOUCHSCREEN</a> = <a class="code hl_define" href="vsf__input__get__type__1bit_8h.html#a1afd4c99c62b33201b6cf035f1aff074">VSF_INPUT_USER_TYPE</a>,</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>};</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="foldopen" id="foldopen00060" data-start="{" data-end="};">
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structvk__touchscreen__info__t.html">   60</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvk__touchscreen__info__t.html">vk_touchscreen_info_t</a> {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="structvk__touchscreen__info__t.html#a320fa7bae587f7ebfb18c99fefada695">   61</a></span>    <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="code hl_variable" href="structvk__touchscreen__info__t.html#a320fa7bae587f7ebfb18c99fefada695">width</a>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="structvk__touchscreen__info__t.html#ae3460dcc9529027f5a3fadb0fc97bf76">   62</a></span>    <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="code hl_variable" href="structvk__touchscreen__info__t.html#ae3460dcc9529027f5a3fadb0fc97bf76">height</a>;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#a6bf4e0acc1dec23a08b838be5ed32b51">   63</a></span>} <a class="code hl_typedef" href="vsf__input__touchscreen_8h.html#a6bf4e0acc1dec23a08b838be5ed32b51">vk_touchscreen_info_t</a>;</div>
+<div class="foldopen" id="foldopen00061" data-start="" data-end="">
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#aebc7e1f707ba5f62486f9874c766403f">   61</a></span><span class="preprocessor">#define vsf_input_touchscreen_get_y(__evt)                                      \</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">            ((uint16_t)(((__evt)-&gt;cur.valu64 &gt;&gt; 16) &amp; 0xFFFF))</span></div>
 </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="foldopen" id="foldopen00065" data-start="{" data-end="};">
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="structvk__touchscreen__evt__t.html">   65</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvk__touchscreen__evt__t.html">vk_touchscreen_evt_t</a> {</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    implement(<a class="code hl_struct" href="structvk__input__evt__t.html">vk_input_evt_t</a>)</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="structvk__touchscreen__evt__t.html#a1a773f575d51b76ef68c0869898f3324">   67</a></span>    <a class="code hl_struct" href="structvk__touchscreen__info__t.html">vk_touchscreen_info_t</a> <a class="code hl_variable" href="structvk__touchscreen__evt__t.html#a1a773f575d51b76ef68c0869898f3324">info</a>;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#a0fe05bd305b867bac3a9076078c1c262">   68</a></span>} <a class="code hl_struct" href="structvk__touchscreen__evt__t.html">vk_touchscreen_evt_t</a>;</div>
+<div class="foldopen" id="foldopen00063" data-start="" data-end="">
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#a7f2d913316a5caf881735d636181a204">   63</a></span><span class="preprocessor">#define vsf_input_touchscreen_get_pressure(__evt)                               \</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">            ((uint16_t)(((__evt)-&gt;cur.valu64 &gt;&gt; 32) &amp; 0xFFFF))</span></div>
 </div>
+<div class="foldopen" id="foldopen00065" data-start="" data-end="">
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#add8809ec3be89fc3a79446ccbdc111c2">   65</a></span><span class="preprocessor">#define vsf_input_touchscreen_is_xy_valid(__evt)                                \</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">            (!!(((__evt)-&gt;cur.valu64 &gt;&gt; 48) &amp; 1))</span></div>
+</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">/*============================ TYPES =========================================*/</span></div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#a950bf8e3371138ceb9649d45e9a96340ac5d4aee82c269c80a092f597268d4012">   71</a></span>    <a class="code hl_enumvalue" href="vsf__input__touchscreen_8h.html#a950bf8e3371138ceb9649d45e9a96340ac5d4aee82c269c80a092f597268d4012">VSF_INPUT_TYPE_TOUCHSCREEN</a> = <a class="code hl_define" href="vsf__input__get__type__1bit_8h.html#a1afd4c99c62b33201b6cf035f1aff074">VSF_INPUT_USER_TYPE</a>,</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>};</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">/* EOF */</span></div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="};">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="structvk__touchscreen__info__t.html">   74</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvk__touchscreen__info__t.html">vk_touchscreen_info_t</a> {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="structvk__touchscreen__info__t.html#a320fa7bae587f7ebfb18c99fefada695">   75</a></span>    <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="code hl_variable" href="structvk__touchscreen__info__t.html#a320fa7bae587f7ebfb18c99fefada695">width</a>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="structvk__touchscreen__info__t.html#ae3460dcc9529027f5a3fadb0fc97bf76">   76</a></span>    <a class="code hl_typedef" href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a> <a class="code hl_variable" href="structvk__touchscreen__info__t.html#ae3460dcc9529027f5a3fadb0fc97bf76">height</a>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#a6bf4e0acc1dec23a08b838be5ed32b51">   77</a></span>} <a class="code hl_typedef" href="vsf__input__touchscreen_8h.html#a6bf4e0acc1dec23a08b838be5ed32b51">vk_touchscreen_info_t</a>;</div>
+</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="};">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="structvk__touchscreen__evt__t.html">   79</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structvk__touchscreen__evt__t.html">vk_touchscreen_evt_t</a> {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    implement(<a class="code hl_struct" href="structvk__input__evt__t.html">vk_input_evt_t</a>)</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="structvk__touchscreen__evt__t.html#a1a773f575d51b76ef68c0869898f3324">   81</a></span>    <a class="code hl_struct" href="structvk__touchscreen__info__t.html">vk_touchscreen_info_t</a> <a class="code hl_variable" href="structvk__touchscreen__evt__t.html#a1a773f575d51b76ef68c0869898f3324">info</a>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="vsf__input__touchscreen_8h.html#a0fe05bd305b867bac3a9076078c1c262">   82</a></span>} <a class="code hl_struct" href="structvk__touchscreen__evt__t.html">vk_touchscreen_evt_t</a>;</div>
+</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">/*============================ GLOBAL VARIABLES ==============================*/</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">/*============================ LOCAL VARIABLES ===============================*/</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">/*============================ PROTOTYPES ====================================*/</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">/* EOF */</span></div>
 <div class="ttc" id="astdint_8h_html_a273cf69d639a59973b6019625df33e30"><div class="ttname"><a href="stdint_8h.html#a273cf69d639a59973b6019625df33e30">uint16_t</a></div><div class="ttdeci">unsigned short uint16_t</div><div class="ttdef"><b>Definition</b> stdint.h:7</div></div>
 <div class="ttc" id="astructvk__input__evt__t_html"><div class="ttname"><a href="structvk__input__evt__t.html">vk_input_evt_t</a></div><div class="ttdef"><b>Definition</b> vsf_input.h:94</div></div>
-<div class="ttc" id="astructvk__touchscreen__evt__t_html"><div class="ttname"><a href="structvk__touchscreen__evt__t.html">vk_touchscreen_evt_t</a></div><div class="ttdef"><b>Definition</b> vsf_input_touchscreen.h:65</div></div>
-<div class="ttc" id="astructvk__touchscreen__evt__t_html_a1a773f575d51b76ef68c0869898f3324"><div class="ttname"><a href="structvk__touchscreen__evt__t.html#a1a773f575d51b76ef68c0869898f3324">vk_touchscreen_evt_t::info</a></div><div class="ttdeci">vk_input_evt_t vk_touchscreen_info_t info</div><div class="ttdef"><b>Definition</b> vsf_input_touchscreen.h:67</div></div>
-<div class="ttc" id="astructvk__touchscreen__info__t_html"><div class="ttname"><a href="structvk__touchscreen__info__t.html">vk_touchscreen_info_t</a></div><div class="ttdef"><b>Definition</b> vsf_input_touchscreen.h:60</div></div>
-<div class="ttc" id="astructvk__touchscreen__info__t_html_a320fa7bae587f7ebfb18c99fefada695"><div class="ttname"><a href="structvk__touchscreen__info__t.html#a320fa7bae587f7ebfb18c99fefada695">vk_touchscreen_info_t::width</a></div><div class="ttdeci">uint16_t width</div><div class="ttdef"><b>Definition</b> vsf_input_touchscreen.h:61</div></div>
-<div class="ttc" id="astructvk__touchscreen__info__t_html_ae3460dcc9529027f5a3fadb0fc97bf76"><div class="ttname"><a href="structvk__touchscreen__info__t.html#ae3460dcc9529027f5a3fadb0fc97bf76">vk_touchscreen_info_t::height</a></div><div class="ttdeci">uint16_t height</div><div class="ttdef"><b>Definition</b> vsf_input_touchscreen.h:62</div></div>
+<div class="ttc" id="astructvk__touchscreen__evt__t_html"><div class="ttname"><a href="structvk__touchscreen__evt__t.html">vk_touchscreen_evt_t</a></div><div class="ttdef"><b>Definition</b> vsf_input_touchscreen.h:79</div></div>
+<div class="ttc" id="astructvk__touchscreen__evt__t_html_a1a773f575d51b76ef68c0869898f3324"><div class="ttname"><a href="structvk__touchscreen__evt__t.html#a1a773f575d51b76ef68c0869898f3324">vk_touchscreen_evt_t::info</a></div><div class="ttdeci">vk_input_evt_t vk_touchscreen_info_t info</div><div class="ttdef"><b>Definition</b> vsf_input_touchscreen.h:81</div></div>
+<div class="ttc" id="astructvk__touchscreen__info__t_html"><div class="ttname"><a href="structvk__touchscreen__info__t.html">vk_touchscreen_info_t</a></div><div class="ttdef"><b>Definition</b> vsf_input_touchscreen.h:74</div></div>
+<div class="ttc" id="astructvk__touchscreen__info__t_html_a320fa7bae587f7ebfb18c99fefada695"><div class="ttname"><a href="structvk__touchscreen__info__t.html#a320fa7bae587f7ebfb18c99fefada695">vk_touchscreen_info_t::width</a></div><div class="ttdeci">uint16_t width</div><div class="ttdef"><b>Definition</b> vsf_input_touchscreen.h:75</div></div>
+<div class="ttc" id="astructvk__touchscreen__info__t_html_ae3460dcc9529027f5a3fadb0fc97bf76"><div class="ttname"><a href="structvk__touchscreen__info__t.html#ae3460dcc9529027f5a3fadb0fc97bf76">vk_touchscreen_info_t::height</a></div><div class="ttdeci">uint16_t height</div><div class="ttdef"><b>Definition</b> vsf_input_touchscreen.h:76</div></div>
 <div class="ttc" id="avsf__input__cfg_8h_html"><div class="ttname"><a href="vsf__input__cfg_8h.html">vsf_input_cfg.h</a></div></div>
 <div class="ttc" id="avsf__input__get__type_8h_html"><div class="ttname"><a href="vsf__input__get__type_8h.html">vsf_input_get_type.h</a></div></div>
 <div class="ttc" id="avsf__input__get__type__1bit_8h_html_a1afd4c99c62b33201b6cf035f1aff074"><div class="ttname"><a href="vsf__input__get__type__1bit_8h.html#a1afd4c99c62b33201b6cf035f1aff074">VSF_INPUT_USER_TYPE</a></div><div class="ttdeci">#define VSF_INPUT_USER_TYPE</div><div class="ttdef"><b>Definition</b> vsf_input_get_type_1bit.h:103</div></div>
 <div class="ttc" id="avsf__input__touchscreen_8h_html_a6bf4e0acc1dec23a08b838be5ed32b51"><div class="ttname"><a href="vsf__input__touchscreen_8h.html#a6bf4e0acc1dec23a08b838be5ed32b51">vk_touchscreen_info_t</a></div><div class="ttdeci">struct vk_touchscreen_info_t vk_touchscreen_info_t</div></div>
-<div class="ttc" id="avsf__input__touchscreen_8h_html_a950bf8e3371138ceb9649d45e9a96340ac5d4aee82c269c80a092f597268d4012"><div class="ttname"><a href="vsf__input__touchscreen_8h.html#a950bf8e3371138ceb9649d45e9a96340ac5d4aee82c269c80a092f597268d4012">VSF_INPUT_TYPE_TOUCHSCREEN</a></div><div class="ttdeci">@ VSF_INPUT_TYPE_TOUCHSCREEN</div><div class="ttdef"><b>Definition</b> vsf_input_touchscreen.h:57</div></div>
+<div class="ttc" id="avsf__input__touchscreen_8h_html_a950bf8e3371138ceb9649d45e9a96340ac5d4aee82c269c80a092f597268d4012"><div class="ttname"><a href="vsf__input__touchscreen_8h.html#a950bf8e3371138ceb9649d45e9a96340ac5d4aee82c269c80a092f597268d4012">VSF_INPUT_TYPE_TOUCHSCREEN</a></div><div class="ttdeci">@ VSF_INPUT_TYPE_TOUCHSCREEN</div><div class="ttdef"><b>Definition</b> vsf_input_touchscreen.h:71</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <div style="text-align: center; font-size: small; margin-top: 20px;">
   Generated from commit:
-  <a href="https://github.com/vsfteam/vsf/commit/44dd3c529ece2a56413218b9c2bdb633e5bda156" target="_blank">vsfteam/vsf@44dd3c5</a>
+  <a href="https://github.com/vsfteam/vsf/commit/2f121fc71480b7ccb5c2d8524021fbe213f3c918" target="_blank">vsfteam/vsf@2f121fc</a>
 </div>
