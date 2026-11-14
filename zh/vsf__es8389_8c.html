@@ -1,0 +1,1503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VSF Documented: source/component/av/audio/driver/es8389/vsf_es8389.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VSF Documented
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="topics.html"><span>专题</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a751bed093fa77e8085efb31481979de.html">component</a></li><li class="navelem"><a class="el" href="dir_50fae0b03bd828d698cf6f12123a1213.html">av</a></li><li class="navelem"><a class="el" href="dir_c6d7bdd26ff2129dc1b49a02ea06f99e.html">audio</a></li><li class="navelem"><a class="el" href="dir_c4dffa0433757b90915d52010be68d18.html">driver</a></li><li class="navelem"><a class="el" href="dir_aa58d5d06909775e4f7b95a285b41af1.html">es8389</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#enum-members">枚举</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">vsf_es8389.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsf__av__cfg_8h_source.html">../../../vsf_av_cfg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__service_8h_source.html">service/vsf_service.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__es8389_8h_source.html">./vsf_es8389.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__av_8h_source.html">component/av/vsf_av.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vsf__audio__i2s_8h_source.html">../i2s/vsf_audio_i2s.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvk__es8389__coeff__t.html">vk_es8389_coeff_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:aa1035a7e2f7cab98d09c1202a165f0e1" id="r_aa1035a7e2f7cab98d09c1202a165f0e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1035a7e2f7cab98d09c1202a165f0e1">__VSF_AUDIO_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:aa1035a7e2f7cab98d09c1202a165f0e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9760effea1284478b76d88da2c2f4230" id="r_a9760effea1284478b76d88da2c2f4230"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9760effea1284478b76d88da2c2f4230">__VSF_AUDIO_I2S_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:a9760effea1284478b76d88da2c2f4230"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae68af52b29d55a0d7474c656fd71d931" id="r_ae68af52b29d55a0d7474c656fd71d931"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae68af52b29d55a0d7474c656fd71d931">__VSF_EDA_CLASS_INHERIT__</a></td></tr>
+<tr class="separator:ae68af52b29d55a0d7474c656fd71d931"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad23d391655537e1d8634a121c95831f7" id="r_ad23d391655537e1d8634a121c95831f7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad23d391655537e1d8634a121c95831f7">__VSF_ES8389_CLASS_IMPLEMENT</a></td></tr>
+<tr class="separator:ad23d391655537e1d8634a121c95831f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4ac386f63a7aa5fc0f9e302c1eba682" id="r_ad4ac386f63a7aa5fc0f9e302c1eba682"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4ac386f63a7aa5fc0f9e302c1eba682">ES8389_REG_RESET</a>&#160;&#160;&#160;0x00</td></tr>
+<tr class="separator:ad4ac386f63a7aa5fc0f9e302c1eba682"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4279bebf484355e84252209dd18368e6" id="r_a4279bebf484355e84252209dd18368e6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4279bebf484355e84252209dd18368e6">ES8389_REG_MISC</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="separator:a4279bebf484355e84252209dd18368e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ca56e887af672bd8ceedb208014f551" id="r_a3ca56e887af672bd8ceedb208014f551"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ca56e887af672bd8ceedb208014f551">ES8389_REG_CLK_STATE</a>&#160;&#160;&#160;0x02</td></tr>
+<tr class="separator:a3ca56e887af672bd8ceedb208014f551"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a260c6922bf5bdf494d880e9a970b2b09" id="r_a260c6922bf5bdf494d880e9a970b2b09"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a260c6922bf5bdf494d880e9a970b2b09">ES8389_REG_CLK_SYS_DIV</a>&#160;&#160;&#160;0x03</td></tr>
+<tr class="separator:a260c6922bf5bdf494d880e9a970b2b09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a504a4dba081bd78a2164104013f01345" id="r_a504a4dba081bd78a2164104013f01345"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a504a4dba081bd78a2164104013f01345">ES8389_REG_CLK_PLL1</a>&#160;&#160;&#160;0x04</td></tr>
+<tr class="separator:a504a4dba081bd78a2164104013f01345"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a393f1025d2a918abf011dd694623c9e8" id="r_a393f1025d2a918abf011dd694623c9e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a393f1025d2a918abf011dd694623c9e8">ES8389_REG_CLK_PLL2</a>&#160;&#160;&#160;0x05</td></tr>
+<tr class="separator:a393f1025d2a918abf011dd694623c9e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1f45b98c4e46a3c6ae214d04b7387cb" id="r_ac1f45b98c4e46a3c6ae214d04b7387cb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1f45b98c4e46a3c6ae214d04b7387cb">ES8389_REG_CLK_PLL3</a>&#160;&#160;&#160;0x06</td></tr>
+<tr class="separator:ac1f45b98c4e46a3c6ae214d04b7387cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23e2a874b8cd592414ca591d67600f26" id="r_a23e2a874b8cd592414ca591d67600f26"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23e2a874b8cd592414ca591d67600f26">ES8389_REG_CLK_PLL4</a>&#160;&#160;&#160;0x07</td></tr>
+<tr class="separator:a23e2a874b8cd592414ca591d67600f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a971cc43fe28faf2a43a0bee8cca2dcb7" id="r_a971cc43fe28faf2a43a0bee8cca2dcb7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a971cc43fe28faf2a43a0bee8cca2dcb7">ES8389_REG_CLK_PLL5</a>&#160;&#160;&#160;0x08</td></tr>
+<tr class="separator:a971cc43fe28faf2a43a0bee8cca2dcb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fe454b814671f106e0cc8753f506621" id="r_a8fe454b814671f106e0cc8753f506621"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8fe454b814671f106e0cc8753f506621">ES8389_REG_CLK_PLL6</a>&#160;&#160;&#160;0x09</td></tr>
+<tr class="separator:a8fe454b814671f106e0cc8753f506621"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b15fbcd9049c4ecbfa01c3cbd95a464" id="r_a9b15fbcd9049c4ecbfa01c3cbd95a464"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b15fbcd9049c4ecbfa01c3cbd95a464">ES8389_REG_CLK_DIV_L</a>&#160;&#160;&#160;0x0A</td></tr>
+<tr class="separator:a9b15fbcd9049c4ecbfa01c3cbd95a464"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa25ea4e4d0fc70073448b3b6234d33d9" id="r_aa25ea4e4d0fc70073448b3b6234d33d9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa25ea4e4d0fc70073448b3b6234d33d9">ES8389_REG_CLK_DIV_M</a>&#160;&#160;&#160;0x0B</td></tr>
+<tr class="separator:aa25ea4e4d0fc70073448b3b6234d33d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b4cfb5669c67aeb82c59e2757393c66" id="r_a7b4cfb5669c67aeb82c59e2757393c66"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b4cfb5669c67aeb82c59e2757393c66">ES8389_REG_FMT_DACADC</a>&#160;&#160;&#160;0x0C</td></tr>
+<tr class="separator:a7b4cfb5669c67aeb82c59e2757393c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3182bc3e2ec4777425ea1cfe4578e2d7" id="r_a3182bc3e2ec4777425ea1cfe4578e2d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3182bc3e2ec4777425ea1cfe4578e2d7">ES8389_REG_CLK_ADC</a>&#160;&#160;&#160;0x0F</td></tr>
+<tr class="separator:a3182bc3e2ec4777425ea1cfe4578e2d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70c8d6ac39858be3cdad791985bf1c19" id="r_a70c8d6ac39858be3cdad791985bf1c19"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70c8d6ac39858be3cdad791985bf1c19">ES8389_REG_CLK_DAC</a>&#160;&#160;&#160;0x10</td></tr>
+<tr class="separator:a70c8d6ac39858be3cdad791985bf1c19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af77f6b66928eceb0c586badd36f1f06a" id="r_af77f6b66928eceb0c586badd36f1f06a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af77f6b66928eceb0c586badd36f1f06a">ES8389_REG_CLK_ADCDIV1</a>&#160;&#160;&#160;0x11</td></tr>
+<tr class="separator:af77f6b66928eceb0c586badd36f1f06a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f47590aadb6cff668f7c86c0230e3b8" id="r_a4f47590aadb6cff668f7c86c0230e3b8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f47590aadb6cff668f7c86c0230e3b8">ES8389_REG_CLK_DACDIV1</a>&#160;&#160;&#160;0x12</td></tr>
+<tr class="separator:a4f47590aadb6cff668f7c86c0230e3b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61c5fc944c94d7490f7ed3f020138146" id="r_a61c5fc944c94d7490f7ed3f020138146"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61c5fc944c94d7490f7ed3f020138146">ES8389_REG_CLK_DACDIV2</a>&#160;&#160;&#160;0x13</td></tr>
+<tr class="separator:a61c5fc944c94d7490f7ed3f020138146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af97b81bc566608f50d835b74ba56f430" id="r_af97b81bc566608f50d835b74ba56f430"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af97b81bc566608f50d835b74ba56f430">ES8389_REG_CLK_ADCDIV3</a>&#160;&#160;&#160;0x14</td></tr>
+<tr class="separator:af97b81bc566608f50d835b74ba56f430"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21bcedc59dae61be67a0463f5490337d" id="r_a21bcedc59dae61be67a0463f5490337d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21bcedc59dae61be67a0463f5490337d">ES8389_REG_CLK_ADCDIV4</a>&#160;&#160;&#160;0x15</td></tr>
+<tr class="separator:a21bcedc59dae61be67a0463f5490337d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65ca01cc75a197ff9dd564aa5170ce2e" id="r_a65ca01cc75a197ff9dd564aa5170ce2e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65ca01cc75a197ff9dd564aa5170ce2e">ES8389_REG_ADC_MCLK</a>&#160;&#160;&#160;0x16</td></tr>
+<tr class="separator:a65ca01cc75a197ff9dd564aa5170ce2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a474af8762d64aca01cfe5299ca0db7c3" id="r_a474af8762d64aca01cfe5299ca0db7c3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a474af8762d64aca01cfe5299ca0db7c3">ES8389_REG_ADC_DIV_L</a>&#160;&#160;&#160;0x17</td></tr>
+<tr class="separator:a474af8762d64aca01cfe5299ca0db7c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1b8c62eb09e35babf7dc07294b8e237" id="r_ae1b8c62eb09e35babf7dc07294b8e237"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1b8c62eb09e35babf7dc07294b8e237">ES8389_REG_ADC_DIV_M</a>&#160;&#160;&#160;0x18</td></tr>
+<tr class="separator:ae1b8c62eb09e35babf7dc07294b8e237"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecdaefbf93a86c69094f64228cacb7cc" id="r_aecdaefbf93a86c69094f64228cacb7cc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecdaefbf93a86c69094f64228cacb7cc">ES8389_REG_ADC_DIV_H</a>&#160;&#160;&#160;0x19</td></tr>
+<tr class="separator:aecdaefbf93a86c69094f64228cacb7cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53a47e45ce4e4deb7bec54bf924dedd9" id="r_a53a47e45ce4e4deb7bec54bf924dedd9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53a47e45ce4e4deb7bec54bf924dedd9">ES8389_REG_ADC_DACLRC</a>&#160;&#160;&#160;0x1A</td></tr>
+<tr class="separator:a53a47e45ce4e4deb7bec54bf924dedd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af61fe7b2a9720ba27099b3467c89e3a1" id="r_af61fe7b2a9720ba27099b3467c89e3a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af61fe7b2a9720ba27099b3467c89e3a1">ES8389_REG_DAC_DACLRC</a>&#160;&#160;&#160;0x1B</td></tr>
+<tr class="separator:af61fe7b2a9720ba27099b3467c89e3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a6ef5bdc0e6c3638c748a7a74348816" id="r_a3a6ef5bdc0e6c3638c748a7a74348816"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a6ef5bdc0e6c3638c748a7a74348816">ES8389_REG_ADC_SP</a>&#160;&#160;&#160;0x20</td></tr>
+<tr class="separator:a3a6ef5bdc0e6c3638c748a7a74348816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa492e014936a9616100133229f6a0daf" id="r_aa492e014936a9616100133229f6a0daf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa492e014936a9616100133229f6a0daf">ES8389_REG_ADC_ALC1</a>&#160;&#160;&#160;0x21</td></tr>
+<tr class="separator:aa492e014936a9616100133229f6a0daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86e199406d9790ea97fef2e2d65576c0" id="r_a86e199406d9790ea97fef2e2d65576c0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86e199406d9790ea97fef2e2d65576c0">ES8389_REG_ADC_ALC2</a>&#160;&#160;&#160;0x22</td></tr>
+<tr class="separator:a86e199406d9790ea97fef2e2d65576c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0ae571d8ff061a09d89e4ecef1fbb16" id="r_af0ae571d8ff061a09d89e4ecef1fbb16"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0ae571d8ff061a09d89e4ecef1fbb16">ES8389_REG_ADC_ALC3</a>&#160;&#160;&#160;0x23</td></tr>
+<tr class="separator:af0ae571d8ff061a09d89e4ecef1fbb16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf4ac750c75415b562df30b199fdd7d6" id="r_acf4ac750c75415b562df30b199fdd7d6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf4ac750c75415b562df30b199fdd7d6">ES8389_REG_ADC_NG</a>&#160;&#160;&#160;0x24</td></tr>
+<tr class="separator:acf4ac750c75415b562df30b199fdd7d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0304bb3f5a445603d5edbd2ab4e77b5" id="r_ae0304bb3f5a445603d5edbd2ab4e77b5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0304bb3f5a445603d5edbd2ab4e77b5">ES8389_REG_ADC_DRC</a>&#160;&#160;&#160;0x25</td></tr>
+<tr class="separator:ae0304bb3f5a445603d5edbd2ab4e77b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc0090eae99d286526935cfb353a1388" id="r_afc0090eae99d286526935cfb353a1388"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc0090eae99d286526935cfb353a1388">ES8389_REG_ADC_DRC_VOL1</a>&#160;&#160;&#160;0x26</td></tr>
+<tr class="separator:afc0090eae99d286526935cfb353a1388"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04f4a674e923e2f95f2fba40efcf6b05" id="r_a04f4a674e923e2f95f2fba40efcf6b05"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04f4a674e923e2f95f2fba40efcf6b05">ES8389_REG_ADC_DRC_VOL2</a>&#160;&#160;&#160;0x27</td></tr>
+<tr class="separator:a04f4a674e923e2f95f2fba40efcf6b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac12c5d5dcf5b4f11414326563b967e79" id="r_ac12c5d5dcf5b4f11414326563b967e79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac12c5d5dcf5b4f11414326563b967e79">ES8389_REG_ADC_DRC_VOL3</a>&#160;&#160;&#160;0x28</td></tr>
+<tr class="separator:ac12c5d5dcf5b4f11414326563b967e79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedaab506f29a37a1320f2dbe8887c76f" id="r_aedaab506f29a37a1320f2dbe8887c76f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aedaab506f29a37a1320f2dbe8887c76f">ES8389_REG_ADC_ALC4</a>&#160;&#160;&#160;0x2A</td></tr>
+<tr class="separator:aedaab506f29a37a1320f2dbe8887c76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23cd341920dccce9cd139a1b4bdb2319" id="r_a23cd341920dccce9cd139a1b4bdb2319"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23cd341920dccce9cd139a1b4bdb2319">ES8389_REG_DAC_CTRL</a>&#160;&#160;&#160;0x30</td></tr>
+<tr class="separator:a23cd341920dccce9cd139a1b4bdb2319"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d2489f5594ec8c4dc36a2b25dc7e159" id="r_a8d2489f5594ec8c4dc36a2b25dc7e159"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d2489f5594ec8c4dc36a2b25dc7e159">ES8389_REG_DAC_SP</a>&#160;&#160;&#160;0x40</td></tr>
+<tr class="separator:a8d2489f5594ec8c4dc36a2b25dc7e159"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac597836dd90189e3fe61e88c55d4a3de" id="r_ac597836dd90189e3fe61e88c55d4a3de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac597836dd90189e3fe61e88c55d4a3de">ES8389_REG_DAC_FILTER</a>&#160;&#160;&#160;0x41</td></tr>
+<tr class="separator:ac597836dd90189e3fe61e88c55d4a3de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae89d3a77e104d5818f9a8df56408d5d1" id="r_ae89d3a77e104d5818f9a8df56408d5d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae89d3a77e104d5818f9a8df56408d5d1">ES8389_REG_DAC_VOL_MIX</a>&#160;&#160;&#160;0x42</td></tr>
+<tr class="separator:ae89d3a77e104d5818f9a8df56408d5d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5bf6d20622e791765e6b99571c7b3fb" id="r_ac5bf6d20622e791765e6b99571c7b3fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5bf6d20622e791765e6b99571c7b3fb">ES8389_REG_DAC_VOL_L</a>&#160;&#160;&#160;0x46</td></tr>
+<tr class="separator:ac5bf6d20622e791765e6b99571c7b3fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92d81af6fd80b47c85c963aa9d7a6fc8" id="r_a92d81af6fd80b47c85c963aa9d7a6fc8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92d81af6fd80b47c85c963aa9d7a6fc8">ES8389_REG_DAC_VOL_R</a>&#160;&#160;&#160;0x47</td></tr>
+<tr class="separator:a92d81af6fd80b47c85c963aa9d7a6fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab414309b4715388290d511e7ca597f5b" id="r_ab414309b4715388290d511e7ca597f5b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab414309b4715388290d511e7ca597f5b">ES8389_REG_DAC_VOL_MIXC</a>&#160;&#160;&#160;0x48</td></tr>
+<tr class="separator:ab414309b4715388290d511e7ca597f5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42b9dca3c5a7496c32c4585a787b11a5" id="r_a42b9dca3c5a7496c32c4585a787b11a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42b9dca3c5a7496c32c4585a787b11a5">ES8389_REG_DAC_CLKFREE</a>&#160;&#160;&#160;0x4D</td></tr>
+<tr class="separator:a42b9dca3c5a7496c32c4585a787b11a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0faed57f9de1793593bd0c715d6b9ec" id="r_ae0faed57f9de1793593bd0c715d6b9ec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0faed57f9de1793593bd0c715d6b9ec">ES8389_REG_VMID</a>&#160;&#160;&#160;0x60</td></tr>
+<tr class="separator:ae0faed57f9de1793593bd0c715d6b9ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0680660b087d43d83f994d5cee0a606b" id="r_a0680660b087d43d83f994d5cee0a606b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0680660b087d43d83f994d5cee0a606b">ES8389_REG_ANA1</a>&#160;&#160;&#160;0x61</td></tr>
+<tr class="separator:a0680660b087d43d83f994d5cee0a606b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf96e726a4c9eac242f879f57bac57fb" id="r_adf96e726a4c9eac242f879f57bac57fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf96e726a4c9eac242f879f57bac57fb">ES8389_REG_ANA2</a>&#160;&#160;&#160;0x62</td></tr>
+<tr class="separator:adf96e726a4c9eac242f879f57bac57fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2ad280f092f02a406692bff2188ac90" id="r_aa2ad280f092f02a406692bff2188ac90"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2ad280f092f02a406692bff2188ac90">ES8389_REG_ANA3</a>&#160;&#160;&#160;0x63</td></tr>
+<tr class="separator:aa2ad280f092f02a406692bff2188ac90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc14f2c6bc33565c0c44bca4a3d0a6c7" id="r_acc14f2c6bc33565c0c44bca4a3d0a6c7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc14f2c6bc33565c0c44bca4a3d0a6c7">ES8389_REG_ANA4</a>&#160;&#160;&#160;0x64</td></tr>
+<tr class="separator:acc14f2c6bc33565c0c44bca4a3d0a6c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90aad761dd0a9217c9e7c42822ee5e53" id="r_a90aad761dd0a9217c9e7c42822ee5e53"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90aad761dd0a9217c9e7c42822ee5e53">ES8389_REG_ANA5</a>&#160;&#160;&#160;0x69</td></tr>
+<tr class="separator:a90aad761dd0a9217c9e7c42822ee5e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae861174d2cd0ee297caceb4ddcd9671a" id="r_ae861174d2cd0ee297caceb4ddcd9671a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae861174d2cd0ee297caceb4ddcd9671a">ES8389_REG_PGA_L</a>&#160;&#160;&#160;0x72</td></tr>
+<tr class="separator:ae861174d2cd0ee297caceb4ddcd9671a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3778f4b9d180e3856a9ba988113fd9fc" id="r_a3778f4b9d180e3856a9ba988113fd9fc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3778f4b9d180e3856a9ba988113fd9fc">ES8389_REG_PGA_R</a>&#160;&#160;&#160;0x73</td></tr>
+<tr class="separator:a3778f4b9d180e3856a9ba988113fd9fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84ba769a4f551bf2037508a773252079" id="r_a84ba769a4f551bf2037508a773252079"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84ba769a4f551bf2037508a773252079">ES8389_REG_CHIP_MISC</a>&#160;&#160;&#160;0xF0</td></tr>
+<tr class="separator:a84ba769a4f551bf2037508a773252079"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af95e1e70dc8fea310c24e75290da65f4" id="r_af95e1e70dc8fea310c24e75290da65f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af95e1e70dc8fea310c24e75290da65f4">ES8389_REG_CSM_STATE</a>&#160;&#160;&#160;0xF1</td></tr>
+<tr class="separator:af95e1e70dc8fea310c24e75290da65f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb1f8538e73d50b3879d0777b0281b0a" id="r_aeb1f8538e73d50b3879d0777b0281b0a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb1f8538e73d50b3879d0777b0281b0a">ES8389_REG_PULL_DOWN</a>&#160;&#160;&#160;0xF2</td></tr>
+<tr class="separator:aeb1f8538e73d50b3879d0777b0281b0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e245b9a492a0b06cd34696434a2ac3d" id="r_a7e245b9a492a0b06cd34696434a2ac3d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e245b9a492a0b06cd34696434a2ac3d">ES8389_REG_ISOLATION</a>&#160;&#160;&#160;0xF3</td></tr>
+<tr class="separator:a7e245b9a492a0b06cd34696434a2ac3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f385c953c1304cfc6fee398b08860d5" id="r_a4f385c953c1304cfc6fee398b08860d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f385c953c1304cfc6fee398b08860d5">ES8389_FMT_I2S</a>&#160;&#160;&#160;(0 &lt;&lt; 2)</td></tr>
+<tr class="separator:a4f385c953c1304cfc6fee398b08860d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac52f9f01728f61a3ee36b6d8f0a5e44c" id="r_ac52f9f01728f61a3ee36b6d8f0a5e44c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac52f9f01728f61a3ee36b6d8f0a5e44c">ES8389_DATALEN_S16</a>&#160;&#160;&#160;(3 &lt;&lt; 5)</td></tr>
+<tr class="separator:ac52f9f01728f61a3ee36b6d8f0a5e44c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f4537ed71ad001fb296b62da826ccd1" id="r_a1f4537ed71ad001fb296b62da826ccd1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f4537ed71ad001fb296b62da826ccd1">ES8389_DATALEN_MSK</a>&#160;&#160;&#160;(7 &lt;&lt; 5)</td></tr>
+<tr class="separator:a1f4537ed71ad001fb296b62da826ccd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af83f016f69fc2b39ff35cdbe29bd9128" id="r_af83f016f69fc2b39ff35cdbe29bd9128"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af83f016f69fc2b39ff35cdbe29bd9128">ES8389_FMT_MSK</a>&#160;&#160;&#160;(7 &lt;&lt; 2)</td></tr>
+<tr class="separator:af83f016f69fc2b39ff35cdbe29bd9128"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3df0383a2ab2d88d588e8aef07881ac3" id="r_a3df0383a2ab2d88d588e8aef07881ac3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3df0383a2ab2d88d588e8aef07881ac3">ES8389_VOL_HALFDB_BIAS</a>&#160;&#160;&#160;191</td></tr>
+<tr class="separator:a3df0383a2ab2d88d588e8aef07881ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a737dc515436b850289a4c84d78b11dff" id="r_a737dc515436b850289a4c84d78b11dff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a737dc515436b850289a4c84d78b11dff">__VK_ES8389_I2C_TIMEOUT_TICK</a>&#160;&#160;&#160;<a class="el" href="linux__generic_8c.html#a9a944151c756bf58ecb36765a1467c5c">vsf_systimer_ms_to_tick</a>(1000)</td></tr>
+<tr class="separator:a737dc515436b850289a4c84d78b11dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:a3982bb73ee0ed7b9693d0929b0bf3057" id="r_a3982bb73ee0ed7b9693d0929b0bf3057"><td class="memItemLeft" align="right" valign="top">typedef struct vk_es8389_coeff_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3982bb73ee0ed7b9693d0929b0bf3057">vk_es8389_coeff_t</a></td></tr>
+<tr class="separator:a3982bb73ee0ed7b9693d0929b0bf3057"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+枚举</h2></td></tr>
+<tr class="memitem:abc6126af1d45847bc59afa0aa3216b04" id="r_abc6126af1d45847bc59afa0aa3216b04"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="#abc6126af1d45847bc59afa0aa3216b04a9971efda546fc556af24ed12d5a8c3a5">__VK_ES8389_DIR_PLAYBACK</a>
+, <br />
+&#160;&#160;<a class="el" href="#abc6126af1d45847bc59afa0aa3216b04af2a8d7da47fb92397e8be1a99edcabc3">__VK_ES8389_DIR_CAPTURE</a>
+, <br />
+&#160;&#160;<a class="el" href="#abc6126af1d45847bc59afa0aa3216b04a3488458b28c74f5d655acdfc57a7532b">__VK_ES8389_PLAYBACK_MASK</a> = 1 &lt;&lt; __VK_ES8389_DIR_PLAYBACK
+, <br />
+&#160;&#160;<a class="el" href="#abc6126af1d45847bc59afa0aa3216b04a8f9f6107e235dae9ff4ff4ec3ebe245e">__VK_ES8389_CAPTURE_MASK</a> = 1 &lt;&lt; __VK_ES8389_DIR_CAPTURE
+<br />
+ }</td></tr>
+<tr class="separator:abc6126af1d45847bc59afa0aa3216b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc29c2ff13d900c2f185ee95427fb06c" id="r_adc29c2ff13d900c2f185ee95427fb06c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="#adc29c2ff13d900c2f185ee95427fb06cad0af3f026058f20bb4d4c22e096d762a">__VK_ES8389_WAIT_CMD</a>
+, <br />
+&#160;&#160;<a class="el" href="#adc29c2ff13d900c2f185ee95427fb06ca7c5de95a2d6c3807c938639fe0b02008">__VK_ES8389_WAIT_I2C</a>
+, <br />
+&#160;&#160;<a class="el" href="#adc29c2ff13d900c2f185ee95427fb06ca09afffc7c5227071ac99aea65e8cd683">__VK_ES8389_WAIT_RETRY</a>
+, <br />
+&#160;&#160;<a class="el" href="#adc29c2ff13d900c2f185ee95427fb06cae99f24b110ef67bb018cd03d02c58d2a">__VK_ES8389_WAIT_RECOVER</a>
+<br />
+ }</td></tr>
+<tr class="separator:adc29c2ff13d900c2f185ee95427fb06c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61dadd085c1777f559549e05962b2c9e" id="r_a61dadd085c1777f559549e05962b2c9e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="#a61dadd085c1777f559549e05962b2c9ea7318bb6f6f77137b8ae43b83d3a1ae3b">__VK_ES8389_WORK_NONE</a>
+, <br />
+&#160;&#160;<a class="el" href="#a61dadd085c1777f559549e05962b2c9ea7fc21219bc544a30242d9be29da986cd">__VK_ES8389_WORK_OPEN</a>
+, <br />
+&#160;&#160;<a class="el" href="#a61dadd085c1777f559549e05962b2c9eaea045ceb6ce107476cfa7c1da095c9ea">__VK_ES8389_WORK_OPEN_TAIL</a>
+, <br />
+&#160;&#160;<a class="el" href="#a61dadd085c1777f559549e05962b2c9eaae40ef5cc718d1252b48026a6e0bf10e">__VK_ES8389_WORK_SET_FS</a>
+, <br />
+&#160;&#160;<a class="el" href="#a61dadd085c1777f559549e05962b2c9ea9dcb61d305e24d68b9b0685029387df4">__VK_ES8389_WORK_ENABLE_PLAYBACK</a>
+, <br />
+&#160;&#160;<a class="el" href="#a61dadd085c1777f559549e05962b2c9ea8a792f9304becd2d1fcf5f9d291eb9d9">__VK_ES8389_WORK_ENABLE_BIAS</a>
+, <br />
+&#160;&#160;<a class="el" href="#a61dadd085c1777f559549e05962b2c9ea52e01792fb3fc7078274e243960d6556">__VK_ES8389_WORK_DEFAULT_VOLUME</a>
+, <br />
+&#160;&#160;<a class="el" href="#a61dadd085c1777f559549e05962b2c9ea5c7455883239ecdd23fc7d5b09f995fc">__VK_ES8389_WORK_ENABLE_CAPTURE</a>
+, <br />
+&#160;&#160;<a class="el" href="#a61dadd085c1777f559549e05962b2c9ea55d47cf4685922bf211b89a92deca572">__VK_ES8389_WORK_CONTROL</a>
+, <br />
+&#160;&#160;<a class="el" href="#a61dadd085c1777f559549e05962b2c9ea5b268a8db4266d394ff68c3c4e0215fb">__VK_ES8389_WORK_QUIESCE</a>
+<br />
+ }</td></tr>
+<tr class="separator:a61dadd085c1777f559549e05962b2c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a726ca809ffd3d67ab4b8476646f26635" id="r_a726ca809ffd3d67ab4b8476646f26635"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="#a726ca809ffd3d67ab4b8476646f26635a15f63e0e5691d46681680afba6dc15ca">__VK_ES8389_XFER_WRITE</a>
+, <br />
+&#160;&#160;<a class="el" href="#a726ca809ffd3d67ab4b8476646f26635ae98540dc905162b256d77c8d2321d10f">__VK_ES8389_XFER_READ_ADDR</a>
+, <br />
+&#160;&#160;<a class="el" href="#a726ca809ffd3d67ab4b8476646f26635a86b3e1260bf83f4d165fc28aedaf28be">__VK_ES8389_XFER_READ_DATA</a>
+<br />
+ }</td></tr>
+<tr class="separator:a726ca809ffd3d67ab4b8476646f26635"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:aa326b2913f8f45c8429094f9d2407cf3" id="r_aa326b2913f8f45c8429094f9d2407cf3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa326b2913f8f45c8429094f9d2407cf3">dcl_vsf_peda_methods</a> (dcl_vsf_peda_methods(static, __vk_es8389_init)</td></tr>
+<tr class="separator:aa326b2913f8f45c8429094f9d2407cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7c33f9a1d9775d7e286b655fc127ed4" id="r_ac7c33f9a1d9775d7e286b655fc127ed4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7c33f9a1d9775d7e286b655fc127ed4">__vsf_component_peda_ifs_entry</a> (__vk_es8389_playback_control, <a class="el" href="vsf__audio_8c.html#a06ffd0eb1b8f5ae4734e1b1fb88360f4">vk_audio_control</a>)</td></tr>
+<tr class="separator:ac7c33f9a1d9775d7e286b655fc127ed4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a862e978fc92dad50eaf63291ddfed791" id="r_a862e978fc92dad50eaf63291ddfed791"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a862e978fc92dad50eaf63291ddfed791">__vsf_component_peda_ifs_entry</a> (__vk_es8389_playback_start, <a class="el" href="vsf__audio_8c.html#af43abf63cd96f2f782f2aea8924299be">vk_audio_start</a>)</td></tr>
+<tr class="separator:a862e978fc92dad50eaf63291ddfed791"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0679c2a6954f01b3607304effa4fd6b" id="r_ad0679c2a6954f01b3607304effa4fd6b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0679c2a6954f01b3607304effa4fd6b">__vsf_component_peda_ifs_entry</a> (__vk_es8389_playback_stop, <a class="el" href="vsf__audio_8c.html#a256ae510e3e3dbcba90c18c0069d1a36">vk_audio_stop</a>)</td></tr>
+<tr class="separator:ad0679c2a6954f01b3607304effa4fd6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a356943a757d1c24e69784d4dbc8cc50c" id="r_a356943a757d1c24e69784d4dbc8cc50c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a356943a757d1c24e69784d4dbc8cc50c">__vsf_component_peda_ifs_entry</a> (__vk_es8389_capture_control, <a class="el" href="vsf__audio_8c.html#a06ffd0eb1b8f5ae4734e1b1fb88360f4">vk_audio_control</a>)</td></tr>
+<tr class="separator:a356943a757d1c24e69784d4dbc8cc50c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaba49cde44982eb5f068f77fe27b2473" id="r_aaba49cde44982eb5f068f77fe27b2473"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaba49cde44982eb5f068f77fe27b2473">__vsf_component_peda_ifs_entry</a> (__vk_es8389_capture_start, <a class="el" href="vsf__audio_8c.html#af43abf63cd96f2f782f2aea8924299be">vk_audio_start</a>)</td></tr>
+<tr class="separator:aaba49cde44982eb5f068f77fe27b2473"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbf3c4c298fcd28c0d93c0032beaac51" id="r_afbf3c4c298fcd28c0d93c0032beaac51"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbf3c4c298fcd28c0d93c0032beaac51">__vsf_component_peda_ifs_entry</a> (__vk_es8389_capture_stop, <a class="el" href="vsf__audio_8c.html#a256ae510e3e3dbcba90c18c0069d1a36">vk_audio_stop</a>)</td></tr>
+<tr class="separator:afbf3c4c298fcd28c0d93c0032beaac51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11b188f5e9a790d9ae52739336637432" id="r_a11b188f5e9a790d9ae52739336637432"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11b188f5e9a790d9ae52739336637432">__vsf_component_peda_ifs_entry</a> (__vk_es8389_init, <a class="el" href="vsf__audio_8c.html#adce5ebb036d84eb254da5341b1923c1f">vk_audio_init</a>)</td></tr>
+<tr class="separator:a11b188f5e9a790d9ae52739336637432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="aa1035a7e2f7cab98d09c1202a165f0e1" name="aa1035a7e2f7cab98d09c1202a165f0e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1035a7e2f7cab98d09c1202a165f0e1">&#9670;&#160;</a></span>__VSF_AUDIO_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_AUDIO_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section note"><dt>注解</dt><dd>ES8389 stereo audio codec control plane(i2c slave 0x20 default). Register facts + sequences learned from esp_codec_dev v1.6.2 (Apache-2.0, device/es8389/es8389.c) and re-expressed in vsf terms - no SDK text copied. The codec runs as i2s SLAVE with its clock recovered from BCLK(no MCLK pad), which is how the vendor reference boards wire it. The device stacks on <a class="el" href="classvk__audio__i2s__dev__t.html">vk_audio_i2s_dev_t</a>: the audio data plane is entirely the generic i2s adapter's, this file only adds the codec register plane. </dd></dl>
+
+</div>
+</div>
+<a id="a9760effea1284478b76d88da2c2f4230" name="a9760effea1284478b76d88da2c2f4230"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9760effea1284478b76d88da2c2f4230">&#9670;&#160;</a></span>__VSF_AUDIO_I2S_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_AUDIO_I2S_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae68af52b29d55a0d7474c656fd71d931" name="ae68af52b29d55a0d7474c656fd71d931"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae68af52b29d55a0d7474c656fd71d931">&#9670;&#160;</a></span>__VSF_EDA_CLASS_INHERIT__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_EDA_CLASS_INHERIT__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad23d391655537e1d8634a121c95831f7" name="ad23d391655537e1d8634a121c95831f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad23d391655537e1d8634a121c95831f7">&#9670;&#160;</a></span>__VSF_ES8389_CLASS_IMPLEMENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VSF_ES8389_CLASS_IMPLEMENT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad4ac386f63a7aa5fc0f9e302c1eba682" name="ad4ac386f63a7aa5fc0f9e302c1eba682"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4ac386f63a7aa5fc0f9e302c1eba682">&#9670;&#160;</a></span>ES8389_REG_RESET</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_RESET&#160;&#160;&#160;0x00</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4279bebf484355e84252209dd18368e6" name="a4279bebf484355e84252209dd18368e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4279bebf484355e84252209dd18368e6">&#9670;&#160;</a></span>ES8389_REG_MISC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_MISC&#160;&#160;&#160;0x01</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3ca56e887af672bd8ceedb208014f551" name="a3ca56e887af672bd8ceedb208014f551"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ca56e887af672bd8ceedb208014f551">&#9670;&#160;</a></span>ES8389_REG_CLK_STATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_STATE&#160;&#160;&#160;0x02</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a260c6922bf5bdf494d880e9a970b2b09" name="a260c6922bf5bdf494d880e9a970b2b09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a260c6922bf5bdf494d880e9a970b2b09">&#9670;&#160;</a></span>ES8389_REG_CLK_SYS_DIV</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_SYS_DIV&#160;&#160;&#160;0x03</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a504a4dba081bd78a2164104013f01345" name="a504a4dba081bd78a2164104013f01345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a504a4dba081bd78a2164104013f01345">&#9670;&#160;</a></span>ES8389_REG_CLK_PLL1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_PLL1&#160;&#160;&#160;0x04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a393f1025d2a918abf011dd694623c9e8" name="a393f1025d2a918abf011dd694623c9e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a393f1025d2a918abf011dd694623c9e8">&#9670;&#160;</a></span>ES8389_REG_CLK_PLL2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_PLL2&#160;&#160;&#160;0x05</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac1f45b98c4e46a3c6ae214d04b7387cb" name="ac1f45b98c4e46a3c6ae214d04b7387cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1f45b98c4e46a3c6ae214d04b7387cb">&#9670;&#160;</a></span>ES8389_REG_CLK_PLL3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_PLL3&#160;&#160;&#160;0x06</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23e2a874b8cd592414ca591d67600f26" name="a23e2a874b8cd592414ca591d67600f26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23e2a874b8cd592414ca591d67600f26">&#9670;&#160;</a></span>ES8389_REG_CLK_PLL4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_PLL4&#160;&#160;&#160;0x07</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a971cc43fe28faf2a43a0bee8cca2dcb7" name="a971cc43fe28faf2a43a0bee8cca2dcb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a971cc43fe28faf2a43a0bee8cca2dcb7">&#9670;&#160;</a></span>ES8389_REG_CLK_PLL5</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_PLL5&#160;&#160;&#160;0x08</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8fe454b814671f106e0cc8753f506621" name="a8fe454b814671f106e0cc8753f506621"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fe454b814671f106e0cc8753f506621">&#9670;&#160;</a></span>ES8389_REG_CLK_PLL6</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_PLL6&#160;&#160;&#160;0x09</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9b15fbcd9049c4ecbfa01c3cbd95a464" name="a9b15fbcd9049c4ecbfa01c3cbd95a464"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b15fbcd9049c4ecbfa01c3cbd95a464">&#9670;&#160;</a></span>ES8389_REG_CLK_DIV_L</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_DIV_L&#160;&#160;&#160;0x0A</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa25ea4e4d0fc70073448b3b6234d33d9" name="aa25ea4e4d0fc70073448b3b6234d33d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa25ea4e4d0fc70073448b3b6234d33d9">&#9670;&#160;</a></span>ES8389_REG_CLK_DIV_M</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_DIV_M&#160;&#160;&#160;0x0B</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b4cfb5669c67aeb82c59e2757393c66" name="a7b4cfb5669c67aeb82c59e2757393c66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b4cfb5669c67aeb82c59e2757393c66">&#9670;&#160;</a></span>ES8389_REG_FMT_DACADC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_FMT_DACADC&#160;&#160;&#160;0x0C</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3182bc3e2ec4777425ea1cfe4578e2d7" name="a3182bc3e2ec4777425ea1cfe4578e2d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3182bc3e2ec4777425ea1cfe4578e2d7">&#9670;&#160;</a></span>ES8389_REG_CLK_ADC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_ADC&#160;&#160;&#160;0x0F</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a70c8d6ac39858be3cdad791985bf1c19" name="a70c8d6ac39858be3cdad791985bf1c19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70c8d6ac39858be3cdad791985bf1c19">&#9670;&#160;</a></span>ES8389_REG_CLK_DAC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_DAC&#160;&#160;&#160;0x10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af77f6b66928eceb0c586badd36f1f06a" name="af77f6b66928eceb0c586badd36f1f06a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af77f6b66928eceb0c586badd36f1f06a">&#9670;&#160;</a></span>ES8389_REG_CLK_ADCDIV1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_ADCDIV1&#160;&#160;&#160;0x11</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f47590aadb6cff668f7c86c0230e3b8" name="a4f47590aadb6cff668f7c86c0230e3b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f47590aadb6cff668f7c86c0230e3b8">&#9670;&#160;</a></span>ES8389_REG_CLK_DACDIV1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_DACDIV1&#160;&#160;&#160;0x12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a61c5fc944c94d7490f7ed3f020138146" name="a61c5fc944c94d7490f7ed3f020138146"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61c5fc944c94d7490f7ed3f020138146">&#9670;&#160;</a></span>ES8389_REG_CLK_DACDIV2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_DACDIV2&#160;&#160;&#160;0x13</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af97b81bc566608f50d835b74ba56f430" name="af97b81bc566608f50d835b74ba56f430"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af97b81bc566608f50d835b74ba56f430">&#9670;&#160;</a></span>ES8389_REG_CLK_ADCDIV3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_ADCDIV3&#160;&#160;&#160;0x14</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a21bcedc59dae61be67a0463f5490337d" name="a21bcedc59dae61be67a0463f5490337d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21bcedc59dae61be67a0463f5490337d">&#9670;&#160;</a></span>ES8389_REG_CLK_ADCDIV4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CLK_ADCDIV4&#160;&#160;&#160;0x15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a65ca01cc75a197ff9dd564aa5170ce2e" name="a65ca01cc75a197ff9dd564aa5170ce2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65ca01cc75a197ff9dd564aa5170ce2e">&#9670;&#160;</a></span>ES8389_REG_ADC_MCLK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ADC_MCLK&#160;&#160;&#160;0x16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a474af8762d64aca01cfe5299ca0db7c3" name="a474af8762d64aca01cfe5299ca0db7c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a474af8762d64aca01cfe5299ca0db7c3">&#9670;&#160;</a></span>ES8389_REG_ADC_DIV_L</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ADC_DIV_L&#160;&#160;&#160;0x17</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae1b8c62eb09e35babf7dc07294b8e237" name="ae1b8c62eb09e35babf7dc07294b8e237"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1b8c62eb09e35babf7dc07294b8e237">&#9670;&#160;</a></span>ES8389_REG_ADC_DIV_M</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ADC_DIV_M&#160;&#160;&#160;0x18</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aecdaefbf93a86c69094f64228cacb7cc" name="aecdaefbf93a86c69094f64228cacb7cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecdaefbf93a86c69094f64228cacb7cc">&#9670;&#160;</a></span>ES8389_REG_ADC_DIV_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ADC_DIV_H&#160;&#160;&#160;0x19</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a53a47e45ce4e4deb7bec54bf924dedd9" name="a53a47e45ce4e4deb7bec54bf924dedd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53a47e45ce4e4deb7bec54bf924dedd9">&#9670;&#160;</a></span>ES8389_REG_ADC_DACLRC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ADC_DACLRC&#160;&#160;&#160;0x1A</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af61fe7b2a9720ba27099b3467c89e3a1" name="af61fe7b2a9720ba27099b3467c89e3a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af61fe7b2a9720ba27099b3467c89e3a1">&#9670;&#160;</a></span>ES8389_REG_DAC_DACLRC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_DAC_DACLRC&#160;&#160;&#160;0x1B</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3a6ef5bdc0e6c3638c748a7a74348816" name="a3a6ef5bdc0e6c3638c748a7a74348816"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a6ef5bdc0e6c3638c748a7a74348816">&#9670;&#160;</a></span>ES8389_REG_ADC_SP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ADC_SP&#160;&#160;&#160;0x20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa492e014936a9616100133229f6a0daf" name="aa492e014936a9616100133229f6a0daf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa492e014936a9616100133229f6a0daf">&#9670;&#160;</a></span>ES8389_REG_ADC_ALC1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ADC_ALC1&#160;&#160;&#160;0x21</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a86e199406d9790ea97fef2e2d65576c0" name="a86e199406d9790ea97fef2e2d65576c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86e199406d9790ea97fef2e2d65576c0">&#9670;&#160;</a></span>ES8389_REG_ADC_ALC2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ADC_ALC2&#160;&#160;&#160;0x22</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af0ae571d8ff061a09d89e4ecef1fbb16" name="af0ae571d8ff061a09d89e4ecef1fbb16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0ae571d8ff061a09d89e4ecef1fbb16">&#9670;&#160;</a></span>ES8389_REG_ADC_ALC3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ADC_ALC3&#160;&#160;&#160;0x23</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf4ac750c75415b562df30b199fdd7d6" name="acf4ac750c75415b562df30b199fdd7d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf4ac750c75415b562df30b199fdd7d6">&#9670;&#160;</a></span>ES8389_REG_ADC_NG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ADC_NG&#160;&#160;&#160;0x24</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae0304bb3f5a445603d5edbd2ab4e77b5" name="ae0304bb3f5a445603d5edbd2ab4e77b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0304bb3f5a445603d5edbd2ab4e77b5">&#9670;&#160;</a></span>ES8389_REG_ADC_DRC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ADC_DRC&#160;&#160;&#160;0x25</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afc0090eae99d286526935cfb353a1388" name="afc0090eae99d286526935cfb353a1388"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc0090eae99d286526935cfb353a1388">&#9670;&#160;</a></span>ES8389_REG_ADC_DRC_VOL1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ADC_DRC_VOL1&#160;&#160;&#160;0x26</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a04f4a674e923e2f95f2fba40efcf6b05" name="a04f4a674e923e2f95f2fba40efcf6b05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04f4a674e923e2f95f2fba40efcf6b05">&#9670;&#160;</a></span>ES8389_REG_ADC_DRC_VOL2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ADC_DRC_VOL2&#160;&#160;&#160;0x27</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac12c5d5dcf5b4f11414326563b967e79" name="ac12c5d5dcf5b4f11414326563b967e79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac12c5d5dcf5b4f11414326563b967e79">&#9670;&#160;</a></span>ES8389_REG_ADC_DRC_VOL3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ADC_DRC_VOL3&#160;&#160;&#160;0x28</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aedaab506f29a37a1320f2dbe8887c76f" name="aedaab506f29a37a1320f2dbe8887c76f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedaab506f29a37a1320f2dbe8887c76f">&#9670;&#160;</a></span>ES8389_REG_ADC_ALC4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ADC_ALC4&#160;&#160;&#160;0x2A</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23cd341920dccce9cd139a1b4bdb2319" name="a23cd341920dccce9cd139a1b4bdb2319"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23cd341920dccce9cd139a1b4bdb2319">&#9670;&#160;</a></span>ES8389_REG_DAC_CTRL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_DAC_CTRL&#160;&#160;&#160;0x30</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8d2489f5594ec8c4dc36a2b25dc7e159" name="a8d2489f5594ec8c4dc36a2b25dc7e159"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d2489f5594ec8c4dc36a2b25dc7e159">&#9670;&#160;</a></span>ES8389_REG_DAC_SP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_DAC_SP&#160;&#160;&#160;0x40</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac597836dd90189e3fe61e88c55d4a3de" name="ac597836dd90189e3fe61e88c55d4a3de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac597836dd90189e3fe61e88c55d4a3de">&#9670;&#160;</a></span>ES8389_REG_DAC_FILTER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_DAC_FILTER&#160;&#160;&#160;0x41</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae89d3a77e104d5818f9a8df56408d5d1" name="ae89d3a77e104d5818f9a8df56408d5d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae89d3a77e104d5818f9a8df56408d5d1">&#9670;&#160;</a></span>ES8389_REG_DAC_VOL_MIX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_DAC_VOL_MIX&#160;&#160;&#160;0x42</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac5bf6d20622e791765e6b99571c7b3fb" name="ac5bf6d20622e791765e6b99571c7b3fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5bf6d20622e791765e6b99571c7b3fb">&#9670;&#160;</a></span>ES8389_REG_DAC_VOL_L</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_DAC_VOL_L&#160;&#160;&#160;0x46</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a92d81af6fd80b47c85c963aa9d7a6fc8" name="a92d81af6fd80b47c85c963aa9d7a6fc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92d81af6fd80b47c85c963aa9d7a6fc8">&#9670;&#160;</a></span>ES8389_REG_DAC_VOL_R</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_DAC_VOL_R&#160;&#160;&#160;0x47</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab414309b4715388290d511e7ca597f5b" name="ab414309b4715388290d511e7ca597f5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab414309b4715388290d511e7ca597f5b">&#9670;&#160;</a></span>ES8389_REG_DAC_VOL_MIXC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_DAC_VOL_MIXC&#160;&#160;&#160;0x48</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42b9dca3c5a7496c32c4585a787b11a5" name="a42b9dca3c5a7496c32c4585a787b11a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42b9dca3c5a7496c32c4585a787b11a5">&#9670;&#160;</a></span>ES8389_REG_DAC_CLKFREE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_DAC_CLKFREE&#160;&#160;&#160;0x4D</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae0faed57f9de1793593bd0c715d6b9ec" name="ae0faed57f9de1793593bd0c715d6b9ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0faed57f9de1793593bd0c715d6b9ec">&#9670;&#160;</a></span>ES8389_REG_VMID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_VMID&#160;&#160;&#160;0x60</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0680660b087d43d83f994d5cee0a606b" name="a0680660b087d43d83f994d5cee0a606b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0680660b087d43d83f994d5cee0a606b">&#9670;&#160;</a></span>ES8389_REG_ANA1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ANA1&#160;&#160;&#160;0x61</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf96e726a4c9eac242f879f57bac57fb" name="adf96e726a4c9eac242f879f57bac57fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf96e726a4c9eac242f879f57bac57fb">&#9670;&#160;</a></span>ES8389_REG_ANA2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ANA2&#160;&#160;&#160;0x62</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa2ad280f092f02a406692bff2188ac90" name="aa2ad280f092f02a406692bff2188ac90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2ad280f092f02a406692bff2188ac90">&#9670;&#160;</a></span>ES8389_REG_ANA3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ANA3&#160;&#160;&#160;0x63</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acc14f2c6bc33565c0c44bca4a3d0a6c7" name="acc14f2c6bc33565c0c44bca4a3d0a6c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc14f2c6bc33565c0c44bca4a3d0a6c7">&#9670;&#160;</a></span>ES8389_REG_ANA4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ANA4&#160;&#160;&#160;0x64</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a90aad761dd0a9217c9e7c42822ee5e53" name="a90aad761dd0a9217c9e7c42822ee5e53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90aad761dd0a9217c9e7c42822ee5e53">&#9670;&#160;</a></span>ES8389_REG_ANA5</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ANA5&#160;&#160;&#160;0x69</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae861174d2cd0ee297caceb4ddcd9671a" name="ae861174d2cd0ee297caceb4ddcd9671a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae861174d2cd0ee297caceb4ddcd9671a">&#9670;&#160;</a></span>ES8389_REG_PGA_L</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_PGA_L&#160;&#160;&#160;0x72</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3778f4b9d180e3856a9ba988113fd9fc" name="a3778f4b9d180e3856a9ba988113fd9fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3778f4b9d180e3856a9ba988113fd9fc">&#9670;&#160;</a></span>ES8389_REG_PGA_R</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_PGA_R&#160;&#160;&#160;0x73</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a84ba769a4f551bf2037508a773252079" name="a84ba769a4f551bf2037508a773252079"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84ba769a4f551bf2037508a773252079">&#9670;&#160;</a></span>ES8389_REG_CHIP_MISC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CHIP_MISC&#160;&#160;&#160;0xF0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af95e1e70dc8fea310c24e75290da65f4" name="af95e1e70dc8fea310c24e75290da65f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af95e1e70dc8fea310c24e75290da65f4">&#9670;&#160;</a></span>ES8389_REG_CSM_STATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_CSM_STATE&#160;&#160;&#160;0xF1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb1f8538e73d50b3879d0777b0281b0a" name="aeb1f8538e73d50b3879d0777b0281b0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb1f8538e73d50b3879d0777b0281b0a">&#9670;&#160;</a></span>ES8389_REG_PULL_DOWN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_PULL_DOWN&#160;&#160;&#160;0xF2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7e245b9a492a0b06cd34696434a2ac3d" name="a7e245b9a492a0b06cd34696434a2ac3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e245b9a492a0b06cd34696434a2ac3d">&#9670;&#160;</a></span>ES8389_REG_ISOLATION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_REG_ISOLATION&#160;&#160;&#160;0xF3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f385c953c1304cfc6fee398b08860d5" name="a4f385c953c1304cfc6fee398b08860d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f385c953c1304cfc6fee398b08860d5">&#9670;&#160;</a></span>ES8389_FMT_I2S</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_FMT_I2S&#160;&#160;&#160;(0 &lt;&lt; 2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac52f9f01728f61a3ee36b6d8f0a5e44c" name="ac52f9f01728f61a3ee36b6d8f0a5e44c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac52f9f01728f61a3ee36b6d8f0a5e44c">&#9670;&#160;</a></span>ES8389_DATALEN_S16</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_DATALEN_S16&#160;&#160;&#160;(3 &lt;&lt; 5)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1f4537ed71ad001fb296b62da826ccd1" name="a1f4537ed71ad001fb296b62da826ccd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f4537ed71ad001fb296b62da826ccd1">&#9670;&#160;</a></span>ES8389_DATALEN_MSK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_DATALEN_MSK&#160;&#160;&#160;(7 &lt;&lt; 5)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af83f016f69fc2b39ff35cdbe29bd9128" name="af83f016f69fc2b39ff35cdbe29bd9128"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af83f016f69fc2b39ff35cdbe29bd9128">&#9670;&#160;</a></span>ES8389_FMT_MSK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_FMT_MSK&#160;&#160;&#160;(7 &lt;&lt; 2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3df0383a2ab2d88d588e8aef07881ac3" name="a3df0383a2ab2d88d588e8aef07881ac3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3df0383a2ab2d88d588e8aef07881ac3">&#9670;&#160;</a></span>ES8389_VOL_HALFDB_BIAS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ES8389_VOL_HALFDB_BIAS&#160;&#160;&#160;191</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a737dc515436b850289a4c84d78b11dff" name="a737dc515436b850289a4c84d78b11dff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a737dc515436b850289a4c84d78b11dff">&#9670;&#160;</a></span>__VK_ES8389_I2C_TIMEOUT_TICK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __VK_ES8389_I2C_TIMEOUT_TICK&#160;&#160;&#160;<a class="el" href="linux__generic_8c.html#a9a944151c756bf58ecb36765a1467c5c">vsf_systimer_ms_to_tick</a>(1000)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类型定义说明</h2>
+<a id="a3982bb73ee0ed7b9693d0929b0bf3057" name="a3982bb73ee0ed7b9693d0929b0bf3057"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3982bb73ee0ed7b9693d0929b0bf3057">&#9670;&#160;</a></span>vk_es8389_coeff_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct vk_es8389_coeff_t vk_es8389_coeff_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">枚举类型说明</h2>
+<a id="abc6126af1d45847bc59afa0aa3216b04" name="abc6126af1d45847bc59afa0aa3216b04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc6126af1d45847bc59afa0aa3216b04">&#9670;&#160;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="abc6126af1d45847bc59afa0aa3216b04a9971efda546fc556af24ed12d5a8c3a5" name="abc6126af1d45847bc59afa0aa3216b04a9971efda546fc556af24ed12d5a8c3a5"></a>__VK_ES8389_DIR_PLAYBACK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abc6126af1d45847bc59afa0aa3216b04af2a8d7da47fb92397e8be1a99edcabc3" name="abc6126af1d45847bc59afa0aa3216b04af2a8d7da47fb92397e8be1a99edcabc3"></a>__VK_ES8389_DIR_CAPTURE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abc6126af1d45847bc59afa0aa3216b04a3488458b28c74f5d655acdfc57a7532b" name="abc6126af1d45847bc59afa0aa3216b04a3488458b28c74f5d655acdfc57a7532b"></a>__VK_ES8389_PLAYBACK_MASK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abc6126af1d45847bc59afa0aa3216b04a8f9f6107e235dae9ff4ff4ec3ebe245e" name="abc6126af1d45847bc59afa0aa3216b04a8f9f6107e235dae9ff4ff4ec3ebe245e"></a>__VK_ES8389_CAPTURE_MASK&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="adc29c2ff13d900c2f185ee95427fb06c" name="adc29c2ff13d900c2f185ee95427fb06c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc29c2ff13d900c2f185ee95427fb06c">&#9670;&#160;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="adc29c2ff13d900c2f185ee95427fb06cad0af3f026058f20bb4d4c22e096d762a" name="adc29c2ff13d900c2f185ee95427fb06cad0af3f026058f20bb4d4c22e096d762a"></a>__VK_ES8389_WAIT_CMD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adc29c2ff13d900c2f185ee95427fb06ca7c5de95a2d6c3807c938639fe0b02008" name="adc29c2ff13d900c2f185ee95427fb06ca7c5de95a2d6c3807c938639fe0b02008"></a>__VK_ES8389_WAIT_I2C&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adc29c2ff13d900c2f185ee95427fb06ca09afffc7c5227071ac99aea65e8cd683" name="adc29c2ff13d900c2f185ee95427fb06ca09afffc7c5227071ac99aea65e8cd683"></a>__VK_ES8389_WAIT_RETRY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adc29c2ff13d900c2f185ee95427fb06cae99f24b110ef67bb018cd03d02c58d2a" name="adc29c2ff13d900c2f185ee95427fb06cae99f24b110ef67bb018cd03d02c58d2a"></a>__VK_ES8389_WAIT_RECOVER&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a61dadd085c1777f559549e05962b2c9e" name="a61dadd085c1777f559549e05962b2c9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61dadd085c1777f559549e05962b2c9e">&#9670;&#160;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a61dadd085c1777f559549e05962b2c9ea7318bb6f6f77137b8ae43b83d3a1ae3b" name="a61dadd085c1777f559549e05962b2c9ea7318bb6f6f77137b8ae43b83d3a1ae3b"></a>__VK_ES8389_WORK_NONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a61dadd085c1777f559549e05962b2c9ea7fc21219bc544a30242d9be29da986cd" name="a61dadd085c1777f559549e05962b2c9ea7fc21219bc544a30242d9be29da986cd"></a>__VK_ES8389_WORK_OPEN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a61dadd085c1777f559549e05962b2c9eaea045ceb6ce107476cfa7c1da095c9ea" name="a61dadd085c1777f559549e05962b2c9eaea045ceb6ce107476cfa7c1da095c9ea"></a>__VK_ES8389_WORK_OPEN_TAIL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a61dadd085c1777f559549e05962b2c9eaae40ef5cc718d1252b48026a6e0bf10e" name="a61dadd085c1777f559549e05962b2c9eaae40ef5cc718d1252b48026a6e0bf10e"></a>__VK_ES8389_WORK_SET_FS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a61dadd085c1777f559549e05962b2c9ea9dcb61d305e24d68b9b0685029387df4" name="a61dadd085c1777f559549e05962b2c9ea9dcb61d305e24d68b9b0685029387df4"></a>__VK_ES8389_WORK_ENABLE_PLAYBACK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a61dadd085c1777f559549e05962b2c9ea8a792f9304becd2d1fcf5f9d291eb9d9" name="a61dadd085c1777f559549e05962b2c9ea8a792f9304becd2d1fcf5f9d291eb9d9"></a>__VK_ES8389_WORK_ENABLE_BIAS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a61dadd085c1777f559549e05962b2c9ea52e01792fb3fc7078274e243960d6556" name="a61dadd085c1777f559549e05962b2c9ea52e01792fb3fc7078274e243960d6556"></a>__VK_ES8389_WORK_DEFAULT_VOLUME&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a61dadd085c1777f559549e05962b2c9ea5c7455883239ecdd23fc7d5b09f995fc" name="a61dadd085c1777f559549e05962b2c9ea5c7455883239ecdd23fc7d5b09f995fc"></a>__VK_ES8389_WORK_ENABLE_CAPTURE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a61dadd085c1777f559549e05962b2c9ea55d47cf4685922bf211b89a92deca572" name="a61dadd085c1777f559549e05962b2c9ea55d47cf4685922bf211b89a92deca572"></a>__VK_ES8389_WORK_CONTROL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a61dadd085c1777f559549e05962b2c9ea5b268a8db4266d394ff68c3c4e0215fb" name="a61dadd085c1777f559549e05962b2c9ea5b268a8db4266d394ff68c3c4e0215fb"></a>__VK_ES8389_WORK_QUIESCE&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a726ca809ffd3d67ab4b8476646f26635" name="a726ca809ffd3d67ab4b8476646f26635"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a726ca809ffd3d67ab4b8476646f26635">&#9670;&#160;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a726ca809ffd3d67ab4b8476646f26635a15f63e0e5691d46681680afba6dc15ca" name="a726ca809ffd3d67ab4b8476646f26635a15f63e0e5691d46681680afba6dc15ca"></a>__VK_ES8389_XFER_WRITE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a726ca809ffd3d67ab4b8476646f26635ae98540dc905162b256d77c8d2321d10f" name="a726ca809ffd3d67ab4b8476646f26635ae98540dc905162b256d77c8d2321d10f"></a>__VK_ES8389_XFER_READ_ADDR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a726ca809ffd3d67ab4b8476646f26635a86b3e1260bf83f4d165fc28aedaf28be" name="a726ca809ffd3d67ab4b8476646f26635a86b3e1260bf83f4d165fc28aedaf28be"></a>__VK_ES8389_XFER_READ_DATA&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="aa326b2913f8f45c8429094f9d2407cf3" name="aa326b2913f8f45c8429094f9d2407cf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa326b2913f8f45c8429094f9d2407cf3">&#9670;&#160;</a></span>dcl_vsf_peda_methods()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dcl_vsf_peda_methods </td>
+          <td>(</td>
+          <td class="paramtype">dcl_vsf_peda_methods(</td>          <td class="paramname"><span class="paramname"><em>static</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">__vk_es8389_init</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac7c33f9a1d9775d7e286b655fc127ed4" name="ac7c33f9a1d9775d7e286b655fc127ed4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7c33f9a1d9775d7e286b655fc127ed4">&#9670;&#160;</a></span>__vsf_component_peda_ifs_entry() <span class="overload">[1/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__vsf_component_peda_ifs_entry </td>
+          <td>(</td>
+          <td class="paramtype">__vk_es8389_playback_control</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__audio_8c.html#a06ffd0eb1b8f5ae4734e1b1fb88360f4">vk_audio_control</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a862e978fc92dad50eaf63291ddfed791" name="a862e978fc92dad50eaf63291ddfed791"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a862e978fc92dad50eaf63291ddfed791">&#9670;&#160;</a></span>__vsf_component_peda_ifs_entry() <span class="overload">[2/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__vsf_component_peda_ifs_entry </td>
+          <td>(</td>
+          <td class="paramtype">__vk_es8389_playback_start</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__audio_8c.html#af43abf63cd96f2f782f2aea8924299be">vk_audio_start</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0679c2a6954f01b3607304effa4fd6b" name="ad0679c2a6954f01b3607304effa4fd6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0679c2a6954f01b3607304effa4fd6b">&#9670;&#160;</a></span>__vsf_component_peda_ifs_entry() <span class="overload">[3/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__vsf_component_peda_ifs_entry </td>
+          <td>(</td>
+          <td class="paramtype">__vk_es8389_playback_stop</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__audio_8c.html#a256ae510e3e3dbcba90c18c0069d1a36">vk_audio_stop</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a356943a757d1c24e69784d4dbc8cc50c" name="a356943a757d1c24e69784d4dbc8cc50c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a356943a757d1c24e69784d4dbc8cc50c">&#9670;&#160;</a></span>__vsf_component_peda_ifs_entry() <span class="overload">[4/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__vsf_component_peda_ifs_entry </td>
+          <td>(</td>
+          <td class="paramtype">__vk_es8389_capture_control</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__audio_8c.html#a06ffd0eb1b8f5ae4734e1b1fb88360f4">vk_audio_control</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaba49cde44982eb5f068f77fe27b2473" name="aaba49cde44982eb5f068f77fe27b2473"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaba49cde44982eb5f068f77fe27b2473">&#9670;&#160;</a></span>__vsf_component_peda_ifs_entry() <span class="overload">[5/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__vsf_component_peda_ifs_entry </td>
+          <td>(</td>
+          <td class="paramtype">__vk_es8389_capture_start</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__audio_8c.html#af43abf63cd96f2f782f2aea8924299be">vk_audio_start</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afbf3c4c298fcd28c0d93c0032beaac51" name="afbf3c4c298fcd28c0d93c0032beaac51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbf3c4c298fcd28c0d93c0032beaac51">&#9670;&#160;</a></span>__vsf_component_peda_ifs_entry() <span class="overload">[6/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__vsf_component_peda_ifs_entry </td>
+          <td>(</td>
+          <td class="paramtype">__vk_es8389_capture_stop</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__audio_8c.html#a256ae510e3e3dbcba90c18c0069d1a36">vk_audio_stop</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a11b188f5e9a790d9ae52739336637432" name="a11b188f5e9a790d9ae52739336637432"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11b188f5e9a790d9ae52739336637432">&#9670;&#160;</a></span>__vsf_component_peda_ifs_entry() <span class="overload">[7/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__vsf_component_peda_ifs_entry </td>
+          <td>(</td>
+          <td class="paramtype">__vk_es8389_init</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vsf__audio_8c.html#adce5ebb036d84eb254da5341b1923c1f">vk_audio_init</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<div style="text-align: center; font-size: small; margin-top: 20px;">
+  由提交
+  <a href="https://github.com/vsfteam/vsf/commit/205cd3af0fb901378fd0643921dd05621267b2e9" target="_blank">vsfteam/vsf@205cd3a</a>
+  生成
+</div>
